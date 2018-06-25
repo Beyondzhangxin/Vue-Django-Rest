@@ -9,9 +9,19 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
-
+from __future__ import absolute_import, unicode_literals
 import os
+# ^^^ The above is required if you want to import from the celery
+# library.  If you don't have this then `from celery.schedules import`
+# becomes `proj.celery.schedules` in Python 2.x since it allows
+# for relative imports by default.
+rabbit_ip = '192.168.47.128'
 
+# celery settings 命名空间为CELERY_
+CELERY_BROKER_URL = 'amqp://guest:wang@'+rabbit_ip+'//'
+CELERY_RESULT_BACKEND = 'amqp://guest:wang@'+rabbit_ip+'//'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -39,6 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'snippets.apps.SnippetsConfig',
+    'demoapp',
+    'celery_message'
 ]
 
 MIDDLEWARE = [
@@ -135,3 +147,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "appfront/dist/static"),
 ]
+
+
+
+
