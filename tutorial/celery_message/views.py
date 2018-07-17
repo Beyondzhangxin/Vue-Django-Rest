@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .tasks import add, mul
+from rest_framework import generics
 import json
 
 

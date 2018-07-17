@@ -2,12 +2,21 @@ from django.shortcuts import render
 
 # Create your views here.
 from rest_framework import status
+from django.db.models import Sum, Count
 from rest_framework.parsers import JSONParser
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Snippet
 from .serializer import SnippetSerializer
 from rest_framework import generics
+from django_filters.rest_framework import DjangoFilterBackend
+
+
+class SnippetList(generics.ListCreateAPIView):
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = ('id',)
+    queryset = Snippet.objects.all()
+    serializer_class = SnippetSerializer
 
 
 @api_view(['GET', 'POST'])
@@ -17,6 +26,7 @@ def snippet_list(request, format=None):
     """
     if request.method == 'GET':
         snippets = Snippet.objects.all()
+        print(snippets.query)
         serializer = SnippetSerializer(snippets, many=True)
         return Response(serializer.data)
 

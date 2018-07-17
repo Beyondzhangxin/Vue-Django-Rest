@@ -19,7 +19,8 @@ from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'api/', include('snippets.urls')),
+    path(r'api/', include('snippets.urls'), name='snippets'),
+    path(r'pv/', include('pv.urls'), name='pv'),
     path(r'celery/', include('celery_message.urls')),
     path('', TemplateView.as_view(template_name="index.html"))
 ]

@@ -35,7 +35,7 @@ SECRET_KEY = '@jzr3i-pdt0fc_b1mc6ngi9siv+x@3l(1^&0klo32*-gavclj_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -50,7 +50,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'snippets.apps.SnippetsConfig',
     'demoapp',
-    'celery_message'
+    'celery_message',
+    'pv.apps.PvConfig',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -96,10 +98,10 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hong',
+        'NAME': 'solar',
         'USER': 'root',
-        'PASSWORD': '123',
-        'HOST': '127.0.0.1',
+        'PASSWORD': '',
+        'HOST': '192.168.102.101',
         'PORT': '3306'
     }
 }
@@ -129,13 +131,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = None
 
 
 # Static files (CSS, JavaScript, Images)
