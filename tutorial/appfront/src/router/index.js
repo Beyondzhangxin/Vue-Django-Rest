@@ -4,7 +4,9 @@ import NewContact from '@/components/NewContact'
 import SimpleList from '@/components/el-simple-com/SimpleList'
 import HomeContainer from '@/components/HomeContainer'
 import t1 from '@/components/t1'
-import input from '@/components//el-simple-com/com-input'
+import input from '@/components/el-simple-com/com-input'
+import PvdataList from '@/components/el-simple-com/PvdataList'
+import hello from '@/components/hello'
 Vue.use(Router)
 
 export default new Router({
@@ -29,6 +31,16 @@ export default new Router({
       path: '/add',
       name: 'add',
       component: input
+    },
+    {
+      path: '/pv',
+      name: 'pv',
+      component: PvdataList
+    },
+    {
+      path: '/hello',
+      name: 'hello',
+      component: hello
     }
   ]
 })

@@ -1,9 +1,9 @@
 <template>
   <el-row>
-    <e1-row>
+    <el-row>
       <el-radio v-model="radio" label="1">加法</el-radio>
       <el-radio v-model="radio" label="2">乘法</el-radio>
-    </e1-row>
+    </el-row>
     <el-row>
       <el-input v-model="input4" placeholder="请输入内容"></el-input>
     </el-row>
