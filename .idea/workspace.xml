@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="699a223f-2a95-44f1-b706-a9f3ca80d94a" name="Default" comment="venv update">
+    <list default="true" id="699a223f-2a95-44f1-b706-a9f3ca80d94a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/tutorial/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,7 +30,7 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/router/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
+            <state relative-caret-position="912">
               <caret line="48" column="22" lean-forward="false" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="22" />
               <folding />
             </state>
@@ -37,10 +38,10 @@
         </entry>
       </file>
       <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tutorial/requirements.txt">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="133">
+              <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -165,6 +166,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -186,7 +188,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -204,6 +205,9 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\pycharm\DjangoDemo2" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\pycharm\DjangoDemo2" />
       <recent name="D:\pycharm\DjangoDemo2\venv" />
@@ -369,7 +373,14 @@
       <option name="project" value="LOCAL" />
       <updated>1531907014340</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="requirements.txt">
+      <created>1531908337834</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1531908337834</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
@@ -433,7 +444,8 @@
     <MESSAGE value="pv update" />
     <MESSAGE value="appfront update" />
     <MESSAGE value="venv update" />
-    <option name="LAST_COMMIT_MESSAGE" value="venv update" />
+    <MESSAGE value="requirements.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="requirements.txt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -783,16 +795,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
+        <state relative-caret-position="912">
           <caret line="48" column="22" lean-forward="false" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/requirements.txt">
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="133">
+          <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
           <folding />
         </state>
       </provider>
