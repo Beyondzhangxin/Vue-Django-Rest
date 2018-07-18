@@ -24,7 +24,7 @@ class CJsonEncoder(json.JSONEncoder):
             return json.JSONEncoder.default(self, obj)
 
 
-# 分页操作
+# 分页类的设置
 class PvdataPagination(pagination.PageNumberPagination):
     """
     配置分页规则
@@ -104,18 +104,15 @@ class DetectionList(generics.ListAPIView):
 
     def list(self, request, *args, **kwargs):
         query = self.get_queryset()
-        print(query.query)
         queryset = self.filter_queryset(query)
-
         page = self.paginate_queryset(queryset)
 
         if page is not None:
-            # serializer = self.get_serializer(page, many=True)
-            # return self.get_paginated_response(serializer.data)
-            # 个性序列化
-            serializer = json.dumps(page, cls=CJsonEncoder)
-            return self.get_paginated_response(serializer)
-
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+            # # 个性序列化
+            # serializer = json.dumps(page, cls=CJsonEncoder)
+            # return self.get_paginated_response(serializer)
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
