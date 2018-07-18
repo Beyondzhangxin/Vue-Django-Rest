@@ -8,6 +8,7 @@ import t1 from '@/components/t1'
 import input from '@/components/el-simple-com/com-input'
 import PvdataList from '@/components/el-simple-com/PvdataList'
 import hello from '@/components/hello'
+import Line1 from '@/components/echarts_elements/Line1'
 Vue.use(Router)
 
 export default new Router({
@@ -47,6 +48,11 @@ export default new Router({
       path: '/detection',
       name: 'detection',
       component: FaultDetection
+    },
+    {
+      path: '/demo',
+      name: 'demo',
+      component: Line1
     }
   ]
 })

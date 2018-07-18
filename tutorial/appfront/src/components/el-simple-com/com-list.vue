@@ -61,6 +61,7 @@
         console.log(this.tableData);
       },
       //设置tableData对象
+      //toFixed四舍五入
       setTableData(result){
         var effect_time = result.time_sum/60
         var avg_p = result.p_avg
