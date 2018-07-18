@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import NewContact from '@/components/NewContact'
+import FaultDetection from '@/components/FaultDetection'
 import SimpleList from '@/components/el-simple-com/SimpleList'
 import HomeContainer from '@/components/HomeContainer'
 import t1 from '@/components/t1'
@@ -41,6 +42,11 @@ export default new Router({
       path: '/hello',
       name: 'hello',
       component: hello
+    },
+    {
+      path: '/detection',
+      name: 'detection',
+      component: FaultDetection
     }
   ]
 })

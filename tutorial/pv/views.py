@@ -4,7 +4,7 @@ from datetime import date
 from datetime import datetime
 from .models import Pvdata
 from .serializer import PvdataSerializer, PvDataDetectionList
-from django.db.models import Sum, Count, Avg
+from django.db.models import Sum, Count, Avg, Min, Max
 # Create your views here.
 from rest_framework import generics
 from rest_framework import pagination
@@ -108,11 +108,11 @@ class DetectionList(generics.ListAPIView):
         page = self.paginate_queryset(queryset)
 
         if page is not None:
-            serializer = self.get_serializer(page, many=True)
-            return self.get_paginated_response(serializer.data)
-            # # 个性序列化
-            # serializer = json.dumps(page, cls=CJsonEncoder)
-            # return self.get_paginated_response(serializer)
+            # serializer = self.get_serializer(page, many=True)
+            # return self.get_paginated_response(serializer.data)
+            # 个性序列化
+            serializer = json.dumps(page, cls=CJsonEncoder)
+            return self.get_paginated_response(json.loads(serializer))
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
@@ -122,8 +122,7 @@ class DetectionList(generics.ListAPIView):
         day = int(self.kwargs.get('day'))
         return Pvdata.objects.filter(updatetime__date=date(year=year, month=month, day=day))\
             .values('pcbid', 'cityid').annotate(p_avg=Avg('p'), time_sum=Count('updatetime')
-            /Count('channelid', distinct=True))
-
+            /Count('channelid', distinct=True), time_min=Min('updatetime'), time_max=Max('updatetime'))
     # def get_time(self, queryset):
     #     queryset.aggregate()
 
