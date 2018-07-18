@@ -1,0 +1,66 @@
+
+body{ 
+    margin:0; padding:0; font-size:30px; font-weight:bold
+}
+
+.head-left{
+    width:20%;height:100px;background:#9CF;float:left
+}
+
+.head-right{
+    width:80%;height:100px;background:#9CF;float:right
+}
+
+.left{
+    width:20%; height:1000px; background:whitesmoke; float:left
+}
+
+.right{
+    width:80%; height:1000px;background:whitesmoke; float:right
+}
+
+.logo{
+    width:auto;line-height:100px;margin-left:10px;
+}
+
+.nav{
+    width:80%;
+}
+
+.nav ul{
+    list-style:none;
+}
+
+.nav li{
+    float:right;padding:10px;
+}
+
+.clearfloat{
+    clear:both
+}
+
+.nav ul li a{
+    text-decoration:none;color:black;
+}
+
+.nav ul li a:hover{
+    color:white;background:black;
+}
+
+.row {
+    float:left;
+    padding:5px;
+}
+
+.mulu1{
+    margin-left:10px;
+}
+
+.mulu2{
+    margin-left:10px;
+}
+
+.shuru{
+    margin-left:10px;
+}
+
