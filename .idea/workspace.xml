@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="699a223f-2a95-44f1-b706-a9f3ca80d94a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/config/index.js" afterPath="$PROJECT_DIR$/tutorial/appfront/config/index.js" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/router/index.js" afterPath="$PROJECT_DIR$/tutorial/appfront/src/router/index.js" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/templates/fault_detection.html" afterPath="$PROJECT_DIR$/tutorial/appfront/src/templates/fault_detection.html" />
-      <change beforePath="$PROJECT_DIR$/tutorial/pv/views.py" afterPath="$PROJECT_DIR$/tutorial/pv/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -417,7 +413,14 @@
       <option name="project" value="LOCAL" />
       <updated>1531876652734</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="appfront update">
+      <created>1531895649623</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1531895649623</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -489,7 +492,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="vue-django-rest" />
     <MESSAGE value="pv update" />
-    <option name="LAST_COMMIT_MESSAGE" value="pv update" />
+    <MESSAGE value="appfront update" />
+    <option name="LAST_COMMIT_MESSAGE" value="appfront update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
