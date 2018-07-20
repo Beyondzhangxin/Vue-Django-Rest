@@ -50,7 +50,7 @@
         </el-row>
         <el-main>
           <!--通用list-->
-          <comList data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></comList>
+          <ComList data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></comList>
         </el-main>
       </el-container>
     </div>
@@ -63,7 +63,7 @@
   export default {
     name: 'faultdetection',
     components: {
-      comList: ComList
+      ComList: ComList
     },
     data(){
       return {
