@@ -22,12 +22,14 @@
         </el-pagination>
       </div>
     </el-row> -->
+    <h1>{{ data }}</h1>
   </el-row>
 </template>
 
 <script>
   export default {
     name: 'ComList',
+    props: ['data'],
     data() {
       this.tabConfigs = [
         {prop: 'dev_name', label: '设备名称'},
@@ -49,7 +51,7 @@
     methods: {
       //通过异步请求，ajax用来获取数据
       showAll(){
-        this.$ajax.get('http://127.0.0.1:8000/pv/get/detection/2018/1/18/')
+        this.$ajax.get(this.data)
         .then(function (response) {
           for (var i = 0; i < response.data.results.length; i++) {
             console.log(response.data.results[i])

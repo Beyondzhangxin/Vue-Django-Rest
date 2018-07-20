@@ -33,8 +33,26 @@
   	<div class="mulu2">上海光伏电站</div>
   </div>
     <div class="right">
-  	  <img src="./images/u1141.png" alt="image1" width="100%">
-      <comList></comList>
+      <el-container>
+        <el-header style="height: 130px;">
+          <div>
+            <div class="detection-title">异常检测</div>
+          </div>
+          <div style="float: left;margin-right: 120px;font-size:17px;text-align:center;" v-for="{title, className} in items">
+            <div class="circle">
+              <i :class="className"/>
+            </div>
+            <div>{{ title }}</div>
+          </div>
+        </el-header>
+        <el-row>
+          <el-col :span="24"><div class="grid-content bg-purple-dark"></div></el-col>
+        </el-row>
+        <el-main>
+          <!--通用list-->
+          <comList data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></comList>
+        </el-main>
+      </el-container>
     </div>
   </div>
 </template>
@@ -47,10 +65,69 @@
     components: {
       comList: ComList
     },
+    data(){
+      return {
+        items: [
+          {title: '停机设备', className:'iconfont icon-lixian'},
+          {title: '告警设备', className:''},
+          {title: '离线设备', className:''},
+        ]
+        // pageSize: 2
+      }
+    },
   }
 </script>
 
 <style>
+    /* 导入iconfont的css*/
+    @import './iconfont/iconfont.css';
+
+    .el-container {
+      height: 100%;
+    }
+
+    .el-container font{
+      font-size: 20px;
+    }
+
+    .detection-title {
+      text-align: left;
+      font-size: 11px;
+      margin-bottom: 10px;
+    }
+
+    .circle {
+      width: 51px;
+      height: 51px;
+      background-color: rgba(69, 217, 112, 1);
+      border-radius: 50%;
+      -moz-border-radius: 50%;
+      -webkit-border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .grid-content {
+      border-radius: 4px;
+      min-height: 4px;
+    }
+
+    .el-row {
+      margin-bottom: 20px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .el-col {
+      border-radius: 4px;
+    }
+
+    .bg-purple-dark {
+      background: #99a9bf;
+    }
+
     .detection{
         margin:0; padding:0; font-size:30px; font-weight:bold
     }
