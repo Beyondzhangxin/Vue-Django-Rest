@@ -30,25 +30,21 @@
 </script>
 <style>
 .el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
-  }
+  background-color: #B3C0D1;
+  color: #333;
+  height: 20%;
+}
 
 .el-aside {
     background-color: #D3DCE6;
     color: #333;
-    text-align: center;
-    line-height: 200px;
-  }
+}
 
  .el-main {
     background-color: #E9EEF3;
     color: #333;
-    text-align: center;
-    line-height: 160px;
-  }
+    height: 100%;
+}
 
  #app > .el-container {
     height: 100%;

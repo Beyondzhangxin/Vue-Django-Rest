@@ -1,9 +1,10 @@
 <template>
   <div class="detection">
     <el-container>
-      <el-aside width="200px">Aside</el-aside>
+      <el-aside width="200px"><aside/></el-aside>
       <el-container>
         <el-header>
+          <header/>
         </el-header>
           <el-main>
             <!--通用list-->
@@ -15,7 +16,9 @@
 </template>
 
 <script>
-  import ComList from './el-simple-com/com-list.vue'
+  import ComList from '../el-simple-com/com-list.vue'
+  import header from './Head.vue'
+  import aside from './Aside.vue'
 
   export default {
     name: 'faultdetection',
@@ -33,7 +36,6 @@
 
 <style>
   /* 导入iconfont的css*/
-  @import './iconfont/iconfont.css';
 
   .detection {
     height: 100%;

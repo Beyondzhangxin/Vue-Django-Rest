@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import FaultDetection from '@/components/FaultDetection'
+import FaultDetection from '@/components/detection/FaultDetection'
 import HomeContainer from '@/pages/HomeContainer'
 import PvdataList from '@/components/el-simple-com/PvdataList'
-import First from '@/components/first'
+import First from '@/components/First'
 Vue.use(Router)
 
 /*
