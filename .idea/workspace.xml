@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="699a223f-2a95-44f1-b706-a9f3ca80d94a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/FaultDetection.vue" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/first.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/first.vue" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/pages/HomeContainer.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/pages/HomeContainer.vue" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/router/index.js" afterPath="$PROJECT_DIR$/tutorial/appfront/src/router/index.js" />
+      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/detection/Aside.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/detection/Aside.vue" />
+      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/detection/FaultDetection.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/detection/FaultDetection.vue" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,18 +21,38 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/router/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
+            <state relative-caret-position="361">
               <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="First.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="First.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/First.vue">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FaultDetection.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/detection/FaultDetection.vue">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Aside.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/detection/Aside.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -201,6 +219,24 @@
               <item name="tutorial" type="462c0819:PsiDirectoryNode" />
               <item name="appfront" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="detection" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DjangoDemo2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DjangoDemo2" type="462c0819:PsiDirectoryNode" />
+              <item name="tutorial" type="462c0819:PsiDirectoryNode" />
+              <item name="appfront" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="el-simple-com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DjangoDemo2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DjangoDemo2" type="462c0819:PsiDirectoryNode" />
+              <item name="tutorial" type="462c0819:PsiDirectoryNode" />
+              <item name="appfront" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="router" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -238,16 +274,17 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\pycharm\DjangoDemo2\tutorial\appfront\src\components\detection" />
+      <recent name="D:\pycharm\DjangoDemo2\tutorial\appfront\src\components\iconfont" />
+      <recent name="D:\pycharm\DjangoDemo2" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\pycharm\DjangoDemo2" />
       <recent name="D:\pycharm\DjangoDemo2\venv" />
       <recent name="D:\pycharm\DjangoDemo2\tutorial\appfront\src\components\el-simple-com" />
       <recent name="D:\pycharm\DjangoDemo2\tutorial\pv" />
       <recent name="D:\pycharm\DjangoDemo2\tutorial\celery_message" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\pycharm\DjangoDemo2\tutorial\appfront\src\components\iconfont" />
-      <recent name="D:\pycharm\DjangoDemo2" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -449,7 +486,14 @@
       <option name="project" value="LOCAL" />
       <updated>1532249297249</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="clear version 2">
+      <created>1532254629630</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1532254629630</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView">
@@ -518,7 +562,8 @@
     <MESSAGE value="Fault Detection" />
     <MESSAGE value="clear version" />
     <MESSAGE value="clear version 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="clear version 1" />
+    <MESSAGE value="clear version 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="clear version 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -527,20 +572,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../django_rest_demo/venv/Lib/site-packages/django/urls/conf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
-          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../django_rest_demo/venv/Lib/site-packages/django/conf/urls/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/datetime.pyi">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
@@ -818,24 +849,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
+        <state relative-caret-position="361">
           <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/FaultDetection.vue">
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/FaultDetection.vue" />
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/First.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="228">
+          <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/First.vue">
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/detection/Aside.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/detection/FaultDetection.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

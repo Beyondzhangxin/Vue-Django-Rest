@@ -1,14 +1,14 @@
 <template>
   <div class="detection">
     <el-container>
-      <el-aside width="200px"><aside/></el-aside>
+      <el-aside width="200px"><DeAside/></el-aside>
       <el-container>
         <el-header>
-          <header/>
+          <deHeader/>
         </el-header>
           <el-main>
             <!--通用list-->
-            <ComList data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></comList>
+            <ComList data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>
           </el-main>
       </el-container>
     </el-container>
@@ -17,13 +17,15 @@
 
 <script>
   import ComList from '../el-simple-com/com-list.vue'
-  import header from './Head.vue'
-  import aside from './Aside.vue'
+  import deHeader from './Head.vue'
+  import deAside from './Aside.vue'
 
   export default {
     name: 'faultdetection',
     components: {
-      ComList: ComList
+      ComList: ComList,
+      DeAside: deAside,
+      DeHeader: deHeader,
     },
     data(){
       return {
