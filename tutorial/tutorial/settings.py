@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'snippets.apps.SnippetsConfig',
-    'demoapp',
     'celery_message',
     'pv.apps.PvConfig',
     'django_filters',
@@ -101,7 +100,7 @@ DATABASES = {
         'NAME': 'solar',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': '192.168.102.101',
+        'HOST': '192.168.102.102',
         # 'HOST': '127.0.0.1',
         'PORT': '3306'
     }

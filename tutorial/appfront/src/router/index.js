@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import FaultDetection from '@/components/FaultDetection'
-import HomeContainer from '@/components/HomeContainer'
+import HomeContainer from '@/pages/HomeContainer'
 import PvdataList from '@/components/el-simple-com/PvdataList'
+import First from '@/components/first'
 Vue.use(Router)
 
 /*
@@ -17,9 +18,23 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/Home',
+
+    },
+    {
+      path: '/Home',
       name: 'Home',
-      redrect: '/Home',
-      component: HomeContainer
+      component: HomeContainer,
+      children: [
+        {
+          path: 'detection',
+          component : FaultDetection,
+        },
+        {
+          path: 'first',
+          component: First,
+        }
+      ]
     },
     {
       path: '/pv',

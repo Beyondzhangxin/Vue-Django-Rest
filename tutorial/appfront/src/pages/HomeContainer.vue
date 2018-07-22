@@ -1,17 +1,32 @@
 <template>
   <el-container>
-    <el-header>Header</el-header>
-    <el-container>
-      <el-aside width="200px">Aside</el-aside>
-      <el-container>
-        <el-main>Main</el-main>
-        <el-footer>Footer</el-footer>
-      </el-container>
-    </el-container>
+    <!-- 导入header-->
+    <el-header><HomeHeader :active.sync='active'/></el-header>
+    <el-main><router-view/></el-main>
+    <el-footer>Footer</el-footer>
   </el-container>
 </template>
 <script>
+  import HomeHeader from '@/components/Home/header'
 
+  export default {
+    name: 'home',
+    components: {
+      HomeHeader
+    },
+    data () {
+      return {
+        active: 'detection'
+      }
+    },
+    watch: {
+      active (newVal) {
+        this.$router.push({
+          path: '${this.active}'
+        })
+      }
+    }
+  }
 </script>
 <style>
 .el-header, .el-footer {
