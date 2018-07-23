@@ -1,8 +1,7 @@
 <template>
   <el-row>
     <!-- tableData数据的映射 -->
-    <el-table :data="tableData"
-    border
+    <el-table :data="tableData" border
     style="width: 100%">
       <el-table-column
       v-for="{ prop, label } in tabConfigs"
