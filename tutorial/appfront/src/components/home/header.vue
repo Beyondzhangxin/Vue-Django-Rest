@@ -5,6 +5,13 @@
   	</div>
   </div>
 </template>
+
 <script>
 </script>
+
 <style>
+.logo{
+  float:left;
+  margin-top:20px;
+}
+</style>
