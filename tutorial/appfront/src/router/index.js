@@ -3,7 +3,8 @@ import Router from 'vue-router'
 import FaultDetection from '@/components/detection/FaultDetection'
 import HomeContainer from '@/pages/HomeContainer'
 import PvdataList from '@/components/el-simple-com/PvdataList'
-import First from '@/components/First'
+import First from '@/components/first/First'
+import Gauge from '@/components/echarts_elements/Gauge1'
 Vue.use(Router)
 
 /*
@@ -20,6 +21,11 @@ export default new Router({
       path: '/',
       redirect: '/Home',
 
+    },
+    {
+      path: '/Gauge',
+      name: 'Gauge',
+      component: Gauge,
     },
     {
       path: '/Home',
@@ -45,6 +51,6 @@ export default new Router({
       path: '/detection',
       name: 'detection',
       component: FaultDetection
-    }
+    },
   ]
 })
