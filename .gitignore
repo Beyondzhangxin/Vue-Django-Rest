@@ -9,3 +9,4 @@ tutorial/snippets/migrations/__pycache__/
 tutorial/tutorial/__pycache__/
 /.idea/
 .idea
+/.gitignore
