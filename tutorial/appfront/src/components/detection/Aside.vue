@@ -2,7 +2,7 @@
   <div class="top">
     <p v-html="msg1"></p>
     <p {{message}} </p>
-    <input v-mode="message">
+    <input v-model="message" placeholder="请输入电站名称">
     <P v-html="msg2"></p>
     <P v-html="msg3"></p>
   </div>
