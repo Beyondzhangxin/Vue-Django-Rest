@@ -15,7 +15,7 @@
 
 export default {
   name: 'gauge1',
-  props: ['id', 'option'],
+  props: ['id', 'option', 'value'],
   data () {
     return {
     }
@@ -27,7 +27,7 @@ export default {
   },
   mounted: function() {
     this.drawLine();
-    setInterval(this.setValues, 2000);
+    var interval = setInterval(this.setValues, 2000);
   },
   methods: {
     drawLine () {
@@ -41,6 +41,9 @@ export default {
       gauge1.setOption(this.option);
     },
     setValues () {
+      if (this.id == null) {
+        clearInterval(interval)
+      }
       //赋值
       let gauge1 = echarts.init(document.getElementById(this.id))
       this.option.series[0].data[0].value = this.value||0;
