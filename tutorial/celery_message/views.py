@@ -26,3 +26,8 @@ def mul_num(request, format='json'):
 
 ##this is from jason branch
 #i'M JASON  I want to do more
+
+
+
+
+#ok I have fixed the bugs ,Now it's time to return where I started!
