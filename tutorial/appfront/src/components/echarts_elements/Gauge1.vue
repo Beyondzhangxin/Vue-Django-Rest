@@ -14,7 +14,8 @@
 
 
 export default {
-
+  name: 'gauge1',
+  props: ['id', 'option'],
   data () {
     return {
     }
