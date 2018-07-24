@@ -21,3 +21,6 @@ def mul_num(request, format='json'):
         dict = request.query_params.dict()
         res = mul.delay(int(dict['num1']), int(dict['num2']))
         return Response(data=json.loads('{"res":' + str(res.get()) + '}'), content_type='/json')
+
+
+##this is from jason branch
