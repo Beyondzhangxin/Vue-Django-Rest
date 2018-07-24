@@ -1,5 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
-.gitignore
 tutorial/celery_message/__pycache__/
 tutorial/celery_message/migrations/__pycache__/
 tutorial/demoapp/
@@ -8,5 +7,6 @@ tutorial/pv/migrations/__pycache__/
 tutorial/snippets/__pycache__/
 tutorial/snippets/migrations/__pycache__/
 tutorial/tutorial/__pycache__/
-.idea
-.vscode
+/.gitignore
+
+/.idea/
