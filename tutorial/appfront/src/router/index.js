@@ -5,6 +5,7 @@ import HomeContainer from '@/pages/HomeContainer'
 import PvdataList from '@/components/el-simple-com/PvdataList'
 import First from '@/components/first/First'
 import Gauge from '@/components/echarts_elements/Gauge1'
+import Power from '@/components/power/Power'
 Vue.use(Router)
 
 /*
@@ -39,6 +40,9 @@ export default new Router({
         {
           path: 'first',
           component: First,
+        },{
+          path: 'power',
+          component: Power,
         }
       ]
     },

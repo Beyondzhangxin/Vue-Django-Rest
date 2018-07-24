@@ -54,6 +54,8 @@ export default {
       settings: {
         g1:{
           id: 'gauge1',
+          //需要输入的值-
+          value: 0,
           option:{
             tooltip : {
               formatter: "{a} <br/>{b} : {c}%"
