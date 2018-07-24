@@ -1,20 +1,21 @@
 <template>
-  <div class="gauge" :style="{width: '100%', height: '100%'}">
+  <div class="line" :style="{width: '100%', height: '100%'}">
     <div v-bind:id="id" :style="{width: '100%', height: '100%'}"></div>
   </div>
 </template>
 <script>
   let echarts = require('echarts/lib/echarts')
 
-  require('echarts/lib/chart/gauge')
+  require('echarts/lib/chart/bar')
   // 引入提示框和title组件
   require('echarts/lib/component/tooltip')
   require('echarts/lib/component/title')
   require('echarts/lib/component/toolbox')
+  require('echarts/lib/component/dataZoom')
 
 
 export default {
-  name: 'Gauge1',
+  name: 'line2',
   props: ['id', 'option'],
   data () {
     return {
@@ -31,14 +32,12 @@ export default {
   },
   methods: {
     drawLine () {
-      console.log(this.id);
-      console.log(this.gauge);
       // 基于准备好的dom，初始化echarts实例
-      let gauge1 = echarts.init(document.getElementById(this.id))
+      let line1 = echarts.init(document.getElementById(this.id))
       //初始化变量
       // 绘制图表
       console.log(this.option);
-      gauge1.setOption(this.option);
+      line1.setOption(this.option);
     },
     setInterval () {
 
