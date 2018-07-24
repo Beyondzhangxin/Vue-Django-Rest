@@ -8,4 +8,4 @@ tutorial/snippets/__pycache__/
 tutorial/snippets/migrations/__pycache__/
 tutorial/tutorial/__pycache__/
 /.idea/
-/.gitignore
+.idea
