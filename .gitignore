@@ -10,6 +10,6 @@ tutorial/tutorial/__pycache__/
 /.vscode
 /.idea/
 .idea
-/tutorial/appfront/build/
 /tutorial/appfront/test/
 .vscode
+/node_modules/
