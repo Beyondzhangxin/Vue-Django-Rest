@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+tutorial/celery_message/__pycache__/
+tutorial/celery_message/migrations/__pycache__/
+tutorial/demoapp/__pycache__/
+tutorial/pv/__pycache__/
+tutorial/pv/migrations/__pycache__/
+tutorial/snippets/__pycache__/
+tutorial/snippets/migrations/__pycache__/
+tutorial/tutorial/__pycache__/
+/.idea/
+/.gitignore
