@@ -53,6 +53,10 @@ INSTALLED_APPS = [
     'celery_message',
     'pv.apps.PvConfig',
     'django_filters',
+    'ctyd',
+    'spgs',
+    'pvmg',
+    'system'
 ]
 
 MIDDLEWARE = [
@@ -101,8 +105,8 @@ DATABASES = {
         'NAME': 'solar',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': '192.168.102.101',
-        # 'HOST': '127.0.0.1',
+        # 'HOST': '192.168.102.101',
+        'HOST': '127.0.0.1',
         'PORT': '3306'
     }
 }

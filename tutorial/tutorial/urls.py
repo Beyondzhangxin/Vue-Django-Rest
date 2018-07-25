@@ -22,5 +22,6 @@ urlpatterns = [
     path(r'api/', include('snippets.urls'), name='snippets'),
     path(r'pv/', include('pv.urls'), name='pv'),
     path(r'celery/', include('celery_message.urls')),
-    path('', TemplateView.as_view(template_name="index.html"))
+    path('', TemplateView.as_view(template_name="index.html")),
+    path(r'^api-auth/', include('rest_framework.urls'))
 ]
