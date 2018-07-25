@@ -13,3 +13,5 @@ tutorial/tutorial/__pycache__/
 /tutorial/appfront/test/
 .vscode
 /node_modules/
+/.idea/workspace.xml
+`
