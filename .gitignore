@@ -1,0 +1,15 @@
+# Created by .ignore support plugin (hsz.mobi)
+tutorial/celery_message/__pycache__/
+tutorial/celery_message/migrations/__pycache__/
+tutorial/demoapp/
+tutorial/pv/__pycache__/
+tutorial/pv/migrations/__pycache__/
+tutorial/snippets/__pycache__/
+tutorial/snippets/migrations/__pycache__/
+tutorial/tutorial/__pycache__/
+/.vscode
+/.idea/
+.idea
+/tutorial/appfront/test/
+.vscode
+/node_modules/
