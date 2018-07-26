@@ -1,7 +1,7 @@
 <template>
   <div class="Power">
     <el-container>
-    
+
       <!-- head部分 -->
       <el-header>
         <el-row>
@@ -73,7 +73,7 @@
 
 
           </el-main>
-          
+
         </el-container>
       </el-main>
     </el-container>
@@ -155,7 +155,7 @@ export default {
   .el-col {
     /* display: inline-block; */
     /* border: 1px solid black; */
-    
+
   }
 
   .Power {
@@ -187,7 +187,7 @@ export default {
 .num{
   margin-left:50px;
 }
- 
+
  .hour{
    margin-left:-100px;
  }
