@@ -60,17 +60,10 @@
 </script>
 
 <style scoped>
-  .header {
-    background-color: #12AFE3;
-    color: #fff;
-  }
-</style>
-
-<style>
-  .header {
-    height: 100%;
-    text-align: center;
-  }
+.header {
+  background-color: #12AFE3;
+  color: #fff;
+}
 
   .head-left{
     float:left;
@@ -78,6 +71,7 @@
     text-align: center;
     display: inline-block;
     margin-top: 15px;
+    margin-left: 40px;
   }
 
   .head-right{
@@ -85,8 +79,14 @@
     display: inline-block;
   }
 
-.logo {
-  font-size: 20px;
-  text-align: center;
-}
+  .header {
+    height: 100%;
+    text-align: center;
+  }
+
+  .logo {
+    font-size: 20px;
+    text-align: center;
+    font-style: italic;
+  }
 </style>

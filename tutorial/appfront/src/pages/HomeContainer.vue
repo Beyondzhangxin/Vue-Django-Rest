@@ -47,6 +47,8 @@
   background-color: #B3C0D1;
   color: #333;
   height: 20%;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .el-aside {
@@ -68,11 +70,4 @@
     width: 100%;
     height: 100%;
   }
-</style>
-
-
-<style scoped>
-  .el-header {
-    background-color: 
-  }
-</style>
+  </style>
