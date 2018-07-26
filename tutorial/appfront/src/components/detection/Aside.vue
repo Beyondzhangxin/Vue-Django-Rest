@@ -51,12 +51,13 @@ export default {
 }
 
 .aside{
-  margin-bottom:10px
+  margin-bottom:10px;
+  width:100%;
 }
 
 .el-button{
-padding-left:2px;
-
+padding-left:8px;
+height: 35px;
 }
 
 </style>

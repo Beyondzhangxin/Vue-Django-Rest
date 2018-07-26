@@ -3,10 +3,10 @@
     <el-container>
       <el-aside width="200px"><DeAside/></el-aside>
       <el-container>
-        <el-header>                                                                              
-          <deHeader/>
-        </el-header>
           <el-main>
+           <el-row>
+        <el-col :span="24"><div class="grid-content bg-purple-dark"><deHeader/></div></el-col>
+        </el-row>
             <!--通用list-->
             <ComList data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>
           </el-main>
@@ -56,4 +56,25 @@
     font-size: 11px;
     margin-bottom: 10px;
   }
+
+  .grid-content {
+    border-radius: 4px;
+    min-height: 200px;
+  }
+
+ .bg-purple-dark {
+    background:white;
+  }
+
+  .el-row {
+    margin-bottom: 20px;
+  
+  }
+
+  .el-col {
+    border-radius: 4px;
+  }
+
+
+
 </style>
