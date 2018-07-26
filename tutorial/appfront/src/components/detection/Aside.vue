@@ -11,11 +11,11 @@
     <input id="input" v-model="message" placeholder="请输入电站名称">
     <div class="station">
       <i class="el-icon-loading"></i>
-      <span v-html="msg2"></span>
+      <span v-html="msg1"></span>
     </div>
     <div class="station">
       <i class="el-icon-loading"></i>
-      <span v-html="msg3"></span>
+      <span v-html="msg2"></span>
     </div>
   </div>
 </template>
@@ -27,8 +27,8 @@ export default {
   data: function (){
     return {
         message:'',
-        msg2:'北京光伏电站',
-        msg3:'上海光伏电站'
+        msg1:'北京光伏电站',
+        msg2:'上海光伏电站'
     }
   },
 }
@@ -48,6 +48,15 @@ export default {
 
 #input{
   border-radius: 4px;
+}
+
+.aside{
+  margin-bottom:10px
+}
+
+.el-button{
+padding-left:2px;
+
 }
 
 </style>
