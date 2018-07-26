@@ -1,31 +1,43 @@
 <template>
   <el-container>
     <!-- 导入header-->
-    <el-header><HomeHeader :active.sync='active'/></el-header>
-    <el-main><router-view/></el-main>
-    <el-footer>Footer</el-footer>
+    <el-header><HomeHeader/></el-header>
+    <el-container>
+      <el-aside  v-if="isShowAside()"  width="200px"><HomeAside/></el-aside>
+      <el-container>
+        <el-main><router-view/></el-main>
+        <el-footer>Footer</el-footer>
+      </el-container>
+    </el-container>
   </el-container>
 </template>
 <script>
   import HomeHeader from '@/components/Home/header'
+  import HomeAside  from '@/components/Home/aside'
 
   export default {
     name: 'home',
     components: {
-      HomeHeader
+      HomeHeader,
+      HomeAside,
     },
     data () {
       return {
-        active: 'detection'
+        active: 'detection',
       }
     },
-    watch: {
-      active (newVal) {
-        this.$router.push({
-          path: '${this.active}'
-        })
-      }
-    }
+    methods: {
+      isShowAside(){
+        return this.$router.history.current.fullPath == '/home/power'
+      },
+    },
+    // watch: {
+    //   active (newVal) {
+    //     this.$router.push({
+    //       path: '${this.active}'
+    //     })
+    //   }
+    // }
   }
 </script>
 <style>
@@ -47,6 +59,11 @@
 }
 
  #app > .el-container {
+    height: 100%;
+  }
+
+  .HomePage {
+    width: 100%;
     height: 100%;
   }
 </style>
