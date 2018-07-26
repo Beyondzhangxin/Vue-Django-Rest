@@ -1,8 +1,11 @@
 <template>
   <div class="detection">
     <el-container>
-      <el-aside width="200px"><DeAside/></el-aside>
       <el-container>
+<<<<<<< HEAD
+=======
+        <deHeader/>
+>>>>>>> 0aa05e8f74b925addf37d8d588f1f707783daf71
           <el-main>
            <el-row>
         <el-col :span="24"><div class="grid-content bg-purple-dark"><deHeader/></div></el-col>
@@ -16,28 +19,29 @@
 </template>
 
 <script>
-  import ComList from '../el-simple-com/com-list.vue'
-  import deHeader from './Head.vue'
-  import deAside from './Aside.vue'
+    import ComList from '../el-simple-com/com-list.vue'
+    import deHeader from './Head.vue'
 
   export default {
     name: 'faultdetection',
     components: {
-      ComList: ComList,
-      DeAside: deAside,
-      DeHeader: deHeader,
+        ComList: ComList,
+        DeHeader: deHeader,
     },
     data(){
       return {
-
+        
         // pageSize: 2
       }
     },
   }
 </script>
 
-<style>
+<style scoped>
   /* 导入iconfont的css*/
+  .el-header {
+    height: 100px;
+  }
 
   .detection {
     height: 100%;

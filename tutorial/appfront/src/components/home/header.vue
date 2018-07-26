@@ -70,7 +70,7 @@
     height: 100%;
     text-align: center;
     display: inline-block;
-    margin-top: 15px;
+    padding-top: 10px;
     margin-left: 40px;
   }
 
@@ -85,8 +85,8 @@
   }
 
   .logo {
-    font-size: 20px;
+    font-size: 30px;
     text-align: center;
-    font-style: italic;
+    font-style: Hiragino Sans GB;
   }
 </style>

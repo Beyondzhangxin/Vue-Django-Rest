@@ -80,6 +80,9 @@ export default {
   .aside {
     width: 100%;
     height: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    background-color: #fff;
   }
   .aside .aside1 {
     width: 100%;
