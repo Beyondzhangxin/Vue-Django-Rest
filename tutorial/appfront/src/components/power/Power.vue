@@ -1,59 +1,53 @@
 <template>
   <div class="Power">
     <el-container>
+    
+      <!-- head部分 -->
       <el-header>
         <el-row>
-          <el-col :span="4" v-for="item in items[0]">{{ item.key+item.value }}</el-col>
+          <el-col :span="4" v-for="item in items[0]" :key="item.id">{{ item.key+item.value }}</el-col>
         </el-row>
         <el-row>
-          <el-col :span="2">电站状态</el-col>
+          <el-col :span="2"><div class="num">电站状态：</div></el-col>
           <el-col :span="2">
-            <div>全部</div>
+            <div class="num">正常</div>
           </el-col>
           <el-col :span="2">
-            <div>正常</div>
+            <div class="num">异常</div>
           </el-col>
           <el-col :span="2">
-            <div>异常</div>
+            <div class="num">离线</div>
           </el-col>
           <el-col :span="2">
-            <div>离线</div>
-          </el-col>
-          <el-col :span="2">
-            <div>停机</div>
+            <div class="num">停机</div>
           </el-col>
         </el-row>
       </el-header>
+
+      <!-- main mh部分 -->
       <el-main>
         <el-container>
           <el-header class="mh">
             <div class="row">
               <el-row>
-                <el-col :span="3">当日有效使数:</el-col>
-                <el-col :span="4">
-                  <div>小时</div>
-                </el-col>
+                <el-col :span="3">当日有效时数:</el-col>
                 <el-col :span="3">
-                  <input>
-
-                  </input>
+                  <input id="input" type="text" style="margin-top:2px"></input>
                 </el-col>
                 <el-col :span="1">
                   ~
                 </el-col>
                 <el-col :span="3">
-                  <input>
-
-                  </input>
+                  <input id="input" type="text" style="margin-top:2px"></input>
                 </el-col>
                 <el-col :span="3">
-                  <div>小时</div>
+                  <div class="hour">小时</div>
                 </el-col>
               </el-row>
             </div>
             <div class="row">
               <el-row>
-                <el-col :span="3">电站所在地区</el-col>
+                <el-col :span="3" style="padding-top:10px" >电站所在地区</el-col>
                 <el-col :span="7">
                   <el-select
                     v-model="value10"
@@ -73,15 +67,20 @@
               </el-row>
             </div>
           </el-header>
+
+          <!-- main mm部分 -->
           <el-main class="mm">
             
 
           </el-main>
+          
         </el-container>
       </el-main>
     </el-container>
   </div>
 </template>
+
+
 <script>
 import Gauge from '../echarts_elements/Gauge1'
 import Line2 from '../echarts_elements/Line2'
@@ -93,10 +92,9 @@ export default {
   },
   data () {
     return {
-      msg: "Hello world",
       items: [
         [
-          
+          {
             key: "电站总数:",
             value: 2+"座",
           },
@@ -134,20 +132,21 @@ export default {
   }
 }
 </script>
+
+
 <style scoped>
   .el-container {
     height: 100%;
   }
   .el-row {
-    display: block;
-    height: 50%;
-    &:last-child {
-      margin-bottom: 0;
-    }
+    /* display: block; */
+    height: 60%;
+    margin-bottom: 0;
   }
   .el-col {
-    display: inline-block;
-    border: 1px solid black;
+    /* display: inline-block; */
+    /* border: 1px solid black; */
+    
   }
 
   .Power {
@@ -158,34 +157,31 @@ export default {
     height: 80%;
   }
 
-  .el-select {
-
-  }
-
   .mh {
-    border: 2px solid black;
+    /* border: 1px solid black; */
   }
 
   .mm {
-    border: 2px solid black;
+    border: 1px solid black;
     border-top: 0px;
   }
 
-  .row .el-row{
-
+  #input {
+    width: 80px
   }
 
-  input {
-    width: 50px
-
-  }
-
-
-  #plist {
-
-  }
   #li {
     float: left;
     display: inline-block;
   }
+
+.num{
+  margin-left:70px;
+}
+ 
+ .hour{
+   margin-left:-100px;
+ }
+
+
 </style>
