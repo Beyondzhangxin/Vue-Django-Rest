@@ -96,7 +96,7 @@ export default {
       msg: "Hello world",
       items: [
         [
-          {
+          
             key: "电站总数:",
             value: 2+"座",
           },
