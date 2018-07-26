@@ -4,7 +4,7 @@
     <el-header><HomeHeader/></el-header>
     <el-main>
         <el-container>
-            <el-aside  v-if="isShowAside()"  width="200px"><HomeAside/></el-aside>
+            <el-aside  v-if="isShowAside()"  width="18%"><HomeAside/></el-aside>
             <el-main><router-view/></el-main>
         </el-container>
     </el-main>
@@ -67,6 +67,10 @@
     background-color: #E9EEF3;
     color: #333;
     height: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 .el-main .el-container {
@@ -81,4 +85,4 @@
     width: 100%;
     height: 100%;
   }
-  </style>
+</style>

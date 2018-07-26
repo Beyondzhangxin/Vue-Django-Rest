@@ -1,11 +1,8 @@
 <template>
   <div class="detection">
     <el-container>
-      <el-aside width="200px"><DeAside/></el-aside>
       <el-container>
-        <el-header>                                                                              
-          <deHeader/>
-        </el-header>
+        <deHeader/>
           <el-main>
             <!--通用list-->
             <ComList data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>
@@ -16,28 +13,29 @@
 </template>
 
 <script>
-  import ComList from '../el-simple-com/com-list.vue'
-  import deHeader from './Head.vue'
-  import deAside from './Aside.vue'
+    import ComList from '../el-simple-com/com-list.vue'
+    import deHeader from './Head.vue'
 
   export default {
     name: 'faultdetection',
     components: {
-      ComList: ComList,
-      DeAside: deAside,
-      DeHeader: deHeader,
+        ComList: ComList,
+        DeHeader: deHeader,
     },
     data(){
       return {
-
+        
         // pageSize: 2
       }
     },
   }
 </script>
 
-<style>
+<style scoped>
   /* 导入iconfont的css*/
+  .el-header {
+    height: 100px;
+  }
 
   .detection {
     height: 100%;
