@@ -59,18 +59,14 @@
   }
 </script>
 
-
-<style >
-  .el-header, .el-footer{
+<style scoped>
+  .header {
     background-color: #12AFE3;
     color: #fff;
   }
+</style>
 
-  .el-menu {
-
-
-  }
-
+<style>
   .header {
     height: 100%;
     text-align: center;
