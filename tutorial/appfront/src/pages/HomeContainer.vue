@@ -6,7 +6,7 @@
       <el-aside  v-if="isShowAside()"  width="200px"><HomeAside/></el-aside>
       <el-container>
         <el-main><router-view/></el-main>
-        <el-footer>Footer</el-footer>
+        <el-footer>Powered by 清华四川能源互联网研究院</el-footer>
       </el-container>
     </el-container>
   </el-container>
@@ -43,12 +43,19 @@
 
 
 <style>
-.el-header, .el-footer {
+.el-header{
   background-color: #B3C0D1;
   color: #333;
   height: 20%;
   padding-left: 0px;
   padding-right: 0px;
+}
+
+.el-footer {
+  background-color: #B3C0D1;
+  color: #333;
+  height: 20%;
+  padding-top:20px;
 }
 
 .el-aside {

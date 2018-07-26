@@ -185,7 +185,7 @@ export default {
   }
 
 .num{
-  margin-left:70px;
+  margin-left:50px;
 }
 
  .hour{
