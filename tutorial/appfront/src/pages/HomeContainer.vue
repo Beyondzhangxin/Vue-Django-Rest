@@ -40,6 +40,8 @@
     // }
   }
 </script>
+
+
 <style>
 .el-header, .el-footer {
   background-color: #B3C0D1;
@@ -65,5 +67,12 @@
   .HomePage {
     width: 100%;
     height: 100%;
+  }
+</style>
+
+
+<style scoped>
+  .el-header {
+    background-color: 
   }
 </style>

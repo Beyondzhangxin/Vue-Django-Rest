@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="699a223f-2a95-44f1-b706-a9f3ca80d94a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/home/aside.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/home/aside.vue" />
       <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/home/header.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/home/header.vue" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/power/Power.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/power/Power.vue" />
+      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/pages/HomeContainer.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/pages/HomeContainer.vue" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -541,7 +540,14 @@
       <option name="project" value="LOCAL" />
       <updated>1532575023316</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="clear version 9 成熟的页面修改">
+      <created>1532590799396</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1532590799397</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView">
@@ -643,7 +649,8 @@
     <MESSAGE value="clear version 6 导航栏修改" />
     <MESSAGE value="clear version 7 power修改" />
     <MESSAGE value="clear version 8 aside修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="clear version 8 aside修改" />
+    <MESSAGE value="clear version 9 成熟的页面修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="clear version 9 成熟的页面修改" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
