@@ -1,36 +1,57 @@
 <template>
-  <el-transfer
-    filterable
-    :filter-method="filterMethod"
-    filter-placeholder="请输入城市拼音"
-    v-model="value2"
-    :data="data2">
-  </el-transfer>
+  <div class="aside">
+    <div class="aside0">
+      列表名称
+    </div>
+    <div class="aside1">
+      <el-row>
+        <el-col :span="6"><el-button size="mini">名称</el-button></el-col>
+        <el-col :span="6"><el-button size="mini">容量</el-button></el-col>
+        <el-col :span="6"><el-button size="mini">地区</el-button></el-col>
+        <el-col :span="6"><el-button size="mini">状态</el-button></el-col>
+      </el-row>
+    </div>
+    <div class="aside2">123</div>
+    <div class="aside3">123</div>
+  </div>
 </template>
 
 <script>
-  export default {
-    data() {
-      const generateData2 = _ => {
-        const data = [];
-        const cities = ['上海', '北京', '广州', '深圳', '南京', '西安', '成都'];
-        const pinyin = ['shanghai', 'beijing', 'guangzhou', 'shenzhen', 'nanjing', 'xian', 'chengdu'];
-        cities.forEach((city, index) => {
-          data.push({
-            label: city,
-            key: index,
-            pinyin: pinyin[index]
-          });
-        });
-        return data;
-      };
-      return {
-        data2: generateData2(),
-        value2: [],
-        filterMethod(query, item) {
-          return item.pinyin.indexOf(query) > -1;
-        }
-      };
+export default {
+  data () {
+    return {
     }
-  };
+  },
+  mounted: function() {
+
+  },
+  methods: {
+
+  }
+}
 </script>
+<style scoped>
+  .aside {
+    width: 100%;
+    height: 100%;
+  }
+  .aside .aside1 {
+    width: 100%;
+    height: 40px;
+  }
+
+  .aside1 ul {
+
+  }
+
+
+
+  .aside .aside2 {
+    width: 100%;
+    height: 40px;
+  }
+  .aside .aside3 {
+    width: 100%;
+    height: 700px;
+  }
+</style>

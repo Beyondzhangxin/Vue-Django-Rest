@@ -70,7 +70,7 @@
 
           <!-- main mm部分 -->
           <el-main class="mm">
-            
+
 
           </el-main>
           
@@ -129,6 +129,15 @@ export default {
       ],
         value10: []
     }
+  },
+  mounted : function() {
+    this.show();
+  },
+  methods: {
+    show(){
+      console.log(12312);
+      this.$root.isShowAside = 1;
+    },
   }
 }
 </script>
