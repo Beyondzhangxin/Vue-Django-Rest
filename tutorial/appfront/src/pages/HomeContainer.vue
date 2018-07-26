@@ -2,13 +2,13 @@
   <el-container>
     <!-- 导入header-->
     <el-header><HomeHeader/></el-header>
-    <el-container>
-      <el-aside  v-if="isShowAside()"  width="200px"><HomeAside/></el-aside>
-      <el-container>
-        <el-main><router-view/></el-main>
-        <el-footer>Powered by 清华四川能源互联网研究院</el-footer>
-      </el-container>
-    </el-container>
+    <el-main>
+        <el-container>
+            <el-aside  v-if="isShowAside()"  width="200px"><HomeAside/></el-aside>
+            <el-main><router-view/></el-main>
+        </el-container>
+    </el-main>
+    <el-footer>Powered by 清华四川能源互联网研究院</el-footer>
   </el-container>
 </template>
 <script>
@@ -67,6 +67,10 @@
     background-color: #E9EEF3;
     color: #333;
     height: 100%;
+}
+
+.el-main .el-container {
+  height: 100%;
 }
 
  #app > .el-container {
