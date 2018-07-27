@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="699a223f-2a95-44f1-b706-a9f3ca80d94a" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/tutorial/appfront/src/vuex/store.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/home/aside.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/home/aside.vue" />
+      <change beforePath="$PROJECT_DIR$/tutorial/appfront/package-lock.json" afterPath="$PROJECT_DIR$/tutorial/appfront/package-lock.json" />
+      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/detection/FaultDetection.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/detection/FaultDetection.vue" />
+      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/main.js" afterPath="$PROJECT_DIR$/tutorial/appfront/src/main.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -125,7 +128,6 @@
         <option value="$PROJECT_DIR$/tutorial/snippets/urls.py" />
         <option value="$PROJECT_DIR$/tutorial/tutorial/urls.py" />
         <option value="$PROJECT_DIR$/tutorial/celery_message/test.py" />
-        <option value="$PROJECT_DIR$/tutorial/appfront/src/main.js" />
         <option value="$PROJECT_DIR$/tutorial/appfront/src/components/hello.vue" />
         <option value="$PROJECT_DIR$/tutorial/tutorial/__init__.py" />
         <option value="$PROJECT_DIR$/tutorial/pv/urls.py" />
@@ -142,12 +144,14 @@
         <option value="$PROJECT_DIR$/tutorial/tutorial/settings.py" />
         <option value="$PROJECT_DIR$/tutorial/pv/views.py" />
         <option value="$PROJECT_DIR$/tutorial/appfront/src/components/power/123" />
+        <option value="$PROJECT_DIR$/tutorial/appfront/src/main.js" />
+        <option value="$PROJECT_DIR$/tutorial/appfront/src/vuex/store.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="872" />
-    <option name="y" value="332" />
+    <option name="x" value="762" />
+    <option name="y" value="171" />
     <option name="width" value="1257" />
     <option name="height" value="806" />
   </component>
@@ -200,25 +204,7 @@
               <item name="tutorial" type="462c0819:PsiDirectoryNode" />
               <item name="appfront" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DjangoDemo2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DjangoDemo2" type="462c0819:PsiDirectoryNode" />
-              <item name="tutorial" type="462c0819:PsiDirectoryNode" />
-              <item name="appfront" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="detection" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DjangoDemo2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DjangoDemo2" type="462c0819:PsiDirectoryNode" />
-              <item name="tutorial" type="462c0819:PsiDirectoryNode" />
-              <item name="appfront" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="power" type="462c0819:PsiDirectoryNode" />
+              <item name="vuex" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -631,7 +617,14 @@
       <option name="project" value="LOCAL" />
       <updated>1532681542009</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="aside.vue 08">
+      <created>1532682116127</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1532682116127</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TodoView">
@@ -644,17 +637,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="872" y="332" width="1257" height="806" extended-state="0" />
+    <frame x="762" y="171" width="1257" height="806" extended-state="0" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3199033" sideWeight="0.49337748" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6083815" sideWeight="0.33924255" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37518686" sideWeight="0.63576704" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40028903" sideWeight="0.3682514" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40028903" sideWeight="0.6317486" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.245142" sideWeight="0.49466777" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33128294" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24946237" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6083815" sideWeight="0.6607575" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1985138" sideWeight="0.6625" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3304904" sideWeight="0.5066225" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -753,7 +746,8 @@
     <MESSAGE value="aside 05 update" />
     <MESSAGE value="Merge remote-tracking branch 'origin/clear' into clear&#10;&#10;# Conflicts:&#10;#&#9;tutorial/appfront/src/components/home/aside.vue" />
     <MESSAGE value="&#10;&#10;# Conflicts:&#10;#&#9;tutorial/appfront/src/components/home/aside.vue" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;&#10;# Conflicts:&#10;#&#9;tutorial/appfront/src/components/home/aside.vue" />
+    <MESSAGE value="aside.vue 08" />
+    <option name="LAST_COMMIT_MESSAGE" value="aside.vue 08" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -762,13 +756,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/venv/pip-selfcheck.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="39" lean-forward="false" selection-start-line="0" selection-start-column="39" selection-end-line="0" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -845,13 +832,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -1066,8 +1046,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/detection/FaultDetection.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
+        <state relative-caret-position="163">
           <caret line="23" column="50" lean-forward="true" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/vuex/store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
           <folding />
         </state>
       </provider>
