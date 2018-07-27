@@ -1,40 +1,46 @@
 <template>
-      <div id="">123</div>
-       <div id="">213</div>
-     </div>
-    <div id="pmain"></div>
-    <div id="pmain">
-      <el-row>
-        <el-col :span="12"><div class="grid-content1 bg-purple">北京光伏电站</div></el-col>
-        <el-col :span="12"><div class="grid-content1 bg-purple-light">上海光伏电站</div></el-col>
-      </el-row>
-      <el-row :gutter="20">
-        <el-col :span="6"><div class="grid-content2 bg-purple"></div></el-col>
-        <el-col :span="6"><div class="grid-content2 bg-purple">
-          <div id="text">
-          <div class="text1">总装机容量：</div><br>
-          <div class="text2">当前运行功率：</div><br>
-          <div class="text3">当日有效时数：</div><br>
-          <div class="text4">当月有效时数：</div><br>
-          </div>
-        </div></el-col>
-        <el-col :span="6"><div class="grid-content2 bg-purple"></div></el-col>
-        <el-col :span="6"><div class="grid-content2 bg-purple">
-          <div id="text">
-          <div class="text1">总装机容量：</div><br>
-          <div class="text2">当前运行功率：</div><br>
-          <div class="text3">当日有效时数：</div><br>
-          <div class="text4">当月有效时数：</div><br>
-          </div>
-        </div></el-col>
-      </el-row>
-      <el-row>
-        <el-col :span="12"><div class="grid-content3 bg-purple">正常</div></el-col>+
-         <el-col :span="12"><div class="grid-content3 bg-purple-light">正常</div></el-col>
-      </el-row>
-    </div>
-    </div>
-   </div>
+  <div> 
+    <el-row>
+      <el-col :span="24"><div class="grid-content bg-purple"></div></el-col>
+    </el-row>
+     <el-row :gutter="20">
+      <el-col :span="12"><div class="grid-content bg-purple">
+        <!-- 卡片一 -->
+          <el-card class="box-card">
+            <div slot="header" class="clearfix">
+              <span>北京光伏电站</span>
+              <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+            </div>
+            <div class="text item">
+              <img src="../../assets/BJGF.jpg" class="image1">
+              <div>总装机容量：{{msg1}}</div>
+              <div>当前运行功率：{{msg2}}</div>
+              <div>当日有效时数：{{msg3}}</div>
+              <div>当月有效时数：{{msg4}}</div>
+            </div>
+          </el-card>   
+      </div></el-col>
+
+      <el-col :span="12"><div class="grid-content bg-purple">
+        <!-- 卡片二 -->
+       <el-card class="box-card">
+            <div slot="header" class="clearfix">
+              <span>上海光伏电站</span>
+              <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+            </div>
+            <div class="text item">
+               <img src="../../assets/SHGF.jpg" class="image2">
+              <div>总装机容量：{{msg5}}</div>
+              <div>当前运行功率：{{msg6}}</div>
+              <div>当日有效时数：{{msg7}}</div>
+              <div>当月有效时数：{{msg8}}</div>  
+            </div>
+          </el-card>
+      </div></el-col>
+    </el-row>
+
+</div> 
+
  </template>
 
  <script>
@@ -42,11 +48,19 @@
  export default {
    name : 'Power',
    components: {
-   
+    
    },
    data () {
      return {
-     
+       msg1:1,
+       msg2:2,
+       msg3:3,
+       msg4:4,
+       msg5:5,
+       msg6:6,
+       msg7:7,
+       msg8:8,
+       
      }
    }
  }
@@ -54,60 +68,54 @@
 
 
 <style>
-.Power {
-     height: 100%;
-     width: 100%;
-  }
-
-#pheader {
-     height: 100px;
-  }
-
-#pheader div{
-     margin: 0 auto;
-     padding: 6px 0 8px;
-     float: left;
-}
-
-#pmain{
-     height: 400px;
-     background-color: white;
-}
-
 .el-row {
     margin-bottom: 20px;
-}
+    margin-bottom: 0;
+ }
 
 .el-col {
     border-radius: 4px;
+}
+
+.grid-content {
+    border-radius: 4px;
+    min-height: 36px;
 }
 
 .bg-purple {
     background: #d3dce6;
 }
 
-.bg-purple-light {
-    background: #e5e9f2;
-}
-.grid-content1 {
-    border-radius: 4px;
-    min-height: 40px;
-    padding-top:10px;
-}
-.grid-content2 {
-    border-radius: 4px;
-    min-height: 200px;
-    margin-top:20px;
+ .text {
+    font-size: 14px;
+  }
+
+  .item {
+    margin-bottom: 18px;
+  }
+
+  .clearfix:before,
+  .clearfix:after {
+    display: table;
+    content: "";
+  }
+  .clearfix:after {
+    clear: both
+  }
+
+  .box-card {
+    width: 100%;
+  }
+
+.image1{
+  height:300px;
+  width:100%;
 }
 
-.grid-content3{
-    border-radius: 4px;
-    min-height: 50px;
-    margin-top:20px;
-    padding-top:10px;
+.image2{
+  height:300px;
+  width:100%;
 }
 
-#text{
-  float:left;margin-top:20px;margin-left:10px;
-}
+
 </style>

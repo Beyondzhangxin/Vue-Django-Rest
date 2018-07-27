@@ -5,7 +5,7 @@
     <el-main>
         <el-container>
             <el-aside  v-if="isShowAside()"  width="18%"><HomeAside/></el-aside>
-            <el-main class="m1"><router-view/>123</el-main>
+            <el-main class="m1"><router-view/></el-main>
         </el-container>
     </el-main>
     <el-footer>Powered by 清华四川能源互联网研究院</el-footer>
