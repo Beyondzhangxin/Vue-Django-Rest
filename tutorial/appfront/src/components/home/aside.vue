@@ -105,7 +105,7 @@ export default {
     height: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
-    background-color: #fff;
+    background-color: #E9EEF3;
     box-sizing: content-box;
   }
 
@@ -120,9 +120,10 @@ export default {
     box-sizing: content-box;
     z-index: auto;
     line-height: 20px;
-    border:1px solid #e9ebef;
     position: relative;
     top: -10px;
+    box-shadow: 2px 2px 10px #9eabad;
+    background-color: #fff;
   }
 
   .el-button {

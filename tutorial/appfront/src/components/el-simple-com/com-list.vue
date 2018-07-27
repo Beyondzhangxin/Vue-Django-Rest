@@ -10,6 +10,11 @@
       :width="257"
       :label="label">
       </el-table-column>
+      <el-pagination
+      background
+      layout="prev, pager, next"
+      :total="1000">
+      </el-pagination>
     </el-table>
     <!-- <el-row>
       <div class="block">
@@ -21,7 +26,6 @@
         </el-pagination>
       </div>
     </el-row> -->
-    <h1>{{ data }}</h1>
   </el-row>
 </template>
 
@@ -82,7 +86,7 @@
 </script>
 <style scoped>
   .list {
-    height: 100%;
+    height: 500px%;
   }
   .el-table {
     height: 500px;
