@@ -18,7 +18,6 @@
     <div class="aside3">
       <el-input
       placeholder="输入关键字进行过滤"
-      v-model="filterText" clearable>
       v-bind:placeholder="placeholder"
       v-model="filterText">
       </el-input>
@@ -94,6 +93,7 @@ export default {
        });
      },
      clickButtom(str){
+       console.log(23);
        this.placeholder = "输入"+ str +"进行过滤";
      },
    },

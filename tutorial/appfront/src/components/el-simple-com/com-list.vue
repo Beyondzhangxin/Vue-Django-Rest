@@ -1,13 +1,13 @@
 <template>
-  <el-row>
+  <el-row class="list">
     <!-- tableData数据的映射 -->
     <el-table :data="tableData" border
-    style="width: 100%">
+    style="width: 100%" v-loading="false">
       <el-table-column
       v-for="{ prop, label } in tabConfigs"
       :key="prop"
       :prop="prop"
-      :width="280"
+      :width="257"
       :label="label">
       </el-table-column>
     </el-table>
@@ -80,6 +80,11 @@
     }
   }
 </script>
-<style>
-
+<style scoped>
+  .list {
+    height: 100%;
+  }
+  .el-table {
+    height: 500px;
+  }
 </style>

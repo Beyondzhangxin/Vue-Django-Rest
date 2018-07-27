@@ -17,10 +17,10 @@
           <el-button type="text" class="button">操作按钮</el-button>
         </div>
         </div>
-        </el-card>    
+        </el-card>
         </div></el-col>
           <!-- 卡片二 -->
-        <el-col :span="8"><div class="grid-content bg-purple"> 
+        <el-col :span="8"><div class="grid-content bg-purple">
         <el-card :body-style="{ padding: '0px' }">
         <img src="../../assets/alarm.png" class="image">
         <div style="padding: 14px;">
@@ -29,7 +29,7 @@
           <el-button type="text" class="button">操作按钮</el-button>
           </div>
         </div>
-        </el-card>          
+        </el-card>
         </div></el-col>
         <!-- 卡片三 -->
         <el-col :span="8"><div class="grid-content bg-purple">
@@ -41,13 +41,13 @@
         <el-button type="text" class="button">操作按钮</el-button>
         </div>
         </div>
-        </el-card> 
+        </el-card>
         </div></el-col>
 
           <div class="foot">设备异常检测</div>
-        </el-row>    
-        </div></el-col>
         </el-row>
+        </div></el-col>
+      </el-row class="rowm">
             <!--通用list-->
             <ComList data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>
             <el-pagination
@@ -135,7 +135,7 @@
     margin: 0 auto;
     display: block;
     margin-top:10px;
-  
+
   }
 
   .clearfix:before,
@@ -155,5 +155,9 @@
 
 .foot{
   margin-bottom:50px;
+}
+
+.rowm{
+  height: 400px;
 }
 </style>
