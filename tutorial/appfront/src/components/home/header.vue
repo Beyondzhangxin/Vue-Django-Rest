@@ -70,8 +70,9 @@
     height: 100%;
     text-align: center;
     display: inline-block;
-    padding-top: 10px;
-    margin-left: 40px;
+    position: relative;
+    top: 9px;
+    left: 8px;
   }
 
   .head-right{

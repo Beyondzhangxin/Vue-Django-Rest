@@ -5,7 +5,7 @@
     <el-main>
         <el-container>
             <el-aside  v-if="isShowAside()"  width="18%"><HomeAside/></el-aside>
-            <el-main><router-view/></el-main>
+            <el-main class="m1"><router-view/></el-main>
         </el-container>
     </el-main>
     <el-footer>Powered by 清华四川能源互联网研究院</el-footer>
@@ -28,7 +28,7 @@
     },
     methods: {
       isShowAside(){
-        return this.$router.history.current.fullPath == '/home/power'
+        return this.$router.history.current.fullPath == '/home/power' || 1;
       },
     },
     // watch: {
@@ -59,8 +59,7 @@
 }
 
 .el-aside {
-    background-color: #D3DCE6;
-    color: #333;
+
 }
 
  .el-main {
@@ -84,5 +83,12 @@
   .HomePage {
     width: 100%;
     height: 100%;
+  }
+  .m1 {
+    padding-top: 12px;
+    padding-left: 12px;
+    display: block;
+    z-index: auto;
+    line-height: 20px;
   }
 </style>
