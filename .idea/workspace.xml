@@ -146,8 +146,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="770" />
-    <option name="y" value="206" />
+    <option name="x" value="872" />
+    <option name="y" value="332" />
     <option name="width" value="1257" />
     <option name="height" value="806" />
   </component>
@@ -624,7 +624,14 @@
       <option name="project" value="LOCAL" />
       <updated>1532680658218</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="&#10;&#10;# Conflicts:&#10;#&#9;tutorial/appfront/src/components/home/aside.vue">
+      <created>1532681542009</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1532681542009</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TodoView">
@@ -637,7 +644,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="770" y="206" width="1257" height="806" extended-state="0" />
+    <frame x="872" y="332" width="1257" height="806" extended-state="0" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3199033" sideWeight="0.49337748" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -745,7 +752,8 @@
     <MESSAGE value="aside 04 update" />
     <MESSAGE value="aside 05 update" />
     <MESSAGE value="Merge remote-tracking branch 'origin/clear' into clear&#10;&#10;# Conflicts:&#10;#&#9;tutorial/appfront/src/components/home/aside.vue" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/clear' into clear&#10;&#10;# Conflicts:&#10;#&#9;tutorial/appfront/src/components/home/aside.vue" />
+    <MESSAGE value="&#10;&#10;# Conflicts:&#10;#&#9;tutorial/appfront/src/components/home/aside.vue" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;&#10;# Conflicts:&#10;#&#9;tutorial/appfront/src/components/home/aside.vue" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

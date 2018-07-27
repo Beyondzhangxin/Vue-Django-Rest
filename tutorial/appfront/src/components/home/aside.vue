@@ -141,7 +141,7 @@ export default {
      padding-right: 15px;
      position: relative;
      margin-left: 1px;
-     top: 10px;
+     top: 4px;
      z-index: 5;
      display: inline-block;
      border-top-left-radius: 10px 10px;
