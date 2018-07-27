@@ -50,11 +50,6 @@
       </el-row class="rowm">
             <!--通用list-->
             <ComList data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>
-            <el-pagination
-            background
-            layout="prev, pager, next"
-            :total="1000">
-            </el-pagination>
           </el-main>
       </el-container>
     </el-container>
