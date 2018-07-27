@@ -49,7 +49,17 @@
         </div></el-col>
       </el-row class="rowm">
             <!--通用list-->
-            <ComList data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>
+            <!--请求如下 http://127.0.0.1:8000/pv/get/detection/2018/1/18/ -->
+            <!--赋值到this.data中 -->
+            <ComList v-bind:data='data'></ComList>
+            <!--<ComList v-bind:data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>-->
+            <div class="rowmb">
+              <el-pagination
+              background
+              layout="prev, pager, next"
+              :total="1000">
+              </el-pagination>
+            </div>
           </el-main>
       </el-container>
     </el-container>
@@ -68,7 +78,7 @@
     },
     data(){
       return {
-
+        data: '',
         // pageSize: 2
       }
     },
@@ -91,6 +101,11 @@
 
   .el-container font{
     font-size: 20px;
+  }
+
+  .el-pagination {
+    position: relative;
+    top: 300px;
   }
 
   .detection-title {
@@ -154,5 +169,9 @@
 
 .rowm{
   height: 400px;
+}
+.rowmb{
+  height: 330px;
+  background: #fff;
 }
 </style>

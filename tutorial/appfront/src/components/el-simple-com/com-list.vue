@@ -85,10 +85,7 @@
   }
 </script>
 <style scoped>
-  .list {
-    height: 500px%;
-  }
-  .el-table {
-    height: 500px;
+  .el-row {
+    margin-bottom: 0px;
   }
 </style>
