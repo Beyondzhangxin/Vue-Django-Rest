@@ -58,7 +58,8 @@
               <el-pagination
               background
               layout="prev, pager, next"
-              :total="1000">
+              :total="1000"
+              @current-change="handleCurrentChange">
               </el-pagination>
             </div>
           </el-main>
@@ -73,6 +74,7 @@
 
   export default {
     name: 'faultdetection',
+
     components: {
         ComList: ComList,
         DeHeader: deHeader,
@@ -80,9 +82,16 @@
     data(){
       return {
         data: 'http://127.0.0.1:8000/pv/get/detection/2018/1/18/',
+        page: 1,
         // pageSize: 2
       }
     },
+    methods: {
+      handleCurrentChange(val) {
+        this.data = 'http://127.0.0.1:8000/pv/get/detection/2018/1/18/' + '?page='+ val;
+        console.log(this.data);
+      }
+    }
   }
 </script>
 
