@@ -93,5 +93,6 @@
 <style scoped>
   .el-row {
     margin-bottom: 0px;
+    padding-bottom: 295px;
   }
 </style>

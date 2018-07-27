@@ -42,8 +42,7 @@
         </div>
         </div>
         </el-card>
-        </div></el-col>
-
+      </div></el-col>
           <div class="foot">设备异常检测</div>
         </el-row>
         </div></el-col>
@@ -114,8 +113,8 @@
   }
 
   .el-pagination {
-    position: relative;
-    bottom: -135px;
+    position: absolute;
+
   }
 
   .detection-title {
