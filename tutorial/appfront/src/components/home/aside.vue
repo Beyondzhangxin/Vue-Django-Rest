@@ -17,14 +17,10 @@
     </div>
     <div class="aside3">
       <el-input
-<<<<<<< HEAD
-
       placeholder="输入关键字进行过滤"
       v-model="filterText" clearable>
-=======
       v-bind:placeholder="placeholder"
       v-model="filterText">
->>>>>>> a157127b24787a8ee10fb7ea6f5bc8a9b00d20bd
       </el-input>
       <el-tree
       class="filter-tree"
