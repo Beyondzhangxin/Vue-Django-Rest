@@ -16,7 +16,6 @@
         <div class="bottom clearfix">
           <el-button type="text" class="button">操作按钮</el-button>
         </div>
-<<<<<<< HEAD
         </div>
         </el-card>    
         </div></el-col>
@@ -25,36 +24,15 @@
         <el-card :body-style="{ padding: '0px' }">
         <img src="../../assets/alarm.png" class="image">
         <div style="padding: 14px;">
-=======
-      </div>
-    </el-card>
-
-        </div></el-col>
-        <el-col :span="8"><div class="grid-content bg-purple">
-
-          <el-card :body-style="{ padding: '0px' }">
-      <img src="../../assets/alarm.png" class="image">
-      <div style="padding: 14px;">
->>>>>>> a157127b24787a8ee10fb7ea6f5bc8a9b00d20bd
         <span>告警设备</span>
         <div class="bottom clearfix">
           <el-button type="text" class="button">操作按钮</el-button>
           </div>
         </div>
-<<<<<<< HEAD
         </el-card>          
-=======
-      </div>
-    </el-card>
-
->>>>>>> a157127b24787a8ee10fb7ea6f5bc8a9b00d20bd
         </div></el-col>
         <!-- 卡片三 -->
         <el-col :span="8"><div class="grid-content bg-purple">
-<<<<<<< HEAD
-=======
-
->>>>>>> a157127b24787a8ee10fb7ea6f5bc8a9b00d20bd
          <el-card :body-style="{ padding: '0px' }">
         <img src="../../assets/offline.png" class="image">
         <div style="padding: 14px;">
@@ -62,21 +40,12 @@
         <div class="bottom clearfix">
         <el-button type="text" class="button">操作按钮</el-button>
         </div>
-<<<<<<< HEAD
         </div>
         </el-card> 
         </div></el-col>
 
           <div class="foot">设备异常检测</div>
         </el-row>    
-=======
-      </div>
-    </el-card>
-
-        </div></el-col>
-      <div class="foot">设备异常检测</div>
-        </el-row>
->>>>>>> a157127b24787a8ee10fb7ea6f5bc8a9b00d20bd
         </div></el-col>
         </el-row>
             <!--通用list-->
