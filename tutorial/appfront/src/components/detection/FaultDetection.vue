@@ -7,48 +7,45 @@
            <el-row>
         <el-col><div class="grid-content bg-purple-dark">
           <el-row>
+          <!-- 卡片一 -->
         <el-col :span="8"><div class="grid-content bg-purple">
-
-          <el-card :body-style="{ padding: '0px' }">
-      <img src="../../assets/close.png" class="image">
-      <div style="padding: 14px;">
+        <el-card :body-style="{ padding: '0px' }">
+        <img src="../../assets/close.png" class="image">
+        <div style="padding: 14px;">
         <span>停机设备</span>
         <div class="bottom clearfix">
           <el-button type="text" class="button">操作按钮</el-button>
         </div>
-      </div>
-    </el-card>    
-          
+        </div>
+        </el-card>    
         </div></el-col>
-        <el-col :span="8"><div class="grid-content bg-purple">
-          
-          <el-card :body-style="{ padding: '0px' }">
-      <img src="../../assets/alarm.png" class="image">
-      <div style="padding: 14px;">
+          <!-- 卡片二 -->
+        <el-col :span="8"><div class="grid-content bg-purple"> 
+        <el-card :body-style="{ padding: '0px' }">
+        <img src="../../assets/alarm.png" class="image">
+        <div style="padding: 14px;">
         <span>告警设备</span>
         <div class="bottom clearfix">
           <el-button type="text" class="button">操作按钮</el-button>
+          </div>
         </div>
-      </div>
-    </el-card>    
-                
+        </el-card>          
         </div></el-col>
+        <!-- 卡片三 -->
         <el-col :span="8"><div class="grid-content bg-purple">
-          
          <el-card :body-style="{ padding: '0px' }">
-      <img src="../../assets/offline.png" class="image">
-      <div style="padding: 14px;">
-        <span>离线设备</span>
+        <img src="../../assets/offline.png" class="image">
+        <div style="padding: 14px;">
+          <span>离线设备</span>
         <div class="bottom clearfix">
-          <el-button type="text" class="button">操作按钮</el-button>
+        <el-button type="text" class="button">操作按钮</el-button>
         </div>
-      </div>
-    </el-card> 
-
+        </div>
+        </el-card> 
         </div></el-col>
-      <div class="foot">设备异常检测</div>
-        </el-row>
-           
+
+          <div class="foot">设备异常检测</div>
+        </el-row>    
         </div></el-col>
         </el-row>
             <!--通用list-->
