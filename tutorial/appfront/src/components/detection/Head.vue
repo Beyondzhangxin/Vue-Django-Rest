@@ -2,9 +2,10 @@
 <div class=text>
     <p v-html="msg1"></p>
 
+
   <el-row>
-      <el-col ：span="6">
-      <el-card id="lef" :body-style="{ padding: '0px' }">
+      <el-col id="obj1">
+      <el-card :body-style="{ padding: '0px' }">
       <img src="" class="image">
       <div style="padding: 14px;">
         <span>停机设备</span>
@@ -13,9 +14,10 @@
         </div>
       </div>
     </el-card>
-    
+    </el-col>
 
-     <el-card id="mid" :body-style="{ padding: '0px' }">
+    <el-col id="obj2">
+     <el-card :body-style="{ padding: '0px' }">
       <img src="" class="image">
       <div style="padding: 14px;">
         <span>告警设备</span>
@@ -24,8 +26,10 @@
         </div>
       </div>
     </el-card>
+    </el-col>
 
-     <el-card id="rig" :body-style="{ padding: '0px' }">
+    <el-col id="obj3">
+     <el-card :body-style="{ padding: '0px' }">
       <img src="" class="image">
       <div style="padding: 14px;">
         <span>离线设备</span>
@@ -34,10 +38,7 @@
         </div>
       </div>
     </el-card>
-
-  </el-col>
-
-    
+    </el-col>
 
 </el-row>
 
@@ -100,15 +101,16 @@ float:left;margin-top:-10px;
   }
 
 
-#lef{
+#obj1{
   margin-left:20px;
 }
 
-#mid{
+#obj2{
   float:right
 }
 
-#rig{
+#obj3{
    float:right
 }
+
 </style>
