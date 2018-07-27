@@ -115,6 +115,7 @@ export default {
 .aside1 {
     width: 100%;
     height: 40px;
+    display: block;
 }
 
 .b{
@@ -142,6 +143,9 @@ export default {
      margin-left: 1px;
      top: 10px;
      z-index: 5;
+     display: inline-block;
+     border-top-left-radius: 10px 10px;
+     border-top-right-radius: 10px 10px;
   }
 
   .b1 {
