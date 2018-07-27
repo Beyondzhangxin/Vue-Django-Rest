@@ -4,16 +4,14 @@
       列表名称
     </div>
     <div class="aside1">
-      <el-row>
-        <el-col :span="4"><el-button class="b" size="mini" type="primary"
-           @click="clickButtom(buttoms[0])">{{ buttoms[0] }}</el-button></el-col>
-        <el-col :span="4"><el-button class="b" size="mini" type="success"
-           @click="clickButtom(buttoms[1])">{{ buttoms[1] }}</el-button></el-col>
-        <el-col :span="4"><el-button class="b" size="mini" type="warning"
-           @click="clickButtom(buttoms[2])">{{ buttoms[2] }}</el-button></el-col>
-        <el-col :span="4"><el-button class="b" size="mini" type="danger"
-           @click="clickButtom(buttoms[3])">{{ buttoms[3] }}</el-button></el-col>
-      </el-row>
+      <div><el-button class="b" size="mini" type="primary"
+         @click="clickButtom(buttoms[0])">{{ buttoms[0] }}</el-button></div>
+      <div><el-button class="b" size="mini" type="success"
+         @click="clickButtom(buttoms[1])">{{ buttoms[1] }}</el-button></div>
+      <div><el-button class="b" size="mini" type="warning"
+         @click="clickButtom(buttoms[2])">{{ buttoms[2] }}</el-button></div>
+      <div><el-button class="b" size="mini" type="danger"
+         @click="clickButtom(buttoms[3])">{{ buttoms[3] }}</el-button></div>
     </div>
     <div class="aside3">
       <el-input
@@ -114,7 +112,7 @@ export default {
   margin-top:4px;
   margin-left:-80px;
 }
-  .aside .aside1 {
+.aside1 {
     width: 100%;
     height: 40px;
 }
@@ -122,9 +120,9 @@ export default {
 .b{
   padding-right:1px;
   text-align:center;
-  
+
 }
-  
+
   .aside3 {
     width: 80%;
     height: 700px;
@@ -138,9 +136,12 @@ export default {
   }
 
   .el-button {
-    border-bottom: 0px;
-    z-index: auto;
-    color: #fff;
+    float: left;
+     padding-right: 15px;
+     position: relative;
+     margin-left: 1px;
+     top: 10px;
+     z-index: 5;
   }
 
   .b1 {
