@@ -5,15 +5,19 @@
     </div>
     <div class="aside1">
       <el-row>
-        <el-col :span="4"><el-button  size="mini" type="primary">名称</el-button></el-col>
-        <el-col :span="4"><el-button class="b2" size="mini" type="success">容量</el-button></el-col>
-        <el-col :span="4"><el-button class="b3" size="mini" type="warning">地区</el-button></el-col>
-        <el-col :span="4"><el-button class="b4" size="mini" type="danger">状态</el-button></el-col>
+        <el-col :span="4"><el-button class="b1" size="mini" type="primary"
+           @click="clickButtom(buttoms[0])">{{ buttoms[0] }}</el-button></el-col>
+        <el-col :span="4"><el-button class="b2" size="mini" type="success"
+           @click="clickButtom(buttoms[1])">{{ buttoms[1] }}</el-button></el-col>
+        <el-col :span="4"><el-button class="b3" size="mini" type="warning"
+           @click="clickButtom(buttoms[2])">{{ buttoms[2] }}</el-button></el-col>
+        <el-col :span="4"><el-button class="b4" size="mini" type="danger"
+           @click="clickButtom(buttoms[3])">{{ buttoms[3] }}</el-button></el-col>
       </el-row>
     </div>
     <div class="aside3">
       <el-input
-      placeholder="输入关键字进行过滤"
+      v-bind:placeholder="placeholder"
       v-model="filterText">
       </el-input>
       <el-tree
@@ -30,45 +34,13 @@
 
 <script>
 export default {
-  props: [] ,
+  props: ['request'] ,
   data () {
     return {
-      filterText: '',
-        data2: [{
-          id: 1,
-          label: '一级 1',
-          children: [{
-            id: 4,
-            label: '二级 1-1',
-            children: [{
-              id: 9,
-              label: '三级 1-1-1'
-            }, {
-              id: 10,
-              label: '三级 1-1-2'
-            }]
-          }]
-        }, {
-          id: 2,
-          label: '一级 2',
-          children: [{
-            id: 5,
-            label: '二级 2-1'
-          }, {
-            id: 6,
-            label: '二级 2-2'
-          }]
-        }, {
-          id: 3,
-          label: '一级 3',
-          children: [{
-            id: 7,
-            label: '二级 3-1'
-          }, {
-            id: 8,
-            label: '二级 3-2'
-          }]
-        }],
+        buttoms: ['名称', '容量', '地区', '状态'],
+        placeholder: "输入关键字进行过滤",
+        filterText: '',
+        data2: [],
         defaultProps: {
           children: 'children',
           label: 'label'
@@ -76,20 +48,31 @@ export default {
     }
   },
   mounted: function() {
-    this.loadAll();
+    //this.load();
   },
   watch: {
-      filterText(val) {
-        this.$refs.tree2.filter(val);
-      }
-    },
+     filterText(val) {
+       this.$refs.tree2.filter(val);
+     }
+   },
 
-    methods: {
-      filterNode(value, data) {
-        if (!value) return true;
-        return data.label.indexOf(value) !== -1;
-      }
-    },
+   methods: {
+     filterNode(value, data) {
+       if (!value) return true;
+       return data.label.indexOf(value) !== -1;
+     },
+     load(){
+       this.$ajax.get(this.data)
+       .then(function (response) {
+         console.log(response)
+       }.bind(this))
+       .catch(function (error) {
+       });
+     },
+     clickButtom(str){
+       this.placeholder = "输入"+ str +"进行过滤";
+     },
+   },
 }
 </script>
 <style scoped>

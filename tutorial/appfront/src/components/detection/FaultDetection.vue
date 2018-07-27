@@ -2,10 +2,7 @@
   <div class="detection">
     <el-container>
       <el-container>
-<<<<<<< HEAD
-=======
         <deHeader/>
->>>>>>> 0aa05e8f74b925addf37d8d588f1f707783daf71
           <el-main>
            <el-row>
         <el-col :span="24"><div class="grid-content bg-purple-dark"><deHeader/></div></el-col>
@@ -30,7 +27,7 @@
     },
     data(){
       return {
-        
+
         // pageSize: 2
       }
     },
@@ -72,7 +69,7 @@
 
   .el-row {
     margin-bottom: 20px;
-  
+
   }
 
   .el-col {
