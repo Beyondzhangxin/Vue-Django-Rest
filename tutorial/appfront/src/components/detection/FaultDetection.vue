@@ -2,8 +2,14 @@
   <div class="detection">
     <el-container>
       <el-container>
+<<<<<<< HEAD
+=======
         <deHeader/>
+>>>>>>> 0aa05e8f74b925addf37d8d588f1f707783daf71
           <el-main>
+           <el-row>
+        <el-col :span="24"><div class="grid-content bg-purple-dark"><deHeader/></div></el-col>
+        </el-row>
             <!--通用list-->
             <ComList data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>
           </el-main>
@@ -54,4 +60,25 @@
     font-size: 11px;
     margin-bottom: 10px;
   }
+
+  .grid-content {
+    border-radius: 4px;
+    min-height: 200px;
+  }
+
+ .bg-purple-dark {
+    background:white;
+  }
+
+  .el-row {
+    margin-bottom: 20px;
+  
+  }
+
+  .el-col {
+    border-radius: 4px;
+  }
+
+
+
 </style>
