@@ -70,7 +70,7 @@
 
           <!-- main mm部分 -->
           <el-main class="mm">
-
+            <elpow></elpow>
 
           </el-main>
 
@@ -84,11 +84,13 @@
 <script>
 import Gauge from '../echarts_elements/Gauge1'
 import Line2 from '../echarts_elements/Line2'
+import elpow from './elPow'
 
 
 export default {
   name : 'Power',
   components: {
+    elpow:elpow,
   },
   data () {
     return {
