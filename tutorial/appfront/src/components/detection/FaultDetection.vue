@@ -68,7 +68,7 @@
     },
     data(){
       return {
-        
+
         // pageSize: 2
       }
     },
@@ -110,7 +110,7 @@
 
   .el-row {
     margin-bottom: 20px;
-  
+
   }
 
   .el-col {
