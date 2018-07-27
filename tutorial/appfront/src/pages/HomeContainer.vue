@@ -52,7 +52,7 @@
 }
 
 .el-footer {
-  background-color: #B3C0D1;
+  background-color:#6fc7f7;
   color: #333;
   height: 20%;
   padding-top:20px;

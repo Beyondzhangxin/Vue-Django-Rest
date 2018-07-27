@@ -127,9 +127,10 @@
   }
 
   .image {
-    margin-left:210px;
+    margin: 0 auto;
     display: block;
     margin-top:10px;
+  
   }
 
   .clearfix:before,

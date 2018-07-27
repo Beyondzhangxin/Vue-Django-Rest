@@ -17,13 +17,9 @@
     </div>
     <div class="aside3">
       <el-input
-<<<<<<< HEAD
+
       placeholder="输入关键字进行过滤"
       v-model="filterText" clearable>
-=======
-      v-bind:placeholder="placeholder"
-      v-model="filterText">
->>>>>>> 247defc7665fd83110d0123d2bc568ebad4a0151
       </el-input>
       <el-tree
       class="filter-tree"
