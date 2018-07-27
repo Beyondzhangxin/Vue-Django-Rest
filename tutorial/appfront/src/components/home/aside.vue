@@ -17,16 +17,24 @@
     </div>
     <div class="aside3">
       <el-input
+<<<<<<< HEAD
 
       placeholder="输入关键字进行过滤"
       v-model="filterText" clearable>
+=======
+      v-bind:placeholder="placeholder"
+      v-model="filterText">
+>>>>>>> a157127b24787a8ee10fb7ea6f5bc8a9b00d20bd
       </el-input>
       <el-tree
       class="filter-tree"
       :data="data2"
       :props="defaultProps"
       default-expand-all
+      show-checkbox
+      node-key="id"
       :filter-node-method="filterNode"
+      @check="sendTree()"
       ref="tree2">
       </el-tree>
     </div>
@@ -35,13 +43,28 @@
 
 <script>
 export default {
+  name: 'home_aside',
   props: ['request'] ,
   data () {
     return {
         buttoms: ['名称', '容量', '地区', '状态'],
         placeholder: "输入关键字进行过滤",
         filterText: '',
-        data2: [],
+        data2: [{
+          id: 1,
+          label: '一级 1',
+          children: [{
+            id: 4,
+            label: '二级 1-1',
+            children: [{
+              id: 9,
+              label: '三级 1-1-1'
+            }, {
+              id: 10,
+              label: '三级 1-1-2'
+            }]
+          }]
+        }],
         defaultProps: {
           children: 'children',
           label: 'label'
@@ -58,6 +81,10 @@ export default {
    },
 
    methods: {
+     sendTree(){
+       console.log(this.$refs.tree2.getCheckedKeys());
+     },
+
      filterNode(value, data) {
        if (!value) return true;
        return data.label.indexOf(value) !== -1;
