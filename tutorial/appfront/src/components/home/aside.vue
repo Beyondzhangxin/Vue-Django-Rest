@@ -5,13 +5,13 @@
     </div>
     <div class="aside1">
       <el-row>
-        <el-col :span="4"><el-button class="b" size="mini" type="primary"
+        <el-col :span="4"><el-button class="b1" size="mini" type="primary"
            @click="clickButtom(buttoms[0])">{{ buttoms[0] }}</el-button></el-col>
-        <el-col :span="4"><el-button class="b" size="mini" type="success"
+        <el-col :span="4"><el-button class="b2" size="mini" type="success"
            @click="clickButtom(buttoms[1])">{{ buttoms[1] }}</el-button></el-col>
-        <el-col :span="4"><el-button class="b" size="mini" type="warning"
+        <el-col :span="4"><el-button class="b3" size="mini" type="warning"
            @click="clickButtom(buttoms[2])">{{ buttoms[2] }}</el-button></el-col>
-        <el-col :span="4"><el-button class="b" size="mini" type="danger"
+        <el-col :span="4"><el-button class="b4" size="mini" type="danger"
            @click="clickButtom(buttoms[3])">{{ buttoms[3] }}</el-button></el-col>
       </el-row>
     </div>
@@ -109,22 +109,11 @@ export default {
     box-sizing: content-box;
   }
 
-.aside0{
-  margin-bottom:5px;
-  margin-top:4px;
-  margin-left:-80px;
-}
   .aside .aside1 {
     width: 100%;
     height: 40px;
-}
+  }
 
-.b{
-  padding-right:1px;
-  text-align:center;
-  
-}
-  
   .aside3 {
     width: 80%;
     height: 700px;
