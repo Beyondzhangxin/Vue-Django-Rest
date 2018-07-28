@@ -53,10 +53,10 @@ INSTALLED_APPS = [
     'celery_message',
     'pv.apps.PvConfig',
     'django_filters',
-    'ctyd',
-    'spgs',
-    'pvmg',
-    'system'
+    'ctyd.apps.CtydConfig',
+    'spgs.apps.SpgsConfig',
+    'pvmg.apps.PvmgConfig',
+    'system.apps.SystemConfig'
 ]
 
 MIDDLEWARE = [

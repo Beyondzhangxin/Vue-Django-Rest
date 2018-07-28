@@ -94,6 +94,7 @@ class Warnning(models.Model):
     class Meta:
         managed = False
         db_table = 'warnning'
+
 #报警数据表
 class WarnningHistory(models.Model):
     tagid = models.DecimalField(db_column='TAGID', max_digits=4, decimal_places=0, blank=True, null=True)  # Field name made lowercase.
@@ -110,4 +111,15 @@ class WarnningHistory(models.Model):
     class Meta:
         managed = False
         db_table = 'warnning_history'
+
+#监测电站总数
+
+class PowerStation(models.Model):
+    systemtype = models.ForeignKey('SystemType', models.DO_NOTHING, db_column='systemType', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'power_station'
+
+
 
