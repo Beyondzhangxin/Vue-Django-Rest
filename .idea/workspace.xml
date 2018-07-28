@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="699a223f-2a95-44f1-b706-a9f3ca80d94a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/detection/FaultDetection.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/detection/FaultDetection.vue" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/el-simple-com/com-list.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/el-simple-com/com-list.vue" />
+      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/detection/Aside.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/detection/Aside.vue" />
+      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/home/aside.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/home/aside.vue" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -655,7 +655,14 @@
       <option name="project" value="LOCAL" />
       <updated>1532762569524</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="aside.vue 12">
+      <created>1532765446064</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1532765446064</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TodoView">
@@ -742,7 +749,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="venv update" />
     <MESSAGE value="requirements.txt" />
     <MESSAGE value="npm install update" />
     <MESSAGE value="Fault Detection" />
@@ -767,7 +773,8 @@
     <MESSAGE value="aside.vue 09" />
     <MESSAGE value="aside.vue 10" />
     <MESSAGE value="aside.vue 11" />
-    <option name="LAST_COMMIT_MESSAGE" value="aside.vue 11" />
+    <MESSAGE value="aside.vue 12" />
+    <option name="LAST_COMMIT_MESSAGE" value="aside.vue 12" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

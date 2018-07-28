@@ -56,8 +56,8 @@ export default {
 }
 
 .el-button{
-padding-left:8px;
-height: 35px;
+  padding-left:8px;
+  height: 35px;
 }
 
 </style>

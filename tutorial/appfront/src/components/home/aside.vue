@@ -98,8 +98,7 @@ export default {
 }
 </script>
 <style scoped>
-  .aside {
-    width: 100%;
+.aside {
     height: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
@@ -107,16 +106,17 @@ export default {
     box-sizing: content-box;
   }
 
-.aside0{
+  .aside0{
   margin-bottom:5px;
   margin-top:4px;
   margin-left:-80px;
-}
-.aside1 {
+  }
+
+  .aside1 {
     width: 100%;
     height: 40px;
     display: block;
-}
+  }
 
 .b{
   padding-right:1px;
@@ -143,6 +143,7 @@ export default {
      margin-left: 1px;
      top: 4px;
      z-index: 5;
+     width: 54px;
      display: inline-block;
      border-top-left-radius: 10px 10px;
      border-top-right-radius: 10px 10px;
