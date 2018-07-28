@@ -58,7 +58,8 @@ class PvdataSumYear(generics.ListAPIView):
             return Response(json.loads('{"error":"没有找到对应的时间"}'), content_type='/json')
         j = 5 * self.queryset.aggregate(Sum('p')).get('p__sum')/1000/3600
         data = json.loads('{"j":' + str(j) + '}')
-        return Response(data, content_type='/json')
+        print(data)
+        return Response(data)
 
     def get_queryset(self):
         return Pvdata.objects.filter(updatetime__year=self.kwargs.get('year'))
@@ -87,7 +88,7 @@ class PvdataSumDayLte(PvdataSumYear):
 
 
 class DetectionPagination(pagination.PageNumberPagination):
-    page_size = 10
+    page_size = 1
     page__size_query_param = 'page_size'
     page_query_param = 'page'
     max_page_size = 100
@@ -113,7 +114,7 @@ class DetectionList(generics.ListAPIView):
             # 个性序列化
             serializer = json.dumps(page, cls=CJsonEncoder)
             return self.get_paginated_response(json.loads(serializer))
-        serializer = self.get_serializer(queryset, many=True)
+        serializer = json.dumps(page, cls=CJsonEncoder)
         return Response(serializer.data)
 
     def get_queryset(self):

@@ -1,38 +1,50 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import NewContact from '@/components/NewContact'
-import FaultDetection from '@/components/FaultDetection'
-import SimpleList from '@/components/el-simple-com/SimpleList'
-import HomeContainer from '@/components/HomeContainer'
-import t1 from '@/components/t1'
-import input from '@/components/el-simple-com/com-input'
+import FaultDetection from '@/components/detection/FaultDetection'
+import HomeContainer from '@/pages/HomeContainer'
 import PvdataList from '@/components/el-simple-com/PvdataList'
-import hello from '@/components/hello'
-import Line1 from '@/components/echarts_elements/Line1'
+import First from '@/components/first/First'
+import Gauge from '@/components/echarts_elements/Gauge1'
+import Power from '@/components/power/Power'
 Vue.use(Router)
+
+/*
+  Home 为根目录
+  pv 为pvdata的数据实验
+  detection 关多的修改
+  echarts_elements 为 echarts的元素
+  el-simple-com 为 element的元素
+*/
 
 export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/Home',
+
+    },
+    {
+      path: '/Gauge',
+      name: 'Gauge',
+      component: Gauge,
+    },
+    {
+      path: '/Home',
       name: 'Home',
-      redrect: '/Home',
-      component: HomeContainer
-    },
-    {
-      path: '/home',
-      name: 'home1',
-      component: SimpleList
-    },
-    {
-      path: '/newcontact',
-      name: 'newcontact',
-      component: NewContact
-    },
-    {
-      path: '/add',
-      name: 'add',
-      component: input
+      component: HomeContainer,
+      children: [
+        {
+          path: 'detection',
+          component : FaultDetection,
+        },
+        {
+          path: 'first',
+          component: First,
+        },{
+          path: 'power',
+          component: Power,
+        }
+      ]
     },
     {
       path: '/pv',
@@ -40,19 +52,9 @@ export default new Router({
       component: PvdataList
     },
     {
-      path: '/hello',
-      name: 'hello',
-      component: hello
-    },
-    {
       path: '/detection',
       name: 'detection',
       component: FaultDetection
     },
-    {
-      path: '/demo',
-      name: 'demo',
-      component: Line1
-    }
   ]
 })
