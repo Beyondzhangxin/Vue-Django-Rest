@@ -1,11 +1,12 @@
 <template>
-  <div>
+  <div class="header">
     <div class="head-left">
   		<span class="logo">光伏智能运维系统</span>
     </div>
 
     <div class="head-right">
-    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal"
+     @select="handleSelect" text-color="#fff" background-color="#12AFE3">
       <el-menu-item index="0">首页</el-menu-item>
       <el-submenu index="1">
         <template slot="title">运行监测</template>
@@ -58,15 +59,35 @@
   }
 </script>
 
-
-<style>
-.head-left{
-  float:left;
-  margin-top:20px;
+<style scoped>
+.header {
+  background-color: #12AFE3;
+  color: #fff;
 }
 
-.head-right{
-  float:right;
-}
+  .head-left{
+    float:left;
+    height: 100%;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    top: 9px;
+    left: 8px;
+  }
 
+  .head-right{
+    float:right;
+    display: inline-block;
+  }
+
+  .header {
+    height: 100%;
+    text-align: center;
+  }
+
+  .logo {
+    font-size: 30px;
+    text-align: center;
+    font-style: Hiragino Sans GB;
+  }
 </style>

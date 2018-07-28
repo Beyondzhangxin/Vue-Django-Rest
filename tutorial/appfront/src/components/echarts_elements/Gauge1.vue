@@ -20,11 +20,6 @@ export default {
     return {
     }
   },
-  watch: {
-    option: function () {
-      this.drawLine();
-    }
-  },
   mounted: function() {
     this.drawLine();
     var interval = setInterval(this.setValues, 2000);
@@ -44,6 +39,7 @@ export default {
       if (this.id == null) {
         clearInterval(interval)
       }
+      console.log(this.id);
       //赋值
       let gauge1 = echarts.init(document.getElementById(this.id))
       this.option.series[0].data[0].value = this.value||0;

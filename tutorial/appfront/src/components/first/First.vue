@@ -249,10 +249,9 @@ export default {
   .el-row {
   height: 60%;
   margin-bottom: 20px;
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
+  margin-bottom: 0;
+}
+
 .el-col {
   border-radius: 4px;
   height: 100%;

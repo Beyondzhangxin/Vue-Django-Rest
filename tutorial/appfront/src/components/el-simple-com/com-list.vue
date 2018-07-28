@@ -1,15 +1,20 @@
 <template>
-  <el-row>
+  <el-row class="list">
     <!-- tableData数据的映射 -->
     <el-table :data="tableData" border
-    style="width: 100%">
+    style="width: 100%" v-loading="false">
       <el-table-column
       v-for="{ prop, label } in tabConfigs"
       :key="prop"
       :prop="prop"
-      :width="280"
+      :width="257"
       :label="label">
       </el-table-column>
+      <el-pagination
+      background
+      layout="prev, pager, next"
+      :total="1000">
+      </el-pagination>
     </el-table>
     <!-- <el-row>
       <div class="block">
@@ -21,7 +26,6 @@
         </el-pagination>
       </div>
     </el-row> -->
-    <h1>{{ data }}</h1>
   </el-row>
 </template>
 
@@ -44,16 +48,22 @@
       }
     },
     //mounted为vue对象的生命周期
+    watch: {
+    // 如果 `question` 发生改变，这个函数就会运行
+      data: function (newData, oldData) {
+        this.showAll();
+      }
+    },
     mounted: function() {
-      this.showAll()
+      this.showAll();
     },
     methods: {
       //通过异步请求，ajax用来获取数据
       showAll(){
+        this.tableData = [];
         this.$ajax.get(this.data)
         .then(function (response) {
           for (var i = 0; i < response.data.results.length; i++) {
-            console.log(response.data.results[i])
             this.setTableData(response.data.results[i])
           }
         }.bind(this))
@@ -80,6 +90,9 @@
     }
   }
 </script>
-<style>
-
+<style scoped>
+  .el-row {
+    margin-bottom: 0px;
+    padding-bottom: 295px;
+  }
 </style>
