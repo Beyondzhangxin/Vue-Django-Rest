@@ -113,8 +113,8 @@
   }
 
   .el-pagination {
-    position: absolute;
-
+    position: relative;
+    float: left;
   }
 
   .detection-title {
@@ -178,9 +178,15 @@
 
 .rowm{
   height: 400px;
+  margin: auto;
 }
+
 .rowmb{
   height: 450px;
   background: #fff;
+  float: left;
+  overflow: hidden;
+  margin-left: 7%;
+    box-shadow: 0px 0px 10px 3px #9eabad;
 }
 </style>
