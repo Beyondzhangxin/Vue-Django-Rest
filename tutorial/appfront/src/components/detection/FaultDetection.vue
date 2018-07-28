@@ -186,7 +186,7 @@
   background: #fff;
   float: left;
   overflow: hidden;
-  margin-left: 7%;
-    box-shadow: 0px 0px 10px 3px #9eabad;
+  margin-left: 1%;
+  box-shadow: 0px 0px 10px 3px #9eabad;
 }
 </style>

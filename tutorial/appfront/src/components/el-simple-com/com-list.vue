@@ -7,7 +7,7 @@
       v-for="{ prop, label } in tabConfigs"
       :key="prop"
       :prop="prop"
-      :width="200"
+      :width="225"
       :label="label">
       </el-table-column>
       <el-pagination
@@ -94,7 +94,6 @@
   .list {
     margin: auto;
     position: relative;
-    left: 40px;
   }
 
   .el-row {
