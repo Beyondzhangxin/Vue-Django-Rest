@@ -148,6 +148,7 @@ export default {
 <style scoped>
   .el-container {
     height: 100%;
+
   }
   .el-row {
     /* display: block; */
@@ -162,6 +163,8 @@ export default {
 
   .Power {
     height: 100%;
+    width: 1500px;
+    box-shadow: 1px 1px 10px 5px #9eabad;
   }
 
   .el-main {
@@ -173,8 +176,6 @@ export default {
   }
 
   .mm {
-    border: 1px solid black;
-    border-top: 0px;
   }
 
   #input {

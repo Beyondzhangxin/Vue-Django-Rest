@@ -28,7 +28,7 @@
     },
     methods: {
       isShowAside(){
-        return this.$router.history.current.fullPath == '/home/power' || 1;
+        return this.$router.history.current.fullPath == '/home/power';
       },
     },
     // watch: {

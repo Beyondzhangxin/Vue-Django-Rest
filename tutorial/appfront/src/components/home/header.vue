@@ -6,7 +6,7 @@
 
     <div class="head-right">
     <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal"
-     @select="handleSelect" text-color="#fff" background-color="#12AFE3">
+     @select="handleSelect" text-color="#fff" background-color="#12AFE319">
       <el-menu-item index="0">首页</el-menu-item>
       <el-submenu index="1">
         <template slot="title">运行监测</template>
@@ -14,7 +14,7 @@
           <el-menu-item index="1-2">设备监测</el-menu-item>
       </el-submenu>
       <el-submenu index="2">
-        <template slot="title">数据分析</template>
+        <template slot="title" >数据分析</template>
           <el-menu-item index="2-1">对比分析</el-menu-item>
           <el-menu-item index="2-2">发电量分析</el-menu-item>
           <el-menu-item index="2-3">发电效率分析</el-menu-item>
@@ -62,6 +62,10 @@
 <style scoped>
 .header {
   background-color: #12AFE3;
+  background: -webkit-linear-gradient(-60deg, #12AFE3, #0d7feb); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(-60deg, #12AFE3, #0d7feb); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(-60deg, #12AFE3, #0d7feb); /* Firefox 3.6 - 15 */
+  background: linear-gradient(-60deg, #12AFE3,  #0d7feb); /* 标准的语法（必须放在最后） */
   color: #fff;
 }
 

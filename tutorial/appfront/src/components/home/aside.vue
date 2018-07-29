@@ -1,8 +1,5 @@
 <template>
   <div class="aside">
-    <div class="aside0">
-      列表名称
-    </div>
     <div class="aside1">
       <div><el-button class="b" size="mini" type="primary"
          @click="clickButtom(buttoms[0])">{{ buttoms[0] }}</el-button></div>
@@ -116,6 +113,7 @@ export default {
     width: 100%;
     height: 40px;
     display: block;
+    margin-top: 40px
   }
 
 .b{

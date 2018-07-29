@@ -32,15 +32,16 @@
         </el-card>
         </div></el-col>
         <!-- 卡片三 -->
-        <el-col :span="8"><div class="grid-content bg-purple">
-         <el-card :body-style="{ padding: '0px' }">
-        <img src="../../assets/offline.png" class="image">
-        <div style="padding: 14px;">
-          <span>离线设备</span>
-        <div class="bottom clearfix">
-        <el-button type="text" class="button">操作按钮</el-button>
-        </div>
-        </div>
+        <el-col :span="8">
+          <div class="grid-content bg-purple">
+            <el-card :body-style="{ padding: '0px' }">
+              <img src="../../assets/offline.png" class="image">
+              <div style="padding: 14px;">
+                <span>离线设备</span>
+                <div class="bottom clearfix">
+                    <el-button type="text" class="button">操作按钮</el-button>
+                </div>
+              </div>
         </el-card>
       </div></el-col>
           <div class="foot">设备异常检测</div>
@@ -53,13 +54,12 @@
             <!--赋值到this.data中 -->
             <ComList v-bind:data='data'></ComList>
             <!--<ComList v-bind:data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>-->
-
-              <el-pagination
+            <el-pagination
               background
               layout="prev, pager, next"
               :total="1000"
               @current-change="handleCurrentChange">
-              </el-pagination>
+            </el-pagination>
             </div>
           </el-main>
       </el-container>
@@ -185,8 +185,10 @@
   height: 450px;
   background: #fff;
   float: left;
+  position: relative;
+  left: 5px;
   overflow: hidden;
-  margin-left: 1%;
+
   box-shadow: 0px 0px 10px 3px #9eabad;
 }
 </style>
