@@ -138,7 +138,6 @@ export default {
   },
 
   destroyed: function() {
-    console.log(113);
     this.$store.commit('hideIt')
   },
 
