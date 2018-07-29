@@ -132,13 +132,19 @@ export default {
         value10: []
     }
   },
-  mounted : function() {
+  mounted: function() {
+    this.$store.commit('showIt')
     this.show();
   },
+
+  destroyed: function() {
+    console.log(113);
+    this.$store.commit('hideIt')
+  },
+
   methods: {
     show(){
-      console.log(12312);
-      this.$root.isShowAside = 1;
+
     },
   }
 }
