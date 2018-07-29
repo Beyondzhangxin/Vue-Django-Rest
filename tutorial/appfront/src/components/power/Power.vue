@@ -10,16 +10,16 @@
         <el-row>
           <el-col :span="2"><div class="num">电站状态：</div></el-col>
           <el-col :span="2">
-            <div class="num">正常</div>
+            <div class="num1">正常</div>
           </el-col>
           <el-col :span="2">
-            <div class="num">异常</div>
+            <div class="num1">异常</div>
           </el-col>
           <el-col :span="2">
-            <div class="num">离线</div>
+            <div class="num1">离线</div>
           </el-col>
           <el-col :span="2">
-            <div class="num">停机</div>
+            <div class="num1">停机</div>
           </el-col>
         </el-row>
       </el-header>
@@ -132,19 +132,13 @@ export default {
         value10: []
     }
   },
-  mounted: function() {
-    this.$store.commit('showIt')
+  mounted : function() {
     this.show();
   },
-
-  destroyed: function() {
-    console.log(113);
-    this.$store.commit('hideIt')
-  },
-
   methods: {
     show(){
-
+      console.log(12312);
+      this.$root.isShowAside = 1;
     },
   }
 }
@@ -166,6 +160,7 @@ export default {
     height: 100%;
     width: 1500px;
     box-shadow: 1px 1px 10px 5px #c0c0c0;
+
   }
 
   .el-main {
@@ -189,7 +184,7 @@ export default {
     display: inline-block;
   }
 
-.num{
+.num1{
   margin-left:50px;
 }
 
