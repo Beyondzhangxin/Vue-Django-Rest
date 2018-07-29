@@ -90,7 +90,16 @@
         this.data = 'http://127.0.0.1:8000/pv/get/detection/2018/1/18/' + '?page='+ val;
         console.log(this.data);
       }
-    }
+    },
+    mounted: function() {
+      this.$store.commit('showIt')
+    },
+
+    destroyed: function() {
+      this.$store.commit('hideIt')
+    },
+
+
   }
 </script>
 
