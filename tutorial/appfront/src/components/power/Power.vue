@@ -155,16 +155,11 @@ export default {
     height: 60%;
     margin-bottom: 0;
   }
-  .el-col {
-    /* display: inline-block; */
-    /* border: 1px solid black; */
-
-  }
 
   .Power {
     height: 100%;
     width: 1500px;
-    box-shadow: 1px 1px 10px 5px #9eabad;
+    box-shadow: 1px 1px 10px 5px #c0c0c0;
   }
 
   .el-main {
@@ -176,6 +171,7 @@ export default {
   }
 
   .mm {
+
   }
 
   #input {

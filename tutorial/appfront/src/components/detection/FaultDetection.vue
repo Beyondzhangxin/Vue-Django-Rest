@@ -191,4 +191,8 @@
 
   box-shadow: 0px 0px 10px 3px #9eabad;
 }
+
+.bg-purple{
+  background:white;
+}
 </style>
