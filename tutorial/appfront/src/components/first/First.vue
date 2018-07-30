@@ -352,16 +352,13 @@ export default {
     top: -7px;
     width: 200px;
     height: 30px;
-    border: 2px solid #c1cde5;
-    border-top: 1px solid #c1cde5;
-    border-left: 1px solid #c1cde5;
-    border-right: 1px solid #c1cde5;
+    background-color: #e5e5e5;
 
     border-radius: 5px;
     text-align: center;
     line-height:30px;
     font-size: 14px;
-    color: #000;
+    color: gray;
   }
 
   .el-card {
