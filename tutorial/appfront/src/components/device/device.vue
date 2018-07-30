@@ -6,14 +6,20 @@
                 <el-row>
                     <el-col :span="12"><div class="grid-content">
                         <el-card class="box-card">
-                        
+                            <el-button  id="cirlce" circle>
+
+
+                            </el-button>
+                            <el-button id="cirlce" circle>汇流箱</el-button>
+                            <el-button id="cirlce" circle>采集设备</el-button>
+
                         </el-card>
                    
                         
                     </div></el-col>
 
                     <el-col :span="12"><div class="grid-content">
-                         <el-card class="box-card">
+                        <el-card class="box-card">
                         
                         </el-card>
                         
