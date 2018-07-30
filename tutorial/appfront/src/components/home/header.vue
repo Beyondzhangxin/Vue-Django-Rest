@@ -50,10 +50,10 @@
     },
     methods: {
       handleSelect(key, keyPath) {
+        console.log(keyPath);
         if (keyPath[1]) {
           this.$router.push(this.routerTable[Number(keyPath[0])].router[Number(keyPath[1].substring(3))])
         }else {
-
           this.$router.push(this.routerTable[Number(key)].router[0])
         }
       }
