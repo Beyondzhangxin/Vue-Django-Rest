@@ -71,7 +71,7 @@
   background: -o-linear-gradient(-60deg, #12AFE3, #0d7feb); /* Opera 11.1 - 12.0 */
   background: -moz-linear-gradient(-60deg, #12AFE3, #0d7feb); /* Firefox 3.6 - 15 */
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#12AFE3,endColorstr=#0d7feb,grandientType=1);/*IE 9.0以上*/
-  background: linear-gradient(-60deg, rgb(15, 64, 80),  #0d7feb); /* 标准的语法（必须放在最后） */
+  background: linear-gradient(-60deg, #12AFE3,  #0d7feb); /* 标准的语法（必须放在最后） */
   color: #fff;
 }
 
