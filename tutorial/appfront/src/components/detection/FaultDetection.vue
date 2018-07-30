@@ -47,6 +47,7 @@
           <div class="foot">设备异常检测</div>
         </el-row>
         </div></el-col>
+        
       </el-row class="rowm">
             <!--通用list-->
             <!--请求如下 http://127.0.0.1:8000/pv/get/detection/2018/1/18/ -->
@@ -61,6 +62,7 @@
               @current-change="handleCurrentChange">
             </el-pagination>
             </div>
+      
           </el-main>
       </el-container>
     </el-container>
