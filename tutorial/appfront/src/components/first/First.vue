@@ -3,12 +3,85 @@
     <el-container>
       <el-main>
         <el-row :gutter="20">
-          <el-col :span="8"><Gauge v-bind="settings.g1"></Gauge></el-col>
-          <el-col :span="8"><Gauge v-bind="settings.g2"></Gauge></el-col>
-          <el-col :span="8"><Gauge v-bind="settings.g3"></Gauge></el-col>
+          <el-col :span="8">
+            <!-- 卡片1-->
+            <el-card :body-style="{ padding: '0px' }">
+              <el-row class="e1-row0">
+                <span>当前发电功率</span>
+              </el-row>
+              <el-row>
+                <el-col class="col1" :span="12"><Gauge2/></el-col>
+                <el-col class="col2" :span="12">
+                  <ul>
+                    <li class="li1">{{ "总容量：" + (c1.total||"~") +" kWh"}}</li>
+                    <li class="li1">{{ "当日累计发电量：" + (c1.total||"~") +" kWh" }}</li>
+                    <li class="li1">{{ "当月累计发电量：" + (c1.total||"~") +" 万kWh" }}</li>
+                    <li class="li1">{{ "累计总发电量：" + (c1.total||"~") +" 万kWh" }}</li>
+                  </ul>
+                </el-col>
+              </el-row>
+              <div style="padding: 14px;">
+                <div class="bottom clearfix">
+                  <time class="time">{{ currentDate }}</time>
+                  <el-button type="text" class="button">操作按钮</el-button>
+                </div>
+              </div>
+            </el-card>
+          </el-col>
+          <el-col :span="8">
+            <!-- 卡片1-->
+            <el-card :body-style="{ padding: '0px' }">
+              <el-row class="e1-row0">
+                <span>综合效率</span>
+              </el-row>
+              <el-row>
+                <el-col class="col1" :span="12"><Gauge2/></el-col>
+                <el-col class="col2" :span="12">
+                  <ul>
+                    <li class="li1">{{ "理论电量：" + (c2.the||"~") +" kWh"}}</li>
+                    <li class="li1">{{ "发电量：" + (c2.act||"~") +" kWh" }}</li>
+                    <li class="li1">{{ "理论实际差值" + ( (c2.the - c2.act)||"~") +" kWh" }}</li>
+                    <li class="li1">{{ "" }}</li>
+                  </ul>
+                </el-col>
+              </el-row>
+              <div style="padding: 14px;">
+                <div class="bottom clearfix">
+                  <time class="time">{{ currentDate }}</time>
+                  <el-button type="text" class="button">操作按钮</el-button>
+                </div>
+              </div>
+            </el-card>
+          </el-col>
+          <el-col :span="8">
+            <!-- 卡片1-->
+            <el-card :body-style="{ padding: '0px' }">
+              <el-row class="e1-row0">
+                <span>逆变器转换效率</span>
+              </el-row>
+              <el-row>
+                <el-col class="col1" :span="12"><Gauge2/></el-col>
+                <el-col class="col2" :span="12">
+                  <ul>
+                    <li class="li1">{{ "总容量：" + (c1.total||"~") +" kWh"}}</li>
+                    <li class="li1">{{ "当日累计发电量：" + (c1.total||"~") +" kWh" }}</li>
+                    <li class="li1">{{ "当月累计发电量：" + (c1.total||"~") +" 万kWh" }}</li>
+                    <li class="li1">{{ "累计总发电量：" + (c1.total||"~") +" 万kWh" }}</li>
+                  </ul>
+                </el-col>
+              </el-row>
+              <div style="padding: 14px;">
+                <div class="bottom clearfix">
+                  <time class="time">{{ currentDate }}</time>
+                  <el-button type="text" class="button">操作按钮</el-button>
+                </div>
+              </div>
+            </el-card>
+          </el-col>
         </el-row>
         <el-row :gutter="20">
-          <el-col :span="12"><Line2 v-bind="settings.l1"></Line2></el-col>
+          <el-col :span="12">
+            <Line2 v-bind="settings.l1"></Line2></el-col>
           <el-col :span="12"></el-col>
         </el-row>
         <el-row :gutter="30" justify="center">
@@ -32,17 +105,31 @@
 <script>
 import Gauge from '../echarts_elements/Gauge1'
 import Line2 from '../echarts_elements/Line2'
-
+import Gauge2 from '../echarts_elements/Gauge2'
 
 export default {
   name : 'First',
   components: {
     Gauge: Gauge,
+    Gauge2: Gauge2,
     Line2: Line2,
   },
   data () {
     return {
       //配置最下面的list
+      c1: {
+        total: 1,
+        day: 1,
+        mouth: 1,
+        sumAll: 1,
+      },
+      c2: {
+        the: 1,
+        act: 1,
+      },
+      c3: {
+
+      },
       tabs: [
         {text: '累计节约标准煤'},
         {text: '累计减排'},
@@ -238,19 +325,62 @@ export default {
 }
 </script>
 <style scoped>
+  .e1-row0 {
+    background-color: #12AFE3;
+    background: -webkit-linear-gradient(-60deg, #12AFE3, #0d7feb); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(-60deg, #12AFE3, #0d7feb); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(-60deg, #12AFE3, #0d7feb); /* Firefox 3.6 - 15 */
+    background: linear-gradient(-60deg, #12AFE3,  #0d7feb); /* 标准的语法（必须放在最后） */
+    color: #fff;
+  }
+  .e1-row0 span {
+    float: left;
+    margin-left: 2%;
+  }
+
+  .col1 {
+    border:5px dotted #12AFE3;
+    background: #55d5e0;
+  }
+
+  .col2 {
+    color: #fff;
+  }
+
+  .col2 ul li {
+    position: relative;
+    top: -7px;
+    width: 200px;
+    height: 30px;
+    border: 2px solid #c1cde5;
+    border-top: 1px solid #c1cde5;
+    border-left: 1px solid #c1cde5;
+    border-right: 1px solid #c1cde5;
+
+    border-radius: 5px;
+    text-align: center;
+    line-height:30px;
+    font-size: 14px;
+    color: #000;
+  }
+
+  .el-card {
+    background: #fff;
+  }
+
   .First {
     height: 100%;
   }
+
   .el-container {
     height: 100%;
     overflow-y: hidden;
   }
 
   .el-row {
-  height: 60%;
-  margin-bottom: 20px;
-  margin-bottom: 0;
-}
+    height: 60%;
+    margin-bottom: 20px;
+  }
 
 .el-col {
   border-radius: 4px;
@@ -287,4 +417,16 @@ export default {
   list-style: none;
 }
 
+.icon {
+  width: 50%;
+}
+
+.li1 {
+  list-style-type: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+  font-size: 14px;
+  text-align: left;
+}
 </style>
