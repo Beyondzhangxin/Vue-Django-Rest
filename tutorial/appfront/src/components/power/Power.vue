@@ -10,16 +10,16 @@
         <el-row>
           <el-col :span="2"><div class="num">电站状态：</div></el-col>
           <el-col :span="2">
-            <div class="num">正常</div>
+            <div class="num1">正常</div>
           </el-col>
           <el-col :span="2">
-            <div class="num">异常</div>
+            <div class="num1">异常</div>
           </el-col>
           <el-col :span="2">
-            <div class="num">离线</div>
+            <div class="num1">离线</div>
           </el-col>
           <el-col :span="2">
-            <div class="num">停机</div>
+            <div class="num1">停机</div>
           </el-col>
         </el-row>
       </el-header>
@@ -188,7 +188,7 @@ export default {
     display: inline-block;
   }
 
-.num{
+.num1{
   margin-left:50px;
 }
 
