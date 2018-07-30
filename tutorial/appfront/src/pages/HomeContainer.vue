@@ -5,7 +5,8 @@
     <el-main>
         <el-container>
             <el-aside  v-if="this.$store.state.isShowAside"  width="18%"><HomeAside/></el-aside>
-            <el-main class="m1"><router-view/></el-main>
+            <el-main class="m1"><router-view/>
+            </el-main>
         </el-container>
     </el-main>
     <el-footer>Powered by 清华四川能源互联网研究院</el-footer>
@@ -20,6 +21,7 @@
     components: {
       HomeHeader,
       HomeAside,
+  
     },
     data () {
       return {
@@ -50,8 +52,13 @@
 }
 
 .el-footer {
-  background-color:#6fc7f7;
-  color: #333;
+  background-color: #12AFE3;
+  background: -webkit-linear-gradient(-60deg, #12AFE3, #0d7feb); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(-60deg, #12AFE3, #0d7feb); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(-60deg, #12AFE3, #0d7feb); /* Firefox 3.6 - 15 */
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#12AFE3,endColorstr=#0d7feb,grandientType=1);/*IE 9.0以上*/
+  background: linear-gradient(-60deg,#0d7feb,rgb(15, 64, 80)); /* 标准的语法（必须放在最后） */
+  color: #c0c0c0;
   height: 20%;
   padding-top:20px;
 }
