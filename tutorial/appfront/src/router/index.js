@@ -6,6 +6,7 @@ import PvdataList from '@/components/el-simple-com/PvdataList'
 import First from '@/components/first/First'
 import Gauge from '@/components/echarts_elements/Gauge1'
 import Power from '@/components/power/Power'
+import Device from '@/components/device/Device'
 Vue.use(Router)
 
 /*
@@ -43,6 +44,9 @@ export default new Router({
         },{
           path: 'power',
           component: Power,
+        },{
+          path: 'device',
+          component: Device,
         }
       ]
     },

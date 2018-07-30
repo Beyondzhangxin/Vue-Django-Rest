@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="699a223f-2a95-44f1-b706-a9f3ca80d94a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/echarts_elements/Gauge2" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/first/First.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/first/First.vue" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/pages/HomeContainer.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/pages/HomeContainer.vue" />
+      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/router/index.js" afterPath="$PROJECT_DIR$/tutorial/appfront/src/router/index.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -150,8 +148,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="176" />
-    <option name="y" value="101" />
+    <option name="x" value="688" />
+    <option name="y" value="343" />
     <option name="width" value="1143" />
     <option name="height" value="831" />
   </component>
@@ -360,20 +358,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1528334574906</updated>
-    </task>
-    <task id="LOCAL-00003" summary="pv update">
-      <created>1531814779741</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1531814779741</updated>
-    </task>
-    <task id="LOCAL-00004" summary="pv update">
-      <created>1531876652734</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1531876652734</updated>
     </task>
     <task id="LOCAL-00005" summary="appfront update">
       <created>1531895649623</created>
@@ -704,7 +688,21 @@
       <option name="project" value="LOCAL" />
       <updated>1532916371707</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="first change02">
+      <created>1532926019978</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1532926019978</updated>
+    </task>
+    <task id="LOCAL-00053" summary="first change03">
+      <created>1532929791530</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1532929791530</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TodoView">
@@ -717,12 +715,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="176" y="101" width="1143" height="831" extended-state="0" />
+    <frame x="688" y="343" width="1143" height="831" extended-state="0" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30950227" sideWeight="0.49337748" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3501441" sideWeight="0.61447966" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3501441" sideWeight="0.38552037" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26368877" sideWeight="0.61447966" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26368877" sideWeight="0.38552037" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24565217" sideWeight="0.49578503" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33128294" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24946237" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -791,8 +789,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="clear version" />
-    <MESSAGE value="clear version 1" />
     <MESSAGE value="clear version 2" />
     <MESSAGE value="clear version 3" />
     <MESSAGE value="clear version 4" />
@@ -816,7 +812,9 @@
     <MESSAGE value="aside.vue 13" />
     <MESSAGE value="header change 01" />
     <MESSAGE value="first change01" />
-    <option name="LAST_COMMIT_MESSAGE" value="first change01" />
+    <MESSAGE value="first change02" />
+    <MESSAGE value="first change03" />
+    <option name="LAST_COMMIT_MESSAGE" value="first change03" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
