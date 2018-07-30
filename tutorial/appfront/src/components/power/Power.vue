@@ -8,7 +8,7 @@
           <el-col :span="4" id="line" v-for="item in items[0]" :key="item.id">{{ item.key+item.value }}</el-col>
         </el-row>
         <el-row>
-          <el-col :span="2"><div class="num">电站状态：</div></el-col>
+          <el-col :span="2" id="num">电站状态：</el-col>
           <el-col :span="2">
             <div class="num1">正常 <i class="el-icon-success"></i> </div> 
           </el-col>
@@ -174,7 +174,7 @@ export default {
 
 .el-header{
   background:white;
-  margin-bottom:20px;
+  margin-bottom:35px;
 }
 
   .mh {
@@ -202,6 +202,11 @@ export default {
 
 .num1{
   margin-left:50px;
+  margin-top:2px;
+}
+
+#num{
+  margin-top:2px;
 }
 
  .hour{
@@ -221,7 +226,7 @@ export default {
 
 #line{
   margin-left:-57px;
-  margin-top:2px;
+  margin-top:5px;
 }
 
 .el-select{
