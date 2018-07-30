@@ -52,10 +52,7 @@
       handleSelect(key, keyPath) {
         console.log(keyPath);
         if (keyPath[1]) {
-          console.log(123);
-          console.log(this.routerTable[Number(key)]);
-          console.log(this.routerTable[Number(keyPath[0])].router[Number(keyPath[1].substring(3))]);
-          this.$router.push(this.routerTable[Number(keyPath[0])].router[Number(keyPath[1].substring(3))])
+          this.$router.push(this.routerTable[Number(keyPath[0])].router[keyPath[1].split("-")[1]])
         }else {
           this.$router.push(this.routerTable[Number(key)].router[0])
         }
