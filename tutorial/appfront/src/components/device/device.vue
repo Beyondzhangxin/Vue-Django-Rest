@@ -6,7 +6,10 @@
                 <el-row>
                     <el-col :span="12"><div class="grid-content">
                         <el-card class="box-card">
+<<<<<<< HEAD
                             
+=======
+>>>>>>> 0474351653d31dc89cf84f915861dab55bd4df18
                             <el-button  id="cirlce" circle>
 
 
