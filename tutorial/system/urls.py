@@ -11,6 +11,6 @@ urlpatterns=[
     # url(r'^postTest2/$', views.postTest2),
     # url(r'^$',views.index,name='index'),
     # url(r'^(?P<p2>\d+)/(?P<p3>\d+)/(?P<p1>\d+)/$',views.detail,name='detail'),
-
+    url(r'test$',views.apiTest,),
 
 ]
