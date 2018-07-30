@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="699a223f-2a95-44f1-b706-a9f3ca80d94a" name="Default" comment="device change">
+    <list default="true" id="699a223f-2a95-44f1-b706-a9f3ca80d94a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/home/header.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/home/header.vue" />
+      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/power/Power.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/power/Power.vue" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -148,8 +149,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="460" />
-    <option name="y" value="206" />
+    <option name="x" value="283" />
+    <option name="y" value="8" />
     <option name="width" value="1143" />
     <option name="height" value="1009" />
   </component>
@@ -358,20 +359,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1528334574906</updated>
-    </task>
-    <task id="LOCAL-00006" summary="appfront update">
-      <created>1531895678415</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1531895678415</updated>
-    </task>
-    <task id="LOCAL-00007" summary="venv update">
-      <created>1531903574473</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1531903574473</updated>
     </task>
     <task id="LOCAL-00008" summary="venv update">
       <created>1531905288536</created>
@@ -702,7 +689,21 @@
       <option name="project" value="LOCAL" />
       <updated>1532930552264</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="header change 01">
+      <created>1532932658538</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1532932658538</updated>
+    </task>
+    <task id="LOCAL-00056" summary="header change 02">
+      <created>1532933276833</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1532933276833</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TodoView">
@@ -715,12 +716,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="460" y="206" width="1143" height="1009" extended-state="0" />
+    <frame x="283" y="8" width="1143" height="1009" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30950227" sideWeight="0.49337748" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30950227" sideWeight="0.49337748" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26368877" sideWeight="0.61447966" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20986238" sideWeight="0.38552037" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20986238" sideWeight="0.38552037" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24565217" sideWeight="0.49578503" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33128294" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24946237" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -789,7 +790,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="clear version 3" />
     <MESSAGE value="clear version 4" />
     <MESSAGE value="clear version 5" />
     <MESSAGE value="clear version 6 导航栏修改" />
@@ -809,12 +809,13 @@
     <MESSAGE value="aside.vue 11" />
     <MESSAGE value="aside.vue 12" />
     <MESSAGE value="aside.vue 13" />
-    <MESSAGE value="header change 01" />
     <MESSAGE value="first change01" />
     <MESSAGE value="first change02" />
     <MESSAGE value="first change03" />
     <MESSAGE value="device change" />
-    <option name="LAST_COMMIT_MESSAGE" value="device change" />
+    <MESSAGE value="header change 01" />
+    <MESSAGE value="header change 02" />
+    <option name="LAST_COMMIT_MESSAGE" value="header change 02" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -940,13 +941,6 @@
     <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/home/header.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/NewContact.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-325">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
@@ -1126,6 +1120,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
           <caret line="62" column="42" lean-forward="true" selection-start-line="62" selection-start-column="42" selection-end-line="62" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/NewContact.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

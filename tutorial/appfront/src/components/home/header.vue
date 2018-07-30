@@ -10,21 +10,21 @@
       <el-menu-item index="0">首页</el-menu-item>
       <el-submenu index="1">
         <template slot="title">运行监测</template>
-          <el-menu-item index="0">电站监测</el-menu-item>
-          <el-menu-item index="1">设备监测</el-menu-item>
+          <el-menu-item index="1-0">电站监测</el-menu-item>
+          <el-menu-item index="1-1">设备监测</el-menu-item>
       </el-submenu>
       <el-submenu index="2">
         <template slot="title" >数据分析</template>
-          <el-menu-item index="0">对比分析</el-menu-item>
-          <el-menu-item index="1">发电量分析</el-menu-item>
-          <el-menu-item index="2">发电效率分析</el-menu-item>
-          <el-menu-item index="3">损耗分析</el-menu-item>
-          <el-menu-item index="4">故障报表</el-menu-item>
+          <el-menu-item index="2-0">对比分析</el-menu-item>
+          <el-menu-item index="2-1">发电量分析</el-menu-item>
+          <el-menu-item index="2-2">发电效率分析</el-menu-item>
+          <el-menu-item index="2-3">损耗分析</el-menu-item>
+          <el-menu-item index="2-4">故障报表</el-menu-item>
       </el-submenu>
       <el-submenu index="3">
         <template slot="title">故障告警</template>
-          <el-menu-item index="0">故障监测</el-menu-item>
-          <el-menu-item index="1">报警分析</el-menu-item>
+          <el-menu-item index="3-0">故障监测</el-menu-item>
+          <el-menu-item index="3-1">报警分析</el-menu-item>
       </el-submenu>
       <el-menu-item index="4">系统设置</el-menu-item>
     </el-menu>
@@ -50,13 +50,10 @@
     },
     methods: {
       handleSelect(key, keyPath) {
-        console.log(key);
-        console.log(keyPath);
-        console.log(this.routerTable);
         if (keyPath[1]) {
-          this.$router.push(this.routerTable[Number(keyPath[0])].router[Number(keyPath[1])])
+          this.$router.push(this.routerTable[Number(keyPath[0])].router[Number(keyPath[1].substring(3))])
         }else {
-          console.log(2);
+
           this.$router.push(this.routerTable[Number(key)].router[0])
         }
       }

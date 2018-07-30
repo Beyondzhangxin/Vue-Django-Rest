@@ -10,7 +10,7 @@
         <el-row>
           <el-col :span="2" id="num">电站状态：</el-col>
           <el-col :span="2">
-            <div class="num1">正常 <i class="el-icon-success"></i> </div> 
+            <div class="num1">正常 <i class="el-icon-success"></i> </div>
           </el-col>
           <el-col :span="2">
             <div class="num1">异常 <i class="el-icon-warning"></i> </div>
@@ -49,7 +49,7 @@
               <el-row>
                 <el-col :span="3" id="area" style="padding-top:10px" >电站所在地区</el-col>
                 <el-col :span="7">
-                  <el-select 
+                  <el-select
                     v-model="value10"
                     multiple
                     filterable
@@ -70,8 +70,10 @@
 
           <!-- main mm部分 -->
           <el-main class="mm">
-            <elpow></elpow>
-
+            <el-col :span="24"><div class="grid-content bg-purple"></div></el-col>
+            <div class="cardList">
+                <elPower v-for="card in cardLists" v-bind="card"/>
+            </div>
           </el-main>
 
         </el-container>
@@ -84,16 +86,37 @@
 <script>
 import Gauge from '../echarts_elements/Gauge1'
 import Line2 from '../echarts_elements/Line2'
-import elpow from './elPow'
+import elPower from './elPower'
 
 
 export default {
   name : 'Power',
   components: {
-    elpow:elpow,
+    elPower:elPower,
   },
   data () {
     return {
+      //对应elpower中属性
+      cardLists: [
+        {
+          id: 'BJ',
+          msg1: 1,
+          msg2: 1,
+          msg3: 1,
+          msg4: 1,
+          msg5: 1,
+          msg6: '../../assets/BJGF.jpg',
+        },
+        {
+          id: 'BJ',
+          msg1: 1,
+          msg2: 1,
+          msg3: 1,
+          msg4: 1,
+          msg5: 1,
+          msg6: 1,
+        },
+      ],
       items: [
         [
           {
@@ -151,6 +174,11 @@ export default {
 
 
 <style scoped>
+  .cardList {
+    border-top: 5px solid gray;
+    padding-top: 3%;
+  }
+
   .el-container {
     height: 100%;
 
