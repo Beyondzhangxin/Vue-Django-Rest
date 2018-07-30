@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="699a223f-2a95-44f1-b706-a9f3ca80d94a" name="Default" comment="">
+    <list default="true" id="699a223f-2a95-44f1-b706-a9f3ca80d94a" name="Default" comment="device change">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/router/index.js" afterPath="$PROJECT_DIR$/tutorial/appfront/src/router/index.js" />
+      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/home/header.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/home/header.vue" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -148,10 +148,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="688" />
-    <option name="y" value="343" />
+    <option name="x" value="460" />
+    <option name="y" value="206" />
     <option name="width" value="1143" />
-    <option name="height" value="831" />
+    <option name="height" value="1009" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -358,13 +358,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1528334574906</updated>
-    </task>
-    <task id="LOCAL-00005" summary="appfront update">
-      <created>1531895649623</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1531895649623</updated>
     </task>
     <task id="LOCAL-00006" summary="appfront update">
       <created>1531895678415</created>
@@ -702,7 +695,14 @@
       <option name="project" value="LOCAL" />
       <updated>1532929791530</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="device change">
+      <created>1532930552264</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1532930552264</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TodoView">
@@ -715,12 +715,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="688" y="343" width="1143" height="831" extended-state="0" />
+    <frame x="460" y="206" width="1143" height="1009" extended-state="0" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30950227" sideWeight="0.49337748" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26368877" sideWeight="0.61447966" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26368877" sideWeight="0.38552037" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20986238" sideWeight="0.38552037" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24565217" sideWeight="0.49578503" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33128294" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24946237" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -789,7 +789,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="clear version 2" />
     <MESSAGE value="clear version 3" />
     <MESSAGE value="clear version 4" />
     <MESSAGE value="clear version 5" />
@@ -814,7 +813,8 @@
     <MESSAGE value="first change01" />
     <MESSAGE value="first change02" />
     <MESSAGE value="first change03" />
-    <option name="LAST_COMMIT_MESSAGE" value="first change03" />
+    <MESSAGE value="device change" />
+    <option name="LAST_COMMIT_MESSAGE" value="device change" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
