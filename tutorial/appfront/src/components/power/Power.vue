@@ -5,21 +5,21 @@
       <!-- head部分 -->
       <el-header>
         <el-row>
-          <el-col :span="4" v-for="item in items[0]" :key="item.id">{{ item.key+item.value }}</el-col>
+          <el-col :span="4" id="line" v-for="item in items[0]" :key="item.id">{{ item.key+item.value }}</el-col>
         </el-row>
         <el-row>
           <el-col :span="2"><div class="num">电站状态：</div></el-col>
           <el-col :span="2">
-            <div class="num1">正常</div>
+            <div class="num1">正常 <i class="el-icon-success"></i> </div> 
           </el-col>
           <el-col :span="2">
-            <div class="num1">异常</div>
+            <div class="num1">异常 <i class="el-icon-warning"></i> </div>
           </el-col>
           <el-col :span="2">
-            <div class="num1">离线</div>
+            <div class="num1">离线 <i class="el-icon-loading"></i> </div>
           </el-col>
           <el-col :span="2">
-            <div class="num1">停机</div>
+            <div class="num1">停机 <i class="el-icon-circle-close"></i> </div>
           </el-col>
         </el-row>
       </el-header>
@@ -30,15 +30,15 @@
           <el-header class="mh">
             <div class="row">
               <el-row>
-                <el-col :span="3">当日有效时数:</el-col>
+                <el-col :span="3" id ="time">当日有效时数:</el-col>
                 <el-col :span="3">
-                  <input id="input" type="text" style="margin-top:2px"></input>
+                  <input id="input" type="text" placeholder="请输入数字"></input>
                 </el-col>
-                <el-col :span="1">
+                <el-col :span="1" id="label">
                   ~
                 </el-col>
                 <el-col :span="3">
-                  <input id="input" type="text" style="margin-top:2px"></input>
+                  <input id="input" type="text" placeholder="请输入数字"></input>
                 </el-col>
                 <el-col :span="3">
                   <div class="hour">小时</div>
@@ -47,9 +47,9 @@
             </div>
             <div class="row">
               <el-row>
-                <el-col :span="3" style="padding-top:10px" >电站所在地区</el-col>
+                <el-col :span="3" id="area" style="padding-top:10px" >电站所在地区</el-col>
                 <el-col :span="7">
-                  <el-select
+                  <el-select 
                     v-model="value10"
                     multiple
                     filterable
@@ -169,7 +169,13 @@ export default {
 
   .el-main {
     height: 80%;
+    background:white
   }
+
+.el-header{
+  background:white;
+  margin-bottom:20px;
+}
 
   .mh {
     /* border: 1px solid black; */
@@ -180,7 +186,13 @@ export default {
   }
 
   #input {
-    width: 80px
+    /* width: 80px; */
+    margin-top:5px;
+    border-radius:10px;
+  }
+
+  #label{
+    margin-top:5px;
   }
 
   #li {
@@ -194,7 +206,26 @@ export default {
 
  .hour{
    margin-left:-100px;
+   margin-top:5px;
  }
 
+#time{
+  margin-left:-20px;
+  margin-top:5px;
+}
+
+#area{
+  margin-left:-20px;
+  margin-top:5px;
+}
+
+#line{
+  margin-left:-57px;
+  margin-top:2px;
+}
+
+.el-select{
+  margin-top:10px;
+}
 
 </style>
