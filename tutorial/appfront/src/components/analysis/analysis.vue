@@ -48,13 +48,18 @@
 
 
 <script>
+
+
 export default {
-    
+    name: 'analysis',
+
+ 
 }
+
 </script>
 
 
-<style>
+<style scope>
 #header{
     background:white;
     height:100px;

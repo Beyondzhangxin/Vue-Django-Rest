@@ -2,14 +2,14 @@
   <div class="First">
     <el-container>
       <el-main>
-        <el-row :gutter="20">
-          <el-col :span="8">
-            <!-- 卡片1-->
+        <!-- <el-row class="mainRow" :gutter="20">
+          <el-col class="col2" :span="12">
             <el-card :body-style="{ padding: '0px' }">
               <el-row class="e1-row0">
                 <span>当前发电功率</span>
               </el-row>
               <el-row>
+
                 <el-col class="col1" :span="12"><Gauge2/></el-col>
                 <el-col class="col2" :span="12">
                   <ul>
@@ -27,9 +27,7 @@
                 </div>
               </div>
             </el-card>
-          </el-col>
-          <el-col :span="8">
-            <!-- 卡片1-->
+
             <el-card :body-style="{ padding: '0px' }">
               <el-row class="e1-row0">
                 <span>综合效率</span>
@@ -52,9 +50,7 @@
                 </div>
               </div>
             </el-card>
-          </el-col>
-          <el-col :span="8">
-            <!-- 卡片1-->
+
             <el-card :body-style="{ padding: '0px' }">
               <el-row class="e1-row0">
                 <span>逆变器转换效率</span>
@@ -63,10 +59,7 @@
                 <el-col class="col1" :span="12"><Gauge2/></el-col>
                 <el-col class="col2" :span="12">
                   <ul>
-                    <li class="li1">{{ "总容量：" + (c1.total||"~") +" kWh"}}</li>
-                    <li class="li1">{{ "当日累计发电量：" + (c1.total||"~") +" kWh" }}</li>
-                    <li class="li1">{{ "当月累计发电量：" + (c1.total||"~") +" 万kWh" }}</li>
-                    <li class="li1">{{ "累计总发电量：" + (c1.total||"~") +" 万kWh" }}</li>
+                    <li class="li1">{{ "逆变器转换效率" + (c3.eff||"~") +"%" }}</li>
                   </ul>
                 </el-col>
               </el-row>
@@ -78,14 +71,11 @@
               </div>
             </el-card>
           </el-col>
-        </el-row>
-        <el-row :gutter="20">
-          <el-col :span="12">
-            <Line2 v-bind="settings.l1"></Line2></el-col>
-          <el-col :span="12"></el-col>
-        </el-row>
-        <el-row :gutter="30" justify="center">
-          <el-col :span="24">
+          <el-col class="col2" :span="12">
+
+
+          </el-col> -->
+          <!-- <el-col :span="24">
             <div>
               环保数据
             </div>
@@ -96,21 +86,24 @@
                 </li>
               </ul>
             </div>
-          </el-col>
-        </el-row>
+          </el-col> -->
+            <Line2 v-bind="settings.l1"></Line2>
+
+
       </el-main>
   </el-container>
   </div>
 </template>
 <script>
-import Gauge from '../echarts_elements/Gauge1'
+import Gauge1 from '../echarts_elements/Gauge1'
 import Line2 from '../echarts_elements/Line2'
 import Gauge2 from '../echarts_elements/Gauge2'
+
 
 export default {
   name : 'First',
   components: {
-    Gauge: Gauge,
+    Gauge1: Gauge1,
     Gauge2: Gauge2,
     Line2: Line2,
   },
@@ -128,7 +121,7 @@ export default {
         act: 1,
       },
       c3: {
-
+        eff: 1,
       },
       tabs: [
         {text: '累计节约标准煤'},
@@ -325,6 +318,22 @@ export default {
 }
 </script>
 <style scoped>
+  .fm {
+    width: 50%;
+    height: 500px;
+    background-color: #fff;
+    float: left;
+  }
+
+  .ln1 {
+    height: 500px;
+  }
+
+  .g1 {
+    height: 400px;
+    width: 100%;
+  }
+
   .e1-row0 {
     background-color: #12AFE3;
     background: -webkit-linear-gradient(-60deg, #12AFE3, #0d7feb); /* Safari 5.1 - 6.0 */

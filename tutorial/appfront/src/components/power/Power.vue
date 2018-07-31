@@ -71,7 +71,7 @@
           <el-main class="mm">
             <el-col :span="24"><div class="grid-content bg-purple"></div></el-col>
             <div class="cardList">
-                <elPower v-for="card in showLists" v-show="checkLists(card)" :key="card"/>
+                <elPower v-for="card in showLists" v-show="checkLists(card)" v-bind="card"/>
             </div>
           </el-main>
         </el-container>
@@ -94,8 +94,7 @@ export default {
   },
   data () {
     return {
-      showLists: [
-      ],
+      showLists: [],
       //对应elpower中属性
       cardLists: [
         {
