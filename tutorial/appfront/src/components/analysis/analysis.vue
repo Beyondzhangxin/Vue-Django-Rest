@@ -53,8 +53,14 @@
 export default {
     name: 'analysis',
 
-
+    mounted: function() {
+      this.$store.commit('showIt');
+    },
+    destroyed: function() {
+      this.$store.commit('hideIt')
+    },
 }
+
 
 </script>
 
