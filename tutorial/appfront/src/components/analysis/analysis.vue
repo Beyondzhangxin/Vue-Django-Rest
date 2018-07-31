@@ -1,5 +1,6 @@
 <template>
     <div class="analysis">
+        <!-- header -->
         <el-header id="header">
             <el-row>
                 <el-col :span="3"><div class="grid-content">
@@ -23,32 +24,30 @@
                 <el-col :span="3"><div class="grid-content"></div></el-col>
             </el-row>
         </el-header>
-
-        <el-main>
+        <!-- main1 -->
+        <el-main id="main1">
             <el-row>
-                <el-col :span="12"><div class="grid-content">
-                    <el-row>
-                        <el-col :span="4"><div class="grid-content">对比内容:</div></el-col>
-                        <el-col :span="4"><div class="grid-content">
-                            <el-button>功率</el-button>
-                        </div></el-col>
-                        <el-col :span="4"><div class="grid-content">
-                            <el-button>效率</el-button>
-                        </div></el-col>
-                        <el-col :span="4"><div class="grid-content">
-                            <el-button>等效时数</el-button>
-                        </div></el-col>
-                        <el-col :span="4"><div class="grid-content">
-                            <el-button>符合率</el-button>
-                        </div></el-col>
-                        <el-col :span="4"><div class="grid-content">
-                            <el-button>发电量</el-button>
-                        </div></el-col>
-                    </el-row>
-                </div></el-col>
-                <el-col :span="12"><div class="grid-content">
-                    <span id="text1">查询时间</span>
-                    <div class="block">
+                <el-col :span="12" id="span1">
+                        <el-col :span="4" id="span0">对比内容:</el-col>
+                        <el-col :span="4">
+                            <el-button id="button1">功率</el-button>
+                        </el-col>
+                        <el-col :span="4">
+                            <el-button id="button1">效率</el-button>
+                        </el-col>
+                        <el-col :span="4">
+                            <el-button id="button1">等效时数</el-button>
+                        </el-col>
+                        <el-col :span="4">
+                            <el-button id="button1">符合率</el-button>
+                        </el-col>
+                        <el-col :span="4">
+                            <el-button id="button1">发电量</el-button>
+                        </el-col>                
+                </el-col>
+                <el-col :span="12" id="span2">
+                    <span id="text1">查询日期</span>
+                  <!-- 日期选择器 -->
                         <span class="demonstration"></span>
                         <el-date-picker
                             v-model="value2"
@@ -56,23 +55,27 @@
                             type="date"
                             placeholder="选择日期"
                             :picker-options="pickerOptions1">
-                        </el-date-picker>
-                    </div>
-                    
-                </div></el-col>
+                        </el-date-picker>                         
+               </el-col>
             </el-row>
-
+        </el-main>
+        <!-- main2 -->
+        <el-main id="main2">
+            <el-row>
+                <el-col :span="24">
+                    <div class="text2">已选电站：</div>
+                </el-col>
+            </el-row>
+            <div class="sel">
+                <el-button type="primary" plain>北京光伏电站</el-button>
+                <el-button type="primary" plain>上海光伏电站</el-button>
+            </div>
 
         </el-main>
 
-        <el-main>
-
-
-
-        </el-main>
-
-        <el-main>
-
+        <!-- main3 -->
+        <el-main id="main3">
+            功率图表
 
 
         </el-main>
@@ -138,12 +141,48 @@ export default {
     height:100px;
 }
 
-#button{
-    /* margin-top:8px; */
+#button1{
+    margin-top:5px;
 }
 
 #text{
    padding-bottom:2px;
    display: block;
+}
+
+#span1{
+    background:white;
+}
+
+#span2{
+    background:white;
+}
+
+#span0{
+    margin-top:8px;
+}
+
+#main1{
+    margin-top:20px;
+}
+
+#main2{
+    background:white;
+}
+#text1{
+    padding-right:20px;
+}
+
+.text2{
+    float: left;
+    margin-top:20px;
+    margin-left:30px;
+}
+
+.sel{
+    float:left;
+    margin-top:20px;
+    margin-left:30px;
+    margin-bottom: 10px;
 }
 </style>
