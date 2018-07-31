@@ -44,15 +44,11 @@ export default {
           id: 1,
           label: '一级 1',
           children: [{
-            id: 4,
+            id: 2,
             label: '二级 1-1',
-            children: [{
-              id: 9,
-              label: '三级 1-1-1'
-            }, {
-              id: 10,
-              label: '三级 1-1-2'
-            }]
+          },{
+            id: 3,
+            label: '二级 1-1',
           }]
         }],
         defaultProps: {
@@ -82,13 +78,11 @@ export default {
      load(){
        this.$ajax.get(this.data)
        .then(function (response) {
-         console.log(response)
-       }.bind(this))
+        }.bind(this))
        .catch(function (error) {
        });
      },
      clickButtom(str){
-       console.log(23);
        this.placeholder = "输入"+ str +"进行过滤";
      },
    },

@@ -67,15 +67,13 @@
               </el-row>
             </div>
           </el-header>
-
           <!-- main mm部分 -->
           <el-main class="mm">
             <el-col :span="24"><div class="grid-content bg-purple"></div></el-col>
             <div class="cardList">
-                <elPower v-for="card in cardLists" v-bind="card"/>
+                <elPower v-for="card in showLists" v-show="checkLists(card)"/>
             </div>
           </el-main>
-
         </el-container>
       </el-main>
     </el-container>
@@ -96,6 +94,8 @@ export default {
   },
   data () {
     return {
+      showLists: [
+      ],
       //对应elpower中属性
       cardLists: [
         {
@@ -105,16 +105,16 @@ export default {
           msg3: 1,
           msg4: 1,
           msg5: 1,
-          msg6: '../../assets/BJGF.jpg',
+          msg6: '',
         },
         {
-          id: 'BJ',
+          id: 'SH',
           msg1: 1,
           msg2: 1,
           msg3: 1,
           msg4: 1,
           msg5: 1,
-          msg6: 1,
+          msg6: '',
         },
       ],
       items: [
@@ -139,24 +139,25 @@ export default {
       ],
       options5: [
         {
-          value: '全部',
+          value: 'ALL',
           label: '全部'
         },{
-          value: '北京',
+          value: 'BJ',
           label: '北京'
         },{
-          value: '上海',
-          label: '上海'
+          value: 'SH',
+          label: '上海',
         },{
-          value: '深圳',
+          value: 'SZ',
           label: '深圳'
         },
       ],
-        value10: []
+        //和el-select选中程序同步
+        value10: [],
     }
   },
   mounted: function() {
-    this.$store.commit('showIt')
+    this.$store.commit('showIt');
     this.show();
   },
 
@@ -166,7 +167,23 @@ export default {
 
   methods: {
     show(){
+      for (var i = 0; i < this.cardLists.length; i++) {
+        this.showLists.push(this.cardLists[i]);
+      }
+    },
+    checkLists(card){
+        if (this.value10.length == 0) {
+          return true;
+        }
+        for (var j = 0; j < this.value10.length; j++) {
+          console.log(card.id );
+          console.log(this.value10[j]);
 
+          if ((this.value10[j]=='ALL')||(card.id == this.value10[j])) {
+            return true;
+          }
+        }
+        return false;
     },
   }
 }
@@ -260,5 +277,6 @@ export default {
 .el-select{
   margin-top:10px;
 }
+
 
 </style>

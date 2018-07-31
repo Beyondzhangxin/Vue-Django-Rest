@@ -1,5 +1,5 @@
 <template>
-  <div> 
+  <div>
     <el-row>
       <el-col :span="24"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
@@ -24,10 +24,9 @@
                   <div class="con">正常&nbsp&nbsp&nbsp&nbsp<i class="el-icon-circle-check"></i></div>
                   <div class="mes">消息：{{msg9}}条</div>
                 </div></el-col>
-                </el-row>
-
+              </el-row>
             </div>
-          </el-card>   
+          </el-card>
       </div></el-col>
 
       <el-col :span="12"><div class="grid-content bg-purple">
@@ -56,7 +55,7 @@
       </div></el-col>
     </el-row>
 
-</div> 
+</div>
 
  </template>
 
@@ -65,7 +64,7 @@
  export default {
    name : 'Power',
    components: {
-    
+
    },
    data () {
      return {
