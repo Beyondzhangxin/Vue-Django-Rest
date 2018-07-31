@@ -72,7 +72,7 @@
           <el-main class="mm">
             <el-col :span="24"><div class="grid-content bg-purple"></div></el-col>
             <div class="cardList">
-                <elPower v-for="card in cardLists" v-bind="card"/>
+                <elPower v-for="card in cardLists" v-bind="card" :key="item"/>
             </div>
           </el-main>
 

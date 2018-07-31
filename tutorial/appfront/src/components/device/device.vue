@@ -6,30 +6,98 @@
                 <el-row>
                     <el-col :span="12"><div class="grid-content">
                         <el-card class="box-card">
-<<<<<<< HEAD
-                            
-=======
->>>>>>> 0474351653d31dc89cf84f915861dab55bd4df18
-                            <el-button  id="cirlce" circle>
+                            <div id="circle clearfix">
+                                <el-row :gutter="20">
+                                    <el-col :span="8"><div class="grid-content">
+                                        <el-button  id="cirlce" round>
+                                            <div class="text">当前功率：</div>
+                                            <div class="text">{{msg1}}</div>
+                                            <div class="text">KW</div>
+                                        </el-button>
+                           
+                                    </div></el-col>
+                                    <el-col :span="8"><div class="grid-content">
+                                        <el-button id="cirlce" round>
+                                            <div class="text">今日发电：</div>
+                                            <div class="text">{{msg2}}</div>
+                                            <div class="text">KWh</div>
+                                        </el-button> 
+                                    </div></el-col>
+                                    <el-col :span="8"><div class="grid-content">
+                                        <el-button id="cirlce" round>
+                                            <div class="text">累计发电：</div>
+                                            <div class="text">{{msg3}}</div>
+                                            <div class="text">万KWh</div>
+                                        </el-button>
+                                    </div></el-col>
+                                </el-row>
+                            </div>
 
-
-                            </el-button>
-                            <el-button id="cirlce" circle>汇流箱</el-button>
-                            <el-button id="cirlce" circle>采集设备</el-button>
-
+                            <div id="num">
+                                <el-row :gutter="20">
+                                    <el-col :span="8"><div class="grid-content">装机容量：{{msg4}} KWP</div></el-col>
+                                    <el-col :span="8"><div class="grid-content">今日等效：{{msg5}} h</div></el-col>
+                                    <el-col :span="8"><div class="grid-content">并网日期：2017-12-11</div></el-col>
+                                </el-row>
+                            </div>
                         </el-card>
-                   
-                        
+
                     </div></el-col>
 
                     <el-col :span="12"><div class="grid-content">
                         <el-card class="box-card">
-                        
+                            <div class="inverter">
+                                <el-row :gutter="20">
+                                    <el-col :span="6"><div class="grid-content">
+                                        <img src="../../assets/inverter.png" id="image1">
+                                    </div></el-col>
+                                    <el-col :span="6"><div class="grid-content1">
+                                        <div id="text1">逆变器{{msg6}}台</div>
+                                    </div></el-col>
+                                    <el-col :span="12"><div class="grid-content"></div></el-col>
+                                </el-row>
+
+                            <el-row id="str">
+                                <el-col :span="2"><div class="grid-content">
+                                    <img src="../../assets/normal.png" id="image2">
+                                </div></el-col>
+                                <el-col :span="2"><div class="grid-content">
+                                    <div id="text2">{{msg7}}</div>  
+                                </div></el-col>
+                                <el-col :span="2"><div class="grid-content">
+                                     <img src="../../assets/offline2.png" id="image2">
+                                </div></el-col>
+                                <el-col :span="2"><div class="grid-content">
+                                    <div id="text2">{{msg7}}</div>
+                                </div></el-col>
+                                <el-col :span="2"><div class="grid-content">
+                                    <img src="../../assets/alarm1.png" id="image2">
+                                </div></el-col>
+                                <el-col :span="2"><div class="grid-content">
+                                    <div id="text2">{{msg7}}</div>
+                                </div></el-col>
+                                <el-col :span="2"><div class="grid-content">
+                                    <img src="../../assets/close1.png" id="image2">
+                                </div></el-col>
+                                <el-col :span="2"><div class="grid-content">
+                                    <div id="text2">{{msg7}}</div>
+                                </div></el-col>
+                                <el-col :span="2"><div class="grid-content">
+                                    <img src="../../assets/repair.png" id="image2">
+                                </div></el-col>
+                                <el-col :span="2"><div class="grid-content">
+                                    <div id="text2">{{msg7}}</div>
+                                </div></el-col>
+                                <el-col :span="2"><div class="grid-content">
+                                     <img src="../../assets/offline1.png" id="image2">
+                                </div></el-col>
+                                <el-col :span="2"><div class="grid-content">
+                                    <div id="text2">{{msg7}}</div>
+                                </div></el-col>
+                            </el-row>
+                            </div>
                         </el-card>
-                        
-                     
-            
-                        
+ 
                     </div></el-col>
                 </el-row>
             </div>
@@ -84,6 +152,13 @@ export default {
         data: 'http://127.0.0.1:8000/pv/get/detection/2018/1/18/',
         page: 2,
         // pageSize: 2
+        msg1:23.93,
+        msg2:3019.32,
+        msg3:34.43,
+        msg4:623.16,
+        msg5:4.85,
+        msg6:15,
+        msg7:0
       }
     },
     methods: {
@@ -145,4 +220,34 @@ export default {
     height:200px;
 }
 
+.clearfix:after{
+  content: "020"; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;  
+}
+
+.clearfix {
+  /* 触发 hasLayout */ 
+  zoom: 1; 
+}
+
+#num{
+    margin-top:20px;
+}
+
+#text1{
+    margin-top:18px;
+    margin-left:-80px;
+}
+
+#text2{
+    margin-top:5px;
+    margin-left:-20px;
+}
+
+#str{
+    margin-top:10px;
+}
 </style>
