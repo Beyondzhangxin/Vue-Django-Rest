@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="699a223f-2a95-44f1-b706-a9f3ca80d94a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/device/device.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/device/device.vue" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/first/First.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/first/First.vue" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -375,13 +373,6 @@
       <option name="presentableId" value="Default" />
       <updated>1528334574906</updated>
     </task>
-    <task id="LOCAL-00017" summary="clear version 3">
-      <created>1532256222841</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1532256222841</updated>
-    </task>
     <task id="LOCAL-00018" summary="clear version 4">
       <created>1532338655025</created>
       <option name="number" value="00018" />
@@ -718,7 +709,14 @@
       <option name="project" value="LOCAL" />
       <updated>1533023126180</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="list update">
+      <created>1533025579373</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1533025579374</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TodoView">
@@ -805,7 +803,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="clear version 9 成熟的页面修改" />
     <MESSAGE value="aside" />
     <MESSAGE value="aside 03" />
     <MESSAGE value="aside 03 update" />
@@ -830,7 +827,8 @@
     <MESSAGE value="power change" />
     <MESSAGE value="Merge branch 'clear' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear&#10;&#10;# Conflicts:&#10;#&#9;tutorial/appfront/src/components/power/Power.vue" />
     <MESSAGE value="first.vue update" />
-    <option name="LAST_COMMIT_MESSAGE" value="first.vue update" />
+    <MESSAGE value="list update" />
+    <option name="LAST_COMMIT_MESSAGE" value="list update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
