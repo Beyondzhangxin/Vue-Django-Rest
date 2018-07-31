@@ -90,6 +90,7 @@
 export default {
     name: 'analysis',
 
+<<<<<<< HEAD
     data(){
         return{
         pickerOptions1: {
@@ -123,6 +124,8 @@ export default {
 
     },
 
+=======
+>>>>>>> e9bccf1175ad4285c3ce60ee5f5d050def0b4eba
     mounted: function() {
       this.$store.commit('showIt');
     },

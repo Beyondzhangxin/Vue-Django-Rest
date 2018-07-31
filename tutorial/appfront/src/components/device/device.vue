@@ -2,7 +2,6 @@
     <div class="device">
             <el-main>
             <div class="top">
-
                 <el-row>
                     <el-col :span="12"><div class="grid-content">
                         <el-card class="box-card">
@@ -14,14 +13,14 @@
                                             <div class="text">{{msg1}}</div>
                                             <div class="text">KW</div>
                                         </el-button>
-                           
+
                                     </div></el-col>
                                     <el-col :span="8"><div class="grid-content">
                                         <el-button id="cirlce" round>
                                             <div class="text">今日发电：</div>
                                             <div class="text">{{msg2}}</div>
                                             <div class="text">KWh</div>
-                                        </el-button> 
+                                        </el-button>
                                     </div></el-col>
                                     <el-col :span="8"><div class="grid-content">
                                         <el-button id="cirlce" round>
@@ -62,7 +61,7 @@
                                     <img src="../../assets/normal.png" id="image2">
                                 </div></el-col>
                                 <el-col :span="2"><div class="grid-content">
-                                    <div id="text2">{{msg7}}</div>  
+                                    <div id="text2">{{msg7}}</div>
                                 </div></el-col>
                                 <el-col :span="2"><div class="grid-content">
                                      <img src="../../assets/offline2.png" id="image2">
@@ -97,7 +96,7 @@
                             </el-row>
                             </div>
                         </el-card>
- 
+
                     </div></el-col>
                 </el-row>
             </div>
@@ -120,7 +119,7 @@
                 <!--请求如下 http://127.0.0.1:8000/pv/get/detection/2018/1/18/ -->
                 <div class="rowmb">
                 <!--赋值到this.data中 -->
-                <ComList v-bind:data='data'></ComList>
+                <ComList v-bind="list"></ComList>
                 <!--<ComList v-bind:data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>-->
                 <el-pagination
                     background
@@ -132,13 +131,13 @@
                 </div>
             </div>
         </el-container>
-    </div>     
+    </div>
 </template>
 
 
 <script>
 
-import ComList from '../el-simple-com/com-list.vue'
+import ComList from '../el-simple-com/com-list0.vue'
 
 export default {
     name:'device',
@@ -149,7 +148,21 @@ export default {
 
     data(){
       return {
-        data: 'http://127.0.0.1:8000/pv/get/detection/2018/1/18/',
+        list: {
+          //改数据改这里
+          data: 'http://127.0.0.1:8000/pv/get/detection/2018/1/18/',
+          //改表名改这里
+          tabConfigs: [
+            {prop: 'dev_name', label: '设备名称'},
+            {prop: 'dev_scc', label: '设备厂家'},
+            {prop: 'dev_xh', label: '设备型号'},
+            {prop: 'dev_cjdz', label: '采集地址码'},
+            {prop: 'dev_jrrl', label: '接入容量(kWp)'},
+            {prop: 'dev_dqgl', label: '当前功率(W)'},
+            {prop: 'dev_jrfd', label: '今日发电量(kWh)'},
+            {prop: 'dev_drdx', label: '当日等效小时(h)'},
+          ],
+        },
         page: 2,
         // pageSize: 2
         msg1:23.93,
@@ -163,6 +176,7 @@ export default {
     },
     methods: {
       handleCurrentChange(val) {
+        //改分页
         this.data = 'http://127.0.0.1:8000/pv/get/detection/2018/1/18/' + '?page='+ val;
         console.log(this.data);
       }
@@ -181,6 +195,9 @@ export default {
 
 
 <style scope>
+.el-main{
+  overflow-x: hidden;
+}
 
 .rowm{
   height: 400px;
@@ -202,6 +219,8 @@ export default {
     background: #ffffff;
     height:200px;
     box-shadow: 0px 0px 10px 3px #9eabad;
+    position: relative;
+    left: 5px;
 }
 
 .mid{
@@ -209,6 +228,8 @@ export default {
     background: #ffffff;
     height:80px;
     box-shadow: 0px 0px 10px 3px #9eabad;
+    position: relative;
+    left: 5px;
 }
 
 #content{
@@ -221,16 +242,16 @@ export default {
 }
 
 .clearfix:after{
-  content: "020"; 
-  display: block; 
-  height: 0; 
-  clear: both; 
-  visibility: hidden;  
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
 }
 
 .clearfix {
-  /* 触发 hasLayout */ 
-  zoom: 1; 
+  /* 触发 hasLayout */
+  zoom: 1;
 }
 
 #num{
