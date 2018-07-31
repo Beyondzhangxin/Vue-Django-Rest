@@ -71,11 +71,7 @@
           <el-main class="mm">
             <el-col :span="24"><div class="grid-content bg-purple"></div></el-col>
             <div class="cardList">
-<<<<<<< HEAD
-                <elPower v-for="card in cardLists" v-bind="card" :key="item"/>
-=======
-                <elPower v-for="card in showLists" v-show="checkLists(card)"/>
->>>>>>> e42fec197afcc4cd1b138b6897c95a228b223cd5
+                <elPower v-for="card in showLists" v-show="checkLists(card)" :key="card"/>
             </div>
           </el-main>
         </el-container>

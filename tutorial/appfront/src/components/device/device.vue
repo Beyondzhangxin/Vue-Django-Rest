@@ -180,7 +180,7 @@ export default {
 
 
 
-<style>
+<style scope>
 
 .rowm{
   height: 400px;
