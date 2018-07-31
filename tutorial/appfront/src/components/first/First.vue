@@ -404,7 +404,7 @@ export default {
           id: 'line2',
           option: {
             title: {
-              text: '当日发电量',
+              text: '当日发电功率',
             },
           tooltip: {
             trigger: 'axis',
