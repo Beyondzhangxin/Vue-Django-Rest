@@ -14,8 +14,8 @@ const store = new Vuex.Store({
     },
     hideIt() {
       this.state.isShowAside = 0;
-    }
-  }
-})
+    }  }
+}
+)
 
 export default store
