@@ -5,7 +5,7 @@
       <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
     </div>
     <div class="text item">
-      <img v-bind:src="msg6" class="image1">
+      <img class="image1" ref="image">
       <el-row>
         <el-col :span="12"><div class="grid-content1">
           <div class="tem1">总装机容量：{{msg1}}kwp</div>
@@ -33,6 +33,8 @@ export default {
   },
   mounted: function() {
     console.log(this.msg6);
+    console.log(this.$refs.image.src)
+    this.$refs.image.src = "/static/img/SHGF.c4b0247.jpg";
   }
 }
 
