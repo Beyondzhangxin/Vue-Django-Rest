@@ -89,10 +89,8 @@
 
 export default {
     name: 'analysis',
-
-<<<<<<< HEAD
-    data(){
-        return{
+    data() {
+      return {
         pickerOptions1: {
           disabledDate(time) {
             return time.getTime() > Date.now();
@@ -121,11 +119,8 @@ export default {
         value1: '',
         value2: '',
       };
-
     },
 
-=======
->>>>>>> e9bccf1175ad4285c3ce60ee5f5d050def0b4eba
     mounted: function() {
       this.$store.commit('showIt');
     },
