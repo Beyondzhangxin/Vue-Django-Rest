@@ -87,7 +87,89 @@
               </ul>
             </div>
           </el-col> -->
-            <Line2 v-bind="settings.l1"></Line2>
+          <div class="fm">
+            <div class="fml">
+              <el-card :body-style="{ padding: '0px' }">
+                <el-row class="e1-row0">
+                  <span>当前发电功率</span>
+                </el-row>
+                <el-row>
+
+                  <el-col class="col1" :span="12"><Gauge2/></el-col>
+                  <el-col class="col2" :span="12">
+                    <ul>
+                      <li class="li1">{{ "总容量：" + (c1.total||"~") +" kWh"}}</li>
+                      <li class="li1">{{ "当日累计发电量：" + (c1.total||"~") +" kWh" }}</li>
+                      <li class="li1">{{ "当月累计发电量：" + (c1.total||"~") +" 万kWh" }}</li>
+                      <li class="li1">{{ "累计总发电量：" + (c1.total||"~") +" 万kWh" }}</li>
+                    </ul>
+                  </el-col>
+                </el-row>
+                <div style="padding: 14px;">
+                  <div class="bottom clearfix">
+                    <time class="time">{{ currentDate }}</time>
+                    <el-button type="text" class="button">操作按钮</el-button>
+                  </div>
+                </div>
+              </el-card>
+            </div>
+            <div class="fml">
+              <el-card :body-style="{ padding: '0px' }">
+                <el-row class="e1-row0">
+                  <span>综合效率</span>
+                </el-row>
+                <el-row>
+                  <el-col class="col1" :span="12"><Gauge2/></el-col>
+                  <el-col class="col2" :span="12">
+                    <ul>
+                      <li class="li1">{{ "理论电量：" + (c2.the||"~") +" kWh"}}</li>
+                      <li class="li1">{{ "发电量：" + (c2.act||"~") +" kWh" }}</li>
+                      <li class="li1">{{ "理论实际差值" + ( (c2.the - c2.act)||"~") +" kWh" }}</li>
+                      <li class="li1">{{ "" }}</li>
+                    </ul>
+                  </el-col>
+                </el-row>
+                <div style="padding: 14px;">
+                  <div class="bottom clearfix">
+                    <time class="time">{{ currentDate }}</time>
+                    <el-button type="text" class="button">操作按钮</el-button>
+                  </div>
+                </div>
+              </el-card>
+            </div>
+            <div class="fml">
+              <el-card :body-style="{ padding: '0px' }">
+                <el-row class="e1-row0">
+                  <span>逆变器转换效率</span>
+                </el-row>
+                <el-row>
+                  <el-col class="col1" :span="12"><Gauge2/></el-col>
+                  <el-col class="col2" :span="12">
+                    <ul>
+                      <li class="li1">{{ "逆变器转换效率" + (c3.eff||"~") +"%" }}</li>
+                    </ul>
+                  </el-col>
+                </el-row>
+                <div style="padding: 14px;">
+                  <div class="bottom clearfix">
+                    <time class="time">{{ currentDate }}</time>
+                    <el-button type="text" class="button">操作按钮</el-button>
+                  </div>
+                </div>
+              </el-card>
+            </div>
+          </div>
+          <div class="fm">
+            <div class="fm2">
+              <Line2 v-bind="settings.l1"></Line2>
+            </div>
+            <div class="fm2">
+
+            </div>
+
+
+          </div>
+
 
 
       </el-main>
@@ -202,41 +284,41 @@ export default {
         },
         l1:{
           id: 'line1',
-          option: {
-            title: {
-              text: '动态数据',
-              subtext: '纯属虚构'
-            },
-            tooltip: {
-              trigger: 'axis',
-              axisPointer: {
-              type: 'cross',
-              label: {
+          option:{
+    title: {
+        text: '动态数据',
+        subtext: '纯属虚构'
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            label: {
                 backgroundColor: '#283b56'
-              }
             }
-          },
-          legend: {
-            data:['最新成交价', '预购队列']
-          },
-          toolbox: {
-            show: true,
-            feature: {
-              dataView: {readOnly: false},
-              restore: {},
-              saveAsImage: {}
-            }
-          },
-          dataZoom: {
-            show: false,
-            start: 0,
-            end: 100
-          },
-          xAxis: [
-            {
-              type: 'category',
-              boundaryGap: true,
-              data: (function (){
+        }
+    },
+    legend: {
+        data:['最新成交价', '预购队列']
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            dataView: {readOnly: false},
+            restore: {},
+            saveAsImage: {}
+        }
+    },
+    dataZoom: {
+        show: false,
+        start: 0,
+        end: 100
+    },
+    xAxis: [
+        {
+            type: 'category',
+            boundaryGap: true,
+            data: (function (){
                 var now = new Date();
                 var res = [];
                 var len = 10;
@@ -245,72 +327,73 @@ export default {
                     now = new Date(now - 2000);
                 }
                 return res;
-              })()
-            },
-            {
-              type: 'category',
-              boundaryGap: true,
-              data: (function (){
+            })()
+        },
+        {
+            type: 'category',
+            boundaryGap: true,
+            data: (function (){
                 var res = [];
                 var len = 10;
                 while (len--) {
                     res.push(10 - len - 1);
                 }
                 return res;
-              })()
-            }
-          ],
-          yAxis: [
-              {
-                  type: 'value',
-                  scale: true,
-                  name: '价格',
-                  max: 30,
-                  min: 0,
-                  boundaryGap: [0.2, 0.2]
-              },
-              {
-                  type: 'value',
-                  scale: true,
-                  name: '预购量',
-                  max: 1200,
-                  min: 0,
-                  boundaryGap: [0.2, 0.2]
-              }
-          ],
-          series: [
-              {
-                  name:'预购队列',
-                  type:'bar',
-                  xAxisIndex: 1,
-                  yAxisIndex: 1,
-                  data:(function (){
-                      var res = [];
-                      var len = 10;
-                      while (len--) {
-                          res.push(Math.round(Math.random() * 1000));
-                      }
-                      return res;
-                  })()
-              },
-              {
-                  name:'最新成交价',
-                  type:'line',
-                  data:(function (){
-                      var res = [];
-                      var len = 0;
-                      while (len < 10) {
-                          res.push((Math.random()*10 + 5).toFixed(1) - 0);
-                          len++;
-                      }
-                      return res;
-                  })()
-              }
-            ]
-          },
+            })()
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            scale: true,
+            name: '价格',
+            max: 30,
+            min: 0,
+            boundaryGap: [0.2, 0.2]
+        },
+        {
+            type: 'value',
+            scale: true,
+            name: '预购量',
+            max: 1200,
+            min: 0,
+            boundaryGap: [0.2, 0.2]
+        }
+    ],
+    series: [
+        {
+            name:'预购队列',
+            type:'bar',
+            xAxisIndex: 1,
+            yAxisIndex: 1,
+            data:(function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(Math.round(Math.random() * 1000));
+                }
+                return res;
+            })()
+        },
+        {
+            name:'最新成交价',
+            type:'line',
+            data:(function (){
+                var res = [];
+                var len = 0;
+                while (len < 10) {
+                    res.push((Math.random()*10 + 5).toFixed(1) - 0);
+                    len++;
+                }
+                return res;
+            })()
+        }
+    ]
+},
         },
         l2:{
-          id: 'line2',
+
+
         }
       }
     }
@@ -318,9 +401,17 @@ export default {
 }
 </script>
 <style scoped>
+  .fm2{
+    height: 50%;
+  }
+
+  .fml{
+    height: 33%;
+  }
+
   .fm {
     width: 50%;
-    height: 500px;
+    height: 1000px;
     background-color: #fff;
     float: left;
   }
