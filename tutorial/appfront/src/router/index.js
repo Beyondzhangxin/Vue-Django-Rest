@@ -7,6 +7,7 @@ import First from '@/components/first/First'
 import Gauge from '@/components/echarts_elements/Gauge1'
 import Power from '@/components/power/Power'
 import Device from '@/components/device/Device'
+import Analysis from '@/components/analysis/Analysis'
 Vue.use(Router)
 
 /*
@@ -47,6 +48,10 @@ export default new Router({
         },{
           path: 'device',
           component: Device,
+        },
+        {
+          path:'analysis',
+          component: Analysis,
         }
       ]
     },

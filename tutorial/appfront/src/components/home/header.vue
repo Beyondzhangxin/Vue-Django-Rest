@@ -42,7 +42,7 @@
         routerTable: [
           {router: ["/home/first"]},
           {router: ["/home/power", "/home/device"]},
-          {router: ["/home/first"]},
+          {router: ["/home/analysis"]},
           {router: ["/home/detection"]},
           {router: ["/home/first"]},
         ],
