@@ -2,139 +2,59 @@
   <div class="First">
     <el-container>
       <el-main>
-        <!-- <el-row class="mainRow" :gutter="20">
-          <el-col class="col2" :span="12">
-            <el-card :body-style="{ padding: '0px' }">
-              <el-row class="e1-row0">
-                <span>当前发电功率</span>
-              </el-row>
-              <el-row>
-
-                <el-col class="col1" :span="12"><Gauge2/></el-col>
-                <el-col class="col2" :span="12">
-                  <ul>
-                    <li class="li1">{{ "总容量：" + (c1.total||"~") +" kWh"}}</li>
-                    <li class="li1">{{ "当日累计发电量：" + (c1.total||"~") +" kWh" }}</li>
-                    <li class="li1">{{ "当月累计发电量：" + (c1.total||"~") +" 万kWh" }}</li>
-                    <li class="li1">{{ "累计总发电量：" + (c1.total||"~") +" 万kWh" }}</li>
-                  </ul>
-                </el-col>
-              </el-row>
-              <div style="padding: 14px;">
-                <div class="bottom clearfix">
-                  <time class="time">{{ currentDate }}</time>
-                  <el-button type="text" class="button">操作按钮</el-button>
-                </div>
-              </div>
-            </el-card>
-
-            <el-card :body-style="{ padding: '0px' }">
-              <el-row class="e1-row0">
-                <span>综合效率</span>
-              </el-row>
-              <el-row>
-                <el-col class="col1" :span="12"><Gauge2/></el-col>
-                <el-col class="col2" :span="12">
-                  <ul>
-                    <li class="li1">{{ "理论电量：" + (c2.the||"~") +" kWh"}}</li>
-                    <li class="li1">{{ "发电量：" + (c2.act||"~") +" kWh" }}</li>
-                    <li class="li1">{{ "理论实际差值" + ( (c2.the - c2.act)||"~") +" kWh" }}</li>
-                    <li class="li1">{{ "" }}</li>
-                  </ul>
-                </el-col>
-              </el-row>
-              <div style="padding: 14px;">
-                <div class="bottom clearfix">
-                  <time class="time">{{ currentDate }}</time>
-                  <el-button type="text" class="button">操作按钮</el-button>
-                </div>
-              </div>
-            </el-card>
-
-            <el-card :body-style="{ padding: '0px' }">
-              <el-row class="e1-row0">
-                <span>逆变器转换效率</span>
-              </el-row>
-              <el-row>
-                <el-col class="col1" :span="12"><Gauge2/></el-col>
-                <el-col class="col2" :span="12">
-                  <ul>
-                    <li class="li1">{{ "逆变器转换效率" + (c3.eff||"~") +"%" }}</li>
-                  </ul>
-                </el-col>
-              </el-row>
-              <div style="padding: 14px;">
-                <div class="bottom clearfix">
-                  <time class="time">{{ currentDate }}</time>
-                  <el-button type="text" class="button">操作按钮</el-button>
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-          <el-col class="col2" :span="12">
-
-
-          </el-col> -->
-          <!-- <el-col :span="24">
+        <div class="mainBody">
+          <div class="row0">
             <div>
-              环保数据
-            </div>
-            <div class="envData">
-              <ul>
-                <li v-for="tab in tabs">
-                  <div>{{ tab.text }}</div>
-                </li>
-              </ul>
-            </div>
-          </el-col> -->
-          <div class="fm">
-            <div class="fml">
-              <el-card :body-style="{ padding: '0px' }">
-                <el-row class="e1-row0">
+              <el-card class="card2"><Gauge2/></el-card>
+              <el-card class="card1">
+                <div class="card1m">
                   <span>当前发电功率</span>
-                </el-row>
-                <el-row>
+                </div>
+                <div class="card1m">
+                  <div class="row1">{{ "总容量：" + (c1.total||"~") +" kWh"}}</div>
+                  <div  class="row1">{{ "当日累计发电量：" + (c1.total||"~") +" kWh" }}</div>
+                  <div  class="row1">{{ "当月累计发电量：" + (c1.total||"~") +" 万kWh" }}</div>
+                  <div class="row1">{{ "累计总发电量：" + (c1.total||"~") +" 万kWh" }}</div>
+                </div>
+              </el-card>
+            </div>
 
-                  <el-col class="col1" :span="12"><Gauge2/></el-col>
-                  <el-col class="col2" :span="12">
-                    <ul>
-                      <li class="li1">{{ "总容量：" + (c1.total||"~") +" kWh"}}</li>
-                      <li class="li1">{{ "当日累计发电量：" + (c1.total||"~") +" kWh" }}</li>
-                      <li class="li1">{{ "当月累计发电量：" + (c1.total||"~") +" 万kWh" }}</li>
-                      <li class="li1">{{ "累计总发电量：" + (c1.total||"~") +" 万kWh" }}</li>
-                    </ul>
-                  </el-col>
-                </el-row>
-                <div style="padding: 14px;">
-                  <div class="bottom clearfix">
-                    <el-button type="text" class="button">操作按钮</el-button>
-                  </div>
-                </div>
-              </el-card>
-            </div>
-            <div class="fml">
-              <el-card :body-style="{ padding: '0px' }">
-                <el-row class="e1-row0">
+            <div>
+              <el-card class="card2"><Gauge2/></el-card>
+              <el-card class="card1">
+                <div class="card1m">
                   <span>综合效率</span>
-                </el-row>
-                <el-row>
-                  <el-col class="col1" :span="12"><Gauge2/></el-col>
-                  <el-col class="col2" :span="12">
-                    <ul>
-                      <li class="li1">{{ "理论电量：" + (c2.the||"~") +" kWh"}}</li>
-                      <li class="li1">{{ "发电量：" + (c2.act||"~") +" kWh" }}</li>
-                      <li class="li1">{{ "理论实际差值" + ( (c2.the - c2.act)||"~") +" kWh" }}</li>
-                      <li class="li1">{{ "" }}</li>
-                    </ul>
-                  </el-col>
-                </el-row>
-                <div style="padding: 14px;">
-                  <div class="bottom clearfix">
-                    <el-button type="text" class="button">操作按钮</el-button>
-                  </div>
+                </div>
+                <div class="card1m">
+                  <div class="row1">{{ "理论电量：" + (c2.the||"~") +" kWh"}}</div>
+                  <div  class="row1">{{ "发电量：" + (c2.act||"~") +" kWh" }}</div>
+                  <div  class="row1">{{ "理论实际差值" + ( (c2.the - c2.act)||"~") +" kWh" }}</div>
                 </div>
               </el-card>
             </div>
+
+            <div>
+              <el-card class="card2"><Gauge2/></el-card>
+              <el-card class="card1">
+                <div class="card1m">
+                  <span>逆变器转换效率</span>
+                </div>
+                <div class="card1m">
+                  <div class="row1">{{ "逆变器转换效率" + (c3.eff||"~") +"%" }}</div>
+                </div>
+              </el-card>
+            </div>
+          </div>
+          <div class="row0">
+            <el-card class="card3">
+              <div style="width:100%; height:100%">
+                <Line2 v-bind="settings.l1"></Line2>
+              </div>
+            </el-card>
+            <el-card class="card3"></el-card>
+          </div>
+        </div>
+          <!-- <div class="fm">
             <div class="fml">
               <el-card :body-style="{ padding: '0px' }">
                 <el-row class="e1-row0">
@@ -232,7 +152,6 @@
             </div>
           </el-card>
           </div>
-        
       </el-main>
   </el-container>
   </div>
@@ -603,6 +522,62 @@ export default {
 }
 </script>
 <style scoped>
+  .card3 {
+    height: 400px;
+    position: relative;
+    top: 80px;
+    left: -15%;
+    margin-bottom: 30px;
+  }
+
+
+  .card1m span {
+    padding: 5%;
+    float: right;
+    font-size: 25px;
+  }
+
+  .card1m {
+    text-align: left;
+    width: 100% large;
+    height: 85px;
+    border-bottom: 1px solid #dddddd;
+    font-size: 14px Small;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  }
+
+  .row1 {
+    color: #909399;
+  }
+
+  .card1 {
+    position: relative;
+    left: 100px;
+    width: 500px;
+    height: 200px;
+  }
+
+  .card2 {
+    width: 200px;
+    height: 120px;
+    position: relative;
+    top: 50px;
+    left: 120px;
+    z-index: 1;
+    background-color: rgb(246, 218, 0);
+  }
+
+  .row0 {
+    float: left;
+    width: 50%;
+    height: 100%;
+    background: transform;
+  }
+
+  .mainBody {
+    height: 1400px;
+  }
+
   .button {
     float: right;
   }
@@ -613,6 +588,7 @@ export default {
 
   .fml{
     height: 33%;
+    margin: 30px;
   }
 
   .fm {
@@ -665,10 +641,6 @@ export default {
     line-height:30px;
     font-size: 14px;
     color: gray;
-  }
-
-  .el-card {
-    background: #fff;
   }
 
   .First {
@@ -726,11 +698,11 @@ export default {
 
 .li1 {
   list-style-type: none;
-  margin-top: 20px;
-  margin-bottom: 20px;
   font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
   font-size: 14px;
-  text-align: left;
+  float: left;
+  position: relative;
+  top: 50px;
 }
 
 .text0{

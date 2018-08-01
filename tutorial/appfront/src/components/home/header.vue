@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="head-left">
-  		 <a>光伏</a>
+  		 <a>光伏智能运维系统</a>
     </div>
 
     <div class="head-right">
@@ -71,10 +71,6 @@
     font-weight: 400;
   }
 
-  .header {
-    background-color: rgb(84, 92, 100);
-  }
-
   .head-left{
     float:left;
     height: 100%;
@@ -104,6 +100,6 @@
   .header {
     height: 100%;
     text-align: center;
-    background-color: rgb(31, 40, 55);
+    background-color: rgb(84, 92, 100);
   }
 </style>
