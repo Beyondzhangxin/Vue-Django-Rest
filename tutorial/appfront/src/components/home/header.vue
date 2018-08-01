@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="head-left">
-  		 <a>光伏</a>
+  		 <a>光伏云运维</a>
     </div>
 
     <div class="head-right">
@@ -85,7 +85,7 @@
     color: #fff;
     position: absolute;
     top: 0px;
-    background: #3f5bdd;
+    background: rgb(31, 40, 55);
     width: 260px;
     padding: 15px;
 
@@ -95,6 +95,10 @@
     /* text-transform: uppercase; */
     line-height: 30px;
   }
+
+ .head-left a:hover{
+   color:#c0c0c0;
+ }
 
   .head-right{
     float:right;
