@@ -9,7 +9,7 @@
             </el-main>
         </el-container>
     </el-main>
-    <el-footer class="HomeFooter"><div>Powered by 清华四川能源互联网研究院</div></el-footer>
+    <!-- <el-footer class="HomeFooter"><div>Powered by 清华四川能源互联网研究院</div></el-footer> -->
   </el-container>
 </template>
 <script>
@@ -55,15 +55,13 @@
 }
 
 .el-header{
-  background-color: #B3C0D1;
-  color: #333;
   height: 20%;
   padding-left: 0px;
   padding-right: 0px;
 }
 
 .el-footer {
-  
+
   height: 20%;
   padding-top:20px;
 }

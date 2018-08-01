@@ -1,13 +1,16 @@
 <template>
   <div class="header">
     <div class="head-left">
-  		<span class="logo">光伏智能运维系统</span>
+  		 <a>光伏</a>
     </div>
 
     <div class="head-right">
     <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal"
-     @select="handleSelect" text-color="#fff" background-color="#12AFE319">
-      <el-menu-item index="0">首页</el-menu-item>
+     @select="handleSelect"
+     background-color="#545c64"
+     active-text-color="#ffd04b"
+     text-color="#fff">
+      <el-menu-item index="0"><i class="el-icon-location"></i>首页</el-menu-item>
       <el-submenu index="1">
         <template slot="title">运行监测</template>
           <el-menu-item index="1-0">电站监测</el-menu-item>
@@ -62,24 +65,35 @@
 </script>
 
 <style scoped>
-.header {
-  background-color: #12AFE3;
-  background: -webkit-linear-gradient(-60deg, #12AFE3, #0d7feb); /* Safari 5.1 - 6.0 */
-  background: -o-linear-gradient(-60deg, #12AFE3, #0d7feb); /* Opera 11.1 - 12.0 */
-  background: -moz-linear-gradient(-60deg, #12AFE3, #0d7feb); /* Firefox 3.6 - 15 */
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#12AFE3,endColorstr=#0d7feb,grandientType=1);/*IE 9.0以上*/
-  background: linear-gradient(-60deg, #12AFE3,  #0d7feb); /* 标准的语法（必须放在最后） */
-  color: #fff;
-}
+  .el-menu-demo {
+    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,
+    Microsoft YaHei,SimSun,sans-serif;
+    font-weight: 400;
+  }
+
+  .header {
+    background-color: rgb(84, 92, 100);
+  }
 
   .head-left{
     float:left;
     height: 100%;
-    text-align: center;
-    display: inline-block;
-    position: relative;
-    top: 9px;
-    left: 8px;
+    display: block;
+  }
+
+  .head-left a {
+    color: #fff;
+    position: absolute;
+    top: 0px;
+    background: #3f5bdd;
+    width: 260px;
+    padding: 15px;
+
+    text-align: left;
+    font-size: 24px;
+    font-weight: 700;
+    /* text-transform: uppercase; */
+    line-height: 30px;
   }
 
   .head-right{
@@ -90,11 +104,6 @@
   .header {
     height: 100%;
     text-align: center;
-  }
-
-  .logo {
-    font-size: 30px;
-    text-align: center;
-    font-style: Hiragino Sans GB;
+    background-color: rgb(31, 40, 55);
   }
 </style>
