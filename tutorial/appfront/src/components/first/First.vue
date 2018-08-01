@@ -107,7 +107,6 @@
                 </el-row>
                 <div style="padding: 14px;">
                   <div class="bottom clearfix">
-                    <time class="time">{{ currentDate }}</time>
                     <el-button type="text" class="button">操作按钮</el-button>
                   </div>
                 </div>
@@ -131,7 +130,6 @@
                 </el-row>
                 <div style="padding: 14px;">
                   <div class="bottom clearfix">
-                    <time class="time">{{ currentDate }}</time>
                     <el-button type="text" class="button">操作按钮</el-button>
                   </div>
                 </div>
@@ -152,7 +150,6 @@
                 </el-row>
                 <div style="padding: 14px;">
                   <div class="bottom clearfix">
-                    <time class="time">{{ currentDate }}</time>
                     <el-button type="text" class="button">操作按钮</el-button>
                   </div>
                 </div>
@@ -606,7 +603,11 @@ export default {
 }
 </script>
 <style scoped>
-  .fm2{
+  .button {
+    float: right;
+  }
+
+  .fm2 {
     height: 50%;
   }
 

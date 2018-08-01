@@ -43,7 +43,7 @@
                         </el-col>
                         <el-col :span="4">
                             <el-button id="button1">发电量</el-button>
-                        </el-col>                
+                        </el-col>
                 </el-col>
                 <el-col :span="12" id="span2">
                     <span id="text1">查询日期</span>
@@ -55,7 +55,7 @@
                             type="date"
                             placeholder="选择日期"
                             :picker-options="pickerOptions1">
-                        </el-date-picker>                         
+                        </el-date-picker>
                </el-col>
             </el-row>
         </el-main>
@@ -75,9 +75,9 @@
 
         <!-- main3 -->
         <el-main id="main3">
-            功率图表
-
-
+          <div class="m3">
+            <Line2 v-bind="l2"></Line2>
+          </div>
         </el-main>
         </div>
 </template>
@@ -85,12 +85,15 @@
 
 
 <script>
-
+import Line2 from '../echarts_elements/Line2'
 
 export default {
     name: 'analysis',
-    data() {
-      return {
+    components: {
+      Line2: Line2
+    },
+    data(){
+        return{
         pickerOptions1: {
           disabledDate(time) {
             return time.getTime() > Date.now();
@@ -116,11 +119,119 @@ export default {
             }
           }]
         },
+        l2:{
+          id: 'line1',
+          option:{
+            title: {
+              text: '功率图表(单位:kW)',
+            },
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'cross',
+              label: {
+                backgroundColor: '#283b56'
+              }
+            }
+          },
+          legend: {
+            data:['北京光伏电站', '上海光伏电站','理论发电量']
+          },
+          toolbox: {
+            show: true,
+            feature: {
+              dataView: {readOnly: false},
+              restore: {},
+              saveAsImage: {}
+            }
+          },
+          dataZoom: {
+            show: false,
+            start: 0,
+            end: 100
+          },
+          xAxis: [
+            {
+              type: 'category',
+              boundaryGap: true,
+              data: (function (){
+                var now = new Date();
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.unshift(now.toLocaleTimeString().replace(/^\D*/,''));
+                    now = new Date(now - 2000);
+                }
+                return res;
+              })()
+          },
+          {
+            type: 'category',
+            boundaryGap: true,
+            data: (function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(10 - len - 1);
+                }
+                return res;
+            })()
+          }
+        ],
+        yAxis: [
+          {
+            type: 'value',
+            scale: true,
+            name: 'kWh',
+            max: 500,
+            min: 0,
+            boundaryGap: [0.2, 0.2]
+          },
+          {
+            type: 'value',
+            scale: true,
+            name: '预购量',
+            max: 1200,
+            min: 0,
+            boundaryGap: [0.2, 0.2]
+          }
+        ],
+        series: [
+          {
+            name:'北京光伏电站',
+            type:'line',
+            xAxisIndex: 1,
+            yAxisIndex: 1,
+            data:(function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(Math.round(Math.random() * 1000));
+                }
+                return res;
+            })()
+          },
+          {
+            name:'上海光伏电站',
+            type:'line',
+            xAxisIndex: 1,
+            yAxisIndex: 1,
+            data:(function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(Math.round(Math.random() * 1000));
+                }
+                return res;
+            })()
+          },
+        ]
+      },
+      },
         value1: '',
         value2: '',
       };
     },
-
     mounted: function() {
       this.$store.commit('showIt');
     },
@@ -134,6 +245,11 @@ export default {
 
 
 <style scope>
+.m3 {
+  height: 550px;
+  background-color: #fff;
+}
+
 #header{
     background:white;
     height:100px;
