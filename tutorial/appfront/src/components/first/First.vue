@@ -707,5 +707,6 @@ export default {
 
 .text0{
   margin-top:5px;
+  
 }
 </style>
