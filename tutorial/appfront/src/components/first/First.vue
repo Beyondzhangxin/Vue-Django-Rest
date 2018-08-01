@@ -164,6 +164,75 @@
               <Line2 v-bind="settings.l2"></Line2>
             </div>
           </div>
+          <!-- 环保数据 -->
+          <div class="box">
+          <el-card class="box-card1">
+            <div slot="header" class="clearfix">
+              <span>环保数据</span>
+              <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+            </div>
+            <div class="data">
+              <el-row :gutter="20">
+                <el-col :span="4"><div class="grid-content">
+                  <el-row>
+                    <el-col :span="12"><div class="grid-content">
+                      <img src="../../assets/coal.png" id="image">
+                    </div></el-col>
+                    <el-col :span="12"><div class="grid-content">
+                    <div class="text0">累计节约标准煤</div>
+                    </div></el-col>
+                  </el-row>
+                <div>{{msg1}}吨</div>
+                </div></el-col>
+                <el-col :span="4"><div class="grid-content">
+                  <el-row>
+                    <el-col :span="12"><div class="grid-content">
+                      <img src="../../assets/co2.png" id="image">
+                    </div></el-col>
+                    <el-col :span="12"><div class="grid-content">
+                    <div class="text0">累计减排</div>
+                    </div></el-col>
+                  </el-row>
+                <div>{{msg2}}吨</div>
+                </div></el-col>
+                <el-col :span="4"><div class="grid-content">
+                  <el-row>
+                    <el-col :span="12"><div class="grid-content">
+                      <img src="../../assets/so2.png" id="image">
+                    </div></el-col>
+                    <el-col :span="12"><div class="grid-content">
+                    <div class="text0">累计减排</div>
+                    </div></el-col>
+                  </el-row>
+                <div>{{msg3}}吨</div>
+                </div></el-col>
+                <el-col :span="4"><div class="grid-content">
+                  <el-row>
+                    <el-col :span="12"><div class="grid-content">
+                      <img src="../../assets/no2.png" id="image">
+                    </div></el-col>
+                    <el-col :span="12"><div class="grid-content">
+                    <div class="text0">累计减排</div>
+                    </div></el-col>
+                  </el-row>
+                <div>{{msg4}}kg</div>
+                </div></el-col>
+                <el-col :span="4"><div class="grid-content">
+                   <el-row>
+                    <el-col :span="12"><div class="grid-content">
+                      <img src="../../assets/tree.png" id="image">
+                    </div></el-col>
+                    <el-col :span="12"><div class="grid-content">
+                    <div class="text0">累计减排</div>
+                    </div></el-col>
+                  </el-row>
+                <div>{{msg5}}棵</div>
+                </div></el-col>
+              </el-row>
+            </div>
+          </el-card>
+          </div>
+        
       </el-main>
   </el-container>
   </div>
@@ -184,6 +253,13 @@ export default {
   data () {
     return {
       //配置最下面的list
+
+      msg1:146.23,
+      msg2:393.09,
+      msg3:10.86,
+      msg4:5429.41,
+      msg5:988.97,
+
       c1: {
         total: 1,
         day: 1,
@@ -655,5 +731,9 @@ export default {
   font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
   font-size: 14px;
   text-align: left;
+}
+
+.text0{
+  margin-top:5px;
 }
 </style>
