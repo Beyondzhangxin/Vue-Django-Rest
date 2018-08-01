@@ -175,9 +175,6 @@ export default {
           return true;
         }
         for (var j = 0; j < this.value10.length; j++) {
-          console.log(card.id );
-          console.log(this.value10[j]);
-
           if ((this.value10[j]=='ALL')||(card.id == this.value10[j])) {
             return true;
           }

@@ -5,7 +5,7 @@
       <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
     </div>
     <div class="text item">
-      <img class="image1" ref="image">
+      <img class="image1" ref="image" src="..\..\assets\SHGF.jpg">
       <el-row>
         <el-col :span="12"><div class="grid-content1">
           <div class="tem1">总装机容量：{{msg1}}kwp</div>
