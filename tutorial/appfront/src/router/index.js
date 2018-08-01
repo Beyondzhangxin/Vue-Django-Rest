@@ -9,7 +9,6 @@ import Power from '@/components/power/Power'
 import Device from '@/components/device/Device'
 import Analysis from '@/components/analysis/Analysis'
 import Hello from '@/components/HelloWorld'
-import Demo from '@/pages/demo'
 Vue.use(Router)
 
 /*
@@ -30,7 +29,7 @@ export default new Router({
     {
       path: '/Gauge',
       name: 'Gauge',
-      component: Demo,
+      component: Gauge,
     },
     {
       path: '/Home',
