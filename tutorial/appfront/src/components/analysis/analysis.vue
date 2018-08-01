@@ -245,7 +245,7 @@ export default {
 </script>
 
 
-<style scope>
+<style scoped>
 .m3 {
   height: 550px;
   background-color: #fff;
