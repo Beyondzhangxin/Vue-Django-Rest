@@ -141,7 +141,7 @@ export default {
     width: 260px;
     overflow-x: hidden;
     overflow-y: hidden;
-      background-color: #fff;
+    background-color: #fff;
     box-sizing: content-box;
 
   }
@@ -157,7 +157,7 @@ export default {
     top: 20px;
     color: #fff;
     height: 60px;
-    margin-bottom: 2px;
+    margin-bottom: 8px;
   }
 
 .b{
