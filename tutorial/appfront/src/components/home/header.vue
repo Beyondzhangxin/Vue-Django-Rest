@@ -96,7 +96,7 @@
   }
 
  .head-left a:hover{
-   color:#c0c0c0;
+   color:#ffd04b;
  }
 
   .head-right{
