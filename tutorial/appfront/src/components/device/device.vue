@@ -112,7 +112,7 @@
             </div>
             </el-main>
 
-        <el-container>
+        <el-main id="foo">
             <div class="foot">
                 <div class="rowm">
                 <!--通用list-->
@@ -130,7 +130,7 @@
                 </div>
                 </div>
             </div>
-        </el-container>
+        </el-main>
     </div>
 </template>
 
@@ -198,10 +198,15 @@ export default {
 .device{
     width:1500px;
     margin-top:30px;
+    margin-left:65px;
 }
 
 .el-main{
   overflow-x: hidden;
+}
+
+#foo{
+    width:100%;
 }
 
 .rowm{
