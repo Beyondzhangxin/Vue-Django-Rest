@@ -268,6 +268,7 @@ export default {
     margin-top:20px;
 }
 
+
 #text1{
     margin-top:18px;
     margin-left:-80px;

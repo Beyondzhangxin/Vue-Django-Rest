@@ -26,7 +26,10 @@ export default new Router({
     {
       path: '/',
       redirect: '/Home',
-
+    },
+    {
+        path:'/index',
+        component: Index,
     },
     {
       path: '/Gauge',
@@ -55,10 +58,6 @@ export default new Router({
         {
           path:'analysis',
           component: Analysis,
-        },
-        {
-          path:'index',
-          component: Index,
         }
       ]
     },
