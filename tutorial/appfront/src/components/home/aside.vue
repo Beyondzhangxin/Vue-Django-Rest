@@ -157,7 +157,7 @@ export default {
     top: 20px;
     color: #fff;
     height: 60px;
-    margin-bottom: 2px;
+    margin-bottom: 8px;
   }
 
 .b{

@@ -2,8 +2,7 @@
   <div class="detection">
     <el-container>
       <el-container>
-        <deHeader/>
-          <el-main>
+          <el-main class="detectMain">
            <el-row>
         <el-col><div class="grid-content bg-purple-dark">
           <el-row>
@@ -106,6 +105,10 @@
 
 <style scoped>
   /* 导入iconfont的css*/
+  .detectMain {
+    margin-top: 147px;
+  }
+
   .el-header {
     height: 100px;
   }
