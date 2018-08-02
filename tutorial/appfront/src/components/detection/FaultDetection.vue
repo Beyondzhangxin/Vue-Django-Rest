@@ -198,6 +198,7 @@
 
 .rowmb{
   height: 450px;
+  width: 1560px;
   background: #fff;
   float: left;
   overflow: hidden;
@@ -207,7 +208,7 @@
 }
 
 .rowmb .el-pagination {
-  margin-left: 400px;
+  margin-left: 35%;
 }
 
 .bg-purple{
