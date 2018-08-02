@@ -1,6 +1,5 @@
 <template>
     <div class="device">
-            <el-main>
             <div class="top">
                 <el-row>
                     <el-col :span="12"><div class="grid-content">
@@ -100,21 +99,16 @@
                     </div></el-col>
                 </el-row>
             </div>
-            </el-main>
 
-            <el-main>
-            <div class="mid">
-                <div id="content">
-                    <el-button round>逆变器</el-button>
-                    <el-button round>汇流箱</el-button>
-                    <el-button round>采集设备</el-button>
-                </div>
-            </div>
-            </el-main>
-
-        <el-main id="foo">
+          <div class="mid">
+              <div id="content">
+                  <el-button round>逆变器</el-button>
+                  <el-button round>汇流箱</el-button>
+                  <el-button round>采集设备</el-button>
+              </div>
+          </div>
             <div class="foot">
-                <div class="rowm">
+
                 <!--通用list-->
                 <!--请求如下 http://127.0.0.1:8000/pv/get/detection/2018/1/18/ -->
                 <div class="rowmb">
@@ -128,9 +122,7 @@
                     @current-change="handleCurrentChange">
                 </el-pagination>
                 </div>
-                </div>
             </div>
-        </el-main>
     </div>
 </template>
 
@@ -221,10 +213,10 @@ export default {
   position: relative;
   left: 5px;
   overflow: hidden;
-  box-shadow: 0px 0px 10px 3px #9eabad;
+
 }
 
-.top{
+.top {
     margin-bottom: 20px;
     background: #ffffff;
     height:200px;
@@ -233,13 +225,20 @@ export default {
     left: 5px;
 }
 
-.mid{
+.mid {
     margin-bottom:20px;
     background: #ffffff;
     height:80px;
     box-shadow: 0px 0px 10px 3px #9eabad;
     position: relative;
     left: 5px;
+}
+
+.foot {
+  box-shadow: 0px 0px 10px 3px #9eabad;
+  height: 450px;
+  position: relative;
+  left: 5px;
 }
 
 #content{
@@ -249,6 +248,7 @@ export default {
 
 .box-card{
     height:200px;
+    padding: 20px;
 }
 
 .clearfix:after{

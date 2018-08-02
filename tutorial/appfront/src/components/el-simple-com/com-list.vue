@@ -7,7 +7,7 @@
       v-for="{ prop, label } in tabConfigs"
       :key="prop"
       :prop="prop"
-      :width="204"
+      :width="263"
       :label="label">
       </el-table-column>
       <el-pagination
