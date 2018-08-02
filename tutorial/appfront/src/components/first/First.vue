@@ -8,14 +8,14 @@
               <el-col :span="8"><div>
                 <el-card class="card2"><Gauge2/></el-card>
                 <el-card class="card1">
-                  <div class="card1m">
+                  <div class="card1m c1m">
                     <span>当前发电功率</span>
                   </div>
                   <div class="card1m">
-                    <div class="row1">{{ "总容量：" + (c1.total||"~") +" kWh"}}</div>
-                    <div  class="row1">{{ "当日累计发电量：" + (c1.total||"~") +" kWh" }}</div>
-                    <div  class="row1">{{ "当月累计发电量：" + (c1.total||"~") +" 万kWh" }}</div>
-                    <div class="row1">{{ "累计总发电量：" + (c1.total||"~") +" 万kWh" }}</div>
+                    <div class="row1">总容量：<strong>{{(c1.total||"~")}}</strong> kWh</div>
+                    <div  class="row1">当日累计发电量：<strong>{{(c1.total||"~")}}</strong>  kWh</div>
+                    <div  class="row1">当月累计发电量：<strong>{{(c1.total||"~")}}</strong> 万kWh</div>
+                    <div class="row1">累计总发电量：<strong>{{(c1.total||"~")}}</strong> 万kWh</div>
                   </div>
                 </el-card>
               </div></el-col>
@@ -23,13 +23,13 @@
                 <div>
                   <el-card class="card2"><Gauge2/></el-card>
                   <el-card class="card1">
-                    <div class="card1m">
+                    <div class="card1m c1m">
                       <span>综合效率</span>
                     </div>
                     <div class="card1m">
-                      <div class="row1">{{ "理论电量：" + (c2.the||"~") +" kWh"}}</div>
-                      <div  class="row1">{{ "发电量：" + (c2.act||"~") +" kWh" }}</div>
-                      <div  class="row1">{{ "理论实际差值" + ( (c2.the - c2.act)||"~") +" kWh" }}</div>
+                      <div class="row1">理论电量：{{(c2.the||"~")}} kWh</div>
+                      <div  class="row1">发电量：{{(c2.act||"~")}} kWh</div>
+                      <div  class="row1">理论实际差值：{{( (c2.the - c2.act)||"~")}} " kWh"</div>
                     </div>
                   </el-card>
                 </div>
@@ -38,7 +38,7 @@
                 <div>
                   <el-card class="card2"><Gauge2/></el-card>
                   <el-card class="card1">
-                    <div class="card1m">
+                    <div class="card1m c1m">
                       <span>逆变器转换效率</span>
                     </div>
                     <div class="card1m">
@@ -538,6 +538,11 @@ export default {
 }
 </script>
 <style scoped>
+
+  .c1m {
+    border-bottom: 1px solid #eeeeee;
+  }
+
   .card3Li {
     height: 400px;
     width: 100%;
@@ -563,22 +568,29 @@ export default {
     text-align: left;
     width: 100% large;
     height: 85px;
-    border-bottom: 1px solid #dddddd;
-    font-size: 14px Small;
+    font-size: 14px;
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   }
 
   .row1 {
     color: #909399;
-    margin-bottom: 2px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eeeeee;
+  }
 
+  .row1 strong {
+    font-size: 15px;
+    font-weight: 300;
+    color: #974e45;
   }
 
   .card1 {
     position: relative;
     left: 100px;
     width: 500px;
-    height: 200px;
+    height: 300px;
   }
 
   .card2 {
