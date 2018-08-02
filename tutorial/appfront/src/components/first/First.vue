@@ -582,10 +582,10 @@ export default {
   }
 
   .card2 {
-    width: 200px;
+    width: 120px;
     height: 120px;
     position: relative;
-    top: 80px;
+    top: 100px;
     left: 120px;
     z-index: 1;
     background-color: #974e45;
