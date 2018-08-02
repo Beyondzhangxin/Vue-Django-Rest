@@ -206,6 +206,9 @@ export default {
     height: 100%;
     width: 1500px;
     box-shadow: 1px 1px 10px 5px #c0c0c0;
+    margin-top:30px;
+    margin-left:25px;
+    margin-bottom:30px;
   }
 
   .el-main {
