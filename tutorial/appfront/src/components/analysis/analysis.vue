@@ -271,6 +271,10 @@ export default {
    display: block;
 }
 
+#span0{
+    padding-top:5px;padding-left:2px;
+}
+
 #span1{
     background:white;
 }

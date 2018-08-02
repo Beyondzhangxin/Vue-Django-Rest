@@ -1,21 +1,26 @@
 <template>
+    
     <div class="index" :style="{backgroundImage:'url('+img+')'}">
+        <div id="title">智能光伏云运维
+            <!-- <img src="../../assets/logo.png" id="image">         -->
+        </div>
 		<div class="login">
       	<!-- <h2>登录</h2> -->
         <el-form>
-            <el-form-item label="user">
+            <el-form-item label="用户">
                 <el-input type="te、xt" id="user" v-model="formName.user" @blur="inputBlur('user',formName.user)"></el-input>
                 <p>{{formName.userError}}</p>
             </el-form-item>
-            <el-form-item label="password">
+            <el-form-item label="密码">
                 <el-input type="password" id="password" v-model="formName.password" @blur="inputBlur('password',formName.password)"></el-input>
                 <p>{{formName.passwordError}}</p>
             </el-form-item>
-            <el-button type="primary" @click="submitForm('formName')" v-bind:disabled="formName.beDisabled">登录</el-button>
-            <el-button @click="resetForm">重置</el-button>
+            <el-button type="primary" @click="submitForm('formName')" v-bind:disabled="formName.beDisabled" id="button1">登录</el-button>
+            <el-button @click="resetForm" id="button2">重置</el-button>
         </el-form>   
 		</div>     
 	</div>
+
 </template>
 
 
@@ -129,5 +134,21 @@ import Img from '@/./assets/back7.jpg'
         color: red;
         text-align: left;
 }
+
+#title{
+    color:black;
+    font-size: 25px;
+    padding-top:200px;
+}
+
+#button1{
+    margin-left:40px;
+    float:left;
+}
+
+#button2{
+    margin-right: 40px;
+    float:right;
+}   
 
 </style>
