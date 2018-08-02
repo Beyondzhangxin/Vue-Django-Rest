@@ -7,7 +7,7 @@
       v-for="{ prop, label } in tabConfigs"
       :key="prop"
       :prop="prop"
-      :width="260"
+      :width="187"
       :label="label">
       </el-table-column>
       <el-pagination
@@ -32,16 +32,8 @@
 <script>
   export default {
     name: 'ComList',
-    props: ['data'],
+    props: ['data', 'tabConfigs'],
     data() {
-      this.tabConfigs = [
-        {prop: 'dev_name', label: '设备名称'},
-        {prop: 'dev_avg_p', label: '当前功率（w）'},
-        {prop: 'dev_day_w', label: '今日发电量（kw*h）'},
-        {prop: 'dev_effect_time', label: '当日的等效小时（h）'},
-        {prop: 'dev_status', label: '采集器的状态'},
-        {prop: 'dev_get_time', label: '数据采集的时间'},
-      ]
       return {
         tableData: []
         // pageSize: 2
@@ -74,18 +66,7 @@
       //设置tableData对象
       //toFixed四舍五入
       setTableData(result){
-        var effect_time = result.time_sum/60
-        var avg_p = result.p_avg
-        var day_w = result.p_avg * result.time_sum/60/100
-        var element = {
-          dev_name: result.cityid + ' ' + result.pcbid,
-          dev_avg_p: avg_p.toFixed(2),
-          dev_day_w: day_w.toFixed(4),
-          dev_effect_time: effect_time.toFixed(2),
-          dev_status: '未知',
-          dev_get_time: result.time_min+' 到 '+result.time_max
-        }
-        this.tableData.push(element)
+        this.tableData.push(result)
       },
     }
   }

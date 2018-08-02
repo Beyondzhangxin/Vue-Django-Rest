@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="699a223f-2a95-44f1-b706-a9f3ca80d94a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/detection/FaultDetection.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/detection/FaultDetection.vue" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/el-simple-com/com-list.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/el-simple-com/com-list.vue" />
+      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/device/device.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/device/device.vue" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,14 +17,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tutorial/pv/views.py">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tutorial/appfront/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -63,6 +60,8 @@
       <find>use</find>
       <find>FaultDetection</find>
       <find>setInterval</find>
+      <find>plugins</find>
+      <find>webpack</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -118,7 +117,6 @@
         <option value="$PROJECT_DIR$/tutorial/appfront/src/components/snippet" />
         <option value="$PROJECT_DIR$/tutorial/appfront/README.md" />
         <option value="$PROJECT_DIR$/tutorial/appfront/dist/index.html" />
-        <option value="$PROJECT_DIR$/tutorial/appfront/src/components/HelloWorld.vue" />
         <option value="$PROJECT_DIR$/tutorial/appfront/src/components/t1.vue" />
         <option value="$PROJECT_DIR$/tutorial/appfront/src/components/el-simple-com/SimpleList2.vue" />
         <option value="$PROJECT_DIR$/tutorial/appfront/src/components/snippet.vue" />
@@ -146,7 +144,6 @@
         <option value="$PROJECT_DIR$/tutorial/pv/models.py" />
         <option value="$PROJECT_DIR$/tutorial/appfront/config/index.js" />
         <option value="$PROJECT_DIR$/tutorial/appfront/src/components/HomeContainer.vue" />
-        <option value="$PROJECT_DIR$/tutorial/appfront/src/router/index.js" />
         <option value="$PROJECT_DIR$/tutorial/appfront/src/components/First.vue" />
         <option value="$PROJECT_DIR$/tutorial/appfront/src/components/detection/Aside.vue" />
         <option value="$PROJECT_DIR$/tutorial/appfront/src/components/first/First.vue" />
@@ -154,17 +151,21 @@
         <option value="$PROJECT_DIR$/tutorial/appfront/src/pages/HomeContainer.vue" />
         <option value="$PROJECT_DIR$/tutorial/tutorial/settings.py" />
         <option value="$PROJECT_DIR$/tutorial/appfront/src/components/power/123" />
-        <option value="$PROJECT_DIR$/tutorial/appfront/src/main.js" />
-        <option value="$PROJECT_DIR$/tutorial/appfront/src/vuex/store.js" />
         <option value="$PROJECT_DIR$/tutorial/pv/views.py" />
+        <option value="$PROJECT_DIR$/tutorial/appfront/src/components/power/Power.vue" />
+        <option value="$PROJECT_DIR$/tutorial/appfront/src/vuex/store.js" />
+        <option value="$PROJECT_DIR$/tutorial/appfront/build/webpack.base.conf.js" />
+        <option value="$PROJECT_DIR$/tutorial/appfront/src/main.js" />
+        <option value="$PROJECT_DIR$/tutorial/appfront/src/router/index.js" />
+        <option value="$PROJECT_DIR$/tutorial/appfront/src/components/HelloWorld.vue" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="89" />
-    <option name="y" value="136" />
-    <option name="width" value="1257" />
-    <option name="height" value="806" />
+    <option name="x" value="106" />
+    <option name="y" value="195" />
+    <option name="width" value="1143" />
+    <option name="height" value="830" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -184,6 +185,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -200,14 +203,18 @@
               <item name="DjangoDemo2" type="b2602c69:ProjectViewProjectNode" />
               <item name="DjangoDemo2" type="462c0819:PsiDirectoryNode" />
               <item name="tutorial" type="462c0819:PsiDirectoryNode" />
+              <item name="appfront" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DjangoDemo2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DjangoDemo2" type="462c0819:PsiDirectoryNode" />
+              <item name="tutorial" type="462c0819:PsiDirectoryNode" />
               <item name="pv" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -215,6 +222,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/venv" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="ChangesBrowser.SHOW_FLATTEN" value="false" />
+    <property name="SearchEverywhereHistoryKey" value="webpack.base&#9;FILE&#9;file://D:/pycharm/DjangoDemo2/tutorial/appfront/build/webpack.base.conf.js" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -226,17 +234,17 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\pycharm\DjangoDemo2\tutorial\appfront\src\components\detection" />
+      <recent name="D:\pycharm\DjangoDemo2\tutorial\appfront\src\components\iconfont" />
+      <recent name="D:\pycharm\DjangoDemo2" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\pycharm\DjangoDemo2" />
       <recent name="D:\pycharm\DjangoDemo2\venv" />
       <recent name="D:\pycharm\DjangoDemo2\tutorial\appfront\src\components\el-simple-com" />
       <recent name="D:\pycharm\DjangoDemo2\tutorial\pv" />
       <recent name="D:\pycharm\DjangoDemo2\tutorial\celery_message" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\pycharm\DjangoDemo2\tutorial\appfront\src\components\detection" />
-      <recent name="D:\pycharm\DjangoDemo2\tutorial\appfront\src\components\iconfont" />
-      <recent name="D:\pycharm\DjangoDemo2" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -333,244 +341,6 @@
       <option name="presentableId" value="Default" />
       <updated>1528334574906</updated>
     </task>
-    <task id="LOCAL-00001" summary="vue-django-rest">
-      <created>1528770685899</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1528770685899</updated>
-    </task>
-    <task id="LOCAL-00002" summary="vue-django-rest">
-      <created>1529889735778</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1529889735778</updated>
-    </task>
-    <task id="LOCAL-00003" summary="pv update">
-      <created>1531814779741</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1531814779741</updated>
-    </task>
-    <task id="LOCAL-00004" summary="pv update">
-      <created>1531876652734</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1531876652734</updated>
-    </task>
-    <task id="LOCAL-00005" summary="appfront update">
-      <created>1531895649623</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1531895649623</updated>
-    </task>
-    <task id="LOCAL-00006" summary="appfront update">
-      <created>1531895678415</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1531895678415</updated>
-    </task>
-    <task id="LOCAL-00007" summary="venv update">
-      <created>1531903574473</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1531903574473</updated>
-    </task>
-    <task id="LOCAL-00008" summary="venv update">
-      <created>1531905288536</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1531905288536</updated>
-    </task>
-    <task id="LOCAL-00009" summary="venv update">
-      <created>1531907014340</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1531907014340</updated>
-    </task>
-    <task id="LOCAL-00010" summary="requirements.txt">
-      <created>1531908337834</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1531908337834</updated>
-    </task>
-    <task id="LOCAL-00011" summary="requirements.txt">
-      <created>1531908642426</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1531908642426</updated>
-    </task>
-    <task id="LOCAL-00012" summary="npm install update">
-      <created>1531920526906</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1531920526906</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Fault Detection">
-      <created>1532051310289</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1532051310290</updated>
-    </task>
-    <task id="LOCAL-00014" summary="clear version">
-      <created>1532053856204</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1532053856204</updated>
-    </task>
-    <task id="LOCAL-00015" summary="clear version 1">
-      <created>1532249297249</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1532249297249</updated>
-    </task>
-    <task id="LOCAL-00016" summary="clear version 2">
-      <created>1532254629630</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1532254629630</updated>
-    </task>
-    <task id="LOCAL-00017" summary="clear version 3">
-      <created>1532256222841</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1532256222841</updated>
-    </task>
-    <task id="LOCAL-00018" summary="clear version 4">
-      <created>1532338655025</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1532338655025</updated>
-    </task>
-    <task id="LOCAL-00019" summary="clear version 5">
-      <created>1532413168268</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1532413168268</updated>
-    </task>
-    <task id="LOCAL-00020" summary="clear version 5">
-      <created>1532415566803</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1532415566803</updated>
-    </task>
-    <task id="LOCAL-00021" summary="clear version 6 导航栏修改">
-      <created>1532427067239</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1532427067239</updated>
-    </task>
-    <task id="LOCAL-00022" summary="clear version 7 power修改">
-      <created>1532490555476</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1532490555476</updated>
-    </task>
-    <task id="LOCAL-00023" summary="clear version 7 power修改">
-      <created>1532567107573</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1532567107573</updated>
-    </task>
-    <task id="LOCAL-00024" summary="clear version 8 aside修改">
-      <created>1532575023315</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1532575023316</updated>
-    </task>
-    <task id="LOCAL-00025" summary="clear version 9 成熟的页面修改">
-      <created>1532590799396</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1532590799397</updated>
-    </task>
-    <task id="LOCAL-00026" summary="clear version 9 成熟的页面修改">
-      <created>1532591442316</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1532591442316</updated>
-    </task>
-    <task id="LOCAL-00027" summary="clear version 9 成熟的页面修改">
-      <created>1532592108513</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1532592108513</updated>
-    </task>
-    <task id="LOCAL-00028" summary="clear version 9 成熟的页面修改">
-      <created>1532592568712</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1532592568712</updated>
-    </task>
-    <task id="LOCAL-00029" summary="clear version 9 成熟的页面修改">
-      <created>1532593890849</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1532593890849</updated>
-    </task>
-    <task id="LOCAL-00030" summary="clear version 9 成熟的页面修改">
-      <created>1532598645858</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1532598645858</updated>
-    </task>
-    <task id="LOCAL-00031" summary="clear version 9 成熟的页面修改">
-      <created>1532654756840</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1532654756840</updated>
-    </task>
-    <task id="LOCAL-00032" summary="clear version 9 成熟的页面修改">
-      <created>1532658813853</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1532658813853</updated>
-    </task>
-    <task id="LOCAL-00033" summary="aside">
-      <created>1532659534820</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1532659534820</updated>
-    </task>
-    <task id="LOCAL-00034" summary="aside 03">
-      <created>1532664932017</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1532664932017</updated>
-    </task>
     <task id="LOCAL-00035" summary="aside 03 update">
       <created>1532667802173</created>
       <option name="number" value="00035" />
@@ -634,10 +404,290 @@
       <option name="project" value="LOCAL" />
       <updated>1532685650257</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="aside.vue 10">
+      <created>1532687077296</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1532687077296</updated>
+    </task>
+    <task id="LOCAL-00045" summary="aside.vue 11">
+      <created>1532762569524</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1532762569524</updated>
+    </task>
+    <task id="LOCAL-00046" summary="aside.vue 12">
+      <created>1532765446064</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1532765446064</updated>
+    </task>
+    <task id="LOCAL-00047" summary="aside.vue 12">
+      <created>1532766490002</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1532766490002</updated>
+    </task>
+    <task id="LOCAL-00048" summary="aside.vue 13">
+      <created>1532831969207</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1532831969207</updated>
+    </task>
+    <task id="LOCAL-00049" summary="header change 01">
+      <created>1532834763237</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1532834763237</updated>
+    </task>
+    <task id="LOCAL-00050" summary="header change 01">
+      <created>1532836920203</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1532836920203</updated>
+    </task>
+    <task id="LOCAL-00051" summary="first change01">
+      <created>1532916371706</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1532916371707</updated>
+    </task>
+    <task id="LOCAL-00052" summary="first change02">
+      <created>1532926019978</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1532926019978</updated>
+    </task>
+    <task id="LOCAL-00053" summary="first change03">
+      <created>1532929791530</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1532929791530</updated>
+    </task>
+    <task id="LOCAL-00054" summary="device change">
+      <created>1532930552264</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1532930552264</updated>
+    </task>
+    <task id="LOCAL-00055" summary="header change 01">
+      <created>1532932658538</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1532932658538</updated>
+    </task>
+    <task id="LOCAL-00056" summary="header change 02">
+      <created>1532933276833</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1532933276833</updated>
+    </task>
+    <task id="LOCAL-00057" summary="power change">
+      <created>1532939414118</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1532939414118</updated>
+    </task>
+    <task id="LOCAL-00058" summary="power change">
+      <created>1532941180063</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1532941180063</updated>
+    </task>
+    <task id="LOCAL-00059" summary="power change">
+      <created>1532941606808</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1532941606808</updated>
+    </task>
+    <task id="LOCAL-00060" summary="router change">
+      <created>1532942196383</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1532942196383</updated>
+    </task>
+    <task id="LOCAL-00061" summary="power filter">
+      <created>1533001995699</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1533001995700</updated>
+    </task>
+    <task id="LOCAL-00062" summary="power change">
+      <created>1533016511778</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1533016511780</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Merge branch 'clear' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear&#10;&#10;# Conflicts:&#10;#&#9;tutorial/appfront/src/components/power/Power.vue">
+      <created>1533017963682</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1533017963682</updated>
+    </task>
+    <task id="LOCAL-00064" summary="first.vue update">
+      <created>1533020856970</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1533020856970</updated>
+    </task>
+    <task id="LOCAL-00065" summary="first.vue update">
+      <created>1533023126180</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1533023126180</updated>
+    </task>
+    <task id="LOCAL-00066" summary="list update">
+      <created>1533025579373</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1533025579374</updated>
+    </task>
+    <task id="LOCAL-00067" summary="list update">
+      <created>1533025697585</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1533025697585</updated>
+    </task>
+    <task id="LOCAL-00068" summary="jquery and bootstrap">
+      <created>1533090272315</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1533090272316</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Merge branch 'clear' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear&#10;&#10;# Conflicts:&#10;#&#9;tutorial/appfront/src/components/analysis/analysis.vue">
+      <created>1533091657297</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1533091657297</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Merge branch 'clear' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear&#10;&#10;# Conflicts:&#10;#&#9;tutorial/appfront/src/components/analysis/analysis.vue">
+      <created>1533095364672</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1533095364672</updated>
+    </task>
+    <task id="LOCAL-00071" summary="·">
+      <created>1533096150819</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1533096150819</updated>
+    </task>
+    <task id="LOCAL-00072" summary="index.js">
+      <created>1533096478799</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1533096478799</updated>
+    </task>
+    <task id="LOCAL-00073" summary="style">
+      <created>1533110501392</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1533110501393</updated>
+    </task>
+    <task id="LOCAL-00074" summary="first change">
+      <created>1533117582256</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1533117582256</updated>
+    </task>
+    <task id="LOCAL-00075" summary="first change">
+      <created>1533171643535</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1533171643536</updated>
+    </task>
+    <task id="LOCAL-00076" summary="first change">
+      <created>1533173800343</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1533173800343</updated>
+    </task>
+    <task id="LOCAL-00077" summary="first change">
+      <created>1533176005046</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1533176005047</updated>
+    </task>
+    <task id="LOCAL-00078" summary="first change">
+      <created>1533177083467</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1533177083467</updated>
+    </task>
+    <task id="LOCAL-00079" summary="first change">
+      <created>1533178039432</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1533178039432</updated>
+    </task>
+    <task id="LOCAL-00080" summary="first change">
+      <created>1533178842215</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1533178842215</updated>
+    </task>
+    <task id="LOCAL-00081" summary="first change">
+      <created>1533179638308</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1533179638308</updated>
+    </task>
+    <task id="LOCAL-00082" summary="first change">
+      <created>1533179944494</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1533179944495</updated>
+    </task>
+    <task id="LOCAL-00083" summary="first change">
+      <created>1533180097051</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1533180097051</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
-  <component name="TodoView">
+  <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -647,51 +697,40 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="89" y="136" width="1257" height="806" extended-state="0" />
-    <editor active="true" />
+    <frame x="106" y="195" width="1143" height="830" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3199033" sideWeight="0.49337748" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40028903" sideWeight="0.3682514" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40028903" sideWeight="0.6317486" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.245142" sideWeight="0.49466777" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30950227" sideWeight="0.49337748" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5007215" sideWeight="0.58642536" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5007215" sideWeight="0.41357467" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24565217" sideWeight="0.49578503" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33128294" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24946237" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1985138" sideWeight="0.6625" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46897545" sideWeight="0.47511312" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3304904" sideWeight="0.5066225" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.265506" sideWeight="0.35563752" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.265506" sideWeight="0.6443625" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24591948" sideWeight="0.49789253" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33128294" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3569097" sideWeight="0.68229717" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3256768" sideWeight="0.49337748" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24946237" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3304904" sideWeight="0.5066225" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24700762" sideWeight="0.17228661" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35364527" sideWeight="0.5231823" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33128294" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33333334" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3257468" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31664854" sideWeight="0.8277134" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21022129" sideWeight="0.49337748" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5007215" sideWeight="0.37466064" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24565217" sideWeight="0.49578503" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35364527" sideWeight="0.4768177" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18018967" sideWeight="0.49337748" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24946237" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -733,32 +772,32 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="appfront update" />
-    <MESSAGE value="venv update" />
-    <MESSAGE value="requirements.txt" />
-    <MESSAGE value="npm install update" />
-    <MESSAGE value="Fault Detection" />
-    <MESSAGE value="clear version" />
-    <MESSAGE value="clear version 1" />
-    <MESSAGE value="clear version 2" />
-    <MESSAGE value="clear version 3" />
-    <MESSAGE value="clear version 4" />
-    <MESSAGE value="clear version 5" />
-    <MESSAGE value="clear version 6 导航栏修改" />
-    <MESSAGE value="clear version 7 power修改" />
-    <MESSAGE value="clear version 8 aside修改" />
-    <MESSAGE value="clear version 9 成熟的页面修改" />
-    <MESSAGE value="aside" />
-    <MESSAGE value="aside 03" />
-    <MESSAGE value="aside 03 update" />
-    <MESSAGE value="aside 04 update" />
-    <MESSAGE value="aside 05 update" />
-    <MESSAGE value="Merge remote-tracking branch 'origin/clear' into clear&#10;&#10;# Conflicts:&#10;#&#9;tutorial/appfront/src/components/home/aside.vue" />
     <MESSAGE value="&#10;&#10;# Conflicts:&#10;#&#9;tutorial/appfront/src/components/home/aside.vue" />
     <MESSAGE value="aside.vue 08" />
     <MESSAGE value="aside.vue 09" />
     <MESSAGE value="aside.vue 10" />
-    <option name="LAST_COMMIT_MESSAGE" value="aside.vue 10" />
+    <MESSAGE value="aside.vue 11" />
+    <MESSAGE value="aside.vue 12" />
+    <MESSAGE value="aside.vue 13" />
+    <MESSAGE value="first change01" />
+    <MESSAGE value="first change02" />
+    <MESSAGE value="first change03" />
+    <MESSAGE value="device change" />
+    <MESSAGE value="header change 01" />
+    <MESSAGE value="header change 02" />
+    <MESSAGE value="router change" />
+    <MESSAGE value="power filter" />
+    <MESSAGE value="power change" />
+    <MESSAGE value="Merge branch 'clear' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear&#10;&#10;# Conflicts:&#10;#&#9;tutorial/appfront/src/components/power/Power.vue" />
+    <MESSAGE value="first.vue update" />
+    <MESSAGE value="list update" />
+    <MESSAGE value="jquery and bootstrap" />
+    <MESSAGE value="Merge branch 'clear' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear&#10;&#10;# Conflicts:&#10;#&#9;tutorial/appfront/src/components/analysis/analysis.vue" />
+    <MESSAGE value="·" />
+    <MESSAGE value="index.js" />
+    <MESSAGE value="style" />
+    <MESSAGE value="first change" />
+    <option name="LAST_COMMIT_MESSAGE" value="first change" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -767,29 +806,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/el-simple-com/com-input.vue" />
-    <entry file="file://$PROJECT_DIR$/tutorial/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/hello.vue" />
-    <entry file="file://$PROJECT_DIR$/tutorial/snippets/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="7" column="60" lean-forward="false" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tutorial/snippets/serializer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -839,20 +855,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/HomeContainer.vue" />
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/router/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/FaultDetection.vue" />
     <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/el-simple-com/SimpleList.vue">
       <provider selected="true" editor-type-id="text-editor">
@@ -865,13 +867,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/echarts_elements/Line1.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -896,34 +891,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/pv/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/first/First.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="779">
-          <caret line="41" column="4" lean-forward="true" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/NewContact.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-325">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/HelloWorld.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="12" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/power/elPow.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="931">
@@ -938,24 +905,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/echarts_elements/Gauge1.vue">
+    <entry file="file://$PROJECT_DIR$/tutorial/tutorial/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="30" column="31" lean-forward="true" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+        <state relative-caret-position="152">
+          <caret line="102" column="32" lean-forward="false" selection-start-line="102" selection-start-column="32" selection-end-line="102" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/power/Power.vue">
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/rest_framework/mixins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="46" column="8" lean-forward="false" selection-start-line="46" selection-start-column="8" selection-end-line="48" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/rest_framework/generics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="194" column="32" lean-forward="false" selection-start-line="194" selection-start-column="32" selection-end-line="194" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/pages/HomeContainer.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/pv/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="11" column="47" lean-forward="false" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/power/123" />
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/detection/Aside.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-285">
+          <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/detection/Head.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/tutorial/settings.py">
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/detection/FaultDetection.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="102" column="32" lean-forward="false" selection-start-line="102" selection-start-column="32" selection-end-line="102" selection-end-column="32" />
+        <state relative-caret-position="163">
+          <caret line="23" column="50" lean-forward="true" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/pv/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/pv/serializer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -980,106 +997,119 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/rest_framework/mixins.py">
+    <entry file="file://$PROJECT_DIR$/tutorial/pv/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="46" column="8" lean-forward="false" selection-start-line="46" selection-start-column="8" selection-end-line="48" selection-end-column="0" />
+        <state relative-caret-position="1729">
+          <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/rest_framework/generics.py">
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/0.vue" />
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/power/Power.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="194" column="32" lean-forward="false" selection-start-line="194" selection-start-column="32" selection-end-line="194" selection-end-column="32" />
+        <state relative-caret-position="494">
+          <caret line="62" column="42" lean-forward="true" selection-start-line="62" selection-start-column="42" selection-end-line="62" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/pages/HomeContainer.vue">
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/echarts_elements/Gauge1.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-          <folding />
+        <state relative-caret-position="439">
+          <caret line="30" column="31" lean-forward="true" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/pv/models.py">
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/echarts_elements/Line1.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="11" column="47" lean-forward="false" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+        <state relative-caret-position="342">
+          <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/echarts_elements/Gauge2.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/home/aside.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
-          <caret line="21" column="29" lean-forward="true" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/power/123">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/detection/Aside.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-285">
-          <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/detection/Head.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/detection/FaultDetection.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="23" column="50" lean-forward="true" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
+          <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/vuex/store.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+        <state relative-caret-position="304">
+          <caret line="16" column="8" lean-forward="true" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/analysis/analysis.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/build/webpack.base.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="39" column="41" lean-forward="false" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/HelloWorld.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1178">
+          <caret line="62" column="8" lean-forward="false" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/router/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/first/First.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="41" column="4" lean-forward="true" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/pv/serializer.py">
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/src/components/NewContact.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/pv/views.py">
+    <entry file="file://$PROJECT_DIR$/tutorial/appfront/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

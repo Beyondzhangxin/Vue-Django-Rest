@@ -2,14 +2,13 @@
   <div class="detection">
     <el-container>
       <el-container>
-        <deHeader/>
-          <el-main>
+          <el-main class="detectMain">
            <el-row>
-        <el-col><div class="grid-content bg-purple-dark">
-          <el-row>
+             <el-col><div class="grid-content bg-purple-dark">
+           <el-row>
           <!-- 卡片一 -->
-        <el-col :span="8"><div class="grid-content bg-purple">
-        <el-card :body-style="{ padding: '0px' }">
+          <el-col :span="8"><div class="grid-content bg-purple">
+          <el-card :body-style="{ padding: '0px' }">
         <img src="../../assets/close.png" class="image">
         <div style="padding: 14px;">
         <span>停机设备</span>
@@ -32,20 +31,22 @@
         </el-card>
         </div></el-col>
         <!-- 卡片三 -->
-        <el-col :span="8"><div class="grid-content bg-purple">
-         <el-card :body-style="{ padding: '0px' }">
-        <img src="../../assets/offline.png" class="image">
-        <div style="padding: 14px;">
-          <span>离线设备</span>
-        <div class="bottom clearfix">
-        <el-button type="text" class="button">操作按钮</el-button>
-        </div>
-        </div>
+        <el-col :span="8">
+          <div class="grid-content bg-purple">
+            <el-card :body-style="{ padding: '0px' }">
+              <img src="../../assets/offline.png" class="image">
+              <div style="padding: 14px;">
+                <span>离线设备</span>
+                <div class="bottom clearfix">
+                    <el-button type="text" class="button">操作按钮</el-button>
+                </div>
+              </div>
         </el-card>
       </div></el-col>
           <div class="foot">设备异常检测</div>
         </el-row>
         </div></el-col>
+
       </el-row class="rowm">
             <!--通用list-->
             <!--请求如下 http://127.0.0.1:8000/pv/get/detection/2018/1/18/ -->
@@ -53,13 +54,12 @@
             <!--赋值到this.data中 -->
             <ComList v-bind:data='data'></ComList>
             <!--<ComList v-bind:data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>-->
-
-              <el-pagination
+            <el-pagination
               background
               layout="prev, pager, next"
               :total="1000"
               @current-change="handleCurrentChange">
-              </el-pagination>
+            </el-pagination>
             </div>
           </el-main>
       </el-container>
@@ -90,12 +90,27 @@
         this.data = 'http://127.0.0.1:8000/pv/get/detection/2018/1/18/' + '?page='+ val;
         console.log(this.data);
       }
-    }
+    },
+    mounted: function() {
+      this.$store.commit('showIt')
+    },
+
+    destroyed: function() {
+      this.$store.commit('hideIt')
+    },
+
+
   }
 </script>
 
 <style scoped>
   /* 导入iconfont的css*/
+  .detectMain {
+    margin-top: 70px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
   .el-header {
     height: 100px;
   }
@@ -113,8 +128,8 @@
   }
 
   .el-pagination {
-    position: absolute;
-
+    position: relative;
+    float: left;
   }
 
   .detection-title {
@@ -178,9 +193,25 @@
 
 .rowm{
   height: 400px;
+  margin: auto;
 }
+
 .rowmb{
   height: 450px;
+  width: 1560px;
   background: #fff;
+  float: left;
+  overflow: hidden;
+
+  margin-top: 20px;
+  box-shadow: 0px 0px 10px 3px #9eabad;
+}
+
+.rowmb .el-pagination {
+  margin-left: 35%;
+}
+
+.bg-purple{
+  background:white;
 }
 </style>
