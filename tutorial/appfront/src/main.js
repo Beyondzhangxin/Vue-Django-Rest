@@ -10,6 +10,9 @@ import axios from 'axios'
 import Vuex from 'vuex'
 import store from './vuex/store'
 
+//引入jquery
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
 //import echarts from 'echarts'
 
 // 修改全局变量的名称
@@ -24,6 +27,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

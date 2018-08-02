@@ -4,11 +4,12 @@
     <el-header><HomeHeader/></el-header>
     <el-main>
         <el-container>
-            <el-aside  v-if="isShowAside()"  width="18%"><HomeAside/></el-aside>
-            <el-main class="m1"><router-view/></el-main>
+            <el-aside v-if="this.$store.state.isShowAside" width="260px"><HomeAside/></el-aside>
+            <el-main class="m1"><router-view/>
+            </el-main>
         </el-container>
     </el-main>
-    <el-footer>Powered by 清华四川能源互联网研究院</el-footer>
+    <!-- <el-footer class="HomeFooter"><div>Powered by 清华四川能源互联网研究院</div></el-footer> -->
   </el-container>
 </template>
 <script>
@@ -20,6 +21,7 @@
     components: {
       HomeHeader,
       HomeAside,
+
     },
     data () {
       return {
@@ -27,9 +29,7 @@
       }
     },
     methods: {
-      isShowAside(){
-        return this.$router.history.current.fullPath == '/home/power' || 1;
-      },
+
     },
     // watch: {
     //   active (newVal) {
@@ -40,26 +40,35 @@
     // }
   }
 </script>
-
-
 <style>
+.HomeFooter {
+  background-color: #12AFE3;
+  background: -webkit-linear-gradient(30deg, #12AFE3, #0d7feb); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(30deg, #12AFE3, #0d7feb); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(30deg, #12AFE3, #0d7feb); /* Firefox 3.6 - 15 */
+  background: linear-gradient(30deg, #12AFE3,  #0d7feb); /* 标准的语法（必须放在最后） */
+}
+
+.HomeFooter div {
+  color: #fff;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
 .el-header{
-  background-color: #B3C0D1;
-  color: #333;
   height: 20%;
   padding-left: 0px;
   padding-right: 0px;
+  background-color: rgb(84, 92, 100);
 }
 
 .el-footer {
-  background-color:#6fc7f7;
-  color: #333;
+
   height: 20%;
   padding-top:20px;
 }
 
 .el-aside {
-
+  width: 260px;
 }
 
  .el-main {

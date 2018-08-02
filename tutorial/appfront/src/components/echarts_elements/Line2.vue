@@ -1,7 +1,5 @@
 <template>
-  <div class="line" :style="{width: '100%', height: '100%'}">
-    <div v-bind:id="id" :style="{width: '100%', height: '100%'}"></div>
-  </div>
+    <div class="Line2" v-bind:id="id"></div>
 </template>
 <script>
   let echarts = require('echarts/lib/echarts')
@@ -13,7 +11,7 @@
   require('echarts/lib/component/title')
   require('echarts/lib/component/toolbox')
   require('echarts/lib/component/dataZoom')
-
+  require('echarts/lib/component/legend')
 
 export default {
   name: 'line2',
@@ -27,10 +25,11 @@ export default {
       this.drawLine();
     }
   },
+  
   mounted: function() {
     this.drawLine();
-    this.setInterval();
   },
+
   methods: {
     drawLine () {
       // 基于准备好的dom，初始化echarts实例
@@ -39,12 +38,18 @@ export default {
       // 绘制图表
       console.log(this.option);
       line1.setOption(this.option);
+      setTimeout(function (){
+        window.onresize = function () {
+          line1.resize();
+        }
+      },200);
     },
-    setInterval () {
-
-    }
   }
 }
 </script>
-<style>
+<style scoped>
+  .Line2 {
+    height: 100%;
+    width: 100%;
+  }
 </style>
