@@ -1,107 +1,124 @@
 <template>
-    <div id="index"></div>
-
-
+    <div class="index">
+		<div class="login">
+      	<h2>登录</h2>
+        <el-form>
+            <el-form-item label="user">
+                <el-input type="text" id="user" v-model="formName.user" @blur="inputBlur('user',formName.user)"></el-input>
+                <p>{{formName.userError}}</p>
+            </el-form-item>
+            <el-form-item label="password">
+                <el-input type="password" id="password" v-model="formName.password" @blur="inputBlur('password',formName.password)"></el-input>
+                <p>{{formName.passwordError}}</p>
+            </el-form-item>
+            <el-button type="primary" @click="submitForm('formName')" v-bind:disabled="formName.beDisabled">提交</el-button>
+            <el-button @click="resetForm">重置</el-button>
+        </el-form>   
+		</div>     
+	</div>
 </template>
 
 
 <script>
-// import App from './js/app.js';
-// import Paticles1 from './js/particles';
-// import Particles2 from './js/particles.min.js'
+import Axios from 'axios'
 
-// import "./static/default.css";
-// import './static/style.css';
+    export default {
+        name: '',
+        data () {
+            return {
+                formName: {//表单中的参数
+                    user: '',
+                    userError: '',
+                    password: '',
+                    passwordError: '',
+                    beDisabled: true
+                },
+                beShow: false//传值给父组件
+            }           
+        },
+        /*props:[
+                'fromParent'
+        ],*/
+        methods: {
+            resetForm:function(){
+                this.formName.user = '';
+                this.formName.userError = '';
+                this.formName.password = '';
+                this.formName.passwordError = '';
+            },
+            submitForm:function(formName){
+                //与父组件通信传值
+                //this.$emit('showState', [this.beShow,this.formName.user])
+                //提交user password
+                var user = this.formName.user,
+                    password = this.formName.password;
+                    console.log(user,password)
+                	Axios.get('../../src/php/login.php?user='+user+'&password='+password)
+                     .then(function(res){
+                        console.log(res)
 
-export default {
-    data(){
-        return
+                     })
+                     .catch(function(){
+
+                     })
+            },
+            inputBlur:function(errorItem,inputContent){
+                if (errorItem === 'user') {
+                    if (inputContent === '') {
+                        this.formName.userError = '用户名不能为空'
+                    }else{
+                        this.formName.userError = '';
+                    }
+                }else if(errorItem === 'password') {
+                    if (inputContent === '') {
+                        this.formName.passwordError = '密码不能为空'
+                    }else{
+                        this.formName.passwordError = '';
+                    }
+                }
+                //对于按钮的状态进行修改
+                if (this.formName.user != '' && this.formName.password != '') {
+                    this.formName.beDisabled = false;
+                }else{
+                    this.formName.beDisabled = true;
+                }
+            }
+        }
     }
-}
 </script>
 
 
 
 <style scoped>
+/* html,body{
+        margin: 0;
+        padding: 0;
+        position: relative;
+	} */
 
-    /*@import url(http://fonts.useso.com/css?family=Raleway:200,500,700,800);
-@font-face {
-	font-family: 'icomoon';
-	src:url('../fonts/icomoon.eot?yrquyl');
-	src:url('../fonts/icomoon.eot?#iefixyrquyl') format('embedded-opentype'),
-		url('../fonts/icomoon.woff?yrquyl') format('woff'),
-		url('../fonts/icomoon.ttf?yrquyl') format('truetype'),
-		url('../fonts/icomoon.svg?yrquyl#icomoon') format('svg');
-	font-weight: normal;
-	font-style: normal;
+.index{
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,.8);
+    }
+
+.login{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -150px;
+        margin-left: -175px;
+        width: 350px;
+        min-height: 300px;
+        padding: 30px 20px 20px;
+        border-radius: 8px;
+        box-sizing: border-box;
+        background-color: #fff;
+    }
+    
+.login p{
+        color: red;
+        text-align: left;
 }
-[class^="icon-"], [class*=" icon-"] {
-	font-family: 'icomoon';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-
-
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-body, html { font-size: 100%; 	padding: 0; margin: 0;}
-
-
-*,
-*:after,
-*:before {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-
-.clearfix:before,
-.clearfix:after {
-	content: " ";
-	display: table;
-}
-
-.clearfix:after {
-	clear: both;
-}
-
-body{
-	background: #f9f7f6;
-	color: #404d5b;
-	font-weight: 500;
-	font-size: 1.05em;
-	font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
-}
-a{color: #2fa0ec;text-decoration: none;outline: none;}
-a:hover,a:focus{color:#74777b;};
-
-.container{
-	margin: 0 auto;
-	text-align: center;
-	overflow: hidden;
-}
-
-html,body{ 
-	width:100%;
-	height:80%;
-	background:#000;
-}
-
-
-canvas{
-	display:block;
-	vertical-align:bottom;
-}
-
-#particles-js{
-	width:100%;
-	height:95%;
-}*/
 
 </style>
