@@ -13,7 +13,7 @@
               </path>
             </g>
           <circle cx="100" cy="100" r="80" stroke-width="10" stroke="white" fill="transparent"></circle>
-          <circle cx="100" cy="100" r="90" stroke-width="20" stroke="#f6da00" fill="none" class="percentage-pie-svg"></circle>
+          <circle cx="100" cy="100" r="90" stroke-width="20" stroke="#d1b195" fill="none" class="percentage-pie-svg"></circle>
         </svg>
       </hgroup>
   </div>

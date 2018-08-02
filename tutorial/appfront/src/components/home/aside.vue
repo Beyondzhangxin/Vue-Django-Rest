@@ -141,7 +141,7 @@ export default {
     width: 260px;
     overflow-x: hidden;
     overflow-y: hidden;
-    background-color: #fff;
+      background-color: #fff;
     box-sizing: content-box;
 
   }

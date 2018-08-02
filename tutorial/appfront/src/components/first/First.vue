@@ -4,59 +4,70 @@
       <el-main>
         <div class="mainBody">
           <div class="row0">
-            <div>
-              <el-card class="card2"><Gauge2/></el-card>
-              <el-card class="card1">
-                <div class="card1m">
-                  <span>当前发电功率</span>
+            <el-row>
+              <el-col :span="8"><div>
+                <el-card class="card2"><Gauge2/></el-card>
+                <el-card class="card1">
+                  <div class="card1m">
+                    <span>当前发电功率</span>
+                  </div>
+                  <div class="card1m">
+                    <div class="row1">{{ "总容量：" + (c1.total||"~") +" kWh"}}</div>
+                    <div  class="row1">{{ "当日累计发电量：" + (c1.total||"~") +" kWh" }}</div>
+                    <div  class="row1">{{ "当月累计发电量：" + (c1.total||"~") +" 万kWh" }}</div>
+                    <div class="row1">{{ "累计总发电量：" + (c1.total||"~") +" 万kWh" }}</div>
+                  </div>
+                </el-card>
+              </div></el-col>
+              <el-col :span="8">
+                <div>
+                  <el-card class="card2"><Gauge2/></el-card>
+                  <el-card class="card1">
+                    <div class="card1m">
+                      <span>综合效率</span>
+                    </div>
+                    <div class="card1m">
+                      <div class="row1">{{ "理论电量：" + (c2.the||"~") +" kWh"}}</div>
+                      <div  class="row1">{{ "发电量：" + (c2.act||"~") +" kWh" }}</div>
+                      <div  class="row1">{{ "理论实际差值" + ( (c2.the - c2.act)||"~") +" kWh" }}</div>
+                    </div>
+                  </el-card>
                 </div>
-                <div class="card1m">
-                  <div class="row1">{{ "总容量：" + (c1.total||"~") +" kWh"}}</div>
-                  <div  class="row1">{{ "当日累计发电量：" + (c1.total||"~") +" kWh" }}</div>
-                  <div  class="row1">{{ "当月累计发电量：" + (c1.total||"~") +" 万kWh" }}</div>
-                  <div class="row1">{{ "累计总发电量：" + (c1.total||"~") +" 万kWh" }}</div>
+              </el-col>
+              <el-col :span="8">
+                <div>
+                  <el-card class="card2"><Gauge2/></el-card>
+                  <el-card class="card1">
+                    <div class="card1m">
+                      <span>逆变器转换效率</span>
+                    </div>
+                    <div class="card1m">
+                      <div class="row1">{{ "逆变器转换效率" + (c3.eff||"~") +"%" }}</div>
+                    </div>
+                  </el-card>
                 </div>
-              </el-card>
-            </div>
-
-            <div>
-              <el-card class="card2"><Gauge2/></el-card>
-              <el-card class="card1">
-                <div class="card1m">
-                  <span>综合效率</span>
-                </div>
-                <div class="card1m">
-                  <div class="row1">{{ "理论电量：" + (c2.the||"~") +" kWh"}}</div>
-                  <div  class="row1">{{ "发电量：" + (c2.act||"~") +" kWh" }}</div>
-                  <div  class="row1">{{ "理论实际差值" + ( (c2.the - c2.act)||"~") +" kWh" }}</div>
-                </div>
-              </el-card>
-            </div>
-
-            <div>
-              <el-card class="card2"><Gauge2/></el-card>
-              <el-card class="card1">
-                <div class="card1m">
-                  <span>逆变器转换效率</span>
-                </div>
-                <div class="card1m">
-                  <div class="row1">{{ "逆变器转换效率" + (c3.eff||"~") +"%" }}</div>
-                </div>
-              </el-card>
-            </div>
+              </el-col>
+            </el-row>
           </div>
 
+
           <div class="row0">
-            <el-card class="card3">
-              <div class="card3Li">
-                <Line2 v-bind="settings.l1"></Line2>
-              </div>
-            </el-card>
-            <el-card class="card3">
-              <div class="card3Li">
-                <Line2 v-bind="settings.l2"></Line2>
-              </div>
-            </el-card>
+            <el-row>
+              <el-col :span="12">
+                <el-card class="card3">
+                  <div class="card3Li">
+                    <Line2 v-bind="settings.l1"></Line2>
+                  </div>
+                </el-card>
+              </el-col>
+              <el-col :span="12">
+                <el-card class="card3">
+                  <div class="card3Li">
+                    <Line2 v-bind="settings.l2"></Line2>
+                  </div>
+                </el-card>
+              </el-col>
+            </el-row>
           </div>
         </div>
           <!-- <div class="fm">
@@ -534,10 +545,10 @@ export default {
 
   .card3 {
     height: 400px;
-    position: relative;
-    width: 1000px;
-    top: 7%;
-    left: -20%;
+    margin: 30px;
+
+    width: 900px;
+
     margin-bottom: 10%;
   }
 
@@ -577,18 +588,13 @@ export default {
     top: 80px;
     left: 120px;
     z-index: 1;
-    background-color: rgb(246, 218, 0);
+    background-color: #974e45;
   }
 
-  .row0 {
-    float: left;
-    width: 50%;
-    height: 100%;
-    background: transform;
-  }
+
 
   .mainBody {
-    height: 1100px;
+    height: 870px;
   }
 
   .button {
