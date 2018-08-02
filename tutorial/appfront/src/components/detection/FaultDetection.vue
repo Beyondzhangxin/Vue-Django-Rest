@@ -4,11 +4,11 @@
       <el-container>
           <el-main class="detectMain">
            <el-row>
-        <el-col><div class="grid-content bg-purple-dark">
-          <el-row>
+             <el-col><div class="grid-content bg-purple-dark">
+           <el-row>
           <!-- 卡片一 -->
-        <el-col :span="8"><div class="grid-content bg-purple">
-        <el-card :body-style="{ padding: '0px' }">
+          <el-col :span="8"><div class="grid-content bg-purple">
+          <el-card :body-style="{ padding: '0px' }">
         <img src="../../assets/close.png" class="image">
         <div style="padding: 14px;">
         <span>停机设备</span>
@@ -106,7 +106,9 @@
 <style scoped>
   /* 导入iconfont的css*/
   .detectMain {
-    margin-top: 50px;
+    margin-top: 70px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 
   .el-header {
@@ -198,11 +200,14 @@
   height: 450px;
   background: #fff;
   float: left;
-  position: relative;
-  left: 5px;
   overflow: hidden;
-
+  margin: 160px;
+  margin-top: 20px;
   box-shadow: 0px 0px 10px 3px #9eabad;
+}
+
+.rowmb .el-pagination {
+  margin-left: 400px;
 }
 
 .bg-purple{
