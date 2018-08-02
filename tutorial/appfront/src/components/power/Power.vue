@@ -2,8 +2,21 @@
   <div class="Power">
     <el-container>
 
-      <!-- head部分 -->
-      <el-header>
+      <el-main id="main1">
+        123
+
+
+
+
+
+
+
+
+      </el-main>
+
+
+
+       <!-- <div class="header">
         <el-row>
           <el-col :span="4" id="line" v-for="item in items[0]" :key="item.id">{{ item.key+item.value }}</el-col>
         </el-row>
@@ -22,10 +35,10 @@
             <div class="num1">停机 <i class="el-icon-circle-close"></i> </div>
           </el-col>
         </el-row>
-      </el-header>
+      </div> -->
 
-      <!-- main mh部分 -->
-      <el-main>
+    
+      <!-- <el-main>
         <el-container>
           <el-header class="mh">
             <div class="row">
@@ -66,17 +79,15 @@
                 </el-col>
               </el-row>
             </div>
-          </el-header>
-          <!-- main mm部分 -->
+          </el-header>  -->
+         
           <el-main class="mm">
-            <el-col :span="24"><div class="grid-content bg-purple"></div></el-col>
+            <el-col :span="24"><div class="grid-content"></div></el-col>
             <div class="cardList">
                 <elPower v-for="card in showLists" v-show="checkLists(card)" v-bind="card" :key="card"/>
             </div>
           </el-main>
         </el-container>
-      </el-main>
-    </el-container>
   </div>
 </template>
 
@@ -277,5 +288,8 @@ export default {
   margin-top:10px;
 }
 
+.header{
 
+  background: white;
+}
 </style>

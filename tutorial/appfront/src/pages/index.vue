@@ -4,7 +4,7 @@
       	<h2>登录</h2>
         <el-form>
             <el-form-item label="user">
-                <el-input type="text" id="user" v-model="formName.user" @blur="inputBlur('user',formName.user)"></el-input>
+                <el-input type="te、xt" id="user" v-model="formName.user" @blur="inputBlur('user',formName.user)"></el-input>
                 <p>{{formName.userError}}</p>
             </el-form-item>
             <el-form-item label="password">

@@ -100,6 +100,7 @@
               <Line2 v-bind="settings.l2"></Line2>
             </div>
           </div>
+
           <!-- 环保数据 -->
           <div class="box">
           <el-card class="box-card1">
@@ -603,8 +604,6 @@ export default {
     background-color: #974e45;
   }
 
-
-
   .mainBody {
     height: 870px;
   }
@@ -738,6 +737,9 @@ export default {
 
 .text0{
   margin-top:5px;
+}
 
+.box-card1{
+  margin-top:20px;
 }
 </style>
