@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="699a223f-2a95-44f1-b706-a9f3ca80d94a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/detection/FaultDetection.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/detection/FaultDetection.vue" />
+      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/el-simple-com/com-list.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/el-simple-com/com-list.vue" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -354,13 +354,6 @@
       <option name="presentableId" value="Default" />
       <updated>1528334574906</updated>
     </task>
-    <task id="LOCAL-00033" summary="aside">
-      <created>1532659534820</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1532659534820</updated>
-    </task>
     <task id="LOCAL-00034" summary="aside 03">
       <created>1532664932017</created>
       <option name="number" value="00034" />
@@ -697,7 +690,14 @@
       <option name="project" value="LOCAL" />
       <updated>1533179638308</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="first change">
+      <created>1533179944494</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1533179944495</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
