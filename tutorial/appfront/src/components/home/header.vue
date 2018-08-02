@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="head-left">
-  		 <a>光伏云运维</a>
+  		 <a @click="goindex">光伏智能运维系统</a>
     </div>
 
     <div class="head-right">
@@ -59,9 +59,12 @@
         }else {
           this.$router.push(this.routerTable[Number(key)].router[0])
         }
+      },
+      goindex(){
+        this.$router.replace({path:'/home/index'})
+      }
       }
     }
-  }
 </script>
 
 <style scoped>
@@ -69,10 +72,6 @@
     font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,
     Microsoft YaHei,SimSun,sans-serif;
     font-weight: 400;
-  }
-
-  .header {
-    background-color: rgb(84, 92, 100);
   }
 
   .head-left{
@@ -85,7 +84,7 @@
     color: #fff;
     position: absolute;
     top: 0px;
-    background: rgb(31, 40, 55);
+    background: rgb(84, 92, 100);
     width: 260px;
     padding: 15px;
 
@@ -108,6 +107,6 @@
   .header {
     height: 100%;
     text-align: center;
-    background-color: rgb(31, 40, 55);
+    background-color: rgb(84, 92, 100);
   }
 </style>

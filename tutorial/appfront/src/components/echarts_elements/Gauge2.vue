@@ -5,7 +5,7 @@
           <text class="liquidFillGaugeText" text-anchor="middle" font-size="42px" transform="translate(100,120)" style="fill: #fff">50.0%</text>
           <!-- Wave -->
             <g id="wave">
-              <path id="wave-2" fill="rgba(246, 218, 0, .8)" d="M 0 100 C 140.6 94.24 45.08 106.32 200 100 A 95 95 0 0 1 0 100 Z">
+              <path id="wave-2" fill="rgba(255, 255, 255, 0.5)" d="M 0 100 C 140.6 94.24 45.08 106.32 200 100 A 95 95 0 0 1 0 100 Z">
                 <animate dur="5s" repeatCount="indefinite" attributeName="d" attributeType="XML" values="M0 100 C90 28, 92 179, 200 100 A95 95 0 0 1 0 100 Z;
                   M0 100 C145 100, 41 100, 200 100 A95 95 0 0 1 0 100 Z;
                   M0 100 C90 28, 92 179, 200 100 A95 95 0 0 1 0 100 Z">
@@ -31,6 +31,6 @@ export default {
 
 <style scoped>
 .css-live-wrap {
-    transform: scale(0.5, 0.5) translate(0%, 0%);
+    transform: scale(0.5, 0.5) translate(-10%, -60%);
 }
 </style>

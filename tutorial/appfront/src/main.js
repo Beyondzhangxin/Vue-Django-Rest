@@ -9,8 +9,7 @@ import router from './router'
 import axios from 'axios'
 import Vuex from 'vuex'
 import store from './vuex/store'
-//引入jq
-import $ from 'jquery'
+
 //引入jquery
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'

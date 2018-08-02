@@ -58,6 +58,7 @@
   height: 20%;
   padding-left: 0px;
   padding-right: 0px;
+  background-color: rgb(84, 92, 100);
 }
 
 .el-footer {
