@@ -1,18 +1,16 @@
 <template>
   <div class="Power">
-    <el-container>
+    <el-container class="c1">
+        <el-main class="m1" style="height: 100%">
+          <!--加如样式 -->
 
-      <el-main id="main1">
-        123
-
-
-
-
-
-
-
-
-      </el-main>
+          <div class="mm">
+            <el-col :span="24"><div class="grid-content"></div></el-col>
+            <div class="cardList">
+                <elPower v-for="card in showLists" v-show="checkLists(card)" v-bind="card" :key="card"/>
+            </div>
+          </div>
+        </el-main>
 
 
 
@@ -37,7 +35,7 @@
         </el-row>
       </div> -->
 
-    
+
       <!-- <el-main>
         <el-container>
           <el-header class="mh">
@@ -80,13 +78,6 @@
               </el-row>
             </div>
           </el-header>  -->
-         
-          <el-main class="mm">
-            <el-col :span="24"><div class="grid-content"></div></el-col>
-            <div class="cardList">
-                <elPower v-for="card in showLists" v-show="checkLists(card)" v-bind="card" :key="card"/>
-            </div>
-          </el-main>
         </el-container>
   </div>
 </template>
@@ -198,6 +189,13 @@ export default {
 
 
 <style scoped>
+
+
+  .m1 {
+
+    width: 100%;
+  }
+
   .cardList {
     border-top: 5px solid gray;
     padding-top: 3%;
@@ -217,9 +215,7 @@ export default {
     height: 100%;
     width: 1500px;
     box-shadow: 1px 1px 10px 5px #c0c0c0;
-    margin-top:30px;
-    margin-left:25px;
-    margin-bottom:30px;
+    margin: 60px;
   }
 
   .el-main {
@@ -237,7 +233,11 @@ export default {
   }
 
   .mm {
+    height: 00px;
+  }
 
+  #main1 {
+    height: 1400px;
   }
 
   #input {
