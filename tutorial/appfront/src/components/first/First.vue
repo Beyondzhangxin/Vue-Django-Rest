@@ -27,9 +27,9 @@
                       <span>综合效率</span>
                     </div>
                     <div class="card1m">
-                      <div class="row1">理论电量：{{(c2.the||"~")}} kWh</div>
-                      <div  class="row1">发电量：{{(c2.act||"~")}} kWh</div>
-                      <div  class="row1">理论实际差值：{{( (c2.the - c2.act)||"~")}} " kWh"</div>
+                      <div class="row1">理论电量：<strong>{{(c2.the||"~")}}</strong> kWh</div>
+                      <div  class="row1">发电量：<strong>{{(c2.act||"~")}}</strong> kWh</div>
+                      <div  class="row1">理论实际差值：<strong>{{( (c2.the - c2.act)||"~")}}</strong> kWh</div>
                     </div>
                   </el-card>
                 </div>
@@ -42,7 +42,7 @@
                       <span>逆变器转换效率</span>
                     </div>
                     <div class="card1m">
-                      <div class="row1">{{ "逆变器转换效率" + (c3.eff||"~") +"%" }}</div>
+                      <div class="row1">逆变器转换效率：<strong>{{(c3.eff||"~") +"" }}</strong> %</div>
                     </div>
                   </el-card>
                 </div>
@@ -605,7 +605,7 @@ export default {
   }
 
   .mainBody {
-    height: 870px;
+    height: 1000px;
   }
 
   .button {
