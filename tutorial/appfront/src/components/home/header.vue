@@ -92,6 +92,10 @@
     line-height: 30px;
   }
 
+ .head-left a:hover{
+   color:#ffd04b;
+ }
+
   .head-right{
     float:right;
     display: inline-block;

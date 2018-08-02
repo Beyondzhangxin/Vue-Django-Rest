@@ -195,6 +195,11 @@ export default {
 
 
 <style scope>
+.device{
+    width:1500px;
+    margin-top:30px;
+}
+
 .el-main{
   overflow-x: hidden;
 }

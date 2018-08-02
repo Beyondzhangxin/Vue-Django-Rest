@@ -245,6 +245,13 @@ export default {
 
 
 <style scoped>
+.analysis{
+    width:1500px;
+    margin-left:35px;
+    margin-top:30px;
+}
+
+
 .m3 {
   height: 550px;
   background-color: #fff;
