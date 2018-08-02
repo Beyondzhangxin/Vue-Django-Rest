@@ -45,13 +45,18 @@
               </el-card>
             </div>
           </div>
+
           <div class="row0">
             <el-card class="card3">
-              <div style="width:100%; height:100%">
+              <div class="card3Li">
                 <Line2 v-bind="settings.l1"></Line2>
               </div>
             </el-card>
-            <el-card class="card3"></el-card>
+            <el-card class="card3">
+              <div class="card3Li">
+                <Line2 v-bind="settings.l2"></Line2>
+              </div>
+            </el-card>
           </div>
         </div>
           <!-- <div class="fm">
@@ -522,12 +527,18 @@ export default {
 }
 </script>
 <style scoped>
+  .card3Li {
+    height: 400px;
+    width: 100%;
+  }
+
   .card3 {
     height: 400px;
     position: relative;
-    top: 80px;
-    left: -15%;
-    margin-bottom: 30px;
+    width: 1000px;
+    top: 7%;
+    left: -20%;
+    margin-bottom: 10%;
   }
 
 
@@ -548,6 +559,8 @@ export default {
 
   .row1 {
     color: #909399;
+    margin-bottom: 2px;
+
   }
 
   .card1 {
@@ -561,7 +574,7 @@ export default {
     width: 200px;
     height: 120px;
     position: relative;
-    top: 50px;
+    top: 80px;
     left: 120px;
     z-index: 1;
     background-color: rgb(246, 218, 0);
@@ -575,7 +588,7 @@ export default {
   }
 
   .mainBody {
-    height: 1400px;
+    height: 1100px;
   }
 
   .button {
@@ -707,6 +720,6 @@ export default {
 
 .text0{
   margin-top:5px;
-  
+
 }
 </style>
