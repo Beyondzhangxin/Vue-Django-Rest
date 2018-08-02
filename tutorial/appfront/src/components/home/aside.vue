@@ -47,6 +47,8 @@
 </template>
 
 <script>
+
+
   export default {
     name: 'home_aside',
     props: ['request'],
@@ -79,7 +81,7 @@
     },
     mounted: function () {
       //this.load();
-        this.transdata();
+      this.transdata();
     },
     watch: {
       filterText(val) {
@@ -90,13 +92,22 @@
     methods: {
       transdata(){
         var response = this.$http.get('http://127.0.0.1:8000/system/powerStations');
-        var list=[];
-        for (item in response.list) {
-            var jsonObj= new Object();
-            jsonObj
+        var jsonList = [];
+        for (var i = 0; i < response.list.length; i++) {
+          var json = {};
+          json.id = i;
+          json.label = response.list[i].systemName;
+          json.children = []
+          for (var k = 0; k < response.list[i].devices.length; k++) {
+            var device = {};
+            device.id = String(i) + String(k);
+            device.label = response.list[i].devices[k];
+            json.children.push(device);
+          }
+          jsonList.push(json);
         }
 
-        this.data2 = list;
+        this.data2 = jsonList;
 
       },
       sendTree(){
