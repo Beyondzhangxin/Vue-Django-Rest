@@ -31,6 +31,6 @@ export default {
 
 <style scoped>
 .css-live-wrap {
-    transform: scale(0.5, 0.5) translate(-10%, -60%);
+    transform: scale(0.5, 0.5) translate(-75%, -60%);
 }
 </style>

@@ -106,7 +106,7 @@
 <style scoped>
   /* 导入iconfont的css*/
   .detectMain {
-    margin-top: 147px;
+    margin-top: 50px;
   }
 
   .el-header {
