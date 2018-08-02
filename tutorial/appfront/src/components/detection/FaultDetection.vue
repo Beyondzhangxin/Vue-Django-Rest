@@ -1,68 +1,61 @@
 <template>
   <div class="detection">
     <el-container>
-      <el-container>
           <el-main class="detectMain">
-           <el-row>
-             <el-col><div class="grid-content bg-purple-dark">
-           <el-row>
-          <!-- 卡片一 -->
-          <el-col :span="8"><div class="grid-content bg-purple">
-          <el-card :body-style="{ padding: '0px' }">
-        <img src="../../assets/close.png" class="image">
-        <div style="padding: 14px;">
-        <span>停机设备</span>
-        <div class="bottom clearfix">
-          <el-button type="text" class="button">操作按钮</el-button>
-        </div>
-        </div>
-        </el-card>
-        </div></el-col>
-          <!-- 卡片二 -->
-        <el-col :span="8"><div class="grid-content bg-purple">
-        <el-card :body-style="{ padding: '0px' }">
-        <img src="../../assets/alarm.png" class="image">
-        <div style="padding: 14px;">
-        <span>告警设备</span>
-        <div class="bottom clearfix">
-          <el-button type="text" class="button">操作按钮</el-button>
-          </div>
-        </div>
-        </el-card>
-        </div></el-col>
-        <!-- 卡片三 -->
-        <el-col :span="8">
-          <div class="grid-content bg-purple">
-            <el-card :body-style="{ padding: '0px' }">
-              <img src="../../assets/offline.png" class="image">
-              <div style="padding: 14px;">
-                <span>离线设备</span>
-                <div class="bottom clearfix">
-                    <el-button type="text" class="button">操作按钮</el-button>
-                </div>
-              </div>
-        </el-card>
-      </div></el-col>
-          <div class="foot">设备异常检测</div>
-        </el-row>
-        </div></el-col>
-
-      </el-row class="rowm">
+            <div>
+              <el-card>
+                <el-row>
+                  <el-col :span="8">
+                    <el-card :body-style="{ padding: '0px' }">
+                     <img src="../../assets/close.png" class="image">
+                     <div style="padding: 14px;">
+                       <span>停机设备</span>
+                       <div class="bottom clearfix">
+                         <el-button type="text" class="button">操作按钮</el-button>
+                       </div>
+                     </div>
+                   </el-card>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-card :body-style="{ padding: '0px' }">
+                      <img src="../../assets/alarm.png" class="image">
+                      <div style="padding: 14px;">
+                        <span>告警设备</span>
+                        <div class="bottom clearfix">
+                          <el-button type="text" class="button">操作按钮</el-button>
+                        </div>
+                      </div>
+                    </el-card>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-card :body-style="{ padding: '0px' }">
+                      <img src="../../assets/offline.png" class="image">
+                      <div style="padding: 14px;">
+                        <span>离线设备</span>
+                        <div class="bottom clearfix">
+                          <el-button type="text" class="button">操作按钮</el-button>
+                        </div>
+                      </div>
+                    </el-card>
+                  </el-col>
+                </el-row>
+                <el-row>设备检查异常</el-row>
+              </el-card>
+            </div>
             <!--通用list-->
             <!--请求如下 http://127.0.0.1:8000/pv/get/detection/2018/1/18/ -->
             <div class="rowmb">
-            <!--赋值到this.data中 -->
-            <ComList v-bind:data='data'></ComList>
-            <!--<ComList v-bind:data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>-->
-            <el-pagination
-              background
-              layout="prev, pager, next"
-              :total="1000"
-              @current-change="handleCurrentChange">
-            </el-pagination>
+              <!--赋值到this.data中 -->
+              <ComList v-bind:data='data'></ComList>
+              <!--<ComList v-bind:data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>-->
+              <el-pagination
+                background
+                layout="prev, pager, next"
+                :total="1000"
+                @current-change="handleCurrentChange">
+              </el-pagination>
             </div>
           </el-main>
-      </el-container>
     </el-container>
   </div>
 </template>
@@ -105,10 +98,15 @@
 
 <style scoped>
   /* 导入iconfont的css*/
+  .cards {
+    box-shadow: 0px 0px 10px 3px #9eabad;
+  }
+
   .detectMain {
     margin-top: 70px;
     padding-left: 30px;
     padding-right: 30px;
+    overflow-y: hidden;
   }
 
   .el-header {
@@ -117,6 +115,7 @@
 
   .detection {
     height: 100%;
+    overflow-y: hidden;
   }
 
   .el-container {
@@ -188,21 +187,20 @@
   }
 
 .foot{
-  margin-bottom:50px;
+
 }
 
 .rowm{
   height: 400px;
   margin: auto;
-}
+} 
 
 .rowmb{
   height: 450px;
-  width: 1560px;
+  width: 1580px;
   background: #fff;
   float: left;
   overflow: hidden;
-
   margin-top: 20px;
   box-shadow: 0px 0px 10px 3px #9eabad;
 }
