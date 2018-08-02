@@ -1,7 +1,7 @@
 <template>
-    <div class="index">
+    <div class="index" :style="{backgroundImage:'url('+img+')'}">
 		<div class="login">
-      	<h2>登录</h2>
+      	<!-- <h2>登录</h2> -->
         <el-form>
             <el-form-item label="user">
                 <el-input type="te、xt" id="user" v-model="formName.user" @blur="inputBlur('user',formName.user)"></el-input>
@@ -11,7 +11,7 @@
                 <el-input type="password" id="password" v-model="formName.password" @blur="inputBlur('password',formName.password)"></el-input>
                 <p>{{formName.passwordError}}</p>
             </el-form-item>
-            <el-button type="primary" @click="submitForm('formName')" v-bind:disabled="formName.beDisabled">提交</el-button>
+            <el-button type="primary" @click="submitForm('formName')" v-bind:disabled="formName.beDisabled">登录</el-button>
             <el-button @click="resetForm">重置</el-button>
         </el-form>   
 		</div>     
@@ -21,11 +21,20 @@
 
 <script>
 import Axios from 'axios'
+import Img from '@/./assets/back7.jpg'
 
     export default {
         name: '',
         data () {
             return {
+                // login:{
+                //     backgroundImage:"url("+require("../asset/back1.jpg")+")",
+                //     backgroundRepeat: "no-repeat",
+                //     backgroundSize: "100px auto",
+                //     marginTop: "5px",
+                // },
+                    img:Img,
+
                 formName: {//表单中的参数
                     user: '',
                     userError: '',
