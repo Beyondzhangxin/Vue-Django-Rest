@@ -201,7 +201,7 @@
   background: #fff;
   float: left;
   overflow: hidden;
-  margin: 160px;
+
   margin-top: 20px;
   box-shadow: 0px 0px 10px 3px #9eabad;
 }
