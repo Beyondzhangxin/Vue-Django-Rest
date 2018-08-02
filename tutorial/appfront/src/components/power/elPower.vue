@@ -1,5 +1,5 @@
 <template>
-  <el-card class="box-card" shadow="always">
+  <el-card class="box-card" >
     <div slot="header" class="clearfix">
       <span>北京光伏电站</span>
       <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
@@ -70,7 +70,10 @@ export default {
   }
 
   .box-card {
+    height: 600px;
+    margin-bottom: 20px;
     width: 50%;
+    float: left;
   }
 
 .image1{
