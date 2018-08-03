@@ -3,24 +3,24 @@
         <el-main class="m1" style="height: 100%">
           <div class="mov">
             <el-card>
-          <el-row>
-          <span id="line" v-for="item in items[0]" :key="item.id">{{ item.key+item.value }}</span>
-        </el-row>
-        <el-row>
-          <el-col :span="4" id="num">电站状态：</el-col>
-          <el-col :span="2">
-            <div class="num1"><strong>正常 </strong><i class="el-icon-success"></i> </div>
-          </el-col>
-          <el-col :span="2">
-            <div class="num1"><strong>异常 </strong><i class="el-icon-warning"></i> </div>
-          </el-col>
-          <el-col :span="2">
-            <div class="num1"><strong>离线 </strong><i class="el-icon-loading"></i> </div>
-          </el-col>
-          <el-col :span="2">
-            <div class="num1"><strong>停机 </strong><i class="el-icon-circle-close"></i> </div>
-          </el-col>
-        </el-row>
+              <el-row>
+                <span id="line" v-for="item in items[0]" :key="item.id">{{ item.key }} <strong>{{ item.value }}</strong></span>
+              </el-row>
+              <el-row class="row1">
+              <el-col :span="2">电站状态：</el-col>
+              <el-col :span="2">
+                <div><strong>正常 </strong><i class="el-icon-success"></i> </div>
+              </el-col>
+              <el-col :span="2">
+                <div><strong>异常 </strong><i class="el-icon-warning"></i> </div>
+              </el-col>
+              <el-col :span="2">
+                <div><strong>离线 </strong><i class="el-icon-loading"></i> </div>
+              </el-col>
+              <el-col :span="2">
+                <div><strong>停机 </strong><i class="el-icon-circle-close"></i> </div>
+              </el-col>
+            </el-row>
             </el-card>
           </div>
 
@@ -199,6 +199,15 @@ export default {
 
 
 <style scoped>
+  .row1 {
+    position: relative;
+    margin-top: 10px;
+    padding: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    left: -3px;
+  }
+
   .c1 {
     margin-top: 40px;
     margin-left: 50px;
@@ -303,10 +312,8 @@ export default {
 }
 
 #line{
+  padding: 2px;
   float:left;
-  margin-left:-47px;
-  margin-top:5px;
-  padding-left:60px;
   font-size:16px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
