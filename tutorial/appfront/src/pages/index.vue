@@ -121,9 +121,9 @@ import Img from '@/./assets/back7.jpg'
 }
 
 #title{
-    color:black;
     font-size: 25px;
-    padding-top:200px;
+    padding-top:230px;
+
 }
 
 #button1{
@@ -135,5 +135,10 @@ import Img from '@/./assets/back7.jpg'
     margin-right: 40px;
     float:right;
 }
+
+#title{
+color: #fafafa;
+letter-spacing: 0;
+text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135 }
 
 </style>
