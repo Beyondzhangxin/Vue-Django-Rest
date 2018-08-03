@@ -79,9 +79,11 @@
               <span id="htop"><strong>环保数据</strong></span>
               <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
             </div>
+
             <div class="data">
-              <el-row :gutter="20">
+              <el-row :gutter="60">
                 <el-col :span="4"><div class="grid-content">
+                  <el-card>
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/coal.png" id="image">
@@ -91,8 +93,12 @@
                     </div></el-col>
                   </el-row>
                 <div>{{msg1}}吨</div>
-                </div></el-col>
+                </el-card>
+                </div>
+                </el-col>
+
                 <el-col :span="4"><div class="grid-content">
+                  <el-card>
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/co2.png" id="image">
@@ -102,8 +108,11 @@
                     </div></el-col>
                   </el-row>
                 <div>{{msg2}}吨</div>
+                  </el-card>
                 </div></el-col>
+
                 <el-col :span="4"><div class="grid-content">
+                  <el-card>
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/so2.png" id="image">
@@ -113,8 +122,11 @@
                     </div></el-col>
                   </el-row>
                 <div>{{msg3}}吨</div>
+                  </el-card>
                 </div></el-col>
+
                 <el-col :span="4"><div class="grid-content">
+                  <el-card>
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/no2.png" id="image">
@@ -124,17 +136,21 @@
                     </div></el-col>
                   </el-row>
                 <div>{{msg4}}kg</div>
+                  </el-card>
                 </div></el-col>
+
                 <el-col :span="4"><div class="grid-content">
+                  <el-card>
                    <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/tree.png" id="image">
                     </div></el-col>
                     <el-col :span="12"><div class="grid-content">
-                    <div class="text0">累计减排</div>
+                    <div class="text0">累计植树</div>
                     </div></el-col>
                   </el-row>
                 <div>{{msg5}}棵</div>
+                  </el-card>
                 </div></el-col>
               </el-row>
             </div>
@@ -695,10 +711,21 @@ export default {
 
 .text0{
   margin-top:5px;
+  margin-right:10px;
 }
 
 .box-card1{
   margin-top:20px;
+}
+
+.box{
+  margin-right:20px;
+  margin-left:30px;
+}
+
+.data{
+  padding-left:150px;
+ 
 }
 
 
