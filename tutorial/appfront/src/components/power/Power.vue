@@ -30,13 +30,13 @@
               <el-row :gutter=20>
                 <el-col :span="6" id ="time">当日有效时数:</el-col>
                 <el-col :span="4">
-                  <input id="input" type="text" placeholder="请输入数字"></input>
+                  <el-input v-model="input1" :value="number" placeholder="起始时间"></el-input>
                 </el-col>
-                <el-col :span="2" id="label">
+                <el-col :span="1" class="span0">
                   ~
                 </el-col>
                 <el-col :span="4">
-                  <input id="input" type="text" placeholder="请输入数字"></input>
+                  <el-input v-model="input2" :value="number" placeholder="结束时间"></el-input>
                 </el-col>
                 <el-col :span="4">
                   <div class="hour">小时</div>
@@ -92,14 +92,17 @@ export default {
   },
   data () {
     return {
+      input1: '',
+      input2: '',
       showLists: [],
       //对应elpower中属性
+      //依次是总装机容量 当前运行功率 当日有效时数 当月有效时数
       cardLists: [
         {
           id: 'BJ',
           msg1: 1,
           msg2: 1,
-          msg3: 1,
+          msg3: 2,
           msg4: 1,
           msg5: 1,
           msg6: '',
@@ -169,6 +172,20 @@ export default {
       }
     },
     checkLists(card){
+        //aside的过滤写在这里
+
+        //有效时间的过滤
+        try {
+          if (this.input1&&card.msg3 <this.input1) {
+            return false;
+          }
+          if (this.input2&&card.msg3 >this.input2) {
+            return false;
+          }
+        } catch (e) {
+          console.log(e);
+        }
+        //地区的过滤
         if (this.value10.length == 0) {
           return true;
         }
@@ -185,7 +202,9 @@ export default {
 
 
 <style scoped>
-
+  .span0 {
+    padding: 10px;
+  }
 
   .m1 {
     width: 100%;
@@ -257,7 +276,7 @@ export default {
   margin-top:20px;
   margin-left:-7px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-  
+
 }
 
  .hour{
