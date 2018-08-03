@@ -18,7 +18,7 @@
                 <div><strong>离线 </strong><i class="el-icon-loading"></i> </div>
               </el-col>
               <el-col :span="2">
-                <div><strong>停机 </strong><i class="el-icon-circle-close"></i> </div>
+                <div><strong>停机 </strong><i class="el-icon-circle-close"></i></div>
               </el-col>
             </el-row>
             </el-card>
@@ -46,8 +46,8 @@
             <div class="row2">
               <el-row :gutter=20>
                 <el-col :span="8" id="area">电站所在地区</el-col>
-                <el-col :span="14">
-                  <el-select
+                <el-col :span="5">
+                  <el-select class="select"
                     v-model="value10"
                     multiple
                     filterable
@@ -299,8 +299,8 @@ export default {
  }
 
 #time{
-  margin-left: -10px;
-  margin-top:5px;
+  margin-left: -105px;
+  margin-top:0px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   font-size:16px;
 }
@@ -334,14 +334,20 @@ export default {
   margin-bottom:20px;
 }
 
-.row{
+/* .row{
   padding: 10px;
   height: 70px;
   padding-top: 20px;
-}
+} */
+
 
 .row2{
   margin-left:-220px;
 }
 
+.el-input{
+  margin-top:-10px;
+  margin-bottom:20px;
+
+}
 </style>
