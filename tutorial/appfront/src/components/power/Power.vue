@@ -255,6 +255,7 @@ export default {
 }
 
   .mm {
+    margin-top: 14px;
     height: 00px;
   }
 
@@ -298,14 +299,14 @@ export default {
  }
 
 #time{
-  margin-left:5px;
+  margin-left: -10px;
   margin-top:5px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   font-size:16px;
 }
 
 #area{
-  margin-left:22px;
+  margin-left: 10px;
   padding-top:10px;
   font-size:16px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
@@ -334,8 +335,9 @@ export default {
 }
 
 .row{
-  margin-bottom:10px;
-  height:50px;
+  padding: 10px;
+  height: 70px;
+  padding-top: 20px;
 }
 
 
