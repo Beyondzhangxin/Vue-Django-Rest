@@ -1,27 +1,26 @@
 <template>
-  <div class="Power">
-    <el-container class="c1">
+      <el-container class="c1">
         <el-main class="m1" style="height: 100%">
           <div class="mov">
             <el-card>
-          <el-row>
-          <span id="line" v-for="item in items[0]" :key="item.id">{{ item.key+item.value }}</span>
-        </el-row>
-        <el-row>
-          <el-col :span="4" id="num">电站状态：</el-col>
-          <el-col :span="2">
-            <div class="num1"><strong>正常 </strong><i class="el-icon-success"></i> </div>
-          </el-col>
-          <el-col :span="2">
-            <div class="num1"><strong>异常 </strong><i class="el-icon-warning"></i> </div>
-          </el-col>
-          <el-col :span="2">
-            <div class="num1"><strong>离线 </strong><i class="el-icon-loading"></i> </div>
-          </el-col>
-          <el-col :span="2">
-            <div class="num1"><strong>停机 </strong><i class="el-icon-circle-close"></i> </div>
-          </el-col>
-        </el-row>
+              <el-row>
+                <span id="line" v-for="item in items[0]" :key="item.id">{{ item.key }} <strong>{{ item.value }}</strong></span>
+              </el-row>
+              <el-row class="row1">
+              <el-col :span="2">电站状态：</el-col>
+              <el-col :span="2">
+                <div><strong>正常 </strong><i class="el-icon-success"></i> </div>
+              </el-col>
+              <el-col :span="2">
+                <div><strong>异常 </strong><i class="el-icon-warning"></i> </div>
+              </el-col>
+              <el-col :span="2">
+                <div><strong>离线 </strong><i class="el-icon-loading"></i> </div>
+              </el-col>
+              <el-col :span="2">
+                <div><strong>停机 </strong><i class="el-icon-circle-close"></i> </div>
+              </el-col>
+            </el-row>
             </el-card>
           </div>
 
@@ -69,13 +68,11 @@
 
           <div class="mm">
             <el-col :span="24"><div class="grid-content"></div></el-col>
-            <div class="cardList">
-                <elPower v-for="card in showLists" v-show="checkLists(card)" v-bind="card" :key="card"/>
-            </div>
+            <elPower v-for="card in showLists" v-show="checkLists(card)" v-bind="card" :key="card"/>
           </div>
         </el-main>
         </el-container>
-  </div>
+
 </template>
 
 
@@ -173,7 +170,7 @@ export default {
     },
     checkLists(card){
         //aside的过滤写在这里
-        
+
         //有效时间的过滤
         try {
           if (this.input1&&card.msg3 <this.input1) {
@@ -202,6 +199,21 @@ export default {
 
 
 <style scoped>
+  .row1 {
+    position: relative;
+    margin-top: 10px;
+    padding: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    left: -3px;
+  }
+
+  .c1 {
+    margin-top: 40px;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
   .span0 {
     padding: 10px;
   }
@@ -212,6 +224,7 @@ export default {
 
   .cardList {
     padding-top: 3%;
+    height: 1200px;
   }
 
   .el-container {
@@ -242,6 +255,7 @@ export default {
 }
 
   .mm {
+    margin-top: 14px;
     height: 00px;
   }
 
@@ -285,24 +299,22 @@ export default {
  }
 
 #time{
-  margin-left:5px;
+  margin-left: -10px;
   margin-top:5px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   font-size:16px;
 }
 
 #area{
-  margin-left:22px;
+  margin-left: 10px;
   padding-top:10px;
   font-size:16px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
 #line{
+  padding: 2px;
   float:left;
-  margin-left:-47px;
-  margin-top:5px;
-  padding-left:60px;
   font-size:16px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
@@ -322,13 +334,14 @@ export default {
   margin-bottom:20px;
 }
 
-.row1{
-  margin-bottom:10px;
-  margin-left:-130px;
+.row{
+  padding: 10px;
+  height: 70px;
+  padding-top: 20px;
 }
 
 .row2{
-  margin-left:-230px;
+  margin-left:-220px;
 }
 
 </style>
