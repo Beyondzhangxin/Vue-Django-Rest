@@ -35,9 +35,9 @@
 
                             <div id="num">
                                 <el-row :gutter="20">
-                                    <el-col :span="8"><div class="grid-content">装机容量：{{msg4}} KWP</div></el-col>
-                                    <el-col :span="8"><div class="grid-content">今日等效：{{msg5}} h</div></el-col>
-                                    <el-col :span="8"><div class="grid-content">并网日期：2017-12-11</div></el-col>
+                                    <el-col :span="8"><div class="grid-content1">装机容量：{{msg4}} KWP</div></el-col>
+                                    <el-col :span="8"><div class="grid-content1">今日等效：{{msg5}} h</div></el-col>
+                                    <el-col :span="8"><div class="grid-content1">并网日期：2017-12-11</div></el-col>
                                 </el-row>
                             </div>
                         </el-card>
@@ -104,9 +104,9 @@
 
           <div class="mid">
               <div id="content">
-                  <el-button round>逆变器</el-button>
-                  <el-button round>汇流箱</el-button>
-                  <el-button round>采集设备</el-button>
+                  <el-button round id="text3"><strong>逆变器</strong></el-button>
+                  <el-button round id="text3"><strong>汇流箱</strong></el-button>
+                  <el-button round id="text3"><strong>采集设备</strong></el-button>
               </div>
           </div>
             <div class="foot">
@@ -246,6 +246,7 @@ export default {
 #content{
     float:left;
     margin-top:20px;
+    margin-left:80px;
 }
 
 .box-card{
@@ -272,8 +273,10 @@ export default {
 
 
 #text1{
-    margin-top:18px;
+    margin-top:20px;
     margin-left:-80px;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    font-size:16px;
 }
 
 #text2{
@@ -283,5 +286,20 @@ export default {
 
 #str{
     margin-top:10px;
+}
+
+#text3{
+    font-size: 16px;
+    font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+.grid-content1{
+    font-size: 14px;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+.text{
+    font-size: 14px;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 </style>

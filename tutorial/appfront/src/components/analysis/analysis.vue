@@ -6,19 +6,19 @@
                 <el-col :span="3"><div class="grid-content">
                     <el-button id="button">
                         <img src="../../assets/station.png" id="image">
-                        <span id="text">电站对比</span>
+                        <span id="text"><strong>电站对比</strong></span>
                     </el-button>
                 </div></el-col>
                 <el-col :span="3"><div class="grid-content">
                     <el-button id="button">
                         <img src="../../assets/self.png" id="image">
-                        <span id="text">设备对比</span>
+                        <span id="text"><strong>设备对比</strong></span>
                     </el-button>
                 </div></el-col>
                 <el-col :span="3"><div class="grid-content">
                     <el-button id="button">
                         <img src="../../assets/equipment.png" id="image">
-                        <span id="text">自身对比</span>
+                        <span id="text"><strong>自身对比</strong></span>
                     </el-button>
                 </div></el-col>
                 <el-col :span="3"><div class="grid-content"></div></el-col>
@@ -264,15 +264,21 @@ export default {
 
 #button1{
     margin-top:5px;
+    font-size:14px;
 }
 
 #text{
    padding-bottom:2px;
+   padding-top:2px;
    display: block;
+   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+   font-size:16px;
 }
 
 #span0{
     padding-top:5px;padding-left:2px;
+    font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    font-size:16px;
 }
 
 #span1{
@@ -285,6 +291,7 @@ export default {
 
 #span0{
     margin-top:8px;
+    padding-left:5px;
 }
 
 #main1{
