@@ -2,24 +2,13 @@
   <div class="Power">
     <el-container class="c1">
         <el-main class="m1" style="height: 100%">
-          <!--加如样式 -->
-
-          <div class="mm">
-            <el-col :span="24"><div class="grid-content"></div></el-col>
-            <div class="cardList">
-                <elPower v-for="card in showLists" v-show="checkLists(card)" v-bind="card" :key="card"/>
-            </div>
-          </div>
-        </el-main>
-
-
-
-       <!-- <div class="header">
-        <el-row>
+          <div class="mov">
+            <el-card>
+          <el-row>
           <el-col :span="4" id="line" v-for="item in items[0]" :key="item.id">{{ item.key+item.value }}</el-col>
         </el-row>
         <el-row>
-          <el-col :span="2" id="num">电站状态：</el-col>
+          <el-col :span="4" id="num">电站状态：</el-col>
           <el-col :span="2">
             <div class="num1">正常 <i class="el-icon-success"></i> </div>
           </el-col>
@@ -33,33 +22,32 @@
             <div class="num1">停机 <i class="el-icon-circle-close"></i> </div>
           </el-col>
         </el-row>
-      </div> -->
+            </el-card>
+          </div>
 
-
-      <!-- <el-main>
-        <el-container>
-          <el-header class="mh">
-            <div class="row">
-              <el-row>
-                <el-col :span="3" id ="time">当日有效时数:</el-col>
-                <el-col :span="3">
+          <el-card>
+          <div class="row">
+              <el-row :gutter=20>
+                <el-col :span="6" id ="time">当日有效时数:</el-col>
+                <el-col :span="4">
                   <input id="input" type="text" placeholder="请输入数字"></input>
                 </el-col>
-                <el-col :span="1" id="label">
+                <el-col :span="2" id="label">
                   ~
                 </el-col>
-                <el-col :span="3">
+                <el-col :span="4">
                   <input id="input" type="text" placeholder="请输入数字"></input>
                 </el-col>
-                <el-col :span="3">
+                <el-col :span="4">
                   <div class="hour">小时</div>
                 </el-col>
               </el-row>
             </div>
+            
             <div class="row">
-              <el-row>
-                <el-col :span="3" id="area" style="padding-top:10px" >电站所在地区</el-col>
-                <el-col :span="7">
+              <el-row :gutter=20>
+                <el-col :span="8" id="area">电站所在地区</el-col>
+                <el-col :span="14">
                   <el-select
                     v-model="value10"
                     multiple
@@ -77,7 +65,15 @@
                 </el-col>
               </el-row>
             </div>
-          </el-header>  -->
+          </el-card>
+
+          <div class="mm">
+            <el-col :span="24"><div class="grid-content"></div></el-col>
+            <div class="cardList">
+                <elPower v-for="card in showLists" v-show="checkLists(card)" v-bind="card" :key="card"/>
+            </div>
+          </div>
+        </el-main>
         </el-container>
   </div>
 </template>
@@ -192,7 +188,6 @@ export default {
 
 
   .m1 {
-
     width: 100%;
   }
 
@@ -228,10 +223,6 @@ export default {
   margin-bottom:35px;
 }
 
-  .mh {
-    /* border: 1px solid black; */
-  }
-
   .mm {
     height: 00px;
   }
@@ -248,6 +239,7 @@ export default {
 
   #label{
     margin-top:5px;
+    margin-left:80px;
   }
 
   #li {
@@ -257,39 +249,51 @@ export default {
 
 .num1{
   margin-left:50px;
-  margin-top:2px;
+  margin-top:20px;
 }
 
 #num{
-  margin-top:2px;
+  margin-top:20px;
+  margin-left:-7px;
 }
 
  .hour{
-   margin-left:-100px;
-   margin-top:5px;
+   margin-left:75px;
+   margin-top:7px;
  }
 
 #time{
-  margin-left:-20px;
+  margin-left:-10px;
   margin-top:5px;
 }
 
 #area{
-  margin-left:-20px;
-  margin-top:5px;
+  margin-left:18px;
+  padding-top:10px;
 }
 
 #line{
-  margin-left:-57px;
+  margin-left:0px;
   margin-top:5px;
+  padding-left:-10px;
 }
 
 .el-select{
-  margin-top:10px;
+  margin-top:0px;
+  margin-left:30px;
 }
 
-.header{
-
-  background: white;
+.mov{
+  height:100px;
+  /* margin-left:-65px; */
+  margin-bottom:20px;
 }
+
+.row{
+  margin-bottom:10px;
+  height:50px;
+}
+
+
+
 </style>
