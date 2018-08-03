@@ -112,7 +112,8 @@ import Img from '@/./assets/back7.jpg'
         padding: 30px 20px 20px;
         border-radius: 8px;
         box-sizing: border-box;
-        background-color: #fff;
+        background-color:rgba(255, 255, 255, 0.3)
+    
     }
 
 .login p{
