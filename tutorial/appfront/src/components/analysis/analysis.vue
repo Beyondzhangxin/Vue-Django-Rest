@@ -25,7 +25,7 @@
             </el-row>
         </el-header>
         <!-- main1 -->
-        <el-main id="main1">
+        <div id="main1">
             <el-row>
                 <el-col :span="12" id="span1">
                         <el-col :span="4" id="span0">对比内容:</el-col>
@@ -58,7 +58,7 @@
                         </el-date-picker>
                </el-col>
             </el-row>
-        </el-main>
+        </div>
         <!-- main2 -->
         <el-main id="main2">
             <el-row>
@@ -279,6 +279,8 @@ export default {
 
 #span2{
     background:white;
+    padding-left:300px;
+    padding-top:5px;
 }
 
 #span0{
