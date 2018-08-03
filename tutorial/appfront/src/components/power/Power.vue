@@ -26,7 +26,7 @@
           </div>
 
           <el-card>
-          <div class="row">
+          <div class="row1">
               <el-row :gutter=20>
                 <el-col :span="6" id ="time">当日有效时数:</el-col>
                 <el-col :span="4">
@@ -44,7 +44,7 @@
               </el-row>
             </div>
 
-            <div class="row">
+            <div class="row2">
               <el-row :gutter=20>
                 <el-col :span="8" id="area">电站所在地区</el-col>
                 <el-col :span="14">
@@ -322,11 +322,13 @@ export default {
   margin-bottom:20px;
 }
 
-.row{
+.row1{
   margin-bottom:10px;
-  height:50px;
+  margin-left:-130px;
 }
 
-
+.row2{
+  margin-left:-230px;
+}
 
 </style>
