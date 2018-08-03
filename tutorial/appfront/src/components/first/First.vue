@@ -5,9 +5,10 @@
         <div class="mainBody">
           <div class="row0">
             <el-row>
-              <el-col :span="8"><div>
-                <el-card class="card2"><Gauge2/></el-card>
-                <el-card class="card1">
+              <el-col :span="8">
+                <div>
+                  <el-card class="card2"><Gauge2/></el-card>
+                  <el-card class="card1">
                   <div class="card1m c1m">
                     <span>当前发电功率</span>
                   </div>
@@ -353,14 +354,6 @@ export default {
             max: 500,
             min: 0,
             boundaryGap: [0.2, 0.2]
-          },
-          {
-            type: 'value',
-            scale: true,
-            name: '预购量',
-            max: 1200,
-            min: 0,
-            boundaryGap: [0.2, 0.2]
           }
         ],
         series: [
@@ -368,7 +361,7 @@ export default {
             name:'逆变器发电量',
             type:'bar',
             xAxisIndex: 1,
-            yAxisIndex: 1,
+            yAxisIndex: 0,
             data:(function (){
                 var res = [];
                 var len = 10;
@@ -382,7 +375,7 @@ export default {
             name:'电能表发电量',
             type:'bar',
             xAxisIndex: 1,
-            yAxisIndex: 1,
+            yAxisIndex: 0,
             data:(function (){
                 var res = [];
                 var len = 10;
@@ -396,7 +389,7 @@ export default {
             name:'理论发电量',
             type:'line',
             xAxisIndex: 1,
-            yAxisIndex: 1,
+            yAxisIndex: 0,
             data:(function (){
                 var res = [];
                 var len = 10;
@@ -472,16 +465,8 @@ export default {
           {
             type: 'value',
             scale: true,
-            name: 'kWh',
+            name: 'kW',
             max: 500,
-            min: 0,
-            boundaryGap: [0.2, 0.2]
-          },
-          {
-            type: 'value',
-            scale: true,
-            name: '预购量',
-            max: 1200,
             min: 0,
             boundaryGap: [0.2, 0.2]
           }
@@ -491,7 +476,7 @@ export default {
             name:'逆变器发电功率',
             type:'line',
             xAxisIndex: 1,
-            yAxisIndex: 1,
+            yAxisIndex: 0,
             data:(function (){
                 var res = [];
                 var len = 10;
@@ -505,7 +490,7 @@ export default {
             name:'电能表发电功率',
             type:'line',
             xAxisIndex: 1,
-            yAxisIndex: 1,
+            yAxisIndex: 0,
             data:(function (){
                 var res = [];
                 var len = 10;
@@ -519,7 +504,7 @@ export default {
             name:'总辐照度',
             type:'line',
             xAxisIndex: 1,
-            yAxisIndex: 1,
+            yAxisIndex: 0,
             data:(function (){
                 var res = [];
                 var len = 10;
@@ -539,6 +524,7 @@ export default {
 }
 </script>
 <style scoped>
+
 
   .c1m {
     border-bottom: 1px solid #eeeeee;
@@ -590,6 +576,7 @@ export default {
   .card1 {
     position: relative;
     left: 100px;
+    margin-left: -15px;
     width: 500px;
     height: 300px;
   }

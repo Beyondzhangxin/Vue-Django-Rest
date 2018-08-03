@@ -125,7 +125,8 @@ export default {
 <style scoped>
 
 .el-tree{
-  color: #3f5bdd;
+  color: #545c64;
+  font-size: 14px;
 }
 
 .el-button {

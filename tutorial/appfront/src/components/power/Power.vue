@@ -43,7 +43,7 @@
                 </el-col>
               </el-row>
             </div>
-            
+
             <div class="row">
               <el-row :gutter=20>
                 <el-col :span="8" id="area">电站所在地区</el-col>
@@ -192,7 +192,6 @@ export default {
   }
 
   .cardList {
-    border-top: 5px solid gray;
     padding-top: 3%;
   }
 
