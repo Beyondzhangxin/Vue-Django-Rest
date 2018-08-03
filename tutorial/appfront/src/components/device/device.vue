@@ -5,7 +5,6 @@
                     <el-col :span="12"><div class="grid-content">
                         <el-card class="box-card">
                             <div id="circle clearfix">
-
                                 <el-row :gutter="20">
                                     <el-col :span="8">
                                       <div class="grid-content">
@@ -178,11 +177,9 @@ export default {
     mounted: function() {
       this.$store.commit('showIt')
     },
-
     destroyed: function() {
       this.$store.commit('hideIt')
     },
-
 }
 </script>
 
