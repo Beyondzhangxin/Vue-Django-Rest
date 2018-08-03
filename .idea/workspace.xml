@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="699a223f-2a95-44f1-b706-a9f3ca80d94a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/analysis/analysis.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/analysis/analysis.vue" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/first/First.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/first/First.vue" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/home/aside.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/home/aside.vue" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/power/Power.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/power/Power.vue" />
+      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/pages/index.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/pages/index.vue" />
+      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/router/index.js" afterPath="$PROJECT_DIR$/tutorial/appfront/src/router/index.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -154,8 +152,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="301" />
-    <option name="y" value="132" />
+    <option name="x" value="457" />
+    <option name="y" value="333" />
     <option name="width" value="1143" />
     <option name="height" value="830" />
   </component>
@@ -365,13 +363,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1528334574906</updated>
-    </task>
-    <task id="LOCAL-00043" summary="aside.vue 10">
-      <created>1532685650257</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1532685650257</updated>
     </task>
     <task id="LOCAL-00044" summary="aside.vue 10">
       <created>1532687077296</created>
@@ -709,7 +700,14 @@
       <option name="project" value="LOCAL" />
       <updated>1533257832058</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="echarts change">
+      <created>1533261118048</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1533261118048</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -722,16 +720,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="301" y="132" width="1143" height="830" extended-state="0" />
+    <frame x="457" y="333" width="1143" height="830" extended-state="0" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3085973" sideWeight="0.49337748" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46897545" sideWeight="0.33846155" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4978355" sideWeight="0.68325794" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24531025" sideWeight="0.32126698" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24531025" sideWeight="0.67873305" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24565217" sideWeight="0.49578503" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33128294" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24886878" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46897545" sideWeight="0.6615385" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46897545" sideWeight="0.6615385" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3304904" sideWeight="0.5066225" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -797,7 +795,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="&#10;&#10;# Conflicts:&#10;#&#9;tutorial/appfront/src/components/home/aside.vue" />
     <MESSAGE value="aside.vue 08" />
     <MESSAGE value="aside.vue 09" />
     <MESSAGE value="aside.vue 10" />
@@ -822,7 +819,8 @@
     <MESSAGE value="style" />
     <MESSAGE value="first change" />
     <MESSAGE value="power change" />
-    <option name="LAST_COMMIT_MESSAGE" value="power change" />
+    <MESSAGE value="echarts change" />
+    <option name="LAST_COMMIT_MESSAGE" value="echarts change" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
