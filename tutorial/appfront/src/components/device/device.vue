@@ -186,7 +186,7 @@ export default {
 
 
 
-<style scope>
+<style scoped>
 .device{
     width:1500px;
     margin-top:30px;
