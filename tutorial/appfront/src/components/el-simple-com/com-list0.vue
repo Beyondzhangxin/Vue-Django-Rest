@@ -64,6 +64,7 @@
           this.loading = false
         }.bind(this))
         .catch(function (error) {
+          return 0;
         });
         console.log(this.tableData);
       },

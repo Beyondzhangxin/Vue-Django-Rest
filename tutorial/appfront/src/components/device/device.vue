@@ -1,49 +1,45 @@
 <template>
     <div class="device">
-            <div class="top">
                 <el-row>
-                    <el-col :span="12"><div class="grid-content">
+                    <el-col :span="12">
+                      <div class="grid-content">
                         <el-card class="box-card">
-                            <div id="circle clearfix">
-                                <el-row :gutter="20">
+                            <div>
+                                <el-row :gutter="15">
                                     <el-col :span="8">
                                       <div class="grid-content">
                                         <el-button  id="cirlce" round>
-                                            <div class="text">当前功率：</div>
-                                            <div class="text">{{msg1}}</div>
+                                            <div class="text">当前功率：<strong>{{msg1}}</strong></div>
                                             <div class="text">KW</div>
                                         </el-button>
                                       </div>
                                     </el-col>
                                     <el-col :span="8"><div class="grid-content">
                                         <el-button id="cirlce" round>
-                                            <div class="text">今日发电：</div>
-                                            <div class="text">{{msg2}}</div>
+                                            <div class="text">今日发电：<strong>{{msg2}}</strong></div>
                                             <div class="text">KWh</div>
                                         </el-button>
                                     </div></el-col>
                                     <el-col :span="8"><div class="grid-content">
                                         <el-button id="cirlce" round>
-                                            <div class="text">累计发电：</div>
-                                            <div class="text">{{msg3}}</div>
+                                            <div class="text">累计发电：<strong>{{msg3}}</strong></div>
                                             <div class="text">万KWh</div>
                                         </el-button>
                                     </div></el-col>
                                 </el-row>
                             </div>
-
                             <div id="num">
                                 <el-row :gutter="20">
-                                    <el-col :span="8"><div class="grid-content1">装机容量：{{msg4}} KWP</div></el-col>
-                                    <el-col :span="8"><div class="grid-content1">今日等效：{{msg5}} h</div></el-col>
-                                    <el-col :span="8"><div class="grid-content1">并网日期：2017-12-11</div></el-col>
+                                    <el-col :span="8"><div class="grid-content1">装机容量：<strong>{{msg4}}</strong> KWP</div></el-col>
+                                    <el-col :span="8"><div class="grid-content1">今日等效：<strong>{{msg5}}</strong> h</div></el-col>
+                                    <el-col :span="8"><div class="grid-content1">并网日期：<strong>{{msg8}}</strong></div></el-col>
                                 </el-row>
                             </div>
                         </el-card>
+                      </div>
+                    </el-col>
 
-                    </div></el-col>
-
-                    <el-col :span="12"><div class="grid-content">
+                    <el-col :span="12">
                         <el-card class="box-card">
                             <div class="inverter">
                                 <el-row :gutter="20">
@@ -51,7 +47,7 @@
                                         <img src="../../assets/inverter.png" id="image1">
                                     </div></el-col>
                                     <el-col :span="6"><div class="grid-content1">
-                                        <div id="text1">逆变器{{msg6}}台</div>
+                                        <div id="text1">逆变器<strong>{{msg6}}</strong>台</div>
                                     </div></el-col>
                                     <el-col :span="12"><div class="grid-content"></div></el-col>
                                 </el-row>
@@ -96,40 +92,39 @@
                             </el-row>
                             </div>
                         </el-card>
-
-                    </div></el-col>
+                    </el-col>
                 </el-row>
-            </div>
+              <el-card class="box-card1">
+                  <el-row>
+                    <el-col :span="1" class="col1">
+                      <el-button  round id="text3"><strong>逆变器</strong></el-button>
+                    </el-col>
+                    <el-col :span="1" class="col1">
+                      <el-button  round id="text3"><strong>汇流箱</strong></el-button>
+                    </el-col>
+                    <el-col :span="1" class="col1">
+                      <el-button  round id="text3"><strong>采集设备</strong></el-button>
+                    </el-col>
+                  </el-row>
+              </el-card>
+            <el-card class="box-card2">
+              <!--通用list-->
+              <!--请求如下 http://127.0.0.1:8000/pv/get/detection/2018/1/18/ -->
 
-          <div class="mid">
-              <div id="content">
-                  <el-button round id="text3"><strong>逆变器</strong></el-button>
-                  <el-button round id="text3"><strong>汇流箱</strong></el-button>
-                  <el-button round id="text3"><strong>采集设备</strong></el-button>
-              </div>
-          </div>
-            <div class="foot">
-
-                <!--通用list-->
-                <!--请求如下 http://127.0.0.1:8000/pv/get/detection/2018/1/18/ -->
-                <div class="rowmb">
-                <!--赋值到this.data中 -->
-                <ComList v-bind="list"></ComList>
-                <!--<ComList v-bind:data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>-->
-                <el-pagination
-                    background
-                    layout="prev, pager, next"
-                    :total="1000"
-                    @current-change="handleCurrentChange">
-                </el-pagination>
-                </div>
-            </div>
+              <!--赋值到this.data中 -->
+              <ComList v-bind="list"></ComList>
+              <!--<ComList v-bind:data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>-->
+              <el-pagination
+                  background
+                  layout="prev, pager, next"
+                  :total="1000"
+                  @current-change="handleCurrentChange">
+              </el-pagination>
+            </el-card>
     </div>
 </template>
 
-
 <script>
-
 import ComList from '../el-simple-com/com-list0.vue'
 
 export default {
@@ -164,7 +159,8 @@ export default {
         msg4:623.16,
         msg5:4.85,
         msg6:15,
-        msg7:0
+        msg7:0,
+        msg8:'2017-12-11',
       }
     },
     methods: {
@@ -186,9 +182,26 @@ export default {
 
 
 <style scope>
+#image1 {
+  position: relative;
+  left: -30%;
+  top: -8px;
+}
+
+.col1 {
+  margin-left: 5%;
+  margin-right: 7%;
+}
+
+.el-pagination {
+  position: fixed;
+  bottom: 6%;
+  left: 43%;
+}
+
 .device{
     width:1500px;
-    margin-top:30px;
+    margin-top: 5px;
     margin-left:65px;
 }
 
@@ -240,15 +253,23 @@ export default {
   left: 5px;
 }
 
-#content{
-    float:left;
-    margin-top:20px;
-    margin-left:80px;
-}
+
 
 .box-card{
     height:200px;
     padding: 20px;
+    margin-bottom: 30px;
+    margin-top: 70px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.box-card1 {
+  margin-bottom: 30px;
+}
+
+.box-card2 {
+
 }
 
 .clearfix:after{
@@ -264,6 +285,10 @@ export default {
   zoom: 1;
 }
 
+#cirlce {
+  margin-top: -8px;
+}
+
 #num{
     margin-top:20px;
 }
@@ -271,7 +296,7 @@ export default {
 
 #text1{
     margin-top:20px;
-    margin-left:-80px;
+    margin-left: -110%;
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
     font-size:16px;
 }
@@ -293,10 +318,17 @@ export default {
 .grid-content1{
     font-size: 14px;
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    color: #909399;
+    position: relative;
+    top: -5px;
+    left: 1px;
 }
 
 .text{
+    color: #909399;
     font-size: 14px;
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    padding-top: 13px;
+    padding-bottom: 13px;
 }
 </style>

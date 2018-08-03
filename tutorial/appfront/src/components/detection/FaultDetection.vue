@@ -102,7 +102,6 @@
     height: 550px;
   }
 
-
   .cards {
     box-shadow: 0px 0px 10px 3px #9eabad;
   }
@@ -133,7 +132,7 @@
 
   .el-pagination {
     position: fixed;
-    bottom: 10px;
+    bottom: 15px;
     left: 10%;
   }
 
