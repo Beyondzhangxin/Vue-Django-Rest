@@ -3,12 +3,12 @@
     <div class="aside1">
       <el-row>
         <el-col :span="6"><el-button size="small"
-           @click="clickButtom(buttoms[0])">{{ buttoms[0] }}</el-button></el-col>
-        <el-col :span="6"><el-button size="small"
+           @click="clickButtom(buttoms[0])" >{{ buttoms[0] }}</el-button></el-col>
+        <el-col :span="6"><el-button  size="small"
            @click="clickButtom(buttoms[1])">{{ buttoms[1] }}</el-button></el-col>
-        <el-col :span="6"><el-button size="small"
+        <el-col :span="6"><el-button  size="small"
            @click="clickButtom(buttoms[2])">{{ buttoms[2] }}</el-button></el-col>
-        <el-col :span="6"><el-button size="small"
+        <el-col :span="6"><el-button  size="small"
            @click="clickButtom(buttoms[3])">{{ buttoms[3] }}</el-button></el-col>
       </el-row>
     </div>
@@ -129,7 +129,7 @@ export default {
 }
 
 .el-button {
-  background: #3f5bdd;
+  background: #545c64;
   border: 0px;
   color: #fff;
   padding-left: 19px;

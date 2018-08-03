@@ -5,15 +5,17 @@
                     <el-col :span="12"><div class="grid-content">
                         <el-card class="box-card">
                             <div id="circle clearfix">
+
                                 <el-row :gutter="20">
-                                    <el-col :span="8"><div class="grid-content">
+                                    <el-col :span="8">
+                                      <div class="grid-content">
                                         <el-button  id="cirlce" round>
                                             <div class="text">当前功率：</div>
                                             <div class="text">{{msg1}}</div>
                                             <div class="text">KW</div>
                                         </el-button>
-
-                                    </div></el-col>
+                                      </div>
+                                    </el-col>
                                     <el-col :span="8"><div class="grid-content">
                                         <el-button id="cirlce" round>
                                             <div class="text">今日发电：</div>

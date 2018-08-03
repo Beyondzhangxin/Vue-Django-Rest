@@ -44,8 +44,7 @@
             </div>
             <!--通用list-->
             <!--请求如下 http://127.0.0.1:8000/pv/get/detection/2018/1/18/ -->
-            <div class="rowmb">
-              <!--赋值到this.data中 -->
+            <el-card class="card2">
               <ComList v-bind:data='data'></ComList>
               <!--<ComList v-bind:data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>-->
               <el-pagination
@@ -54,7 +53,7 @@
                 :total="1000"
                 @current-change="handleCurrentChange">
               </el-pagination>
-            </div>
+            </el-card>
           </el-main>
     </el-container>
   </div>
@@ -98,6 +97,11 @@
 
 <style scoped>
   /* 导入iconfont的css*/
+  .card2 {
+    margin-top: 30px;
+  }
+
+
   .cards {
     box-shadow: 0px 0px 10px 3px #9eabad;
   }
@@ -193,7 +197,7 @@
 .rowm{
   height: 400px;
   margin: auto;
-} 
+}
 
 .rowmb{
   height: 450px;
@@ -205,7 +209,7 @@
   box-shadow: 0px 0px 10px 3px #9eabad;
 }
 
-.rowmb .el-pagination {
+.card2 .el-pagination {
   margin-left: 35%;
 }
 
