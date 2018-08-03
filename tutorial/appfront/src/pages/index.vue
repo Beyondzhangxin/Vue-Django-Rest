@@ -1,18 +1,18 @@
 <template>
 
     <div class="index" :style="{backgroundImage:'url('+img+')'}">
-        <div id="title">智能光伏云运维
+        <div id="title">光伏智能运维系统
             <!-- <img src="../../assets/logo.png" id="image">  -->
         </div>
 		<div class="login">
       	<!-- <h2>登录</h2> -->
         <el-form>
-            <el-form-item label="用户">
-                <el-input type="text" id="user" v-model="formName.user" @blur="inputBlur('user',formName.user)"></el-input>
+            <el-form-item label="用户" class="form1">
+                <el-input type="text"  prefix-icon="el-icon-edit" id="user" v-model="formName.user" @blur="inputBlur('user',formName.user)" placeholder="请输入账户"></el-input>
                 <p>{{formName.userError}}</p>
             </el-form-item>
-            <el-form-item label="密码">
-                <el-input type="password" id="password" v-model="formName.password" @blur="inputBlur('password',formName.password)"></el-input>
+            <el-form-item label="密码" class="form2">
+                <el-input type="password" prefix-icon="el-icon-circle-check" id="password" v-model="formName.password" @blur="inputBlur('password',formName.password)" placeholder="请输入密码"></el-input>
                 <p>{{formName.passwordError}}</p>
             </el-form-item>
             <el-button type="primary" @click="submitForm('formName')" v-bind:disabled="formName.user==''||formName.password==''" id="button1">登录</el-button>
@@ -98,18 +98,18 @@ import Img from '@/./assets/back7.jpg'
 .index{
         width: 100%;
         height: 100%;
-        background: rgba(0,0,0,.8);
+        background: rgba(0,0,0,0.8);
     }
 
 .login{
         position: absolute;
         top: 50%;
         left: 50%;
-        margin-top: -150px;
+        margin-top: -140px;
         margin-left: -175px;
         width: 350px;
         min-height: 300px;
-        padding: 30px 20px 20px;
+        padding: 30px 20px 25px;
         border-radius: 8px;
         box-sizing: border-box;
         background-color:rgba(255, 255, 255, 0.3)
@@ -123,8 +123,11 @@ import Img from '@/./assets/back7.jpg'
 
 #title{
     font-size: 25px;
-    padding-top:230px;
-
+    padding-top:260px;
+    color: #000000;
+    letter-spacing: 0;
+    text-shadow: 1px 1px 0#758e9c,1px 1px 0 #758e9c ,1px 1px 0 #758e9c;
+    /* text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135  */
 }
 
 #button1{
@@ -137,9 +140,7 @@ import Img from '@/./assets/back7.jpg'
     float:right;
 }
 
-#title{
-color: #fafafa;
-letter-spacing: 0;
-text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135 }
-
+.form2{
+    margin-top:-20px;
+}
 </style>

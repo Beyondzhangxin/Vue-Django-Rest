@@ -5,7 +5,7 @@
           <div class="mov">
             <el-card>
           <el-row>
-          <el-col :span="4" id="line" v-for="item in items[0]" :key="item.id">{{ item.key+item.value }}</el-col>
+          <span id="line" v-for="item in items[0]" :key="item.id">{{ item.key+item.value }}</span>
         </el-row>
         <el-row>
           <el-col :span="4" id="num">电站状态：</el-col>
@@ -266,7 +266,7 @@ export default {
   }
 
 .num1{
-  margin-left:50px;
+  margin-left:30px;
   margin-top:20px;
   font-size:15px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
@@ -274,7 +274,7 @@ export default {
 
 #num{
   margin-top:20px;
-  margin-left:-7px;
+  margin-left:-65px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 
 }
@@ -285,25 +285,30 @@ export default {
  }
 
 #time{
-  margin-left:0px;
+  margin-left:5px;
   margin-top:5px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   font-size:16px;
 }
 
 #area{
-  margin-left:18px;
+  margin-left:22px;
   padding-top:10px;
   font-size:16px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
 #line{
-  margin-left:0px;
+  float:left;
+  margin-left:-47px;
   margin-top:5px;
-  padding-left:-10px;
+  padding-left:60px;
   font-size:16px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+.mov span{
+  margin:0 15px;
 }
 
 .el-select{
