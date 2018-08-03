@@ -39,7 +39,7 @@
                   <el-input v-model="input2" :value="number" placeholder="结束时间"></el-input>
                 </el-col>
                 <el-col :span="4">
-                  <div class="hour">小时</div>
+                  <div class="hour"></div>
                 </el-col>
               </el-row>
             </div>
@@ -281,11 +281,11 @@ export default {
 
  .hour{
    margin-left:75px;
-   margin-top:7px;
+
  }
 
 #time{
-  margin-left:-10px;
+  margin-left:0px;
   margin-top:5px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   font-size:16px;
