@@ -72,7 +72,11 @@
 }
 
  .el-main {
-    background-color: #E9EEF3;
+    background-color: #001f3a;
+    background: -webkit-linear-gradient(30deg, #16222A,#3A6073); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(30deg, #16222A, #3A6073); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(30deg, #16222A, #3A6073); /* Firefox 3.6 - 15 */
+    background: linear-gradient(30deg, #16222A, #3A6073); /* 标准的语法（必须放在最后） */
     color: #333;
     height: 100%;
     padding-left: 0px;

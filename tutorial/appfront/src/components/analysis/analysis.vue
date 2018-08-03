@@ -255,7 +255,7 @@ export default {
 }
 
 #button1{
-    margin-top:5px;
+    margin-top:10px;
     font-size:14px;
 }
 
@@ -264,11 +264,12 @@ export default {
    padding-top:2px;
    display: block;
    font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-   font-size:16px;
+   font-size:14px;
 }
 
 #span0{
-    padding-top:5px;padding-left:2px;
+    padding-top:10px;
+    padding-left:2px;
     font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
     font-size:16px;
 }
@@ -280,7 +281,7 @@ export default {
 #span2{
     background:white;
     padding-left:300px;
-    padding-top:5px;
+    padding-top:10px;
 }
 
 #span0{
@@ -295,6 +296,7 @@ export default {
 #main2{
     background:white;
 }
+
 #text1{
     padding-right:20px;
 }
@@ -311,4 +313,5 @@ export default {
     margin-left:30px;
     margin-bottom: 10px;
 }
+
 </style>
