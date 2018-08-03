@@ -99,6 +99,7 @@
   /* 导入iconfont的css*/
   .card2 {
     margin-top: 30px;
+    height: 550px;
   }
 
 
@@ -131,8 +132,9 @@
   }
 
   .el-pagination {
-    position: relative;
-    float: left;
+    position: fixed;
+    bottom: 10px;
+    left: 10%;
   }
 
   .detection-title {
