@@ -10,16 +10,16 @@
         <el-row>
           <el-col :span="4" id="num">电站状态：</el-col>
           <el-col :span="2">
-            <div class="num1">正常 <i class="el-icon-success"></i> </div>
+            <div class="num1"><strong>正常 </strong><i class="el-icon-success"></i> </div>
           </el-col>
           <el-col :span="2">
-            <div class="num1">异常 <i class="el-icon-warning"></i> </div>
+            <div class="num1"><strong>异常 </strong><i class="el-icon-warning"></i> </div>
           </el-col>
           <el-col :span="2">
-            <div class="num1">离线 <i class="el-icon-loading"></i> </div>
+            <div class="num1"><strong>离线 </strong><i class="el-icon-loading"></i> </div>
           </el-col>
           <el-col :span="2">
-            <div class="num1">停机 <i class="el-icon-circle-close"></i> </div>
+            <div class="num1"><strong>停机 </strong><i class="el-icon-circle-close"></i> </div>
           </el-col>
         </el-row>
             </el-card>
@@ -249,11 +249,15 @@ export default {
 .num1{
   margin-left:50px;
   margin-top:20px;
+  font-size:15px;
+  font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
 #num{
   margin-top:20px;
   margin-left:-7px;
+  font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  
 }
 
  .hour{
@@ -264,17 +268,23 @@ export default {
 #time{
   margin-left:-10px;
   margin-top:5px;
+  font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  font-size:16px;
 }
 
 #area{
   margin-left:18px;
   padding-top:10px;
+  font-size:16px;
+  font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
 #line{
   margin-left:0px;
   margin-top:5px;
   padding-left:-10px;
+  font-size:16px;
+  font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
 .el-select{

@@ -2,13 +2,13 @@
 
     <div class="index" :style="{backgroundImage:'url('+img+')'}">
         <div id="title">智能光伏云运维
-            <!-- <img src="../../assets/logo.png" id="image">         -->
+            <!-- <img src="../../assets/logo.png" id="image">  -->
         </div>
 		<div class="login">
       	<!-- <h2>登录</h2> -->
         <el-form>
             <el-form-item label="用户">
-                <el-input type="te、xt" id="user" v-model="formName.user" @blur="inputBlur('user',formName.user)"></el-input>
+                <el-input type="text" id="user" v-model="formName.user" @blur="inputBlur('user',formName.user)"></el-input>
                 <p>{{formName.userError}}</p>
             </el-form-item>
             <el-form-item label="密码">
@@ -32,12 +32,7 @@ import Img from '@/./assets/back7.jpg'
         name: '',
         data () {
             return {
-                // login:{
-                //     backgroundImage:"url("+require("../asset/back1.jpg")+")",
-                //     backgroundRepeat: "no-repeat",
-                //     backgroundSize: "100px auto",
-                //     marginTop: "5px",
-                // },
+               
                     img:Img,
 
                 formName: {//表单中的参数

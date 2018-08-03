@@ -71,42 +71,12 @@
             </el-row>
           </div>
         </div>
-          <!-- <div class="fm">
-            <div class="fml">
-              <el-card :body-style="{ padding: '0px' }">
-                <el-row class="e1-row0">
-                  <span>逆变器转换效率</span>
-                </el-row>
-                <el-row>
-                  <el-col class="col1" :span="12"><Gauge2/></el-col>
-                  <el-col class="col2" :span="12">
-                    <ul>
-                      <li class="li1">{{ "逆变器转换效率" + (c3.eff||"~") +"%" }}</li>
-                    </ul>
-                  </el-col>
-                </el-row>
-                <div style="padding: 14px;">
-                  <div class="bottom clearfix">
-                    <el-button type="text" class="button">操作按钮</el-button>
-                  </div>
-                </div>
-              </el-card>
-            </div>
-          </div>
-          <div class="fm">
-            <div class="fm2">
-              <Line2 v-bind="settings.l1"></Line2>
-            </div>
-            <div class="fm2">
-              <Line2 v-bind="settings.l2"></Line2>
-            </div>
-          </div>
 
           <!-- 环保数据 -->
           <div class="box">
           <el-card class="box-card1">
             <div slot="header" class="clearfix">
-              <span>环保数据</span>
+              <span id="htop"><strong>环保数据</strong></span>
               <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
             </div>
             <div class="data">
@@ -174,6 +144,7 @@
   </el-container>
   </div>
 </template>
+
 <script>
 import Gauge1 from '../echarts_elements/Gauge1'
 import Line2 from '../echarts_elements/Line2'
@@ -729,4 +700,6 @@ export default {
 .box-card1{
   margin-top:20px;
 }
+
+
 </style>
