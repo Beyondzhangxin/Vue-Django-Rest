@@ -77,7 +77,7 @@ export default {
   .box-card {
     height: 600px;
     margin-bottom: 20px;
-    width: 50%;
+    width: 49%;
     float: left;
   }
 

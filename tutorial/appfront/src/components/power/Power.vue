@@ -1,6 +1,5 @@
 <template>
-  <div class="Power">
-    <el-container class="c1">
+      <el-container class="c1">
         <el-main class="m1" style="height: 100%">
           <div class="mov">
             <el-card>
@@ -69,13 +68,11 @@
 
           <div class="mm">
             <el-col :span="24"><div class="grid-content"></div></el-col>
-            <div class="cardList">
-                <elPower v-for="card in showLists" v-show="checkLists(card)" v-bind="card" :key="card"/>
-            </div>
+            <elPower v-for="card in showLists" v-show="checkLists(card)" v-bind="card" :key="card"/>
           </div>
         </el-main>
         </el-container>
-  </div>
+
 </template>
 
 
@@ -173,7 +170,7 @@ export default {
     },
     checkLists(card){
         //aside的过滤写在这里
-        
+
         //有效时间的过滤
         try {
           if (this.input1&&card.msg3 <this.input1) {
@@ -202,6 +199,12 @@ export default {
 
 
 <style scoped>
+  .c1 {
+    margin-top: 40px;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
   .span0 {
     padding: 10px;
   }
@@ -212,6 +215,7 @@ export default {
 
   .cardList {
     padding-top: 3%;
+    height: 1200px;
   }
 
   .el-container {
