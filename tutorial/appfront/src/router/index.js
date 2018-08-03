@@ -9,6 +9,9 @@ import Power from '@/components/power/Power'
 import Device from '@/components/device/Device'
 import Analysis from '@/components/analysis/Analysis'
 import Index from '@/pages/Index'
+import VueResource from 'vue-resource'
+
+Vue.use(VueResource)
 Vue.use(Router)
 
 /*
@@ -23,8 +26,11 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/Home',
-
+      redirect: '/Index',
+    },
+    {
+      path:'/index',
+      component: Index,
     },
     {
       path: '/Gauge',
@@ -53,10 +59,6 @@ export default new Router({
         {
           path:'analysis',
           component: Analysis,
-        },
-        {
-          path:'index',
-          component: Index,
         }
       ]
     },

@@ -6,26 +6,26 @@
                 <el-col :span="3"><div class="grid-content">
                     <el-button id="button">
                         <img src="../../assets/station.png" id="image">
-                        <span id="text">电站对比</span>
+                        <span id="text"><strong>电站对比</strong></span>
                     </el-button>
                 </div></el-col>
                 <el-col :span="3"><div class="grid-content">
                     <el-button id="button">
                         <img src="../../assets/self.png" id="image">
-                        <span id="text">设备对比</span>
+                        <span id="text"><strong>设备对比</strong></span>
                     </el-button>
                 </div></el-col>
                 <el-col :span="3"><div class="grid-content">
                     <el-button id="button">
                         <img src="../../assets/equipment.png" id="image">
-                        <span id="text">自身对比</span>
+                        <span id="text"><strong>自身对比</strong></span>
                     </el-button>
                 </div></el-col>
                 <el-col :span="3"><div class="grid-content"></div></el-col>
             </el-row>
         </el-header>
         <!-- main1 -->
-        <el-main id="main1">
+        <div id="main1">
             <el-row>
                 <el-col :span="12" id="span1">
                         <el-col :span="4" id="span0">对比内容:</el-col>
@@ -58,7 +58,7 @@
                         </el-date-picker>
                </el-col>
             </el-row>
-        </el-main>
+        </div>
         <!-- main2 -->
         <el-main id="main2">
             <el-row>
@@ -182,26 +182,18 @@ export default {
           {
             type: 'value',
             scale: true,
-            name: 'kWh',
+            name: 'kW',
             max: 500,
             min: 0,
             boundaryGap: [0.2, 0.2]
           },
-          {
-            type: 'value',
-            scale: true,
-            name: '预购量',
-            max: 1200,
-            min: 0,
-            boundaryGap: [0.2, 0.2]
-          }
         ],
         series: [
           {
             name:'北京光伏电站',
             type:'line',
             xAxisIndex: 1,
-            yAxisIndex: 1,
+            yAxisIndex: 0,
             data:(function (){
                 var res = [];
                 var len = 10;
@@ -215,7 +207,7 @@ export default {
             name:'上海光伏电站',
             type:'line',
             xAxisIndex: 1,
-            yAxisIndex: 1,
+            yAxisIndex: 0,
             data:(function (){
                 var res = [];
                 var len = 10;
@@ -264,11 +256,21 @@ export default {
 
 #button1{
     margin-top:5px;
+    font-size:14px;
 }
 
 #text{
    padding-bottom:2px;
+   padding-top:2px;
    display: block;
+   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+   font-size:16px;
+}
+
+#span0{
+    padding-top:5px;padding-left:2px;
+    font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    font-size:16px;
 }
 
 #span1{
@@ -277,10 +279,13 @@ export default {
 
 #span2{
     background:white;
+    padding-left:300px;
+    padding-top:5px;
 }
 
 #span0{
     margin-top:8px;
+    padding-left:5px;
 }
 
 #main1{

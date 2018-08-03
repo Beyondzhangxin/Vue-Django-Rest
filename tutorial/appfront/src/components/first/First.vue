@@ -5,17 +5,18 @@
         <div class="mainBody">
           <div class="row0">
             <el-row>
-              <el-col :span="8"><div>
-                <el-card class="card2"><Gauge2/></el-card>
-                <el-card class="card1">
-                  <div class="card1m">
+              <el-col :span="8">
+                <div>
+                  <el-card class="card2"><Gauge2/></el-card>
+                  <el-card class="card1">
+                  <div class="card1m c1m">
                     <span>当前发电功率</span>
                   </div>
                   <div class="card1m">
-                    <div class="row1">{{ "总容量：" + (c1.total||"~") +" kWh"}}</div>
-                    <div  class="row1">{{ "当日累计发电量：" + (c1.total||"~") +" kWh" }}</div>
-                    <div  class="row1">{{ "当月累计发电量：" + (c1.total||"~") +" 万kWh" }}</div>
-                    <div class="row1">{{ "累计总发电量：" + (c1.total||"~") +" 万kWh" }}</div>
+                    <div class="row1">总容量：<strong>{{(c1.total||"~")}}</strong> kWh</div>
+                    <div  class="row1">当日累计发电量：<strong>{{(c1.total||"~")}}</strong>  kWh</div>
+                    <div  class="row1">当月累计发电量：<strong>{{(c1.total||"~")}}</strong> 万kWh</div>
+                    <div class="row1">累计总发电量：<strong>{{(c1.total||"~")}}</strong> 万kWh</div>
                   </div>
                 </el-card>
               </div></el-col>
@@ -23,13 +24,13 @@
                 <div>
                   <el-card class="card2"><Gauge2/></el-card>
                   <el-card class="card1">
-                    <div class="card1m">
+                    <div class="card1m c1m">
                       <span>综合效率</span>
                     </div>
                     <div class="card1m">
-                      <div class="row1">{{ "理论电量：" + (c2.the||"~") +" kWh"}}</div>
-                      <div  class="row1">{{ "发电量：" + (c2.act||"~") +" kWh" }}</div>
-                      <div  class="row1">{{ "理论实际差值" + ( (c2.the - c2.act)||"~") +" kWh" }}</div>
+                      <div class="row1">理论电量：<strong>{{(c2.the||"~")}}</strong> kWh</div>
+                      <div  class="row1">发电量：<strong>{{(c2.act||"~")}}</strong> kWh</div>
+                      <div  class="row1">理论实际差值：<strong>{{( (c2.the - c2.act)||"~")}}</strong> kWh</div>
                     </div>
                   </el-card>
                 </div>
@@ -38,11 +39,11 @@
                 <div>
                   <el-card class="card2"><Gauge2/></el-card>
                   <el-card class="card1">
-                    <div class="card1m">
+                    <div class="card1m c1m">
                       <span>逆变器转换效率</span>
                     </div>
                     <div class="card1m">
-                      <div class="row1">{{ "逆变器转换效率" + (c3.eff||"~") +"%" }}</div>
+                      <div class="row1">逆变器转换效率：<strong>{{(c3.eff||"~") +"" }}</strong> %</div>
                     </div>
                   </el-card>
                 </div>
@@ -70,46 +71,19 @@
             </el-row>
           </div>
         </div>
-          <!-- <div class="fm">
-            <div class="fml">
-              <el-card :body-style="{ padding: '0px' }">
-                <el-row class="e1-row0">
-                  <span>逆变器转换效率</span>
-                </el-row>
-                <el-row>
-                  <el-col class="col1" :span="12"><Gauge2/></el-col>
-                  <el-col class="col2" :span="12">
-                    <ul>
-                      <li class="li1">{{ "逆变器转换效率" + (c3.eff||"~") +"%" }}</li>
-                    </ul>
-                  </el-col>
-                </el-row>
-                <div style="padding: 14px;">
-                  <div class="bottom clearfix">
-                    <el-button type="text" class="button">操作按钮</el-button>
-                  </div>
-                </div>
-              </el-card>
-            </div>
-          </div>
-          <div class="fm">
-            <div class="fm2">
-              <Line2 v-bind="settings.l1"></Line2>
-            </div>
-            <div class="fm2">
-              <Line2 v-bind="settings.l2"></Line2>
-            </div>
-          </div>
+
           <!-- 环保数据 -->
           <div class="box">
           <el-card class="box-card1">
             <div slot="header" class="clearfix">
-              <span>环保数据</span>
+              <span id="htop"><strong>环保数据</strong></span>
               <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
             </div>
+
             <div class="data">
-              <el-row :gutter="20">
+              <el-row :gutter="60">
                 <el-col :span="4"><div class="grid-content">
+                  <el-card>
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/coal.png" id="image">
@@ -119,8 +93,12 @@
                     </div></el-col>
                   </el-row>
                 <div>{{msg1}}吨</div>
-                </div></el-col>
+                </el-card>
+                </div>
+                </el-col>
+
                 <el-col :span="4"><div class="grid-content">
+                  <el-card>
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/co2.png" id="image">
@@ -130,8 +108,11 @@
                     </div></el-col>
                   </el-row>
                 <div>{{msg2}}吨</div>
+                  </el-card>
                 </div></el-col>
+
                 <el-col :span="4"><div class="grid-content">
+                  <el-card>
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/so2.png" id="image">
@@ -141,8 +122,11 @@
                     </div></el-col>
                   </el-row>
                 <div>{{msg3}}吨</div>
+                  </el-card>
                 </div></el-col>
+
                 <el-col :span="4"><div class="grid-content">
+                  <el-card>
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/no2.png" id="image">
@@ -152,17 +136,21 @@
                     </div></el-col>
                   </el-row>
                 <div>{{msg4}}kg</div>
+                  </el-card>
                 </div></el-col>
+
                 <el-col :span="4"><div class="grid-content">
+                  <el-card>
                    <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/tree.png" id="image">
                     </div></el-col>
                     <el-col :span="12"><div class="grid-content">
-                    <div class="text0">累计减排</div>
+                    <div class="text0">累计植树</div>
                     </div></el-col>
                   </el-row>
                 <div>{{msg5}}棵</div>
+                  </el-card>
                 </div></el-col>
               </el-row>
             </div>
@@ -172,6 +160,7 @@
   </el-container>
   </div>
 </template>
+
 <script>
 import Gauge1 from '../echarts_elements/Gauge1'
 import Line2 from '../echarts_elements/Line2'
@@ -352,14 +341,6 @@ export default {
             max: 500,
             min: 0,
             boundaryGap: [0.2, 0.2]
-          },
-          {
-            type: 'value',
-            scale: true,
-            name: '预购量',
-            max: 1200,
-            min: 0,
-            boundaryGap: [0.2, 0.2]
           }
         ],
         series: [
@@ -367,7 +348,7 @@ export default {
             name:'逆变器发电量',
             type:'bar',
             xAxisIndex: 1,
-            yAxisIndex: 1,
+            yAxisIndex: 0,
             data:(function (){
                 var res = [];
                 var len = 10;
@@ -381,7 +362,7 @@ export default {
             name:'电能表发电量',
             type:'bar',
             xAxisIndex: 1,
-            yAxisIndex: 1,
+            yAxisIndex: 0,
             data:(function (){
                 var res = [];
                 var len = 10;
@@ -395,7 +376,7 @@ export default {
             name:'理论发电量',
             type:'line',
             xAxisIndex: 1,
-            yAxisIndex: 1,
+            yAxisIndex: 0,
             data:(function (){
                 var res = [];
                 var len = 10;
@@ -471,16 +452,8 @@ export default {
           {
             type: 'value',
             scale: true,
-            name: 'kWh',
+            name: 'kW',
             max: 500,
-            min: 0,
-            boundaryGap: [0.2, 0.2]
-          },
-          {
-            type: 'value',
-            scale: true,
-            name: '预购量',
-            max: 1200,
             min: 0,
             boundaryGap: [0.2, 0.2]
           }
@@ -490,7 +463,7 @@ export default {
             name:'逆变器发电功率',
             type:'line',
             xAxisIndex: 1,
-            yAxisIndex: 1,
+            yAxisIndex: 0,
             data:(function (){
                 var res = [];
                 var len = 10;
@@ -504,7 +477,7 @@ export default {
             name:'电能表发电功率',
             type:'line',
             xAxisIndex: 1,
-            yAxisIndex: 1,
+            yAxisIndex: 0,
             data:(function (){
                 var res = [];
                 var len = 10;
@@ -518,7 +491,7 @@ export default {
             name:'总辐照度',
             type:'line',
             xAxisIndex: 1,
-            yAxisIndex: 1,
+            yAxisIndex: 0,
             data:(function (){
                 var res = [];
                 var len = 10;
@@ -538,6 +511,12 @@ export default {
 }
 </script>
 <style scoped>
+
+
+  .c1m {
+    border-bottom: 1px solid #eeeeee;
+  }
+
   .card3Li {
     height: 400px;
     width: 100%;
@@ -563,22 +542,30 @@ export default {
     text-align: left;
     width: 100% large;
     height: 85px;
-    border-bottom: 1px solid #dddddd;
-    font-size: 14px Small;
+    font-size: 14px;
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   }
 
   .row1 {
     color: #909399;
-    margin-bottom: 2px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eeeeee;
+  }
 
+  .row1 strong {
+    font-size: 15px;
+    font-weight: 300;
+    color: #974e45;
   }
 
   .card1 {
     position: relative;
     left: 100px;
+    margin-left: -15px;
     width: 500px;
-    height: 200px;
+    height: 300px;
   }
 
   .card2 {
@@ -591,10 +578,8 @@ export default {
     background-color: #974e45;
   }
 
-
-
   .mainBody {
-    height: 870px;
+    height: 1000px;
   }
 
   .button {
@@ -726,6 +711,22 @@ export default {
 
 .text0{
   margin-top:5px;
-
+  margin-right:10px;
 }
+
+.box-card1{
+  margin-top:20px;
+}
+
+.box{
+  margin-right:20px;
+  margin-left:30px;
+}
+
+.data{
+  padding-left:150px;
+ 
+}
+
+
 </style>

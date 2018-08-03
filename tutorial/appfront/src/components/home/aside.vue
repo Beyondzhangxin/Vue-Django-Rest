@@ -2,13 +2,13 @@
   <div class="aside">
     <div class="aside1">
       <el-row>
-        <el-col :span="6"><el-button size="small"
-           @click="clickButtom(buttoms[0])">{{ buttoms[0] }}</el-button></el-col>
-        <el-col :span="6"><el-button size="small"
+        <el-col :span="6"><el-button class="b1" size="small"
+           @click="clickButtom(buttoms[0])" >{{ buttoms[0] }}</el-button></el-col>
+        <el-col :span="6"><el-button  class="b2" size="small"
            @click="clickButtom(buttoms[1])">{{ buttoms[1] }}</el-button></el-col>
-        <el-col :span="6"><el-button size="small"
+        <el-col :span="6"><el-button  class="b3" size="small"
            @click="clickButtom(buttoms[2])">{{ buttoms[2] }}</el-button></el-col>
-        <el-col :span="6"><el-button size="small"
+        <el-col :span="6"><el-button  class="b4" size="small"
            @click="clickButtom(buttoms[3])">{{ buttoms[3] }}</el-button></el-col>
       </el-row>
     </div>
@@ -125,16 +125,19 @@ export default {
 <style scoped>
 
 .el-tree{
-  color: #3f5bdd;
+  color: #545c64;
+  font-size: 14px;
 }
 
+
+
+
 .el-button {
-  background: #3f5bdd;
-  border: 0px;
+  background: #545c64;
   color: #fff;
-  padding-left: 19px;
-  padding-right: 19px;
 }
+
+
 
 .aside {
     height: 100%;
@@ -179,27 +182,23 @@ export default {
   }
 
   .b1 {
-    border-left-color:  #409eff;
-    border-top-left-radius: 10px 7px;
-    border-top-right-radius: 10px 7px;
+    margin-left: 8px;
+    margin-right: 4px;
   }
 
   .b2 {
-    border-left-color: #67c23a;
-    border-top-left-radius: 10px 7px;
-    border-top-right-radius: 10px 7px;
+    margin-left: 4px;
+    margin-right: 4px;
   }
 
   .b3 {
-    border-left-color: #e6a23c;
-    border-top-left-radius: 10px 7px;
-    border-top-right-radius: 10px 7px;
+    margin-left: 4px;
+    margin-right: 4px;
   }
 
   .b4 {
-    border-left-color: #f56c6c;
-    border-top-left-radius: 10px 7px;
-    border-top-right-radius: 10px 7px;
+    margin-left: 4px;
+    margin-right: 8px;
   }
 
   .el-autocomplete {

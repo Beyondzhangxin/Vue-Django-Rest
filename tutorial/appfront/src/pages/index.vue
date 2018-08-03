@@ -1,107 +1,146 @@
 <template>
-    <div id="index"></div>
 
+    <div class="index" :style="{backgroundImage:'url('+img+')'}">
+        <div id="title">光伏智能运维系统
+            <!-- <img src="../../assets/logo.png" id="image">  -->
+        </div>
+		<div class="login">
+      	<!-- <h2>登录</h2> -->
+        <el-form>
+            <el-form-item label="用户" class="form1">
+                <el-input type="text"  prefix-icon="el-icon-edit" id="user" v-model="formName.user" @blur="inputBlur('user',formName.user)" placeholder="请输入账户"></el-input>
+                <p>{{formName.userError}}</p>
+            </el-form-item>
+            <el-form-item label="密码" class="form2">
+                <el-input type="password" prefix-icon="el-icon-circle-check" id="password" v-model="formName.password" @blur="inputBlur('password',formName.password)" placeholder="请输入密码"></el-input>
+                <p>{{formName.passwordError}}</p>
+            </el-form-item>
+            <el-button type="primary" @click="submitForm('formName')" v-bind:disabled="formName.user==''||formName.password==''" id="button1">登录</el-button>
+            <el-button @click="resetForm" id="button2">重置</el-button>
+        </el-form>
+		</div>
+	</div>
 
 </template>
 
 
 <script>
-// import App from './js/app.js';
-// import Paticles1 from './js/particles';
-// import Particles2 from './js/particles.min.js'
+import Axios from 'axios'
+import Img from '@/./assets/back7.jpg'
 
-// import "./static/default.css";
-// import './static/style.css';
+    export default {
+        name: '',
+        data () {
+            return {
+               
+                    img:Img,
 
-export default {
-    data(){
-        return
+                formName: {//表单中的参数
+                    user: '',
+                    userError: '',
+                    password: '',
+                    passwordError: '',
+                    beDisabled: true
+                },
+                beShow: false//传值给父组件
+            }
+        },
+        /*props:[
+                'fromParent'
+        ],*/
+        methods: {
+            resetForm:function(){
+                this.formName.user = '';
+                this.formName.userError = '';
+                this.formName.password = '';
+                this.formName.passwordError = '';
+            },
+            submitForm:function(formName){
+                //与父组件通信传值
+                //this.$emit('showState', [this.beShow,this.formName.user])
+                //提交user password
+                this.$router.push("/home/first");
+            },
+            inputBlur:function(errorItem,inputContent){
+                if (errorItem === 'user') {
+                    if (inputContent === '') {
+                        this.formName.userError = '用户名不能为空'
+                    }else{
+                        this.formName.userError = '';
+                    }
+                }else if(errorItem === 'password') {
+                    if (inputContent === '') {
+                        this.formName.passwordError = '密码不能为空'
+                    }else{
+                        this.formName.passwordError = '';
+                    }
+                }
+                //对于按钮的状态进行修改
+                if (this.formName.user != '' && this.formName.password != '') {
+                    this.formName.beDisabled = false;
+                }else{
+                    this.formName.beDisabled = true;
+                }
+            }
+        }
     }
-}
 </script>
 
 
 
 <style scoped>
+/* html,body{
+        margin: 0;
+        padding: 0;
+        position: relative;
+	} */
 
-    /*@import url(http://fonts.useso.com/css?family=Raleway:200,500,700,800);
-@font-face {
-	font-family: 'icomoon';
-	src:url('../fonts/icomoon.eot?yrquyl');
-	src:url('../fonts/icomoon.eot?#iefixyrquyl') format('embedded-opentype'),
-		url('../fonts/icomoon.woff?yrquyl') format('woff'),
-		url('../fonts/icomoon.ttf?yrquyl') format('truetype'),
-		url('../fonts/icomoon.svg?yrquyl#icomoon') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-[class^="icon-"], [class*=" icon-"] {
-	font-family: 'icomoon';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
+.index{
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+    }
 
+.login{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -140px;
+        margin-left: -175px;
+        width: 350px;
+        min-height: 300px;
+        padding: 30px 20px 25px;
+        border-radius: 8px;
+        box-sizing: border-box;
+        background-color:rgba(255, 255, 255, 0.3)
+    
+    }
 
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-body, html { font-size: 100%; 	padding: 0; margin: 0;}
-
-
-*,
-*:after,
-*:before {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+.login p{
+        color: red;
+        text-align: left;
 }
 
-
-.clearfix:before,
-.clearfix:after {
-	content: " ";
-	display: table;
+#title{
+    font-size: 25px;
+    padding-top:260px;
+    color: #000000;
+    letter-spacing: 0;
+    text-shadow: 1px 1px 0#758e9c,1px 1px 0 #758e9c ,1px 1px 0 #758e9c;
+    /* text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135  */
 }
 
-.clearfix:after {
-	clear: both;
+#button1{
+    margin-left:40px;
+    float:left;
 }
 
-body{
-	background: #f9f7f6;
-	color: #404d5b;
-	font-weight: 500;
-	font-size: 1.05em;
-	font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
-}
-a{color: #2fa0ec;text-decoration: none;outline: none;}
-a:hover,a:focus{color:#74777b;};
-
-.container{
-	margin: 0 auto;
-	text-align: center;
-	overflow: hidden;
+#button2{
+    margin-right: 40px;
+    float:right;
 }
 
-html,body{ 
-	width:100%;
-	height:80%;
-	background:#000;
+.form2{
+    margin-top:-20px;
 }
-
-
-canvas{
-	display:block;
-	vertical-align:bottom;
-}
-
-#particles-js{
-	width:100%;
-	height:95%;
-}*/
-
 </style>

@@ -2,12 +2,12 @@
   <el-row class="list">
     <!-- tableData数据的映射 -->
     <el-table :data="tableData" border
-    style="width: 100%" v-loading="false">
+    style="width: 100%" v-loading="loading">
       <el-table-column
       v-for="{ prop, label } in tabConfigs"
       :key="prop"
       :prop="prop"
-      :width="187"
+      :width="186"
       :label="label">
       </el-table-column>
       <el-pagination
@@ -32,10 +32,11 @@
 <script>
   export default {
     name: 'ComList',
-    props: ['data', 'tabConfigs'],
+    props: ['data', 'tabConfigs', 'filterKey'],
     data() {
       return {
-        tableData: []
+        loading: true,
+        tableData: [],
         // pageSize: 2
       }
     },
@@ -52,14 +53,18 @@
     methods: {
       //通过异步请求，ajax用来获取数据
       showAll(){
+        this.loading = true
         this.tableData = [];
         this.$ajax.get(this.data)
         .then(function (response) {
           for (var i = 0; i < response.data.results.length; i++) {
+            //在这里写过aside过滤
             this.setTableData(response.data.results[i])
           }
+          this.loading = false
         }.bind(this))
         .catch(function (error) {
+          return 0;
         });
         console.log(this.tableData);
       },

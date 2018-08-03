@@ -81,7 +81,7 @@
     color: #fff;
     position: absolute;
     top: 0px;
-    background: #c23531;
+    background-color: #545c64;
     width: 260px;
     padding: 15px;
 

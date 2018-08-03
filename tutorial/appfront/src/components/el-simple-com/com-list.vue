@@ -1,13 +1,15 @@
 <template>
   <el-row class="list">
     <!-- tableData数据的映射 -->
-    <el-table :data="tableData" border
-    style="width: 100%" v-loading="false">
+    <el-table :data="tableData"
+    border
+    style="width: 100%"
+    v-loading="loading">
       <el-table-column
       v-for="{ prop, label } in tabConfigs"
       :key="prop"
       :prop="prop"
-      :width="260"
+      :width="263"
       :label="label">
       </el-table-column>
       <el-pagination
@@ -43,7 +45,8 @@
         {prop: 'dev_get_time', label: '数据采集的时间'},
       ]
       return {
-        tableData: []
+        loading: true,
+        tableData: [],
         // pageSize: 2
       }
     },
@@ -60,14 +63,18 @@
     methods: {
       //通过异步请求，ajax用来获取数据
       showAll(){
+        this.loading = true
         this.tableData = [];
         this.$ajax.get(this.data)
         .then(function (response) {
           for (var i = 0; i < response.data.results.length; i++) {
+            //在这里写过aside过滤
             this.setTableData(response.data.results[i])
           }
+          this.loading = false
         }.bind(this))
         .catch(function (error) {
+          return 0;
         });
         console.log(this.tableData);
       },
@@ -92,12 +99,11 @@
 </script>
 <style scoped>
   .list {
-    margin: auto;
-    position: relative;
+
   }
 
   .el-row {
     margin-bottom: 0px;
-    padding-bottom: 295px;
+
   }
 </style>

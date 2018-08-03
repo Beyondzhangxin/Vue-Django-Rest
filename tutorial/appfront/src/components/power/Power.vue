@@ -1,54 +1,52 @@
 <template>
-  <div class="Power">
-    <el-container>
-
-      <!-- head部分 -->
-      <el-header>
-        <el-row>
-          <el-col :span="4" id="line" v-for="item in items[0]" :key="item.id">{{ item.key+item.value }}</el-col>
+      <el-container class="c1">
+        <el-main class="m1" style="height: 100%">
+          <div class="mov">
+            <el-card>
+          <el-row>
+          <span id="line" v-for="item in items[0]" :key="item.id">{{ item.key+item.value }}</span>
         </el-row>
         <el-row>
-          <el-col :span="2" id="num">电站状态：</el-col>
+          <el-col :span="4" id="num">电站状态：</el-col>
           <el-col :span="2">
-            <div class="num1">正常 <i class="el-icon-success"></i> </div>
+            <div class="num1"><strong>正常 </strong><i class="el-icon-success"></i> </div>
           </el-col>
           <el-col :span="2">
-            <div class="num1">异常 <i class="el-icon-warning"></i> </div>
+            <div class="num1"><strong>异常 </strong><i class="el-icon-warning"></i> </div>
           </el-col>
           <el-col :span="2">
-            <div class="num1">离线 <i class="el-icon-loading"></i> </div>
+            <div class="num1"><strong>离线 </strong><i class="el-icon-loading"></i> </div>
           </el-col>
           <el-col :span="2">
-            <div class="num1">停机 <i class="el-icon-circle-close"></i> </div>
+            <div class="num1"><strong>停机 </strong><i class="el-icon-circle-close"></i> </div>
           </el-col>
         </el-row>
-      </el-header>
+            </el-card>
+          </div>
 
-      <!-- main mh部分 -->
-      <el-main>
-        <el-container>
-          <el-header class="mh">
-            <div class="row">
-              <el-row>
-                <el-col :span="3" id ="time">当日有效时数:</el-col>
-                <el-col :span="3">
-                  <input id="input" type="text" placeholder="请输入数字"></input>
+          <el-card>
+          <div class="row">
+              <el-row :gutter=20>
+                <el-col :span="6" id ="time">当日有效时数:</el-col>
+                <el-col :span="4">
+                  <el-input v-model="input1" :value="number" placeholder="起始时间"></el-input>
                 </el-col>
-                <el-col :span="1" id="label">
+                <el-col :span="1" class="span0">
                   ~
                 </el-col>
-                <el-col :span="3">
-                  <input id="input" type="text" placeholder="请输入数字"></input>
+                <el-col :span="4">
+                  <el-input v-model="input2" :value="number" placeholder="结束时间"></el-input>
                 </el-col>
-                <el-col :span="3">
-                  <div class="hour">小时</div>
+                <el-col :span="4">
+                  <div class="hour"></div>
                 </el-col>
               </el-row>
             </div>
+
             <div class="row">
-              <el-row>
-                <el-col :span="3" id="area" style="padding-top:10px" >电站所在地区</el-col>
-                <el-col :span="7">
+              <el-row :gutter=20>
+                <el-col :span="8" id="area">电站所在地区</el-col>
+                <el-col :span="14">
                   <el-select
                     v-model="value10"
                     multiple
@@ -66,18 +64,15 @@
                 </el-col>
               </el-row>
             </div>
-          </el-header>
-          <!-- main mm部分 -->
-          <el-main class="mm">
-            <el-col :span="24"><div class="grid-content bg-purple"></div></el-col>
-            <div class="cardList">
-                <elPower v-for="card in showLists" v-show="checkLists(card)" v-bind="card" :key="card"/>
-            </div>
-          </el-main>
+          </el-card>
+
+          <div class="mm">
+            <el-col :span="24"><div class="grid-content"></div></el-col>
+            <elPower v-for="card in showLists" v-show="checkLists(card)" v-bind="card" :key="card"/>
+          </div>
+        </el-main>
         </el-container>
-      </el-main>
-    </el-container>
-  </div>
+
 </template>
 
 
@@ -94,14 +89,17 @@ export default {
   },
   data () {
     return {
+      input1: '',
+      input2: '',
       showLists: [],
       //对应elpower中属性
+      //依次是总装机容量 当前运行功率 当日有效时数 当月有效时数
       cardLists: [
         {
           id: 'BJ',
           msg1: 1,
           msg2: 1,
-          msg3: 1,
+          msg3: 2,
           msg4: 1,
           msg5: 1,
           msg6: '',
@@ -171,6 +169,20 @@ export default {
       }
     },
     checkLists(card){
+        //aside的过滤写在这里
+
+        //有效时间的过滤
+        try {
+          if (this.input1&&card.msg3 <this.input1) {
+            return false;
+          }
+          if (this.input2&&card.msg3 >this.input2) {
+            return false;
+          }
+        } catch (e) {
+          console.log(e);
+        }
+        //地区的过滤
         if (this.value10.length == 0) {
           return true;
         }
@@ -187,9 +199,23 @@ export default {
 
 
 <style scoped>
+  .c1 {
+    margin-top: 40px;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  .span0 {
+    padding: 10px;
+  }
+
+  .m1 {
+    width: 100%;
+  }
+
   .cardList {
-    border-top: 5px solid gray;
     padding-top: 3%;
+    height: 1200px;
   }
 
   .el-container {
@@ -206,9 +232,7 @@ export default {
     height: 100%;
     width: 1500px;
     box-shadow: 1px 1px 10px 5px #c0c0c0;
-    margin-top:30px;
-    margin-left:25px;
-    margin-bottom:30px;
+    margin: 60px;
   }
 
   .el-main {
@@ -221,12 +245,12 @@ export default {
   margin-bottom:35px;
 }
 
-  .mh {
-    /* border: 1px solid black; */
+  .mm {
+    height: 00px;
   }
 
-  .mm {
-
+  #main1 {
+    height: 1400px;
   }
 
   #input {
@@ -237,6 +261,7 @@ export default {
 
   #label{
     margin-top:5px;
+    margin-left:80px;
   }
 
   #li {
@@ -245,37 +270,67 @@ export default {
   }
 
 .num1{
-  margin-left:50px;
-  margin-top:2px;
+  margin-left:30px;
+  margin-top:20px;
+  font-size:15px;
+  font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
 #num{
-  margin-top:2px;
+  margin-top:20px;
+  margin-left:-65px;
+  font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+
 }
 
  .hour{
-   margin-left:-100px;
-   margin-top:5px;
+   margin-left:75px;
+
  }
 
 #time{
-  margin-left:-20px;
+  margin-left:5px;
   margin-top:5px;
+  font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  font-size:16px;
 }
 
 #area{
-  margin-left:-20px;
-  margin-top:5px;
+  margin-left:22px;
+  padding-top:10px;
+  font-size:16px;
+  font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
 #line{
-  margin-left:-57px;
+  float:left;
+  margin-left:-47px;
   margin-top:5px;
+  padding-left:60px;
+  font-size:16px;
+  font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+.mov span{
+  margin:0 15px;
 }
 
 .el-select{
-  margin-top:10px;
+  margin-top:0px;
+  margin-left:30px;
 }
+
+.mov{
+  height:100px;
+  /* margin-left:-65px; */
+  margin-bottom:20px;
+}
+
+.row{
+  margin-bottom:10px;
+  height:50px;
+}
+
 
 
 </style>
