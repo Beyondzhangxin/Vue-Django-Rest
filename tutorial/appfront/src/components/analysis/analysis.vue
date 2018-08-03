@@ -182,26 +182,18 @@ export default {
           {
             type: 'value',
             scale: true,
-            name: 'kWh',
+            name: 'kW',
             max: 500,
             min: 0,
             boundaryGap: [0.2, 0.2]
           },
-          {
-            type: 'value',
-            scale: true,
-            name: '预购量',
-            max: 1200,
-            min: 0,
-            boundaryGap: [0.2, 0.2]
-          }
         ],
         series: [
           {
             name:'北京光伏电站',
             type:'line',
             xAxisIndex: 1,
-            yAxisIndex: 1,
+            yAxisIndex: 0,
             data:(function (){
                 var res = [];
                 var len = 10;
@@ -215,7 +207,7 @@ export default {
             name:'上海光伏电站',
             type:'line',
             xAxisIndex: 1,
-            yAxisIndex: 1,
+            yAxisIndex: 0,
             data:(function (){
                 var res = [];
                 var len = 10;

@@ -29,8 +29,8 @@ export default new Router({
       redirect: '/Home',
     },
     {
-        path:'/index',
-        component: Index,
+      path:'/index',
+      component: Index,
     },
     {
       path: '/Gauge',

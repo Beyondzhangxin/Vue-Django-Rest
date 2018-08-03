@@ -1,5 +1,5 @@
 <template>
-    
+
     <div class="index" :style="{backgroundImage:'url('+img+')'}">
         <div id="title">智能光伏云运维
             <!-- <img src="../../assets/logo.png" id="image">  -->
@@ -15,10 +15,10 @@
                 <el-input type="password" id="password" v-model="formName.password" @blur="inputBlur('password',formName.password)"></el-input>
                 <p>{{formName.passwordError}}</p>
             </el-form-item>
-            <el-button type="primary" @click="submitForm('formName')" v-bind:disabled="formName.beDisabled" id="button1">登录</el-button>
+            <el-button type="primary" @click="submitForm('formName')" v-bind:disabled="formName.user==''||formName.password==''" id="button1">登录</el-button>
             <el-button @click="resetForm" id="button2">重置</el-button>
-        </el-form>   
-		</div>     
+        </el-form>
+		</div>
 	</div>
 
 </template>
@@ -43,7 +43,7 @@ import Img from '@/./assets/back7.jpg'
                     beDisabled: true
                 },
                 beShow: false//传值给父组件
-            }           
+            }
         },
         /*props:[
                 'fromParent'
@@ -59,17 +59,7 @@ import Img from '@/./assets/back7.jpg'
                 //与父组件通信传值
                 //this.$emit('showState', [this.beShow,this.formName.user])
                 //提交user password
-                var user = this.formName.user,
-                    password = this.formName.password;
-                    console.log(user,password)
-                	Axios.get('../../src/php/login.php?user='+user+'&password='+password)
-                     .then(function(res){
-                        console.log(res)
-
-                     })
-                     .catch(function(){
-
-                     })
+                this.$router.push("/home/first");
             },
             inputBlur:function(errorItem,inputContent){
                 if (errorItem === 'user') {
@@ -124,7 +114,7 @@ import Img from '@/./assets/back7.jpg'
         box-sizing: border-box;
         background-color: #fff;
     }
-    
+
 .login p{
         color: red;
         text-align: left;
@@ -144,6 +134,6 @@ import Img from '@/./assets/back7.jpg'
 #button2{
     margin-right: 40px;
     float:right;
-}   
+}
 
 </style>
