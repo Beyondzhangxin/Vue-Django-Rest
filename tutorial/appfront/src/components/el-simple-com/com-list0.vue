@@ -7,7 +7,7 @@
       v-for="{ prop, label } in tabConfigs"
       :key="prop"
       :prop="prop"
-      :width="187"
+      :width="186"
       :label="label">
       </el-table-column>
       <el-pagination
@@ -32,10 +32,10 @@
 <script>
   export default {
     name: 'ComList',
-    props: ['data', 'tabConfigs'],
+    props: ['data', 'tabConfigs', 'filterKey'],
     data() {
       return {
-        tableData: []
+        tableData: [],
         // pageSize: 2
       }
     },
@@ -56,6 +56,7 @@
         this.$ajax.get(this.data)
         .then(function (response) {
           for (var i = 0; i < response.data.results.length; i++) {
+            //在这里写过aside过滤
             this.setTableData(response.data.results[i])
           }
         }.bind(this))
