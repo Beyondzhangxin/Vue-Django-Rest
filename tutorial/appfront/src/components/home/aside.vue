@@ -89,21 +89,42 @@ export default {
           children: 'children',
           label: 'label'
         }
-    }
-  },
-  mounted: function() {
-    //this.load();
-  },
-  watch: {
-     filterText(val) {
-       this.$refs.tree2.filter(val);
-     }
-   },
+      }
+    },
+    mounted: function () {
+      //this.load();
+      this.transdata();
+    },
+    watch: {
+      filterText(val) {
+        this.$refs.tree2.filter(val);
+      }
+    },
 
-   methods: {
-     sendTree(){
-       console.log(this.$refs.tree2.getCheckedKeys());
-     },
+    methods: {
+      transdata(){
+        var response = this.$http.get('http://127.0.0.1:8000/system/powerStations');
+        var jsonList = [];
+        for (var i = 0; i < response.list.length; i++) {
+          var json = {};
+          json.id = i;
+          json.label = response.list[i].systemName;
+          json.children = []
+          for (var k = 0; k < response.list[i].devices.length; k++) {
+            var device = {};
+            device.id = String(i) + String(k);
+            device.label = response.list[i].devices[k];
+            json.children.push(device);
+          }
+          jsonList.push(json);
+        }
+
+        this.data2 = jsonList;
+
+      },
+      sendTree(){
+        console.log(this.$refs.tree2.getCheckedKeys());
+      },
 
      filterNode(value, data) {
        if (!value) return true;
