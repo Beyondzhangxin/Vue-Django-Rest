@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="699a223f-2a95-44f1-b706-a9f3ca80d94a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/analysis/analysis.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/analysis/analysis.vue" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/detection/FaultDetection.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/detection/FaultDetection.vue" />
       <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/device/device.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/device/device.vue" />
-      <change beforePath="$PROJECT_DIR$/tutorial/appfront/src/components/first/First.vue" afterPath="$PROJECT_DIR$/tutorial/appfront/src/components/first/First.vue" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -365,13 +362,6 @@
       <option name="presentableId" value="Default" />
       <updated>1528334574906</updated>
     </task>
-    <task id="LOCAL-00054" summary="device change">
-      <created>1532930552264</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1532930552264</updated>
-    </task>
     <task id="LOCAL-00055" summary="header change 01">
       <created>1532932658538</created>
       <option name="number" value="00055" />
@@ -708,7 +698,14 @@
       <option name="project" value="LOCAL" />
       <updated>1533289739946</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="device update">
+      <created>1533464727998</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1533464727998</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
