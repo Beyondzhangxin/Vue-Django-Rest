@@ -3,29 +3,29 @@
         <el-main class="m1" style="height: 100%">
           <div class="mov">
             <el-card>
-          <el-row>
-          <span id="line" v-for="item in items[0]" :key="item.id">{{ item.key+item.value }}</span>
-        </el-row>
-        <el-row>
-          <el-col :span="4" id="num">电站状态：</el-col>
-          <el-col :span="2">
-            <div class="num1"><strong>正常 </strong><i class="el-icon-success"></i> </div>
-          </el-col>
-          <el-col :span="2">
-            <div class="num1"><strong>异常 </strong><i class="el-icon-warning"></i> </div>
-          </el-col>
-          <el-col :span="2">
-            <div class="num1"><strong>离线 </strong><i class="el-icon-loading"></i> </div>
-          </el-col>
-          <el-col :span="2">
-            <div class="num1"><strong>停机 </strong><i class="el-icon-circle-close"></i> </div>
-          </el-col>
-        </el-row>
+              <el-row>
+                <span id="line" v-for="item in items[0]" :key="item.id">{{ item.key }} <strong>{{ item.value }}</strong></span>
+              </el-row>
+              <el-row class="row1">
+              <el-col :span="2">电站状态：</el-col>
+              <el-col :span="2">
+                <div><strong>正常 </strong><i class="el-icon-success"></i> </div>
+              </el-col>
+              <el-col :span="2">
+                <div><strong>异常 </strong><i class="el-icon-warning"></i> </div>
+              </el-col>
+              <el-col :span="2">
+                <div><strong>离线 </strong><i class="el-icon-loading"></i> </div>
+              </el-col>
+              <el-col :span="2">
+                <div><strong>停机 </strong><i class="el-icon-circle-close"></i></div>
+              </el-col>
+            </el-row>
             </el-card>
           </div>
 
           <el-card>
-          <div class="row">
+          <div class="row1">
               <el-row :gutter=20>
                 <el-col :span="6" id ="time">当日有效时数:</el-col>
                 <el-col :span="4">
@@ -43,11 +43,11 @@
               </el-row>
             </div>
 
-            <div class="row">
+            <div class="row2">
               <el-row :gutter=20>
                 <el-col :span="8" id="area">电站所在地区</el-col>
-                <el-col :span="14">
-                  <el-select
+                <el-col :span="5">
+                  <el-select class="select"
                     v-model="value10"
                     multiple
                     filterable
@@ -199,6 +199,15 @@ export default {
 
 
 <style scoped>
+  .row1 {
+    position: relative;
+    margin-top: 10px;
+    padding: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    left: -3px;
+  }
+
   .c1 {
     margin-top: 40px;
     margin-left: 50px;
@@ -246,6 +255,7 @@ export default {
 }
 
   .mm {
+    margin-top: 14px;
     height: 00px;
   }
 
@@ -289,24 +299,22 @@ export default {
  }
 
 #time{
-  margin-left:5px;
-  margin-top:5px;
+  margin-left: -105px;
+  margin-top:0px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   font-size:16px;
 }
 
 #area{
-  margin-left:22px;
+  margin-left: 10px;
   padding-top:10px;
   font-size:16px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
 #line{
+  padding: 2px;
   float:left;
-  margin-left:-47px;
-  margin-top:5px;
-  padding-left:60px;
   font-size:16px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
@@ -326,11 +334,20 @@ export default {
   margin-bottom:20px;
 }
 
-.row{
-  margin-bottom:10px;
-  height:50px;
+/* .row{
+  padding: 10px;
+  height: 70px;
+  padding-top: 20px;
+} */
+
+
+.row2{
+  margin-left:-220px;
 }
 
+.el-input{
+  margin-top:-10px;
+  margin-bottom:20px;
 
-
+}
 </style>

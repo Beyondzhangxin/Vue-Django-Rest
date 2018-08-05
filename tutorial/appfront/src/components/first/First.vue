@@ -2,7 +2,6 @@
   <div class="First">
     <el-container>
       <el-main>
-        <div class="mainBody">
           <div class="row0">
             <el-row>
               <el-col :span="8">
@@ -70,7 +69,7 @@
               </el-col>
             </el-row>
           </div>
-        </div>
+
 
           <!-- 环保数据 -->
           <div class="box">
@@ -725,7 +724,7 @@ export default {
 
 .data{
   padding-left:150px;
- 
+
 }
 
 
