@@ -2,6 +2,7 @@
 tutorial/celery_message/__pycache__/
 tutorial/celery_message/migrations/__pycache__/
 tutorial/demoapp/
+tutorial/demoapp/__pycache__/
 tutorial/pv/__pycache__/
 tutorial/pv/migrations/__pycache__/
 tutorial/snippets/__pycache__/
@@ -12,6 +13,5 @@ tutorial/tutorial/__pycache__/
 .idea
 /tutorial/appfront/test/
 .vscode
-/node_modules/
 /.idea/workspace.xml
 `
