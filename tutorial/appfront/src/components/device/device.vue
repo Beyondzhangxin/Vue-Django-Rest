@@ -1,6 +1,7 @@
 <template>
-    <div class="device">
-                <el-row>
+
+        <el-container class="container">
+                <el-row class="row1">
                     <el-col :span="12">
                       <div class="grid-content">
                         <el-card class="box-card">
@@ -94,8 +95,9 @@
                         </el-card>
                     </el-col>
                 </el-row>
-              <el-card class="box-card1">
-                  <el-row>
+
+                <el-row>
+                    <el-card class="box-card1">
                     <el-col :span="1" class="col1">
                       <el-button  round id="text3"><strong>逆变器</strong></el-button>
                     </el-col>
@@ -105,23 +107,25 @@
                     <el-col :span="1" class="col1">
                       <el-button  round id="text3"><strong>采集设备</strong></el-button>
                     </el-col>
-                  </el-row>
-              </el-card>
-            <el-card class="box-card2">
+                    </el-card>
+                </el-row>
+
+            <!-- <el-card class="box-card2">
               <!--通用list-->
               <!--请求如下 http://127.0.0.1:8000/pv/get/detection/2018/1/18/ -->
 
               <!--赋值到this.data中 -->
-              <ComList v-bind="list"></ComList>
+              <!-- <ComList v-bind="list"></ComList>
               <!--<ComList v-bind:data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>-->
-              <el-pagination
+              <!-- <el-pagination
                   background
                   layout="prev, pager, next"
                   :total="1000"
                   @current-change="handleCurrentChange">
               </el-pagination>
-            </el-card>
-    </div>
+            </el-card>  -->
+          </el-container>
+
 </template>
 
 <script>
@@ -182,6 +186,23 @@ export default {
 
 
 <style scope>
+
+
+
+.row1 {
+  width: 100%;
+  height: 400px;
+
+}
+
+.container {
+  margin-top: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  overflow-y: hidden;
+}
+
+
 #image1 {
   position: relative;
   left: -30%;
@@ -201,6 +222,7 @@ export default {
 
 .device{
     width:1500px;
+    height: 100%;
     margin-top: 5px;
     margin-left:65px;
 }
@@ -287,6 +309,7 @@ export default {
 
 #cirlce {
   margin-top: -8px;
+  width: 100%;
 }
 
 #num{

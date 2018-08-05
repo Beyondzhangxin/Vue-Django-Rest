@@ -1,6 +1,7 @@
 <template>
-    <div class="analysis">
+
         <!-- header -->
+        <el-container class="container">
         <el-header id="header">
             <el-row>
                 <el-col :span="3"><div class="grid-content">
@@ -79,7 +80,7 @@
             <Line2 v-bind="l2"></Line2>
           </div>
         </el-main>
-        </div>
+        </el-container>
 </template>
 
 
@@ -237,12 +238,12 @@ export default {
 
 
 <style scoped>
-.analysis{
-    width:1500px;
-    margin-left:70px;
-    margin-top:30px;
+.container {
+  margin-top: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  overflow-y: hidden;
 }
-
 
 .m3 {
   height: 550px;
