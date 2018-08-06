@@ -102,6 +102,7 @@ export default {
           msg4: 1,
           msg5: 1,
           msg6: '',
+          msg7: '北京光伏电站',
         },
         {
           id: 'SH',
@@ -111,6 +112,7 @@ export default {
           msg4: 1,
           msg5: 1,
           msg6: '',
+          msg7: '上海光伏电站',
         },
       ],
       items: [
@@ -237,7 +239,7 @@ export default {
 
 
   .c1 {
-    margin-top: 20px;
+    margin-top: 40px;
     margin-left: 20px;
     margin-right: 20px;
   }
@@ -336,7 +338,7 @@ export default {
 }
 
 #line{
-  margin-right: 35px;
+  margin-right: 38px;
   float:left;
   font-size:16px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
