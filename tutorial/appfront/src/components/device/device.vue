@@ -1,6 +1,6 @@
 <template>
           <div>
-              <!-- <el-container> -->
+             
                   <el-card>
                 <el-row class="row1">
                     <el-col :span="12">
@@ -120,16 +120,22 @@
               <!--赋值到this.data中 -->
               <ComList v-bind="list"></ComList>
               <!-- <ComList v-bind:data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList> -->
-              <el-pagination
+              <!-- <el-pagination
                   background
                   layout="prev, pager, next"
                   :total="1000"
                   @current-change="handleCurrentChange">
-              </el-pagination>
+              </el-pagination> -->
             </el-card>
+             <el-pagination
+                  background
+                  layout="prev, pager, next"
+                  :total="1000"
+                  @current-change="handleCurrentChange">
+            </el-pagination>
         </el-card>
-              <!-- </el-container> -->
-          </div>
+             
+    </div>
 </template>
 
 <script>
@@ -219,8 +225,7 @@ export default {
 
 .el-pagination {
   position: relative;
-  bottom: 6%;
-  left: 43%;
+  left:0%;
 }
 
 .device{
