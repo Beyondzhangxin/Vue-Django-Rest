@@ -1,7 +1,7 @@
 <template>
-
+      
         <!-- header -->
-        <el-container class="container" style="width:100%">
+        <el-container class="container">
            
         <el-header id="header" style="height:80px;">
             <el-row>
@@ -26,7 +26,7 @@
                 <el-col :span="3"><div class="grid-content"></div></el-col>
             </el-row>
         </el-header>
-            
+        
         <!-- main1 -->
         <div id="main1">
             <el-header id="header" style="height:80px;">
@@ -86,7 +86,7 @@
           </div>
         </el-main>
         </el-container>
-        
+     
 </template>
 
 
@@ -245,7 +245,7 @@ export default {
 
 <style scoped>
 .container {
-  margin-top: 30px;
+  margin-top: 40px;
   /* padding-left: 15px;
   padding-right: 15px; */
   overflow-y: hidden;
@@ -337,6 +337,7 @@ export default {
     margin-left:30px;
     margin-bottom: 10px;
 }
+
 
 
 </style>

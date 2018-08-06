@@ -224,12 +224,11 @@ export default {
 
   .c1 {
     margin-top: 40px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
   .span0 {
-
   }
 
   .m1 {

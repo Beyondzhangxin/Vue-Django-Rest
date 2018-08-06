@@ -1,7 +1,7 @@
 <template>
           <div>
               <!-- <el-container> -->
-
+                  <el-card>
                 <el-row class="row1">
                     <el-col :span="12">
                       <div class="grid-content">
@@ -127,7 +127,7 @@
                   @current-change="handleCurrentChange">
               </el-pagination>
             </el-card>
-
+        </el-card>
               <!-- </el-container> -->
           </div>
 </template>
@@ -284,7 +284,7 @@ export default {
     height:200px;
     padding: 20px;
     margin-bottom: 30px;
-    margin-top: 50px;
+    margin-top: 40px;
     margin-left: 5px;
     margin-right: 5px;
 }

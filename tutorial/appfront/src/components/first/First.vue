@@ -713,12 +713,14 @@ export default {
 }
 
 .box-card1{
-  margin-top:20px;
+  /* margin-top:20px; */
 }
 
 .box{
   margin-right:20px;
   margin-left:30px;
+  margin-top:-20px;
+  margin-bottom:20px;
 }
 
 .data{
