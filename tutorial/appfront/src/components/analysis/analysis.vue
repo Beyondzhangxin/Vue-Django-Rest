@@ -1,8 +1,9 @@
 <template>
       
         <!-- header -->
-        <el-container class="container">
-           
+        <!-- <el-container class="container"> -->
+        <el-card class="card0"> 
+
         <el-header id="header" style="height:80px;">
             <el-row>
                 <el-col :span="3"><div class="grid-content">
@@ -26,7 +27,9 @@
                 <el-col :span="3"><div class="grid-content"></div></el-col>
             </el-row>
         </el-header>
-        
+
+        <hr width=100% size=1 color=#bbbcbc style="FILTER: alpha(opacity=100,finishopacity=0)"> 
+
         <!-- main1 -->
         <div id="main1">
             <el-header id="header" style="height:80px;">
@@ -79,14 +82,16 @@
 
         </el-main>
 
+    <hr width=100% size=1 color=#bbbcbc style="FILTER: alpha(opacity=100,finishopacity=0)"> 
+    
         <!-- main3 -->
         <el-main id="main3">
           <div class="m3">
             <Line2 v-bind="l2"></Line2>
           </div>
         </el-main>
-        </el-container>
-     
+        <!-- </el-container> -->
+        </el-card>
 </template>
 
 
@@ -245,7 +250,7 @@ export default {
 
 <style scoped>
 .container {
-  margin-top: 40px;
+  margin-top: 20px;
   /* padding-left: 15px;
   padding-right: 15px; */
   overflow-y: hidden;
@@ -288,6 +293,7 @@ export default {
     padding-left:2px;
     font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
     font-size:16px;
+    margin-left:-20px;
 }
 
 #span1{
@@ -304,7 +310,6 @@ export default {
 #span0{
     margin-top:8px;
     padding-left:20px;
-
 }
 
 #main1{
@@ -317,7 +322,7 @@ export default {
 }
 
 #main3{
-    margin-top:-400px;
+    margin-top:50px;
 }
 
 #text1{
@@ -338,6 +343,11 @@ export default {
     margin-bottom: 10px;
 }
 
+.card0{
+    margin-top:20px;
+    margin-left:15px;
+    margin-right:20px;
+}
 
 
 </style>

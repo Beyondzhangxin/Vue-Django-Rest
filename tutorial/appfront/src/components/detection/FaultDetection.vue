@@ -1,8 +1,9 @@
 <template>
   <div class="detection">
     <el-container>
+        <el-card>
           <el-main class="detectMain">
-              <el-card>
+              
               
                 <el-row>
                   <el-col :span="8">
@@ -47,15 +48,22 @@
             <el-card class="card2">
               <ComList v-bind:data='data'></ComList>
               <!--<ComList v-bind:data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>-->
-              <el-pagination
+              <!-- <el-pagination
+                background
+                layout="prev, pager, next"
+                :total="1000"
+                @current-change="handleCurrentChange">
+              </el-pagination> -->
+            </el-card>
+               <el-pagination
                 background
                 layout="prev, pager, next"
                 :total="1000"
                 @current-change="handleCurrentChange">
               </el-pagination>
-            </el-card>
-              </el-card>
+              
           </el-main>
+        </el-card>
     </el-container>
   </div>
 </template>
@@ -112,6 +120,7 @@
     padding-left: 30px;
     padding-right: 30px;
     overflow-y: hidden;
+    background: #fff;
   }
 
   .el-header {
@@ -132,9 +141,9 @@
   }
 
   .el-pagination {
-    position: fixed;
-    bottom: 15px;
-    left: 10%;
+    position: relative;
+    bottom: 0;
+    left: 0%;
   }
 
   .detection-title {
@@ -218,4 +227,6 @@
 .bg-purple{
   background:white;
 }
+
+
 </style>
