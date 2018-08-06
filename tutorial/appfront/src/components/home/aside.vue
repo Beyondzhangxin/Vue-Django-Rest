@@ -2,32 +2,44 @@
   <div class="aside">
     <div class="aside1">
       <el-row>
-        <el-col :span="6"><el-button class="b1" size="small"
-           @click="clickButtom(buttoms[0])" >{{ buttoms[0] }}</el-button></el-col>
-        <el-col :span="6"><el-button  class="b2" size="small"
-           @click="clickButtom(buttoms[1])">{{ buttoms[1] }}</el-button></el-col>
-        <el-col :span="6"><el-button  class="b3" size="small"
-           @click="clickButtom(buttoms[2])">{{ buttoms[2] }}</el-button></el-col>
-        <el-col :span="6"><el-button  class="b4" size="small"
-           @click="clickButtom(buttoms[3])">{{ buttoms[3] }}</el-button></el-col>
+        <el-col :span="6">
+          <el-button class="b1" size="small"
+                     @click="clickButtom(buttoms[0])">{{ buttoms[0] }}
+          </el-button>
+        </el-col>
+        <el-col :span="6">
+          <el-button class="b2" size="small"
+                     @click="clickButtom(buttoms[1])">{{ buttoms[1] }}
+          </el-button>
+        </el-col>
+        <el-col :span="6">
+          <el-button class="b3" size="small"
+                     @click="clickButtom(buttoms[2])">{{ buttoms[2] }}
+          </el-button>
+        </el-col>
+        <el-col :span="6">
+          <el-button class="b4" size="small"
+                     @click="clickButtom(buttoms[3])">{{ buttoms[3] }}
+          </el-button>
+        </el-col>
       </el-row>
     </div>
     <div class="aside3">
       <el-input
-      placeholder="输入关键字进行过滤"
-      v-bind:placeholder="placeholder"
-      v-model="filterText">
+        placeholder="输入关键字进行过滤"
+        v-bind:placeholder="placeholder"
+        v-model="filterText">
       </el-input>
       <el-tree
-      class="filter-tree"
-      :data="data2"
-      :props="defaultProps"
-      default-expand-all
-      show-checkbox
-      node-key="id"
-      :filter-node-method="filterNode"
-      @check="sendTree()"
-      ref="tree2">
+        class="filter-tree"
+        :data="data2"
+        :props="defaultProps"
+        default-expand-all
+        show-checkbox
+        node-key="id"
+        :filter-node-method="filterNode"
+        @check="sendTree()"
+        ref="tree2">
       </el-tree>
     </div>
   </div>
@@ -66,25 +78,16 @@
 </template>
 
 <script>
-export default {
-  name: 'home_aside',
-  props: ['request'] ,
-  data () {
-    return {
+  import API from '../../api/api_tasks'
+  export default {
+    name: 'home_aside',
+    props: ['request'],
+    data () {
+      return {
         buttoms: ['名称', '容量', '地区', '状态'],
         placeholder: "输入关键字进行过滤",
         filterText: '',
-        data2: [{
-          id: 1,
-          label: '一级 1',
-          children: [{
-            id: 2,
-            label: '二级 1-1',
-          },{
-            id: 3,
-            label: '二级 1-1',
-          }]
-        }],
+        data2: [],  //存放目录树的数据
         defaultProps: {
           children: 'children',
           label: 'label'
@@ -103,64 +106,61 @@ export default {
 
     methods: {
       transdata(){
-        var response = this.$http.get('http://127.0.0.1:8000/system/powerStations');
-        var jsonList = [];
-        for (var i = 0; i < response.list.length; i++) {
-          var json = {};
-          json.id = i;
-          json.label = response.list[i].systemName;
-          json.children = []
-          for (var k = 0; k < response.list[i].devices.length; k++) {
-            var device = {};
-            device.id = String(i) + String(k);
-            device.label = response.list[i].devices[k];
-            json.children.push(device);
+        let param = {};
+        API.getPowerStations(param).then((data) => {
+          let jsonList = [];
+          for (let i = 0; i < data.list.length; i++) {
+            let json = {};
+            json.id = i;
+            json.label = data.list[i].systemName;
+            json.children = []
+            for (let k = 0; k < data.list[i].devices.length; k++) {
+              let device = {};
+              device.id = String(i) + String(k);
+              device.label = data.list[i].devices[k];
+              json.children.push(device);
+            }
+            jsonList.push(json);
           }
-          jsonList.push(json);
-        }
-
-        this.data2 = jsonList;
-
+          console.log(jsonList);
+          this.data2 = jsonList;
+        });
+        console.log(this.data2)
       },
       sendTree(){
         console.log(this.$refs.tree2.getCheckedKeys());
       },
 
-     filterNode(value, data) {
-       if (!value) return true;
-       return data.label.indexOf(value) !== -1;
-     },
-     load(){
-       this.$ajax.get(this.data)
-       .then(function (response) {
-        }.bind(this))
-       .catch(function (error) {
-       });
-     },
-     clickButtom(str){
-       this.placeholder = "输入"+ str +"进行过滤";
-     },
-   },
-}
+      filterNode(value, data) {
+        if (!value) return true;
+        return data.label.indexOf(value) !== -1;
+      },
+      load(){
+        this.$ajax.get(this.data)
+          .then(function (response) {
+          }.bind(this))
+          .catch(function (error) {
+          });
+      },
+      clickButtom(str){
+        this.placeholder = "输入" + str + "进行过滤";
+      },
+    },
+  }
 </script>
 <style scoped>
 
-.el-tree{
-  color: #545c64;
-  font-size: 14px;
-}
+  .el-tree {
+    color: #545c64;
+    font-size: 14px;
+  }
 
+  .el-button {
+    background: #545c64;
+    color: #fff;
+  }
 
-
-
-.el-button {
-  background: #545c64;
-  color: #fff;
-}
-
-
-
-.aside {
+  .aside {
     height: 100%;
     width: 260px;
     overflow-x: hidden;
@@ -170,10 +170,10 @@ export default {
 
   }
 
-  .aside0{
-  margin-bottom:5px;
-  margin-top:4px;
-  margin-left:-80px;
+  .aside0 {
+    margin-bottom: 5px;
+    margin-top: 4px;
+    margin-left: -80px;
   }
 
   .aside1 {
@@ -184,11 +184,11 @@ export default {
     margin-bottom: 8px;
   }
 
-.b{
-  padding-right:1px;
-  text-align:center;
+  .b {
+    padding-right: 1px;
+    text-align: center;
 
-}
+  }
 
   .aside3 {
     width: 100%;
