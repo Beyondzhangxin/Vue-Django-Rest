@@ -183,7 +183,7 @@ export default {
       msg5:988.97,
 
       c1: {
-        total: 1,
+        total: 111,
         day: 1,
         mouth: 1,
         sumAll: 1,

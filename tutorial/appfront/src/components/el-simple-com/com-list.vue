@@ -89,7 +89,7 @@
           dev_avg_p: avg_p.toFixed(2),
           dev_day_w: day_w.toFixed(4),
           dev_effect_time: effect_time.toFixed(2),
-          dev_status: '未知',
+          dev_status: '正常',
           dev_get_time: result.time_min+' 到 '+result.time_max
         }
         this.tableData.push(element)
