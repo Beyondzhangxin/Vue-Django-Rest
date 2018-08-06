@@ -1,7 +1,7 @@
 <template>
 
         <!-- header -->
-        <el-container class="container" style="width:100%">
+        <el-container class="container">
            
         <el-header id="header" style="height:80px;">
             <el-row>
@@ -245,7 +245,7 @@ export default {
 
 <style scoped>
 .container {
-  margin-top: 30px;
+  margin-top: 40px;
   /* padding-left: 15px;
   padding-right: 15px; */
   overflow-y: hidden;

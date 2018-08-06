@@ -284,7 +284,7 @@ export default {
     height:200px;
     padding: 20px;
     margin-bottom: 30px;
-    margin-top: 50px;
+    margin-top: 40px;
     margin-left: 5px;
     margin-right: 5px;
 }
