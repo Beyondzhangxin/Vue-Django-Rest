@@ -68,7 +68,7 @@
 
           <div class="mm">
             <el-col :span="24"><div class="grid-content"></div></el-col>
-            <elPower v-for="card in showLists" v-show="checkLists(card)" v-bind="card" :key="card"/>
+            <elPower style="margin-top: 20px;" v-for="card in showLists" v-show="checkLists(card)" v-bind="card" :key="card"/>
           </div>
         </el-main>
         </el-container>
@@ -199,6 +199,8 @@ export default {
 
 
 <style scoped>
+
+
   .row1 {
     position: relative;
     margin-top: 10px;
@@ -206,6 +208,7 @@ export default {
     padding-left: 0px;
     padding-right: 0px;
     left: -3px;
+    height:100px;
   }
 
   .c1 {
