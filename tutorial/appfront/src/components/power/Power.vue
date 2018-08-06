@@ -7,18 +7,24 @@
                 <span id="line" v-for="item in items[0]" :key="item.id">{{ item.key }} <strong>{{ item.value }}</strong></span>
               </el-row>
               <el-row>
-              <el-col :span="2">电站状态：</el-col>
-              <el-col :span="2">
-                <div><strong>正常 </strong><i class="el-icon-success"></i> </div>
-              </el-col>
-              <el-col :span="2">
-                <div><strong>异常 </strong><i class="el-icon-warning"></i> </div>
-              </el-col>
-              <el-col :span="2">
-                <div><strong>离线 </strong><i class="el-icon-loading"></i> </div>
-              </el-col>
-              <el-col :span="2">
-                <div><strong>停机 </strong><i class="el-icon-circle-close"></i></div>
+              <el-col :span="24">
+                <div class="spanList">
+                  <span class="span1">
+                    电站状态：
+                  </span>
+                  <span  class="span1">
+                    <strong>正常 </strong><i class="el-icon-success"></i>
+                  </span>
+                  <span  class="span1">
+                    <strong>异常 </strong><i class="el-icon-warning"></i>
+                  </span>
+                  <span  class="span1">
+                    <strong>离线 </strong><i class="el-icon-loading"></i>
+                  </span>
+                  <span  class="span1">
+                    <strong>停机 </strong><i class="el-icon-circle-close"></i>
+                  </span>
+                </div>
               </el-col>
             </el-row>
             </el-card>
@@ -192,6 +198,14 @@ export default {
 
 
 <style scoped>
+  .spanList {
+    margin-top: 15px;
+  }
+
+   .span1 {
+     float:left;
+   }
+
   .col1 {
     float: left;
     padding-bottom: 1%;
@@ -322,14 +336,14 @@ export default {
 }
 
 #line{
-  padding: 2px;
+  margin-right: 35px;
   float:left;
   font-size:16px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
 .mov span{
-  margin:0 15px;
+  margin-right: 55px;
 }
 
 .el-select{
