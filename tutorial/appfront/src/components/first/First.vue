@@ -1,26 +1,26 @@
 <template>
-  <div class="First">
     <el-container>
       <el-main>
           <div class="row0">
             <el-row>
               <el-col :span="8">
-                <div>
+                <div class="ca1">
                   <el-card class="card2"><Gauge2/></el-card>
-                  <el-card class="card1">
-                  <div class="card1m c1m">
-                    <span>当前发电功率</span>
-                  </div>
-                  <div class="card1m">
-                    <div class="row1">总容量：<strong>{{(c1.total||"~")}}</strong> kWh</div>
-                    <div  class="row1">当日累计发电量：<strong>{{(c1.total||"~")}}</strong>  kWh</div>
-                    <div  class="row1">当月累计发电量：<strong>{{(c1.total||"~")}}</strong> 万kWh</div>
-                    <div class="row1">累计总发电量：<strong>{{(c1.total||"~")}}</strong> 万kWh</div>
-                  </div>
-                </el-card>
-              </div></el-col>
+                    <el-card class="card1">
+                    <div class="card1m c1m">
+                      <span>当前发电功率</span>
+                    </div>
+                    <div class="card1m">
+                      <div class="row1">总容量：<strong>{{(c1.total||"~")}}</strong> kWh</div>
+                      <div  class="row1">当日累计发电量：<strong>{{(c1.total||"~")}}</strong>  kWh</div>
+                      <div  class="row1">当月累计发电量：<strong>{{(c1.total||"~")}}</strong> 万kWh</div>
+                      <div class="row1">累计总发电量：<strong>{{(c1.total||"~")}}</strong> 万kWh</div>
+                    </div>
+                  </el-card>
+                </div>
+              </el-col>
               <el-col :span="8">
-                <div>
+                <div class="ca2">
                   <el-card class="card2"><Gauge2/></el-card>
                   <el-card class="card1">
                     <div class="card1m c1m">
@@ -35,7 +35,7 @@
                 </div>
               </el-col>
               <el-col :span="8">
-                <div>
+                <div class="ca3">
                   <el-card class="card2"><Gauge2/></el-card>
                   <el-card class="card1">
                     <div class="card1m c1m">
@@ -157,7 +157,6 @@
           </div>
       </el-main>
   </el-container>
-  </div>
 </template>
 
 <script>
@@ -714,12 +713,14 @@ export default {
 }
 
 .box-card1{
-  margin-top:20px;
+  /* margin-top:20px; */
 }
 
 .box{
   margin-right:20px;
   margin-left:30px;
+  margin-top:-20px;
+  margin-bottom:20px;
 }
 
 .data{

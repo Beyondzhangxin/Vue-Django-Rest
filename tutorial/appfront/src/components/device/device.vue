@@ -1,6 +1,7 @@
 <template>
           <div>
-
+             
+                  <el-card>
                 <el-row class="row1">
                     <el-col :span="12">
                       <div class="grid-content">
@@ -119,15 +120,22 @@
               <!--赋值到this.data中 -->
               <ComList v-bind="list"></ComList>
               <!-- <ComList v-bind:data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList> -->
-              <el-pagination
+              <!-- <el-pagination
                   background
                   layout="prev, pager, next"
                   :total="1000"
                   @current-change="handleCurrentChange">
-              </el-pagination>
+              </el-pagination> -->
             </el-card>
-
-          </div>
+             <el-pagination
+                  background
+                  layout="prev, pager, next"
+                  :total="1000"
+                  @current-change="handleCurrentChange">
+            </el-pagination>
+        </el-card>
+             
+    </div>
 </template>
 
 <script>
@@ -196,12 +204,12 @@ export default {
 
 }
 
-.container:{
+/* .container{
   margin-top: 30px;
   padding-left: 15px;
   padding-right: 15px;
   overflow: auto;
-}
+} */
 
 
 #image1 {
@@ -217,8 +225,7 @@ export default {
 
 .el-pagination {
   position: relative;
-  bottom: 6%;
-  left: 43%;
+  left:0%;
 }
 
 .device{
@@ -282,13 +289,14 @@ export default {
     height:200px;
     padding: 20px;
     margin-bottom: 30px;
-    margin-top: 70px;
+    margin-top: 40px;
     margin-left: 5px;
     margin-right: 5px;
 }
 
 .box-card1 {
   margin-bottom: 30px;
+  margin-top:-20px;
 }
 
 .box-card2 {

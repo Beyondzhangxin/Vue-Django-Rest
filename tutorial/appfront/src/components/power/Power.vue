@@ -6,48 +6,46 @@
               <el-row>
                 <span id="line" v-for="item in items[0]" :key="item.id">{{ item.key }} <strong>{{ item.value }}</strong></span>
               </el-row>
-              <el-row class="row1">
-              <el-col :span="2">电站状态：</el-col>
-              <el-col :span="2">
-                <div><strong>正常 </strong><i class="el-icon-success"></i> </div>
-              </el-col>
-              <el-col :span="2">
-                <div><strong>异常 </strong><i class="el-icon-warning"></i> </div>
-              </el-col>
-              <el-col :span="2">
-                <div><strong>离线 </strong><i class="el-icon-loading"></i> </div>
-              </el-col>
-              <el-col :span="2">
-                <div><strong>停机 </strong><i class="el-icon-circle-close"></i></div>
+              <el-row>
+              <el-col :span="24">
+                <div class="spanList">
+                  <span class="span1">
+                    电站状态：
+                  </span>
+                  <span  class="span1">
+                    <strong>正常 </strong><i class="el-icon-success"></i>
+                  </span>
+                  <span  class="span1">
+                    <strong>异常 </strong><i class="el-icon-warning"></i>
+                  </span>
+                  <span  class="span1">
+                    <strong>离线 </strong><i class="el-icon-loading"></i>
+                  </span>
+                  <span  class="span1">
+                    <strong>停机 </strong><i class="el-icon-circle-close"></i>
+                  </span>
+                </div>
               </el-col>
             </el-row>
             </el-card>
           </div>
 
           <el-card>
-          <div class="row1">
-              <el-row :gutter=20>
-                <el-col :span="6" id ="time">当日有效时数:</el-col>
-                <el-col :span="4">
-                  <el-input v-model="input1" :value="number" placeholder="起始时间"></el-input>
+              <el-row>
+                <el-col>
+                  <div class="col1">
+                  当日有效时数:
+                  <el-input class="row1input" v-model="input1" :value="number" placeholder="起始时间"></el-input>
+                    ~
+                  <el-input class="row1input" v-model="input2" :value="number" placeholder="结束时间"></el-input>
+                </div>
                 </el-col>
-                <el-col :span="1" class="span0">
-                  ~
-                </el-col>
-                <el-col :span="4">
-                  <el-input v-model="input2" :value="number" placeholder="结束时间"></el-input>
-                </el-col>
-                <el-col :span="4">
-                  <div class="hour"></div>
-                </el-col>
-              </el-row>
-            </div>
 
-            <div class="row2">
-              <el-row :gutter=20>
-                <el-col :span="8" id="area">电站所在地区</el-col>
-                <el-col :span="5">
+                <el-col>
+                  <div class="col2">
+                  电站所在地区:
                   <el-select class="select"
+                  style="margin-left: 0px;"
                     v-model="value10"
                     multiple
                     filterable
@@ -61,14 +59,15 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
+                  </div>
                 </el-col>
               </el-row>
-            </div>
+
           </el-card>
 
           <div class="mm">
             <el-col :span="24"><div class="grid-content"></div></el-col>
-            <elPower v-for="card in showLists" v-show="checkLists(card)" v-bind="card" :key="card"/>
+            <elPower style="margin-top: 20px;" v-for="card in showLists" v-show="checkLists(card)" v-bind="card" :key="card"/>
           </div>
         </el-main>
         </el-container>
@@ -103,6 +102,7 @@ export default {
           msg4: 1,
           msg5: 1,
           msg6: '',
+          msg7: '北京光伏电站',
         },
         {
           id: 'SH',
@@ -112,6 +112,7 @@ export default {
           msg4: 1,
           msg5: 1,
           msg6: '',
+          msg7: '上海光伏电站',
         },
       ],
       items: [
@@ -199,23 +200,51 @@ export default {
 
 
 <style scoped>
-  .row1 {
-    position: relative;
-    margin-top: 10px;
-    padding: 5px;
-    padding-left: 0px;
-    padding-right: 0px;
-    left: -3px;
+  .spanList {
+    margin-top: 15px;
   }
 
+   .span1 {
+     float:left;
+   }
+
+  .col1 {
+    float: left;
+    padding-bottom: 1%;
+  }
+
+  .col2 {
+    float: left;
+  }
+
+  .row1input {
+    width: 200px;
+  }
+
+  .areaRow {
+    position: relative;
+    right: 3%;
+    width: 30%;
+  }
+
+  .row1 {
+    width: 524px;
+    margin-bottom: 22px;
+  }
+
+  .row2{
+
+  }
+
+
+
   .c1 {
-    margin-top: 40px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right:15px;
   }
 
   .span0 {
-    padding: 10px;
   }
 
   .m1 {
@@ -231,11 +260,7 @@ export default {
     height: 100%;
 
   }
-  .el-row {
-    /* display: block; */
-    height: 60%;
-    margin-bottom: 0;
-  }
+
 
   .Power {
     height: 100%;
@@ -313,14 +338,14 @@ export default {
 }
 
 #line{
-  padding: 2px;
+  margin-right: 38px;
   float:left;
   font-size:16px;
   font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
 .mov span{
-  margin:0 15px;
+  margin-right: 55px;
 }
 
 .el-select{
@@ -341,13 +366,8 @@ export default {
 } */
 
 
-.row2{
-  margin-left:-220px;
-}
-
 .el-input{
-  margin-top:-10px;
-  margin-bottom:20px;
 
 }
+
 </style>
