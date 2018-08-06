@@ -52,8 +52,7 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                </div>
-              </el-col>
+                </el-col>
               </el-row>
             </div>
           </el-card>
