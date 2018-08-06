@@ -2,8 +2,8 @@
   <div class="detection">
     <el-container>
           <el-main class="detectMain">
-
               <el-card>
+              
                 <el-row>
                   <el-col :span="8">
                     <el-card :body-style="{ padding: '0px' }">
@@ -40,7 +40,7 @@
                   </el-col>
                 </el-row>
                 <el-row>设备检查异常</el-row>
-              </el-card>
+             
 
             <!--通用list-->
             <!--请求如下 http://127.0.0.1:8000/pv/get/detection/2018/1/18/ -->
@@ -54,6 +54,7 @@
                 @current-change="handleCurrentChange">
               </el-pagination>
             </el-card>
+              </el-card>
           </el-main>
     </el-container>
   </div>

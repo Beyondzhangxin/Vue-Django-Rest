@@ -1,5 +1,5 @@
 <template>
-
+      
         <!-- header -->
         <el-container class="container">
            
@@ -26,7 +26,7 @@
                 <el-col :span="3"><div class="grid-content"></div></el-col>
             </el-row>
         </el-header>
-            
+        
         <!-- main1 -->
         <div id="main1">
             <el-header id="header" style="height:80px;">
@@ -86,7 +86,7 @@
           </div>
         </el-main>
         </el-container>
-        
+     
 </template>
 
 
@@ -337,6 +337,7 @@ export default {
     margin-left:30px;
     margin-bottom: 10px;
 }
+
 
 
 </style>

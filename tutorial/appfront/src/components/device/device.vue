@@ -1,7 +1,7 @@
 <template>
           <div>
               <!-- <el-container> -->
-
+                  <el-card>
                 <el-row class="row1">
                     <el-col :span="12">
                       <div class="grid-content">
@@ -127,7 +127,7 @@
                   @current-change="handleCurrentChange">
               </el-pagination>
             </el-card>
-
+        </el-card>
               <!-- </el-container> -->
           </div>
 </template>

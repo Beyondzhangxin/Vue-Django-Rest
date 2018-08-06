@@ -6,7 +6,7 @@
               <el-row>
                 <span id="line" v-for="item in items[0]" :key="item.id">{{ item.key }} <strong>{{ item.value }}</strong></span>
               </el-row>
-              <el-row class="row1">
+              <el-row>
               <el-col :span="2">电站状态：</el-col>
               <el-col :span="2">
                 <div><strong>正常 </strong><i class="el-icon-success"></i> </div>
@@ -25,28 +25,19 @@
           </div>
 
           <el-card>
-          <div class="row1">
-              <el-row :gutter=20>
-                <el-col :span="6" id ="time">当日有效时数:</el-col>
-                <el-col :span="4">
-                  <el-input v-model="input1" :value="number" placeholder="起始时间"></el-input>
+              <el-row>
+                <el-col>
+                  <div class="col1">
+                  当日有效时数:
+                  <el-input class="row1input" v-model="input1" :value="number" placeholder="起始时间"></el-input>
+                    ~
+                  <el-input class="row1input" v-model="input2" :value="number" placeholder="结束时间"></el-input>
+                </div>
                 </el-col>
-                <el-col :span="1" class="span0">
-                  ~
-                </el-col>
-                <el-col :span="4">
-                  <el-input v-model="input2" :value="number" placeholder="结束时间"></el-input>
-                </el-col>
-                <el-col :span="4">
-                  <div class="hour"></div>
-                </el-col>
-              </el-row>
-            </div>
 
-            <div class="row2">
-              <el-row :gutter=20>
-                <el-col :span="8" id="area">电站所在地区</el-col>
-                <el-col :span="5">
+                <el-col>
+                  <div class="col1">
+                  电站所在地区:
                   <el-select class="select"
                     v-model="value10"
                     multiple
@@ -61,7 +52,8 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                </el-col>
+                </div>
+              </el-col>
               </el-row>
             </div>
           </el-card>
@@ -199,22 +191,37 @@ export default {
 
 
 <style scoped>
+  .col1 {
+    float: left;
+    padding-bottom: 1%;
+  }
 
+
+  .row1input {
+    width: 200px;
+  }
+
+  .areaRow {
+    position: relative;
+    right: 3%;
+    width: 30%;
+  }
 
   .row1 {
-    position: relative;
-    margin-top: 10px;
-    padding: 5px;
-    padding-left: 0px;
-    padding-right: 0px;
-    left: -3px;
-    height:100px;
+    width: 524px;
+    margin-bottom: 22px;
   }
+
+  .row2{
+
+  }
+
+
 
   .c1 {
     margin-top: 40px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
   .span0 {
@@ -235,11 +242,7 @@ export default {
     height: 100%;
 
   }
-  .el-row {
-    /* display: block; */
-    height: 60%;
-    margin-bottom: 0;
-  }
+
 
   .Power {
     height: 100%;
@@ -345,13 +348,8 @@ export default {
 } */
 
 
-.row2{
-  margin-left:-220px;
-}
-
 .el-input{
-  margin-top:-10px;
-  margin-bottom:20px;
 
 }
+
 </style>
