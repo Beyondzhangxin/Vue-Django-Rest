@@ -36,9 +36,10 @@
                 </el-col>
 
                 <el-col>
-                  <div class="col1">
+                  <div class="col2">
                   电站所在地区:
                   <el-select class="select"
+                  style="margin-left: 0px;"
                     v-model="value10"
                     multiple
                     filterable
@@ -52,10 +53,10 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                </div>
-              </el-col>
+                  </div>
+                </el-col>
               </el-row>
-            </div>
+
           </el-card>
 
           <div class="mm">
@@ -196,6 +197,9 @@ export default {
     padding-bottom: 1%;
   }
 
+  .col2 {
+    float: left;
+  }
 
   .row1input {
     width: 200px;
@@ -225,8 +229,6 @@ export default {
   }
 
   .span0 {
-    padding: 10px;
-    margin-top:-10px;
   }
 
   .m1 {
