@@ -295,7 +295,7 @@ export default {
 
 #span2{
     background:white;
-    padding-left:300px;
+    padding-left:200px;
     padding-top:10px;
    
 }
@@ -320,7 +320,7 @@ export default {
 }
 
 #text1{
-    padding-right:30px;
+    padding-right:20px;
     margin-bottom:10px;
 }
 
