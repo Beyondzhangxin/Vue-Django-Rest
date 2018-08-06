@@ -1,17 +1,17 @@
 <template>
   <el-card class="box-card" >
     <div slot="header" class="clearfix">
-      <span>北京光伏电站</span>
+      <span>{{ msg7 }}</span>
       <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
     </div>
     <div class="text item">
       <img class="image1" ref="image" src="..\..\assets\SHGF.jpg">
       <el-row>
         <el-col :span="12"><div class="grid-content1">
-          <div class="tem1">总装机容量：<strong>{{(c1.total||"~")}}</strong>kwp</div>
-          <div class="tem2">当前运行功率：<strong>{{(c1.total||"~")}}</strong>kw</div>
-          <div class="tem3">当日有效时数：<strong>{{(c1.total||"~")}}</strong>h</div>
-          <div class="tem4">当月有效时数：<strong>{{(c1.total||"~")}}</strong>h</div>
+          <div class="tem1">总装机容量：<strong>{{(msg1||"~")}}</strong>kwp</div>
+          <div class="tem2">当前运行功率：<strong>{{(msg2||"~")}}</strong>kw</div>
+          <div class="tem3">当日有效时数：<strong>{{(msg3||"~")}}</strong>h</div>
+          <div class="tem4">当月有效时数：<strong>{{(msg4||"~")}}</strong>h</div>
         </div></el-col>
         <el-col :span="12"><div class="grid-content2">
           <div class="con">正常&nbsp&nbsp&nbsp&nbsp<i class="el-icon-circle-check"></i></div>
@@ -25,7 +25,7 @@
 <script>
 export default {
   name : 'powerCard',
-  props: ['msg1','msg2','msg3','msg4','msg5','msg6'],
+  props: ['msg1','msg2','msg3','msg4','msg5','msg6','msg7'],
   data () {
     return {
         c1: {
