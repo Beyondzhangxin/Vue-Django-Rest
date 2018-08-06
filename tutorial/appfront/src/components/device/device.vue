@@ -1,5 +1,6 @@
 <template>
           <div>
+              <!-- <el-container> -->
 
                 <el-row class="row1">
                     <el-col :span="12">
@@ -127,6 +128,7 @@
               </el-pagination>
             </el-card>
 
+              <!-- </el-container> -->
           </div>
 </template>
 
@@ -196,12 +198,12 @@ export default {
 
 }
 
-.container:{
+/* .container{
   margin-top: 30px;
   padding-left: 15px;
   padding-right: 15px;
   overflow: auto;
-}
+} */
 
 
 #image1 {
