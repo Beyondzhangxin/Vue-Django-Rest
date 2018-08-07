@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'snippets.apps.SnippetsConfig',
-    'demoapp',
+
     'celery_message',
     'pv.apps.PvConfig',
     'django_filters',
@@ -106,7 +106,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '',
         # 'HOST': '192.168.102.101',
-        'HOST': '127.0.0.1',
+        'HOST': '192.168.102.103',
         'PORT': '3306'
     }
 }
