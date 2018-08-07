@@ -344,9 +344,9 @@ export default {
 }
 
 .card0{
-    margin-top:20px;
-    margin-left:15px;
-    margin-right:20px;
+    margin-top:10px;
+    margin-left:5px;
+    margin-right:10px;
 }
 
 
