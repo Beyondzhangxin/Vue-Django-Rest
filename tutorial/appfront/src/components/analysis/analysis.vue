@@ -1,8 +1,8 @@
 <template>
-      
+
         <!-- header -->
         <!-- <el-container class="container"> -->
-        <el-card class="card0"> 
+        <el-card class="card0">
 
         <el-header id="header" style="height:80px;">
             <el-row>
@@ -28,7 +28,7 @@
             </el-row>
         </el-header>
 
-        <hr width=100% size=1 color=#bbbcbc style="FILTER: alpha(opacity=100,finishopacity=0)"> 
+        <hr width=100% size=1 color=#bbbcbc style="FILTER: alpha(opacity=100,finishopacity=0)">
 
         <!-- main1 -->
         <div id="main1">
@@ -82,8 +82,8 @@
 
         </el-main>
 
-    <hr width=100% size=1 color=#bbbcbc style="FILTER: alpha(opacity=100,finishopacity=0)"> 
-    
+    <hr width=100% size=1 color=#bbbcbc style="FILTER: alpha(opacity=100,finishopacity=0)">
+
         <!-- main3 -->
         <el-main id="main3">
           <div class="m3">
@@ -147,7 +147,7 @@ export default {
             }
           },
           legend: {
-            data:['北京光伏电站', '上海光伏电站','理论发电量']
+            data:['北京光伏电站', '上海光伏电站']
           },
           toolbox: {
             show: true,
@@ -204,7 +204,7 @@ export default {
           {
             name:'北京光伏电站',
             type:'line',
-            xAxisIndex: 1,
+            xAxisIndex: 0,
             yAxisIndex: 0,
             data:(function (){
                 var res = [];
@@ -218,7 +218,7 @@ export default {
           {
             name:'上海光伏电站',
             type:'line',
-            xAxisIndex: 1,
+            xAxisIndex: 0,
             yAxisIndex: 0,
             data:(function (){
                 var res = [];
@@ -304,7 +304,7 @@ export default {
     background:white;
     padding-left:250px;
     padding-top:10px;
-   
+
 }
 
 #span0{
