@@ -1,6 +1,13 @@
 <template>
     <el-container>
       <el-main>
+
+        <el-card>
+            <!-- <el-tabs v-model="activeName" @tab-click="handleClick">
+              <el-tab-pane label="全部电站信息" name="first">北京，上海，深圳电站统计</el-tab-pane>
+             </el-tabs> -->
+             <div class="inf">北京，上海，深圳电站统计</div>
+              <hr width=100% size=1 color=#bbbcbc style="FILTER: alpha(opacity=100,finishopacity=0)"> 
           <div class="row0">
             <el-row>
               <el-col :span="8">
@@ -155,6 +162,9 @@
             </div>
           </el-card>
           </div>
+
+        </el-card>
+
       </el-main>
   </el-container>
 </template>
@@ -174,7 +184,10 @@ export default {
   },
   data () {
     return {
+
+       activeName: 'first',
       //配置最下面的list
+
 
       msg1:146.23,
       msg2:393.09,
@@ -287,6 +300,8 @@ export default {
               }
             }
           },
+
+          
           legend: {
             data:['逆变器发电量', '电能表发电量', '理论发电量']
           },
@@ -725,8 +740,14 @@ export default {
 
 .data{
   padding-left:150px;
-
 }
 
+.inf{
+  font-size:20px;
+  font-family: 'STHeiti Light [STXihei]' ;
+}
 
+.row0{
+  margin-top:-40px;
+}
 </style>

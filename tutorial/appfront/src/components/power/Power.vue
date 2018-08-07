@@ -239,9 +239,9 @@ export default {
 
 
   .c1 {
-    margin-top: 40px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-top: 0px;
+    margin-left: 5px;
+    margin-right:15px;
   }
 
   .span0 {
