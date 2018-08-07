@@ -77,7 +77,7 @@ class SpgsDay(models.Model):
                                     null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'spgs_day'
 
 
@@ -142,8 +142,6 @@ class SpgsMonth(models.Model):
     class Meta:
         managed = False
         db_table = 'spgs_month'
-
-
 
 
 class SpgsTotal(models.Model):
