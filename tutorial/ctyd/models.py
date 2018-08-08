@@ -41,4 +41,30 @@ class DataCtyd(models.Model):
         db_table = 'data_ctyd_buffer'
         unique_together = (('datatime', 'systemcode'),)
 
+class CtydDay(models.Model):
+    total_d = models.CharField(max_length=10, blank=True, null=True)
+    total_fdl = models.DecimalField(max_digits=15, decimal_places=4, blank=True, null=True)
 
+    class Meta:
+        managed = False
+        db_table = 'ctyd_day'
+
+
+
+
+
+class CtydMonth(models.Model):
+    total_m = models.CharField(max_length=7, blank=True, null=True)
+    total_fdl = models.DecimalField(max_digits=37, decimal_places=4, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'ctyd_month'
+
+
+class CtydTotal(models.Model):
+    total_fdl = models.DecimalField(max_digits=59, decimal_places=4, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'ctyd_total'
