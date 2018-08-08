@@ -219,6 +219,7 @@ def echartsDataForInverterFDGL(request):
         response['error_num'] = 1
     return JsonResponse(response)
 
+
 # 返回当日发电功率echarts图总辐照度的数据
 @require_http_methods(['GET'])
 def echartsDataForFZD(request):
@@ -251,14 +252,30 @@ def echartsDataForFZD(request):
     return JsonResponse(response)
 
 
+def powerStationsNum(request):
+    response = {}
+    try:
+        rs = PowerStation.objects.all()
+        num = len(rs)
+        response['data'] = num
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    return JsonResponse(response)
 
 
 @require_http_methods(['GET'])
 def apiTest(request):
-    db = pymysql.connect(database_ip, user, pwd, database_name)
-    cursor = db.cursor()
-    sql_time = "select total_fdl from pvmg_minute WHERE date_format(total_d,'%Y-%m-%d')='" + "2017-04-27" + "'"
-    cursor.execute(sql_time)
-    r1 = cursor.fetchone()
-    r2 = cursor.fetchone()
-    print(r1 + r2)
+    response = {}
+    try:
+        rs = PowerStation.objects.all()
+        num = len(rs)
+        response['data'] = num
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    return JsonResponse(response)

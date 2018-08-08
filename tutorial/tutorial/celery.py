@@ -17,10 +17,17 @@ app = Celery(project_name)
 # the configuration object to child processes.
 # - namespace='CELERY' means all celery-related configuration keys
 #   should have a `CELERY_` prefix.
+app.config_from_object('django.conf:settings')
 # 使用django的settings文件配置celery
 app.config_from_object('django.conf:settings')
 
 # Load task modules from all registered Django app configs.
 # Celery加载所有注册的应用
 app.autodiscover_tasks()
+
+
+@app.task(bind=True)
+def debug_task(self):
+    print('Request: {0!r}'.format(self.request))
+
 
