@@ -12,7 +12,7 @@
                      <div style="padding: 14px;">
                        <span>停机设备</span>
                        <div class="bottom clearfix">
-                         <el-button type="text" class="button">操作按钮</el-button>
+                         <el-button type="text" class="button"></el-button>
                        </div>
                      </div>
                    </el-card>
@@ -23,7 +23,7 @@
                       <div style="padding: 14px;">
                         <span>告警设备</span>
                         <div class="bottom clearfix">
-                          <el-button type="text" class="button">操作按钮</el-button>
+                          <el-button type="text" class="button"></el-button>
                         </div>
                       </div>
                     </el-card>
@@ -34,7 +34,7 @@
                       <div style="padding: 14px;">
                         <span>离线设备</span>
                         <div class="bottom clearfix">
-                          <el-button type="text" class="button">操作按钮</el-button>
+                          <el-button type="text" class="button"></el-button>
                         </div>
                       </div>
                     </el-card>
