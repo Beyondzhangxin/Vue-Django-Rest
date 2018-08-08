@@ -41,3 +41,65 @@ class DataPvmgBuffer(models.Model):
         managed = False
         db_table = 'data_pvmg_buffer'
         unique_together = (('datatime', 'systemcode'),)
+
+class PvmgDay(models.Model):
+    total_d = models.CharField(max_length=10, blank=True, null=True)
+    systemtype = models.CharField(db_column='systemType', max_length=4, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl1 = models.DecimalField(db_column='FDL_NBQJL1', max_digits=45, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl2 = models.DecimalField(db_column='FDL_NBQJL2', max_digits=45, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl3 = models.DecimalField(db_column='FDL_NBQJL3', max_digits=45, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl4 = models.DecimalField(db_column='FDL_NBQJL4', max_digits=45, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl5 = models.DecimalField(db_column='FDL_NBQJL5', max_digits=45, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl6 = models.DecimalField(db_column='FDL_NBQJL6', max_digits=45, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl7 = models.DecimalField(db_column='FDL_NBQJL7', max_digits=45, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl8 = models.DecimalField(db_column='FDL_NBQJL8', max_digits=45, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl9 = models.DecimalField(db_column='FDL_NBQJL9', max_digits=45, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    total_fdl = models.DecimalField(db_column='TOTAL_FDL', max_digits=53, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'pvmg_day'
+
+class PvmgMonth(models.Model):
+    total_m = models.CharField(max_length=7, blank=True, null=True)
+    systemtype = models.CharField(db_column='systemType', max_length=4, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl1 = models.DecimalField(db_column='FDL_NBQJL1', max_digits=65, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl2 = models.DecimalField(db_column='FDL_NBQJL2', max_digits=65, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl3 = models.DecimalField(db_column='FDL_NBQJL3', max_digits=65, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl4 = models.DecimalField(db_column='FDL_NBQJL4', max_digits=65, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl5 = models.DecimalField(db_column='FDL_NBQJL5', max_digits=65, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl6 = models.DecimalField(db_column='FDL_NBQJL6', max_digits=65, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl7 = models.DecimalField(db_column='FDL_NBQJL7', max_digits=65, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl8 = models.DecimalField(db_column='FDL_NBQJL8', max_digits=65, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl9 = models.DecimalField(db_column='FDL_NBQJL9', max_digits=65, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    total_fdl = models.DecimalField(max_digits=65, decimal_places=12, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'pvmg_month'
+
+class PvmgMinute(models.Model):
+    total_d = models.CharField(max_length=21, blank=True, null=True)
+    systemtype = models.CharField(db_column='systemType', max_length=4, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl1 = models.DecimalField(db_column='FDL_NBQJL1', max_digits=45, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl2 = models.DecimalField(db_column='FDL_NBQJL2', max_digits=45, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl3 = models.DecimalField(db_column='FDL_NBQJL3', max_digits=45, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl4 = models.DecimalField(db_column='FDL_NBQJL4', max_digits=45, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl5 = models.DecimalField(db_column='FDL_NBQJL5', max_digits=45, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl6 = models.DecimalField(db_column='FDL_NBQJL6', max_digits=45, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl7 = models.DecimalField(db_column='FDL_NBQJL7', max_digits=45, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl8 = models.DecimalField(db_column='FDL_NBQJL8', max_digits=45, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    fdl_nbqjl9 = models.DecimalField(db_column='FDL_NBQJL9', max_digits=45, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+    total_fdl = models.DecimalField(db_column='TOTAL_FDL', max_digits=53, decimal_places=12, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'pvmg_minute'
+
+class PvmgTotal(models.Model):
+    systemtype = models.CharField(db_column='systemType', max_length=4, blank=True, null=True)  # Field name made lowercase.
+    total_fdl = models.DecimalField(max_digits=65, decimal_places=12, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'pvmg_total'

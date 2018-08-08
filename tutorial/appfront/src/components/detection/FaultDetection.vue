@@ -74,7 +74,6 @@
 
   export default {
     name: 'faultdetection',
-
     components: {
         ComList: ComList,
         DeHeader: deHeader,
