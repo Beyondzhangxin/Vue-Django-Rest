@@ -2,7 +2,7 @@
 from __future__ import absolute_import, unicode_literals
 import os
 from celery import Celery
-
+from django.conf import settings
 # 获取当前文件夹名，即为该Django的项目名
 project_name = os.path.split(os.path.abspath('.'))[-1]
 project_settings = '%s.settings' % project_name
@@ -23,7 +23,7 @@ app.config_from_object('django.conf:settings')
 
 # Load task modules from all registered Django app configs.
 # Celery加载所有注册的应用
-app.autodiscover_tasks()
+app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
 
 @app.task(bind=True)

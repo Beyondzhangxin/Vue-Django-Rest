@@ -168,7 +168,7 @@ def echartsDataForInverterFDL(request):
         # cursor.execute('SET @csum := 0')
         # cursor.execute(sql_data)
         # rs1_data = cursor.fetchall()
-        sql_time = "select total_d from spgs_minute WHERE date_format(total_d,'%Y-%m-%d')='" + '2017-04-27' + "'"
+        sql_time = "select date_format(total_d,'%H:%m:%s') from spgs_minute WHERE date_format(total_d,'%Y-%m-%d')='" + '2017-04-27' + "'"
         sql_data = "SELECT (@csum := @csum + TOTAL_FDL) AS total_fdl FROM spgs_minute  WHERE DATE_FORMAT(total_d,'%Y-%m-%d') ='" + '2017-04-27' + "'"
 
         cursor.execute(sql_time)
@@ -178,7 +178,7 @@ def echartsDataForInverterFDL(request):
         rs2_data = cursor.fetchall()
         rs_time = rs2_time
         rs_data = rs2_data
-        response['data'] = {'series': rs_time, 'xAxix': rs_data}
+        response['data'] = {'series':rs_data , 'xAxix':rs_time }
         response['msg'] = 'success'
         response['error_num'] = 0
         db.close()
@@ -205,12 +205,12 @@ def echartsDataForInverterFDGL(request):
         sql1 = "select FDZGL from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
         cursor.execute(sql1)
         data2 = cursor.fetchall()
-        sql2 = "select datatime  from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
+        sql2 = "select date_format(datatime,'%H:%m:%s')  from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
         cursor.execute(sql2)
         time2 = cursor.fetchall()
         rs_time = time2
         rs_data = data2
-        response['data'] = {'series': rs_time, 'xAxix': rs_data}
+        response['data'] = {'series': rs_data, 'xAxix':  rs_time}
         response['msg'] = 'success'
         response['error_num'] = 0
         db.close()
@@ -237,12 +237,12 @@ def echartsDataForFZD(request):
         sql1 = "select fz from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
         cursor.execute(sql1)
         data2 = cursor.fetchall()
-        sql2 = "select datatime  from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
+        sql2 = "select date_format(datatime,'%H:%m:%s') from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
         cursor.execute(sql2)
         time2 = cursor.fetchall()
         rs_time = time2
         rs_data = data2
-        response['data'] = {'series': rs_time, 'xAxix': rs_data}
+        response['data'] = {'series':rs_data , 'xAxix':rs_time }
         response['msg'] = 'success'
         response['error_num'] = 0
         db.close()
@@ -251,7 +251,7 @@ def echartsDataForFZD(request):
         response['error_num'] = 1
     return JsonResponse(response)
 
-
+@require_http_methods(['GET'])
 def powerStationsNum(request):
     response = {}
     try:
