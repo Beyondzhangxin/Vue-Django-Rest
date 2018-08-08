@@ -73,10 +73,10 @@
 
  .el-main {
     background-color: #e3e3e3;
-    /* background: -webkit-linear-gradient(30deg, #16222A,#3A6073); 
-    background: -o-linear-gradient(30deg, #16222A, #3A6073); 
-    background: -moz-linear-gradient(30deg, #16222A, #3A6073); 
-    background: linear-gradient(30deg, #16222A, #3A6073); */
+    /* background: -webkit-linear-gradient(30deg, #373B44,#3A6073); 
+    background: -o-linear-gradient(30deg, #373B44, #3A6073); 
+    background: -moz-linear-gradient(30deg, #373B44, #3A6073); 
+    background: linear-gradient(30deg, #373B44, #3A6073); */
     height: 100%;
     padding-left: 0px;
     padding-right: 0px;

@@ -1,6 +1,11 @@
 <template>
     <el-container>
       <el-main>
+
+        <el-card class="maincard">
+          
+             <div class="inf">北京，上海，深圳电站统计</div>
+              <hr width=100% size=1 color=#bbbcbc style="FILTER: alpha(opacity=100,finishopacity=0)"> 
           <div class="row0">
             <el-row>
               <el-col :span="8">
@@ -70,19 +75,18 @@
             </el-row>
           </div>
 
-
           <!-- 环保数据 -->
           <div class="box">
           <el-card class="box-card1">
             <div slot="header" class="clearfix">
               <span id="htop"><strong>环保数据</strong></span>
-              <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+              <el-button style="float: right; padding: 3px 0" type="text"></el-button>
             </div>
 
             <div class="data">
               <el-row :gutter="60">
                 <el-col :span="4"><div class="grid-content">
-                  <el-card>
+                  <el-card class="elcard"> 
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/coal.png" id="image">
@@ -97,7 +101,7 @@
                 </el-col>
 
                 <el-col :span="4"><div class="grid-content">
-                  <el-card>
+                  <el-card class="elcard">
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/co2.png" id="image">
@@ -111,7 +115,7 @@
                 </div></el-col>
 
                 <el-col :span="4"><div class="grid-content">
-                  <el-card>
+                  <el-card class="elcard">
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/so2.png" id="image">
@@ -125,7 +129,7 @@
                 </div></el-col>
 
                 <el-col :span="4"><div class="grid-content">
-                  <el-card>
+                  <el-card class="elcard">
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/no2.png" id="image">
@@ -139,7 +143,7 @@
                 </div></el-col>
 
                 <el-col :span="4"><div class="grid-content">
-                  <el-card>
+                  <el-card class="elcard">
                    <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/tree.png" id="image">
@@ -155,6 +159,9 @@
             </div>
           </el-card>
           </div>
+
+        </el-card>
+
       </el-main>
   </el-container>
 </template>
@@ -174,7 +181,10 @@ export default {
   },
   data () {
     return {
+
+       activeName: 'first',
       //配置最下面的list
+
 
       msg1:146.23,
       msg2:393.09,
@@ -287,6 +297,8 @@ export default {
               }
             }
           },
+
+          
           legend: {
             data:['逆变器发电量', '电能表发电量', '理论发电量']
           },
@@ -523,11 +535,11 @@ export default {
   .card3 {
     height: 400px;
     margin: 30px;
-
-    width: 900px;
-
-    margin-bottom: 10%;
+    width: 700px;
+    margin-bottom: 20px;
+    background-color:rgba(255, 255, 255, 0.3)
   }
+  
 
 
   .card1m span {
@@ -564,6 +576,7 @@ export default {
     margin-left: -15px;
     width: 500px;
     height: 300px;
+     background-color:rgba(255, 255, 255, 0.2)
   }
 
   .card2 {
@@ -574,6 +587,7 @@ export default {
     left: 120px;
     z-index: 1;
     background-color: #974e45;
+     background-color:rgba(190, 30, 30, 0.4)
   }
 
   .mainBody {
@@ -663,18 +677,11 @@ export default {
   border-radius: 4px;
   height: 100%;
 }
-.bg-purple-dark {
-  background: #99a9bf;
-}
-.bg-purple {
-  background: #d3dce6;
-}
-.bg-purple-light {
-  background: #e5e9f2;
-}
+
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
+  
 }
 .row-bg {
   padding: 10px 0;
@@ -714,6 +721,11 @@ export default {
 
 .box-card1{
   /* margin-top:20px; */
+   background: -webkit-linear-gradient(30deg, #373B44,#355C7D); 
+    background: -o-linear-gradient(30deg, #373B44, #355C7D); 
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D); 
+    background: linear-gradient(30deg, #373B44,#355C7D);
+    
 }
 
 .box{
@@ -721,12 +733,31 @@ export default {
   margin-left:30px;
   margin-top:-20px;
   margin-bottom:20px;
+  
 }
 
 .data{
   padding-left:150px;
-
 }
 
+.inf{
+  font-size:20px;
+  font-family: 'STHeiti Light [STXihei]' ;
+}
 
+.row0{
+  margin-top:-40px;
+}
+
+.maincard{
+    background-color: #e3e3e3;
+    background: -webkit-linear-gradient(30deg, #373B44,#355C7D); 
+    background: -o-linear-gradient(30deg, #373B44, #355C7D); 
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D); 
+    background: linear-gradient(30deg, #373B44,#355C7D);
+}
+
+.elcard{
+  background-color:rgba(255, 255, 255, 0.3)
+}
 </style>

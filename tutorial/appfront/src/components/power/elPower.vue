@@ -2,7 +2,7 @@
   <el-card class="box-card" >
     <div slot="header" class="clearfix">
       <span>{{ msg7 }}</span>
-      <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+      <el-button style="float: right; padding: 3px 0" type="text"></el-button>
     </div>
     <div class="text item">
       <img class="image1" ref="image" src="..\..\assets\SHGF.jpg">

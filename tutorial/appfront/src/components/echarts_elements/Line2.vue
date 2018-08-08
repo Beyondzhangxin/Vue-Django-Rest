@@ -25,7 +25,7 @@ export default {
       this.drawLine();
     }
   },
-  
+
   mounted: function() {
     this.drawLine();
   },

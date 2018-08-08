@@ -1,5 +1,5 @@
 @echo off
-set "VIRTUAL_ENV=D:\pycharm\django_rest_demo\venv"
+set "VIRTUAL_ENV=D:\projects\Vue-Django-Rest\venv"
 
 if defined _OLD_VIRTUAL_PROMPT (
     set "PROMPT=%_OLD_VIRTUAL_PROMPT%"

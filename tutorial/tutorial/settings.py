@@ -35,7 +35,7 @@ SECRET_KEY = '@jzr3i-pdt0fc_b1mc6ngi9siv+x@3l(1^&0klo32*-gavclj_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'snippets.apps.SnippetsConfig',
+
     'celery_message',
     'pv.apps.PvConfig',
     'django_filters',
@@ -106,7 +107,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '',
         # 'HOST': '192.168.102.101',
-        'HOST': '127.0.0.1',
+        'HOST': '192.168.102.103',
         'PORT': '3306'
     }
 }
