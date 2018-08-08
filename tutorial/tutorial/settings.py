@@ -15,16 +15,6 @@ import os
 # library.  If you don't have this then `from celery.schedules import`
 # becomes `proj.celery.schedules` in Python 2.x since it allows
 # for relative imports by default.
-rabbit_ip = '192.168.47.128'
-
-# celery settings 命名空间为CELERY_
-CELERY_BROKER_URL = 'amqp://guest:wang@'+rabbit_ip+'//'
-CELERY_RESULT_BACKEND = 'amqp://guest:wang@'+rabbit_ip+'//'
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -35,7 +25,7 @@ SECRET_KEY = '@jzr3i-pdt0fc_b1mc6ngi9siv+x@3l(1^&0klo32*-gavclj_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -47,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djcelery',
     'rest_framework',
     'snippets.apps.SnippetsConfig',
     'celery_message',
@@ -72,6 +63,7 @@ MIDDLEWARE = [
 #配合Vue框架
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
+
 
 ROOT_URLCONF = 'tutorial.urls'
 
@@ -154,6 +146,20 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "appfront/dist/static"),
 ]
+
+# celery settings
+# celery中间人 redis://redis服务所在的ip地址:端口/数据库
+BROKER_URL = 'reids://localhost:6379/0'
+# celery结果返回，可用于跟踪结果
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/1'
+# celery内容等消息的格式设置
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+#celery时区设置，使用settings中TIME_ZONE同样的时区
+CELERY_TIMEZONE = TIME_ZONE
 
 
 
