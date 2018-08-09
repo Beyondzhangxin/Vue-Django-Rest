@@ -250,6 +250,7 @@ export default {
 
   .m1 {
     width: 100%;
+    overflow: hidden;
   }
 
   .cardList {
