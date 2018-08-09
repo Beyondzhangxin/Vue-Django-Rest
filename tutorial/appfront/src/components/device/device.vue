@@ -1,7 +1,7 @@
 <template>
           <div>
              
-                  <el-card>
+                  <el-card class="card0">
                 <el-row class="row1">
                     <el-col :span="12">
                       <div class="grid-content">
@@ -292,11 +292,19 @@ export default {
     margin-top: 40px;
     margin-left: 5px;
     margin-right: 5px;
+     background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, rgb(55,59,68,0.3),#355C7D);
 }
 
 .box-card1 {
   margin-bottom: 30px;
   margin-top:-20px;
+   background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, rgb(55,59,68,0.3),#355C7D);
 }
 
 .box-card2 {
@@ -319,6 +327,7 @@ export default {
 #cirlce {
   margin-top: -8px;
   width: 100%;
+  
 }
 
 #num{
@@ -363,4 +372,13 @@ export default {
     padding-top: 13px;
     padding-bottom: 13px;
 }
+
+.card0{
+    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, #373B44,#355C7D);
+}
+
+
 </style>

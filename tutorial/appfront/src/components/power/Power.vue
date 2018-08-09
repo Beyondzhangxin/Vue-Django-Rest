@@ -2,7 +2,7 @@
       <el-container class="c1">
         <el-main class="m1" style="height: 100%">
           <div class="mov">
-            <el-card>
+            <el-card class="card1">
               <el-row>
                 <span id="line" v-for="item in items[0]" :key="item.id">{{ item.key }} <strong>{{ item.value }}</strong></span>
               </el-row>
@@ -30,7 +30,7 @@
             </el-card>
           </div>
 
-          <el-card>
+          <el-card class="card2">
               <el-row>
                 <el-col>
                   <div class="col1">
@@ -251,6 +251,7 @@ export default {
   .m1 {
     width: 100%;
     overflow: hidden;
+    
   }
 
   .cardList {
@@ -359,6 +360,7 @@ export default {
   height:100px;
   /* margin-left:-65px; */
   margin-bottom:20px;
+  
 }
 
 /* .row{
@@ -367,9 +369,24 @@ export default {
   padding-top: 20px;
 } */
 
-
-.el-input{
-
+.card1{
+   background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, rgb(55,59,68,0.4),#355C7D);
 }
 
+.card2{
+   background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, rgb(55,59,68,0.4),#355C7D);
+}
+
+.el-main{
+  background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, #373B44,#355C7D);
+}
 </style>

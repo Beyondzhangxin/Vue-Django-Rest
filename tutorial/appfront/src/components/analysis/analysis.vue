@@ -32,7 +32,8 @@
 
         <!-- main1 -->
         <div id="main1">
-            <el-header id="header" style="height:80px;">
+            
+            <card class="card1">
             <el-row>
                 <el-col :span="12" id="span1">
                         <el-col :span="4" id="span0">对比内容:</el-col>
@@ -65,7 +66,7 @@
                         </el-date-picker>
                </el-col>
             </el-row>
-            </el-header>
+            </card>
         </div>
 
         <!-- main2 -->
@@ -87,7 +88,7 @@
         <!-- main3 -->
         <el-main id="main3">
           <div class="m3">
-            <Line2 v-bind="l2"></Line2>
+                <Line2 v-bind="l2"></Line2>
           </div>
         </el-main>
         <!-- </el-container> -->
@@ -258,12 +259,30 @@ export default {
 
 .m3 {
   height: 550px;
-  background-color: #fff;
+  /* background-color: #fff; */
+   background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, rgb(55,59,68,0.4),#355C7D);
 }
 
 #header{
     background:white;
     padding-top:10px;
+    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, rgb(55,59,68,0.4),#355C7D);
+
+}
+
+#button{
+    background-color:rgba(255, 255, 255, 0.2)
+    
+}
+
+#text{
+    color:whitesmoke;
 }
 
 #button1{
@@ -315,14 +334,20 @@ export default {
 #main1{
     margin-top:20px;
     height:100px;
+    
 }
 
 #main2{
     background:white;
+    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, rgb(55,59,68,0.4),#355C7D);
 }
 
 #main3{
     margin-top:50px;
+    
 }
 
 #text1{
@@ -334,6 +359,7 @@ export default {
     float: left;
     margin-top:20px;
     margin-left:20px;
+    color:aliceblue;
 }
 
 .sel{
@@ -348,7 +374,18 @@ export default {
     margin-top:10px;
     margin-left:5px;
     margin-right:10px;
+    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, #373B44,#355C7D);
+
 }
 
+.card1{
+     background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, #373B44,#355C7D);
+}
 
 </style>

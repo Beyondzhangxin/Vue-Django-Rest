@@ -1,13 +1,13 @@
 <template>
   <div class="detection">
     <el-container>
-        <el-card>
+        <el-card id="card0">
           <el-main class="detectMain">
 
 
                 <el-row>
                   <el-col :span="8">
-                    <el-card :body-style="{ padding: '0px' }">
+                    <el-card :body-style="{ padding: '0px' }" id="card1">
                      <img src="../../assets/close.png" class="image">
                      <div style="padding: 14px;">
                        <span>停机设备</span>
@@ -18,7 +18,7 @@
                    </el-card>
                   </el-col>
                   <el-col :span="8">
-                    <el-card :body-style="{ padding: '0px' }">
+                    <el-card :body-style="{ padding: '0px' }" id="card1">
                       <img src="../../assets/alarm.png" class="image">
                       <div style="padding: 14px;">
                         <span>告警设备</span>
@@ -29,7 +29,7 @@
                     </el-card>
                   </el-col>
                   <el-col :span="8">
-                    <el-card :body-style="{ padding: '0px' }">
+                    <el-card :body-style="{ padding: '0px' }" id="card1">
                       <img src="../../assets/offline.png" class="image">
                       <div style="padding: 14px;">
                         <span>离线设备</span>
@@ -119,7 +119,10 @@
     padding-left: 30px;
     padding-right: 30px;
     overflow-y: hidden;
-    background: #fff;
+    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, #373B44,#355C7D);
   }
 
   .el-header {
@@ -221,11 +224,33 @@
 
 .card2 .el-pagination {
   margin-left: 35%;
+  
 }
 
 .bg-purple{
   background:white;
 }
 
+#card0{
 
+    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, #373B44,#355C7D);
+}
+
+#card1{
+    /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, #373B44,#355C7D); */
+    background-color:rgba(255, 255, 255, 0.2)
+}
+
+.card2{
+    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, #373B44,#355C7D);
+}
 </style>
