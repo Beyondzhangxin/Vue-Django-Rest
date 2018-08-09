@@ -65,13 +65,13 @@
                   </div>
                 </el-card>
               </el-col>
-              <el-col :span="12">
+              <!-- <el-col :span="12">
                 <el-card class="card3">
                   <div class="card3Li">
                     <Line2 v-bind="settings.l2"></Line2>
                   </div>
                 </el-card>
-              </el-col>
+              </el-col> -->
             </el-row>
           </div>
 
@@ -188,18 +188,19 @@ export default {
       this.$ajax.get('http://localhost:8000/system/echartsDataForFZD')
       .then(function (response) {
         //处理数据
+        console.log(131123124);
         var list1 = [];
         var list2 = [];
         for (var i = 0; i < response.data.data.series.length; i++) {
           list1.push(response.data.data.series[i][0]);
-          list2.push(response.data.data.xAxix[i][0]);
+          list2.push(response.data.data.xAxis[i][0]);
         }
 
         console.log(1234124124);
-
-        this.settings.l1.option.series.data = list1;
-        this.settings.l1.option.xAxis.data = list2;
         console.log(this.settings.l1);
+        this.settings.l1.option.series[0].data = list1;
+        this.settings.l1.option.xAxis[0].data = list2;
+
       }.bind(this))
       .catch(function (error) {
         return 0;
