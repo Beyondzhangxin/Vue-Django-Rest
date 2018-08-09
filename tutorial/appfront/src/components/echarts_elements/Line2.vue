@@ -13,47 +13,95 @@
   require('echarts/lib/component/dataZoom')
   require('echarts/lib/component/legend')
 
-var interval = 0
-var line1 = 0
+
 
 export default {
   name: 'line2',
-  props: ['id', 'option'],
+  props: ['id', 'option', 'request'],
+  line1: 0,
+  interval: 0,
+
+
   data () {
     return {
-    }
-  },
-  watch: {
-    option: function () {
-      this.drawLine();
+      changeOption: this.option
     }
   },
 
   mounted: function() {
     this.drawLine();
-    interval = setInterval(this.updateData, 2000);
+    this.loadData();
+    this.interval = setInterval(this.updateData, 2000);
   },
 
   destroyed: function() {
-    clearInterval(interval)
+    clearInterval(this.interval)
   },
 
   methods: {
+    loadData() {
+      if (this.request.length == 2) {
+        this.$ajax.get(this.request[1])
+        .then(function (response) {
+
+          //处理数据
+          console.log(this.request);
+          var list1 = [];
+          var list2 = [];
+          for (var j = 0; j < response.data.data.series.length; j++) {
+            list1.push(response.data.data.series[j][0]);
+            list2.push(response.data.data.xAxis[j][0]);
+          }
+
+          this.changeOption.series[1].data = list1;
+          this.changeOption.xAxis[0].data = list2;
+
+          console.log(asfdafafasfasfas);
+          console.log(this.changeOption)
+        }.bind(this))
+        .catch(function (error) {
+          return 0;
+        });
+
+      }
+        this.$ajax.get(this.request[0])
+        .then(function (response) {
+
+          //处理数据
+          console.log(this.request);
+          var list1 = [];
+          var list2 = [];
+          for (var j = 0; j < response.data.data.series.length; j++) {
+            list1.push(response.data.data.series[j][0]);
+            list2.push(response.data.data.xAxis[j][0]);
+          }
+
+          this.changeOption.series[0].data = list1;
+          this.changeOption.xAxis[0].data = list2;
+
+          console.log(asfdafafasfasfas);
+          console.log(this.changeOption)
+        }.bind(this))
+        .catch(function (error) {
+          return 0;
+        });
+
+    },
     drawLine () {
       // 基于准备好的dom，初始化echarts实例
-      line1 = echarts.init(document.getElementById(this.id))
+      this.line1 = echarts.init(document.getElementById(this.id))
       //初始化变量
       // 绘制图表
       console.log(this.option);
-      line1.setOption(this.option);
+      this.line1.setOption(this.option);
       setTimeout(function (){
         window.onresize = function () {
-          line1.resize();
+          this.line1.resize();
         }
       },200);
     },
     updateData () {
-      line1.setOption(this.option)
+      this.line1.setOption(this.option)
     }
   }
 }

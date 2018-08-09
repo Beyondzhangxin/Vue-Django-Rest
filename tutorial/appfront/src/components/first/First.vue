@@ -65,13 +65,13 @@
                   </div>
                 </el-card>
               </el-col>
-              <!-- <el-col :span="12">
+              <el-col :span="12">
                 <el-card class="card3">
                   <div class="card3Li">
                     <Line2 v-bind="settings.l2"></Line2>
                   </div>
                 </el-card>
-              </el-col> -->
+              </el-col>
             </el-row>
           </div>
 
@@ -181,14 +181,13 @@ export default {
   },
   mounted: function () {
     //this.load();
-    this.loadData();
+    //this.loadData();
   },
   methods: {
     loadData(){
       this.$ajax.get('http://localhost:8000/system/echartsDataForFZD')
       .then(function (response) {
         //处理数据
-        console.log(131123124);
         var list1 = [];
         var list2 = [];
         for (var i = 0; i < response.data.data.series.length; i++) {
@@ -205,8 +204,29 @@ export default {
       .catch(function (error) {
         return 0;
       });
+      // console.log(124141452355688728735);
+      // this.$ajax.get('http://localhost:8000/system/echartsDataForInverterFDGL')
+      // .then(function (response) {
+      //   //处理数据
+      //   console.log(9956079);
+      //   console.log(asdas);
+      //   var list1 = [];
+      //   var list2 = [];
+      //   for (var i = 0; i < response.data.data.series.length; i++) {
+      //     list1.push(response.data.data.series[i][0]);
+      //     list2.push(response.data.data.xAxis[i][0]);
+      //   }
+      //
+      //
+      //   console.log(this.settings.l2);
+      //   this.settings.l2.option.series[0].data = list1;
+      //   this.settings.l2.option.xAxis[0].data = list2;
+      //
+      // }.bind(this))
+      // .catch(function (error) {
+      //   return 0;
+      // });
     }
-
   },
   data () {
     return {
@@ -313,6 +333,7 @@ export default {
         },
         l1:{
           id: 'line1',
+          request: ['http://localhost:8000/system/echartsDataForInverterFDL'],
           option:{
             title: {
               text: '当日发电量',
@@ -326,8 +347,6 @@ export default {
               }
             }
           },
-
-
           legend: {
             data:['逆变器发电量']
           },
@@ -387,6 +406,7 @@ export default {
       },
         l2:{
           id: 'line2',
+          request: ['http://localhost:8000/system/echartsDataForInverterFDGL','http://localhost:8000/system/echartsDataForFZD'],
           option: {
             title: {
               text: '当日发电功率',
