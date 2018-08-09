@@ -13,6 +13,8 @@
   require('echarts/lib/component/dataZoom')
   require('echarts/lib/component/legend')
 
+var interval = 0
+
 export default {
   name: 'line2',
   props: ['id', 'option'],
@@ -28,6 +30,11 @@ export default {
 
   mounted: function() {
     this.drawLine();
+    interval = setInterval(this.updateData, 2000);
+  },
+
+  destroyed: function() {
+    clearInterval(interval)
   },
 
   methods: {
@@ -44,6 +51,9 @@ export default {
         }
       },200);
     },
+    updateData () {
+      console.log(this.interval);
+    }
   }
 }
 </script>
