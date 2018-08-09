@@ -7,14 +7,18 @@ export default {
     mounted() {
         const canvas = document.getElementById("canvas");
         const ctx = canvas.getContext("2d");
+
+        ctx.fillStyle='black';
+
         const rndCl = () => Math.floor(Math.random() * 225);
         const width = window.innerWidth;
         const height = window.innerHeight;
         var base_list = [];
         canvas.width = width;
         canvas.height = height;
+        
 
-        // 绘制园
+        // 绘制圆
         const drawRounds = (obj, index) => {
             let { x, y, r, color } = obj;
             ctx.beginPath();
@@ -27,6 +31,7 @@ export default {
             ctx.fill();
             ctx.closePath();
         }
+
 
         //判断移动方向
         const controlDirection = (obj) => {
@@ -209,5 +214,6 @@ export default {
         z-index: -1;
         top: 0;
         left: 0;
+        /* background: #000 */
     }
 </style>

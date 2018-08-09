@@ -339,8 +339,9 @@ export default {
 .sel{
     float:left;
     margin-top:20px;
-    margin-left:30px;
+    margin-left:100px;
     margin-bottom: 10px;
+    padding-right: 20px;
 }
 
 .card0{
