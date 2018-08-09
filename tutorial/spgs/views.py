@@ -1,23 +1,15 @@
 from enum import Enum
 
+import pymysql
+import time
 from django.http import JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
 from django.views.decorators.http import require_http_methods
 
-from .tools import getStatus
+from .tools import getStatus, getStationMsg
 from .models import *
-
-
-
-
-def powerStationInfo():
-    info = {}
-    data = DataSpgsBuffer.objects.all()
-    info['status'] = getStatus(data)
-
-
 
 
 

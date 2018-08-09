@@ -1,4 +1,3 @@
-# coding=utf-8
 from enum import Enum
 
 import pymysql
@@ -6,12 +5,6 @@ import time
 
 from .models import *
 
-
-database_ip = 'localhost'
-database_port = '3306'
-database_name = 'solar'
-user = 'root'
-pwd = ''
 
 class Status(Enum):
     normal = "zc"
@@ -21,8 +14,6 @@ class Status(Enum):
 
 
 def getStatus(data):
-    status = ''
-
     if data is None:
         status = Status.offline.value
     else:
@@ -35,25 +26,35 @@ def getStatus(data):
         nbq7 = float(data[0].nbqgl7)
         nbq8 = float(data[0].nbqgl8)
         nbq9 = float(data[0].nbqgl9)
-        nbq10 = float(data[0].nbqgl10)
-        if nbq1 and nbq2 and nbq3 and nbq4 and nbq5 and nbq6 and nbq7 and nbq8 and nbq9 and nbq10:
+        if nbq1 and nbq2 and nbq3 and nbq4 and nbq5 and nbq6 and nbq7 and nbq8 and nbq9:
             status = Status.abnormal.value
-        elif not (nbq1 or nbq2 or nbq3 or nbq4 or nbq5 or nbq6 or nbq7 or nbq8 or nbq9 or nbq10):
+        elif not (nbq1 or nbq2 or nbq3 or nbq4 or nbq5 or nbq6 or nbq7 or nbq8 or nbq9):
             status = Status.poweroff.value
-        else:status = Status.normal.value
-    return  status
+        else:
+            status = Status.normal.value
+    print(type(status))
+    print(status)
+    return status
+
 
 def getStationMsg():
     return []
 
-def powerStationInfoSpgs():
+database_ip = 'localhost'
+database_port = '3306'
+database_name = 'solar'
+user = 'root'
+pwd = ''
+
+
+def powerStationInfoPvmg():
     info = {}
     try:
-        data = DataSpgsBuffer.objects.all()
+        data = DataPvmgBuffer.objects.all()
         info['status'] = getStatus(data)
         db = pymysql.connect(database_ip, user, pwd, database_name)
         cursor = db.cursor()
-        sql = "select  dayHours from spgs_day WHERE total_d ='" + time.strftime('%Y-%m-%d', time.localtime()) + "'"
+        sql = "select  dayHours from pvmg_day WHERE total_d ='" + time.strftime('%Y-%m-%d', time.localtime()) + "'"
         cursor.execute(sql)
         rs = cursor.fetchone()
         if not rs is None:
@@ -61,7 +62,7 @@ def powerStationInfoSpgs():
         else:
             info['dayHours'] = 0
         info['zjrl'] = 50.0
-        sql = "select fdzgl from data_spgs_buffer"
+        sql = "select fdzgl from data_pvmg_buffer"
         cursor.execute(sql)
         rs = cursor.fetchall()
         if not rs is None:
@@ -78,6 +79,7 @@ def powerStationInfoSpgs():
         info['id'] = '青海'
         info['messageNum'] = len(getStationMsg())
         db.close()
+        print(info)
         return info
     except  Exception as e:
         return None
