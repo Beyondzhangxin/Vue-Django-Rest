@@ -17,7 +17,7 @@ from spgs.models import *
 from .models import *
 
 # database configuration
-database_ip = 'localhost'
+database_ip = '192.168.102.103'
 database_port = '3306'
 database_name = 'solar'
 user = 'root'
@@ -241,7 +241,7 @@ def echartsDataForFZD(request):
         time2 = cursor.fetchall()
         rs_time = time2
         rs_data = data2
-        response['data'] = {'series': rs_time, 'xAxix': rs_data}
+        response['data'] = {'xAxis': rs_time, 'series': rs_data}
         response['msg'] = 'success'
         response['error_num'] = 0
         db.close()
