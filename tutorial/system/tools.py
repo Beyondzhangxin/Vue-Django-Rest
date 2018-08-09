@@ -132,14 +132,18 @@ def getTotalGeneratingCapacity_thisMonth():
     sql2 = "select total_fdl from pvmg_month WHERE total_m='" + time.strftime('%Y-%m-%d', time.localtime()) + "'"
     cursor.execute(sql1)
     rs1 = cursor.fetchone()
-    if rs1 is None:
-        rs1 = 0
+    if not rs1 is None:
+        arg1= float(rs1[0])
+    else:
+        arg1 = 0.0
     cursor.execute(sql2)
     rs2 = cursor.fetchone()
-    if rs2 is None:
-        rs2 = 0
+    if not rs2 is None:
+        arg2 = float(rs2[0])
+    else:
+        arg2 = 0.0
     db.close()
-    data = float(rs1[0]) + float(rs2[0])
+    data = arg1 + arg2
     return data
 
 
@@ -220,5 +224,29 @@ def getDeviceInfo(systemType, deviceName):
             info['jrdx'] = powerStationInfoSpgs().get("dayHours")
         except Exception as e:
             print(e)
-    info['bwrq']="2018-03-21"
+    info['bwrq'] = "2018-03-21"
     return info
+
+
+def getDeviceList():
+    list = []
+    try:
+        stations = PowerStation.objects.all()
+        for item in stations:
+            if item.pk == 1:
+                templist = ["逆变器"]
+                list.append({'systemType': item.systemtype.systemtype, 'systemName': item.systemtype.systemname,
+                             'devices': templist})
+            if item.pk == 2:
+                templist = [{"NBQGL" + str(i): ("逆变器" + str(i))} for i in range(1, 10)]
+                list.append({'systemType': item.systemtype.systemtype, 'systemName': item.systemtype.systemname,
+                             'devices': templist})
+            if item.pk == 3:
+                templist = [{"NBQGL" + str(i): ("逆变器" + str(i))} for i in range(1, 11)]
+                list.append({'systemType': item.systemtype.systemtype, 'systemName': item.systemtype.systemname,
+                             'devices': templist})
+
+    except Exception as e:
+        print(e)
+    finally:
+        return list

@@ -18,6 +18,8 @@ from spgs.models import *
 from pvmg.tools import powerStationInfoPvmg
 from spgs.tools import powerStationInfoSpgs
 
+from pvmg.models import DataPvmgBuffer
+from spgs.models import DataSpgsBuffer
 from .tools import *
 from .models import *
 from tutorial.settings import DATABASES
@@ -34,23 +36,9 @@ pwd = DATABASES['default']['PASSWORD']
 @require_http_methods(['GET'])
 def powerStations(request):
     response = {}
-    list = []
     try:
-        stations = PowerStation.objects.all()
-        for item in stations:
-            if item.pk == 1:
-                templist = ["逆变器"]
-                list.append({'systemType': item.systemtype.systemtype, 'systemName': item.systemtype.systemname,
-                             'devices': templist})
-            if item.pk == 2:
-                templist = [{"NBQGL" + str(i): ("逆变器" + str(i))} for i in range(1, 10)]
-                list.append({'systemType': item.systemtype.systemtype, 'systemName': item.systemtype.systemname,
-                             'devices': templist})
-            if item.pk == 3:
-                templist = [{"NBQGL" + str(i): ("逆变器" + str(i))} for i in range(1, 11)]
-                list.append({'systemType': item.systemtype.systemtype, 'systemName': item.systemtype.systemname,
-                             'devices': templist})
-        response['list'] = list
+        list = getDeviceList()
+        response['data'] = list
         response['msg'] = 'success'
         response['error_num'] = 0
     except  Exception as e:
@@ -139,7 +127,8 @@ def echartsDataForInverterFDGL(request):
     response = {}
     try:
         data = getEchartsDataForInverterFDGL()
-        response['msg'] = data
+        response['data'] = data
+        response['msg'] = 'success'
         response['error_num'] = 0
     except  Exception as e:
         response['msg'] = str(e)
@@ -198,6 +187,7 @@ def getStationMonitorInfo(request):
         response['error_num'] = 1
     return JsonResponse(response)
 
+
 # 返回设备监测信息，参数systemType和deviceName，分别为系统类别如PVMG和设备名称如NBQGL1,区分大小写
 @require_http_methods(['GET'])
 def getDeviceMonitor(request):
@@ -215,9 +205,88 @@ def getDeviceMonitor(request):
     return JsonResponse(response)
 
 
+# 返回首页当前发电功率模块的数据信息
+@require_http_methods(['GET'])
+def getDQFDGL(request):
+    dic = {}
+    response = {}
+    try:
+        rs1 = DataSpgsBuffer.objects.all()
+        rs2 = DataPvmgBuffer.objects.all()
+        zgl = float(rs1[0].fdzgl) + float(rs2[0].fdzgl)
+        jrlj = getTotalGeneratingCapacity_today()
+        dylj = getTotalGeneratingCapacity_thisMonth()
+        total = getTotalGeneratingCapacity()
+        dic['ele'] = zgl
+        dic['total'] = getTotalVolume()
+        dic['day'] = jrlj
+        dic['month'] = dylj
+        dic['sumAll'] = total
+        response['data'] = {'c1': dic}
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+
+    return JsonResponse(response)
+
+
+# 返回设备监测页面,设备列表数据,必须有参数pageNum和pageSize，分别是第几页和每页显示多少条记录
+@require_http_methods(['GET'])
 def getDeviceTable(request):
     response = {}
-
+    db = pymysql.connect(database_ip, user, pwd, database_name)
+    cursor = db.cursor()
+    tab = []
+    lists = getDeviceList()
+    pageNum = request.GET.get('pageNum')
+    pageSize = request.GET.get('pageSize')
+    if pageNum and pageSize:
+        try:
+            end = int(pageNum) * int(pageSize)
+            start = (int(pageNum) - 1) * int(pageSize)
+            for x in lists:
+                for y in x['devices']:
+                    dic = {}
+                    (key, value), = y.items()
+                    sql = "select " + key + " from  data_" + x.get("systemType") + "_buffer "
+                    cursor.execute(sql)
+                    rs = cursor.fetchone()
+                    print(rs)
+                    if not rs is None:
+                        dqgl = rs[0]
+                    else:
+                        dqgl = 0.00
+                    dic['dev_dqgl'] = dqgl
+                    sql = "select FDL_" + key + " ,dayHours from  " + x.get("systemType") + "_day  where total_d ='" + time.strftime(
+                        '%Y-%m-%d',
+                        time.localtime()) + "'"
+                    cursor.execute(sql)
+                    rs = cursor.fetchone()
+                    if not rs is None:
+                        jrfd = rs[0]
+                        dayHours = rs[1]
+                    else:
+                        jrfd = 0.00
+                        dayHours = 0
+                    dic['dev_jrfd'] = jrfd
+                    dic['dev_name'] = value
+                    dic['dev_xh'] = key
+                    dic['dev_systemType'] = x.get('systemType')
+                    dic['dev_systemName'] = x.get('systemName')
+                    dic['dev_drdx'] = dayHours
+                    tab.append(dic)
+            response['data'] = {"tab":tab[start:end],"count":len(tab)}
+            response['msg'] = 'success'
+            response['error_num'] = 0
+        except Exception as e:
+            response['msg'] = str(e)
+            response['error_num'] = 1
+    else:
+        response['msg'] = "缺少参数！"
+        response['error_num'] = 1
+    return JsonResponse(response)
 
 
 @require_http_methods(['GET'])
