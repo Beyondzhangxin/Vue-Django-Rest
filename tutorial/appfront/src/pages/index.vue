@@ -1,5 +1,5 @@
 <template>
-
+  <container>
     <div class="index" :style="{backgroundImage:'url('+img+')'}">
         <div id="title">光伏智能运维系统
             <!-- <img src="../../assets/logo.png" id="image">  -->
@@ -19,8 +19,8 @@
             <el-button @click="resetForm" id="button2">重置</el-button>
         </el-form>
 		</div>
-	</div>
-
+	 </div>
+  </container>
 </template>
 
 
@@ -32,7 +32,7 @@ import Img from '@/./assets/back7.jpg'
         name: '',
         data () {
             return {
-               
+
                     img:Img,
 
                 formName: {//表单中的参数
@@ -113,7 +113,7 @@ import Img from '@/./assets/back7.jpg'
         border-radius: 8px;
         box-sizing: border-box;
         background-color:rgba(255, 255, 255, 0.3)
-    
+
     }
 
 .login p{

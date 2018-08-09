@@ -211,6 +211,7 @@ export default {
   .col1 {
     float: left;
     padding-bottom: 1%;
+    padding-left: 0px;
   }
 
   .col2 {
@@ -239,8 +240,8 @@ export default {
 
 
   .c1 {
-    margin-top: 20px;
-    margin-left: 10px;
+    margin-top: 0px;
+    margin-left: 5px;
     margin-right:15px;
   }
 
@@ -274,10 +275,10 @@ export default {
     background:white
   }
 
-.el-header{
-  background:white;
-  margin-bottom:35px;
-}
+  .el-header{
+    background:white;
+    margin-bottom:35px;
+  }
 
   .mm {
     margin-top: 14px;
