@@ -133,7 +133,7 @@ def getTotalGeneratingCapacity_thisMonth():
     cursor.execute(sql1)
     rs1 = cursor.fetchone()
     if not rs1 is None:
-        arg1= float(rs1[0])
+        arg1 = float(rs1[0])
     else:
         arg1 = 0.0
     cursor.execute(sql2)

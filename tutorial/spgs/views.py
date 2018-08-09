@@ -1,3 +1,4 @@
+import datetime
 from enum import Enum
 
 import pymysql
@@ -16,13 +17,10 @@ from .models import *
 
 @require_http_methods(['GET'])
 def apiTest(request):
-    response = {}
-    rs = DataSpgsBuffer.objects.all()
-    # data = DataSpgsBuffer.objects.all()
-    for x in [eval('DataSpgsBuffer.objects.all()[0].' + 'nbqgl' + str(i)) for i in range(1, 11)]:
-        print(x)
-        print(range(1, 11))
-    print(type(rs[0]))
-    response['msg'] = str(rs[0].datatime)
-    response['error_num'] = 1
-    return JsonResponse(response)
+    start = datetime.datetime.strptime("2017-04-27",'%Y-%m-%d')
+    end = start+ datetime.timedelta(days=1)
+    datatime = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+    print(str(datatime))
+
+
+
