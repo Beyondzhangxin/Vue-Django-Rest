@@ -14,6 +14,7 @@
   require('echarts/lib/component/legend')
 
 var interval = 0
+var line1 = 0
 
 export default {
   name: 'line2',
@@ -40,7 +41,7 @@ export default {
   methods: {
     drawLine () {
       // 基于准备好的dom，初始化echarts实例
-      let line1 = echarts.init(document.getElementById(this.id))
+      line1 = echarts.init(document.getElementById(this.id))
       //初始化变量
       // 绘制图表
       console.log(this.option);
@@ -52,7 +53,7 @@ export default {
       },200);
     },
     updateData () {
-      console.log(this.interval);
+      line1.setOption(this.option)
     }
   }
 }
