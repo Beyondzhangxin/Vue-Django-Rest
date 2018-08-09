@@ -3,9 +3,9 @@
       <el-main>
 
         <el-card class="maincard">
-          
+
              <div class="inf">北京，上海，深圳电站统计</div>
-              <hr width=100% size=1 color=#bbbcbc style="FILTER: alpha(opacity=100,finishopacity=0)"> 
+              <hr width=100% size=1 color=#bbbcbc style="FILTER: alpha(opacity=100,finishopacity=0)">
           <div class="row0">
             <el-row>
               <el-col :span="8">
@@ -86,7 +86,7 @@
             <div class="data">
               <el-row :gutter="60">
                 <el-col :span="4"><div class="grid-content">
-                  <el-card class="elcard"> 
+                  <el-card class="elcard">
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/coal.png" id="image">
@@ -298,9 +298,9 @@ export default {
             }
           },
 
-          
+
           legend: {
-            data:['逆变器发电量', '电能表发电量', '理论发电量']
+            data:['逆变器发电量']
           },
           toolbox: {
             show: true,
@@ -329,18 +329,6 @@ export default {
                 }
                 return res;
               })()
-          },
-          {
-            type: 'category',
-            boundaryGap: true,
-            data: (function (){
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.push(10 - len - 1);
-                }
-                return res;
-            })()
           }
         ],
         yAxis: [
@@ -348,44 +336,13 @@ export default {
             type: 'value',
             scale: true,
             name: 'kWh',
-            max: 500,
-            min: 0,
-            boundaryGap: [0.2, 0.2]
           }
         ],
         series: [
           {
             name:'逆变器发电量',
             type:'bar',
-            xAxisIndex: 1,
-            yAxisIndex: 0,
-            data:(function (){
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.push(Math.round(Math.random() * 1000));
-                }
-                return res;
-            })()
-          },
-          {
-            name:'电能表发电量',
-            type:'bar',
-            xAxisIndex: 1,
-            yAxisIndex: 0,
-            data:(function (){
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.push(Math.round(Math.random() * 1000));
-                }
-                return res;
-            })()
-          },
-          {
-            name:'理论发电量',
-            type:'line',
-            xAxisIndex: 1,
+            xAxisIndex: 0,
             yAxisIndex: 0,
             data:(function (){
                 var res = [];
@@ -461,11 +418,9 @@ export default {
         yAxis: [
           {
             type: 'value',
-            scale: true,
+
             name: 'kW',
-            max: 500,
-            min: 0,
-            boundaryGap: [0.2, 0.2]
+
           }
         ],
         series: [
@@ -539,7 +494,7 @@ export default {
     margin-bottom: 20px;
     background-color:rgba(255, 255, 255, 0.3)
   }
-  
+
 
 
   .card1m span {
@@ -681,7 +636,7 @@ export default {
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
-  
+
 }
 .row-bg {
   padding: 10px 0;
@@ -721,11 +676,11 @@ export default {
 
 .box-card1{
   /* margin-top:20px; */
-   background: -webkit-linear-gradient(30deg, #373B44,#355C7D); 
-    background: -o-linear-gradient(30deg, #373B44, #355C7D); 
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D); 
+   background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
     background: linear-gradient(30deg, #373B44,#355C7D);
-    
+
 }
 
 .box{
@@ -733,7 +688,7 @@ export default {
   margin-left:30px;
   margin-top:-20px;
   margin-bottom:20px;
-  
+
 }
 
 .data{
@@ -751,9 +706,9 @@ export default {
 
 .maincard{
     background-color: #e3e3e3;
-    background: -webkit-linear-gradient(30deg, #373B44,#355C7D); 
-    background: -o-linear-gradient(30deg, #373B44, #355C7D); 
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D); 
+    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
     background: linear-gradient(30deg, #373B44,#355C7D);
 }
 
