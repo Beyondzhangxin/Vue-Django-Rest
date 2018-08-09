@@ -17,15 +17,17 @@ from spgs.models import *
 
 from pvmg.tools import powerStationInfoPvmg
 from spgs.tools import powerStationInfoSpgs
+
 from .tools import *
 from .models import *
+from tutorial.settings import DATABASES
 
 # database configuration
-database_ip = 'localhost'
-database_port = '3306'
-database_name = 'solar'
-user = 'root'
-pwd = ''
+database_ip = DATABASES['default']['HOST']
+database_port = DATABASES['default']['PORT']
+database_name = DATABASES['default']['NAME']
+user = DATABASES['default']['USER']
+pwd = DATABASES['default']['PASSWORD']
 
 
 # 返回监测的发电站及其站内逆变器信息
@@ -41,11 +43,11 @@ def powerStations(request):
                 list.append({'systemType': item.systemtype.systemtype, 'systemName': item.systemtype.systemname,
                              'devices': templist})
             if item.pk == 2:
-                templist = [("逆变器" + str(i)) for i in range(1, 10)]
+                templist = [{"NBQGL" + str(i): ("逆变器" + str(i))} for i in range(1, 10)]
                 list.append({'systemType': item.systemtype.systemtype, 'systemName': item.systemtype.systemname,
                              'devices': templist})
             if item.pk == 3:
-                templist = [("逆变器" + str(i)) for i in range(1, 11)]
+                templist = [{"NBQGL" + str(i): ("逆变器" + str(i))} for i in range(1, 11)]
                 list.append({'systemType': item.systemtype.systemtype, 'systemName': item.systemtype.systemname,
                              'devices': templist})
         response['list'] = list
@@ -196,14 +198,36 @@ def getStationMonitorInfo(request):
         response['error_num'] = 1
     return JsonResponse(response)
 
+# 返回设备监测信息，参数systemType和deviceName，分别为系统类别如PVMG和设备名称如NBQGL1,区分大小写
+@require_http_methods(['GET'])
+def getDeviceMonitor(request):
+    response = {}
+    try:
+        systemType = request.GET.get('systemType')
+        deviceName = request.GET.get('deviceName')
+        info = getDeviceInfo(systemType, deviceName)
+        response['data'] = info
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    return JsonResponse(response)
+
+
+def getDeviceTable(request):
+    response = {}
+
+
 
 @require_http_methods(['GET'])
 def apiTest(request):
     response = {}
     try:
-        rs = PowerStation.objects.all()
-        num = len(rs)
-        response['data'] = num
+        systemType = request.GET.get('systemType')
+        deviceName = request.GET.get('deviceName')
+        info = getDeviceInfo(systemType, deviceName)
+        response['data'] = info
         response['msg'] = 'success'
         response['error_num'] = 0
     except Exception as e:
