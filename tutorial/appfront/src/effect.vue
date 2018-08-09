@@ -1,8 +1,19 @@
 <template>
-	<diV class="effect">
+	<div class="effect">
+        <div class="login">
+          <el-form>
+    	      <input></input>
+            <p></p>
+            <input></input>
+          </el-form>
+
+
+
+        </div>
+    <!-- 调用canvas -->
       <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
-      123456
-	</diV>
+ 
+	</div>
 </template>
 
 
@@ -26,7 +37,6 @@ export default {
 <style>
 
 .effect{
-
 
 }
 </style>
