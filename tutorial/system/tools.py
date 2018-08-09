@@ -1,15 +1,24 @@
 # database configuration
 import pymysql
 import time
-
+import json
+from django.core import serializers
 from spgs.models import DataSpgsBuffer
-from .models import *
 
-database_ip = 'localhost'
-database_port = '3306'
-database_name = 'solar'
-user = 'root'
-pwd = ''
+from pvmg.models import DataPvmgBuffer
+
+from pvmg.tools import powerStationInfoPvmg
+
+from spgs.tools import powerStationInfoSpgs
+from .models import *
+from tutorial.settings import DATABASES
+
+# database configuration
+database_ip = DATABASES['default']['HOST']
+database_port = DATABASES['default']['PORT']
+database_name = DATABASES['default']['NAME']
+user = DATABASES['default']['USER']
+pwd = DATABASES['default']['PASSWORD']
 
 
 def getSationNum():
@@ -147,5 +156,69 @@ def getTotalGeneratingCapacity_today():
         return 0.0
     else:
         db.close()
-        return  float(rs1[0])
+        return float(rs1[0])
 
+
+def getDeviceInfo(systemType, deviceName):
+    info = {}
+    if systemType == "PVMG":
+        pvmgBuffer = DataPvmgBuffer.objects.all()
+        if not pvmgBuffer is None:
+
+            data = json.loads((serializers.serialize('json', pvmgBuffer)))
+            info['dqgl'] = data[0].get('fields').get(deviceName)
+        else:
+            info['dqgl'] = 0.00
+        try:
+            db = pymysql.connect(database_ip, user, pwd, database_name)
+            cursor = db.cursor()
+            sql = "select " + "FDL_" + deviceName + " from pvmg_day where total_d= '" + time.strftime('%Y-%m-%d',
+                                                                                                      time.localtime()) + "'"
+            cursor.execute(sql)
+            rs = cursor.fetchone()
+            if not rs is None:
+                info['jrfd'] = rs[0]
+            else:
+                info['jrfd'] = 0.00
+            sql = "select " + deviceName + " from pvmg_total"
+            cursor.execute(sql)
+            rs = cursor.fetchone()
+            if not rs is None:
+                info['ljfd'] = rs[0]
+            else:
+                info['ljfd'] = 0.00
+            info['zjrl'] = 50.00
+            info['jrdx'] = powerStationInfoPvmg().get("dayHours")
+        except Exception as e:
+            print(e)
+    if systemType == "SPGS":
+        spgsBuffer = DataSpgsBuffer.objects.all()
+        if not spgsBuffer is None:
+            data = json.loads(serializers.serialize('json', spgsBuffer))
+            info['dqgl'] = data[0].get('fields').get(deviceName)
+        else:
+            info['dqgl'] = 0.00
+        try:
+            db = pymysql.connect(database_ip, user, pwd, database_name)
+            cursor = db.cursor()
+            sql = "select " + "FDL_" + deviceName + " from spgs_day where total_d= '" + time.strftime('%Y-%m-%d',
+                                                                                                      time.localtime()) + "'"
+            cursor.execute(sql)
+            rs = cursor.fetchone()
+            if not rs is None:
+                info['jrfd'] = rs[0]
+            else:
+                info['jrfd'] = 0.00
+            sql = "select " + deviceName + " from spgs_total"
+            cursor.execute(sql)
+            rs = cursor.fetchone()
+            if not rs is None:
+                info['ljfd'] = rs[0]
+            else:
+                info['ljfd'] = 0.00
+            info['zjrl'] = 50.00
+            info['jrdx'] = powerStationInfoSpgs().get("dayHours")
+        except Exception as e:
+            print(e)
+    info['bwrq']="2018-03-21"
+    return info

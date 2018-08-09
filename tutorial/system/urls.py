@@ -17,7 +17,8 @@ urlpatterns = [
     url(r'echartsDataForInverterFDGL',views.echartsDataForInverterFDGL),
     url(r'echartsDataForFZD',views.echartsDataForFZD),
     url(r'powerStationsNum',views.powerStationsNum),
-    url(r'getStationMonitorInfo',views.getStationMonitorInfo)
+    url(r'getStationMonitorInfo',views.getStationMonitorInfo),
+    url(r'getDeviceMonitor',views.getDeviceMonitor)
 
 
 ]

@@ -6,12 +6,15 @@ import time
 
 from .models import *
 
+from tutorial.settings import DATABASES
 
-database_ip = 'localhost'
-database_port = '3306'
-database_name = 'solar'
-user = 'root'
-pwd = ''
+
+# database configuration
+database_ip = DATABASES['default']['HOST']
+database_port = DATABASES['default']['PORT']
+database_name = DATABASES['default']['NAME']
+user = DATABASES['default']['USER']
+pwd = DATABASES['default']['PASSWORD']
 
 class Status(Enum):
     normal = "zc"
