@@ -17,7 +17,7 @@ from spgs.models import *
 from .models import *
 
 # database configuration
-database_ip = 'localhost'
+database_ip = '192.168.102.103'
 database_port = '3306'
 database_name = 'solar'
 user = 'root'
