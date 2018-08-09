@@ -14,14 +14,20 @@ from pvmg.models import *
 from spgs.models import *
 
 from spgs.models import *
+
+from pvmg.tools import powerStationInfoPvmg
+from spgs.tools import powerStationInfoSpgs
+
+from .tools import *
 from .models import *
+from tutorial.settings import DATABASES
 
 # database configuration
-database_ip = '192.168.102.103'
-database_port = '3306'
-database_name = 'solar'
-user = 'root'
-pwd = ''
+database_ip = DATABASES['default']['HOST']
+database_port = DATABASES['default']['PORT']
+database_name = DATABASES['default']['NAME']
+user = DATABASES['default']['USER']
+pwd = DATABASES['default']['PASSWORD']
 
 
 # 返回监测的发电站及其站内逆变器信息
@@ -37,11 +43,11 @@ def powerStations(request):
                 list.append({'systemType': item.systemtype.systemtype, 'systemName': item.systemtype.systemname,
                              'devices': templist})
             if item.pk == 2:
-                templist = [("逆变器" + str(i)) for i in range(1, 10)]
+                templist = [{"NBQGL" + str(i): ("逆变器" + str(i))} for i in range(1, 10)]
                 list.append({'systemType': item.systemtype.systemtype, 'systemName': item.systemtype.systemname,
                              'devices': templist})
             if item.pk == 3:
-                templist = [("逆变器" + str(i)) for i in range(1, 11)]
+                templist = [{"NBQGL" + str(i): ("逆变器" + str(i))} for i in range(1, 11)]
                 list.append({'systemType': item.systemtype.systemtype, 'systemName': item.systemtype.systemname,
                              'devices': templist})
         response['list'] = list
@@ -58,22 +64,8 @@ def powerStations(request):
 def totalGeneratingCapacity_today(request):
     response = {}
     try:
-        # connect database
-        db = pymysql.connect(database_ip, user, pwd, database_name)
-        # use cursor to manipulate
-        cursor = db.cursor()
-        sql1 = "select total_fdl from spgs_day WHERE total_d='" + time.strftime('%Y-%m-%d', time.localtime()) + "'"
-        # sql2 = "select total_fdl from pvmg_day WHERE total_d='" + time.strftime('%Y-%m-%d', time.localtime()) + "'"
-        cursor.execute(sql1)
-        rs1 = cursor.fetchone()
-        if rs1 is None:
-            rs1 = 0
-        # cursor.execute(sql2)
-        # rs2 = cursor.fetchone()
-        # if rs2 is None:
-        #     rs2 = 0
-        db.close()
-        response['data'] = float(rs1[0])
+        data = getTotalGeneratingCapacity_today()
+        response['data'] = data
         response['msg'] = 'success'
         response['error_num'] = 0
     except  Exception as e:
@@ -87,21 +79,8 @@ def totalGeneratingCapacity_today(request):
 def totalGeneratingCapacity_thisMonth(request):
     response = {}
     try:
-        db = pymysql.connect(database_ip, user, pwd, database_name)
-        # use cursor to manipulate
-        cursor = db.cursor()
-        sql1 = "select total_fdl from spgs_month WHERE total_m='" + time.strftime('%Y-%m-%d', time.localtime()) + "'"
-        sql2 = "select total_fdl from pvmg_month WHERE total_m='" + time.strftime('%Y-%m-%d', time.localtime()) + "'"
-        cursor.execute(sql1)
-        rs1 = cursor.fetchone()
-        if rs1 is None:
-            rs1 = 0
-        cursor.execute(sql2)
-        rs2 = cursor.fetchone()
-        if rs2 is None:
-            rs2 = 0
-        db.close()
-        response['data'] = float(rs1[0]) + float(rs2[0])
+        data = getTotalGeneratingCapacity_thisMonth()
+        response['data'] = data
         response['msg'] = 'success'
         response['error_num'] = 0
     except  Exception as e:
@@ -115,21 +94,7 @@ def totalGeneratingCapacity_thisMonth(request):
 def totalGeneratingCapacity(request):
     response = {}
     try:
-        db = pymysql.connect(database_ip, user, pwd, database_name)
-        # use cursor to manipulate
-        cursor = db.cursor()
-        sql1 = "select total_fdl from spgs_total "
-        sql2 = "select total_fdl from pvmg_total "
-        cursor.execute(sql1)
-        rs1 = cursor.fetchone()
-        if rs1 is None:
-            rs1 = 0
-        cursor.execute(sql2)
-        rs2 = cursor.fetchone()
-        if rs2 is None:
-            rs2 = 0
-        db.close()
-        response['data'] = float(rs1[0]) + float(rs2[0])
+        response['data'] = getTotalGeneratingCapacity()
         response['msg'] = 'success'
         response['error_num'] = 0
     except  Exception as e:
@@ -143,8 +108,8 @@ def totalGeneratingCapacity(request):
 def totalVolume(request):
     response = {}
     try:
-        dataSpgsBuffer = DataSpgsBuffer.objects.all()
-        response['data'] = float(dataSpgsBuffer[0].zjrl) * 1.9
+        data = getTotalVolume()
+        response['data'] = data
         response['msg'] = 'success'
         response['error_num'] = 0
     except  Exception as e:
@@ -156,32 +121,12 @@ def totalVolume(request):
 # 返回首页echarts图当日发电量模块中逆变器发电量的数据
 @require_http_methods(['GET'])
 def echartsDataForInverterFDL(request):
-    currentDay = time.strftime('%Y-%m-%d', time.localtime())
     response = {}
     try:
-        db = pymysql.connect(database_ip, user, pwd, database_name)
-        cursor = db.cursor()
-        # sql_time = "select total_d from pvmg_minute WHERE date_format(total_d,'%Y-%m-%d')='" + "2017-04-27" + "'"
-        # sql_data = "SELECT  (@csum := @csum + TOTAL_FDL) AS total_fdl  FROM spgs_minute  WHERE DATE_FORMAT(total_d,'%Y-%m-%d') ='" + "2017-04-27" + "'"
-        # cursor.execute(sql_time)
-        # rs1_time = cursor.fetchall()
-        # cursor.execute('SET @csum := 0')
-        # cursor.execute(sql_data)
-        # rs1_data = cursor.fetchall()
-        sql_time = "select total_d from spgs_minute WHERE date_format(total_d,'%Y-%m-%d')='" + '2017-04-27' + "'"
-        sql_data = "SELECT (@csum := @csum + TOTAL_FDL) AS total_fdl FROM spgs_minute  WHERE DATE_FORMAT(total_d,'%Y-%m-%d') ='" + '2017-04-27' + "'"
-
-        cursor.execute(sql_time)
-        rs2_time = cursor.fetchall()
-        cursor.execute('SET @csum := 0')
-        cursor.execute(sql_data)
-        rs2_data = cursor.fetchall()
-        rs_time = rs2_time
-        rs_data = rs2_data
-        response['data'] = {'xAxis': rs_time, 'series': rs_data}
+        data = getEchartsDataForInverterFDL()
+        response['data'] = data
         response['msg'] = 'success'
         response['error_num'] = 0
-        db.close()
     except  Exception as e:
         response['msg'] = str(e)
         response['error_num'] = 1
@@ -191,74 +136,101 @@ def echartsDataForInverterFDL(request):
 # 返回首页当日发电功率的逆变器发电功率数据
 @require_http_methods(['GET'])
 def echartsDataForInverterFDGL(request):
-    currentDay = time.strftime('%Y-%m-%d', time.localtime())
     response = {}
     try:
-        db = pymysql.connect(database_ip, user, pwd, database_name)
-        cursor = db.cursor()
-        # sql1 = "select FDZGL from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
-        # cursor.execute(sql1)
-        # data1 = cursor.fetchall()
-        # sql2 = "select datatime  from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
-        # cursor.execute(sql2)
-        # time1 = cursor.fetchall()
-        sql1 = "select FDZGL from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
-        cursor.execute(sql1)
-        data2 = cursor.fetchall()
-        sql2 = "select datatime  from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
-        cursor.execute(sql2)
-        time2 = cursor.fetchall()
-        rs_time = time2
-        rs_data = data2
-        response['data'] = {'xAxis': rs_time, 'series': rs_data}
-        response['msg'] = 'success'
+        data = getEchartsDataForInverterFDGL()
+        response['msg'] = data
         response['error_num'] = 0
-        db.close()
     except  Exception as e:
         response['msg'] = str(e)
         response['error_num'] = 1
     return JsonResponse(response)
+
 
 # 返回当日发电功率echarts图总辐照度的数据
 @require_http_methods(['GET'])
 def echartsDataForFZD(request):
-    currentDay = time.strftime('%Y-%m-%d', time.localtime())
     response = {}
     try:
-        db = pymysql.connect(database_ip, user, pwd, database_name)
-        cursor = db.cursor()
-        # sql1 = "select FDZGL from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
-        # cursor.execute(sql1)
-        # data1 = cursor.fetchall()
-        # sql2 = "select datatime  from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
-        # cursor.execute(sql2)
-        # time1 = cursor.fetchall()
-        sql1 = "select fz from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
-        cursor.execute(sql1)
-        data2 = cursor.fetchall()
-        sql2 = "select datatime  from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
-        cursor.execute(sql2)
-        time2 = cursor.fetchall()
-        rs_time = time2
-        rs_data = data2
-        response['data'] = {'xAxis': rs_time, 'series': rs_data}
+        data = getEchartsForZGL()
+        response['data'] = data
         response['msg'] = 'success'
         response['error_num'] = 0
-        db.close()
     except  Exception as e:
         response['msg'] = str(e)
         response['error_num'] = 1
     return JsonResponse(response)
 
+
+# 返回电站总数
+@require_http_methods(['GET'])
+def powerStationsNum(request):
+    response = {}
+    try:
+        num = getSationNum()
+        response['data'] = num
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    return JsonResponse(response)
+
+
+# 返回电站监测信息
+@require_http_methods(['GET'])
+def getStationMonitorInfo(request):
+    response = {}
+    try:
+        dzzs = getSationNum()
+        zjrl = getTotalVolume()
+        jrfdl = getTotalGeneratingCapacity_today()
+        ljzjdl = getTotalGeneratingCapacity()
+        items = {"dzzs": dzzs, "zjrl": zjrl, "jrfdl": jrfdl, "ljzjdl": ljzjdl}
+        temp1 = powerStationInfoPvmg()
+        temp2 = powerStationInfoSpgs()
+        cardLists = [temp1, temp2]
+        response['data'] = {"items": items, "cardLists": cardLists}
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    return JsonResponse(response)
+
+# 返回设备监测信息，参数systemType和deviceName，分别为系统类别如PVMG和设备名称如NBQGL1,区分大小写
+@require_http_methods(['GET'])
+def getDeviceMonitor(request):
+    response = {}
+    try:
+        systemType = request.GET.get('systemType')
+        deviceName = request.GET.get('deviceName')
+        info = getDeviceInfo(systemType, deviceName)
+        response['data'] = info
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    return JsonResponse(response)
+
+
+def getDeviceTable(request):
+    response = {}
 
 
 
 @require_http_methods(['GET'])
 def apiTest(request):
-    db = pymysql.connect(database_ip, user, pwd, database_name)
-    cursor = db.cursor()
-    sql_time = "select total_fdl from pvmg_minute WHERE date_format(total_d,'%Y-%m-%d')='" + "2017-04-27" + "'"
-    cursor.execute(sql_time)
-    r1 = cursor.fetchone()
-    r2 = cursor.fetchone()
-    print(r1 + r2)
+    response = {}
+    try:
+        systemType = request.GET.get('systemType')
+        deviceName = request.GET.get('deviceName')
+        info = getDeviceInfo(systemType, deviceName)
+        response['data'] = info
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    return JsonResponse(response)
