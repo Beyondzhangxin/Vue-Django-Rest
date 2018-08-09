@@ -1,6 +1,7 @@
 <template>
 	<diV class="effect">
       <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
+      123456
 	</diV>
 </template>
 
@@ -22,6 +23,10 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
 
+.effect{
+
+
+}
 </style>

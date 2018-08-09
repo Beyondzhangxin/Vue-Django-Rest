@@ -14,8 +14,8 @@
           <div class="tem4">当月有效时数：<strong>{{(msg4||"~")}}</strong>h</div>
         </div></el-col>
         <el-col :span="12"><div class="grid-content2">
-          <div class="con">正常&nbsp&nbsp&nbsp&nbsp<i class="el-icon-circle-check"></i></div>
-          <div class="mes">消息：<strong>{{msg5}}</strong>条</div>
+          <div class="con">电站状态：&nbsp正常&nbsp</div>
+          <div class="mes">异常消息：&nbsp<strong>{{msg5}}</strong>条</div>
         </div></el-col>
         </el-row>
     </div>
@@ -83,12 +83,13 @@ export default {
 
 .image1{
   height:300px;
-  width:100%;
+  width:50%;
+  float:left;
 }
 
 .tem1{
   color: #909399;
-    padding-top: 13px;
+    padding-top: 25px;
     padding-bottom: 10px;
     box-sizing: border-box;
     border-bottom: 1px solid #eeeeee;
@@ -107,6 +108,7 @@ export default {
     padding-bottom: 10px;
     box-sizing: border-box;
     border-bottom: 1px solid #eeeeee;
+    padding-left:10px;
 }
 
 .mes{
@@ -115,7 +117,7 @@ export default {
     padding-bottom: 10px;
     box-sizing: border-box;
     border-bottom: 1px solid #eeeeee;
-    padding-left:5px;
+    padding-left:0px;
 }
 .grid-content2 strong {
     font-size: 15px;
@@ -149,6 +151,5 @@ export default {
     box-sizing: border-box;
     border-bottom: 1px solid #eeeeee;
 }
-
 
 </style>

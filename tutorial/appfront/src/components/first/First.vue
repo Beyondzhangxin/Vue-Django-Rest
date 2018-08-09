@@ -56,7 +56,7 @@
           </div>
 
 
-          <div class="row0">
+          <div class="row2">
             <el-row>
               <el-col :span="12">
                 <el-card class="card3">
@@ -530,6 +530,7 @@ export default {
   .card3Li {
     height: 400px;
     width: 100%;
+
   }
 
   .card3 {
@@ -539,8 +540,6 @@ export default {
     margin-bottom: 20px;
     background-color:rgba(255, 255, 255, 0.3)
   }
-  
-
 
   .card1m span {
     padding: 5%;
@@ -568,6 +567,12 @@ export default {
     font-size: 15px;
     font-weight: 300;
     color: #974e45;
+  }
+
+  .row2{
+    padding-left:100px;
+    padding-right:-40px;
+    margin-top:-20px;
   }
 
   .card1 {
@@ -746,7 +751,7 @@ export default {
 }
 
 .row0{
-  margin-top:-40px;
+  margin-top:-80px;
 }
 
 .maincard{

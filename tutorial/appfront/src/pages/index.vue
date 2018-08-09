@@ -1,11 +1,13 @@
 <template>
   <container>
     <div class="index" :style="{backgroundImage:'url('+img+')'}">
+        <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
+
         <div id="title">光伏智能运维系统
-            <!-- <img src="../../assets/logo.png" id="image">  -->
+
         </div>
 		<div class="login">
-      	<!-- <h2>登录</h2> -->
+
         <el-form>
             <el-form-item label="用户" class="form1">
                 <el-input type="text"  prefix-icon="el-icon-edit" id="user" v-model="formName.user" @blur="inputBlur('user',formName.user)" placeholder="请输入账户"></el-input>
@@ -29,10 +31,13 @@ import Axios from 'axios'
 import Img from '@/./assets/back7.jpg'
 
     export default {
-        name: '',
+        name: 'login',
+        // components: {
+        //     myCanvas
+        // },
         data () {
             return {
-
+                    // dotsNum: 60,
                     img:Img,
 
                 formName: {//表单中的参数
