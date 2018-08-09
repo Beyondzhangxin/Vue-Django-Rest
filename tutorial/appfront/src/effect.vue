@@ -14,10 +14,8 @@ export default {
   },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
       dotsNum: 60,
-      roundColor: "red",
-      lineColor: ""
+    
     }
   }
 }
