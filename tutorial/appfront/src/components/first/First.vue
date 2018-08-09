@@ -179,6 +179,34 @@ export default {
     Gauge2: Gauge2,
     Line2: Line2,
   },
+  mounted: function () {
+    //this.load();
+    this.loadData();
+  },
+  methods: {
+    loadData(){
+      this.$ajax.get('http://localhost:8000/system/echartsDataForFZD')
+      .then(function (response) {
+        //处理数据
+        var list1 = [];
+        var list2 = [];
+        for (var i = 0; i < response.data.data.series.length; i++) {
+          list1.push(response.data.data.series[i][0]);
+          list2.push(response.data.data.xAxix[i][0]);
+        }
+
+        console.log(1234124124);
+
+        this.settings.l1.option.series.data = list1;
+        this.settings.l1.option.xAxis.data = list2;
+        console.log(this.settings.l1);
+      }.bind(this))
+      .catch(function (error) {
+        return 0;
+      });
+    }
+
+  },
   data () {
     return {
 
@@ -372,7 +400,7 @@ export default {
             }
           },
           legend: {
-            data:['逆变器发电功率', '电能表发电功率', '总辐照度']
+            data:['逆变器发电功率', '总辐照度']
           },
           toolbox: {
             show: true,
@@ -402,18 +430,6 @@ export default {
                 return res;
               })()
           },
-          {
-            type: 'category',
-            boundaryGap: true,
-            data: (function (){
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.push(10 - len - 1);
-                }
-                return res;
-            })()
-          }
         ],
         yAxis: [
           {
@@ -427,21 +443,7 @@ export default {
           {
             name:'逆变器发电功率',
             type:'line',
-            xAxisIndex: 1,
-            yAxisIndex: 0,
-            data:(function (){
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.push(Math.round(Math.random() * 1000));
-                }
-                return res;
-            })()
-          },
-          {
-            name:'电能表发电功率',
-            type:'line',
-            xAxisIndex: 1,
+            xAxisIndex: 0,
             yAxisIndex: 0,
             data:(function (){
                 var res = [];
@@ -455,7 +457,7 @@ export default {
           {
             name:'总辐照度',
             type:'line',
-            xAxisIndex: 1,
+            xAxisIndex: 0,
             yAxisIndex: 0,
             data:(function (){
                 var res = [];
