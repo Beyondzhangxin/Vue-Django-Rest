@@ -45,44 +45,42 @@ export default {
         .then(function (response) {
 
           //处理数据
-          console.log(this.request);
+
           var list1 = [];
           var list2 = [];
+          console.log(response);
           for (var j = 0; j < response.data.data.series.length; j++) {
             list1.push(response.data.data.series[j][0]);
             list2.push(response.data.data.xAxis[j][0]);
           }
           this.changeOption.series[1].data = list1;
           this.changeOption.xAxis[0].data = list2;
-          console.log(asfdafafasfasfas);
-          console.log(this.changeOption)
+          console.log(asdasd);
         }.bind(this))
         .catch(function (error) {
           return 0;
         });
-
       }
-        this.$ajax.get(this.request[0])
-        .then(function (response) {
+      this.$ajax.get(this.request[0])
+      .then(function (response) {
+        //处理数据
+        var list1 = [];
+        var list2 = [];
 
-          //处理数据
-          console.log(this.request);
-          var list1 = [];
-          var list2 = [];
-          for (var j = 0; j < response.data.data.series.length; j++) {
-            list1.push(response.data.data.series[j][0]);
-            list2.push(response.data.data.xAxis[j][0]);
-          }
-
-          this.changeOption.series[0].data = list1;
-          this.changeOption.xAxis[0].data = list2;
-
-          console.log(asfdafafasfasfas);
-          console.log(this.changeOption)
-        }.bind(this))
-        .catch(function (error) {
-          return 0;
-        });
+        console.log(response.data);
+        for (var j = 0; j < response.data.data.series.length; j++) {
+          list1.push(response.data.data.series[j][0]);
+          list2.push(response.data.data.xAxis[j][0]);
+        }
+        console.log(list1);
+        console.log(list2);
+        this.changeOption.series[0].data = list1;
+        this.changeOption.xAxis[0].data = list2;
+        console.log(asdafafa);
+      }.bind(this))
+      .catch(function (error) {
+        return 0;
+      });
 
     },
     drawLine () {
