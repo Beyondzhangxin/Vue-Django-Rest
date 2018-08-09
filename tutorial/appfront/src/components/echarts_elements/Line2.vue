@@ -52,10 +52,8 @@ export default {
             list1.push(response.data.data.series[j][0]);
             list2.push(response.data.data.xAxis[j][0]);
           }
-
           this.changeOption.series[1].data = list1;
           this.changeOption.xAxis[0].data = list2;
-
           console.log(asfdafafasfasfas);
           console.log(this.changeOption)
         }.bind(this))
