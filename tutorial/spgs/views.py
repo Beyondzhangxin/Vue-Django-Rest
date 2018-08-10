@@ -11,12 +11,25 @@ from django.views.decorators.http import require_http_methods
 
 from .tools import getStatus, getStationMsg
 from .models import *
+from tutorial.settings import DATABASES
+
+# database configuration
+database_ip = DATABASES['default']['HOST']
+database_port = DATABASES['default']['PORT']
+database_name = DATABASES['default']['NAME']
+user = DATABASES['default']['USER']
+pwd = DATABASES['default']['PASSWORD']
 
 
 @require_http_methods(['GET'])
 def apiTest(request):
-    start = datetime.datetime.strptime("2017-04-27", '%Y-%m-%d')
-    end = start + datetime.timedelta(days=1)
-    datatime = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
-    print(str(datatime))
-
+    db = pymysql.connect(database_ip, user, pwd, database_name)
+    cursor = db.cursor()
+    sql = "select dayHours from spgs_day WHERE total_d  = '" + "2017-04-27" + "'"
+    cursor.execute(sql)
+    rs = cursor.fetchone()
+    if not rs is None:
+        rs =round(float(rs[0]),2)
+    else:
+        rs = 0
+    print(rs)
