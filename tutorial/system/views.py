@@ -24,6 +24,9 @@ from spgs.models import DataSpgsBuffer
 
 from pvmg.tools import getPvmgGL, getPvmgDXSS, getPvmgFDL
 from spgs.tools import getSpgsGL, getSpgsDXSS, getSpgsFDL
+
+from pvmg.tools import getPvmgDeviceInfo
+from spgs.tools import getSpgsDeviceInfo
 from .tools import *
 from .models import *
 from tutorial.settings import DATABASES
@@ -310,13 +313,11 @@ def getHBSJ(request):
 
 # 返回电站对比的信息，参数分别为电站型号列表如['SPGS','PVMG']，必须是大写
 # compareParam是对比内容，汉子拼音简写，必须大写
-# searchDate是查询日期字符串，格式为“2017-04-07”,默认是今天
+# searchDate是查询日期字符串，格式为“2017-04-07”,默认是今天,请求头content_Type:application/x-www-form-urlencoded
 @require_http_methods(['POST'])
 def getStationCompareInfo(request):
     stationList = json.loads(request.POST.get("stationList"))
     compareParam = request.POST.get("compareParam")
-    print(type(stationList))
-    print(type(compareParam))
     searhcDate = request.POST.get("searchDate")
     if searhcDate is None:
         searhcDate = datetime.datetime.now().strftime('%Y-%m-%d')
@@ -357,6 +358,44 @@ def getStationCompareInfo(request):
     return JsonResponse(response)
 
 
+# 返回设备对比信息，参数分别为电站设备列表deviceList,格式如[{'SPGS':['NBQGL1','NBQGL2','NBQGL3']},{'PVMG':['NBQGL1','NBQGL2']}]
+# 以及对比内容compareParam，还有查询日期searchDate
+@require_http_methods(['POST'])
+def getDeviceCompareInfo(request):
+    deviceList = eval(request.POST.get("deviceList"))
+    compareParam = request.POST.get("compareParam")
+    searhcDate = request.POST.get("searchDate")
+    if searhcDate is None:
+        searhcDate = datetime.datetime.now().strftime('%Y-%m-%d')
+    response = {}
+    series = []
+    xAxis = []
+    try:
+        for temp in deviceList:
+            (key, value), = temp.items()
+            if key == "SPGS":
+                if not value is None:
+                    for x in value:
+                        series.append(
+                            {"name": "SPGS", "data": getSpgsDeviceInfo(x.lower(), compareParam, searhcDate).get("data")})
+                        xAxis.append(
+                            {"name": "SPGS", "data": getSpgsDeviceInfo(x.lower(), compareParam, searhcDate).get("time")})
+            if key == "PVMG":
+                if not value is None:
+                    for x in value:
+                        series.append(
+                            {"name": "PVMG", "data": getPvmgDeviceInfo(x.lower(), compareParam, searhcDate).get("data")})
+                        xAxis.append(
+                            {"name": "PVMG", "data": getPvmgDeviceInfo(x.lower(), compareParam, searhcDate).get("time")})
+        response['data'] = {"series": series, "xAxis": xAxis}
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    return JsonResponse(response)
+
+
 @require_http_methods(['POST'])
 def apiTest(request):
     print(request)
@@ -365,4 +404,3 @@ def apiTest(request):
     b = request.POST.get("b")
     print(a)
     print(b)
-

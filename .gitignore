@@ -8,9 +8,7 @@ tutorial/pv/migrations/__pycache__/
 tutorial/snippets/__pycache__/
 tutorial/snippets/migrations/__pycache__/
 tutorial/tutorial/__pycache__/
-/.vscode
+/.vscode/
 /.idea/
-.idea
 /tutorial/appfront/test/
-.vscode
-/.idea/workspace.xml
+!.gitignore
