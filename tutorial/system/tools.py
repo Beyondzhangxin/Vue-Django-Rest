@@ -133,7 +133,7 @@ def getTotalGeneratingCapacity_thisMonth():
     cursor.execute(sql1)
     rs1 = cursor.fetchone()
     if not rs1 is None:
-        arg1= float(rs1[0])
+        arg1 = float(rs1[0])
     else:
         arg1 = 0.0
     cursor.execute(sql2)
@@ -250,3 +250,32 @@ def getDeviceList():
         print(e)
     finally:
         return list
+
+# 获取环保数据，累计发电量所产生的环保价值
+def getHuanBaoData():
+    info={}
+    # connect database
+    db = pymysql.connect(database_ip, user, pwd, database_name)
+    # use cursor to manipulate
+    cursor = db.cursor()
+    sql1 = "select LJFDL from data_spgs_buffer "
+    cursor.execute(sql1)
+    rs1 = cursor.fetchone()
+    if rs1 is None:
+        rs1 = 0
+    else:
+        rs1 = float(rs1[0])
+    sql1 = "select LJFDL from data_pvmg_buffer "
+    cursor.execute(sql1)
+    rs2 = cursor.fetchone()
+    if rs2 is None:
+        rs2 = 0
+    else:
+        rs2 = float(rs2[0])
+    ljfdl = rs1 + rs2
+    info['msg1']=round(ljfdl*0.4/1000,2)
+    info['msg2']=round(ljfdl*0.997/1000,2)
+    info['msg3']=round(ljfdl*0.03/1000,)
+    info['msg4']=round(ljfdl*0.015/1000,2)
+    info['msg5']=int(ljfdl*0.997/5.023)
+    return info

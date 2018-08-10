@@ -1,4 +1,5 @@
 # coding=utf-8
+import datetime
 from enum import Enum
 
 import pymysql
@@ -8,13 +9,13 @@ from .models import *
 
 from tutorial.settings import DATABASES
 
-
 # database configuration
 database_ip = DATABASES['default']['HOST']
 database_port = DATABASES['default']['PORT']
 database_name = DATABASES['default']['NAME']
 user = DATABASES['default']['USER']
 pwd = DATABASES['default']['PASSWORD']
+
 
 class Status(Enum):
     normal = "zc"
@@ -43,11 +44,14 @@ def getStatus(data):
             status = Status.abnormal.value
         elif not (nbq1 or nbq2 or nbq3 or nbq4 or nbq5 or nbq6 or nbq7 or nbq8 or nbq9 or nbq10):
             status = Status.poweroff.value
-        else:status = Status.normal.value
-    return  status
+        else:
+            status = Status.normal.value
+    return status
+
 
 def getStationMsg():
     return []
+
 
 def powerStationInfoSpgs():
     info = {}
@@ -84,3 +88,29 @@ def powerStationInfoSpgs():
         return info
     except  Exception as e:
         return None
+
+
+# 获取电站某天的功率数据
+def getSpgsGL(searchDate):
+    start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
+    end = start + datetime.timedelta(days=1)
+    try:
+        zgl = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('fdzgl', flat=True))
+        datatime = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+        return {"zgl": zgl, "time": datatime}
+    except Exception as e:
+        print(e)
+        return {"zgl": [], "time": []}
+
+
+# 获取电站某天的有效时数
+def getDXSS(searchDate):
+    start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
+    end = start + datetime.timedelta(days=1)
+    try:
+        zgl = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('fdzgl', flat=True))
+        datatime = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+        return {"zgl": zgl, "time": datatime}
+    except Exception as e:
+        print(e)
+        return {"zgl": [], "time": []}
