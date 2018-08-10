@@ -1,7 +1,9 @@
 <template>
       <el-container class="c1">
         <el-main class="m1" style="height: 100%">
+        
           <div class="mov">
+            
             <el-card class="card1">
               <el-row>
                 <span id="line" v-for="item in items[0]" :key="item.id">{{ item.key }} <strong>{{ item.value }}</strong></span>
@@ -62,13 +64,14 @@
                   </div>
                 </el-col>
               </el-row>
-
-          </el-card>
+            </el-card>
+          
 
           <div class="mm">
             <el-col :span="24"><div class="grid-content"></div></el-col>
             <elPower style="margin-top: 20px;" v-for="card in showLists" v-show="checkLists(card)" v-bind="card" :key="card"/>
           </div>
+
         </el-main>
         </el-container>
 

@@ -1,8 +1,10 @@
 <template>
     <el-container>
+        <!-- 调用canvas -->
+        <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
       <el-main>
-
-        <el-card class="maincard">
+        
+        <!-- <el-card class="maincard"> -->
 
              <div class="inf">北京，上海，深圳电站统计</div>
               <hr width=100% size=1 color=#bbbcbc style="FILTER: alpha(opacity=100,finishopacity=0)">
@@ -160,7 +162,7 @@
           </el-card>
           </div>
 
-        </el-card>
+        <!-- </el-card> -->
 
       </el-main>
   </el-container>
@@ -170,6 +172,7 @@
 import Gauge1 from '../echarts_elements/Gauge1'
 import Line2 from '../echarts_elements/Line2'
 import Gauge2 from '../echarts_elements/Gauge2'
+import myCanvas from 'vue-atom-canvas'
 
 
 export default {
@@ -178,6 +181,7 @@ export default {
     Gauge1: Gauge1,
     Gauge2: Gauge2,
     Line2: Line2,
+    myCanvas
   },
   mounted: function () {
     //this.load();
@@ -231,6 +235,7 @@ export default {
   data () {
     return {
 
+       dotsNum: 60,
        activeName: 'first',
       //配置最下面的list
 
