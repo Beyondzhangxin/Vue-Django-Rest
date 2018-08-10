@@ -11,20 +11,20 @@
                                     <el-col :span="8">
                                       <div class="grid-content">
                                         <el-button  id="cirlce" round>
-                                            <div class="text">当前功率：<strong>{{msg1}}</strong></div>
+                                            <div class="text">当前功率：<strong>{{dqgl||0}}</strong></div>
                                             <div class="text">KW</div>
                                         </el-button>
                                       </div>
                                     </el-col>
                                     <el-col :span="8"><div class="grid-content">
                                         <el-button id="cirlce" round>
-                                            <div class="text">今日发电：<strong>{{msg2}}</strong></div>
+                                            <div class="text">今日发电：<strong>{{jrfd}}</strong></div>
                                             <div class="text">KWh</div>
                                         </el-button>
                                     </div></el-col>
                                     <el-col :span="8"><div class="grid-content">
                                         <el-button id="cirlce" round>
-                                            <div class="text">累计发电：<strong>{{msg3}}</strong></div>
+                                            <div class="text">累计发电：<strong>{{ljfd}}</strong></div>
                                             <div class="text">万KWh</div>
                                         </el-button>
                                     </div></el-col>
@@ -32,9 +32,9 @@
                             </div>
                             <div id="num">
                                 <el-row :gutter="20">
-                                    <el-col :span="8"><div class="grid-content1">装机容量：<strong>{{msg4}}</strong> KWP</div></el-col>
-                                    <el-col :span="8"><div class="grid-content1">今日等效：<strong>{{msg5}}</strong> h</div></el-col>
-                                    <el-col :span="8"><div class="grid-content1">并网日期：<strong>{{msg8}}</strong></div></el-col>
+                                    <el-col :span="8"><div class="grid-content1">装机容量：<strong>{{zjrl}}</strong> KWP</div></el-col>
+                                    <el-col :span="8"><div class="grid-content1">今日等效：<strong>{{jrdx}}</strong> h</div></el-col>
+                                    <el-col :span="8"><div class="grid-content1">并网日期：<strong>{{bwrq}}</strong></div></el-col>
                                 </el-row>
                             </div>
                         </el-card>
@@ -166,28 +166,46 @@ export default {
         },
         page: 2,
         // pageSize: 2
-        msg1:23.93,
-        msg2:3019.32,
-        msg3:34.43,
-        msg4:623.16,
-        msg5:4.85,
+        dqgl:23.93,
+        jrfd:3019.32,
+        ljfd:34.43,
+        zjrl:623.16,
+        jrdx:4.85,
         msg6:15,
         msg7:0,
-        msg8:'2017-12-11',
+        bwrq:'2017-12-11',
       }
     },
     methods: {
+      loadData(){
+        this.$ajax.get('http://localhost:8000/system/getDeviceMonitor?systemType=PVMG&deviceName=NBQGL1')
+        .then(function (response) {
+          //处理数据
+          console.log(response.data.data);
+          this.bwrq = response.data.data.bwrq
+          this.dqgl = response.data.data.dqgl
+          this.jrfd = response.data.data.jrfd
+          this.zjrl = response.data.data.zjrl
+          this.jrdx = response.data.data.jrdx
+          //{"bwrq": "2018-03-21", "ljfd": "5346.532596464663", "zjrl": 50.0, "dqgl": null, "jrdx": 0, "jrfd": 0.0}
+        }.bind(this))
+        .catch(function (error) {
+          return 0;
+        });
+      },
       handleCurrentChange(val) {
         //改分页
         this.data = 'http://127.0.0.1:8000/pv/get/detection/2018/1/18/' + '?page='+ val;
         console.log(this.data);
+
       }
     },
     mounted: function() {
-      this.$store.commit('showIt')
+      this.$store.commit('showIt');
+      this.loadData();
     },
     destroyed: function() {
-      this.$store.commit('hideIt')
+      this.$store.commit('hideIt');
     },
 }
 </script>
