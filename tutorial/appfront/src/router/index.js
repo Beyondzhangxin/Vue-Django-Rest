@@ -28,7 +28,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/Index',
+      redirect: '/effect',
     },
     {
       path:'/index',

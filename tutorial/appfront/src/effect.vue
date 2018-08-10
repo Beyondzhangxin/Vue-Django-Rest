@@ -5,11 +5,12 @@
       <div class="login">
         <div class="mes">系统登录</div>
           <el-form>
-    	      <input class="field" v-model="account"  type="text" placeholder="请输入账号" ></input>
-            <p></p>
-            <input class="field" v-model="password" type="password" placeholder="请输入密码"  @keyup.native.enter="check"></input>
+           
+    	      <el-input class="user" prefix-icon="el-icon-edit" v-model="account" @blur="inputBlur('user',account)" type="text" placeholder="请输入账号" ></el-input>
+              <p></p> 
+            <el-input class="password" prefix-icon="el-icon-circle-check" v-model="password" @blur="inputBlur('password',password)" type="password" placeholder="请输入密码" ></el-input>
             <div class="submit">
-              <el-button  @click="loginForm" id="button1">登录</el-button>
+              <el-button  @click="loginForm" id="button1" >登录</el-button>
               <el-button @click="resetForm" id="button2">重置</el-button>
             </div>
           </el-form>
@@ -30,12 +31,18 @@ export default {
   components: {
     myCanvas
   },
+
   data () {
     return {
-      dotsNum: 60,
-    
+      dotsNum: 60,   
     }
+  },
+
+  methods: {
+       loginForm:function(account) {
+          this.$router.push("/home/first");
   }
+}
 }
 </script>
 
@@ -62,21 +69,20 @@ export default {
     background: -webkit-linear-gradient(30deg, rgba(55,59,68,0.5),rgba(53,92,125,0.5));
     background: -o-linear-gradient(30deg, rgba(55,59,68,0.5), rgba(53,92,125,0.5));
     background: -moz-linear-gradient(30deg, rgba(55,59,68,0.5), rgba(53,92,125,0.5));
-    background: linear-gradient(30deg, rgba(55,59,68,0.5),rgba(53,92,125,0.5));
+    background: linear-gradient(30deg, rgba(55,59,68,0.6),rgba(53,92,125,0.5));
 }
 
-.field{
+/* .el-input{
   width:100%;
   height:36px;
-  /* border:1px solid; */
   border-radius:6px;
    background-color:rgba(255, 255, 255, 0.5)
-}
+} */
 
 .mes{
   font-family: Arial, Helvetica, sans-serif;
   font-size: 24px;
-  margin-bottom:10px;
+  margin-bottom:20px;
 }
 
 #button1{

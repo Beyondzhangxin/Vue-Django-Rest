@@ -521,7 +521,7 @@ export default {
     margin: 30px;
     width: 700px;
     margin-bottom: 20px;
-    background-color:rgba(255, 255, 255, 0.3)
+    /* background-color:rgba(255, 255, 255, 0.3) */
   }
 
   .card1m span {
@@ -564,7 +564,7 @@ export default {
     margin-left: -15px;
     width: 500px;
     height: 300px;
-     background-color:rgba(255, 255, 255, 0.2)
+     /* background-color:rgba(255, 255, 255, 0.2) */
   }
 
   .card2 {
@@ -709,10 +709,10 @@ export default {
 
 .box-card1{
   /* margin-top:20px; */
-   background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+   /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, #373B44,#355C7D);
+    background: linear-gradient(30deg, #373B44,#355C7D); */
 
 }
 
@@ -737,15 +737,15 @@ export default {
   margin-top:-80px;
 }
 
-.maincard{
+/* .maincard{
     background-color: #e3e3e3;
     background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
     background: linear-gradient(30deg, #373B44,#355C7D);
-}
+} */
 
 .elcard{
-  background-color:rgba(255, 255, 255, 0.3)
+  /* background-color:rgba(255, 255, 255, 0.3) */
 }
 </style>
