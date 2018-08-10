@@ -175,7 +175,7 @@ def getStationMonitorInfo(request):
         zjrl = getTotalVolume()
         jrfdl = getTotalGeneratingCapacity_today()
         ljzjdl = getTotalGeneratingCapacity()
-        items = {"dzzs": dzzs, "zjrl": zjrl, "jrfdl": jrfdl, "ljzjdl": ljzjdl}
+        items = [dzzs, zjrl, jrfdl, ljzjdl]
         temp1 = powerStationInfoPvmg()
         temp2 = powerStationInfoSpgs()
         cardLists = [temp1, temp2]

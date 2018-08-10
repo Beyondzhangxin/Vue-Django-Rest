@@ -1,6 +1,6 @@
 <template>
           <div>
-             
+
                   <el-card>
                 <el-row class="row1">
                     <el-col :span="12">
@@ -134,7 +134,7 @@
                   @current-change="handleCurrentChange">
             </el-pagination>
         </el-card>
-             
+
     </div>
 </template>
 
@@ -152,14 +152,13 @@ export default {
       return {
         list: {
           //改数据改这里
-          data: 'http://127.0.0.1:8000/pv/get/detection/2018/1/18/',
+          data: 'http://localhost:8000/system/getDeviceTable?pageNum=1&pageSize=2',
           //改表名改这里
           tabConfigs: [
             {prop: 'dev_name', label: '设备名称'},
-            {prop: 'dev_scc', label: '设备厂家'},
             {prop: 'dev_xh', label: '设备型号'},
-            {prop: 'dev_cjdz', label: '采集地址码'},
-            {prop: 'dev_jrrl', label: '接入容量(kWp)'},
+            {prop: 'dev_systemType', label: '系统类型'},
+            {prop: 'dev_systemName', label: '系统名称'},
             {prop: 'dev_dqgl', label: '当前功率(W)'},
             {prop: 'dev_jrfd', label: '今日发电量(kWh)'},
             {prop: 'dev_drdx', label: '当日等效小时(h)'},

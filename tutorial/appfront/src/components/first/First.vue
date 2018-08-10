@@ -17,9 +17,9 @@
                     </div>
                     <div class="card1m">
                       <div class="row1">总容量：<strong>{{(c1.total||"~")}}</strong> kWh</div>
-                      <div  class="row1">当日累计发电量：<strong>{{(c1.total||"~")}}</strong>  kWh</div>
-                      <div  class="row1">当月累计发电量：<strong>{{(c1.total||"~")}}</strong> 万kWh</div>
-                      <div class="row1">累计总发电量：<strong>{{(c1.total||"~")}}</strong> 万kWh</div>
+                      <div  class="row1">当日累计发电量：<strong>{{(c1.day||"~")}}</strong>  kWh</div>
+                      <div  class="row1">当月累计发电量：<strong>{{(c1.month||"~")}}</strong> 万kWh</div>
+                      <div class="row1">累计总发电量：<strong>{{(c1.sumAll||"~")}}</strong> 万kWh</div>
                     </div>
                   </el-card>
                 </div>
@@ -181,25 +181,18 @@ export default {
   },
   mounted: function () {
     //this.load();
-    //this.loadData();
+    this.loadData();
   },
   methods: {
     loadData(){
-      this.$ajax.get('http://localhost:8000/system/echartsDataForFZD')
+      this.$ajax.get('http://localhost:8000/system/getDQFDGL')
       .then(function (response) {
         //处理数据
-        var list1 = [];
-        var list2 = [];
-        for (var i = 0; i < response.data.data.series.length; i++) {
-          list1.push(response.data.data.series[i][0]);
-          list2.push(response.data.data.xAxis[i][0]);
-        }
+        console.log(895489389568);
+        console.log(this.c1);
+        this.c1 = response.data.data.c1
 
-        console.log(1234124124);
-        console.log(this.settings.l1);
-        this.settings.l1.option.series[0].data = list1;
-        this.settings.l1.option.xAxis[0].data = list2;
-
+        console.log(this.c1);
       }.bind(this))
       .catch(function (error) {
         return 0;
@@ -242,10 +235,7 @@ export default {
       msg5:988.97,
 
       c1: {
-        total: 111,
-        day: 1,
-        mouth: 1,
-        sumAll: 1,
+        id: 'c1',
       },
       c2: {
         the: 1,

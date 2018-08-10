@@ -43,15 +43,13 @@ export default {
       if (this.request.length == 2) {
         this.$ajax.get(this.request[1])
         .then(function (response) {
-
           //处理数据
-
           var list1 = [];
           var list2 = [];
           console.log(response);
           for (var j = 0; j < response.data.data.series.length; j++) {
             list1.push(response.data.data.series[j][0]);
-            list2.push(response.data.data.xAxis[j][0]);
+            list2.push(response.data.data.xAxix[j][0]);
           }
           this.changeOption.series[1].data = list1;
           this.changeOption.xAxis[0].data = list2;
@@ -66,11 +64,10 @@ export default {
         //处理数据
         var list1 = [];
         var list2 = [];
-
         console.log(response.data);
         for (var j = 0; j < response.data.data.series.length; j++) {
           list1.push(response.data.data.series[j][0]);
-          list2.push(response.data.data.xAxis[j][0]);
+          list2.push(response.data.data.xAxix[j][0]);
         }
         console.log(list1);
         console.log(list2);
@@ -97,6 +94,7 @@ export default {
       },200);
     },
     updateData () {
+
       this.line1.setOption(this.option)
     }
   }

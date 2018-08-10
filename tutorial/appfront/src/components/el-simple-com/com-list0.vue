@@ -1,13 +1,14 @@
 <template>
   <el-row class="list">
     <!-- tableData数据的映射 -->
+    <!-- v-loading="loading" -->
     <el-table :data="tableData" border
-    style="width: 100%" v-loading="loading">
+    style="width: 100%"   v-loading="loading">
       <el-table-column
       v-for="{ prop, label } in tabConfigs"
       :key="prop"
       :prop="prop"
-      :width="186"
+      :width="220"
       :label="label">
       </el-table-column>
       <el-pagination
@@ -35,18 +36,12 @@
     props: ['data', 'tabConfigs', 'filterKey'],
     data() {
       return {
-        loading: true,
+        loading: false,
         tableData: [],
         // pageSize: 2
       }
     },
     //mounted为vue对象的生命周期
-    watch: {
-    // 如果 `question` 发生改变，这个函数就会运行
-      data: function (newData, oldData) {
-        this.showAll();
-      }
-    },
     mounted: function() {
       this.showAll();
     },
@@ -57,10 +52,14 @@
         this.tableData = [];
         this.$ajax.get(this.data)
         .then(function (response) {
-          for (var i = 0; i < response.data.results.length; i++) {
-            //在这里写过aside过滤
-            this.setTableData(response.data.results[i])
-          }
+          this.setTableData(response.data.data.tab);
+          console.log(response.data.data.tab);
+          this.tableData = response.data.data.tab;
+          console.log(this.tableData);
+          // for (var i = 0; i < response.data.results.length; i++) {
+          //   //在这里写过aside过滤
+          //   this.setTableData(response.data.results[i])
+          // }
           this.loading = false
         }.bind(this))
         .catch(function (error) {
