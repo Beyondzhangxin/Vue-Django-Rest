@@ -135,3 +135,52 @@ def getSpgsFDL(searchDate):
     except Exception as e:
         print(e)
         return {"data": [], "time": []}
+
+
+# 获取设备的某个字段的数据信息
+def getSpgsDeviceInfo(deviceName,param, searchDate):
+    start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
+    end = start + datetime.timedelta(days=1)
+    if param == "GL":
+        try:
+            data = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list(deviceName, flat=True))
+            datatime = list(
+                DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+            return {"data": data, "time": datatime}
+        except Exception as e:
+            print(e)
+            return {"data": [], "time": []}
+    elif param == "DXSS":
+        try:
+            db = pymysql.connect(database_ip, user, pwd, database_name)
+            cursor = db.cursor()
+            sql = "select dayHours from spgs_day WHERE total_d  = '" + searchDate + "'"
+            cursor.execute(sql)
+            rs = cursor.fetchone()
+            if not rs is None:
+                rs = round(float(rs[0]), 2)
+            else:
+                rs = 0
+            datatime = list(
+                DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+            return {"data": rs, "time": datatime}
+        except Exception as e:
+            print(e)
+            return {"data": [], "time": []}
+    elif param == "FDL":
+        try:
+            db = pymysql.connect(database_ip, user, pwd, database_name)
+            cursor = db.cursor()
+            sql = "select FDL_"+deviceName.upper+" from spgs_day WHERE total_d  = '" + searchDate + "'"
+            cursor.execute(sql)
+            rs = cursor.fetchone()
+            if not rs is None:
+                rs = round(float(rs[0]), 2)
+            else:
+                rs = 0
+            datatime = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+            return {"data": rs, "time": datatime}
+        except Exception as e:
+            print(e)
+            return {"data": [], "time": []}
+    else:return {"data": [], "time": []}
