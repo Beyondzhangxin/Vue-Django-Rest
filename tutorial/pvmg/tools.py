@@ -1,3 +1,4 @@
+import datetime
 from enum import Enum
 
 import pymysql
@@ -86,3 +87,49 @@ def powerStationInfoPvmg():
         return info
     except  Exception as e:
         return None
+
+# 获取电站某天的功率数据
+def getPvmgGL(searchDate):
+    start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
+    end = start + datetime.timedelta(days=1)
+    try:
+        data = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('fdzgl', flat=True))
+        datatime = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+        return {"data": data, "time": datatime}
+    except Exception as e:
+        print(e)
+        return {"data": [], "time": []}
+
+
+# 获取电站某天的有效时数
+def getPvmgDXSS(searchDate):
+    start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
+    end = start + datetime.timedelta(days=1)
+    try:
+        db = pymysql.connect(database_ip, user, pwd, database_name)
+        cursor = db.cursor()
+        sql = "select dayHours from pvmg_day WHERE total_d  = '" + searchDate + "'"
+        cursor.execute(sql)
+        rs = cursor.fetchone()
+        if not rs is None:
+            rs = round(float(rs[0]), 2)
+        else:
+            rs = 0
+        datatime = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+        return {"data": rs, "time": datatime}
+    except Exception as e:
+        print(e)
+        return {"data": [], "time": []}
+
+
+# 获取电站某天当日的发电量
+def getPvmgFDL(searchDate):
+    start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
+    end = start + datetime.timedelta(days=1)
+    try:
+        data = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('JRFDL', flat=True))
+        datatime = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+        return {"data": data, "time": datatime}
+    except Exception as e:
+        print(e)
+        return {"data": [], "time": []}

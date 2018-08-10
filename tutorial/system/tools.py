@@ -170,7 +170,7 @@ def getDeviceInfo(systemType, deviceName):
         if not pvmgBuffer is None:
 
             data = json.loads((serializers.serialize('json', pvmgBuffer)))
-            info['dqgl'] = data[0].get('fields').get(deviceName)
+            info['dqgl'] = data[0].get('fields').get(deviceName.lower())
         else:
             info['dqgl'] = 0.00
         try:
