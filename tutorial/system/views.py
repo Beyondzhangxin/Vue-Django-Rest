@@ -313,9 +313,9 @@ def getHBSJ(request):
 # searchDate是查询日期字符串，格式为“2017-04-07”,默认是今天
 @require_http_methods(['POST'])
 def getStationCompareInfo(request):
-    stationList = json.loads(request.POST.get("stationList"))
+    # stationList = json.loads(request.POST.get("stationList"))
     compareParam = request.POST.get("compareParam")
-    print(type(stationList))
+    # print(type(stationList))
     print(type(compareParam))
     searhcDate = request.POST.get("searchDate")
     if searhcDate is None:
