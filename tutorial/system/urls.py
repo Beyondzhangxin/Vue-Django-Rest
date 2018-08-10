@@ -21,7 +21,8 @@ urlpatterns = [
     url(r'getDeviceMonitor',views.getDeviceMonitor),
     url(r'getDQFDGL',views.getDQFDGL),
     url(r'getDeviceTable',views.getDeviceTable),
-    url(r'getHBSJ',views.getHBSJ) #获取环保数据
+    url(r'getHBSJ',views.getHBSJ),#获取环保数据
+    url(r'getStationCompareInfo',views.getStationCompareInfo)#获取电站对比数据
 
 
 ]

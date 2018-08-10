@@ -95,22 +95,43 @@ def getSpgsGL(searchDate):
     start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
     end = start + datetime.timedelta(days=1)
     try:
-        zgl = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('fdzgl', flat=True))
+        data = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('fdzgl', flat=True))
         datatime = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
-        return {"zgl": zgl, "time": datatime}
+        return {"data": data, "time": datatime}
     except Exception as e:
         print(e)
-        return {"zgl": [], "time": []}
+        return {"data": [], "time": []}
 
 
 # 获取电站某天的有效时数
-def getDXSS(searchDate):
+def getSpgsDXSS(searchDate):
     start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
     end = start + datetime.timedelta(days=1)
     try:
-        zgl = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('fdzgl', flat=True))
+        db = pymysql.connect(database_ip, user, pwd, database_name)
+        cursor = db.cursor()
+        sql = "select dayHours from spgs_day WHERE total_d  = '" + searchDate + "'"
+        cursor.execute(sql)
+        rs = cursor.fetchone()
+        if not rs is None:
+            rs = round(float(rs[0]), 2)
+        else:
+            rs = 0
         datatime = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
-        return {"zgl": zgl, "time": datatime}
+        return {"data": rs, "time": datatime}
     except Exception as e:
         print(e)
-        return {"zgl": [], "time": []}
+        return {"data": [], "time": []}
+
+
+# 获取电站某天当日的发电量
+def getSpgsFDL(searchDate):
+    start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
+    end = start + datetime.timedelta(days=1)
+    try:
+        data = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('DRFDL', flat=True))
+        datatime = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+        return {"data": data, "time": datatime}
+    except Exception as e:
+        print(e)
+        return {"data": [], "time": []}

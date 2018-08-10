@@ -1,3 +1,4 @@
+import datetime
 import time
 
 import pymysql
@@ -20,6 +21,9 @@ from spgs.tools import powerStationInfoSpgs
 
 from pvmg.models import DataPvmgBuffer
 from spgs.models import DataSpgsBuffer
+
+from pvmg.tools import getPvmgGL, getPvmgDXSS, getPvmgFDL
+from spgs.tools import getSpgsGL, getSpgsDXSS, getSpgsFDL
 from .tools import *
 from .models import *
 from tutorial.settings import DATABASES
@@ -288,6 +292,7 @@ def getDeviceTable(request):
         response['error_num'] = 1
     return JsonResponse(response)
 
+
 # 返回首页下面的环保数据
 @require_http_methods(['GET'])
 def getHBSJ(request):
@@ -303,19 +308,61 @@ def getHBSJ(request):
     return JsonResponse(response)
 
 
-
-
-@require_http_methods(['GET'])
-def apiTest(request):
+# 返回电站对比的信息，参数分别为电站型号列表如['SPGS','PVMG']，必须是大写
+# compareParam是对比内容，汉子拼音简写，必须大写
+# searchDate是查询日期字符串，格式为“2017-04-07”,默认是今天
+@require_http_methods(['POST'])
+def getStationCompareInfo(request):
+    stationList = json.loads(request.POST.get("stationList"))
+    compareParam = request.POST.get("compareParam")
+    print(type(stationList))
+    print(type(compareParam))
+    searhcDate = request.POST.get("searchDate")
+    if searhcDate is None:
+        searhcDate = datetime.datetime.now().strftime('%Y-%m-%d')
     response = {}
+    series = []
+    xAxis = []
     try:
-        systemType = request.GET.get('systemType')
-        deviceName = request.GET.get('deviceName')
-        info = getDeviceInfo(systemType, deviceName)
-        response['data'] = info
+        if compareParam == 'GL':
+            for temp in stationList:
+                if temp == 'SPGS':
+                    series.append({"name": "SPGS", "data": getSpgsGL(searhcDate).get("data")})
+                    xAxis.append({"name": "SPGS", "data": getSpgsGL(searhcDate).get("time")})
+                if temp == "PVMG":
+                    series.append({"name": "PVMG", "data": getPvmgGL(searhcDate).get("data")})
+                    xAxis.append({"name": "PVMG", "data": getPvmgGL(searhcDate).get("time")})
+        if compareParam == 'DXSS':
+            for temp in stationList:
+                if temp == 'SPGS':
+                    series.append({"name": "SPGS", "data": getSpgsDXSS(searhcDate).get("data")})
+                    xAxis.append({"name": "SPGS", "data": getSpgsDXSS(searhcDate).get("time")})
+                if temp == "PVMG":
+                    series.append({"name": "PVMG", "data": getPvmgDXSS(searhcDate).get("data")})
+                    xAxis.append({"name": "PVMG", "data": getPvmgDXSS(searhcDate).get("time")})
+        if compareParam == 'FDL':
+            for temp in stationList:
+                if temp == 'SPGS':
+                    series.append({"name": "SPGS", "data": getSpgsFDL(searhcDate).get("data")})
+                    xAxis.append({"name": "SPGS", "data": getSpgsFDL(searhcDate).get("time")})
+                if temp == "PVMG":
+                    series.append({"name": "PVMG", "data": getPvmgFDL(searhcDate).get("data")})
+                    xAxis.append({"name": "PVMG", "data": getPvmgFDL(searhcDate).get("time")})
+        response['data'] = {"series": series, "xAxis": xAxis}
         response['msg'] = 'success'
         response['error_num'] = 0
     except Exception as e:
         response['msg'] = str(e)
         response['error_num'] = 1
     return JsonResponse(response)
+
+
+@require_http_methods(['POST'])
+def apiTest(request):
+    print(request)
+    print(request.body)
+    a = request.POST.get("a")
+    b = request.POST.get("b")
+    print(a)
+    print(b)
+
