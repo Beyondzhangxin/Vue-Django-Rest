@@ -253,13 +253,13 @@ def getDeviceTable(request):
                     sql = "select " + key + " from  data_" + x.get("systemType") + "_buffer "
                     cursor.execute(sql)
                     rs = cursor.fetchone()
-                    print(rs)
                     if not rs is None:
                         dqgl = rs[0]
                     else:
                         dqgl = 0.00
                     dic['dev_dqgl'] = dqgl
-                    sql = "select FDL_" + key + " ,dayHours from  " + x.get("systemType") + "_day  where total_d ='" + time.strftime(
+                    sql = "select FDL_" + key + " ,dayHours from  " + x.get(
+                        "systemType") + "_day  where total_d ='" + time.strftime(
                         '%Y-%m-%d',
                         time.localtime()) + "'"
                     cursor.execute(sql)
@@ -277,7 +277,7 @@ def getDeviceTable(request):
                     dic['dev_systemName'] = x.get('systemName')
                     dic['dev_drdx'] = dayHours
                     tab.append(dic)
-            response['data'] = {"tab":tab[start:end],"count":len(tab)}
+            response['data'] = {"tab": tab[start:end], "count": len(tab)}
             response['msg'] = 'success'
             response['error_num'] = 0
         except Exception as e:
@@ -287,6 +287,22 @@ def getDeviceTable(request):
         response['msg'] = "缺少参数！"
         response['error_num'] = 1
     return JsonResponse(response)
+
+# 返回首页下面的环保数据
+@require_http_methods(['GET'])
+def getHBSJ(request):
+    response = {}
+    try:
+        data = getHuanBaoData()
+        response['data'] = data
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    return JsonResponse(response)
+
+
 
 
 @require_http_methods(['GET'])
