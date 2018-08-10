@@ -195,9 +195,6 @@ export default {
             type: 'value',
             scale: true,
             name: 'kW',
-            max: 500,
-            min: 0,
-            boundaryGap: [0.2, 0.2]
           },
         ],
         series: [
