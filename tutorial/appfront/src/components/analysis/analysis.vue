@@ -107,8 +107,8 @@ export default {
     methods: {
       loadData(){
         this.$ajax.post('http://localhost:8000/system/getStationCompareInfo',{
-          stationList:'["SPGS"]',
-          compareParam:"GL",
+          stationList:["SPGS","PVMG"],
+          compareParam:'GL',
           searchDate:"2017-04-27",
         })
         .then(function (response) {
