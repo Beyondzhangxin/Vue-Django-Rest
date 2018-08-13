@@ -24,6 +24,9 @@ from spgs.models import DataSpgsBuffer
 
 from pvmg.tools import getPvmgGL, getPvmgDXSS, getPvmgFDL
 from spgs.tools import getSpgsGL, getSpgsDXSS, getSpgsFDL
+
+from pvmg.tools import getPvmgDeviceInfo
+from spgs.tools import getSpgsDeviceInfo
 from .tools import *
 from .models import *
 from tutorial.settings import DATABASES
@@ -250,7 +253,7 @@ def getStationMonitorInfo(request):
         zjrl = getTotalVolume()
         jrfdl = getTotalGeneratingCapacity_today()
         ljzjdl = getTotalGeneratingCapacity()
-        items = [dzzs, zjrl, jrfdl, ljzjdl]
+        items = {"dzzs": dzzs, "zjrl": zjrl, "jrfdl": jrfdl, "ljzjdl": ljzjdl}
         temp1 = powerStationInfoPvmg()
         temp2 = powerStationInfoSpgs()
         cardLists = [temp1, temp2]
@@ -381,14 +384,14 @@ def getHBSJ(request):
 
 # 返回电站对比的信息，参数分别为电站型号列表如['SPGS','PVMG']，必须是大写
 # compareParam是对比内容，汉子拼音简写，必须大写
-# searchDate是查询日期字符串，格式为“2017-04-07”,默认是今天
+# searchDate是查询日期字符串，格式为“2017-04-07”,默认是今天,请求头content_Type:application/x-www-form-urlencoded
 @require_http_methods(['POST'])
 def getStationCompareInfo(request):
-    # stationList = json.loads(request.POST.get("stationList"))
+    stationList = json.loads(request.POST.get("stationList"))
     compareParam = request.POST.get("compareParam")
-    # print(type(stationList))
-    print(type(compareParam))
     searhcDate = request.POST.get("searchDate")
+    print(stationList, compareParam, searhcDate)
+    print(type(stationList))
     if searhcDate is None:
         searhcDate = datetime.datetime.now().strftime('%Y-%m-%d')
     response = {}
@@ -428,6 +431,105 @@ def getStationCompareInfo(request):
     return JsonResponse(response)
 
 
+# 返回设备对比信息，参数分别为电站设备列表deviceList,格式如[{'SPGS':['NBQGL1','NBQGL2','NBQGL3']},{'PVMG':['NBQGL1','NBQGL2']}]
+# 以及对比内容compareParam，还有查询日期searchDate
+@require_http_methods(['POST'])
+def getDeviceCompareInfo(request):
+    deviceList = eval(request.POST.get("deviceList"))
+    compareParam = request.POST.get("compareParam")
+    searhcDate = request.POST.get("searchDate")
+    if searhcDate is None:
+        searhcDate = datetime.datetime.now().strftime('%Y-%m-%d')
+    response = {}
+    series = []
+    xAxis = []
+    try:
+        for temp in deviceList:
+            (key, value), = temp.items()
+            if key == "SPGS":
+                if not value is None:
+                    for x in value:
+                        series.append(
+                            {"name": "SPGS",
+                             "data": getSpgsDeviceInfo(x.lower(), compareParam, searhcDate).get("data")})
+                        xAxis.append(
+                            {"name": "SPGS",
+                             "data": getSpgsDeviceInfo(x.lower(), compareParam, searhcDate).get("time")})
+            if key == "PVMG":
+                if not value is None:
+                    for x in value:
+                        series.append(
+                            {"name": "PVMG",
+                             "data": getPvmgDeviceInfo(x.lower(), compareParam, searhcDate).get("data")})
+                        xAxis.append(
+                            {"name": "PVMG",
+                             "data": getPvmgDeviceInfo(x.lower(), compareParam, searhcDate).get("time")})
+        response['data'] = {"series": series, "xAxis": xAxis}
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    return JsonResponse(response)
+
+
+# 故障检测相关的table信息,参数为pageSize和pageNum
+
+@require_http_methods(['GET'])
+def getDetectionInfo(request):
+    response = {}
+    tabList = []
+    deviceList = getDeviceList()
+    pageNum = request.GET.get('pageNum')
+    pageSize = request.GET.get('pageSize')
+    end = int(pageNum) * int(pageSize)
+    start = (int(pageNum) - 1) * int(pageSize)
+    try:
+        db = pymysql.connect(database_ip, user, pwd, database_name)
+        cursor = db.cursor()
+        for temp in deviceList:
+            devices = temp.get('devices')
+            for device in devices:
+                (key, value), = device.items()
+                info = {}
+                info['dev_name'] = value
+                info['dev_xh'] = key
+                systemType = temp.get('systemType')
+                sql = "select " + key + "  from data_" + systemType + "_buffer "
+                cursor.execute(sql)
+                rs = cursor.fetchone()
+                if not rs is None:
+                    rs = float(rs[0])
+                    if rs > 2:
+                        info['dev_cjqzt'] = '正常'
+                    elif rs > 0:
+                        info['dev_cjqzt'] = '告警'
+                    else:
+                        info['dev_cjqzt'] = '停机'
+                else:
+                    rs = 0.00
+                    info['dev_cjqzt'] = '离线'
+                info['dev_dqgl'] = rs
+                if systemType == "SPGS":
+                    rs1 = getSpgsDeviceInfo(key, "FDL", datetime.datetime.now().strftime('%Y-%m-%d'))
+                    info['dev_jrfd'] = rs1.get('data')
+                    rs2 = getSpgsDeviceInfo(key, "DXSS", datetime.datetime.now().strftime('%Y-%m-%d'))
+                    info['dev_drdx'] = rs2.get('data')
+                else:
+                    rs1 = getPvmgDeviceInfo(key, "FDL", datetime.datetime.now().strftime('%Y-%m-%d'))
+                    info['dev_jrfd'] = rs1.get('data')
+                    rs2 = getPvmgDeviceInfo(key, "DXSS", datetime.datetime.now().strftime('%Y-%m-%d'))
+                    info['dev_drdx'] = rs2.get('data')
+                tabList.append(info)
+        response['data'] = {"tab": tabList[start:end],"count":len(tabList)}
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    return JsonResponse(response)
+
+
 @require_http_methods(['POST'])
 def apiTest(request):
     print(request)
@@ -436,4 +538,3 @@ def apiTest(request):
     b = request.POST.get("b")
     print(a)
     print(b)
-

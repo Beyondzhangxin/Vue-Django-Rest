@@ -84,8 +84,8 @@
     },
     data(){
       return {
-        data: 'http://127.0.0.1:8000/pv/get/detection/2018/1/18/',
-        page: 1,
+        data: 'http://localhost:8000/system/getDetectionInfo?pageNum=1&pageSize=2',
+        page: 1
         // pageSize: 2
       }
     },
