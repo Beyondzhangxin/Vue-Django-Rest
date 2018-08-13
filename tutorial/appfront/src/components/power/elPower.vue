@@ -15,11 +15,7 @@
         </div></el-col>
         <el-col :span="12"><div class="grid-content2">
           <div class="con">电站状态：&nbsp正常&nbsp</div>
-<<<<<<< HEAD
-          <div class="mes">异常消息：&nbsp<strong>{{msg5}}</strong>条</div>
-=======
           <div class="mes">异常消息：&nbsp<strong>{{messageNum}}</strong>条</div>
->>>>>>> 5aadaabbf257062ca16e2a8da1dde036ef893fb1
         </div></el-col>
         </el-row>
     </div>

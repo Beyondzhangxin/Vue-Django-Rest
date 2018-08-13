@@ -1,8 +1,9 @@
 <template>
 
-        <!-- header -->
-        <!-- <el-container class="container"> -->
         <el-card class="card0">
+
+            <!-- 调用canvas -->
+        <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
 
         <el-header id="header" style="height:80px;">
             <el-row>
@@ -99,11 +100,13 @@
 
 <script>
 import Line2 from '../echarts_elements/Line2'
+import myCanvas from 'vue-atom-canvas'
 
 export default {
     name: 'analysis',
     components: {
-      Line2: Line2
+      Line2: Line2,
+        myCanvas
     },
     methods: {
       loadData(){
@@ -275,24 +278,21 @@ export default {
 .m3 {
   height: 550px;
   /* background-color: #fff; */
-   background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+   /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, rgb(55,59,68,0.4),#355C7D);
+    background: linear-gradient(30deg, rgb(55,59,68,0.4),#355C7D); */
+    background-color:rgba(255, 255, 255, 0.3);
 }
 
 #header{
     background:white;
     padding-top:10px;
-    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, rgb(55,59,68,0.4),#355C7D);
-
+    background-color:rgba(255, 255, 255, 0.3);
 }
 
 #button{
-    background-color:rgba(255, 255, 255, 0.2)
+    background-color:rgba(255, 255, 255, 0.1)
     
 }
 
@@ -353,11 +353,7 @@ export default {
 }
 
 #main2{
-    background:white;
-    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, rgb(55,59,68,0.4),#355C7D);
+  background-color:rgba(255, 255, 255, 0.3);
 }
 
 #main3{
@@ -386,21 +382,15 @@ export default {
 }
 
 .card0{
-    margin-top:10px;
-    margin-left:5px;
-    margin-right:10px;
+    margin-top:-13px;
     background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, #373B44,#355C7D);
-
+    background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
 }
 
 .card1{
-     background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, #373B44,#355C7D);
+    background-color:rgba(255, 255, 255, 0.3);
 }
 
 </style>

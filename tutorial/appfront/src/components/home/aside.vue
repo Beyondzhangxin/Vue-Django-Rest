@@ -166,16 +166,17 @@
     width: 260px;
     overflow-x: hidden;
     overflow-y: hidden;
-    background-color: #fff;
+    /* background-color: #fff; */
+    background-color:rgba(255, 255, 255, 0.3);
     box-sizing: content-box;
 
   }
 
-  .aside0 {
+  /* .aside0 {
     margin-bottom: 5px;
     margin-top: 4px;
-    margin-left: -80px;
-  }
+    margin-left: 80px;
+  } */
 
   .aside1 {
     position: relative;
@@ -183,6 +184,7 @@
     color: #fff;
     height: 60px;
     margin-bottom: 8px;
+    background-color:rgba(255, 255, 255, 0.3);
   }
 
   .b {
@@ -200,7 +202,8 @@
     position: relative;
     top: -10px;
     box-shadow: 2px 2px 10px #9eabad;
-    background-color: #fff;
+    /* background-color: #fff; */
+    background-color:rgba(255, 255, 255, 0.3);
   }
 
   .b1 {

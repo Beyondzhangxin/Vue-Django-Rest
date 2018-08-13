@@ -1,12 +1,8 @@
 <template>
-          <div>
-<<<<<<< HEAD
-             
-                  <el-card class="card0">
-=======
-
-                  <el-card>
->>>>>>> 5aadaabbf257062ca16e2a8da1dde036ef893fb1
+          <div class="device">
+               <!-- 调用canvas -->
+                 <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
+               
                 <el-row class="row1">
                     <el-col :span="12">
                       <div class="grid-content">
@@ -118,6 +114,7 @@
                     </el-card>
                 </el-row>
 
+            <el-card class="card0">
             <el-card class="box-card2">
               <!--通用list-->
               <!--请求如下 http://127.0.0.1:8000/pv/get/detection/2018/1/18/ -->
@@ -125,32 +122,35 @@
               <!--赋值到this.data中 -->
               <ComList v-bind="list"></ComList>
               <!-- <ComList v-bind:data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList> -->
-              <!-- <el-pagination
+              <el-pagination
                   background
                   layout="prev, pager, next"
                   :total="1000"
                   @current-change="handleCurrentChange">
-              </el-pagination> -->
+              </el-pagination>
             </el-card>
-             <el-pagination
+             <!-- <el-pagination
                   background
                   layout="prev, pager, next"
                   :total="1000"
                   @current-change="handleCurrentChange">
-            </el-pagination>
-        </el-card>
+            </el-pagination> -->
+            </el-card>
+        
 
     </div>
 </template>
 
 <script>
 import ComList from '../el-simple-com/com-list0.vue'
+import myCanvas from 'vue-atom-canvas'
 
 export default {
     name:'device',
 
     components: {
         ComList: ComList,
+        myCanvas
      },
 
     data(){
@@ -248,13 +248,7 @@ export default {
 .el-pagination {
   position: relative;
   left:0%;
-}
 
-.device{
-    width:1500px;
-    height: 100%;
-    margin-top: 5px;
-    margin-left:65px;
 }
 
 .el-main{
@@ -312,25 +306,29 @@ export default {
     padding: 20px;
     margin-bottom: 30px;
     margin-top: 40px;
-    margin-left: 5px;
-    margin-right: 5px;
-     background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    margin-left: 20px;
+    margin-right: 20px;
+     /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, rgb(55,59,68,0.3),#355C7D);
-}
+    background: linear-gradient(30deg, rgb(180,180,180,0.3),#355C7D);*/
+    background-color:rgba(255, 255, 255, 0.3)
+} 
 
 .box-card1 {
   margin-bottom: 30px;
   margin-top:-20px;
-   background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+   margin-left: 20px;
+    margin-right: 20px; 
+   /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, rgb(55,59,68,0.3),#355C7D);
+    background: linear-gradient(30deg, rgb(180,180,180,0.5),#355C7D); */
+    background-color:rgba(255, 255, 255, 0.3)
 }
 
 .box-card2 {
-
+    /* background-color:rgba(255, 255, 255, 0.3) */
 }
 
 .clearfix:after{
@@ -349,7 +347,7 @@ export default {
 #cirlce {
   margin-top: -8px;
   width: 100%;
-  
+  background-color:rgba(255, 255, 255, 0.3)
 }
 
 #num{
@@ -375,20 +373,21 @@ export default {
 
 #text3{
     font-size: 16px;
+    background-color:rgba(255, 255, 255, 0.3);
     font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
 .grid-content1{
     font-size: 14px;
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-    color: #909399;
+    /* color: #909399; */
     position: relative;
     top: -5px;
     left: 1px;
 }
 
 .text{
-    color: #909399;
+    /* color: #909399; */
     font-size: 14px;
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
     padding-top: 13px;
@@ -399,8 +398,19 @@ export default {
     background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, #373B44,#355C7D);
+    background: linear-gradient(30deg, rgb(180,180,180,0.2),rgb(53,92,125,0.1));
+    height:100%;
 }
 
+.device{
+    background: -webkit-linear-gradient(30deg, rgb(180,180,180,0.2),#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, rgb(180,180,180,0.2),#355C7D);
+    margin-top:-12px;
+    width:100%;
+    height: 100%;
+    margin-left:0px;
+}
 
 </style>

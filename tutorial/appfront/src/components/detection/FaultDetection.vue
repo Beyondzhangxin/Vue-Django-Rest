@@ -1,9 +1,11 @@
 <template>
   <div class="detection">
-    <el-container>
-        <el-card id="card0">
-          <el-main class="detectMain">
+    <!-- <el-container> -->
 
+        <!-- 调用canvas -->
+        <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
+
+          <el-main class="detectMain">
 
                 <el-row>
                   <el-col :span="8">
@@ -63,20 +65,22 @@
               </el-pagination>
 
           </el-main>
-        </el-card>
-    </el-container>
+       
+    <!-- </el-container> -->
   </div>
 </template>
 
 <script>
     import ComList from '../el-simple-com/com-list.vue'
     import deHeader from './Head.vue'
+    import myCanvas from 'vue-atom-canvas'
 
   export default {
     name: 'faultdetection',
     components: {
         ComList: ComList,
         DeHeader: deHeader,
+         myCanvas
     },
     data(){
       return {
@@ -115,27 +119,25 @@
   }
 
   .detectMain {
-    margin-top: 30px;
+    height: 100%;
+    overflow-y: hidden;
     padding-left: 30px;
     padding-right: 30px;
     overflow-y: hidden;
-    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    margin-top:-12px;
+    /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, #373B44,#355C7D);
+    background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D); */
   }
 
-  .el-header {
+  /* .el-header {
     height: 100px;
-  }
-
-  .detection {
-    height: 100%;
-    overflow-y: hidden;
-  }
+  } */
 
   .el-container {
     height: 100%;
+    /* margin-top:-23px; */
   }
 
   .el-container font{
@@ -148,20 +150,17 @@
     left: 0%;
   }
 
-  .detection-title {
+  /* .detection-title {
     text-align: left;
     font-size: 11px;
     margin-bottom: 10px;
-  }
+  } */
 
   .grid-content {
     border-radius: 4px;
     min-height: 200px;
   }
 
- .bg-purple-dark {
-    background:white;
-  }
 
   .el-row {
     margin-bottom: 20px;
@@ -172,9 +171,6 @@
     border-radius: 4px;
   }
 
- .bg-purple-light {
-    background: #e5e9f2;
-  }
 
 .button {
     padding: 0;
@@ -198,21 +194,18 @@
       clear: both
   }
 
-  .bottom {
+  /* .bottom {
     margin-top: 13px;
     line-height: 12px;
-  }
+  } */
 
-.foot{
 
-}
-
-.rowm{
+/* .rowm{
   height: 400px;
   margin: auto;
-}
+} */
 
-.rowmb{
+/* .rowmb{
   height: 450px;
   width: 1580px;
   background: #fff;
@@ -220,37 +213,42 @@
   overflow: hidden;
   margin-top: 20px;
   box-shadow: 0px 0px 10px 3px #9eabad;
-}
+} */
 
-.card2 .el-pagination {
+/* .card2 .el-pagination {
   margin-left: 35%;
   
-}
+} */
 
-.bg-purple{
-  background:white;
-}
+/* #card0{
 
-#card0{
-
-    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+       background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, #373B44,#355C7D);
-}
+    background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+} */
 
 #card1{
     /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
     background: linear-gradient(30deg, #373B44,#355C7D); */
-    background-color:rgba(255, 255, 255, 0.2)
+    background-color:rgba(255, 255, 255, 0.2);
+    margin-top:50px;
 }
 
 .card2{
+    background-color:rgba(255, 255, 255, 0.2)
+}
+
+.detection{
     background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, #373B44,#355C7D);
+    background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+    height:100%;
+  
 }
+
+
 </style>

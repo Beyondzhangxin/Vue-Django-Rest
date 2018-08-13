@@ -6,14 +6,8 @@
         
         <!-- <el-card class="maincard"> -->
 
-<<<<<<< HEAD
             <!-- <el-card class="card"> -->
              <div class="inf"><strong>北京，上海，深圳电站统计</strong></div>
-=======
-        <el-card class="maincard">
-
-             <div class="inf">北京，上海，深圳电站统计</div>
->>>>>>> 5aadaabbf257062ca16e2a8da1dde036ef893fb1
               <hr width=100% size=1 color=#bbbcbc style="FILTER: alpha(opacity=100,finishopacity=0)">
           <div class="row0">
             <el-row>
@@ -95,11 +89,7 @@
             <div class="data">
               <el-row :gutter="60">
                 <el-col :span="4"><div class="grid-content">
-<<<<<<< HEAD
                   <el-card class="elcard0">
-=======
-                  <el-card class="elcard">
->>>>>>> 5aadaabbf257062ca16e2a8da1dde036ef893fb1
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/coal.png" id="image">
@@ -698,11 +688,10 @@ export default {
   .el-container {
     height: 100%;
     overflow-y: hidden;
-    background-color:rgba(255, 255, 255, 0.3);
     background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
+   background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
     margin-left:-12px;
     margin-top:-12px;
   }
