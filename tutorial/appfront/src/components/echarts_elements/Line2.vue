@@ -94,7 +94,7 @@ export default {
       },200);
     },
     updateData () {
-
+      console.log(this.option)
       this.line1.setOption(this.option)
     }
   }
