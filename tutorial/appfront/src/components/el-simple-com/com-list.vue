@@ -38,11 +38,11 @@
     data() {
       this.tabConfigs = [
         {prop: 'dev_name', label: '设备名称'},
-        {prop: 'dev_avg_p', label: '当前功率（w）'},
-        {prop: 'dev_day_w', label: '今日发电量（kw*h）'},
-        {prop: 'dev_effect_time', label: '当日的等效小时（h）'},
-        {prop: 'dev_status', label: '采集器的状态'},
-        {prop: 'dev_get_time', label: '数据采集的时间'},
+        {prop: 'dev_xh', label: '设备型号'},
+        {prop: 'dev_dqgl', label: '设备当前功率'},
+        {prop: 'dev_drdx', label: '设备当日等效'},
+        {prop: 'dev_jrfd', label: '设备接入容量'},
+        {prop: 'dev_cjqzt', label: '采集器状态'},
       ]
       return {
         loading: true,
@@ -51,12 +51,7 @@
       }
     },
     //mounted为vue对象的生命周期
-    watch: {
-    // 如果 `question` 发生改变，这个函数就会运行
-      data: function (newData, oldData) {
-        this.showAll();
-      }
-    },
+
     mounted: function() {
       this.showAll();
     },
@@ -67,9 +62,10 @@
         this.tableData = [];
         this.$ajax.get(this.data)
         .then(function (response) {
-          for (var i = 0; i < response.data.results.length; i++) {
+          console.log(response);
+          for (var i = 0; i < response.data.data.tab.length; i++) {
             //在这里写过aside过滤
-            this.setTableData(response.data.results[i])
+            this.setTableData(response.data.data.tab[i])
           }
           this.loading = false
         }.bind(this))
@@ -81,18 +77,8 @@
       //设置tableData对象
       //toFixed四舍五入
       setTableData(result){
-        var effect_time = result.time_sum/60
-        var avg_p = result.p_avg
-        var day_w = result.p_avg * result.time_sum/60/100
-        var element = {
-          dev_name: result.cityid + ' ' + result.pcbid,
-          dev_avg_p: avg_p.toFixed(2),
-          dev_day_w: day_w.toFixed(4),
-          dev_effect_time: effect_time.toFixed(2),
-          dev_status: '正常',
-          dev_get_time: result.time_min+' 到 '+result.time_max
-        }
-        this.tableData.push(element)
+        console.log(result);
+        this.tableData.push(result)
       },
     }
   }

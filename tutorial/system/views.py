@@ -441,12 +441,12 @@ def getDetectionInfo(request):
                 info['dev_dqgl'] = rs
                 if systemType == "SPGS":
                     rs1 = getSpgsDeviceInfo(key, "FDL", datetime.datetime.now().strftime('%Y-%m-%d'))
-                    info['dev_jfrd'] = rs1.get('data')
+                    info['dev_jrfd'] = rs1.get('data')
                     rs2 = getSpgsDeviceInfo(key, "DXSS", datetime.datetime.now().strftime('%Y-%m-%d'))
                     info['dev_drdx'] = rs2.get('data')
                 else:
                     rs1 = getPvmgDeviceInfo(key, "FDL", datetime.datetime.now().strftime('%Y-%m-%d'))
-                    info['dev_jfrd'] = rs1.get('data')
+                    info['dev_jrfd'] = rs1.get('data')
                     rs2 = getPvmgDeviceInfo(key, "DXSS", datetime.datetime.now().strftime('%Y-%m-%d'))
                     info['dev_drdx'] = rs2.get('data')
                 tabList.append(info)
