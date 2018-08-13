@@ -105,6 +105,23 @@ export default {
     components: {
       Line2: Line2
     },
+    methods: {
+      loadData(){
+        this.$ajax.post('http://localhost:8000/system/getStationCompareInfo',{
+          stationList:'["SPGS"]',
+          compareParam:"GL",
+          searchDate:"2017-04-27",
+        })
+        .then(function (response) {
+          //处理数据
+          console.log(response);
+          //{"bwrq": "2018-03-21", "ljfd": "5346.532596464663", "zjrl": 50.0, "dqgl": null, "jrdx": 0, "jrfd": 0.0}
+        }.bind(this))
+        .catch(function (error) {
+          return 0;
+        });
+      },
+    },
     data(){
         return{
         pickerOptions1: {
@@ -196,9 +213,6 @@ export default {
             type: 'value',
             scale: true,
             name: 'kW',
-            max: 500,
-            min: 0,
-            boundaryGap: [0.2, 0.2]
           },
         ],
         series: [
@@ -239,6 +253,7 @@ export default {
     },
     mounted: function() {
       this.$store.commit('showIt');
+      this.loadData();
     },
     destroyed: function() {
       this.$store.commit('hideIt')

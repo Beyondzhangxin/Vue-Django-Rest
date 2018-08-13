@@ -1,12 +1,22 @@
+<<<<<<< HEAD
 /* #app{
+=======
+#app{
+>>>>>>> 5aadaabbf257062ca16e2a8da1dde036ef893fb1
     font-family:Avenir,Helvetica,Arial,sans-serif;
     -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
     text-align:center;
     color:#2c3e50;
     margin-top:60px
+<<<<<<< HEAD
 } */
 
 /* h1[data-v-459a7b2d],h2[data-v-459a7b2d]{font-weight:400}ul[data-v-459a7b2d]{
+=======
+}
+
+h1[data-v-459a7b2d],h2[data-v-459a7b2d]{font-weight:400}ul[data-v-459a7b2d]{
+>>>>>>> 5aadaabbf257062ca16e2a8da1dde036ef893fb1
     list-style-type:none;
     padding:0
 }
@@ -18,7 +28,11 @@ li[data-v-459a7b2d]{
 
 a[data-v-459a7b2d]{
     color:#42b983
+<<<<<<< HEAD
 } */
+=======
+}
+>>>>>>> 5aadaabbf257062ca16e2a8da1dde036ef893fb1
     
 #canvas{
     position:fixed;

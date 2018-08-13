@@ -6,8 +6,14 @@
         
         <!-- <el-card class="maincard"> -->
 
+<<<<<<< HEAD
             <!-- <el-card class="card"> -->
              <div class="inf"><strong>北京，上海，深圳电站统计</strong></div>
+=======
+        <el-card class="maincard">
+
+             <div class="inf">北京，上海，深圳电站统计</div>
+>>>>>>> 5aadaabbf257062ca16e2a8da1dde036ef893fb1
               <hr width=100% size=1 color=#bbbcbc style="FILTER: alpha(opacity=100,finishopacity=0)">
           <div class="row0">
             <el-row>
@@ -20,9 +26,9 @@
                     </div>
                     <div class="card1m">
                       <div class="row1">总容量：<strong>{{(c1.total||"~")}}</strong> kWh</div>
-                      <div  class="row1">当日累计发电量：<strong>{{(c1.total||"~")}}</strong>  kWh</div>
-                      <div  class="row1">当月累计发电量：<strong>{{(c1.total||"~")}}</strong> 万kWh</div>
-                      <div class="row1">累计总发电量：<strong>{{(c1.total||"~")}}</strong> 万kWh</div>
+                      <div  class="row1">当日累计发电量：<strong>{{(c1.day||"~")}}</strong>  kWh</div>
+                      <div  class="row1">当月累计发电量：<strong>{{(c1.month||"~")}}</strong> 万kWh</div>
+                      <div class="row1">累计总发电量：<strong>{{(c1.sumAll||"~")}}</strong> 万kWh</div>
                     </div>
                   </el-card>
                 </div>
@@ -89,7 +95,11 @@
             <div class="data">
               <el-row :gutter="60">
                 <el-col :span="4"><div class="grid-content">
+<<<<<<< HEAD
                   <el-card class="elcard0">
+=======
+                  <el-card class="elcard">
+>>>>>>> 5aadaabbf257062ca16e2a8da1dde036ef893fb1
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/coal.png" id="image">
@@ -233,6 +243,48 @@ export default {
       // });
     }
   },
+  mounted: function () {
+    //this.load();
+    this.loadData();
+  },
+  methods: {
+    loadData(){
+      this.$ajax.get('http://localhost:8000/system/getDQFDGL')
+      .then(function (response) {
+        //处理数据
+        console.log(895489389568);
+        console.log(this.c1);
+        this.c1 = response.data.data.c1
+
+        console.log(this.c1);
+      }.bind(this))
+      .catch(function (error) {
+        return 0;
+      });
+      // console.log(124141452355688728735);
+      // this.$ajax.get('http://localhost:8000/system/echartsDataForInverterFDGL')
+      // .then(function (response) {
+      //   //处理数据
+      //   console.log(9956079);
+      //   console.log(asdas);
+      //   var list1 = [];
+      //   var list2 = [];
+      //   for (var i = 0; i < response.data.data.series.length; i++) {
+      //     list1.push(response.data.data.series[i][0]);
+      //     list2.push(response.data.data.xAxis[i][0]);
+      //   }
+      //
+      //
+      //   console.log(this.settings.l2);
+      //   this.settings.l2.option.series[0].data = list1;
+      //   this.settings.l2.option.xAxis[0].data = list2;
+      //
+      // }.bind(this))
+      // .catch(function (error) {
+      //   return 0;
+      // });
+    }
+  },
   data () {
     return {
 
@@ -248,10 +300,7 @@ export default {
       msg5:988.97,
 
       c1: {
-        total: 111,
-        day: 1,
-        mouth: 1,
-        sumAll: 1,
+        id: 'c1',
       },
       c2: {
         the: 1,

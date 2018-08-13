@@ -43,6 +43,7 @@ export default {
       if (this.request.length == 2) {
         this.$ajax.get(this.request[1])
         .then(function (response) {
+<<<<<<< HEAD
 
           //处理数据
           console.log(this.request);
@@ -58,10 +59,24 @@ export default {
 
           console.log(asfdafafasfasfas);
           console.log(this.changeOption)
+=======
+          //处理数据
+          var list1 = [];
+          var list2 = [];
+          console.log(response);
+          for (var j = 0; j < response.data.data.series.length; j++) {
+            list1.push(response.data.data.series[j][0]);
+            list2.push(response.data.data.xAxix[j][0]);
+          }
+          this.changeOption.series[1].data = list1;
+          this.changeOption.xAxis[0].data = list2;
+          console.log(asdasd);
+>>>>>>> 5aadaabbf257062ca16e2a8da1dde036ef893fb1
         }.bind(this))
         .catch(function (error) {
           return 0;
         });
+<<<<<<< HEAD
 
       }
         this.$ajax.get(this.request[0])
@@ -85,6 +100,28 @@ export default {
         .catch(function (error) {
           return 0;
         });
+=======
+      }
+      this.$ajax.get(this.request[0])
+      .then(function (response) {
+        //处理数据
+        var list1 = [];
+        var list2 = [];
+        console.log(response.data);
+        for (var j = 0; j < response.data.data.series.length; j++) {
+          list1.push(response.data.data.series[j][0]);
+          list2.push(response.data.data.xAxix[j][0]);
+        }
+        console.log(list1);
+        console.log(list2);
+        this.changeOption.series[0].data = list1;
+        this.changeOption.xAxis[0].data = list2;
+        console.log(asdafafa);
+      }.bind(this))
+      .catch(function (error) {
+        return 0;
+      });
+>>>>>>> 5aadaabbf257062ca16e2a8da1dde036ef893fb1
 
     },
     drawLine () {
@@ -101,6 +138,10 @@ export default {
       },200);
     },
     updateData () {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5aadaabbf257062ca16e2a8da1dde036ef893fb1
       this.line1.setOption(this.option)
     }
   }

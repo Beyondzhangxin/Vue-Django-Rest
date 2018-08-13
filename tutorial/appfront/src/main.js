@@ -17,6 +17,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 //import echarts from 'echarts'
 
+//设置POST的头字段
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+
+
 // 修改全局变量的名称
 Vue.use(ElementUI)
 Vue.use(Vuex)
