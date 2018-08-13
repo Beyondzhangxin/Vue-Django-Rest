@@ -167,7 +167,7 @@ def getPvmgDeviceInfo(deviceName,param, searchDate):
         try:
             db = pymysql.connect(database_ip, user, pwd, database_name)
             cursor = db.cursor()
-            sql = "select FDL_"+deviceName.upper+" from pvmg_day WHERE total_d  = '" + searchDate + "'"
+            sql = "select FDL_"+deviceName.upper()+" from pvmg_day WHERE total_d  = '" + searchDate + "'"
             cursor.execute(sql)
             rs = cursor.fetchone()
             if not rs is None:

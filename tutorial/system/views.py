@@ -377,16 +377,20 @@ def getDeviceCompareInfo(request):
                 if not value is None:
                     for x in value:
                         series.append(
-                            {"name": "SPGS", "data": getSpgsDeviceInfo(x.lower(), compareParam, searhcDate).get("data")})
+                            {"name": "SPGS",
+                             "data": getSpgsDeviceInfo(x.lower(), compareParam, searhcDate).get("data")})
                         xAxis.append(
-                            {"name": "SPGS", "data": getSpgsDeviceInfo(x.lower(), compareParam, searhcDate).get("time")})
+                            {"name": "SPGS",
+                             "data": getSpgsDeviceInfo(x.lower(), compareParam, searhcDate).get("time")})
             if key == "PVMG":
                 if not value is None:
                     for x in value:
                         series.append(
-                            {"name": "PVMG", "data": getPvmgDeviceInfo(x.lower(), compareParam, searhcDate).get("data")})
+                            {"name": "PVMG",
+                             "data": getPvmgDeviceInfo(x.lower(), compareParam, searhcDate).get("data")})
                         xAxis.append(
-                            {"name": "PVMG", "data": getPvmgDeviceInfo(x.lower(), compareParam, searhcDate).get("time")})
+                            {"name": "PVMG",
+                             "data": getPvmgDeviceInfo(x.lower(), compareParam, searhcDate).get("time")})
         response['data'] = {"series": series, "xAxis": xAxis}
         response['msg'] = 'success'
         response['error_num'] = 0
@@ -395,6 +399,57 @@ def getDeviceCompareInfo(request):
         response['error_num'] = 1
     return JsonResponse(response)
 
+
+# 故障检测相关的table信息
+@require_http_methods(['GET'])
+def getDetectionInfo(request):
+    response = {}
+    tabList = []
+    deviceList = getDeviceList()
+    try:
+        db = pymysql.connect(database_ip, user, pwd, database_name)
+        cursor = db.cursor()
+        for temp in deviceList:
+            devices = temp.get('devices')
+            for device in devices:
+                (key, value), = device.items()
+                info = {}
+                info['dev_name'] = value
+                info['dev_xh'] = key
+                systemType = temp.get('systemType')
+                sql = "select " + key + "  from data_" + systemType + "_buffer "
+                cursor.execute(sql)
+                rs = cursor.fetchone()
+                if not rs is None:
+                    rs = float(rs[0])
+                    if rs > 2:
+                        info['dev_cjqzt'] = '正常'
+                    elif rs > 0:
+                        info['dev_cjqzt'] = '告警'
+                    else:
+                        info['dev_cjqzt'] = '停机'
+                else:
+                    rs = 0.00
+                    info['dev_cjqzt'] = '离线'
+                info['dev_dqgl'] = rs
+                if systemType == "SPGS":
+                    rs1 = getSpgsDeviceInfo(key, "FDL", datetime.datetime.now().strftime('%Y-%m-%d'))
+                    info['dev_jfrd'] = rs1.get('data')
+                    rs2 = getSpgsDeviceInfo(key, "DXSS", datetime.datetime.now().strftime('%Y-%m-%d'))
+                    info['dev_drdx'] = rs2.get('data')
+                else:
+                    rs1 = getPvmgDeviceInfo(key, "FDL", datetime.datetime.now().strftime('%Y-%m-%d'))
+                    info['dev_jfrd'] = rs1.get('data')
+                    rs2 = getPvmgDeviceInfo(key, "DXSS", datetime.datetime.now().strftime('%Y-%m-%d'))
+                    info['dev_drdx'] = rs2.get('data')
+                tabList.append(info)
+        response['data'] = {"tab": tabList}
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    return JsonResponse(response)
 
 
 @require_http_methods(['POST'])
