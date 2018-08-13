@@ -396,6 +396,7 @@ def getDeviceCompareInfo(request):
     return JsonResponse(response)
 
 
+
 @require_http_methods(['POST'])
 def apiTest(request):
     print(request)

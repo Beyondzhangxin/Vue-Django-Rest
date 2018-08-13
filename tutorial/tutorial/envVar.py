@@ -6,3 +6,4 @@ dataBase = {'database_ip': 'localhost',
             database_name: 'solar',
             user: 'root',
             pwd: ''}
+
