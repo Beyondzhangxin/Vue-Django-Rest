@@ -1,7 +1,7 @@
 <template>
       <el-container class="c1">
         <!-- 调用canvas -->
-        <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
+        <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
 
         <el-main class="m1" style="height: 100%">
         
@@ -84,14 +84,14 @@
 import Gauge from '../echarts_elements/Gauge1'
 import Line2 from '../echarts_elements/Line2'
 import elPower from './elPower'
-import myCanvas from 'vue-atom-canvas'
+// import myCanvas from 'vue-atom-canvas'
 
 
 export default {
   name : 'Power',
   components: {
     elPower:elPower,
-    myCanvas
+    // myCanvas
   },
   data () {
     return {
@@ -269,6 +269,7 @@ export default {
   .m1 {
     width: 100%;
     height:100%;
+    margin-left:-12px;
     /* overflow: hidden; */
   }
 
@@ -392,7 +393,7 @@ export default {
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
     background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D); */
-    background-color:rgba(255, 255, 255, 0.3);
+    background-color:rgba(180, 180, 180, 0.1);
     margin-top:20px;
     margin-right:30px;
     margin-left:10px;
@@ -403,7 +404,7 @@ export default {
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
     background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D); */
-    background-color:rgba(255, 255, 255, 0.3);
+    background-color:rgba(180, 180, 180, 0.1);
     margin-right:30px;
     margin-left:10px;
 }

@@ -3,7 +3,7 @@
     <!-- <el-container> -->
 
         <!-- 调用canvas -->
-        <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
+        <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
 
           <el-main class="detectMain">
 
@@ -73,14 +73,14 @@
 <script>
     import ComList from '../el-simple-com/com-list.vue'
     import deHeader from './Head.vue'
-    import myCanvas from 'vue-atom-canvas'
+    // import myCanvas from 'vue-atom-canvas'
 
   export default {
     name: 'faultdetection',
     components: {
         ComList: ComList,
         DeHeader: deHeader,
-         myCanvas
+        //  myCanvas
     },
     data(){
       return {
@@ -247,7 +247,7 @@
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
     background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
     height:100%;
-  
+    margin-left:-12px;
 }
 
 

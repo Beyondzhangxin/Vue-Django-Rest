@@ -1,5 +1,6 @@
 <template>
   <div class="aside">
+  
     <div class="aside1">
       <el-row>
         <el-col :span="6">
@@ -24,6 +25,7 @@
         </el-col>
       </el-row>
     </div>
+
     <div class="aside3">
       <el-input
         placeholder="输入关键字进行过滤"
@@ -163,13 +165,14 @@
 
   .aside {
     height: 100%;
-    width: 260px;
+    width: 100%;
+    padding-right:-10px;
     overflow-x: hidden;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
     /* background-color: #fff; */
-    background-color:rgba(255, 255, 255, 0.3);
+    /* background-color:rgba(180, 180, 180, 0.2); */
     box-sizing: content-box;
-
+    background-color:rgb(53,92,125,0.3);
   }
 
   /* .aside0 {
@@ -182,9 +185,10 @@
     position: relative;
     top: 20px;
     color: #fff;
-    height: 60px;
-    margin-bottom: 8px;
-    background-color:rgba(255, 255, 255, 0.3);
+    height: 70px;
+    margin-bottom: 5px;
+    margin-left:-5px;
+    /* background-color:rgb(53,92,125,0.3); */
   }
 
   .b {
@@ -195,7 +199,7 @@
 
   .aside3 {
     width: 100%;
-    height: 900px;
+    height: 100%;
     box-sizing: content-box;
     z-index: auto;
     line-height: 20px;
@@ -203,7 +207,7 @@
     top: -10px;
     box-shadow: 2px 2px 10px #9eabad;
     /* background-color: #fff; */
-    background-color:rgba(255, 255, 255, 0.3);
+    /* background-color:rgb(53,92,125,0.3); */
   }
 
   .b1 {
@@ -226,9 +230,9 @@
     margin-right: 8px;
   }
 
-  .el-autocomplete {
+  /* .el-autocomplete {
     position: relative;
     top: -12px;
     right: 30px;
-  }
+  } */
 </style>
