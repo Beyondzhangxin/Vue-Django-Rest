@@ -268,12 +268,6 @@ export default {
 
 
 <style scoped>
-.container {
-  margin-top: 20px;
-  /* padding-left: 15px;
-  padding-right: 15px; */
-  overflow-y: hidden;
-}
 
 .m3 {
   height: 550px;

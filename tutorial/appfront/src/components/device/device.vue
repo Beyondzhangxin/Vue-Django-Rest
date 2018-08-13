@@ -115,26 +115,26 @@
                 </el-row>
 
             <el-card class="card0">
-            <el-card class="box-card2">
+            <!-- <el-card class="box-card2"> -->
               <!--通用list-->
               <!--请求如下 http://127.0.0.1:8000/pv/get/detection/2018/1/18/ -->
 
               <!--赋值到this.data中 -->
               <ComList v-bind="list"></ComList>
               <!-- <ComList v-bind:data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList> -->
-              <el-pagination
+              <!-- <el-pagination
+                  background
+                  layout="prev, pager, next"
+                  :total="1000"
+                  @current-change="handleCurrentChange"> -->
+              <!-- </el-pagination> -->
+            <!-- </el-card> -->
+             <el-pagination
                   background
                   layout="prev, pager, next"
                   :total="1000"
                   @current-change="handleCurrentChange">
-              </el-pagination>
-            </el-card>
-             <!-- <el-pagination
-                  background
-                  layout="prev, pager, next"
-                  :total="1000"
-                  @current-change="handleCurrentChange">
-            </el-pagination> -->
+            </el-pagination>
             </el-card>
         
 
@@ -223,7 +223,6 @@ export default {
 .row1 {
   width: 100%;
   height: 300px;
-
 }
 
 /* .container{
@@ -399,7 +398,7 @@ export default {
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
     background: linear-gradient(30deg, rgb(180,180,180,0.2),rgb(53,92,125,0.1));
-    height:100%;
+    /* height:100%; */
 }
 
 .device{
