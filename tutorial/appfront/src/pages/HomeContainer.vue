@@ -106,10 +106,10 @@
   }
 
 .el-container{
-   background: -webkit-linear-gradient(30deg, rgba(55,59,68,0.5),rgba(53,92,125,0.5));
+   /* background: -webkit-linear-gradient(30deg, rgba(55,59,68,0.5),rgba(53,92,125,0.5));
     background: -o-linear-gradient(30deg, rgba(55,59,68,0.5), rgba(53,92,125,0.5));
     background: -moz-linear-gradient(30deg, rgba(55,59,68,0.5), rgba(53,92,125,0.5));
-    background: linear-gradient(30deg, rgba(55,59,68,0.1),rgba(53,92,125,0.3));
+    background: linear-gradient(30deg, rgba(55,59,68,0.1),rgba(53,92,125,0.3)); */
 }
 
 </style>

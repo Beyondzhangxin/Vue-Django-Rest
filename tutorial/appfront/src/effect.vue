@@ -60,7 +60,7 @@ export default {
         border-radius: 8px;
         box-sizing: border-box;
         /* background:#808080; */
-        background-color:rgba(255, 255, 255, 0.1)
+        background-color:rgba(247, 248, 248, 0.1)
 }
 
 .effect{
@@ -69,7 +69,7 @@ export default {
     background: -webkit-linear-gradient(30deg, rgba(55,59,68,0.5),rgba(53,92,125,0.5));
     background: -o-linear-gradient(30deg, rgba(55,59,68,0.5), rgba(53,92,125,0.5));
     background: -moz-linear-gradient(30deg, rgba(55,59,68,0.5), rgba(53,92,125,0.5));
-    background: linear-gradient(30deg, rgba(55,59,68,0.6),rgba(53,92,125,0.5));
+    background: linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
 }
 
 /* .el-input{
