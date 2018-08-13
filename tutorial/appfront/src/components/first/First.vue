@@ -1,7 +1,7 @@
 <template>
     <el-container>
         <!-- 调用canvas -->
-        <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
+        <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
       <el-main>
         
         <!-- <el-card class="maincard"> -->
@@ -173,7 +173,7 @@
 import Gauge1 from '../echarts_elements/Gauge1'
 import Line2 from '../echarts_elements/Line2'
 import Gauge2 from '../echarts_elements/Gauge2'
-import myCanvas from 'vue-atom-canvas'
+// import myCanvas from 'vue-atom-canvas'
 
 
 export default {
@@ -182,7 +182,7 @@ export default {
     Gauge1: Gauge1,
     Gauge2: Gauge2,
     Line2: Line2,
-    myCanvas
+    // myCanvas
   },
   mounted: function () {
     //this.load();

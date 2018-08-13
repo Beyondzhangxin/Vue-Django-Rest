@@ -1,10 +1,13 @@
 <template>
   <el-container>
+    <!-- 调用canvas -->
+        <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
+
     <!-- 导入header-->
     <el-header><HomeHeader/></el-header>
     <el-main>
         <el-container>
-            <el-aside v-show="this.$store.state.isShowAside" width="260px"><HomeAside/></el-aside>
+            <el-aside v-show="this.$store.state.isShowAside" width="15%"><HomeAside/></el-aside>
             <el-main class="m1"><router-view/>
             </el-main>
         </el-container>
@@ -15,13 +18,14 @@
 <script>
   import HomeHeader from '@/components/Home/header'
   import HomeAside  from '@/components/Home/aside'
+  import myCanvas from 'vue-atom-canvas'
 
   export default {
     name: 'home',
     components: {
       HomeHeader,
       HomeAside,
-
+      myCanvas
     },
     data () {
       return {
@@ -67,9 +71,9 @@
   padding-top:20px;
 }
 
-.el-aside {
+/* .el-aside {
   width: 260px;
-}
+} */
 
  .el-main {
     /* background-color: #e3e3e3; */

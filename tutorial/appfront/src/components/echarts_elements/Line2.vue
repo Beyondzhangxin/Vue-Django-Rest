@@ -94,10 +94,7 @@ export default {
       },200);
     },
     updateData () {
-<<<<<<< HEAD
-=======
       console.log(this.option)
->>>>>>> 83980ace04001e348c8e3dda0430a62337f797f7
       this.line1.setOption(this.option)
     }
   }

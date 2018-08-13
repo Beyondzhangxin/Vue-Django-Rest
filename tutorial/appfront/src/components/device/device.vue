@@ -1,7 +1,5 @@
 <template>
-          <div class="device">
-               <!-- 调用canvas -->
-                 <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
+          <div class="device">           
                
                 <el-row class="row1">
                     <el-col :span="12">
@@ -143,14 +141,14 @@
 
 <script>
 import ComList from '../el-simple-com/com-list0.vue'
-import myCanvas from 'vue-atom-canvas'
+
 
 export default {
     name:'device',
 
     components: {
         ComList: ComList,
-        myCanvas
+     
      },
 
     data(){
@@ -311,7 +309,7 @@ export default {
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
     background: linear-gradient(30deg, rgb(180,180,180,0.3),#355C7D);*/
-    background-color:rgba(255, 255, 255, 0.3)
+   background-color:rgba(180, 180, 180, 0.1);
 } 
 
 .box-card1 {
@@ -323,7 +321,7 @@ export default {
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
     background: linear-gradient(30deg, rgb(180,180,180,0.5),#355C7D); */
-    background-color:rgba(255, 255, 255, 0.3)
+    background-color:rgba(180, 180, 180, 0.1);
 }
 
 .box-card2 {
@@ -409,7 +407,7 @@ export default {
     margin-top:-12px;
     width:100%;
     height: 100%;
-    margin-left:0px;
+    margin-left:-13px;
 }
 
 </style>

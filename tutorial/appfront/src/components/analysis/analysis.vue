@@ -3,7 +3,7 @@
         <el-card class="card0">
 
             <!-- 调用canvas -->
-        <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
+        <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
 
         <el-header id="header" style="height:80px;">
             <el-row>
@@ -37,21 +37,21 @@
             <card class="card1">
             <el-row>
                 <el-col :span="12" id="span1">
-                        <el-col :span="4" id="span0">对比内容:</el-col>
+                        <el-col :span="4" id="span0"><strong>对比内容:</strong></el-col>
                         <el-col :span="4">
-                            <el-button id="button1">功率</el-button>
+                            <el-button id="button1"><strong>功率</strong></el-button>
                         </el-col>
                         <el-col :span="4">
-                            <el-button id="button1">效率</el-button>
+                            <el-button id="button1"><strong>效率</strong></el-button>
                         </el-col>
                         <el-col :span="4">
-                            <el-button id="button2">等效时数</el-button>
+                            <el-button id="button1"><strong>等效时数</strong></el-button>
                         </el-col>
                         <el-col :span="4">
-                            <el-button id="button1">符合率</el-button>
+                            <el-button id="button1"><strong>符合率</strong></el-button>
                         </el-col>
                         <el-col :span="4">
-                            <el-button id="button1">发电量</el-button>
+                            <el-button id="button1"><strong>发电量</strong></el-button>
                         </el-col>
                 </el-col>
                 <el-col :span="12" id="span2">
@@ -100,13 +100,13 @@
 
 <script>
 import Line2 from '../echarts_elements/Line2'
-import myCanvas from 'vue-atom-canvas'
+// import myCanvas from 'vue-atom-canvas'
 
 export default {
     name: 'analysis',
     components: {
       Line2: Line2,
-        myCanvas
+        // myCanvas
     },
     methods: {
       loadData(){
@@ -251,7 +251,7 @@ export default {
 #header{
     background:white;
     padding-top:10px;
-    background-color:rgba(255, 255, 255, 0.3);
+    background-color:rgba(180, 180, 180, 0.1);
 }
 
 #button{
@@ -267,6 +267,7 @@ export default {
     margin-top:10px;
     font-size:14px;
     margin-bottom:10px;
+    background-color:rgba(255, 255, 255, 0.1)
 }
 
 #button2{
@@ -294,11 +295,11 @@ export default {
 }
 
 #span1{
-    background:white;
+    /* background:white; */
 }
 
 #span2{
-    background:white;
+    /* background:white; */
     padding-left:250px;
     padding-top:10px;
 
@@ -316,7 +317,7 @@ export default {
 }
 
 #main2{
-  background-color:rgba(255, 255, 255, 0.3);
+ background-color:rgba(180, 180, 180, 0.1);
 }
 
 #main3{
@@ -350,10 +351,11 @@ export default {
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
     background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+    margin-left:-13px;
 }
 
 .card1{
-    background-color:rgba(255, 255, 255, 0.3);
+    background-color:rgba(180, 180, 180, 0.1);
 }
 
 </style>
