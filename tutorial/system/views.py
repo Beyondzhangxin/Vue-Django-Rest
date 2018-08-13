@@ -400,12 +400,17 @@ def getDeviceCompareInfo(request):
     return JsonResponse(response)
 
 
-# 故障检测相关的table信息
+# 故障检测相关的table信息,参数为pageSize和pageNum
+
 @require_http_methods(['GET'])
 def getDetectionInfo(request):
     response = {}
     tabList = []
     deviceList = getDeviceList()
+    pageNum = request.GET.get('pageNum')
+    pageSize = request.GET.get('pageSize')
+    end = int(pageNum) * int(pageSize)
+    start = (int(pageNum) - 1) * int(pageSize)
     try:
         db = pymysql.connect(database_ip, user, pwd, database_name)
         cursor = db.cursor()
@@ -443,7 +448,7 @@ def getDetectionInfo(request):
                     rs2 = getPvmgDeviceInfo(key, "DXSS", datetime.datetime.now().strftime('%Y-%m-%d'))
                     info['dev_drdx'] = rs2.get('data')
                 tabList.append(info)
-        response['data'] = {"tab": tabList}
+        response['data'] = {"tab": tabList[start:end],"count":len(tabList)}
         response['msg'] = 'success'
         response['error_num'] = 0
     except Exception as e:
