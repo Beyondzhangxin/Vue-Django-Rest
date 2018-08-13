@@ -1,21 +1,21 @@
 <template>
   <el-card class="box-card" >
     <div slot="header" class="clearfix">
-      <span>{{ msg7 }}</span>
+      <span>{{ id }}</span>
       <el-button style="float: right; padding: 3px 0" type="text"></el-button>
     </div>
     <div class="text item">
       <img class="image1" ref="image" src="..\..\assets\SHGF.jpg">
       <el-row>
         <el-col :span="12"><div class="grid-content1">
-          <div class="tem1">总装机容量：<strong>{{(msg1||"~")}}</strong>kwp</div>
-          <div class="tem2">当前运行功率：<strong>{{(msg2||"~")}}</strong>kw</div>
-          <div class="tem3">当日有效时数：<strong>{{(msg3||"~")}}</strong>h</div>
-          <div class="tem4">当月有效时数：<strong>{{(msg4||"~")}}</strong>h</div>
+          <div class="tem1">总装机容量：<strong>{{(zjrl||"~")}}</strong>kwp</div>
+          <div class="tem2">当前运行功率：<strong>{{(yxgl||"~")}}</strong>kw</div>
+          <div class="tem3">当日有效时数：<strong>{{(dayHours||"~")}}</strong>h</div>
+          <div class="tem4">当月有效时数：<strong>{{(monthHours||"~")}}</strong>h</div>
         </div></el-col>
         <el-col :span="12"><div class="grid-content2">
-          <div class="con">正常&nbsp&nbsp&nbsp&nbsp<i class="el-icon-circle-check"></i></div>
-          <div class="mes">消息：<strong>{{msg5}}</strong>条</div>
+          <div class="con">电站状态：&nbsp正常&nbsp</div>
+          <div class="mes">异常消息：&nbsp<strong>{{messageNum}}</strong>条</div>
         </div></el-col>
         </el-row>
     </div>
@@ -25,7 +25,7 @@
 <script>
 export default {
   name : 'powerCard',
-  props: ['msg1','msg2','msg3','msg4','msg5','msg6','msg7'],
+  props: ['status','messageNum','dayHours','id','monthHours','yxgl','zjrl'],
   data () {
     return {
         c1: {
@@ -37,8 +37,7 @@ export default {
     }
   },
   mounted: function() {
-    console.log(this.msg6);
-    console.log(this.$refs.image.src)
+    console.log(9999999);
     this.$refs.image.src = "/static/img/SHGF.c4b0247.jpg";
   }
 }
@@ -83,12 +82,13 @@ export default {
 
 .image1{
   height:300px;
-  width:100%;
+  width:50%;
+  float:left;
 }
 
 .tem1{
   color: #909399;
-    padding-top: 13px;
+    padding-top: 25px;
     padding-bottom: 10px;
     box-sizing: border-box;
     border-bottom: 1px solid #eeeeee;
@@ -107,6 +107,7 @@ export default {
     padding-bottom: 10px;
     box-sizing: border-box;
     border-bottom: 1px solid #eeeeee;
+    padding-left:10px;
 }
 
 .mes{
@@ -115,7 +116,7 @@ export default {
     padding-bottom: 10px;
     box-sizing: border-box;
     border-bottom: 1px solid #eeeeee;
-    padding-left:5px;
+    padding-left:0px;
 }
 .grid-content2 strong {
     font-size: 15px;
@@ -149,6 +150,5 @@ export default {
     box-sizing: border-box;
     border-bottom: 1px solid #eeeeee;
 }
-
 
 </style>

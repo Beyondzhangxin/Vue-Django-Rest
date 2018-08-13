@@ -4,7 +4,7 @@
           <div class="mov">
             <el-card>
               <el-row>
-                <span id="line" v-for="item in items[0]" :key="item.id">{{ item.key }} <strong>{{ item.value }}</strong></span>
+                <span id="line" v-for="item in items[0]" :key="item.id">{{ item.key }} <strong>{{ item.value +' '+ item.unit }}</strong></span>
               </el-row>
               <el-row>
               <el-col :span="24">
@@ -67,7 +67,7 @@
 
           <div class="mm">
             <el-col :span="24"><div class="grid-content"></div></el-col>
-            <elPower style="margin-top: 20px;" v-for="card in showLists" v-show="checkLists(card)" v-bind="card" :key="card"/>
+            <elPower style="margin-top: 20px;" v-for="card in cardLists" v-bind="card"  :key="card"/>
           </div>
         </el-main>
         </el-container>
@@ -94,44 +94,44 @@ export default {
       //对应elpower中属性
       //依次是总装机容量 当前运行功率 当日有效时数 当月有效时数
       cardLists: [
-        {
-          id: 'BJ',
-          msg1: 1,
-          msg2: 1,
-          msg3: 2,
-          msg4: 1,
-          msg5: 1,
-          msg6: '',
-          msg7: '北京光伏电站',
-        },
-        {
-          id: 'SH',
-          msg1: 1,
-          msg2: 1,
-          msg3: 1,
-          msg4: 1,
-          msg5: 1,
-          msg6: '',
-          msg7: '上海光伏电站',
-        },
+      
+        // {
+        //   id: 'SH',
+        //   msg1: 1,
+        //   msg2: 1,
+        //   msg3: 1,
+        //   msg4: 1,
+        //   msg5: 1,
+        //   msg6: '',
+        //   msg7: '上海光伏电站',
+        // },
+
       ],
       items: [
         [
           {
             key: "电站总数:",
-            value: 2+"座",
+            index: "dzzs",
+            value: 2,
+            unit: "座",
           },
           {
             key: "总装机容量:",
-            value: 660.66+"kWp",
+            index: "zjrl",
+            value: 660.66,
+            unit: "kWp",
           },
           {
             key: "今日总发电量:",
-            value: 3038.26+"kWh",
+            index: "ljzjd1",
+            value: 3038.26,
+            unit: "kWh",
           },
           {
             key: "累计总发电量:",
-            value: 36.22+"万kWh",
+            index: "",
+            value: 36.22,
+            unit: "万kWh",
           },
         ],
       ],
@@ -155,8 +155,9 @@ export default {
     }
   },
   mounted: function() {
+    this.loadData();
     this.$store.commit('showIt');
-    this.show();
+    //this.show();
   },
 
   destroyed: function() {
@@ -164,11 +165,30 @@ export default {
   },
 
   methods: {
-    show(){
-      for (var i = 0; i < this.cardLists.length; i++) {
-        this.showLists.push(this.cardLists[i]);
-      }
+    loadData(){
+      this.$ajax.get('http://localhost:8000/system/getStationMonitorInfo')
+      .then(function (response) {
+        //处理数据\
+        for (var i = 0; i < this.items[0].length; i++) {
+          console.log(response.data.data.items[i]);
+          this.items[0][i].value = response.data.data.items[i]
+        }
+        console.log(3235235325);
+        console.log(response.data.data.cardLists);
+        for (var i = 0; i < response.data.data.cardLists.length; i++) {
+          this.cardLists.push(response.data.data.cardLists[i])
+        }
+        console.log(this.cardLists);
+      }.bind(this))
+      .catch(function (error) {
+        return 0;
+      });
     },
+    // show(){
+    //   for (var i = 0; i < this.cardLists.length; i++) {
+    //     this.showLists.push(this.cardLists[i]);
+    //   }
+    // },
     checkLists(card){
         //aside的过滤写在这里
 
@@ -250,6 +270,7 @@ export default {
 
   .m1 {
     width: 100%;
+    overflow: hidden;
   }
 
   .cardList {

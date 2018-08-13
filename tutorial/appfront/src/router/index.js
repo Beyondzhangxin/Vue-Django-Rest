@@ -10,6 +10,7 @@ import Device from '@/components/device/Device'
 import Analysis from '@/components/analysis/Analysis'
 import Index from '@/pages/Index'
 import VueResource from 'vue-resource'
+import Effect from '@/Effect'
 
 Vue.use(VueResource)
 Vue.use(Router)
@@ -38,6 +39,10 @@ export default new Router({
       component: Gauge,
     },
     {
+      path:'/effect',
+      component: Effect,
+    },
+    {
       path: '/Home',
       name: 'Home',
       component: HomeContainer,
@@ -59,7 +64,7 @@ export default new Router({
         {
           path:'analysis',
           component: Analysis,
-        }
+        },
       ]
     },
     {

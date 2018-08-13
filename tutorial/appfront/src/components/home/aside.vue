@@ -109,15 +109,15 @@
         let param = {};
         API.getPowerStations(param).then((data) => {
           let jsonList = [];
-          for (let i = 0; i < data.list.length; i++) {
+          for (let i = 0; i < data.data.length; i++) {
             let json = {};
             json.id = i;
-            json.label = data.list[i].systemName;
+            json.label = data.data[i].systemName;
             json.children = []
-            for (let k = 0; k < data.list[i].devices.length; k++) {
+            for (let k = 0; k < data.data[i].devices.length; k++) {
               let device = {};
-              device.id = String(i) + String(k);
-              device.label = data.list[i].devices[k];
+              device.id =  data.data[i].systemType + ' ' + Object.keys(data.data[i].devices[k])[0];
+              device.label = Object.values(data.data[i].devices[k])[0];
               json.children.push(device);
             }
             jsonList.push(json);
@@ -129,6 +129,7 @@
       },
       sendTree(){
         console.log(this.$refs.tree2.getCheckedKeys());
+        console.log(this.$refs.tree2.getCheckedNodes());
       },
 
       filterNode(value, data) {

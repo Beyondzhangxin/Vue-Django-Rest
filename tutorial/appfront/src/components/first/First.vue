@@ -3,9 +3,9 @@
       <el-main>
 
         <el-card class="maincard">
-          
+
              <div class="inf">北京，上海，深圳电站统计</div>
-              <hr width=100% size=1 color=#bbbcbc style="FILTER: alpha(opacity=100,finishopacity=0)"> 
+              <hr width=100% size=1 color=#bbbcbc style="FILTER: alpha(opacity=100,finishopacity=0)">
           <div class="row0">
             <el-row>
               <el-col :span="8">
@@ -17,9 +17,9 @@
                     </div>
                     <div class="card1m">
                       <div class="row1">总容量：<strong>{{(c1.total||"~")}}</strong> kWh</div>
-                      <div  class="row1">当日累计发电量：<strong>{{(c1.total||"~")}}</strong>  kWh</div>
-                      <div  class="row1">当月累计发电量：<strong>{{(c1.total||"~")}}</strong> 万kWh</div>
-                      <div class="row1">累计总发电量：<strong>{{(c1.total||"~")}}</strong> 万kWh</div>
+                      <div  class="row1">当日累计发电量：<strong>{{(c1.day||"~")}}</strong>  kWh</div>
+                      <div  class="row1">当月累计发电量：<strong>{{(c1.month||"~")}}</strong> 万kWh</div>
+                      <div class="row1">累计总发电量：<strong>{{(c1.sumAll||"~")}}</strong> 万kWh</div>
                     </div>
                   </el-card>
                 </div>
@@ -86,7 +86,7 @@
             <div class="data">
               <el-row :gutter="60">
                 <el-col :span="4"><div class="grid-content">
-                  <el-card class="elcard"> 
+                  <el-card class="elcard">
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/coal.png" id="image">
@@ -179,6 +179,48 @@ export default {
     Gauge2: Gauge2,
     Line2: Line2,
   },
+  mounted: function () {
+    //this.load();
+    this.loadData();
+  },
+  methods: {
+    loadData(){
+      this.$ajax.get('http://localhost:8000/system/getDQFDGL')
+      .then(function (response) {
+        //处理数据
+        console.log(895489389568);
+        console.log(this.c1);
+        this.c1 = response.data.data.c1
+
+        console.log(this.c1);
+      }.bind(this))
+      .catch(function (error) {
+        return 0;
+      });
+      // console.log(124141452355688728735);
+      // this.$ajax.get('http://localhost:8000/system/echartsDataForInverterFDGL')
+      // .then(function (response) {
+      //   //处理数据
+      //   console.log(9956079);
+      //   console.log(asdas);
+      //   var list1 = [];
+      //   var list2 = [];
+      //   for (var i = 0; i < response.data.data.series.length; i++) {
+      //     list1.push(response.data.data.series[i][0]);
+      //     list2.push(response.data.data.xAxis[i][0]);
+      //   }
+      //
+      //
+      //   console.log(this.settings.l2);
+      //   this.settings.l2.option.series[0].data = list1;
+      //   this.settings.l2.option.xAxis[0].data = list2;
+      //
+      // }.bind(this))
+      // .catch(function (error) {
+      //   return 0;
+      // });
+    }
+  },
   data () {
     return {
 
@@ -193,10 +235,7 @@ export default {
       msg5:988.97,
 
       c1: {
-        total: 111,
-        day: 1,
-        mouth: 1,
-        sumAll: 1,
+        id: 'c1',
       },
       c2: {
         the: 1,
@@ -284,6 +323,7 @@ export default {
         },
         l1:{
           id: 'line1',
+          request: ['http://localhost:8000/system/echartsDataForInverterFDL'],
           option:{
             title: {
               text: '当日发电量',
@@ -297,10 +337,8 @@ export default {
               }
             }
           },
-
-          
           legend: {
-            data:['逆变器发电量', '电能表发电量', '理论发电量']
+            data:['逆变器发电量']
           },
           toolbox: {
             show: true,
@@ -329,18 +367,6 @@ export default {
                 }
                 return res;
               })()
-          },
-          {
-            type: 'category',
-            boundaryGap: true,
-            data: (function (){
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.push(10 - len - 1);
-                }
-                return res;
-            })()
           }
         ],
         yAxis: [
@@ -348,44 +374,13 @@ export default {
             type: 'value',
             scale: true,
             name: 'kWh',
-            max: 500,
-            min: 0,
-            boundaryGap: [0.2, 0.2]
           }
         ],
         series: [
           {
             name:'逆变器发电量',
             type:'bar',
-            xAxisIndex: 1,
-            yAxisIndex: 0,
-            data:(function (){
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.push(Math.round(Math.random() * 1000));
-                }
-                return res;
-            })()
-          },
-          {
-            name:'电能表发电量',
-            type:'bar',
-            xAxisIndex: 1,
-            yAxisIndex: 0,
-            data:(function (){
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.push(Math.round(Math.random() * 1000));
-                }
-                return res;
-            })()
-          },
-          {
-            name:'理论发电量',
-            type:'line',
-            xAxisIndex: 1,
+            xAxisIndex: 0,
             yAxisIndex: 0,
             data:(function (){
                 var res = [];
@@ -401,6 +396,7 @@ export default {
       },
         l2:{
           id: 'line2',
+          request: ['http://localhost:8000/system/echartsDataForInverterFDGL','http://localhost:8000/system/echartsDataForFZD'],
           option: {
             title: {
               text: '当日发电功率',
@@ -415,7 +411,7 @@ export default {
             }
           },
           legend: {
-            data:['逆变器发电功率', '电能表发电功率', '总辐照度']
+            data:['逆变器发电功率', '总辐照度']
           },
           toolbox: {
             show: true,
@@ -445,48 +441,20 @@ export default {
                 return res;
               })()
           },
-          {
-            type: 'category',
-            boundaryGap: true,
-            data: (function (){
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.push(10 - len - 1);
-                }
-                return res;
-            })()
-          }
         ],
         yAxis: [
           {
             type: 'value',
-            scale: true,
+
             name: 'kW',
-            max: 500,
-            min: 0,
-            boundaryGap: [0.2, 0.2]
+
           }
         ],
         series: [
           {
             name:'逆变器发电功率',
             type:'line',
-            xAxisIndex: 1,
-            yAxisIndex: 0,
-            data:(function (){
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.push(Math.round(Math.random() * 1000));
-                }
-                return res;
-            })()
-          },
-          {
-            name:'电能表发电功率',
-            type:'line',
-            xAxisIndex: 1,
+            xAxisIndex: 0,
             yAxisIndex: 0,
             data:(function (){
                 var res = [];
@@ -500,7 +468,7 @@ export default {
           {
             name:'总辐照度',
             type:'line',
-            xAxisIndex: 1,
+            xAxisIndex: 0,
             yAxisIndex: 0,
             data:(function (){
                 var res = [];
@@ -539,7 +507,7 @@ export default {
     margin-bottom: 20px;
     background-color:rgba(255, 255, 255, 0.3)
   }
-  
+
 
 
   .card1m span {
@@ -681,7 +649,7 @@ export default {
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
-  
+
 }
 .row-bg {
   padding: 10px 0;
@@ -721,11 +689,11 @@ export default {
 
 .box-card1{
   /* margin-top:20px; */
-   background: -webkit-linear-gradient(30deg, #373B44,#355C7D); 
-    background: -o-linear-gradient(30deg, #373B44, #355C7D); 
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D); 
+   background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
     background: linear-gradient(30deg, #373B44,#355C7D);
-    
+
 }
 
 .box{
@@ -733,7 +701,7 @@ export default {
   margin-left:30px;
   margin-top:-20px;
   margin-bottom:20px;
-  
+
 }
 
 .data{
@@ -751,9 +719,9 @@ export default {
 
 .maincard{
     background-color: #e3e3e3;
-    background: -webkit-linear-gradient(30deg, #373B44,#355C7D); 
-    background: -o-linear-gradient(30deg, #373B44, #355C7D); 
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D); 
+    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
     background: linear-gradient(30deg, #373B44,#355C7D);
 }
 
