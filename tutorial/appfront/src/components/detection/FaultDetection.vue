@@ -1,13 +1,15 @@
 <template>
   <div class="detection">
-    <el-container>
-        <el-card>
-          <el-main class="detectMain">
+    <!-- <el-container> -->
 
+        <!-- 调用canvas -->
+        <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
+
+          <el-main class="detectMain">
 
                 <el-row>
                   <el-col :span="8">
-                    <el-card :body-style="{ padding: '0px' }">
+                    <el-card :body-style="{ padding: '0px' }" id="card1">
                      <img src="../../assets/close.png" class="image">
                      <div style="padding: 14px;">
                        <span>停机设备</span>
@@ -18,7 +20,7 @@
                    </el-card>
                   </el-col>
                   <el-col :span="8">
-                    <el-card :body-style="{ padding: '0px' }">
+                    <el-card :body-style="{ padding: '0px' }" id="card1">
                       <img src="../../assets/alarm.png" class="image">
                       <div style="padding: 14px;">
                         <span>告警设备</span>
@@ -29,7 +31,7 @@
                     </el-card>
                   </el-col>
                   <el-col :span="8">
-                    <el-card :body-style="{ padding: '0px' }">
+                    <el-card :body-style="{ padding: '0px' }" id="card1">
                       <img src="../../assets/offline.png" class="image">
                       <div style="padding: 14px;">
                         <span>离线设备</span>
@@ -63,25 +65,27 @@
               </el-pagination>
 
           </el-main>
-        </el-card>
-    </el-container>
+       
+    <!-- </el-container> -->
   </div>
 </template>
 
 <script>
     import ComList from '../el-simple-com/com-list.vue'
     import deHeader from './Head.vue'
+    import myCanvas from 'vue-atom-canvas'
 
   export default {
     name: 'faultdetection',
     components: {
         ComList: ComList,
         DeHeader: deHeader,
+         myCanvas
     },
     data(){
       return {
-        data: 'http://127.0.0.1:8000/pv/get/detection/2018/1/18/',
-        page: 1,
+        data: 'http://localhost:8000/system/getDetectionInfo?pageNum=1&pageSize=2',
+        page: 1
         // pageSize: 2
       }
     },
@@ -115,24 +119,25 @@
   }
 
   .detectMain {
-    margin-top: 30px;
+    height: 100%;
+    overflow-y: hidden;
     padding-left: 30px;
     padding-right: 30px;
     overflow-y: hidden;
-    background: #fff;
+    margin-top:-12px;
+    /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D); */
   }
 
-  .el-header {
+  /* .el-header {
     height: 100px;
-  }
-
-  .detection {
-    height: 100%;
-    overflow-y: hidden;
-  }
+  } */
 
   .el-container {
     height: 100%;
+    /* margin-top:-23px; */
   }
 
   .el-container font{
@@ -145,20 +150,17 @@
     left: 0%;
   }
 
-  .detection-title {
+  /* .detection-title {
     text-align: left;
     font-size: 11px;
     margin-bottom: 10px;
-  }
+  } */
 
   .grid-content {
     border-radius: 4px;
     min-height: 200px;
   }
 
- .bg-purple-dark {
-    background:white;
-  }
 
   .el-row {
     margin-bottom: 20px;
@@ -169,9 +171,6 @@
     border-radius: 4px;
   }
 
- .bg-purple-light {
-    background: #e5e9f2;
-  }
 
 .button {
     padding: 0;
@@ -195,21 +194,18 @@
       clear: both
   }
 
-  .bottom {
+  /* .bottom {
     margin-top: 13px;
     line-height: 12px;
-  }
+  } */
 
-.foot{
 
-}
-
-.rowm{
+/* .rowm{
   height: 400px;
   margin: auto;
-}
+} */
 
-.rowmb{
+/* .rowmb{
   height: 450px;
   width: 1580px;
   background: #fff;
@@ -217,14 +213,41 @@
   overflow: hidden;
   margin-top: 20px;
   box-shadow: 0px 0px 10px 3px #9eabad;
-}
+} */
 
-.card2 .el-pagination {
+/* .card2 .el-pagination {
   margin-left: 35%;
+  
+} */
+
+/* #card0{
+
+       background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+} */
+
+#card1{
+    /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, #373B44,#355C7D); */
+    background-color:rgba(255, 255, 255, 0.2);
+    margin-top:50px;
 }
 
-.bg-purple{
-  background:white;
+.card2{
+    background-color:rgba(255, 255, 255, 0.2)
+}
+
+.detection{
+    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+    height:100%;
+  
 }
 
 

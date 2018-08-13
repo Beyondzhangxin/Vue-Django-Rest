@@ -11,6 +11,7 @@ import Analysis from '@/components/analysis/Analysis'
 import Index from '@/pages/Index'
 import VueResource from 'vue-resource'
 import Effect from '@/Effect'
+// import Login from '@/pages/Login'
 
 Vue.use(VueResource)
 Vue.use(Router)
@@ -27,7 +28,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/Index',
+      redirect: '/effect',
     },
     {
       path:'/index',
@@ -65,6 +66,7 @@ export default new Router({
           path:'analysis',
           component: Analysis,
         },
+        
       ]
     },
     {

@@ -1,10 +1,13 @@
 <template>
     <el-container>
+        <!-- 调用canvas -->
+        <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
       <el-main>
+        
+        <!-- <el-card class="maincard"> -->
 
-        <el-card class="maincard">
-
-             <div class="inf">北京，上海，深圳电站统计</div>
+            <!-- <el-card class="card"> -->
+             <div class="inf"><strong>北京，上海，深圳电站统计</strong></div>
               <hr width=100% size=1 color=#bbbcbc style="FILTER: alpha(opacity=100,finishopacity=0)">
           <div class="row0">
             <el-row>
@@ -56,7 +59,7 @@
           </div>
 
 
-          <div class="row0">
+          <div class="row2">
             <el-row>
               <el-col :span="12">
                 <el-card class="card3">
@@ -86,7 +89,7 @@
             <div class="data">
               <el-row :gutter="60">
                 <el-col :span="4"><div class="grid-content">
-                  <el-card class="elcard">
+                  <el-card class="elcard0">
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/coal.png" id="image">
@@ -101,7 +104,7 @@
                 </el-col>
 
                 <el-col :span="4"><div class="grid-content">
-                  <el-card class="elcard">
+                  <el-card class="elcard0">
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/co2.png" id="image">
@@ -115,7 +118,7 @@
                 </div></el-col>
 
                 <el-col :span="4"><div class="grid-content">
-                  <el-card class="elcard">
+                  <el-card class="elcard0">
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/so2.png" id="image">
@@ -129,7 +132,7 @@
                 </div></el-col>
 
                 <el-col :span="4"><div class="grid-content">
-                  <el-card class="elcard">
+                  <el-card class="elcard0">
                   <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/no2.png" id="image">
@@ -143,7 +146,7 @@
                 </div></el-col>
 
                 <el-col :span="4"><div class="grid-content">
-                  <el-card class="elcard">
+                  <el-card class="elcard0">
                    <el-row>
                     <el-col :span="12"><div class="grid-content">
                       <img src="../../assets/tree.png" id="image">
@@ -160,7 +163,7 @@
           </el-card>
           </div>
 
-        </el-card>
+         <!-- </el-card> -->
 
       </el-main>
   </el-container>
@@ -170,6 +173,7 @@
 import Gauge1 from '../echarts_elements/Gauge1'
 import Line2 from '../echarts_elements/Line2'
 import Gauge2 from '../echarts_elements/Gauge2'
+import myCanvas from 'vue-atom-canvas'
 
 
 export default {
@@ -178,6 +182,56 @@ export default {
     Gauge1: Gauge1,
     Gauge2: Gauge2,
     Line2: Line2,
+    myCanvas
+  },
+  mounted: function () {
+    //this.load();
+    //this.loadData();
+  },
+  methods: {
+    loadData(){
+      this.$ajax.get('http://localhost:8000/system/echartsDataForFZD')
+      .then(function (response) {
+        //处理数据
+        var list1 = [];
+        var list2 = [];
+        for (var i = 0; i < response.data.data.series.length; i++) {
+          list1.push(response.data.data.series[i][0]);
+          list2.push(response.data.data.xAxis[i][0]);
+        }
+
+        console.log(1234124124);
+        console.log(this.settings.l1);
+        this.settings.l1.option.series[0].data = list1;
+        this.settings.l1.option.xAxis[0].data = list2;
+
+      }.bind(this))
+      .catch(function (error) {
+        return 0;
+      });
+      // console.log(124141452355688728735);
+      // this.$ajax.get('http://localhost:8000/system/echartsDataForInverterFDGL')
+      // .then(function (response) {
+      //   //处理数据
+      //   console.log(9956079);
+      //   console.log(asdas);
+      //   var list1 = [];
+      //   var list2 = [];
+      //   for (var i = 0; i < response.data.data.series.length; i++) {
+      //     list1.push(response.data.data.series[i][0]);
+      //     list2.push(response.data.data.xAxis[i][0]);
+      //   }
+      //
+      //
+      //   console.log(this.settings.l2);
+      //   this.settings.l2.option.series[0].data = list1;
+      //   this.settings.l2.option.xAxis[0].data = list2;
+      //
+      // }.bind(this))
+      // .catch(function (error) {
+      //   return 0;
+      // });
+    }
   },
   mounted: function () {
     //this.load();
@@ -224,6 +278,7 @@ export default {
   data () {
     return {
 
+       dotsNum: 60,
        activeName: 'first',
       //配置最下面的list
 
@@ -498,6 +553,7 @@ export default {
   .card3Li {
     height: 400px;
     width: 100%;
+
   }
 
   .card3 {
@@ -505,10 +561,12 @@ export default {
     margin: 30px;
     width: 700px;
     margin-bottom: 20px;
-    background-color:rgba(255, 255, 255, 0.3)
+    /* background-color:rgba(255, 255, 255, 0.3) */
+     background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
   }
-
-
 
   .card1m span {
     padding: 5%;
@@ -525,7 +583,7 @@ export default {
   }
 
   .row1 {
-    color: #909399;
+    /* color: #909399; */
     padding-top: 13px;
     padding-bottom: 13px;
     box-sizing: border-box;
@@ -538,13 +596,23 @@ export default {
     color: #974e45;
   }
 
+  .row2{
+    padding-left:100px;
+    padding-right:-40px;
+    margin-top:-20px;
+  }
+
   .card1 {
     position: relative;
     left: 100px;
     margin-left: -15px;
     width: 500px;
     height: 300px;
-     background-color:rgba(255, 255, 255, 0.2)
+     /* background-color:rgba(255, 255, 255, 0.2) */
+      background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, rgb(55,59,68,0.3),#355C7D);
   }
 
   .card2 {
@@ -554,13 +622,12 @@ export default {
     top: 100px;
     left: 120px;
     z-index: 1;
-    background-color: #974e45;
      background-color:rgba(190, 30, 30, 0.4)
   }
 
-  .mainBody {
+  /* .mainBody {
     height: 1000px;
-  }
+  } */
 
   .button {
     float: right;
@@ -589,19 +656,6 @@ export default {
   .g1 {
     height: 400px;
     width: 100%;
-  }
-
-  .e1-row0 {
-    background-color: #12AFE3;
-    background: -webkit-linear-gradient(-60deg, #12AFE3, #0d7feb); /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(-60deg, #12AFE3, #0d7feb); /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(-60deg, #12AFE3, #0d7feb); /* Firefox 3.6 - 15 */
-    background: linear-gradient(-60deg, #12AFE3,  #0d7feb); /* 标准的语法（必须放在最后） */
-    color: #fff;
-  }
-  .e1-row0 span {
-    float: left;
-    margin-left: 2%;
   }
 
   .col1 {
@@ -634,6 +688,12 @@ export default {
   .el-container {
     height: 100%;
     overflow-y: hidden;
+    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+   background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+    margin-left:-12px;
+    margin-top:-12px;
   }
 
   .el-row {
@@ -688,11 +748,11 @@ export default {
 }
 
 .box-card1{
-  /* margin-top:20px; */
+  
    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, #373B44,#355C7D);
+    background: linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
 
 }
 
@@ -711,21 +771,15 @@ export default {
 .inf{
   font-size:20px;
   font-family: 'STHeiti Light [STXihei]' ;
+  padding-top:10px;
 }
 
 .row0{
-  margin-top:-40px;
+  margin-top:-80px;
 }
 
-.maincard{
-    background-color: #e3e3e3;
-    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, #373B44,#355C7D);
-}
-
-.elcard{
+.elcard0{
   background-color:rgba(255, 255, 255, 0.3)
 }
+
 </style>

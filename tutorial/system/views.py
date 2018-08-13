@@ -32,11 +32,19 @@ from .models import *
 from tutorial.settings import DATABASES
 
 # database configuration
+<<<<<<< HEAD
+database_ip = '192.168.102.103'
+database_port = '3306'
+database_name = 'solar'
+user = 'root'
+pwd = ''
+=======
 database_ip = DATABASES['default']['HOST']
 database_port = DATABASES['default']['PORT']
 database_name = DATABASES['default']['NAME']
 user = DATABASES['default']['USER']
 pwd = DATABASES['default']['PASSWORD']
+>>>>>>> 5aadaabbf257062ca16e2a8da1dde036ef893fb1
 
 
 # 返回监测的发电站及其站内逆变器信息
@@ -118,8 +126,31 @@ def totalVolume(request):
 def echartsDataForInverterFDL(request):
     response = {}
     try:
+<<<<<<< HEAD
+        db = pymysql.connect(database_ip, user, pwd, database_name)
+        cursor = db.cursor()
+        # sql_time = "select total_d from pvmg_minute WHERE date_format(total_d,'%Y-%m-%d')='" + "2017-04-27" + "'"
+        # sql_data = "SELECT  (@csum := @csum + TOTAL_FDL) AS total_fdl  FROM spgs_minute  WHERE DATE_FORMAT(total_d,'%Y-%m-%d') ='" + "2017-04-27" + "'"
+        # cursor.execute(sql_time)
+        # rs1_time = cursor.fetchall()
+        # cursor.execute('SET @csum := 0')
+        # cursor.execute(sql_data)
+        # rs1_data = cursor.fetchall()
+        sql_time = "select total_d from spgs_minute WHERE date_format(total_d,'%Y-%m-%d')='" + '2017-04-27' + "'"
+        sql_data = "SELECT (@csum := @csum + TOTAL_FDL) AS total_fdl FROM spgs_minute  WHERE DATE_FORMAT(total_d,'%Y-%m-%d') ='" + '2017-04-27' + "'"
+
+        cursor.execute(sql_time)
+        rs2_time = cursor.fetchall()
+        cursor.execute('SET @csum := 0')
+        cursor.execute(sql_data)
+        rs2_data = cursor.fetchall()
+        rs_time = rs2_time
+        rs_data = rs2_data
+        response['data'] = {'xAxis': rs_time, 'series': rs_data}
+=======
         data = getEchartsDataForInverterFDL()
         response['data'] = data
+>>>>>>> 5aadaabbf257062ca16e2a8da1dde036ef893fb1
         response['msg'] = 'success'
         response['error_num'] = 0
     except  Exception as e:
@@ -133,8 +164,28 @@ def echartsDataForInverterFDL(request):
 def echartsDataForInverterFDGL(request):
     response = {}
     try:
+<<<<<<< HEAD
+        db = pymysql.connect(database_ip, user, pwd, database_name)
+        cursor = db.cursor()
+        # sql1 = "select FDZGL from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
+        # cursor.execute(sql1)
+        # data1 = cursor.fetchall()
+        # sql2 = "select datatime  from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
+        # cursor.execute(sql2)
+        # time1 = cursor.fetchall()
+        sql1 = "select FDZGL from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
+        cursor.execute(sql1)
+        data2 = cursor.fetchall()
+        sql2 = "select datatime  from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
+        cursor.execute(sql2)
+        time2 = cursor.fetchall()
+        rs_time = time2
+        rs_data = data2
+        response['data'] = {'xAxis': rs_time, 'series': rs_data}
+=======
         data = getEchartsDataForInverterFDGL()
         response['data'] = data
+>>>>>>> 5aadaabbf257062ca16e2a8da1dde036ef893fb1
         response['msg'] = 'success'
         response['error_num'] = 0
     except  Exception as e:
@@ -148,8 +199,28 @@ def echartsDataForInverterFDGL(request):
 def echartsDataForFZD(request):
     response = {}
     try:
+<<<<<<< HEAD
+        db = pymysql.connect(database_ip, user, pwd, database_name)
+        cursor = db.cursor()
+        # sql1 = "select FDZGL from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
+        # cursor.execute(sql1)
+        # data1 = cursor.fetchall()
+        # sql2 = "select datatime  from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
+        # cursor.execute(sql2)
+        # time1 = cursor.fetchall()
+        sql1 = "select fz from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
+        cursor.execute(sql1)
+        data2 = cursor.fetchall()
+        sql2 = "select datatime  from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
+        cursor.execute(sql2)
+        time2 = cursor.fetchall()
+        rs_time = time2
+        rs_data = data2
+        response['data'] = {'xAxis': rs_time, 'series': rs_data}
+=======
         data = getEchartsForZGL()
         response['data'] = data
+>>>>>>> 5aadaabbf257062ca16e2a8da1dde036ef893fb1
         response['msg'] = 'success'
         response['error_num'] = 0
     except  Exception as e:
@@ -319,6 +390,8 @@ def getStationCompareInfo(request):
     stationList = json.loads(request.POST.get("stationList"))
     compareParam = request.POST.get("compareParam")
     searhcDate = request.POST.get("searchDate")
+    print(stationList, compareParam, searhcDate)
+    print(type(stationList))
     if searhcDate is None:
         searhcDate = datetime.datetime.now().strftime('%Y-%m-%d')
     response = {}

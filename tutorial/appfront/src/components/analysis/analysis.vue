@@ -1,8 +1,9 @@
 <template>
 
-        <!-- header -->
-        <!-- <el-container class="container"> -->
         <el-card class="card0">
+
+            <!-- 调用canvas -->
+        <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
 
         <el-header id="header" style="height:80px;">
             <el-row>
@@ -32,7 +33,8 @@
 
         <!-- main1 -->
         <div id="main1">
-            <el-header id="header" style="height:80px;">
+            
+            <card class="card1">
             <el-row>
                 <el-col :span="12" id="span1">
                         <el-col :span="4" id="span0">对比内容:</el-col>
@@ -65,7 +67,7 @@
                         </el-date-picker>
                </el-col>
             </el-row>
-            </el-header>
+            </card>
         </div>
 
         <!-- main2 -->
@@ -87,7 +89,7 @@
         <!-- main3 -->
         <el-main id="main3">
           <div class="m3">
-            <Line2 v-bind="l2"></Line2>
+                <Line2 v-bind="l2"></Line2>
           </div>
         </el-main>
         <!-- </el-container> -->
@@ -98,22 +100,37 @@
 
 <script>
 import Line2 from '../echarts_elements/Line2'
+import myCanvas from 'vue-atom-canvas'
 
 export default {
     name: 'analysis',
     components: {
-      Line2: Line2
+      Line2: Line2,
+        myCanvas
     },
     methods: {
       loadData(){
-        this.$ajax.post('http://localhost:8000/system/getStationCompareInfo',{
-          stationList:'["SPGS"]',
-          compareParam:"GL",
-          searchDate:"2017-04-27",
-        })
+        var instance = this.$ajax.create({
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        });
+        instance.post('http://localhost:8000/system/getStationCompareInfo',
+          "stationList="+JSON.stringify(['SPGS', 'PVMG'])+"&compareParam=GL&searchDate=2017-04-27"
+        )
         .then(function (response) {
           //处理数据
-          console.log(response);
+          console.log(response.data.data);
+          console.log(this.l2.option);
+          for (var i = 0; i < response.data.data.series.length; i++) {
+            this.l2.option.series.push({
+              data:response.data.data.series[i].data,
+              name:response.data.data.series[i].name,
+              type:'line',
+              xAxisIndex: 0,
+              yAxisIndex: 0,
+            })
+          }
+          this.l2.option.xAxis[0].data = response.data.data.xAxis[0].data
+          
           //{"bwrq": "2018-03-21", "ljfd": "5346.532596464663", "zjrl": 50.0, "dqgl": null, "jrdx": 0, "jrfd": 0.0}
         }.bind(this))
         .catch(function (error) {
@@ -183,29 +200,13 @@ export default {
             {
               type: 'category',
               boundaryGap: true,
-              data: (function (){
-                var now = new Date();
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.unshift(now.toLocaleTimeString().replace(/^\D*/,''));
-                    now = new Date(now - 2000);
-                }
-                return res;
-              })()
-          },
-          {
+              data: []
+           },
+           {
             type: 'category',
             boundaryGap: true,
-            data: (function (){
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.push(10 - len - 1);
-                }
-                return res;
-            })()
-          }
+            data: []
+           }
         ],
         yAxis: [
           {
@@ -215,34 +216,6 @@ export default {
           },
         ],
         series: [
-          {
-            name:'北京光伏电站',
-            type:'line',
-            xAxisIndex: 0,
-            yAxisIndex: 0,
-            data:(function (){
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.push(Math.round(Math.random() * 1000));
-                }
-                return res;
-            })()
-          },
-          {
-            name:'上海光伏电站',
-            type:'line',
-            xAxisIndex: 0,
-            yAxisIndex: 0,
-            data:(function (){
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.push(Math.round(Math.random() * 1000));
-                }
-                return res;
-            })()
-          },
         ]
       },
       },
@@ -264,21 +237,30 @@ export default {
 
 
 <style scoped>
-.container {
-  margin-top: 20px;
-  /* padding-left: 15px;
-  padding-right: 15px; */
-  overflow-y: hidden;
-}
 
 .m3 {
   height: 550px;
-  background-color: #fff;
+  /* background-color: #fff; */
+   /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, rgb(55,59,68,0.4),#355C7D); */
+    background-color:rgba(255, 255, 255, 0.3);
 }
 
 #header{
     background:white;
     padding-top:10px;
+    background-color:rgba(255, 255, 255, 0.3);
+}
+
+#button{
+    background-color:rgba(255, 255, 255, 0.1)
+    
+}
+
+#text{
+    color:whitesmoke;
 }
 
 #button1{
@@ -330,14 +312,16 @@ export default {
 #main1{
     margin-top:20px;
     height:100px;
+    
 }
 
 #main2{
-    background:white;
+  background-color:rgba(255, 255, 255, 0.3);
 }
 
 #main3{
     margin-top:50px;
+    
 }
 
 #text1{
@@ -349,6 +333,7 @@ export default {
     float: left;
     margin-top:20px;
     margin-left:20px;
+    color:aliceblue;
 }
 
 .sel{
@@ -360,10 +345,15 @@ export default {
 }
 
 .card0{
-    margin-top:10px;
-    margin-left:5px;
-    margin-right:10px;
+    margin-top:-13px;
+    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
 }
 
+.card1{
+    background-color:rgba(255, 255, 255, 0.3);
+}
 
 </style>

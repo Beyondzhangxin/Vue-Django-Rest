@@ -1,8 +1,12 @@
 <template>
       <el-container class="c1">
+        <!-- 调用canvas -->
+        <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
+
         <el-main class="m1" style="height: 100%">
+        
           <div class="mov">
-            <el-card>
+            <el-card class="card1">
               <el-row>
                 <span id="line" v-for="item in items[0]" :key="item.id">{{ item.key }} <strong>{{ item.value +' '+ item.unit }}</strong></span>
               </el-row>
@@ -30,7 +34,7 @@
             </el-card>
           </div>
 
-          <el-card>
+          <el-card class="card2">
               <el-row>
                 <el-col>
                   <div class="col1">
@@ -62,13 +66,14 @@
                   </div>
                 </el-col>
               </el-row>
-
-          </el-card>
+            </el-card>
+          
 
           <div class="mm">
             <el-col :span="24"><div class="grid-content"></div></el-col>
             <elPower style="margin-top: 20px;" v-for="card in cardLists" v-bind="card"  :key="card"/>
           </div>
+
         </el-main>
         </el-container>
 
@@ -79,12 +84,14 @@
 import Gauge from '../echarts_elements/Gauge1'
 import Line2 from '../echarts_elements/Line2'
 import elPower from './elPower'
+import myCanvas from 'vue-atom-canvas'
 
 
 export default {
   name : 'Power',
   components: {
     elPower:elPower,
+    myCanvas
   },
   data () {
     return {
@@ -253,24 +260,16 @@ export default {
     margin-bottom: 22px;
   }
 
-  .row2{
-
-  }
-
-
-
   .c1 {
-    margin-top: 0px;
-    margin-left: 5px;
-    margin-right:15px;
-  }
-
-  .span0 {
+    margin-top:-12px;
+    width:100%;
+    height:100%;
   }
 
   .m1 {
     width: 100%;
-    overflow: hidden;
+    height:100%;
+    /* overflow: hidden; */
   }
 
   .cardList {
@@ -280,7 +279,7 @@ export default {
 
   .el-container {
     height: 100%;
-
+    width:100%
   }
 
 
@@ -288,7 +287,7 @@ export default {
     height: 100%;
     width: 1500px;
     box-shadow: 1px 1px 10px 5px #c0c0c0;
-    margin: 60px;
+    /* margin: 60px; */
   }
 
   .el-main {
@@ -379,6 +378,7 @@ export default {
   height:100px;
   /* margin-left:-65px; */
   margin-bottom:20px;
+  
 }
 
 /* .row{
@@ -387,9 +387,31 @@ export default {
   padding-top: 20px;
 } */
 
-
-.el-input{
-
+.card1{
+     /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D); */
+    background-color:rgba(255, 255, 255, 0.3);
+    margin-top:20px;
+    margin-right:30px;
+    margin-left:10px;
 }
 
+.card2{
+     /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D); */
+    background-color:rgba(255, 255, 255, 0.3);
+    margin-right:30px;
+    margin-left:10px;
+}
+
+.el-main{
+   background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -o-linear-gradient(30deg, #373B44, #355C7D);
+    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+}
 </style>

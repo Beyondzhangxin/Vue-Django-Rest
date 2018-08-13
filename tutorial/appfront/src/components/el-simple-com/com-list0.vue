@@ -1,4 +1,6 @@
 <template>
+  <!-- <div class="str"> -->
+
   <el-row class="list">
     <!-- tableData数据的映射 -->
     <!-- v-loading="loading" -->
@@ -28,6 +30,7 @@
       </div>
     </el-row> -->
   </el-row>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -85,4 +88,6 @@
     margin-bottom: 0px;
     padding-bottom: 295px;
   }
+
+
 </style>

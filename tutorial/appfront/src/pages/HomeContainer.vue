@@ -72,11 +72,12 @@
 }
 
  .el-main {
-    background-color: #e3e3e3;
+    /* background-color: #e3e3e3; */
     /* background: -webkit-linear-gradient(30deg, #373B44,#3A6073); 
     background: -o-linear-gradient(30deg, #373B44, #3A6073); 
     background: -moz-linear-gradient(30deg, #373B44, #3A6073); 
     background: linear-gradient(30deg, #373B44, #3A6073); */
+
     height: 100%;
     padding-left: 0px;
     padding-right: 0px;
@@ -103,4 +104,12 @@
     z-index: auto;
     line-height: 20px;
   }
+
+.el-container{
+   /* background: -webkit-linear-gradient(30deg, rgba(55,59,68,0.5),rgba(53,92,125,0.5));
+    background: -o-linear-gradient(30deg, rgba(55,59,68,0.5), rgba(53,92,125,0.5));
+    background: -moz-linear-gradient(30deg, rgba(55,59,68,0.5), rgba(53,92,125,0.5));
+    background: linear-gradient(30deg, rgba(55,59,68,0.1),rgba(53,92,125,0.3)); */
+}
+
 </style>
