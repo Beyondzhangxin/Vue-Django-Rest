@@ -16,7 +16,7 @@ export default {
         var base_list = [];
         canvas.width = width;
         canvas.height = height;
-        
+
 
         // 绘制圆
         const drawRounds = (obj, index) => {
@@ -52,7 +52,10 @@ export default {
         //划线
         const drawLine = (list) => {
             list.map((item, index) => {
+<<<<<<< HEAD
                 // console.log("item:", item);
+=======
+>>>>>>> aae32b2b80aa697b1e227e6508ace50390345471
                 ctx.beginPath();
                 ctx.moveTo(item.x1, item.y1);
                 ctx.lineTo(item.x2, item.y2);
