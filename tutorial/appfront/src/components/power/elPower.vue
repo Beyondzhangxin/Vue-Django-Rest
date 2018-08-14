@@ -81,7 +81,7 @@ export default {
     background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, #373B44,#355C7D);
+    background: linear-gradient(30deg, rgb(180,180,180,0.2),#355C7D);
   }
 
 .image1{
