@@ -1,499 +1,556 @@
 <template>
-    <el-container>
-        <!-- 调用canvas -->
-        <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
-      <el-main>
+  <el-container>
+    <!-- 调用canvas -->
+    <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
+    <el-main>
 
-        <!-- <el-card class="maincard"> -->
+      <!-- <el-card class="maincard"> -->
 
-            <!-- <el-card class="card"> -->
-             <div class="inf"><strong>多功能光伏电站系统,图书馆微电网系统电站统计</strong></div>
-              <hr width=100% size=1 color=#bbbcbc style="FILTER: alpha(opacity=100,finishopacity=0)">
-          <div class="row0">
-            <el-row>
-              <el-col :span="8">
-                <div class="ca1">
-                  <el-card class="card2"><Gauge2/></el-card>
-                    <el-card class="card1">
-                    <div class="card1m c1m">
-                      <span>当前发电功率</span>
-                    </div>
-                    <div class="card1m">
-                      <div class="row1">总容量：<strong>{{(c1.total||"~")}}</strong> kWh</div>
-                      <div  class="row1">当日累计发电量：<strong>{{(c1.day||"~")}}</strong>  kWh</div>
-                      <div  class="row1">当月累计发电量：<strong>{{(c1.month||"~")}}</strong> 万kWh</div>
-                      <div class="row1">累计总发电量：<strong>{{(c1.sumAll||"~")}}</strong> 万kWh</div>
-                    </div>
+      <!-- <el-card class="card"> -->
+      <div class="inf"><strong>多功能光伏电站系统,图书馆微电网系统电站统计</strong></div>
+      <hr width=100%           size=1           color=#bbbcbc
+          style="FILTER: alpha(opacity=100,finishopacity=0)">
+      <div class="row0">
+        <el-row>
+          <el-col :span="8">
+            <div class="ca1">
+              <el-card class="card2">
+                <Gauge2 :percent="c1.day*100/95+'%'"/>
+              </el-card>
+              <el-card class="card1">
+                <div class="card1m c1m">
+                  <span>当前发电功率</span>
+                </div>
+                <div class="card1m">
+                  <div class="row1">总容量：<strong>{{(c1.total || "0.00")}}</strong> kWh</div>
+                  <div class="row1">当日累计发电量：<strong>{{(c1.day || "0.00")}}</strong> kWh</div>
+                  <div class="row1">当月累计发电量：<strong>{{(c1.month || "0.00")}}</strong> 万kWh</div>
+                  <div class="row1">累计总发电量：<strong>{{(c1.sumAll.toFixed(2) || "0.00")}}</strong> 万kWh</div>
+                </div>
+              </el-card>
+            </div>
+          </el-col>
+          <el-col :span="8">
+            <div class="ca2">
+              <el-card class="card2">
+                <Gauge2 :percent="((c2.act)*100/(c2.the)).toFixed(2)+'%'"/>
+              </el-card>
+              <el-card class="card1">
+                <div class="card1m c1m">
+                  <span>综合效率</span>
+                </div>
+                <div class="card1m">
+                  <div class="row1">理论电量：<strong>{{(c2.the || "~")}}</strong> kWh</div>
+                  <div class="row1">发电量：<strong>{{(c2.act || "~")}}</strong> kWh</div>
+                  <div class="row1">理论实际差值：<strong>{{( (c2.the - c2.act) || "~")}}</strong> kWh</div>
+                </div>
+              </el-card>
+            </div>
+          </el-col>
+          <el-col :span="8">
+            <div class="ca3">
+              <el-card class="card2">
+                <Gauge2 :percent="c3.eff+'%'"/>
+              </el-card>
+              <el-card class="card1">
+                <div class="card1m c1m">
+                  <span>逆变器转换效率</span>
+                </div>
+                <div class="card1m">
+                  <div class="row1">逆变器转换效率：<strong>{{(c3.eff || "~") + "" }}</strong> %</div>
+                </div>
+              </el-card>
+            </div>
+          </el-col>
+        </el-row>
+      </div>
+
+
+      <div class="row2">
+        <el-row>
+          <el-col :span="12">
+            <el-card class="card3">
+              <div class="card3Li">
+                <Line2 v-bind="settings.l1"></Line2>
+              </div>
+            </el-card>
+          </el-col>
+          <el-col :span="12">
+            <el-card class="card3">
+              <div class="card3Li">
+                <Line2 v-bind="settings.l2"></Line2>
+              </div>
+            </el-card>
+          </el-col>
+        </el-row>
+      </div>
+
+      <!-- 环保数据 -->
+      <div class="box">
+        <el-card class="box-card1">
+          <div slot="header" class="clearfix">
+            <span id="htop"><strong>环保数据</strong></span>
+            <el-button style="float: right; padding: 3px 0" type="text"></el-button>
+          </div>
+
+          <div class="data">
+            <el-row :gutter="60">
+              <el-col :span="4">
+                <div class="grid-content">
+                  <el-card class="elcard0">
+                    <el-row>
+                      <el-col :span="12">
+                        <div class="grid-content">
+                          <img src="../../assets/coal.png" id="image">
+                        </div>
+                      </el-col>
+                      <el-col :span="12">
+                        <div class="grid-content">
+                          <div class="text0">累计节约标准煤</div>
+                        </div>
+                      </el-col>
+                    </el-row>
+                    <div>{{msg1}}吨</div>
                   </el-card>
                 </div>
               </el-col>
-              <el-col :span="8">
-                <div class="ca2">
-                  <el-card class="card2"><Gauge2/></el-card>
-                  <el-card class="card1">
-                    <div class="card1m c1m">
-                      <span>综合效率</span>
-                    </div>
-                    <div class="card1m">
-                      <div class="row1">理论电量：<strong>{{(c2.the||"~")}}</strong> kWh</div>
-                      <div  class="row1">发电量：<strong>{{(c2.act||"~")}}</strong> kWh</div>
-                      <div  class="row1">理论实际差值：<strong>{{( (c2.the - c2.act)||"~")}}</strong> kWh</div>
-                    </div>
+
+              <el-col :span="4">
+                <div class="grid-content">
+                  <el-card class="elcard0">
+                    <el-row>
+                      <el-col :span="12">
+                        <div class="grid-content">
+                          <img src="../../assets/co2.png" id="image">
+                        </div>
+                      </el-col>
+                      <el-col :span="12">
+                        <div class="grid-content">
+                          <div class="text0">累计减排</div>
+                        </div>
+                      </el-col>
+                    </el-row>
+                    <div>{{msg2}}吨</div>
                   </el-card>
                 </div>
               </el-col>
-              <el-col :span="8">
-                <div class="ca3">
-                  <el-card class="card2"><Gauge2/></el-card>
-                  <el-card class="card1">
-                    <div class="card1m c1m">
-                      <span>逆变器转换效率</span>
-                    </div>
-                    <div class="card1m">
-                      <div class="row1">逆变器转换效率：<strong>{{(c3.eff||"~") +"" }}</strong> %</div>
-                    </div>
+
+              <el-col :span="4">
+                <div class="grid-content">
+                  <el-card class="elcard0">
+                    <el-row>
+                      <el-col :span="12">
+                        <div class="grid-content">
+                          <img src="../../assets/so2.png" id="image">
+                        </div>
+                      </el-col>
+                      <el-col :span="12">
+                        <div class="grid-content">
+                          <div class="text0">累计减排</div>
+                        </div>
+                      </el-col>
+                    </el-row>
+                    <div>{{msg3}}吨</div>
+                  </el-card>
+                </div>
+              </el-col>
+
+              <el-col :span="4">
+                <div class="grid-content">
+                  <el-card class="elcard0">
+                    <el-row>
+                      <el-col :span="12">
+                        <div class="grid-content">
+                          <img src="../../assets/no2.png" id="image">
+                        </div>
+                      </el-col>
+                      <el-col :span="12">
+                        <div class="grid-content">
+                          <div class="text0">累计减排</div>
+                        </div>
+                      </el-col>
+                    </el-row>
+                    <div>{{msg4}}kg</div>
+                  </el-card>
+                </div>
+              </el-col>
+
+              <el-col :span="4">
+                <div class="grid-content">
+                  <el-card class="elcard0">
+                    <el-row>
+                      <el-col :span="12">
+                        <div class="grid-content">
+                          <img src="../../assets/tree.png" id="image">
+                        </div>
+                      </el-col>
+                      <el-col :span="12">
+                        <div class="grid-content">
+                          <div class="text0">累计植树</div>
+                        </div>
+                      </el-col>
+                    </el-row>
+                    <div>{{msg5}}棵</div>
                   </el-card>
                 </div>
               </el-col>
             </el-row>
           </div>
+        </el-card>
+      </div>
 
+      <!-- </el-card> -->
 
-          <div class="row2">
-            <el-row>
-              <el-col :span="12">
-                <el-card class="card3">
-                  <div class="card3Li">
-                    <Line2 v-bind="settings.l1"></Line2>
-                  </div>
-                </el-card>
-              </el-col>
-              <el-col :span="12">
-                <el-card class="card3">
-                  <div class="card3Li">
-                    <Line2 v-bind="settings.l2"></Line2>
-                  </div>
-                </el-card>
-              </el-col>
-            </el-row>
-          </div>
-
-          <!-- 环保数据 -->
-          <div class="box">
-          <el-card class="box-card1">
-            <div slot="header" class="clearfix">
-              <span id="htop"><strong>环保数据</strong></span>
-              <el-button style="float: right; padding: 3px 0" type="text"></el-button>
-            </div>
-
-            <div class="data">
-              <el-row :gutter="60">
-                <el-col :span="4"><div class="grid-content">
-                  <el-card class="elcard0">
-                  <el-row>
-                    <el-col :span="12"><div class="grid-content">
-                      <img src="../../assets/coal.png" id="image">
-                    </div></el-col>
-                    <el-col :span="12"><div class="grid-content">
-                    <div class="text0">累计节约标准煤</div>
-                    </div></el-col>
-                  </el-row>
-                <div>{{msg1}}吨</div>
-                </el-card>
-                </div>
-                </el-col>
-
-                <el-col :span="4"><div class="grid-content">
-                  <el-card class="elcard0">
-                  <el-row>
-                    <el-col :span="12"><div class="grid-content">
-                      <img src="../../assets/co2.png" id="image">
-                    </div></el-col>
-                    <el-col :span="12"><div class="grid-content">
-                    <div class="text0">累计减排</div>
-                    </div></el-col>
-                  </el-row>
-                <div>{{msg2}}吨</div>
-                  </el-card>
-                </div></el-col>
-
-                <el-col :span="4"><div class="grid-content">
-                  <el-card class="elcard0">
-                  <el-row>
-                    <el-col :span="12"><div class="grid-content">
-                      <img src="../../assets/so2.png" id="image">
-                    </div></el-col>
-                    <el-col :span="12"><div class="grid-content">
-                    <div class="text0">累计减排</div>
-                    </div></el-col>
-                  </el-row>
-                <div>{{msg3}}吨</div>
-                  </el-card>
-                </div></el-col>
-
-                <el-col :span="4"><div class="grid-content">
-                  <el-card class="elcard0">
-                  <el-row>
-                    <el-col :span="12"><div class="grid-content">
-                      <img src="../../assets/no2.png" id="image">
-                    </div></el-col>
-                    <el-col :span="12"><div class="grid-content">
-                    <div class="text0">累计减排</div>
-                    </div></el-col>
-                  </el-row>
-                <div>{{msg4}}kg</div>
-                  </el-card>
-                </div></el-col>
-
-                <el-col :span="4"><div class="grid-content">
-                  <el-card class="elcard0">
-                   <el-row>
-                    <el-col :span="12"><div class="grid-content">
-                      <img src="../../assets/tree.png" id="image">
-                    </div></el-col>
-                    <el-col :span="12"><div class="grid-content">
-                    <div class="text0">累计植树</div>
-                    </div></el-col>
-                  </el-row>
-                <div>{{msg5}}棵</div>
-                  </el-card>
-                </div></el-col>
-              </el-row>
-            </div>
-          </el-card>
-          </div>
-
-         <!-- </el-card> -->
-
-      </el-main>
+    </el-main>
   </el-container>
 </template>
 
 <script>
-import Gauge1 from '../echarts_elements/Gauge1'
-import Line2 from '../echarts_elements/Line2'
-import Gauge2 from '../echarts_elements/Gauge2'
-// import myCanvas from 'vue-atom-canvas'
+  import Gauge1 from '../echarts_elements/Gauge1'
+  import Line2 from '../echarts_elements/Line2'
+  import Gauge2 from '../echarts_elements/Gauge2'
+  // import myCanvas from 'vue-atom-canvas'
 
 
-export default {
-  name : 'First',
-  components: {
-    Gauge1: Gauge1,
-    Gauge2: Gauge2,
-    Line2: Line2,
-    // myCanvas
-  },
-  mounted: function () {
-  },
-  methods: {
-    loadData(){
-      this.$ajax.get('http://localhost:8000/system/echartsDataForFZD')
-      .then(function (response) {
-        //处理数据
-        var list1 = [];
-        var list2 = [];
-        for (var i = 0; i < response.data.data.series.length; i++) {
-          list1.push(response.data.data.series[i][0]);
-          list2.push(response.data.data.xAxis[i][0]);
-        }
+  export default {
+    name: 'First',
+    components: {
+      Gauge1: Gauge1,
+      Gauge2: Gauge2,
+      Line2: Line2,
+      // myCanvas
+    },
 
-        console.log(1234124124);
-        console.log(this.settings.l1);
-        this.settings.l1.option.series[0].data = list1;
-        this.settings.l1.option.xAxis[0].data = list2;
+    mounted: function () {
+      this.loadData();
+      this.loadData2;
+      this.envProtectData();
+    },
+    methods: {
+      envProtectData(){
+        this.$ajax.get('http://localhost:8000/system/getHBSJ')
+          .then(function (response) {
+            //处理数据
+            hb_data = response.data.data;
+            console.log(hb_data);
+            this.msg1 = hb_data.msg1;
+            this.msg2 = hb_data.msg2;
+            this.msg3 = hb_data.msg3;
+            this.msg4 = hb_data.msg4;
+            this.msg5 = hb_data.msg5;
 
-      }.bind(this))
-      .catch(function (error) {
-        return 0;
-      });
-    }
-  },
-  mounted: function () {
-    this.loadData();
-  },
-  methods: {
-    loadData(){
-      this.$ajax.get('http://localhost:8000/system/getDQFDGL')
-      .then(function (response) {
-        //处理数据
-        this.c1 = response.data.data.c1
-
-        console.log(this.c1);
-      }.bind(this))
-      .catch(function (error) {
-        return 0;
-      });
-
-    }
-  },
-  data () {
-    return {
-
-       dotsNum: 60,
-       activeName: 'first',
-      //配置最下面的list
-
-
-      msg1:146.23,
-      msg2:393.09,
-      msg3:10.86,
-      msg4:5429.41,
-      msg5:988.97,
-
-      c1: {
-        id: 'c1',
+          }.bind(this))
+          .catch(function (error) {
+            return 0;
+          });
       },
-      c2: {
-        the: 1,
-        act: 1,
+      loadData(){
+        this.$ajax.get('http://localhost:8000/system/getDQFDGL')
+          .then(function (response) {
+            //处理数据
+            this.c1 = response.data.data.c1
+
+          }.bind(this))
+          .catch(function (error) {
+            return 0;
+          });
+
       },
-      c3: {
-        eff: 1,
-      },
-      tabs: [
-        {text: '累计节约标准煤'},
-        {text: '累计减排'},
-        {text: '累计减排'},
-        {text: '累计减排'},
-        {text: '累计植树'},
-      ],
-      //配置组件option
-      settings: {
-        g1:{
-          id: 'gauge1',
-          //需要输入的值-
-          value: 0,
-          option:{
-            tooltip : {
-              formatter: "{a} <br/>{b} : {c}%"
-            },
-            toolbox: {
-              feature: {
-                restore: {},
-                saveAsImage: {}
-              }
-            },
-            series: [
-              {
-                name: '当前发电功率',
-                type: 'gauge',
-                detail: {formatter:'{value}kW'},
-                data: [{value: 50, name: '当前发电功率'}]
-              }
-            ]
-          },
+      loadData2(){
+        this.$ajax.get('http://localhost:8000/system/echartsDataForFZD')
+          .then(function (response) {
+            //处理数据
+            var list1 = [];
+            var list2 = [];
+            for (var i = 0; i < response.data.data.series.length; i++) {
+              list1.push(response.data.data.series[i][0]);
+              list2.push(response.data.data.xAxis[i][0]);
+            }
+
+            this.settings.l1.option.series[0].data = list1;
+            this.settings.l1.option.xAxis[0].data = list2;
+
+          }.bind(this))
+          .catch(function (error) {
+            return 0;
+          });
+
+
+      }
+    },
+    data () {
+      return {
+
+        dotsNum: 60,
+        activeName: 'first',
+        //配置最下面的list
+        percentage: {
+          c1: (50 + Math.round(Math.random() * 50)) / 100,
+          c2: (50 + Math.round(Math.random() * 50)) / 100,
+          c3: (50 + Math.round(Math.random() * 50)) / 100
+
         },
-        g2:{
-          id: 'gauge2',
-          option:{
-            tooltip : {
-              formatter: "{a} <br/>{b} : {c}%"
-            },
-            toolbox: {
-              feature: {
-                restore: {},
-                saveAsImage: {}
-              }
-            },
-            series: [
-              {
-                name: '业务指标',
-                type: 'gauge',
-                detail: {formatter:'{value}%'},
-                data: [{value: 50, name: '综合发电效率'}]
-              }
-            ]
-          },
+
+        msg1: 77,
+        msg2: 393.09,
+        msg3: 10.86,
+        msg4: 5429.41,
+        msg5: 988.97,
+
+        c1: {
+          id: 'c1',
         },
-        g3:{
-          id: 'gauge3',
-          option:{
-            tooltip : {
-              formatter: "{a} <br/>{b} : {c}%"
-            },
-            toolbox: {
-              feature: {
-                restore: {},
-                saveAsImage: {}
-              }
-            },
-            series: [
-              {
-                name: '业务指标',
-                type: 'gauge',
-                detail: {formatter:'{value}%'},
-                data: [{value: 50, name: '逆变器转换效率'}]
-              }
-            ]
-          },
+        c2: {
+          the: Math.round(500 + Math.random() * 500),
+          act: Math.round(Math.random() * 500),
         },
-        l1:{
-          id: 'line1',
-          request: ['http://localhost:8000/system/echartsDataForInverterFDL'],
-          option:{
-            title: {
-              text: '当日发电量',
+        c3: {
+          eff: Math.round(Math.random() * 100),
+        },
+        tabs: [
+          {text: '累计节约标准煤'},
+          {text: '累计减排'},
+          {text: '累计减排'},
+          {text: '累计减排'},
+          {text: '累计植树'},
+        ],
+        //配置组件option
+        settings: {
+          g1: {
+            id: 'gauge1',
+            //需要输入的值-
+
+            value: 0,
+            option: {
+              tooltip: {
+                formatter: "{a} <br/>{b} : {c}%"
+              },
+              toolbox: {
+                feature: {
+                  restore: {},
+                  saveAsImage: {}
+                }
+              },
+              series: [
+                {
+                  name: '当前发电功率',
+                  type: 'gauge',
+                  detail: {formatter: '{value}kW'},
+                  data: [{value: 50, name: '当前发电功率'}]
+                }
+              ]
             },
-          tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-              type: 'cross',
-              label: {
-                backgroundColor: '#283b56'
-              }
-            }
           },
-          legend: {
-            data:['逆变器发电量']
-          },
-          toolbox: {
-            show: true,
-            feature: {
-              dataView: {readOnly: false},
-              restore: {},
-              saveAsImage: {}
-            }
-          },
-          dataZoom: {
-            show: false,
-            start: 0,
-            end: 100
-          },
-          xAxis: [
-            {
-              type: 'category',
-              boundaryGap: true,
-              data: (function (){
-                var now = new Date();
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.unshift(now.toLocaleTimeString().replace(/^\D*/,''));
-                    now = new Date(now - 2000);
+          g2: {
+            id: 'gauge2',
+            option: {
+              tooltip: {
+                formatter: "{a} <br/>{b} : {c}%"
+              },
+              toolbox: {
+                feature: {
+                  restore: {},
+                  saveAsImage: {}
                 }
-                return res;
-              })()
-          }
-        ],
-        yAxis: [
-          {
-            type: 'value',
-            scale: true,
-            name: 'kWh',
-          }
-        ],
-        series: [
-          {
-            name:'逆变器发电量',
-            type:'bar',
-            xAxisIndex: 0,
-            yAxisIndex: 0,
-            data:(function (){
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.push(Math.round(Math.random() * 1000));
+              },
+              series: [
+                {
+                  name: '业务指标',
+                  type: 'gauge',
+                  detail: {formatter: '{value}%'},
+                  data: [{value: 50, name: '综合发电效率'}]
                 }
-                return res;
-            })()
-          },
-        ]
-      },
-      },
-        l2:{
-          id: 'line2',
-          request: ['http://localhost:8000/system/echartsDataForInverterFDGL','http://localhost:8000/system/echartsDataForFZD'],
-          option: {
-            title: {
-              text: '当日发电功率',
+              ]
             },
-          tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-              type: 'cross',
-              label: {
-                backgroundColor: '#283b56'
-              }
-            }
           },
-          legend: {
-            data:['逆变器发电功率', '总辐照度']
-          },
-          toolbox: {
-            show: true,
-            feature: {
-              dataView: {readOnly: false},
-              restore: {},
-              saveAsImage: {}
-            }
-          },
-          dataZoom: {
-            show: false,
-            start: 0,
-            end: 100
-          },
-          xAxis: [
-            {
-              type: 'category',
-              boundaryGap: true,
-              data: (function (){
-                var now = new Date();
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.unshift(now.toLocaleTimeString().replace(/^\D*/,''));
-                    now = new Date(now - 2000);
+          g3: {
+            id: 'gauge3',
+            option: {
+              tooltip: {
+                formatter: "{a} <br/>{b} : {c}%"
+              },
+              toolbox: {
+                feature: {
+                  restore: {},
+                  saveAsImage: {}
                 }
-                return res;
-              })()
+              },
+              series: [
+                {
+                  name: '业务指标',
+                  type: 'gauge',
+                  detail: {formatter: '{value}%'},
+                  data: [{value: 50, name: '逆变器转换效率'}]
+                }
+              ]
+            },
           },
-        ],
-        yAxis: [
-          {
-            type: 'value',
+          l1: {
+            id: 'line1',
+            request: ['http://localhost:8000/system/echartsDataForInverterFDL'],
+            option: {
+              title: {
+                text: '当日发电量',
+              },
+              tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                  type: 'cross',
+                  label: {
+                    backgroundColor: '#283b56'
+                  }
+                }
+              },
+              legend: {
+                data: ['逆变器发电量']
+              },
+              toolbox: {
+                show: true,
+                feature: {
+                  dataView: {readOnly: false},
+                  restore: {},
+                  saveAsImage: {}
+                }
+              },
+              dataZoom: {
+                show: false,
+                start: 0,
+                end: 100
+              },
+              xAxis: [
+                {
+                  type: 'category',
+                  boundaryGap: true,
+                  data: (function () {
+                    var now = new Date();
+                    var res = [];
+                    var len = 10;
+                    while (len--) {
+                      res.unshift(now.toLocaleTimeString().replace(/^\D*/, ''));
+                      now = new Date(now - 2000);
+                    }
+                    return res;
+                  })()
+                }
+              ],
+              yAxis: [
+                {
+                  type: 'value',
+                  scale: true,
+                  name: 'kWh',
+                }
+              ],
+              series: [
+                {
+                  name: '逆变器发电量',
+                  type: 'bar',
+                  xAxisIndex: 0,
+                  yAxisIndex: 0,
+                  data: (function () {
+                    var res = [];
+                    var len = 10;
+                    while (len--) {
+                      res.push(Math.round(Math.random() * 1000));
+                    }
+                    return res;
+                  })()
+                },
+              ]
+            },
+          },
+          l2: {
+            id: 'line2',
+            request: ['http://localhost:8000/system/echartsDataForInverterFDGL', 'http://localhost:8000/system/echartsDataForFZD'],
+            option: {
+              title: {
+                text: '当日发电功率',
+              },
+              tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                  type: 'cross',
+                  label: {
+                    backgroundColor: '#283b56'
+                  }
+                }
+              },
+              legend: {
+                data: ['逆变器发电功率', '总辐照度']
+              },
+              toolbox: {
+                show: true,
+                feature: {
+                  dataView: {readOnly: false},
+                  restore: {},
+                  saveAsImage: {}
+                }
+              },
+              dataZoom: {
+                show: false,
+                start: 0,
+                end: 100
+              },
+              xAxis: [
+                {
+                  type: 'category',
+                  boundaryGap: true,
+                  data: (function () {
+                    var now = new Date();
+                    var res = [];
+                    var len = 10;
+                    while (len--) {
+                      res.unshift(now.toLocaleTimeString().replace(/^\D*/, ''));
+                      now = new Date(now - 2000);
+                    }
+                    return res;
+                  })()
+                },
+              ],
+              yAxis: [
+                {
+                  type: 'value',
 
-            name: 'kW',
+                  name: 'kW',
+
+                }
+              ],
+              series: [
+                {
+                  name: '逆变器发电功率',
+                  type: 'line',
+                  xAxisIndex: 0,
+                  yAxisIndex: 0,
+                  data: (function () {
+                    var res = [];
+                    var len = 10;
+                    while (len--) {
+                      res.push(Math.round(Math.random() * 1000));
+                    }
+                    return res;
+                  })()
+                },
+                {
+                  name: '总辐照度',
+                  type: 'line',
+                  xAxisIndex: 0,
+                  yAxisIndex: 0,
+                  data: (function () {
+                    var res = [];
+                    var len = 10;
+                    while (len--) {
+                      res.push(Math.round(Math.random() * 1000));
+                    }
+                    return res;
+                  })()
+                },
+              ]
+            },
 
           }
-        ],
-        series: [
-          {
-            name:'逆变器发电功率',
-            type:'line',
-            xAxisIndex: 0,
-            yAxisIndex: 0,
-            data:(function (){
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.push(Math.round(Math.random() * 1000));
-                }
-                return res;
-            })()
-          },
-          {
-            name:'总辐照度',
-            type:'line',
-            xAxisIndex: 0,
-            yAxisIndex: 0,
-            data:(function (){
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.push(Math.round(Math.random() * 1000));
-                }
-                return res;
-            })()
-          },
-        ]
-      },
-
         }
       }
     }
   }
-}
 </script>
 <style scoped>
 
@@ -514,10 +571,10 @@ export default {
     width: 700px;
     margin-bottom: 20px;
     /* background-color:rgba(255, 255, 255, 0.3) */
-     background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -webkit-linear-gradient(30deg, #373B44, #355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
+    background: linear-gradient(30deg, rgb(55, 59, 68, 0.2), #355C7D);
   }
 
   .card1m span {
@@ -531,7 +588,7 @@ export default {
     width: 100% large;
     height: 85px;
     font-size: 14px;
-    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   }
 
   .row1 {
@@ -548,10 +605,10 @@ export default {
     color: #974e45;
   }
 
-  .row2{
-    padding-left:100px;
-    padding-right:-40px;
-    margin-top:-20px;
+  .row2 {
+    padding-left: 100px;
+    padding-right: -40px;
+    margin-top: -20px;
   }
 
   .card1 {
@@ -560,11 +617,11 @@ export default {
     margin-left: -15px;
     width: 500px;
     height: 300px;
-     /* background-color:rgba(255, 255, 255, 0.2) */
-      background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    /* background-color:rgba(255, 255, 255, 0.2) */
+    background: -webkit-linear-gradient(30deg, #373B44, #355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, rgb(55,59,68,0.3),#355C7D);
+    background: linear-gradient(30deg, rgb(55, 59, 68, 0.3), #355C7D);
   }
 
   .card2 {
@@ -574,7 +631,7 @@ export default {
     top: 100px;
     left: 120px;
     z-index: 1;
-     background-color:rgba(190, 30, 30, 0.4)
+    background-color: rgba(190, 30, 30, 0.4)
   }
 
   /* .mainBody {
@@ -589,7 +646,7 @@ export default {
     height: 50%;
   }
 
-  .fml{
+  .fml {
     height: 33%;
     margin: 30px;
   }
@@ -611,7 +668,7 @@ export default {
   }
 
   .col1 {
-    border:5px dotted #12AFE3;
+    border: 5px dotted #12AFE3;
     background: #55d5e0;
   }
 
@@ -628,7 +685,7 @@ export default {
 
     border-radius: 5px;
     text-align: center;
-    line-height:30px;
+    line-height: 30px;
     font-size: 14px;
     color: gray;
   }
@@ -640,12 +697,12 @@ export default {
   .el-container {
     height: 100%;
     overflow-y: hidden;
-    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+    background: -webkit-linear-gradient(30deg, #373B44, #355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-   background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
-    margin-left:-12px;
-    margin-top:-12px;
+    background: linear-gradient(30deg, rgb(180, 180, 180, 0.1), #355C7D);
+    margin-left: -12px;
+    margin-top: -12px;
   }
 
   .el-row {
@@ -653,85 +710,86 @@ export default {
     margin-bottom: 20px;
   }
 
-.el-col {
-  border-radius: 4px;
-  height: 100%;
-}
+  .el-col {
+    border-radius: 4px;
+    height: 100%;
+  }
 
-.grid-content {
-  border-radius: 4px;
-  min-height: 36px;
+  .grid-content {
+    border-radius: 4px;
+    min-height: 36px;
 
-}
-.row-bg {
-  padding: 10px 0;
-  background-color: #f9fafc;
-}
+  }
 
-.envData {
-  background-color: rgb(255, 255, 255);
-  height: 230px;
-  height: 80%;
+  .row-bg {
+    padding: 10px 0;
+    background-color: #f9fafc;
+  }
 
-}
+  .envData {
+    background-color: rgb(255, 255, 255);
+    height: 230px;
+    height: 80%;
 
-.envData li{
-  float: left;
-  width: 20%;
-  list-style: none;
-}
+  }
 
-.icon {
-  width: 50%;
-}
+  .envData li {
+    float: left;
+    width: 20%;
+    list-style: none;
+  }
 
-.li1 {
-  list-style-type: none;
-  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
-  font-size: 14px;
-  float: left;
-  position: relative;
-  top: 50px;
-}
+  .icon {
+    width: 50%;
+  }
 
-.text0{
-  margin-top:5px;
-  margin-right:10px;
-}
+  .li1 {
+    list-style-type: none;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+    font-size: 14px;
+    float: left;
+    position: relative;
+    top: 50px;
+  }
 
-.box-card1{
+  .text0 {
+    margin-top: 5px;
+    margin-right: 10px;
+  }
 
-   background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
+  .box-card1 {
+
+    background: -webkit-linear-gradient(30deg, #373B44, #355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
+    background: linear-gradient(30deg, rgb(55, 59, 68, 0.2), #355C7D);
 
-}
+  }
 
-.box{
-  margin-right:20px;
-  margin-left:30px;
-  margin-top:-20px;
-  margin-bottom:20px;
+  .box {
+    margin-right: 20px;
+    margin-left: 30px;
+    margin-top: -20px;
+    margin-bottom: 20px;
 
-}
+  }
 
-.data{
-  padding-left:150px;
-}
+  .data {
+    padding-left: 150px;
+  }
 
-.inf{
-  font-size:20px;
-  font-family: 'STHeiti Light [STXihei]' ;
-  padding-top:10px;
-}
+  .inf {
+    font-size: 20px;
+    font-family: 'STHeiti Light [STXihei]';
+    padding-top: 10px;
+  }
 
-.row0{
-  margin-top:-80px;
-}
+  .row0 {
+    margin-top: -80px;
+  }
 
-.elcard0{
-  background-color:rgba(255, 255, 255, 0.3)
-}
+  .elcard0 {
+    background-color: rgba(255, 255, 255, 0.3)
+  }
 
 </style>
