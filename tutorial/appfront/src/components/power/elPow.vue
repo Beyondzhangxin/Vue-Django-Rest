@@ -49,6 +49,9 @@
                   <div class="con">正常&nbsp&nbsp&nbsp&nbsp<i class="el-icon-circle-check"></i></div>
                   <div class="mes">消息：{{msg10}}条</div>
                 </div></el-col>
+                +
+
+
                 </el-row>
             </div>
           </el-card>

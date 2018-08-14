@@ -4,7 +4,7 @@
         <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
 
         <el-main class="m1" style="height: 100%">
-        
+
           <div class="mov">
             <el-card class="card1">
               <el-row>
@@ -67,7 +67,7 @@
                 </el-col>
               </el-row>
             </el-card>
-          
+
 
           <div class="mm">
             <el-col :span="24"><div class="grid-content"></div></el-col>
@@ -101,7 +101,7 @@ export default {
       //对应elpower中属性
       //依次是总装机容量 当前运行功率 当日有效时数 当月有效时数
       cardLists: [
-      
+
         // {
         //   id: 'SH',
         //   msg1: 1,
@@ -148,13 +148,7 @@ export default {
           label: '全部'
         },{
           value: 'BJ',
-          label: '北京'
-        },{
-          value: 'SH',
-          label: '上海',
-        },{
-          value: 'SZ',
-          label: '深圳'
+          label: '青海'
         },
       ],
         //和el-select选中程序同步
@@ -379,7 +373,7 @@ export default {
   height:100px;
   /* margin-left:-65px; */
   margin-bottom:20px;
-  
+
 }
 
 /* .row{

@@ -3,11 +3,11 @@
         <!-- 调用canvas -->
         <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
       <el-main>
-        
+
         <!-- <el-card class="maincard"> -->
 
             <!-- <el-card class="card"> -->
-             <div class="inf"><strong>北京，上海，深圳电站统计</strong></div>
+             <div class="inf"><strong>多功能光伏电站系统,图书馆微电网系统电站统计</strong></div>
               <hr width=100% size=1 color=#bbbcbc style="FILTER: alpha(opacity=100,finishopacity=0)">
           <div class="row0">
             <el-row>
@@ -185,8 +185,6 @@ export default {
     // myCanvas
   },
   mounted: function () {
-    //this.load();
-    //this.loadData();
   },
   methods: {
     loadData(){
@@ -209,32 +207,9 @@ export default {
       .catch(function (error) {
         return 0;
       });
-      // console.log(124141452355688728735);
-      // this.$ajax.get('http://localhost:8000/system/echartsDataForInverterFDGL')
-      // .then(function (response) {
-      //   //处理数据
-      //   console.log(9956079);
-      //   console.log(asdas);
-      //   var list1 = [];
-      //   var list2 = [];
-      //   for (var i = 0; i < response.data.data.series.length; i++) {
-      //     list1.push(response.data.data.series[i][0]);
-      //     list2.push(response.data.data.xAxis[i][0]);
-      //   }
-      //
-      //
-      //   console.log(this.settings.l2);
-      //   this.settings.l2.option.series[0].data = list1;
-      //   this.settings.l2.option.xAxis[0].data = list2;
-      //
-      // }.bind(this))
-      // .catch(function (error) {
-      //   return 0;
-      // });
     }
   },
   mounted: function () {
-    //this.load();
     this.loadData();
   },
   methods: {
@@ -242,8 +217,6 @@ export default {
       this.$ajax.get('http://localhost:8000/system/getDQFDGL')
       .then(function (response) {
         //处理数据
-        console.log(895489389568);
-        console.log(this.c1);
         this.c1 = response.data.data.c1
 
         console.log(this.c1);
@@ -251,28 +224,7 @@ export default {
       .catch(function (error) {
         return 0;
       });
-      // console.log(124141452355688728735);
-      // this.$ajax.get('http://localhost:8000/system/echartsDataForInverterFDGL')
-      // .then(function (response) {
-      //   //处理数据
-      //   console.log(9956079);
-      //   console.log(asdas);
-      //   var list1 = [];
-      //   var list2 = [];
-      //   for (var i = 0; i < response.data.data.series.length; i++) {
-      //     list1.push(response.data.data.series[i][0]);
-      //     list2.push(response.data.data.xAxis[i][0]);
-      //   }
-      //
-      //
-      //   console.log(this.settings.l2);
-      //   this.settings.l2.option.series[0].data = list1;
-      //   this.settings.l2.option.xAxis[0].data = list2;
-      //
-      // }.bind(this))
-      // .catch(function (error) {
-      //   return 0;
-      // });
+
     }
   },
   data () {
@@ -748,7 +700,7 @@ export default {
 }
 
 .box-card1{
-  
+
    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
