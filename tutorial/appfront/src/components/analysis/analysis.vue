@@ -97,7 +97,7 @@
     <!-- main3 -->
     <el-main id="main3">
       <div class="m3">
-        <Line2 v-bind="l2"></Line2>
+        <Line3 v-bind="l2"></Line3>
       </div>
     </el-main>
     <!-- </el-container> -->
@@ -106,13 +106,13 @@
 
 
 <script>
-  import Line2 from '../echarts_elements/Line2'
+  import Line3 from '../echarts_elements/Line3'
   // import myCanvas from 'vue-atom-canvas'
 
   export default {
     name: 'analysis',
     components: {
-      Line2: Line2,
+      Line3: Line3,
       // myCanvas
     },
     methods: {
@@ -125,6 +125,8 @@
         )
           .then(function (response) {
             //处理数据
+            console.log(12412421121);
+            console.log(response);
             for (var i = 0; i < response.data.data.series.length; i++) {
               this.l2.option.series.push({
                 data: response.data.data.series[i].data,
@@ -135,7 +137,7 @@
               })
             }
             this.l2.option.xAxis[0].data = response.data.data.xAxis[0].data
-
+            console.log(this.l2.option);
             //{"bwrq": "2018-03-21", "ljfd": "5346.532596464663", "zjrl": 50.0, "dqgl": null, "jrdx": 0, "jrfd": 0.0}
           }.bind(this))
           .catch(function (error) {
