@@ -51,7 +51,12 @@
       }
     },
     //mounted为vue对象的生命周期
-
+    watch: {
+   // 如果 `question` 发生改变，这个函数就会运行
+      data: function (newQuestion, oldQuestion) {
+        this.showAll();
+      }
+    },
     mounted: function() {
       this.showAll();
     },
