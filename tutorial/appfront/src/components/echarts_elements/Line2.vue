@@ -82,20 +82,20 @@ export default {
     },
     drawLine () {
       // 基于准备好的dom，初始化echarts实例
-      this.line1 = echarts.init(document.getElementById(this.id))
+      var line1 = echarts.init(document.getElementById(this.id))
       //初始化变量
       // 绘制图表
       console.log(this.option);
-      this.line1.setOption(this.option);
+      line1.setOption(this.option);
+      console.log(235353);
       setTimeout(function (){
         window.onresize = function () {
-          this.line1.resize();
+          line1.resize();
         }
       },200);
     },
     updateData () {
-    
-      this.line1.setOption(this.option)
+      this.drawLine()
     }
   }
 }

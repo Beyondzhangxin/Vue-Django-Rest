@@ -65,7 +65,7 @@
               </el-pagination>
 
           </el-main>
-       
+
     <!-- </el-container> -->
   </div>
 </template>
@@ -84,14 +84,14 @@
     },
     data(){
       return {
-        data: 'http://localhost:8000/system/getDetectionInfo?pageNum=1&pageSize=2',
+        data: 'http://localhost:8000/system/getDetectionInfo?pageNum=1&pageSize=10',
         page: 1
         // pageSize: 2
       }
     },
     methods: {
       handleCurrentChange(val) {
-        this.data = 'http://127.0.0.1:8000/pv/get/detection/2018/1/18/' + '?page='+ val;
+        this.data = 'http://localhost:8000/system/getDetectionInfo?pageNum='+ val +'&pageSize=10';
         console.log(this.data);
       }
     },
@@ -217,7 +217,7 @@
 
 /* .card2 .el-pagination {
   margin-left: 35%;
-  
+
 } */
 
 /* #card0{
