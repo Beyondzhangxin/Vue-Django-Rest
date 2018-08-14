@@ -4,7 +4,7 @@
     <!-- 登陆框 -->
       <div class="login">
         <div class="mes">系统登录</div>
-          <el-form>
+          <el-form inline-message :model="loginForm" :rules="loginRules" ref="loginForm">
            
     	      <el-input class="user" prefix-icon="el-icon-edit" v-model="account" @blur="inputBlur('user',account)" type="text" placeholder="请输入账号" ></el-input>
               <p></p> 
@@ -66,9 +66,9 @@ export default {
 .effect{
     width: 100%;
     height: 100%;
-    background: -webkit-linear-gradient(30deg, rgba(55,59,68,0.5),rgba(53,92,125,0.5));
-    background: -o-linear-gradient(30deg, rgba(55,59,68,0.5), rgba(53,92,125,0.5));
-    background: -moz-linear-gradient(30deg, rgba(55,59,68,0.5), rgba(53,92,125,0.5));
+    background: -webkit-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
+    background: -o-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
+    background: -moz-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
     background: linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
 }
 

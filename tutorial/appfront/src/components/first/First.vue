@@ -547,10 +547,10 @@
     width: 700px;
     margin-bottom: 20px;
     /* background-color:rgba(255, 255, 255, 0.3) */
-    background: -webkit-linear-gradient(30deg, #373B44, #355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, rgb(55, 59, 68, 0.2), #355C7D);
+     background: -webkit-linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
+    background: -o-linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
+    background: -moz-linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
+    background: linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
   }
 
   .card1m span {
@@ -593,11 +593,11 @@
     margin-left: -15px;
     width: 500px;
     height: 300px;
-    /* background-color:rgba(255, 255, 255, 0.2) */
-    background: -webkit-linear-gradient(30deg, #373B44, #355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, rgb(55, 59, 68, 0.3), #355C7D);
+     /* background-color:rgba(255, 255, 255, 0.2) */
+      background: -webkit-linear-gradient(30deg, rgb(55,59,68,0.3),#355C7D);
+    background: -o-linear-gradient(30deg, rgb(55,59,68,0.3),#355C7D);
+    background: -moz-linear-gradient(30deg, rgb(55,59,68,0.3),#355C7D);
+    background: linear-gradient(30deg, rgb(55,59,68,0.3),#355C7D);
   }
 
   .card2 {
@@ -673,12 +673,12 @@
   .el-container {
     height: 100%;
     overflow-y: hidden;
-    background: -webkit-linear-gradient(30deg, #373B44, #355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, rgb(180, 180, 180, 0.1), #355C7D);
-    margin-left: -12px;
-    margin-top: -12px;
+    background: -webkit-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+    background: -o-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+    background: -moz-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+   background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+    margin-left:-12px;
+    margin-top:-12px;
   }
 
   .el-row {
@@ -686,59 +686,58 @@
     margin-bottom: 20px;
   }
 
-  .el-col {
-    border-radius: 4px;
-    height: 100%;
-  }
+.el-col {
+  border-radius: 4px;
+  height: 100%;
+}
 
-  .grid-content {
-    border-radius: 4px;
-    min-height: 36px;
+.grid-content {
+  border-radius: 4px;
+  min-height: 36px;
 
-  }
+}
+.row-bg {
+  padding: 10px 0;
+  background-color: #f9fafc;
+}
 
-  .row-bg {
-    padding: 10px 0;
-    background-color: #f9fafc;
-  }
+.envData {
+  background-color: rgb(255, 255, 255);
+  height: 230px;
+  height: 80%;
 
-  .envData {
-    background-color: rgb(255, 255, 255);
-    height: 230px;
-    height: 80%;
+}
 
-  }
+.envData li{
+  float: left;
+  width: 20%;
+  list-style: none;
+}
 
-  .envData li {
-    float: left;
-    width: 20%;
-    list-style: none;
-  }
+.icon {
+  width: 50%;
+}
 
-  .icon {
-    width: 50%;
-  }
+.li1 {
+  list-style-type: none;
+  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+  font-size: 14px;
+  float: left;
+  position: relative;
+  top: 50px;
+}
 
-  .li1 {
-    list-style-type: none;
-    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
-    font-size: 14px;
-    float: left;
-    position: relative;
-    top: 50px;
-  }
+.text0{
+  margin-top:5px;
+  margin-right:10px;
+}
 
-  .text0 {
-    margin-top: 5px;
-    margin-right: 10px;
-  }
-
-  .box-card1 {
-
-    background: -webkit-linear-gradient(30deg, #373B44, #355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, rgb(55, 59, 68, 0.2), #355C7D);
+.box-card1{
+  
+   background: -webkit-linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
+    background: -o-linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
+    background: -moz-linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
+    background: linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
 
   }
 
