@@ -4,11 +4,11 @@
         <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
 
         <el-main class="m1" style="height: 100%">
-        
+
           <div class="mov">
             <el-card class="card1">
               <el-row>
-                <span id="line" v-for="item in items[0]" :key="item.id">{{ item.key }} <strong>{{ item.value +' '+ item.unit }}</strong></span>
+                <span id="line" v-for="item in items" :key="item.id">{{ item.key }} <strong>{{ item.value +' '+ item.unit }}</strong></span>
               </el-row>
               <el-row>
               <el-col :span="24">
@@ -67,7 +67,7 @@
                 </el-col>
               </el-row>
             </el-card>
-          
+
 
           <div class="mm">
             <el-col :span="24"><div class="grid-content"></div></el-col>
@@ -101,7 +101,7 @@ export default {
       //对应elpower中属性
       //依次是总装机容量 当前运行功率 当日有效时数 当月有效时数
       cardLists: [
-      
+
         // {
         //   id: 'SH',
         //   msg1: 1,
@@ -115,7 +115,6 @@ export default {
 
       ],
       items: [
-        [
           {
             key: "电站总数:",
             index: "dzzs",
@@ -130,17 +129,16 @@ export default {
           },
           {
             key: "今日总发电量:",
-            index: "ljzjd1",
+            index: "jrfdl",
             value: 3038.26,
             unit: "kWh",
           },
           {
             key: "累计总发电量:",
-            index: "",
+            index: "ljzjdl",
             value: 36.22,
             unit: "万kWh",
-          },
-        ],
+          }
       ],
       options5: [
         {
@@ -175,12 +173,16 @@ export default {
     loadData(){
       this.$ajax.get('http://localhost:8000/system/getStationMonitorInfo')
       .then(function (response) {
+        console.log(737252537);
+        console.log(response.data);
         //处理数据\
-        for (var i = 0; i < this.items[0].length; i++) {
-          console.log(response.data.data.items[i]);
-          this.items[0][i].value = response.data.data.items[i]
+        for (var i = 0; i < this.items.length; i++) {
+          if (this.items[i].index) {
+            this.items[i].value = response.data.data.items[this.items[i].index]
+          }
         }
-        console.log(3235235325);
+        console.log(this.items);
+
         console.log(response.data.data.cardLists);
         for (var i = 0; i < response.data.data.cardLists.length; i++) {
           this.cardLists.push(response.data.data.cardLists[i])
@@ -379,7 +381,7 @@ export default {
   height:100px;
   /* margin-left:-65px; */
   margin-bottom:20px;
-  
+
 }
 
 /* .row{

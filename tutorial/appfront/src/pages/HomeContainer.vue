@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <!-- 调用canvas -->
-        <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
+        <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
 
     <!-- 导入header-->
     <el-header><HomeHeader/></el-header>
@@ -77,9 +77,9 @@
 
  .el-main {
     /* background-color: #e3e3e3; */
-    /* background: -webkit-linear-gradient(30deg, #373B44,#3A6073); 
-    background: -o-linear-gradient(30deg, #373B44, #3A6073); 
-    background: -moz-linear-gradient(30deg, #373B44, #3A6073); 
+    /* background: -webkit-linear-gradient(30deg, #373B44,#3A6073);
+    background: -o-linear-gradient(30deg, #373B44, #3A6073);
+    background: -moz-linear-gradient(30deg, #373B44, #3A6073);
     background: linear-gradient(30deg, #373B44, #3A6073); */
 
     height: 100%;
