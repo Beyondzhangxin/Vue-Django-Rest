@@ -146,13 +146,7 @@ export default {
           label: '全部'
         },{
           value: 'BJ',
-          label: '北京'
-        },{
-          value: 'SH',
-          label: '上海',
-        },{
-          value: 'SZ',
-          label: '深圳'
+          label: '青海'
         },
       ],
         //和el-select选中程序同步

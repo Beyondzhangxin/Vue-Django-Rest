@@ -422,9 +422,10 @@ def getDetectionInfo(request):
             for device in devices:
                 (key, value), = device.items()
                 info = {}
-                info['dev_name'] = value
-                info['dev_xh'] = key
                 systemType = temp.get('systemType')
+                systemName = temp.get('systemName')
+                info['dev_name'] = systemName+value
+                info['dev_xh'] = key
                 sql = "select " + key + "  from data_" + systemType + "_buffer "
                 cursor.execute(sql)
                 rs = cursor.fetchone()
@@ -451,7 +452,7 @@ def getDetectionInfo(request):
                     rs2 = getPvmgDeviceInfo(key, "DXSS", datetime.datetime.now().strftime('%Y-%m-%d'))
                     info['dev_drdx'] = rs2.get('data')
                 tabList.append(info)
-        response['data'] = {"tab": tabList[start:end],"count":len(tabList)}
+        response['data'] = {"tab": tabList[start:end], "count": len(tabList)}
         response['msg'] = 'success'
         response['error_num'] = 0
     except Exception as e:

@@ -2,7 +2,7 @@
   <div class="css-live-wrap">
       <hgroup class="percentage-pie">
           <svg width="200px" height="200px" version="1.1" xmlns="http://www.w3.org/2000/svg">
-          <text class="liquidFillGaugeText" text-anchor="middle" font-size="42px" transform="translate(100,120)" style="fill: #fff">50.0%</text>
+          <text class="liquidFillGaugeText" text-anchor="middle" font-size="42px" transform="translate(100,120)" style="fill: #fff">{{percent}}</text>
           <!-- Wave -->
             <g id="wave">
               <path id="wave-2" fill="rgba(255, 255, 255, 0.5)" d="M 0 100 C 140.6 94.24 45.08 106.32 200 100 A 95 95 0 0 1 0 100 Z">
@@ -21,6 +21,7 @@
 <script>
 export default {
   name : 'gauge',
+  props:['percent'],
   data () {
     return {
 

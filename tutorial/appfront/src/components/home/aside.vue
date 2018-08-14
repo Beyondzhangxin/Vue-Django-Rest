@@ -1,6 +1,6 @@
 <template>
   <div class="aside">
-  
+
     <div class="aside1">
       <el-row>
         <el-col :span="6">
@@ -45,38 +45,6 @@
       </el-tree>
     </div>
   </div>
-
-
-  <!-- <div class="aside">
-    <div class="aside1">
-      <div><el-button class="b" size="mini" type="primary"
-         @click="clickButtom(buttoms[0])">{{ buttoms[0] }}</el-button></div>
-      <div><el-button class="b" size="mini" type="success"
-         @click="clickButtom(buttoms[1])">{{ buttoms[1] }}</el-button></div>
-      <div><el-button class="b" size="mini" type="warning"
-         @click="clickButtom(buttoms[2])">{{ buttoms[2] }}</el-button></div>
-      <div><el-button class="b" size="mini" type="danger"
-         @click="clickButtom(buttoms[3])">{{ buttoms[3] }}</el-button></div>
-    </div>
-    <div class="aside3">
-      <el-input
-      placeholder="输入关键字进行过滤"
-      v-bind:placeholder="placeholder"
-      v-model="filterText">
-      </el-input>
-      <el-tree
-      class="filter-tree"
-      :data="data2"
-      :props="defaultProps"
-      default-expand-all
-      show-checkbox
-      node-key="id"
-      :filter-node-method="filterNode"
-      @check="sendTree()"
-      ref="tree2">
-      </el-tree>
-    </div>
-  </div> -->
 </template>
 
 <script>
