@@ -562,9 +562,9 @@ export default {
     width: 700px;
     margin-bottom: 20px;
     /* background-color:rgba(255, 255, 255, 0.3) */
-     background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+     background: -webkit-linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
+    background: -o-linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
+    background: -moz-linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
     background: linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
   }
 
@@ -609,9 +609,9 @@ export default {
     width: 500px;
     height: 300px;
      /* background-color:rgba(255, 255, 255, 0.2) */
-      background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+      background: -webkit-linear-gradient(30deg, rgb(55,59,68,0.3),#355C7D);
+    background: -o-linear-gradient(30deg, rgb(55,59,68,0.3),#355C7D);
+    background: -moz-linear-gradient(30deg, rgb(55,59,68,0.3),#355C7D);
     background: linear-gradient(30deg, rgb(55,59,68,0.3),#355C7D);
   }
 
@@ -688,9 +688,9 @@ export default {
   .el-container {
     height: 100%;
     overflow-y: hidden;
-    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: -webkit-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+    background: -o-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+    background: -moz-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
    background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
     margin-left:-12px;
     margin-top:-12px;
@@ -749,9 +749,9 @@ export default {
 
 .box-card1{
   
-   background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+   background: -webkit-linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
+    background: -o-linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
+    background: -moz-linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
     background: linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
 
 }

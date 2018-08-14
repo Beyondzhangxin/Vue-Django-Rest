@@ -392,17 +392,17 @@ export default {
 }
 
 .card0{
-    background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: -webkit-linear-gradient(30deg, rgb(180,180,180,0.2),rgb(53,92,125,0.1));
+    background: -o-linear-gradient(30deg, rgb(180,180,180,0.2),rgb(53,92,125,0.1));
+    background: -moz-linear-gradient(30deg, rgb(180,180,180,0.2),rgb(53,92,125,0.1));
     background: linear-gradient(30deg, rgb(180,180,180,0.2),rgb(53,92,125,0.1));
     /* height:100%; */
 }
 
 .device{
     background: -webkit-linear-gradient(30deg, rgb(180,180,180,0.2),#355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
+    background: -o-linear-gradient(30deg, rgb(180,180,180,0.2),#355C7D);
+    background: -moz-linear-gradient(30deg, rgb(180,180,180,0.2),#355C7D);
     background: linear-gradient(30deg, rgb(180,180,180,0.2),#355C7D);
     margin-top:-12px;
     width:100%;
