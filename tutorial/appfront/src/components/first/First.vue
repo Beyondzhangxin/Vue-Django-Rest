@@ -223,7 +223,6 @@
 
     mounted: function () {
       this.loadData();
-      this.loadData2;
       this.envProtectData();
     },
     methods: {
@@ -231,8 +230,7 @@
         this.$ajax.get('http://localhost:8000/system/getHBSJ')
           .then(function (response) {
             //处理数据
-            hb_data = response.data.data;
-            console.log(hb_data);
+            var hb_data = response.data.data;
             this.msg1 = hb_data.msg1;
             this.msg2 = hb_data.msg2;
             this.msg3 = hb_data.msg3;
@@ -254,28 +252,6 @@
           .catch(function (error) {
             return 0;
           });
-
-      },
-      loadData2(){
-        this.$ajax.get('http://localhost:8000/system/echartsDataForFZD')
-          .then(function (response) {
-            //处理数据
-            var list1 = [];
-            var list2 = [];
-            for (var i = 0; i < response.data.data.series.length; i++) {
-              list1.push(response.data.data.series[i][0]);
-              list2.push(response.data.data.xAxis[i][0]);
-            }
-
-            this.settings.l1.option.series[0].data = list1;
-            this.settings.l1.option.xAxis[0].data = list2;
-
-          }.bind(this))
-          .catch(function (error) {
-            return 0;
-          });
-
-
       }
     },
     data () {
