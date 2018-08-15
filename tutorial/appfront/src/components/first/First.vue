@@ -227,6 +227,9 @@
       this.interval = setInterval(function(){
         this.envProtectData();
         this.loadData();
+        this.c1 =(50 + Math.round(Math.random() * 50)) / 100;
+        this.c2 = (50 + Math.round(Math.random() * 50)) / 100;
+        this.c3 = (50 + Math.round(Math.random() * 50)) / 100;
       }.bind(this), 5000);
     },
     destroyed: function() {
