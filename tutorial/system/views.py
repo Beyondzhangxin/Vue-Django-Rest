@@ -255,9 +255,16 @@ def getDeviceTable(request):
             end = int(pageNum) * int(pageSize)
             start = (int(pageNum) - 1) * int(pageSize)
             for x in lists:
-                for y in x['devices']:
+                sql_all = "select * from  " + x.get(
+                    "systemType") + "_day  where total_d ='" + time.strftime(
+                    '%Y-%m-%d',
+                    time.localtime()) + "'"
+                cursor.execute(sql_all)
+                rs_all = cursor.fetchone()
+
+                for i in range(0,len(x['devices'])):
                     dic = {}
-                    (key, value), = y.items()
+                    (key, value), = x['devices'][i].items()
                     sql = "select " + key + " from  data_" + x.get("systemType") + "_buffer "
                     cursor.execute(sql)
                     rs = cursor.fetchone()
@@ -266,15 +273,9 @@ def getDeviceTable(request):
                     else:
                         dqgl = 0.00
                     dic['dev_dqgl'] = dqgl
-                    sql = "select FDL_" + key + " ,dayHours from  " + x.get(
-                        "systemType") + "_day  where total_d ='" + time.strftime(
-                        '%Y-%m-%d',
-                        time.localtime()) + "'"
-                    cursor.execute(sql)
-                    rs = cursor.fetchone()
-                    if not rs is None:
-                        jrfd = rs[0]
-                        dayHours = rs[1]
+                    if not rs_all is None:
+                        jrfd = rs_all[i+4]
+                        dayHours = rs_all[2]
                     else:
                         jrfd = 0.00
                         dayHours = 0
@@ -408,6 +409,7 @@ def getDeviceCompareInfo(request):
 
 @require_http_methods(['GET'])
 def getDetectionInfo(request):
+    current = datetime.datetime.now()
     response = {}
     tabList = []
     deviceList = getDeviceList()
@@ -420,12 +422,15 @@ def getDetectionInfo(request):
         cursor = db.cursor()
         for temp in deviceList:
             devices = temp.get('devices')
-            for device in devices:
-                (key, value), = device.items()
+            sql_fdl= "select * from spgs_day WHERE total_d  = '" + datetime.datetime.now().strftime('%Y-%m-%d') + "'"
+            cursor.execute(sql_fdl)
+            rs_fdl = cursor.fetchone()
+            for i in range(0,len(devices)):
+                (key, value), = devices[0].items()
                 info = {}
                 systemType = temp.get('systemType')
                 systemName = temp.get('systemName')
-                info['dev_name'] = systemName+value
+                info['dev_name'] = systemName + value
                 info['dev_xh'] = key
                 sql = "select " + key + "  from data_" + systemType + "_buffer "
                 cursor.execute(sql)
@@ -442,16 +447,12 @@ def getDetectionInfo(request):
                     rs = 0.00
                     info['dev_cjqzt'] = '离线'
                 info['dev_dqgl'] = rs
-                if systemType == "SPGS":
-                    rs1 = getSpgsDeviceInfo(key, "FDL", datetime.datetime.now().strftime('%Y-%m-%d'))
-                    info['dev_jrfd'] = rs1.get('data')
-                    rs2 = getSpgsDeviceInfo(key, "DXSS", datetime.datetime.now().strftime('%Y-%m-%d'))
-                    info['dev_drdx'] = rs2.get('data')
+                if not rs_fdl is None:
+                    info['dev_jrfd']=round(rs_fdl[i+4],2)
+                    info['dev_drdx']=rs_fdl[i+2]
                 else:
-                    rs1 = getPvmgDeviceInfo(key, "FDL", datetime.datetime.now().strftime('%Y-%m-%d'))
-                    info['dev_jrfd'] = rs1.get('data')
-                    rs2 = getPvmgDeviceInfo(key, "DXSS", datetime.datetime.now().strftime('%Y-%m-%d'))
-                    info['dev_drdx'] = rs2.get('data')
+                    info['dev_jrfd'] =0.00
+                    info['dev_drdx'] = 0
                 tabList.append(info)
         db.close()
         response['data'] = {"tab": tabList[start:end], "count": len(tabList)}
@@ -460,6 +461,8 @@ def getDetectionInfo(request):
     except Exception as e:
         response['msg'] = str(e)
         response['error_num'] = 1
+    ter = datetime.datetime.now()
+    print(ter-current)
     return JsonResponse(response)
 
 
