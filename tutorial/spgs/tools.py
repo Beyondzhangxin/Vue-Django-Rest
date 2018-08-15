@@ -118,6 +118,7 @@ def getSpgsDXSS(searchDate):
         else:
             rs = 0
         datatime = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+        db.close()
         return {"data": rs, "time": datatime}
     except Exception as e:
         print(e)
@@ -163,6 +164,7 @@ def getSpgsDeviceInfo(deviceName,param, searchDate):
                 rs = 0
             datatime = list(
                 DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+            db.close()
             return {"data": rs, "time": datatime}
         except Exception as e:
             print(e)
@@ -179,6 +181,7 @@ def getSpgsDeviceInfo(deviceName,param, searchDate):
             else:
                 rs = 0
             datatime = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+            db.close()
             return {"data": rs, "time": datatime}
         except Exception as e:
             print(e)

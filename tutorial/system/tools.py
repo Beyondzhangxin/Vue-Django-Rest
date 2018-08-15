@@ -159,9 +159,8 @@ def getTotalGeneratingCapacity_today():
     if rs1 is None:
         return 0.0
     else:
-        db.close()
         return float(rs1[0])
-
+    db.close()
 
 def getDeviceInfo(systemType, deviceName):
     info = {}
@@ -193,6 +192,7 @@ def getDeviceInfo(systemType, deviceName):
                 info['ljfd'] = 0.00
             info['zjrl'] = 50.00
             info['jrdx'] = powerStationInfoPvmg().get("dayHours")
+            db.close()
         except Exception as e:
             print(e)
     if systemType == "SPGS":
@@ -222,6 +222,7 @@ def getDeviceInfo(systemType, deviceName):
                 info['ljfd'] = 0.00
             info['zjrl'] = 50.00
             info['jrdx'] = powerStationInfoSpgs().get("dayHours")
+            db.close()
         except Exception as e:
             print(e)
     info['bwrq'] = "2018-03-21"
@@ -278,4 +279,5 @@ def getHuanBaoData():
     info['msg3']=round(ljfdl*0.03/1000,)
     info['msg4']=round(ljfdl*0.015/1000,2)
     info['msg5']=int(ljfdl*0.997/5.023)
+    db.close()
     return info

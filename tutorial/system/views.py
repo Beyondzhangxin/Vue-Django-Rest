@@ -294,6 +294,7 @@ def getDeviceTable(request):
     else:
         response['msg'] = "缺少参数！"
         response['error_num'] = 1
+    db.close()
     return JsonResponse(response)
 
 
@@ -452,6 +453,7 @@ def getDetectionInfo(request):
                     rs2 = getPvmgDeviceInfo(key, "DXSS", datetime.datetime.now().strftime('%Y-%m-%d'))
                     info['dev_drdx'] = rs2.get('data')
                 tabList.append(info)
+        db.close()
         response['data'] = {"tab": tabList[start:end], "count": len(tabList)}
         response['msg'] = 'success'
         response['error_num'] = 0

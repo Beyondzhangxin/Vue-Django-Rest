@@ -116,6 +116,7 @@ def getPvmgDXSS(searchDate):
         else:
             rs = 0
         datatime = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+        db.close()
         return {"data": rs, "time": datatime}
     except Exception as e:
         print(e)
@@ -159,6 +160,7 @@ def getPvmgDeviceInfo(deviceName,param, searchDate):
                 rs = 0
             datatime = list(
                 DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+            db.close()
             return {"data": rs, "time": datatime}
         except Exception as e:
             print(e)
@@ -175,6 +177,7 @@ def getPvmgDeviceInfo(deviceName,param, searchDate):
             else:
                 rs = 0
             datatime = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+            db.close()
             return {"data": rs, "time": datatime}
         except Exception as e:
             print(e)
