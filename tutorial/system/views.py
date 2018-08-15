@@ -319,7 +319,7 @@ def getHBSJ(request):
 # searchDate是查询日期字符串，格式为“2017-04-07”,默认是今天,请求头content_Type:application/x-www-form-urlencoded
 @require_http_methods(['POST'])
 def getStationCompareInfo(request):
-    stationList = json.loads(request.POST.get("stationList"))
+    stationList =list(eval(request.POST.get("stationList")))
     compareParam = request.POST.get("compareParam")
     searhcDate = request.POST.get("searchDate")
     print(stationList, compareParam, searhcDate)
@@ -367,6 +367,7 @@ def getStationCompareInfo(request):
 # 以及对比内容compareParam，还有查询日期searchDate
 @require_http_methods(['POST'])
 def getDeviceCompareInfo(request):
+    current=datetime.datetime.now()
     deviceList = eval(request.POST.get("deviceList"))
     compareParam = request.POST.get("compareParam")
     searhcDate = request.POST.get("searchDate")
@@ -402,6 +403,8 @@ def getDeviceCompareInfo(request):
     except Exception as e:
         response['msg'] = str(e)
         response['error_num'] = 1
+    ter = datetime.datetime.now()
+    print(ter-current)
     return JsonResponse(response)
 
 

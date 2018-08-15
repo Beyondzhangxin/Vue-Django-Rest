@@ -130,7 +130,7 @@ def getSpgsFDL(searchDate):
     start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
     end = start + datetime.timedelta(days=1)
     try:
-        data = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('DRFDL', flat=True))
+        data = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('drfdl', flat=True))
         datatime = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
         return {"data": data, "time": datatime}
     except Exception as e:
