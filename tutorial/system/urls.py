@@ -23,8 +23,8 @@ urlpatterns = [
     url(r'getDeviceTable',views.getDeviceTable),
     url(r'getHBSJ',views.getHBSJ),#获取环保数据
     url(r'getStationCompareInfo',views.getStationCompareInfo),#获取电站对比数据
-    url(r'getDeviceCompareInfo',views.getDeviceCompareInfo),#获取电站对比数据
-    url(r'getDetectionInfo',views.getDetectionInfo)#获取电站对比数据
+    url(r'getDeviceCompareInfo',views.getDeviceCompareInfo),#获取设备对比数据
+    url(r'getDetectionInfo',views.getDetectionInfo)#获取故障检测数据
 
 
 ]
