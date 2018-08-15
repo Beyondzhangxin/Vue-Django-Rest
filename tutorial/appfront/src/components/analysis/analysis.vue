@@ -351,7 +351,6 @@
     padding-right: 20px;
   }
 
-<<<<<<< HEAD
 .card0{
     margin-top:-13px;
     background: -webkit-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
@@ -360,16 +359,6 @@
     background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
     margin-left:-13px;
 }
-=======
-  .card0 {
-    margin-top: -13px;
-    background: -webkit-linear-gradient(30deg, #373B44, #355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, rgb(180, 180, 180, 0.1), #355C7D);
-    margin-left: -13px;
-  }
->>>>>>> aae32b2b80aa697b1e227e6508ace50390345471
 
   .card1 {
     background-color: rgba(180, 180, 180, 0.1);
