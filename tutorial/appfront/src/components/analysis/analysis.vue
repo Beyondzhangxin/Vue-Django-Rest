@@ -125,8 +125,6 @@
         )
           .then(function (response) {
             //处理数据
-            console.log(12412421121);
-            console.log(response);
             for (var i = 0; i < response.data.data.series.length; i++) {
               this.l2.option.series.push({
                 data: response.data.data.series[i].data,
@@ -232,9 +230,13 @@
     mounted: function () {
       this.$store.commit('showIt');
       this.loadData();
+      this.interval = setInterval(function(){
+        this.loadData();
+      }.bind(this), 5000);
     },
     destroyed: function () {
-      this.$store.commit('hideIt')
+      this.$store.commit('hideIt');
+      clearInterval(this.interval);
     },
   }
 
