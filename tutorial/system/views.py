@@ -426,7 +426,7 @@ def getDetectionInfo(request):
             cursor.execute(sql_fdl)
             rs_fdl = cursor.fetchone()
             for i in range(0,len(devices)):
-                (key, value), = devices[0].items()
+                (key, value), = devices[i].items()
                 info = {}
                 systemType = temp.get('systemType')
                 systemName = temp.get('systemName')
