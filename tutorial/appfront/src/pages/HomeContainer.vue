@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <!-- 调用canvas -->
-        <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
+        <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
 
     <!-- 导入header-->
     <el-header><HomeHeader/></el-header>
@@ -18,7 +18,7 @@
 <script>
   import HomeHeader from '@/components/Home/header'
   import HomeAside  from '@/components/Home/aside'
-  import myCanvas from 'vue-atom-canvas'
+  import myCanvas from '../canvas'
 
   export default {
     name: 'home',
