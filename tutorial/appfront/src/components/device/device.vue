@@ -1,6 +1,6 @@
 <template>
-          <div class="device">           
-               
+          <div class="device">
+
                 <el-row class="row1">
                     <el-col :span="12">
                       <div class="grid-content">
@@ -134,7 +134,7 @@
                   @current-change="handleCurrentChange">
             </el-pagination>
             </el-card>
-        
+
 
     </div>
 </template>
@@ -148,14 +148,14 @@ export default {
 
     components: {
         ComList: ComList,
-     
+
      },
 
     data(){
       return {
         list: {
           //改数据改这里
-          data: 'http://localhost:8000/system/getDeviceTable?pageNum=1&pageSize=2',
+          data: 'http://localhost:8000/system/getDeviceTable?pageNum=1&pageSize=5',
           //改表名改这里
           tabConfigs: [
             {prop: 'dev_name', label: '设备名称'},
@@ -198,8 +198,8 @@ export default {
       },
       handleCurrentChange(val) {
         //改分页
-        this.data = 'http://127.0.0.1:8000/pv/get/detection/2018/1/18/' + '?page='+ val;
-        console.log(this.data);
+        this.list.data = 'http://localhost:8000/system/getDeviceTable?pageNum='+ val +'&pageSize=5';
+        console.log(this.list.data);
 
       }
     },
@@ -310,13 +310,13 @@ export default {
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
     background: linear-gradient(30deg, rgb(180,180,180,0.3),#355C7D);*/
    background-color:rgba(180, 180, 180, 0.1);
-} 
+}
 
 .box-card1 {
   margin-bottom: 30px;
   margin-top:-20px;
    margin-left: 20px;
-    margin-right: 20px; 
+    margin-right: 20px;
    /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);

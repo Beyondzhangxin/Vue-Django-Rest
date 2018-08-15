@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <!-- 调用canvas -->
-        <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
+        <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
 
     <!-- 导入header-->
     <el-header><HomeHeader/></el-header>
