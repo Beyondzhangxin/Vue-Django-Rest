@@ -118,6 +118,7 @@
     },
     methods: {
       loadData(){
+        console.log(this.list);
         var url = ""
         var fromData = ""
         if (this.carryModel.model == 'dzdb') {
@@ -134,16 +135,16 @@
         var instance = this.$ajax.create({
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         });
+        this.l2.option.series= [];
         instance.post(url,
           fromData
         )
           .then(function (response) {
             console.log(response);
-            this.l2.option.series= [];
+
             //处理数据
             var dataList = [];
             if (this.carryModel.compareParam == 'DXSS') {
-              var dataList = [];
               for (var i = 0; i < response.data.data.series.length; i++) {
                 var list = [];
                 for (var j = 0; j < response.data.data.xAxis[0].data.length; j++) {
@@ -173,7 +174,6 @@
               }
             }
             this.l2.option.xAxis[0].data = response.data.data.xAxis[0].data
-
             //{"bwrq": "2018-03-21", "ljfd": "5346.532596464663", "zjrl": 50.0, "dqgl": null, "jrdx": 0, "jrfd": 0.0}
           }.bind(this))
           .catch(function (error) {
@@ -183,6 +183,7 @@
     },
     data(){
       return {
+        list: this.$store.state.chooseTree,
         carryModel: {
           model: "dzdb",
           stationList: ['SPGS', 'PVMG'],
@@ -275,7 +276,6 @@
     watch: {
       carryModel:{
         handler:function(val,oldval){
-          console.log(3525235234);
           this.loadData();
         },
         deep:true//对象内部的属性监听，也叫深度监听
