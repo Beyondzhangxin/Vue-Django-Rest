@@ -173,11 +173,14 @@ def getPvmgDeviceInfo(deviceName,param, searchDate):
             cursor.execute(sql)
             rs = cursor.fetchall()
             rs_list=[]
+            rs_time=[]
             for x in rs:
                 rs_list.append(x[0])
             sql = "select total_d from pvmg_minute WHERE DATE_FORMAT(total_d,'%Y-%m-%d')='" + searchDate + "'"
             cursor.execute(sql)
-            datatime = list(cursor.fetchall())
+            datatime = cursor.fetchall()
+            for x in datatime:
+                rs_time.append(x[0])
             db.close()
             return {"data": rs_list, "time": datatime}
         except Exception as e:

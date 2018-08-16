@@ -178,15 +178,18 @@ def getSpgsDeviceInfo(deviceName, param, searchDate):
             cursor.execute(sql)
             rs = cursor.fetchall()
             rs_list = []
+            rs_time=[]
             for x in rs:
                 rs_list.append(x[0])
             sql="select total_d from spgs_minute WHERE DATE_FORMAT(total_d,'%Y-%m-%d')='" + searchDate + "'"
             cursor.execute(sql)
-            datatime=list(cursor.fetchall())
+            datatime=cursor.fetchall()
+            for x in datatime:
+                rs_time.append(x[0])
             # datatime = list(
             #     DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
             db.close()
-            return {"data": rs_list, "time": datatime}
+            return {"data": rs_list, "time": rs_time}
         except Exception as e:
             print(e)
             return {"data": [], "time": []}
