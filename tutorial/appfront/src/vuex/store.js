@@ -8,23 +8,27 @@ const store = new Vuex.Store({
   state: {
     isShowAside: 0,
     chooseTree: [],
+    choosefilter: '系统',
   },
   mutations: {
     updateTree(state, element) {
       //信号量
       var flag = 0;
-      for (var i = 0; i < this.state.chooseTree.length; i++) {
-        if (this.state.chooseTree[i].system == element.system) {
-          this.state.chooseTree[i].devices.push(element.device);
+      for (var i = 0; i < state.chooseTree.length; i++) {
+        if (state.chooseTree[i].system == element.system) {
+          state.chooseTree[i].devices.push(element.device);
           flag = 1;
         }
       }
       if (flag == 0) {
-        this.state.chooseTree.push({system: element.system, devices: [element.device]});
+        state.chooseTree.push({system: element.system, devices: [element.device]});
       }
     },
     cleanTree() {
       this.state.chooseTree = [];
+    },
+    filter(state, str) {
+      state.choosefilter = str;
     },
     showIt() {
       this.state.isShowAside = 1;

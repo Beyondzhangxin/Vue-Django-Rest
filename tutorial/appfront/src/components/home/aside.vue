@@ -71,7 +71,15 @@
     destroyed: function () {
       this.$store.commit('cleanTree');
     },
+    computed: {
+      listenChooseFilter() {
+        return this.$store.state.choosefilter;
+      }
+    },
     watch: {
+      listenChooseFilter: function(val, oldval) {
+        this.filterText = val;
+      },
       filterText(val) {
         this.$refs.tree2.filter(val);
       }
