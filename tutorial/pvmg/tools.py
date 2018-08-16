@@ -169,16 +169,17 @@ def getPvmgDeviceInfo(deviceName,param, searchDate):
         try:
             db = pymysql.connect(database_ip, user, pwd, database_name)
             cursor = db.cursor()
-            sql = "select FDL_"+deviceName.upper()+" from pvmg_day WHERE total_d  = '" + searchDate + "'"
+            sql = "select FDL_" + deviceName.upper() + " from pvmg_minute WHERE DATE_FORMAT(total_d,'%Y-%m-%d')='" + searchDate + "'"
             cursor.execute(sql)
-            rs = cursor.fetchone()
-            if not rs is None:
-                rs = round(float(rs[0]), 2)
-            else:
-                rs = 0
-            datatime = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+            rs = cursor.fetchall()
+            rs_list=[]
+            for x in rs:
+                rs_list.append(x[0])
+            sql = "select total_d from pvmg_minute WHERE DATE_FORMAT(total_d,'%Y-%m-%d')='" + searchDate + "'"
+            cursor.execute(sql)
+            datatime = list(cursor.fetchall())
             db.close()
-            return {"data": rs, "time": datatime}
+            return {"data": rs_list, "time": datatime}
         except Exception as e:
             print(e)
             return {"data": [], "time": []}
