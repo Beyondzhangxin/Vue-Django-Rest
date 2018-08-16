@@ -35,7 +35,6 @@
           date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));
           data.push(Math.round((Math.random() - 0.5) * 20 + data[i - 1]));
         }
-        console.log(date);
         // 绘制图表
         line1.setOption({
           tooltip: {

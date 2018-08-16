@@ -100,18 +100,12 @@
       },
       sendTree(){
         this.$store.commit('cleanTree');
-        console.log(1);
-        console.log(this.$refs.tree2.getCheckedKeys());
         var list = this.$refs.tree2.getCheckedKeys();
         for (var i = 0; i < list.length; i++) {
           if (typeof(list[i]) == 'string') {
             this.$store.commit('updateTree', this.fromData(list[i]));
           }
         }
-        // console.log(this.$store.state.chooseTree);
-        // console.log(this.$refs.tree2.getHalfCheckedNodes());
-        // console.log(this.$refs.tree2.getHalfCheckedKeys());
-        // console.log(this.$refs.tree2.getCheckedNodes());
       },
       //对数据格式进行操作
       fromData(str) {

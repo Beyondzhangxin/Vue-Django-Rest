@@ -8,7 +8,7 @@
 
       <!-- <el-card class="card"> -->
       <div class="inf"><strong>多功能光伏电站系统,图书馆微电网系统电站统计</strong></div>
-      <hr width=100%              size=1              color=#bbbcbc
+      <hr width=100%                                     size=1                                     color=#bbbcbc
       style="FILTER: alpha(opacity=100, finishopacity=0)">
       <div class="row0">
         <el-row>
@@ -235,7 +235,6 @@
 
     methods: {
       envProtectData(){
-        console.log(346363636);
         this.$ajax.get('http://localhost:8000/system/getHBSJ')
           .then(function (response) {
             //处理数据

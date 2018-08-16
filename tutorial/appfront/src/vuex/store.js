@@ -22,7 +22,6 @@ const store = new Vuex.Store({
       if (flag == 0) {
         this.state.chooseTree.push({system: element.system, devices: [element.device]});
       }
-      console.log(this.state.chooseTree);
     },
     cleanTree() {
       this.state.chooseTree = [];

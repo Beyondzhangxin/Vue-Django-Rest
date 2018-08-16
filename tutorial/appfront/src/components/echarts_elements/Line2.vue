@@ -77,13 +77,10 @@
         var line1 = echarts.init(document.getElementById(this.id))
         //初始化变量
         // 绘制图表
-//        setInterval(function () {
-//          this.loadData();
-//          line1.setOption(this.option);
-//        },5000)
-        this.loadData();
-        line1.setOption(this.option);
-
+        this.interval=setInterval(function () {
+          this.loadData();
+          line1.setOption(this.option);
+        },5000)
         setTimeout(function () {
           window.onresize = function () {
             line1.resize();

@@ -92,7 +92,6 @@
     methods: {
       handleCurrentChange(val) {
         this.data = 'http://localhost:8000/system/getDetectionInfo?pageNum='+ val +'&pageSize=10';
-        console.log(this.data);
       }
     },
     mounted: function() {

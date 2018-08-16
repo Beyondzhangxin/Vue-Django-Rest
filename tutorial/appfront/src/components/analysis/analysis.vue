@@ -130,7 +130,6 @@
           fromData = 'deviceList=' + JSON.stringify(this.carryModel.deviceList) + "&compareParam=" + this.carryModel.compareParam + "&searchDate=" + this.carryModel.searchDate;
         }
 
-        console.log(this.carryModel);
         var instance = this.$ajax.create({
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         });
@@ -139,7 +138,6 @@
           fromData
         )
           .then(function (response) {
-            console.log(response);
             //处理数据
             this.l2.option.series= [];
             var dataList = [];
@@ -173,7 +171,6 @@
               }
             }
             this.l2.option.xAxis[0].data = response.data.data.xAxis[0].data
-            console.log(this.l2.option);
             //{"bwrq": "2018-03-21", "ljfd": "5346.532596464663", "zjrl": 50.0, "dqgl": null, "jrdx": 0, "jrfd": 0.0}
           }.bind(this))
           .catch(function (error) {

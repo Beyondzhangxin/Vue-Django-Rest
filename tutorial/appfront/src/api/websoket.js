@@ -28,7 +28,6 @@ threadPoxi()
     }, 500);
   }
 }
-,
 initWebSocket(msg)
 {
   //ws地址

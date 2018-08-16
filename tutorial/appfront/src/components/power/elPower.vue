@@ -37,7 +37,6 @@ export default {
     }
   },
   mounted: function() {
-    console.log(9999999);
     this.$refs.image.src = "/static/img/SHGF.c4b0247.jpg";
   }
 }
