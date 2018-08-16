@@ -1,4 +1,6 @@
 # database configuration
+import datetime
+
 import pymysql
 import time
 import json
@@ -37,10 +39,12 @@ def getEchartsForZGL():
     # sql2 = "select datatime  from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
     # cursor.execute(sql2)
     # time1 = cursor.fetchall()
-    sql1 = "select fz from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
+    sql1 = "select fz from data_spgs_history WHERE datatime BETWEEN '" + "2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now() - datetime.timedelta(hours=2),
+                                          '%H:%M') + "' and '" + "2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now(), '%H:%M') + "' "
     cursor.execute(sql1)
     data2 = cursor.fetchall()
-    sql2 = "select date_format(datatime,'%H:%m:%s') from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
+    sql2 = "select date_format(datatime,'%H:%m:%s') from data_spgs_history WHERE datatime BETWEEN '" + "2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now() - datetime.timedelta(hours=2),
+                                          '%H:%M') + "' and '" + "2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now(), '%H:%M') + "' "
     cursor.execute(sql2)
     time2 = cursor.fetchall()
     rs_time = time2
@@ -60,10 +64,12 @@ def getEchartsDataForInverterFDGL():
     # sql2 = "select datatime  from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
     # cursor.execute(sql2)
     # time1 = cursor.fetchall()
-    sql1 = "select FDZGL from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
+    sql1 = "select FDZGL from data_spgs_history WHERE datatime BETWEEN '" + " 2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now() - datetime.timedelta(hours=2),
+                                          '%H:%M') + "' and '" + " 2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now(), '%H:%M') + "' "
     cursor.execute(sql1)
     data2 = cursor.fetchall()
-    sql2 = "select date_format(datatime,'%H:%m:%s')  from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
+    sql2 = "select date_format(datatime,'%H:%m:%s')  from data_spgs_history WHERE datatime BETWEEN '" + "2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now() - datetime.timedelta(hours=2),
+                                          '%H:%M') + "' and '" + " 2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now(), '%H:%M') + "' "
     cursor.execute(sql2)
     time2 = cursor.fetchall()
     rs_time = time2
@@ -77,15 +83,10 @@ def getEchartsDataForInverterFDL():
     currentDay = time.strftime('%Y-%m-%d', time.localtime())
     db = pymysql.connect(database_ip, user, pwd, database_name)
     cursor = db.cursor()
-    # sql_time = "select total_d from pvmg_minute WHERE date_format(total_d,'%Y-%m-%d')='" + "2017-04-27" + "'"
-    # sql_data = "SELECT  (@csum := @csum + TOTAL_FDL) AS total_fdl  FROM spgs_minute  WHERE DATE_FORMAT(total_d,'%Y-%m-%d') ='" + "2017-04-27" + "'"
-    # cursor.execute(sql_time)
-    # rs1_time = cursor.fetchall()
-    # cursor.execute('SET @csum := 0')
-    # cursor.execute(sql_data)
-    # rs1_data = cursor.fetchall()
-    sql_time = "select date_format(total_d,'%H:%m:%s') from spgs_minute WHERE date_format(total_d,'%Y-%m-%d')='" + '2017-04-27' + "'"
-    sql_data = "SELECT (@csum := @csum + TOTAL_FDL) AS total_fdl FROM spgs_minute  WHERE DATE_FORMAT(total_d,'%Y-%m-%d') ='" + '2017-04-27' + "'"
+    sql_time = " select date_format(total_d,'%H:%m:%s') from spgs_minute WHERE total_d BETWEEN '" + "2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now() - datetime.timedelta(hours=2),
+                                          '%H:%M') + "' and '" + "2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now(), '%H:%M') + "' "
+    sql_data = " SELECT (@csum := @csum + TOTAL_FDL) AS total_fdl FROM spgs_minute  WHERE total_d BETWEEN '" + "2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now() - datetime.timedelta(hours=2),
+                                          '%H:%M') + "' and '" + "2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now(), '%H:%M') + "' "
 
     cursor.execute(sql_time)
     rs2_time = cursor.fetchall()
@@ -161,6 +162,7 @@ def getTotalGeneratingCapacity_today():
     else:
         return float(rs1[0])
     db.close()
+
 
 def getDeviceInfo(systemType, deviceName):
     info = {}
@@ -252,9 +254,10 @@ def getDeviceList():
     finally:
         return list
 
+
 # 获取环保数据，累计发电量所产生的环保价值
 def getHuanBaoData():
-    info={}
+    info = {}
     # connect database
     db = pymysql.connect(database_ip, user, pwd, database_name)
     # use cursor to manipulate
@@ -274,10 +277,10 @@ def getHuanBaoData():
     else:
         rs2 = float(rs2[0])
     ljfdl = rs1 + rs2
-    info['msg1']=round(ljfdl*0.4/1000,2)
-    info['msg2']=round(ljfdl*0.997/1000,2)
-    info['msg3']=round(ljfdl*0.03/1000,)
-    info['msg4']=round(ljfdl*0.015/1000,2)
-    info['msg5']=int(ljfdl*0.997/5.023)
+    info['msg1'] = round(ljfdl * 0.4 / 1000, 2)
+    info['msg2'] = round(ljfdl * 0.997 / 1000, 2)
+    info['msg3'] = round(ljfdl * 0.03 / 1000, )
+    info['msg4'] = round(ljfdl * 0.015 / 1000, 2)
+    info['msg5'] = int(ljfdl * 0.997 / 5.023)
     db.close()
     return info

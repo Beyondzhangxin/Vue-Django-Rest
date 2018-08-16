@@ -114,7 +114,7 @@ def totalVolume(request):
     return JsonResponse(response)
 
 
-# 返回首页echarts图当日发电量模块中逆变器发电量的数据
+# 返回首页echarts图当日发电量模块中逆变器发电量的最近两个小时的数据，目前取2017-04-27数据
 @require_http_methods(['GET'])
 def echartsDataForInverterFDL(request):
     response = {}
@@ -322,8 +322,6 @@ def getStationCompareInfo(request):
     stationList =list(eval(request.POST.get("stationList")))
     compareParam = request.POST.get("compareParam")
     searhcDate = request.POST.get("searchDate")
-    print(stationList, compareParam, searhcDate)
-    print(type(stationList))
     if searhcDate is None:
         searhcDate = datetime.datetime.now().strftime('%Y-%m-%d')
     response = {}
@@ -367,7 +365,6 @@ def getStationCompareInfo(request):
 # 以及对比内容compareParam，还有查询日期searchDate
 @require_http_methods(['POST'])
 def getDeviceCompareInfo(request):
-    current=datetime.datetime.now()
     deviceList = eval(request.POST.get("deviceList"))
     compareParam = request.POST.get("compareParam")
     searhcDate = request.POST.get("searchDate")
@@ -383,19 +380,19 @@ def getDeviceCompareInfo(request):
                 if not value is None:
                     for x in value:
                         series.append(
-                            {"name": "SPGS",
+                            {"name": "SPGS-"+x,
                              "data": getSpgsDeviceInfo(x.lower(), compareParam, searhcDate).get("data")})
                         xAxis.append(
-                            {"name": "SPGS",
+                            {"name": "SPGS-"+x,
                              "data": getSpgsDeviceInfo(x.lower(), compareParam, searhcDate).get("time")})
             if key == "PVMG":
                 if not value is None:
                     for x in value:
                         series.append(
-                            {"name": "PVMG",
+                            {"name": "PVMG-"+x,
                              "data": getPvmgDeviceInfo(x.lower(), compareParam, searhcDate).get("data")})
                         xAxis.append(
-                            {"name": "PVMG",
+                            {"name": "PVMG-"+x,
                              "data": getPvmgDeviceInfo(x.lower(), compareParam, searhcDate).get("time")})
         response['data'] = {"series": series, "xAxis": xAxis}
         response['msg'] = 'success'
@@ -403,8 +400,6 @@ def getDeviceCompareInfo(request):
     except Exception as e:
         response['msg'] = str(e)
         response['error_num'] = 1
-    ter = datetime.datetime.now()
-    print(ter-current)
     return JsonResponse(response)
 
 
@@ -412,7 +407,6 @@ def getDeviceCompareInfo(request):
 
 @require_http_methods(['GET'])
 def getDetectionInfo(request):
-    current = datetime.datetime.now()
     response = {}
     tabList = []
     deviceList = getDeviceList()
@@ -464,8 +458,6 @@ def getDetectionInfo(request):
     except Exception as e:
         response['msg'] = str(e)
         response['error_num'] = 1
-    ter = datetime.datetime.now()
-    print(ter-current)
     return JsonResponse(response)
 
 
