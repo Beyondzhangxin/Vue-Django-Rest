@@ -38,10 +38,11 @@ export default {
 
   mounted: function() {
     this.drawLine();
+    var interval = setInterval(this.drawLine, 2000);
   },
 
   destroyed: function() {
-
+    clearInterval(this.interval);
   },
 
   methods: {

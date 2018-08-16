@@ -71,7 +71,15 @@
     destroyed: function () {
       this.$store.commit('cleanTree');
     },
+    computed: {
+      listenChooseFilter() {
+        return this.$store.state.choosefilter;
+      }
+    },
     watch: {
+      listenChooseFilter: function(val, oldval) {
+        this.filterText = val;
+      },
       filterText(val) {
         this.$refs.tree2.filter(val);
       }
@@ -100,8 +108,6 @@
       },
       sendTree(){
         this.$store.commit('cleanTree');
-        console.log(1);
-        console.log(this.$refs.tree2.getCheckedKeys());
         var list = this.$refs.tree2.getCheckedKeys();
         for (var i = 0; i < list.length; i++) {
           if (typeof(list[i]) == 'string') {

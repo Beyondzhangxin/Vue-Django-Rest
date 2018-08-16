@@ -19,8 +19,6 @@
     props: ['id', 'option', 'request'],
     line1: 0,
     interval: 0,
-
-
     data () {
       return {
         changeOption: this.option

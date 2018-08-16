@@ -9,7 +9,7 @@
       <el-row>
         <el-col :span="3">
           <div class="grid-content">
-            <el-button id="button" @click="carryModel.model='dzdb'">
+            <el-button id="button" @click="carryModel.model='dzdb'; $store.commit('filter', '系统')">
               <img src="../../assets/station.png" id="image">
               <span id="text"><strong>电站对比</strong></span>
             </el-button>
@@ -17,7 +17,7 @@
         </el-col>
         <el-col :span="3">
           <div class="grid-content">
-            <el-button id="button" @click="carryModel.model='sbdb'">
+            <el-button id="button" @click="carryModel.model='sbdb'; $store.commit('filter', '逆变器')">
               <img src="../../assets/self.png" id="image">
               <span id="text"><strong>设备对比</strong></span>
             </el-button>
@@ -87,8 +87,10 @@
         </el-col>
       </el-row>
       <div class="sel">
-        <el-button type="primary" @click="carryModel.stationList" plain>北京光伏电站</el-button>
-        <el-button type="primary" @click="carryModel.stationList" plain>上海光伏电站</el-button>
+        <el-button type="primary"  @click="" plain v-for="sel in selList" v-show="carryModel.model=='dzdb'">{{ sel.system }}</el-button>
+        <span v-for="sel in selList" v-show="carryModel.model=='sbdb'">
+          <el-button type="primary"  @click="" plain v-for=" dev in sel.devices">{{ dev }}</el-button>
+        </span>
       </div>
 
     </el-main>
@@ -139,7 +141,7 @@
           fromData
         )
           .then(function (response) {
-            console.log(response);
+
             //处理数据
             this.l2.option.series= [];
             var dataList = [];
@@ -173,7 +175,6 @@
               }
             }
             this.l2.option.xAxis[0].data = response.data.data.xAxis[0].data
-            console.log(this.l2.option);
             //{"bwrq": "2018-03-21", "ljfd": "5346.532596464663", "zjrl": 50.0, "dqgl": null, "jrdx": 0, "jrfd": 0.0}
           }.bind(this))
           .catch(function (error) {
@@ -183,6 +184,7 @@
     },
     data(){
       return {
+        selList: [],
         carryModel: {
           model: "dzdb",
           stationList: ['SPGS', 'PVMG'],
@@ -279,6 +281,7 @@
     },
     watch: {
       listenChooseTree: function(val, oldval) {
+        this.selList = val;
         this.carryModel.deviceList = [];
         for (var i = 0; i < val.length; i++) {
           if (val[i].system == "PVMG") {
