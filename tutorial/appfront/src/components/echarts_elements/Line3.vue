@@ -27,29 +27,31 @@ export default {
       changeOption: this.option
     }
   },
+  watch: {
+    option:{
+      handler:function(val,oldval){
+        this.updateData();
+      },
+      deep:true//对象内部的属性监听，也叫深度监听
+    }
+  },
 
   mounted: function() {
     this.drawLine();
-    this.loadData();
-    this.interval = setInterval(this.updateData, 2000);
   },
 
   destroyed: function() {
-    clearInterval(this.interval)
+
   },
 
   methods: {
-    loadData() {
-
-    },
     drawLine () {
+      console.log(this.option);
       // 基于准备好的dom，初始化echarts实例
       var line1 = echarts.init(document.getElementById(this.id))
       //初始化变量
       // 绘制图表
-      console.log(this.option);
       line1.setOption(this.option);
-      console.log(235353);
       setTimeout(function (){
         window.onresize = function () {
           line1.resize();

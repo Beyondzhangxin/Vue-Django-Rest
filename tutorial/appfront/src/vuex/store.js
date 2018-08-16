@@ -11,8 +11,18 @@ const store = new Vuex.Store({
   },
   mutations: {
     updateTree(state, element) {
-      console.log(element);
-      state.chooseTree.push(element);
+      //信号量
+      var flag = 0;
+      for (var i = 0; i < this.state.chooseTree.length; i++) {
+        if (this.state.chooseTree[i].system == element.system) {
+          this.state.chooseTree[i].devices.push(element.device);
+          flag = 1;
+        }
+      }
+      if (flag == 0) {
+        this.state.chooseTree.push({system: element.system, devices: [element.device]});
+      }
+      console.log(this.state.chooseTree);
     },
     cleanTree() {
       this.state.chooseTree = [];
