@@ -118,12 +118,24 @@
     },
     methods: {
       loadData(){
+        var url = ""
+        var fromData = ""
+        if (this.carryModel.model == 'dzdb') {
+           url = 'http://localhost:8000/system/getStationCompareInfo';
+           fromData = "stationList=" + JSON.stringify(this.carryModel.stationList) + "&compareParam=" + this.carryModel.compareParam + "&searchDate=" + this.carryModel.searchDate;
+        }
+
+        if (this.carryModel.model == 'sbdb') {
+          url = 'http://localhost:8000/system/getDeviceCompareInfo';
+          fromData = 'deviceList=' + JSON.stringify(this.carryModel.deviceList) + "&compareParam=" + this.carryModel.compareParam + "&searchDate=" + this.carryModel.searchDate;
+        }
+
         console.log(this.carryModel);
         var instance = this.$ajax.create({
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         });
-        instance.post('http://localhost:8000/system/getStationCompareInfo',
-          "stationList=" + JSON.stringify(this.carryModel.stationList) + "&compareParam=" + this.carryModel.compareParam + "&searchDate=" + this.carryModel.searchDate
+        instance.post(url,
+          fromData
         )
           .then(function (response) {
             console.log(response);
@@ -174,6 +186,7 @@
         carryModel: {
           model: "dzdb",
           stationList: ['SPGS', 'PVMG'],
+          deviceList: [{'SPGS':['NBQGL1','NBQGL2','NBQGL3']},{'PVMG':['NBQGL1','NBQGL2']}],
           compareParam: "GL",
           searchDate: "2017-04-27",
         },
