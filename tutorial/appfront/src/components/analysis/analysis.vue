@@ -6,6 +6,7 @@
     <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
 
     <el-header id="header" style="height:80px;">
+
       <el-row>
         <el-col :span="3">
           <div class="grid-content">
@@ -34,7 +35,22 @@
         <el-col :span="3">
           <div class="grid-content"></div>
         </el-col>
+        
+        <el-col :span="15">
+        <div class="block">
+        <span id="text1">查询电站</span>
+        <el-cascader
+          placeholder="试试搜索：电站对比"
+          :options="options"
+          filterable
+          change-on-select
+        ></el-cascader>
+        </div>
+        </el-col>
       </el-row>
+    
+
+
     </el-header>
 
     <hr width=100%   size=1   color=#bbbcbc   style="FILTER: alpha(opacity=100,finishopacity=0)">
@@ -119,6 +135,7 @@
       // myCanvas
     },
     methods: {
+
       loadData(){
         var url = ""
         var fromData = ""
@@ -182,8 +199,94 @@
           });
       },
     },
+
     data(){
       return {
+
+          options: [{
+          value: 'dzdb',
+          label: '电站对比',
+          children: [{
+            value: 'gl',
+            label: '功率',
+          }, {
+            value: 'xl',
+            label: '效率',
+            disabled:true,
+          },
+           {
+            value: 'dxss',
+            label: '等效时数',
+          },
+           {
+            value: 'fhl',
+            label: '符合率',
+            disabled:true,
+          },
+           {
+            value: 'fdl',
+            label: '发电量',
+          },
+          ],
+          },
+          {
+          value: 'sbdb',
+          label: '设备对比',
+           children: [{
+            value: 'gl',
+            label: '功率',
+          }, {
+            value: 'xl',
+            label: '效率',
+            disabled:true,
+          },
+           {
+            value: 'dxss',
+            label: '等效时数',
+          },
+           {
+            value: 'fhl',
+            label: '符合率',
+            disabled:true,
+          },
+           {
+            value: 'fdl',
+            label: '发电量',
+          },
+          ],
+          },
+          {
+            valve:'zsdb',
+            label:'自身对比',
+            disabled:true,
+            children: [{
+            value: 'gl',
+            label: '功率',
+          }, {
+            value: 'xl',
+            label: '效率',
+            disabled:true,
+          },
+           {
+            value: 'dxss',
+            label: '等效时数',
+          },
+           {
+            value: 'fhl',
+            label: '符合率',
+            disabled:true,
+          },
+           {
+            value: 'fdl',
+            label: '发电量',
+          },
+          ],
+          },
+          ],
+          
+      
+      
+
         selList: [],
         carryModel: {
           model: "dzdb",
@@ -438,4 +541,9 @@
     background-color: rgba(180, 180, 180, 0.1);
   }
 
+.block{
+  margin-top:10px;
+  float:right;
+  margin-right:120px;
+}
 </style>
