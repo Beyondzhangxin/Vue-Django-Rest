@@ -9,7 +9,7 @@
       <el-row>
         <el-col :span="3">
           <div class="grid-content">
-            <el-button id="button" @click="carryModel.model='dzdb'; $store.commit('filter', '系统')">
+            <el-button id="button"  @click="carryModel.model='dzdb'; $store.commit('filter', '系统')">
               <img src="../../assets/station.png" id="image">
               <span id="text"><strong>电站对比</strong></span>
             </el-button>
