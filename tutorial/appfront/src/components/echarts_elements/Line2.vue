@@ -48,7 +48,7 @@
                 list2.push(response.data.data.xAxix[j][0]);
               }
               this.changeOption.series[1].data = list1;
-              this.changeOption.xAxis[1].data = list2;
+              this.changeOption.xAxis[0].data = list2;
             }.bind(this))
             .catch(function (error) {
               return 0;
