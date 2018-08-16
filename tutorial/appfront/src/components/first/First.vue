@@ -224,9 +224,18 @@
     mounted: function () {
       this.loadData();
       this.envProtectData();
+      // this.interval = setInterval(function(){
+      //   this.envProtectData();
+      //   this.loadData();
+      // }.bind(this), 5000);
     },
+    // destroyed: function() {
+    //   clearInterval(this.interval)
+    // },
+
     methods: {
       envProtectData(){
+        console.log(346363636);
         this.$ajax.get('http://localhost:8000/system/getHBSJ')
           .then(function (response) {
             //处理数据
@@ -256,7 +265,7 @@
     },
     data () {
       return {
-
+        interval: 0,
         dotsNum: 60,
         activeName: 'first',
         //配置最下面的list
@@ -733,7 +742,7 @@
 }
 
 .box-card1{
-  
+
    background: -webkit-linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
     background: -o-linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);
     background: -moz-linear-gradient(30deg, rgb(55,59,68,0.2),#355C7D);

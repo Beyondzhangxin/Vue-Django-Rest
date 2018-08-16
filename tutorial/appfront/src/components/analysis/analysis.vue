@@ -9,7 +9,7 @@
       <el-row>
         <el-col :span="3">
           <div class="grid-content">
-            <el-button id="button">
+            <el-button id="button" @click="carryModel.model='dzdb'">
               <img src="../../assets/station.png" id="image">
               <span id="text"><strong>电站对比</strong></span>
             </el-button>
@@ -17,7 +17,7 @@
         </el-col>
         <el-col :span="3">
           <div class="grid-content">
-            <el-button id="button">
+            <el-button id="button" @click="carryModel.model='sbdb'">
               <img src="../../assets/self.png" id="image">
               <span id="text"><strong>设备对比</strong></span>
             </el-button>
@@ -25,7 +25,7 @@
         </el-col>
         <el-col :span="3">
           <div class="grid-content">
-            <el-button id="button">
+            <el-button id="button" disabled>
               <img src="../../assets/equipment.png" id="image">
               <span id="text"><strong>自身对比</strong></span>
             </el-button>
@@ -47,19 +47,19 @@
           <el-col :span="12" id="span1">
             <el-col :span="4" id="span0"><strong>对比内容:</strong></el-col>
             <el-col :span="4">
-              <el-button id="button1"><strong>功率</strong></el-button>
+              <el-button id="button1" @click="carryModel.compareParam='GL'"><strong>功率</strong></el-button>
             </el-col>
             <el-col :span="4">
-              <el-button id="button1"><strong>效率</strong></el-button>
+              <el-button id="button1" disabled><strong>效率</strong></el-button>
             </el-col>
             <el-col :span="4">
-              <el-button id="button1"><strong>等效时数</strong></el-button>
+              <el-button id="button1"  @click="carryModel.compareParam='DXSS'"><strong>等效时数</strong></el-button>
             </el-col>
             <el-col :span="4">
-              <el-button id="button1"><strong>符合率</strong></el-button>
+              <el-button id="button1" disabled><strong>符合率</strong></el-button>
             </el-col>
             <el-col :span="4">
-              <el-button id="button1"><strong>发电量</strong></el-button>
+              <el-button id="button1"  @click="carryModel.compareParam='FDL'"><strong>发电量</strong></el-button>
             </el-col>
           </el-col>
           <el-col :span="12" id="span2">
@@ -67,10 +67,11 @@
             <!-- 日期选择器 -->
             <span class="demonstration"></span>
             <el-date-picker
-              v-model="value2"
+              v-model="carryModel.searchDate"
               align="right"
               type="date"
               placeholder="选择日期"
+              value-format="yyyy-MM-dd"
               :picker-options="pickerOptions1">
             </el-date-picker>
           </el-col>
@@ -86,8 +87,8 @@
         </el-col>
       </el-row>
       <div class="sel">
-        <el-button type="primary" plain>北京光伏电站</el-button>
-        <el-button type="primary" plain>上海光伏电站</el-button>
+        <el-button type="primary" @click="carryModel.stationList" plain>北京光伏电站</el-button>
+        <el-button type="primary" @click="carryModel.stationList" plain>上海光伏电站</el-button>
       </div>
 
     </el-main>
@@ -117,27 +118,50 @@
     },
     methods: {
       loadData(){
+        console.log(this.carryModel);
         var instance = this.$ajax.create({
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         });
         instance.post('http://localhost:8000/system/getStationCompareInfo',
-          "stationList=" + JSON.stringify(['SPGS', 'PVMG']) + "&compareParam=GL&searchDate=2017-04-27"
+          "stationList=" + JSON.stringify(this.carryModel.stationList) + "&compareParam=" + this.carryModel.compareParam + "&searchDate=" + this.carryModel.searchDate
         )
           .then(function (response) {
-            //处理数据
-            console.log(12412421121);
             console.log(response);
-            for (var i = 0; i < response.data.data.series.length; i++) {
-              this.l2.option.series.push({
-                data: response.data.data.series[i].data,
-                name: response.data.data.series[i].name,
-                type: 'line',
-                xAxisIndex: 0,
-                yAxisIndex: 0,
-              })
+            this.l2.option.series= [];
+            //处理数据
+            var dataList = [];
+            if (this.carryModel.compareParam == 'DXSS') {
+              var dataList = [];
+              for (var i = 0; i < response.data.data.series.length; i++) {
+                var list = [];
+                for (var j = 0; j < response.data.data.xAxis[0].data.length; j++) {
+                  list.push(response.data.data.series[i].data);
+                }
+                dataList.push(list);
+              }
+              for (var i = 0; i < response.data.data.series.length; i++) {
+                this.l2.option.series.push({
+                  data: dataList[i],
+                  name: response.data.data.series[i].name + " - " + this.carryModel.compareParam,
+                  type: 'line',
+                  xAxisIndex: 0,
+                  yAxisIndex: 0,
+                })
+              }
+
+            }else {
+              for (var i = 0; i < response.data.data.series.length; i++) {
+                this.l2.option.series.push({
+                  data: response.data.data.series[i].data,
+                  name: response.data.data.series[i].name + " - " + this.carryModel.compareParam,
+                  type: 'line',
+                  xAxisIndex: 0,
+                  yAxisIndex: 0,
+                })
+              }
             }
             this.l2.option.xAxis[0].data = response.data.data.xAxis[0].data
-            console.log(this.l2.option);
+
             //{"bwrq": "2018-03-21", "ljfd": "5346.532596464663", "zjrl": 50.0, "dqgl": null, "jrdx": 0, "jrfd": 0.0}
           }.bind(this))
           .catch(function (error) {
@@ -147,6 +171,12 @@
     },
     data(){
       return {
+        carryModel: {
+          model: "dzdb",
+          stationList: ['SPGS', 'PVMG'],
+          compareParam: "GL",
+          searchDate: "2017-04-27",
+        },
         pickerOptions1: {
           disabledDate(time) {
             return time.getTime() > Date.now();
@@ -229,12 +259,25 @@
         value2: '',
       };
     },
+    watch: {
+      carryModel:{
+        handler:function(val,oldval){
+          console.log(3525235234);
+          this.loadData();
+        },
+        deep:true//对象内部的属性监听，也叫深度监听
+      }
+    },
     mounted: function () {
       this.$store.commit('showIt');
       this.loadData();
+      // this.interval = setInterval(function(){
+      //   this.loadData();
+      // }.bind(this), 5000);
     },
     destroyed: function () {
-      this.$store.commit('hideIt')
+      this.$store.commit('hideIt');
+      // clearInterval(this.interval);
     },
   }
 

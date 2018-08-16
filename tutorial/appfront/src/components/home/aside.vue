@@ -68,6 +68,9 @@
       //this.load();
       this.transdata();
     },
+    destroyed: function () {
+      this.$store.commit('cleanTree');
+    },
     watch: {
       filterText(val) {
         this.$refs.tree2.filter(val);
@@ -92,16 +95,27 @@
             }
             jsonList.push(json);
           }
-          console.log(jsonList);
           this.data2 = jsonList;
         });
-        console.log(this.data2)
       },
       sendTree(){
+        this.$store.commit('cleanTree');
+        console.log(1);
         console.log(this.$refs.tree2.getCheckedKeys());
+        var list = this.$refs.tree2.getCheckedKeys();
+        for (var i = 0; i < list.length; i++) {
+          if (typeof(list[i]) == 'string') {
+            this.$store.commit('updateTree', this.fromData(list[i]));
+          }
+        }
+        console.log(this.$store.state.chooseTree);
         console.log(this.$refs.tree2.getCheckedNodes());
       },
-
+      //对数据格式进行操作
+      fromData(str) {
+        var list = str.split(" ");
+        return {'system': list[0], 'device': list[1]}
+      },
       filterNode(value, data) {
         if (!value) return true;
         return data.label.indexOf(value) !== -1;

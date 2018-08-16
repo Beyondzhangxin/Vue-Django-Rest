@@ -18,7 +18,7 @@
 <script>
   import HomeHeader from '@/components/Home/header'
   import HomeAside  from '@/components/Home/aside'
-  import myCanvas from 'vue-atom-canvas'
+  import myCanvas from '../canvas'
 
   export default {
     name: 'home',

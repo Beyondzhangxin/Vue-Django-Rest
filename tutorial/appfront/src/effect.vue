@@ -41,7 +41,7 @@
 
 
 <script>
-import myCanvas from 'vue-atom-canvas'
+import myCanvas from './canvas'
 import Axios from 'axios'
 export default {
   name: 'effect',

@@ -52,10 +52,11 @@
     },
     //mounted为vue对象的生命周期
     watch: {
-   // 如果 `question` 发生改变，这个函数就会运行
+      // 如果 `question` 发生改变，这个函数就会运行
       data: function (newQuestion, oldQuestion) {
         this.showAll();
-      }
+      },
+
     },
     mounted: function() {
       this.showAll();
@@ -70,6 +71,17 @@
           console.log(response);
           for (var i = 0; i < response.data.data.tab.length; i++) {
             //在这里写过aside过滤
+            // if (this.$store.state.chooseTree.length != 0) {
+            //   for (var j = 0; j < this.$store.state.chooseTree.length; j++) {
+            //   //如果设备和系统匹配则显示
+            //     if (response.data.data.tab[i].dev_systemType == this.$store.state.chooseTree[j].system) {
+            //       if(response.data.data.tab[i].dev_xh == this.$store.state.chooseTree[j].device) {
+            //         this.setTableData(response.data.data.tab[i])
+            //       }
+            //     }
+            //   }
+            //   continue;
+            // }
             this.setTableData(response.data.data.tab[i])
           }
           this.loading = false

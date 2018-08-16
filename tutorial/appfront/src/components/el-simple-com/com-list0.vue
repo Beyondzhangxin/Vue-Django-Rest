@@ -44,6 +44,12 @@
         // pageSize: 2
       }
     },
+    watch: {
+   // 如果 `question` 发生改变，这个函数就会运行
+      data: function (newQuestion, oldQuestion) {
+        this.showAll();
+      }
+    },
     //mounted为vue对象的生命周期
     mounted: function() {
       this.showAll();
@@ -56,9 +62,7 @@
         this.$ajax.get(this.data)
         .then(function (response) {
           this.setTableData(response.data.data.tab);
-          console.log(response.data.data.tab);
           this.tableData = response.data.data.tab;
-          console.log(this.tableData);
           // for (var i = 0; i < response.data.results.length; i++) {
           //   //在这里写过aside过滤
           //   this.setTableData(response.data.results[i])
