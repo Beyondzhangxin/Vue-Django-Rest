@@ -78,7 +78,7 @@
         this.interval=setInterval(function () {
           this.loadData();
           line1.setOption(this.option);
-        },5000)
+        }.bind(this),5000)
         setTimeout(function () {
           window.onresize = function () {
             line1.resize();

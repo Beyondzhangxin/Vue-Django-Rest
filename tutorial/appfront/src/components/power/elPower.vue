@@ -90,7 +90,7 @@ export default {
 }
 
 .tem1{
- 
+
     padding-top: 25px;
     padding-bottom: 10px;
     box-sizing: border-box;
@@ -105,7 +105,7 @@ export default {
 }
 
 .con{
-  
+
     padding-top: 13px;
     padding-bottom: 10px;
     box-sizing: border-box;
@@ -114,7 +114,7 @@ export default {
 }
 
 .mes{
-  
+
     padding-top: 13px;
     padding-bottom: 10px;
     box-sizing: border-box;

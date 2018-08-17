@@ -100,13 +100,13 @@
                     <el-card class="box-card1">
                     <el-row>
                     <el-col :span="1" class="col1">
-                      <el-button  round id="text3"><strong>逆变器</strong></el-button>
+                      <el-button  round id="text3" @click=""><strong>逆变器</strong></el-button>
                     </el-col>
-                    <el-col :span="1" class="col1">
+                    <el-col :span="1" class="col1" @click="">
                       <el-button  round id="text3"><strong>汇流箱</strong></el-button>
                     </el-col>
                     <el-col :span="1" class="col1">
-                      <el-button  round id="text3"><strong>采集设备</strong></el-button>
+                      <el-button  round id="text3" @click=""><strong>采集设备</strong></el-button>
                     </el-col>
                     </el-row>
                     </el-card>
@@ -198,7 +198,6 @@ export default {
       handleCurrentChange(val) {
         //改分页
         this.list.data = 'http://localhost:8000/system/getDeviceTable?pageNum='+ val +'&pageSize=5';
-
       }
     },
     mounted: function() {
