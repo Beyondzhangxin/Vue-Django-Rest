@@ -10,7 +10,7 @@
       <el-row>
         <el-col :span="3">
           <div class="grid-content">
-            <el-button id="button"  @click="carryModel.model='dzdb'; $store.commit('filter', '系统')">
+            <el-button type="success" id="button" ref="button1" @click=" changeGroupColor(1); carryModel.model='dzdb'; $store.commit('filter', '系统')">
               <img src="../../assets/station.png" id="image">
               <span id="text"><strong>电站对比</strong></span>
             </el-button>
@@ -18,7 +18,7 @@
         </el-col>
         <el-col :span="3">
           <div class="grid-content">
-            <el-button id="button" @click="carryModel.model='sbdb'; $store.commit('filter', '逆变器')">
+            <el-button type="" id="button" ref="button2" @click=" changeGroupColor(2); carryModel.model='sbdb'; $store.commit('filter', '逆变器')">
               <img src="../../assets/self.png" id="image">
               <span id="text"><strong>设备对比</strong></span>
             </el-button>
@@ -36,13 +36,8 @@
           <div class="grid-content"></div>
         </el-col>
       </el-row>
-    
-
-
     </el-header>
-
     <hr width=100%   size=1   color=#bbbcbc   style="FILTER: alpha(opacity=100,finishopacity=0)">
-
     <!-- main1 -->
     <div id="main1">
 
@@ -138,8 +133,20 @@
       // myCanvas
     },
     methods: {
-
-      loadData(){
+      changeGroupColor(num) {
+        console.log(num);
+        console.log(this.$refs.button1.type);
+        if (num == 1) {
+          this.$refs.button1.type = "success";
+          this.$refs.button2.type = "";
+        }
+        if (num == 2) {
+          this.$refs.button1.type = "";
+          this.$refs.button2.type = "success";
+        }
+        console.log(this.$refs.button1.type);
+      },
+      loadData () {
         var url = ""
         var fromData = ""
         if (this.carryModel.model == 'dzdb') {
@@ -285,9 +292,9 @@
           ],
           },
           ],
-          
-      
-      
+
+
+
 
         selList: [],
         carryModel: {
