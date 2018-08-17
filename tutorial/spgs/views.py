@@ -9,7 +9,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.views.decorators.http import require_http_methods
 
-from .tools import getStatus, getStationMsg
+from .tools import getStatus, getStationMsg, getSpgsDeviceInfoAll
 from .models import *
 from tutorial.settings import DATABASES
 
@@ -23,13 +23,8 @@ pwd = DATABASES['default']['PASSWORD']
 
 @require_http_methods(['GET'])
 def apiTest(request):
-    db = pymysql.connect(database_ip, user, pwd, database_name)
-    cursor = db.cursor()
-    sql = "select dayHours from spgs_day WHERE total_d  = '" + "2017-04-27" + "'"
-    cursor.execute(sql)
-    rs = cursor.fetchone()
-    if not rs is None:
-        rs =round(float(rs[0]),2)
-    else:
-        rs = 0
-    print(rs)
+    rs = getSpgsDeviceInfoAll('FDL','2017-04-27')
+    print(type(rs.get('data')))
+    print(rs.get('time'))
+    return JsonResponse({"time":rs.get('time')})
+

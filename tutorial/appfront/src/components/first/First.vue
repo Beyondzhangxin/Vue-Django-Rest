@@ -405,16 +405,7 @@
                 {
                   type: 'category',
                   boundaryGap: true,
-                  data: (function () {
-                    var now = new Date();
-                    var res = [];
-                    var len = 10;
-                    while (len--) {
-                      res.unshift(now.toLocaleTimeString().replace(/^\D*/, ''));
-                      now = new Date(now - 2000);
-                    }
-                    return res;
-                  })()
+                  data:[]
                 }
               ],
               yAxis: [
