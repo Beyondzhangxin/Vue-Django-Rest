@@ -33,7 +33,6 @@ def getSationNum():
 
 
 def getEchartsForZGL():
-    currentDay = time.strftime('%Y-%m-%d', time.localtime())
     db = pymysql.connect(database_ip, user, pwd, database_name)
     cursor = db.cursor()
     # sql1 = "select FDZGL from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
@@ -52,15 +51,18 @@ def getEchartsForZGL():
         '%H:%M') + "' and '" + "2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now(), '%H:%M') + "' "
     cursor.execute(sql2)
     time2 = cursor.fetchall()
-    rs_time = time2
-    rs_data = data2
+    rs_time = []
+    rs_data = []
+    for x in data2:
+        rs_data.append(x[0])
+    for y in time2:
+        rs_time.append(y[0])
     data = {'series': rs_data, 'xAxix': rs_time}
     db.close()
     return data
 
 
 def getEchartsDataForInverterFDGL():
-    currentDay = time.strftime('%Y-%m-%d', time.localtime())
     db = pymysql.connect(database_ip, user, pwd, database_name)
     cursor = db.cursor()
     # sql1 = "select FDZGL from data_spgs_history WHERE date_format(datatime,'%Y-%m-%d')='" + "2017-04-27" + "'"
@@ -74,20 +76,23 @@ def getEchartsDataForInverterFDGL():
         '%H:%M') + "' and '" + " 2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now(), '%H:%M') + "' "
     cursor.execute(sql1)
     data2 = cursor.fetchall()
-    sql2 = "select date_format(datatime,'%H:%i')  from data_spgs_history WHERE datatime BETWEEN '" + "2017-05-06 " + datetime.datetime.strftime(
+    sql2 = "select date_format(datatime,'%H:%i') from data_spgs_history WHERE datatime BETWEEN '" + "2017-05-06 " + datetime.datetime.strftime(
         datetime.datetime.now() - datetime.timedelta(hours=2),
         '%H:%M') + "' and '" + " 2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now(), '%H:%M') + "' "
     cursor.execute(sql2)
     time2 = cursor.fetchall()
-    rs_time = time2
-    rs_data = data2
+    rs_time = []
+    rs_data = []
+    for x in data2:
+        rs_data.append(x[0])
+    for y in time2:
+        rs_time.append(y[0])
     data = {'series': rs_data, 'xAxix': rs_time}
     db.close()
     return data
 
 
 def getEchartsDataForInverterFDL():
-    currentDay = time.strftime('%Y-%m-%d', time.localtime())
     db = pymysql.connect(database_ip, user, pwd, database_name)
     cursor = db.cursor()
     sql_time = " select date_format(total_d,'%H:%i') from spgs_minute WHERE total_d BETWEEN '" + "2017-05-06 " + datetime.datetime.strftime(
@@ -96,14 +101,17 @@ def getEchartsDataForInverterFDL():
     sql_data = " SELECT (@csum := @csum + TOTAL_FDL) AS total_fdl FROM spgs_minute  WHERE total_d BETWEEN '" + "2017-05-06 " + datetime.datetime.strftime(
         datetime.datetime.now() - datetime.timedelta(hours=2),
         '%H:%M') + "' and '" + "2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now(), '%H:%M') + "' "
-
     cursor.execute(sql_time)
     rs2_time = cursor.fetchall()
     cursor.execute('SET @csum := 0')
     cursor.execute(sql_data)
     rs2_data = cursor.fetchall()
-    rs_time = rs2_time
-    rs_data = rs2_data
+    rs_time = []
+    rs_data = []
+    for x in rs2_data:
+        rs_data.append(x[0])
+    for y in rs2_time:
+        rs_time.append(y[0])
     data = {'series': rs_data, 'xAxix': rs_time}
     db.close()
     return data
@@ -117,7 +125,6 @@ def getTotalVolume():
 
 def getTotalGeneratingCapacity():
     db = pymysql.connect(database_ip, user, pwd, database_name)
-    # use cursor to manipulate
     cursor = db.cursor()
     sql1 = "select LJFDL from data_pvmg_buffer "
     sql2 = "select LJFDL from data_spgs_buffer "
@@ -163,9 +170,9 @@ def getTotalGeneratingCapacity_today():
     data_spgs = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('drfdl', flat=True))
     data_pvmg = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('jrfdl', flat=True))
     total = 0
-    if len(data_spgs)>0:
+    if len(data_spgs) > 0:
         total = + data_spgs[-1]
-    if len(data_pvmg)>0:
+    if len(data_pvmg) > 0:
         total = + data_pvmg[-1]
     return total
 

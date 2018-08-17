@@ -131,7 +131,7 @@ def echartsDataForInverterFDL(request):
     return JsonResponse(response)
 
 
-# 返回首页当日发电功率的逆变器发电功率数据
+# 返回echarts首页当日发电功率的逆变器发电功率数据
 @require_http_methods(['GET'])
 def echartsDataForInverterFDGL(request):
     response = {}
@@ -146,7 +146,7 @@ def echartsDataForInverterFDGL(request):
     return JsonResponse(response)
 
 
-# 返回当日发电功率echarts图总辐照度的数据
+# 返回echarts当日发电功率echarts图总辐照度的数据
 @require_http_methods(['GET'])
 def echartsDataForFZD(request):
     response = {}
