@@ -27,6 +27,8 @@ from spgs.tools import getSpgsGL, getSpgsDXSS, getSpgsFDL
 
 from pvmg.tools import getPvmgDeviceInfo
 from spgs.tools import getSpgsDeviceInfo
+
+from spgs.tools import getSpgsDeviceInfoAll
 from .tools import *
 from .models import *
 from tutorial.settings import DATABASES
@@ -262,7 +264,7 @@ def getDeviceTable(request):
                 cursor.execute(sql_all)
                 rs_all = cursor.fetchone()
 
-                for i in range(0,len(x['devices'])):
+                for i in range(0, len(x['devices'])):
                     dic = {}
                     (key, value), = x['devices'][i].items()
                     sql = "select " + key + " from  data_" + x.get("systemType") + "_buffer "
@@ -274,7 +276,7 @@ def getDeviceTable(request):
                         dqgl = 0.00
                     dic['dev_dqgl'] = dqgl
                     if not rs_all is None:
-                        jrfd = rs_all[i+4]
+                        jrfd = rs_all[i + 4]
                         dayHours = rs_all[2]
                     else:
                         jrfd = 0.00
@@ -319,7 +321,7 @@ def getHBSJ(request):
 # searchDate是查询日期字符串，格式为“2017-04-07”,默认是今天,请求头content_Type:application/x-www-form-urlencoded
 @require_http_methods(['POST'])
 def getStationCompareInfo(request):
-    stationList =list(eval(request.POST.get("stationList")))
+    stationList = list(eval(request.POST.get("stationList")))
     compareParam = request.POST.get("compareParam")
     searhcDate = request.POST.get("searchDate")
     if searhcDate is None:
@@ -379,21 +381,23 @@ def getDeviceCompareInfo(request):
             if key == "SPGS":
                 if not value is None:
                     for x in value:
+                        rs = getSpgsDeviceInfoAll(x.lower(), compareParam, searhcDate)
                         series.append(
-                            {"name": "SPGS-"+x,
-                             "data": getSpgsDeviceInfo(x.lower(), compareParam, searhcDate).get("data")})
+                            {"name": "SPGS-" + x,
+                             "data": rs.get('data')})
                         xAxis.append(
-                            {"name": "SPGS-"+x,
-                             "data": getSpgsDeviceInfo(x.lower(), compareParam, searhcDate).get("time")})
+                            {"name": "SPGS-" + x,
+                             "data": rs.get("time")})
             if key == "PVMG":
                 if not value is None:
                     for x in value:
+                        rs = getSpgsDeviceInfoAll(x.lower(), compareParam, searhcDate)
                         series.append(
-                            {"name": "PVMG-"+x,
-                             "data": getPvmgDeviceInfo(x.lower(), compareParam, searhcDate).get("data")})
+                            {"name": "PVMG-" + x,
+                             "data": rs.get("data")})
                         xAxis.append(
-                            {"name": "PVMG-"+x,
-                             "data": getPvmgDeviceInfo(x.lower(), compareParam, searhcDate).get("time")})
+                            {"name": "PVMG-" + x,
+                             "data": rs.get("time")})
         response['data'] = {"series": series, "xAxis": xAxis}
         response['msg'] = 'success'
         response['error_num'] = 0
@@ -419,10 +423,10 @@ def getDetectionInfo(request):
         cursor = db.cursor()
         for temp in deviceList:
             devices = temp.get('devices')
-            sql_fdl= "select * from spgs_day WHERE total_d  = '" + datetime.datetime.now().strftime('%Y-%m-%d') + "'"
+            sql_fdl = "select * from spgs_day WHERE total_d  = '" + datetime.datetime.now().strftime('%Y-%m-%d') + "'"
             cursor.execute(sql_fdl)
             rs_fdl = cursor.fetchone()
-            for i in range(0,len(devices)):
+            for i in range(0, len(devices)):
                 (key, value), = devices[i].items()
                 info = {}
                 systemType = temp.get('systemType')
@@ -445,10 +449,10 @@ def getDetectionInfo(request):
                     info['dev_cjqzt'] = '离线'
                 info['dev_dqgl'] = rs
                 if not rs_fdl is None:
-                    info['dev_jrfd']=round(rs_fdl[i+4],2)
-                    info['dev_drdx']=rs_fdl[i+2]
+                    info['dev_jrfd'] = round(rs_fdl[i + 4], 2)
+                    info['dev_drdx'] = rs_fdl[i + 2]
                 else:
-                    info['dev_jrfd'] =0.00
+                    info['dev_jrfd'] = 0.00
                     info['dev_drdx'] = 0
                 tabList.append(info)
         db.close()

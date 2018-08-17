@@ -23,8 +23,8 @@ pwd = DATABASES['default']['PASSWORD']
 
 @require_http_methods(['GET'])
 def apiTest(request):
-    rs = getSpgsDeviceInfoAll('FDL','2017-04-27')
-    print(type(rs.get('data')))
-    print(rs.get('time'))
+    rs = getSpgsDeviceInfoAll('nbqgl1','FDL','2017-04-27')
+    ls = rs.get('data')
+    print(type(ls[0]))
     return JsonResponse({"time":rs.get('time')})
 

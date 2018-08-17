@@ -188,7 +188,7 @@ def getPvmgDeviceInfo(deviceName,param, searchDate):
             return {"data": [], "time": []}
     else:return {"data": [], "time": []}
 
-def getPvmgDeviceInfoAll(param, searchDate):
+def getPvmgDeviceInfoAll(deviceName,param, searchDate):
     start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
     end = start + datetime.timedelta(days=1)
     datatime = list(
@@ -200,8 +200,10 @@ def getPvmgDeviceInfoAll(param, searchDate):
     if param == "GL":
         try:
             data = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)))
-
-            return {"data": data, "time": time_list}
+            ls = []
+            for x in data:
+                ls.append(eval('x.' + deviceName))
+            return {"data": ls, "time": time_list}
         except Exception as e:
             print(e)
             return {"data": [], "time": []}
@@ -219,8 +221,9 @@ def getPvmgDeviceInfoAll(param, searchDate):
             cursor.execute(sql)
             rs = cursor.fetchall()
             rs_list = []
+            index = int(deviceName[-1])
             for x in rs:
-                rs_list.append(x[0])
+                rs_list.append(x[index + 2])
             db.close()
             return {"data": rs_list, "time": time_list}
         except Exception as e:
