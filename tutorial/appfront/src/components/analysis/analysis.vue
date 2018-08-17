@@ -10,7 +10,7 @@
       <el-row>
         <el-col :span="3">
           <div class="grid-content">
-            <el-button type="success" id="button" ref="button1" @click=" changeGroupColor(1); carryModel.model='dzdb'; $store.commit('filter', '系统')">
+            <el-button id="button"  ref="button1" @click=" changeColor(1); carryModel.model='dzdb'; $store.commit('filter', '系统')">
               <img src="../../assets/station.png" id="image">
               <span id="text"><strong>电站对比</strong></span>
             </el-button>
@@ -18,7 +18,7 @@
         </el-col>
         <el-col :span="3">
           <div class="grid-content">
-            <el-button type="" id="button" ref="button2" @click=" changeGroupColor(2); carryModel.model='sbdb'; $store.commit('filter', '逆变器')">
+            <el-button id="button"  ref="button2" @click=" changeColor(2); carryModel.model='sbdb'; $store.commit('filter', '逆变器')">
               <img src="../../assets/self.png" id="image">
               <span id="text"><strong>设备对比</strong></span>
             </el-button>
@@ -36,13 +36,19 @@
           <div class="grid-content"></div>
         </el-col>
       </el-row>
+    
+
+
     </el-header>
+
     <hr width=100%   size=1   color=#bbbcbc   style="FILTER: alpha(opacity=100,finishopacity=0)">
+
     <!-- main1 -->
     <div id="main1">
 
       <card class="card1">
         <el-row>
+
           <!-- <el-col :span="12" id="span1">
             <el-col :span="4" id="span0"><strong>对比内容:</strong></el-col>
             <el-col :span="4">
@@ -61,20 +67,21 @@
               <el-button id="button1"  @click="carryModel.compareParam='FDL'"><strong>发电量</strong></el-button>
             </el-col>
           </el-col> -->
-
-           <el-col :span="15">
+ 
         <div class="block">
-        <span id="text1">查询电站</span>
-        <el-cascader
-          placeholder="试试搜索：电站对比"
-          :options="options"
-          filterable
-          change-on-select
-        ></el-cascader>
+          <span id="text0">查询内容</span>
+          <el-select v-model="carryModel.compareParam" clearable placeholder="请选择" >
+          <el-option         
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+            :disabled="item.disabled">
+          </el-option>
+        </el-select>
         </div>
-        </el-col>
 
-          <el-col :span="12" id="span2">
+            
             <div class="block1">
             <span id="text1">查询日期</span>
             <!-- 日期选择器 -->
@@ -88,10 +95,13 @@
               :picker-options="pickerOptions1">
             </el-date-picker>
             </div>
-          </el-col>
+
+
         </el-row>
       </card>
     </div>
+
+ <hr width=100%   size=1   color=#bbbcbc   style="FILTER: alpha(opacity=100,finishopacity=0)">
 
     <!-- main2 -->
     <el-main id="main2">
@@ -133,20 +143,17 @@
       // myCanvas
     },
     methods: {
-      changeGroupColor(num) {
-        console.log(num);
-        console.log(this.$refs.button1.type);
-        if (num == 1) {
-          this.$refs.button1.type = "success";
+      changeColor(num) {
+        if(num == 1) {
+          this.$refs.button1.type = "primary";
           this.$refs.button2.type = "";
         }
-        if (num == 2) {
+        if(num == 2) {
+          this.$refs.button2.type = "primary"
           this.$refs.button1.type = "";
-          this.$refs.button2.type = "success";
         }
-        console.log(this.$refs.button1.type);
       },
-      loadData () {
+      loadData(){
         var url = ""
         var fromData = ""
         if (this.carryModel.model == 'dzdb') {
@@ -159,6 +166,7 @@
           fromData = 'deviceList=' + JSON.stringify(this.carryModel.deviceList) + "&compareParam=" + this.carryModel.compareParam + "&searchDate=" + this.carryModel.searchDate;
         }
 
+        console.log(this.carryModel);
         var instance = this.$ajax.create({
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         });
@@ -213,89 +221,23 @@
       return {
 
           options: [{
-          value: 'dzdb',
-          label: '电站对比',
-          children: [{
-            value: 'gl',
-            label: '功率',
-          }, {
-            value: 'xl',
-            label: '效率',
-            disabled:true,
-          },
-           {
-            value: 'dxss',
-            label: '等效时数',
-          },
-           {
-            value: 'fhl',
-            label: '符合率',
-            disabled:true,
-          },
-           {
-            value: 'fdl',
-            label: '发电量',
-          },
-          ],
-          },
-          {
-          value: 'sbdb',
-          label: '设备对比',
-           children: [{
-            value: 'gl',
-            label: '功率',
-          }, {
-            value: 'xl',
-            label: '效率',
-            disabled:true,
-          },
-           {
-            value: 'dxss',
-            label: '等效时数',
-          },
-           {
-            value: 'fhl',
-            label: '符合率',
-            disabled:true,
-          },
-           {
-            value: 'fdl',
-            label: '发电量',
-          },
-          ],
-          },
-          {
-            valve:'zsdb',
-            label:'自身对比',
-            disabled:true,
-            children: [{
-            value: 'gl',
-            label: '功率',
-          }, {
-            value: 'xl',
-            label: '效率',
-            disabled:true,
-          },
-           {
-            value: 'dxss',
-            label: '等效时数',
-          },
-           {
-            value: 'fhl',
-            label: '符合率',
-            disabled:true,
-          },
-           {
-            value: 'fdl',
-            label: '发电量',
-          },
-          ],
-          },
-          ],
-
-
-
-
+          value: 'GL',
+          label: '功率'
+        }, {
+          value: 'XL',
+          label: '效率',
+          disabled:true,
+        }, {
+          value: 'DXSS',
+          label: '等效时数'
+        }, {
+          value: 'FHL',
+          label: '符合率',
+          disabled:true,
+        }, {
+          value: 'FDL',
+          label: '发电量'
+        }],
         selList: [],
         carryModel: {
           model: "dzdb",
@@ -504,7 +446,7 @@
 
   #main1 {
     margin-top: 20px;
-    height: 100px;
+    height: 80px;
 
   }
 
@@ -517,9 +459,16 @@
 
   }
 
+#text0{
+  color: aliceblue;
+  padding-right: 20px;
+}
+
+
   #text1 {
     padding-right: 20px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
+    color: aliceblue;
   }
 
   .text2 {
@@ -552,11 +501,13 @@
 
 .block{
   float: left;
-  margin-left:20px;
+  position:relative;
+  left:20px;
 }
 
 .block1{
-  margin-top:-50px;
-  margin-left:150px;
+  float:right;
+  position:relative;
+  right:700px;
 }
 </style>

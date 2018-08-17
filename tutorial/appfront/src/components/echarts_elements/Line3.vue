@@ -47,6 +47,7 @@ export default {
 
   methods: {
     drawLine () {
+      // console.log(this.option);
       // 基于准备好的dom，初始化echarts实例
       var line1 = echarts.init(document.getElementById(this.id))
       //初始化变量
