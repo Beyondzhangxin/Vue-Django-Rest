@@ -50,7 +50,7 @@ export default {
       var line1 = echarts.init(document.getElementById(this.id));
       //初始化变量
       // 绘制图表
-      
+
       line1.setOption(this.option);
       setTimeout(function (){
         window.onresize = function () {

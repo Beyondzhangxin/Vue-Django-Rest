@@ -82,7 +82,8 @@ def powerStationInfoSpgs():
             info['monthHours'] = rs[0]
         else:
             info['monthHours'] = 0
-        info['id'] = '青海'
+        info['id'] = '多功能光伏电站系统'
+        info['location']='青海'
         info['messageNum'] = len(getStationMsg())
         db.close()
         return info

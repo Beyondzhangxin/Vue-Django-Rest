@@ -80,7 +80,8 @@ def powerStationInfoPvmg():
             info['monthHours'] = rs[0]
         else:
             info['monthHours'] = 0
-        info['id'] = '青海'
+        info['id'] = '图书馆微电网系统'
+        info['location']='青海'
         info['messageNum'] = len(getStationMsg())
         db.close()
         print(info)
