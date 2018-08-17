@@ -47,7 +47,7 @@
     <div id="main1">
 
       <card class="card1">
-        <el-row>
+        <!-- <el-row> -->
           <!-- <el-col :span="12" id="span1">
             <el-col :span="4" id="span0"><strong>对比内容:</strong></el-col>
             <el-col :span="4">
@@ -67,7 +67,7 @@
             </el-col>
           </el-col> -->
 
-           <el-col :span="15">
+           
         <div class="block">
           <span id="text1">查询内容</span>
           <el-select v-model="value" clearable placeholder="请选择" >
@@ -80,9 +80,9 @@
           </el-option>
         </el-select>
         </div>
-        </el-col>
+       
 
-          <el-col :span="12" id="span2">
+      
             <div class="block1">
             <span id="text1">查询日期</span>
             <!-- 日期选择器 -->
@@ -96,8 +96,8 @@
               :picker-options="pickerOptions1">
             </el-date-picker>
             </div>
-          </el-col>
-        </el-row>
+       
+        <!-- </el-row> -->
       </card>
     </div>
 
@@ -486,11 +486,13 @@
 
 .block{
   float: left;
-  margin-left:20px;
+  position:absolute;
+  left:320px;
 }
 
 .block1{
-  margin-top:-50px;
-  margin-left:150px;
+  float:right;
+  position:relative;
+  right:50px;
 }
 </style>
