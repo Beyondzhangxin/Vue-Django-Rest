@@ -69,13 +69,16 @@
 
            <el-col :span="15">
         <div class="block">
-        <span id="text1">查询电站</span>
-        <el-cascader
-          placeholder="试试搜索：电站对比"
-          :options="options"
-          filterable
-          change-on-select
-        ></el-cascader>
+          <span id="text1">查询内容</span>
+          <el-select v-model="value" clearable placeholder="请选择" >
+          <el-option         
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+            :disabled="item.disabled">
+          </el-option>
+        </el-select>
         </div>
         </el-col>
 
@@ -207,88 +210,25 @@
       return {
 
           options: [{
-          value: 'dzdb',
-          label: '电站对比',
-          children: [{
-            value: 'gl',
-            label: '功率',
-          }, {
-            value: 'xl',
-            label: '效率',
-            disabled:true,
-          },
-           {
-            value: 'dxss',
-            label: '等效时数',
-          },
-           {
-            value: 'fhl',
-            label: '符合率',
-            disabled:true,
-          },
-           {
-            value: 'fdl',
-            label: '发电量',
-          },
-          ],
-          },
-          {
-          value: 'sbdb',
-          label: '设备对比',
-           children: [{
-            value: 'gl',
-            label: '功率',
-          }, {
-            value: 'xl',
-            label: '效率',
-            disabled:true,
-          },
-           {
-            value: 'dxss',
-            label: '等效时数',
-          },
-           {
-            value: 'fhl',
-            label: '符合率',
-            disabled:true,
-          },
-           {
-            value: 'fdl',
-            label: '发电量',
-          },
-          ],
-          },
-          {
-            valve:'zsdb',
-            label:'自身对比',
-            disabled:true,
-            children: [{
-            value: 'gl',
-            label: '功率',
-          }, {
-            value: 'xl',
-            label: '效率',
-            disabled:true,
-          },
-           {
-            value: 'dxss',
-            label: '等效时数',
-          },
-           {
-            value: 'fhl',
-            label: '符合率',
-            disabled:true,
-          },
-           {
-            value: 'fdl',
-            label: '发电量',
-          },
-          ],
-          },
-          ],
-          
-      
-      
+          value: '选项1',
+          label: '功率'
+        }, {
+          value: '选项2',
+          label: '效率',
+          disabled:true,
+        }, {
+          value: '选项3',
+          label: '等效时数'
+        }, {
+          value: '选项4',
+          label: '符合率',
+          disabled:true,
+        }, {
+          value: '选项5',
+          label: '发电量'
+        }],
+        value: '',
+
 
         selList: [],
         carryModel: {
