@@ -35,18 +35,6 @@
         <el-col :span="3">
           <div class="grid-content"></div>
         </el-col>
-        
-        <el-col :span="15">
-        <div class="block">
-        <span id="text1">查询电站</span>
-        <el-cascader
-          placeholder="试试搜索：电站对比"
-          :options="options"
-          filterable
-          change-on-select
-        ></el-cascader>
-        </div>
-        </el-col>
       </el-row>
     
 
@@ -60,7 +48,7 @@
 
       <card class="card1">
         <el-row>
-          <el-col :span="12" id="span1">
+          <!-- <el-col :span="12" id="span1">
             <el-col :span="4" id="span0"><strong>对比内容:</strong></el-col>
             <el-col :span="4">
               <el-button id="button1" @click="carryModel.compareParam='GL'"><strong>功率</strong></el-button>
@@ -77,8 +65,22 @@
             <el-col :span="4">
               <el-button id="button1"  @click="carryModel.compareParam='FDL'"><strong>发电量</strong></el-button>
             </el-col>
-          </el-col>
+          </el-col> -->
+
+           <el-col :span="15">
+        <div class="block">
+        <span id="text1">查询电站</span>
+        <el-cascader
+          placeholder="试试搜索：电站对比"
+          :options="options"
+          filterable
+          change-on-select
+        ></el-cascader>
+        </div>
+        </el-col>
+
           <el-col :span="12" id="span2">
+            <div class="block1">
             <span id="text1">查询日期</span>
             <!-- 日期选择器 -->
             <span class="demonstration"></span>
@@ -90,6 +92,7 @@
               value-format="yyyy-MM-dd"
               :picker-options="pickerOptions1">
             </el-date-picker>
+            </div>
           </el-col>
         </el-row>
       </card>
@@ -542,8 +545,12 @@
   }
 
 .block{
-  margin-top:10px;
-  float:right;
-  margin-right:120px;
+  float: left;
+  margin-left:20px;
+}
+
+.block1{
+  margin-top:-50px;
+  margin-left:150px;
 }
 </style>
