@@ -63,6 +63,7 @@
             }
             this.changeOption.series[0].data = list1;
             this.changeOption.xAxis[0].data = list2;
+            console.log(this.changeOption)
           }.bind(this))
           .catch(function (error) {
             return 0;
@@ -75,15 +76,10 @@
         var line1 = echarts.init(document.getElementById(this.id))
         //初始化变量
         // 绘制图表
-        this.interval=setInterval(function () {
           this.loadData();
-          line1.setOption(this.option);
-        },5000)
-        setTimeout(function () {
-          window.onresize = function () {
-            line1.resize();
-          }
-        }, 200);
+          line1.setOption(this.changeOption);
+//        this.interval=setInterval(function () {
+//        },5000)
       },
       updateData () {
         this.drawLine()

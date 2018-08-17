@@ -47,7 +47,7 @@ def getEchartsForZGL():
         '%H:%M') + "' and '" + "2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now(), '%H:%M') + "' "
     cursor.execute(sql1)
     data2 = cursor.fetchall()
-    sql2 = "select date_format(datatime,'%H:%m:%s') from data_spgs_history WHERE datatime BETWEEN '" + "2017-05-06 " + datetime.datetime.strftime(
+    sql2 = "select date_format(datatime,'%H:%i') from data_spgs_history WHERE datatime BETWEEN '" + "2017-05-06 " + datetime.datetime.strftime(
         datetime.datetime.now() - datetime.timedelta(hours=2),
         '%H:%M') + "' and '" + "2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now(), '%H:%M') + "' "
     cursor.execute(sql2)
@@ -74,7 +74,7 @@ def getEchartsDataForInverterFDGL():
         '%H:%M') + "' and '" + " 2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now(), '%H:%M') + "' "
     cursor.execute(sql1)
     data2 = cursor.fetchall()
-    sql2 = "select date_format(datatime,'%H:%m:%s')  from data_spgs_history WHERE datatime BETWEEN '" + "2017-05-06 " + datetime.datetime.strftime(
+    sql2 = "select date_format(datatime,'%H:%i')  from data_spgs_history WHERE datatime BETWEEN '" + "2017-05-06 " + datetime.datetime.strftime(
         datetime.datetime.now() - datetime.timedelta(hours=2),
         '%H:%M') + "' and '" + " 2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now(), '%H:%M') + "' "
     cursor.execute(sql2)
@@ -90,7 +90,7 @@ def getEchartsDataForInverterFDL():
     currentDay = time.strftime('%Y-%m-%d', time.localtime())
     db = pymysql.connect(database_ip, user, pwd, database_name)
     cursor = db.cursor()
-    sql_time = " select date_format(total_d,'%H:%m:%s') from spgs_minute WHERE total_d BETWEEN '" + "2017-05-06 " + datetime.datetime.strftime(
+    sql_time = " select date_format(total_d,'%H:%i') from spgs_minute WHERE total_d BETWEEN '" + "2017-05-06 " + datetime.datetime.strftime(
         datetime.datetime.now() - datetime.timedelta(hours=2),
         '%H:%M') + "' and '" + "2017-05-06 " + datetime.datetime.strftime(datetime.datetime.now(), '%H:%M') + "' "
     sql_data = " SELECT (@csum := @csum + TOTAL_FDL) AS total_fdl FROM spgs_minute  WHERE total_d BETWEEN '" + "2017-05-06 " + datetime.datetime.strftime(

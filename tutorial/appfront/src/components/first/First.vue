@@ -421,15 +421,8 @@
                   type: 'bar',
                   xAxisIndex: 0,
                   yAxisIndex: 0,
-                  data: (function () {
-                    var res = [];
-                    var len = 10;
-                    while (len--) {
-                      res.push(Math.round(Math.random() * 1000));
-                    }
-                    return res;
-                  })()
-                },
+                  data: []
+                }
               ]
             },
           },
