@@ -416,6 +416,9 @@ def getDetectionInfo(request):
     deviceList = getDeviceList()
     pageNum = request.GET.get('pageNum')
     pageSize = request.GET.get('pageSize')
+    if  pageNum is None or pageSize is None:
+        pageSize = 5
+        pageNum = 1
     end = int(pageNum) * int(pageSize)
     start = (int(pageNum) - 1) * int(pageSize)
     try:
