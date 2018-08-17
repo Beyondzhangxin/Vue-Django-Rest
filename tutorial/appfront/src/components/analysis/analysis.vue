@@ -10,7 +10,7 @@
       <el-row>
         <el-col :span="3">
           <div class="grid-content">
-            <el-button id="button"  @click="carryModel.model='dzdb'; $store.commit('filter', '系统')">
+            <el-button id="button"  ref="button1" @click=" changeColor(1); carryModel.model='dzdb'; $store.commit('filter', '系统')">
               <img src="../../assets/station.png" id="image">
               <span id="text"><strong>电站对比</strong></span>
             </el-button>
@@ -18,7 +18,7 @@
         </el-col>
         <el-col :span="3">
           <div class="grid-content">
-            <el-button id="button" @click="carryModel.model='sbdb'; $store.commit('filter', '逆变器')">
+            <el-button id="button"  ref="button2" @click=" changeColor(2); carryModel.model='sbdb'; $store.commit('filter', '逆变器')">
               <img src="../../assets/self.png" id="image">
               <span id="text"><strong>设备对比</strong></span>
             </el-button>
@@ -70,7 +70,7 @@
            <el-col :span="15">
         <div class="block">
           <span id="text1">查询内容</span>
-          <el-select v-model="value" clearable placeholder="请选择" >
+          <el-select v-model="carryModel.compareParam" clearable placeholder="请选择" >
           <el-option         
             v-for="item in options"
             :key="item.value"
@@ -141,7 +141,16 @@
       // myCanvas
     },
     methods: {
-
+      changeColor(num) {
+        if(num == 1) {
+          this.$refs.button1.type = "primary";
+          this.$refs.button2.type = "";
+        }
+        if(num == 2) {
+          this.$refs.button2.type = "primary"
+          this.$refs.button1.type = "";
+        }
+      },
       loadData(){
         var url = ""
         var fromData = ""
@@ -210,26 +219,23 @@
       return {
 
           options: [{
-          value: '选项1',
+          value: 'GL',
           label: '功率'
         }, {
-          value: '选项2',
+          value: 'XL',
           label: '效率',
           disabled:true,
         }, {
-          value: '选项3',
+          value: 'DXSS',
           label: '等效时数'
         }, {
-          value: '选项4',
+          value: 'FHL',
           label: '符合率',
           disabled:true,
         }, {
-          value: '选项5',
+          value: 'FDL',
           label: '发电量'
         }],
-        value: '',
-
-
         selList: [],
         carryModel: {
           model: "dzdb",
