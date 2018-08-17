@@ -36,7 +36,7 @@
           <div class="grid-content"></div>
         </el-col>
       </el-row>
-    
+
 
 
     </el-header>
@@ -67,11 +67,11 @@
               <el-button id="button1"  @click="carryModel.compareParam='FDL'"><strong>发电量</strong></el-button>
             </el-col>
           </el-col> -->
- 
+
         <div class="block">
           <span id="text0">查询内容</span>
           <el-select v-model="carryModel.compareParam" clearable placeholder="请选择" >
-          <el-option         
+          <el-option
             v-for="item in options"
             :key="item.value"
             :label="item.label"
@@ -81,7 +81,7 @@
         </el-select>
         </div>
 
-            
+
             <div class="block1">
             <span id="text1">查询日期</span>
             <!-- 日期选择器 -->
@@ -336,7 +336,16 @@
       listenChooseTree: function(val, oldval) {
         this.selList = val;
         this.carryModel.deviceList = [];
+        this.carryModel.stationList = []
         for (var i = 0; i < val.length; i++) {
+          //对station进行对比
+          // for (var j = 0; j < this.carryModel.stationList.length; j++) {
+          //   if (this.carryModel.stationList[j] == val[j].system) {
+          //   }else {
+          //     this.carryModel.stationList.push(val[j].system)
+          //   }
+          // }
+          this.carryModel.stationList.push(val[i].system);
           if (val[i].system == "PVMG") {
             this.carryModel.deviceList.push({'PVMG':val[i].devices});
           }
