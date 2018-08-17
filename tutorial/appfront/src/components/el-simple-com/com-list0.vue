@@ -72,7 +72,6 @@
         .catch(function (error) {
           return 0;
         });
-        console.log(this.tableData);
       },
       //设置tableData对象
       //toFixed四舍五入

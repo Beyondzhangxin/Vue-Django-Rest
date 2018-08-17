@@ -53,7 +53,6 @@
     },
     methods: {
       handleSelect(key, keyPath) {
-        console.log(keyPath);
         if (keyPath[1]) {
           this.$router.push(this.routerTable[Number(keyPath[0])].router[keyPath[1].split("-")[1]])
         }else {

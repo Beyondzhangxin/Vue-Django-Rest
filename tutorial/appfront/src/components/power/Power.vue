@@ -167,21 +167,15 @@ export default {
     loadData(){
       this.$ajax.get('http://localhost:8000/system/getStationMonitorInfo')
       .then(function (response) {
-        console.log(737252537);
-        console.log(response.data);
         //处理数据\
         for (var i = 0; i < this.items.length; i++) {
           if (this.items[i].index) {
             this.items[i].value = response.data.data.items[this.items[i].index]
           }
         }
-        console.log(this.items);
-
-        console.log(response.data.data.cardLists);
         for (var i = 0; i < response.data.data.cardLists.length; i++) {
           this.cardLists.push(response.data.data.cardLists[i])
         }
-        console.log(this.cardLists);
       }.bind(this))
       .catch(function (error) {
         return 0;
@@ -204,7 +198,6 @@ export default {
             return false;
           }
         } catch (e) {
-          console.log(e);
         }
         //地区的过滤
         if (this.value10.length == 0) {

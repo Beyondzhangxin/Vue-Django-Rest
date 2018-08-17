@@ -60,7 +60,7 @@
                <el-pagination
                 background
                 layout="prev, pager, next"
-                :total="1000"
+                :total="190"
                 @current-change="handleCurrentChange">
               </el-pagination>
 
@@ -92,7 +92,6 @@
     methods: {
       handleCurrentChange(val) {
         this.data = 'http://localhost:8000/system/getDetectionInfo?pageNum='+ val +'&pageSize=10';
-        console.log(this.data);
       }
     },
     mounted: function() {

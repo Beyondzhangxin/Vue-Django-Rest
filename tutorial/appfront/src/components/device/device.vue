@@ -130,7 +130,7 @@
              <el-pagination
                   background
                   layout="prev, pager, next"
-                  :total="1000"
+                  :total="190"
                   @current-change="handleCurrentChange">
             </el-pagination>
             </el-card>
@@ -184,7 +184,6 @@ export default {
         this.$ajax.get('http://localhost:8000/system/getDeviceMonitor?systemType=PVMG&deviceName=NBQGL1')
         .then(function (response) {
           //处理数据
-          console.log(response.data.data);
           this.bwrq = response.data.data.bwrq
           this.dqgl = response.data.data.dqgl
           this.jrfd = response.data.data.jrfd
@@ -199,7 +198,6 @@ export default {
       handleCurrentChange(val) {
         //改分页
         this.list.data = 'http://localhost:8000/system/getDeviceTable?pageNum='+ val +'&pageSize=5';
-        console.log(this.list.data);
 
       }
     },
