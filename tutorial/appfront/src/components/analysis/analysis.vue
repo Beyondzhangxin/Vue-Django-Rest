@@ -47,7 +47,8 @@
     <div id="main1">
 
       <card class="card1">
-        <!-- <el-row> -->
+        <el-row>
+
           <!-- <el-col :span="12" id="span1">
             <el-col :span="4" id="span0"><strong>对比内容:</strong></el-col>
             <el-col :span="4">
@@ -66,10 +67,9 @@
               <el-button id="button1"  @click="carryModel.compareParam='FDL'"><strong>发电量</strong></el-button>
             </el-col>
           </el-col> -->
-
-           
+ 
         <div class="block">
-          <span id="text1">查询内容</span>
+          <span id="text0">查询内容</span>
           <el-select v-model="carryModel.compareParam" clearable placeholder="请选择" >
           <el-option         
             v-for="item in options"
@@ -80,9 +80,8 @@
           </el-option>
         </el-select>
         </div>
-       
 
-      
+            
             <div class="block1">
             <span id="text1">查询日期</span>
             <!-- 日期选择器 -->
@@ -96,10 +95,13 @@
               :picker-options="pickerOptions1">
             </el-date-picker>
             </div>
-       
-        <!-- </el-row> -->
+
+
+        </el-row>
       </card>
     </div>
+
+ <hr width=100%   size=1   color=#bbbcbc   style="FILTER: alpha(opacity=100,finishopacity=0)">
 
     <!-- main2 -->
     <el-main id="main2">
@@ -444,7 +446,7 @@
 
   #main1 {
     margin-top: 20px;
-    height: 100px;
+    height: 80px;
 
   }
 
@@ -457,9 +459,16 @@
 
   }
 
+#text0{
+  color: aliceblue;
+  padding-right: 20px;
+}
+
+
   #text1 {
     padding-right: 20px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
+    color: aliceblue;
   }
 
   .text2 {
@@ -492,13 +501,13 @@
 
 .block{
   float: left;
-  position:absolute;
-  left:320px;
+  position:relative;
+  left:20px;
 }
 
 .block1{
   float:right;
   position:relative;
-  right:50px;
+  right:700px;
 }
 </style>
