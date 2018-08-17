@@ -26,20 +26,16 @@ export default {
   },
   methods: {
     drawLine () {
-      console.log(this.id);
-      console.log(this.gauge);
       // 基于准备好的dom，初始化echarts实例
       let gauge1 = echarts.init(document.getElementById(this.id))
       //初始化变量
       // 绘制图表
-      console.log(this.option);
       gauge1.setOption(this.option);
     },
     setValues () {
       if (this.id == null) {
         clearInterval(interval)
       }
-      console.log(this.id);
       //赋值
       let gauge1 = echarts.init(document.getElementById(this.id))
       this.option.series[0].data[0].value = this.value||0;

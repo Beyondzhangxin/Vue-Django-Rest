@@ -114,10 +114,6 @@
             this.$store.commit('updateTree', this.fromData(list[i]));
           }
         }
-        // console.log(this.$store.state.chooseTree);
-        // console.log(this.$refs.tree2.getHalfCheckedNodes());
-        // console.log(this.$refs.tree2.getHalfCheckedKeys());
-        // console.log(this.$refs.tree2.getCheckedNodes());
       },
       //对数据格式进行操作
       fromData(str) {

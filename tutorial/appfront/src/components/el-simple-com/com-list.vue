@@ -68,7 +68,6 @@
         this.tableData = [];
         this.$ajax.get(this.data)
         .then(function (response) {
-          console.log(response);
           for (var i = 0; i < response.data.data.tab.length; i++) {
             //在这里写过aside过滤
             // if (this.$store.state.chooseTree.length != 0) {
@@ -89,12 +88,10 @@
         .catch(function (error) {
           return 0;
         });
-        console.log(this.tableData);
       },
       //设置tableData对象
       //toFixed四舍五入
       setTableData(result){
-        console.log(result);
         this.tableData.push(result)
       },
     }

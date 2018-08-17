@@ -140,7 +140,6 @@ def getSpgsFDL(searchDate):
 
 # 获取设备的某个字段的数据信息
 def getSpgsDeviceInfo(deviceName, param, searchDate):
-    current = datetime.datetime.now()
     start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
     end = start + datetime.timedelta(days=1)
     if param == "GL":
@@ -178,16 +177,14 @@ def getSpgsDeviceInfo(deviceName, param, searchDate):
             cursor.execute(sql)
             rs = cursor.fetchall()
             rs_list = []
-            rs_time=[]
+            rs_time = []
             for x in rs:
                 rs_list.append(x[0])
-            sql="select total_d from spgs_minute WHERE DATE_FORMAT(total_d,'%Y-%m-%d')='" + searchDate + "'"
+            sql = "select total_d from spgs_minute WHERE DATE_FORMAT(total_d,'%Y-%m-%d')='" + searchDate + "'"
             cursor.execute(sql)
-            datatime=cursor.fetchall()
+            datatime = cursor.fetchall()
             for x in datatime:
                 rs_time.append(x[0])
-            # datatime = list(
-            #     DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
             db.close()
             return {"data": rs_list, "time": rs_time}
         except Exception as e:
@@ -195,5 +192,46 @@ def getSpgsDeviceInfo(deviceName, param, searchDate):
             return {"data": [], "time": []}
     else:
         return {"data": [], "time": []}
-    ter = datetime.datetime.now()
-    print((ter - current))
+
+
+def getSpgsDeviceInfoAll(deviceName, param, searchDate):
+    start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
+    end = start + datetime.timedelta(days=1)
+    datatime = list(
+        DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True)
+    )
+    time_list = []
+    for i in range(0, len(datatime)):
+        time_list.append(datetime.datetime.strftime(datatime[i], '%Y-%m-%d %H:%M:%S'))
+    if param == "GL":
+        try:
+            data = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)))
+            ls = []
+            for x in data:
+                ls.append(round(eval('x.' + deviceName),2))
+            return {"data": ls, "time": time_list}
+        except Exception as e:
+            print(e)
+            return {"data": [], "time": []}
+    elif param == "DXSS":
+        data_list = []
+        for i in range(0, len(datatime)):
+            hours = round((datatime[i] - datatime[0]).total_seconds() / 3600, 2)
+            data_list.append(hours)
+        return {"data": data_list, "time": time_list}
+    else:
+        try:
+            db = pymysql.connect(database_ip, user, pwd, database_name)
+            cursor = db.cursor()
+            sql = "select * from spgs_minute WHERE DATE_FORMAT(total_d,'%Y-%m-%d')='" + searchDate + "'"
+            cursor.execute(sql)
+            rs = cursor.fetchall()
+            rs_list = []
+            index = int(deviceName[-1])
+            for x in rs:
+                rs_list.append(round(x[index + 2],2))
+            db.close()
+            return {"data": rs_list, "time": time_list}
+        except Exception as e:
+            print(e)
+            return {"data": [], "time": []}

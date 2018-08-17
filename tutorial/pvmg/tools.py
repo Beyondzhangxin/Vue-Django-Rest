@@ -187,3 +187,45 @@ def getPvmgDeviceInfo(deviceName,param, searchDate):
             print(e)
             return {"data": [], "time": []}
     else:return {"data": [], "time": []}
+
+def getPvmgDeviceInfoAll(deviceName,param, searchDate):
+    start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
+    end = start + datetime.timedelta(days=1)
+    datatime = list(
+        DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True)
+    )
+    time_list=[]
+    for i in range(0,len(datatime)):
+        time_list.append(datetime.datetime.strftime(datatime[i],'%Y-%m-%d %H:%M:%S'))
+    if param == "GL":
+        try:
+            data = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)))
+            ls = []
+            for x in data:
+                ls.append(eval('x.' + deviceName))
+            return {"data": ls, "time": time_list}
+        except Exception as e:
+            print(e)
+            return {"data": [], "time": []}
+    elif param == "DXSS":
+        data_list=[]
+        for i in range(0,len(datatime)):
+            hours =round((datatime[i]-datatime[0]).total_seconds()/3600,2)
+            data_list.append(hours)
+        return {"data":data_list,"time":time_list}
+    else:
+        try:
+            db = pymysql.connect(database_ip, user, pwd, database_name)
+            cursor = db.cursor()
+            sql = "select * from pvmg_minute WHERE DATE_FORMAT(total_d,'%Y-%m-%d')='" + searchDate + "'"
+            cursor.execute(sql)
+            rs = cursor.fetchall()
+            rs_list = []
+            index = int(deviceName[-1])
+            for x in rs:
+                rs_list.append(x[index + 2])
+            db.close()
+            return {"data": rs_list, "time": time_list}
+        except Exception as e:
+            print(e)
+            return {"data": [], "time": []}

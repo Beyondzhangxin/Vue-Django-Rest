@@ -166,7 +166,6 @@
           fromData = 'deviceList=' + JSON.stringify(this.carryModel.deviceList) + "&compareParam=" + this.carryModel.compareParam + "&searchDate=" + this.carryModel.searchDate;
         }
 
-        console.log(this.carryModel);
         var instance = this.$ajax.create({
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         });
