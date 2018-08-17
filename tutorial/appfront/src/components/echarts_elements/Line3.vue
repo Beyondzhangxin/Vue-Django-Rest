@@ -57,8 +57,10 @@ export default {
           line1.resize();
         }
       },200);
+      this.line1 = line1;
     },
     updateData () {
+      this.line1.clear();
       this.drawLine()
     }
   }

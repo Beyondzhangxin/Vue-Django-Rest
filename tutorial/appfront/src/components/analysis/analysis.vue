@@ -6,10 +6,11 @@
     <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
 
     <el-header id="header" style="height:80px;">
+
       <el-row>
         <el-col :span="3">
           <div class="grid-content">
-            <el-button id="button" @click="carryModel.model='dzdb'; $store.commit('filter', '系统')">
+            <el-button id="button"  ref="button1" @click=" changeColor(1); carryModel.model='dzdb'; $store.commit('filter', '系统')">
               <img src="../../assets/station.png" id="image">
               <span id="text"><strong>电站对比</strong></span>
             </el-button>
@@ -17,7 +18,7 @@
         </el-col>
         <el-col :span="3">
           <div class="grid-content">
-            <el-button id="button" @click="carryModel.model='sbdb'; $store.commit('filter', '逆变器')">
+            <el-button id="button"  ref="button2" @click=" changeColor(2); carryModel.model='sbdb'; $store.commit('filter', '逆变器')">
               <img src="../../assets/self.png" id="image">
               <span id="text"><strong>设备对比</strong></span>
             </el-button>
@@ -35,6 +36,9 @@
           <div class="grid-content"></div>
         </el-col>
       </el-row>
+    
+
+
     </el-header>
 
     <hr width=100%   size=1   color=#bbbcbc   style="FILTER: alpha(opacity=100,finishopacity=0)">
@@ -44,7 +48,8 @@
 
       <card class="card1">
         <el-row>
-          <el-col :span="12" id="span1">
+
+          <!-- <el-col :span="12" id="span1">
             <el-col :span="4" id="span0"><strong>对比内容:</strong></el-col>
             <el-col :span="4">
               <el-button id="button1" @click="carryModel.compareParam='GL'"><strong>功率</strong></el-button>
@@ -61,8 +66,23 @@
             <el-col :span="4">
               <el-button id="button1"  @click="carryModel.compareParam='FDL'"><strong>发电量</strong></el-button>
             </el-col>
-          </el-col>
-          <el-col :span="12" id="span2">
+          </el-col> -->
+ 
+        <div class="block">
+          <span id="text0">查询内容</span>
+          <el-select v-model="carryModel.compareParam" clearable placeholder="请选择" >
+          <el-option         
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+            :disabled="item.disabled">
+          </el-option>
+        </el-select>
+        </div>
+
+            
+            <div class="block1">
             <span id="text1">查询日期</span>
             <!-- 日期选择器 -->
             <span class="demonstration"></span>
@@ -74,10 +94,14 @@
               value-format="yyyy-MM-dd"
               :picker-options="pickerOptions1">
             </el-date-picker>
-          </el-col>
+            </div>
+
+
         </el-row>
       </card>
     </div>
+
+ <hr width=100%   size=1   color=#bbbcbc   style="FILTER: alpha(opacity=100,finishopacity=0)">
 
     <!-- main2 -->
     <el-main id="main2">
@@ -119,6 +143,16 @@
       // myCanvas
     },
     methods: {
+      changeColor(num) {
+        if(num == 1) {
+          this.$refs.button1.type = "primary";
+          this.$refs.button2.type = "";
+        }
+        if(num == 2) {
+          this.$refs.button2.type = "primary"
+          this.$refs.button1.type = "";
+        }
+      },
       loadData(){
         var url = ""
         var fromData = ""
@@ -181,8 +215,28 @@
           });
       },
     },
+
     data(){
       return {
+
+          options: [{
+          value: 'GL',
+          label: '功率'
+        }, {
+          value: 'XL',
+          label: '效率',
+          disabled:true,
+        }, {
+          value: 'DXSS',
+          label: '等效时数'
+        }, {
+          value: 'FHL',
+          label: '符合率',
+          disabled:true,
+        }, {
+          value: 'FDL',
+          label: '发电量'
+        }],
         selList: [],
         carryModel: {
           model: "dzdb",
@@ -391,7 +445,7 @@
 
   #main1 {
     margin-top: 20px;
-    height: 100px;
+    height: 80px;
 
   }
 
@@ -404,9 +458,16 @@
 
   }
 
+#text0{
+  color: aliceblue;
+  padding-right: 20px;
+}
+
+
   #text1 {
     padding-right: 20px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
+    color: aliceblue;
   }
 
   .text2 {
@@ -437,4 +498,15 @@
     background-color: rgba(180, 180, 180, 0.1);
   }
 
+.block{
+  float: left;
+  position:relative;
+  left:20px;
+}
+
+.block1{
+  float:right;
+  position:relative;
+  right:700px;
+}
 </style>
