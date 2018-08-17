@@ -8,7 +8,7 @@ const store = new Vuex.Store({
   state: {
     isShowAside: 0,
     chooseTree: [],
-    choosefilter: '系统',
+    choosefilter: '',
   },
   mutations: {
     updateTree(state, element) {
@@ -29,6 +29,7 @@ const store = new Vuex.Store({
     },
     filter(state, str) {
       state.choosefilter = str;
+      console.log(23414124124);
     },
     showIt() {
       this.state.isShowAside = 1;

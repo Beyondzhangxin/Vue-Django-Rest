@@ -203,7 +203,11 @@ export default {
     },
     mounted: function() {
       this.$store.commit('showIt');
+      this.$store.commit('filter', '逆变器');
       this.loadData();
+    },
+    beforeUpdate: function() {
+
     },
     destroyed: function() {
       this.$store.commit('hideIt');

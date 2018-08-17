@@ -20,8 +20,6 @@ export default {
   props: ['id', 'option'],
   line1: 0,
   interval: 0,
-
-
   data () {
     return {
       changeOption: this.option
@@ -49,9 +47,10 @@ export default {
     drawLine () {
       // console.log(this.option);
       // 基于准备好的dom，初始化echarts实例
-      var line1 = echarts.init(document.getElementById(this.id))
+      var line1 = echarts.init(document.getElementById(this.id));
       //初始化变量
       // 绘制图表
+      
       line1.setOption(this.option);
       setTimeout(function (){
         window.onresize = function () {
@@ -59,10 +58,11 @@ export default {
         }
       },200);
       this.line1 = line1;
+      line1.hideLoading();
     },
     updateData () {
       this.line1.clear();
-      this.drawLine()
+      this.drawLine();
     }
   }
 }

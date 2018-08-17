@@ -158,13 +158,16 @@ export default {
     this.$store.commit('showIt');
     //this.show();
   },
-
+  beforeUpdate: function() {
+    this.$store.commit('filter', '系统');
+  },
   destroyed: function() {
     this.$store.commit('hideIt')
   },
 
   methods: {
     loadData(){
+      this.$store.commit('filter', '系统');
       this.$ajax.get('http://localhost:8000/system/getStationMonitorInfo')
       .then(function (response) {
         //处理数据\
