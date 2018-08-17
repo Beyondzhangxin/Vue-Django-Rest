@@ -90,7 +90,7 @@ export default {
 }
 
 .tem1{
-  color: #909399;
+ 
     padding-top: 25px;
     padding-bottom: 10px;
     box-sizing: border-box;
@@ -105,7 +105,7 @@ export default {
 }
 
 .con{
-    color: #909399;
+  
     padding-top: 13px;
     padding-bottom: 10px;
     box-sizing: border-box;
@@ -114,7 +114,7 @@ export default {
 }
 
 .mes{
-    color: #909399;
+  
     padding-top: 13px;
     padding-bottom: 10px;
     box-sizing: border-box;
@@ -129,7 +129,6 @@ export default {
 
 .tem2{
     padding-left:17px;
-    color: #909399;
     padding-top: 13px;
     padding-bottom: 10px;
     box-sizing: border-box;
@@ -138,7 +137,6 @@ export default {
 
 .tem3{
     padding-left:10px;
-    color: #909399;
     padding-top: 13px;
     padding-bottom: 10px;
     box-sizing: border-box;
@@ -147,7 +145,6 @@ export default {
 
 .tem4{
     padding-left:10px;
-    color: #909399;
     padding-top: 13px;
     padding-bottom: 10px;
     box-sizing: border-box;

@@ -308,7 +308,13 @@ export default {
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
     background: linear-gradient(30deg, rgb(180,180,180,0.3),#355C7D);*/
    background-color:rgba(180, 180, 180, 0.1);
+
 }
+
+.box-card:hover{
+     background-color:rgba(180, 180, 180, 0.2);
+}
+
 
 .box-card1 {
   margin-bottom: 30px;
@@ -322,9 +328,10 @@ export default {
     background-color:rgba(180, 180, 180, 0.1);
 }
 
-.box-card2 {
-    /* background-color:rgba(255, 255, 255, 0.3) */
+.box-card1:hover{
+    background-color:rgba(180, 180, 180, 0.2);
 }
+
 
 .clearfix:after{
   content: "020";
@@ -342,8 +349,10 @@ export default {
 #cirlce {
   margin-top: -8px;
   width: 100%;
-  background-color:rgba(255, 255, 255, 0.3)
+  background-color:rgba(223, 232, 235, 0.6);
+  font-size:18px;
 }
+
 
 #num{
     margin-top:20px;
@@ -368,12 +377,12 @@ export default {
 
 #text3{
     font-size: 16px;
-    background-color:rgba(255, 255, 255, 0.3);
+    background-color:rgba(223, 232, 235, 0.6);
     font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
 .grid-content1{
-    font-size: 14px;
+    font-size: 16px;
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
     /* color: #909399; */
     position: relative;
