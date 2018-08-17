@@ -418,18 +418,11 @@
               series: [
                 {
                   name: '逆变器发电量',
-                  type: 'bar',
+                  type: 'line',
                   xAxisIndex: 0,
                   yAxisIndex: 0,
-                  data: (function () {
-                    var res = [];
-                    var len = 10;
-                    while (len--) {
-                      res.push(Math.round(Math.random() * 1000));
-                    }
-                    return res;
-                  })()
-                },
+                  data: []
+                }
               ]
             },
           },
@@ -469,16 +462,7 @@
                 {
                   type: 'category',
                   boundaryGap: true,
-                  data: (function () {
-                    var now = new Date();
-                    var res = [];
-                    var len = 10;
-                    while (len--) {
-                      res.unshift(now.toLocaleTimeString().replace(/^\D*/, ''));
-                      now = new Date(now - 2000);
-                    }
-                    return res;
-                  })()
+                  data: []
                 },
               ],
               yAxis: [
@@ -495,28 +479,14 @@
                   type: 'line',
                   xAxisIndex: 0,
                   yAxisIndex: 0,
-                  data: (function () {
-                    var res = [];
-                    var len = 10;
-                    while (len--) {
-                      res.push(Math.round(Math.random() * 1000));
-                    }
-                    return res;
-                  })()
+                  data: []
                 },
                 {
                   name: '总辐照度',
                   type: 'line',
                   xAxisIndex: 0,
                   yAxisIndex: 0,
-                  data: (function () {
-                    var res = [];
-                    var len = 10;
-                    while (len--) {
-                      res.push(Math.round(Math.random() * 1000));
-                    }
-                    return res;
-                  })()
+                  data: []
                 },
               ]
             },

@@ -26,7 +26,7 @@
     },
 
     mounted: function () {
-        this.drawLine();
+      this.drawLine();
     },
 
     destroyed: function () {
@@ -38,15 +38,9 @@
         if (this.request.length == 2) {
           this.$ajax.get(this.request[1])
             .then(function (response) {
-              //处理数据
-              var list1 = [];
-              var list2 = [];
-              for (var j = 0; j < response.data.data.series.length; j++) {
-                list1.push(response.data.data.series[j][0]);
-                list2.push(response.data.data.xAxix[j][0]);
-              }
-              this.changeOption.series[1].data = list1;
-              this.changeOption.xAxis[0].data = list2;
+              this.changeOption.series[1].data = response.data.data.series;
+              this.changeOption.xAxis[0].data = response.data.data.xAxix;
+              console.log("I am doing things")
             }.bind(this))
             .catch(function (error) {
               return 0;
@@ -54,15 +48,9 @@
         }
         this.$ajax.get(this.request[0])
           .then(function (response) {
-            //处理数据
-            var list1 = [];
-            var list2 = [];
-            for (var j = 0; j < response.data.data.series.length; j++) {
-              list1.push(response.data.data.series[j][0]);
-              list2.push(response.data.data.xAxix[j][0]);
-            }
-            this.changeOption.series[0].data = list1;
-            this.changeOption.xAxis[0].data = list2;
+            this.changeOption.series[0].data = response.data.data.series;
+            this.changeOption.xAxis[0].data = response.data.data.xAxix;
+            console.log(this.changeOption)
           }.bind(this))
           .catch(function (error) {
             return 0;
@@ -75,15 +63,10 @@
         var line1 = echarts.init(document.getElementById(this.id))
         //初始化变量
         // 绘制图表
-        this.interval=setInterval(function () {
+        this.interval = setInterval( () =>{
           this.loadData();
-          line1.setOption(this.option);
-        },5000)
-        setTimeout(function () {
-          window.onresize = function () {
-            line1.resize();
-          }
-        }, 200);
+          line1.setOption(this.changeOption);
+        }, 5000)
       },
       updateData () {
         this.drawLine()
