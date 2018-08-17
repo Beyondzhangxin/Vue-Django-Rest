@@ -350,7 +350,6 @@ export default {
   margin-top: -8px;
   width: 100%;
   background-color:rgba(223, 232, 235, 0.6);
-  font-size:18px;
 }
 
 
