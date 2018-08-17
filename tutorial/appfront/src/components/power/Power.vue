@@ -17,17 +17,17 @@
                     电站状态：
                   </span>
                   <span  class="span1">
-                    <strong>正常 </strong><i class="el-icon-success"></i>
-                  </span>
+                    <strong>正常</strong></span>
+                    <span class="span1"><img src="../../assets/normal.png" id="image"></span>
                   <span  class="span1">
-                    <strong>异常 </strong><i class="el-icon-warning"></i>
-                  </span>
+                    <strong>异常 </strong></span>
+                    <span class="span1"><img src="../../assets/alarm1.png" id="image"></span>
                   <span  class="span1">
-                    <strong>离线 </strong><i class="el-icon-loading"></i>
-                  </span>
+                    <strong>离线 </strong></span>
+                    <span class="span1"><img src="../../assets/offline2.png" id="image"></span>
                   <span  class="span1">
-                    <strong>停机 </strong><i class="el-icon-circle-close"></i>
-                  </span>
+                    <strong>停机 </strong></span>
+                     <span class="span1"><img src="../../assets/close1.png" id="image"></span>
                 </div>
               </el-col>
             </el-row>
@@ -403,5 +403,11 @@ export default {
     background: -o-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
     background: -moz-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
     background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+}
+
+#image{
+  height:23px;
+  margin-top:-2px;
+  margin-left:-25px;
 }
 </style>

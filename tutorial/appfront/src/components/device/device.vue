@@ -310,6 +310,10 @@ export default {
    background-color:rgba(180, 180, 180, 0.1);
 }
 
+.box-card:hover{
+   background-color:rgba(53,92,125, 0.1);
+}
+
 .box-card1 {
   margin-bottom: 30px;
   margin-top:-20px;
@@ -322,8 +326,8 @@ export default {
     background-color:rgba(180, 180, 180, 0.1);
 }
 
-.box-card2 {
-    /* background-color:rgba(255, 255, 255, 0.3) */
+.box-card1:hover{
+    background-color:rgba(53,92,125, 0.1);
 }
 
 .clearfix:after{
@@ -373,11 +377,11 @@ export default {
 }
 
 .grid-content1{
-    font-size: 14px;
+    font-size: 16px;
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
     /* color: #909399; */
     position: relative;
-    top: -5px;
+    top: -2px;
     left: 1px;
 }
 
