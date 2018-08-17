@@ -6,6 +6,7 @@
     <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
 
     <el-header id="header" style="height:80px;">
+
       <el-row>
         <el-col :span="3">
           <div class="grid-content">
@@ -35,6 +36,9 @@
           <div class="grid-content"></div>
         </el-col>
       </el-row>
+    
+
+
     </el-header>
 
     <hr width=100%   size=1   color=#bbbcbc   style="FILTER: alpha(opacity=100,finishopacity=0)">
@@ -44,7 +48,7 @@
 
       <card class="card1">
         <el-row>
-          <el-col :span="12" id="span1">
+          <!-- <el-col :span="12" id="span1">
             <el-col :span="4" id="span0"><strong>对比内容:</strong></el-col>
             <el-col :span="4">
               <el-button id="button1" @click="carryModel.compareParam='GL'"><strong>功率</strong></el-button>
@@ -61,8 +65,22 @@
             <el-col :span="4">
               <el-button id="button1"  @click="carryModel.compareParam='FDL'"><strong>发电量</strong></el-button>
             </el-col>
-          </el-col>
+          </el-col> -->
+
+           <el-col :span="15">
+        <div class="block">
+        <span id="text1">查询电站</span>
+        <el-cascader
+          placeholder="试试搜索：电站对比"
+          :options="options"
+          filterable
+          change-on-select
+        ></el-cascader>
+        </div>
+        </el-col>
+
           <el-col :span="12" id="span2">
+            <div class="block1">
             <span id="text1">查询日期</span>
             <!-- 日期选择器 -->
             <span class="demonstration"></span>
@@ -74,6 +92,7 @@
               value-format="yyyy-MM-dd"
               :picker-options="pickerOptions1">
             </el-date-picker>
+            </div>
           </el-col>
         </el-row>
       </card>
@@ -119,6 +138,7 @@
       // myCanvas
     },
     methods: {
+
       loadData(){
         var url = ""
         var fromData = ""
@@ -181,8 +201,94 @@
           });
       },
     },
+
     data(){
       return {
+
+          options: [{
+          value: 'dzdb',
+          label: '电站对比',
+          children: [{
+            value: 'gl',
+            label: '功率',
+          }, {
+            value: 'xl',
+            label: '效率',
+            disabled:true,
+          },
+           {
+            value: 'dxss',
+            label: '等效时数',
+          },
+           {
+            value: 'fhl',
+            label: '符合率',
+            disabled:true,
+          },
+           {
+            value: 'fdl',
+            label: '发电量',
+          },
+          ],
+          },
+          {
+          value: 'sbdb',
+          label: '设备对比',
+           children: [{
+            value: 'gl',
+            label: '功率',
+          }, {
+            value: 'xl',
+            label: '效率',
+            disabled:true,
+          },
+           {
+            value: 'dxss',
+            label: '等效时数',
+          },
+           {
+            value: 'fhl',
+            label: '符合率',
+            disabled:true,
+          },
+           {
+            value: 'fdl',
+            label: '发电量',
+          },
+          ],
+          },
+          {
+            valve:'zsdb',
+            label:'自身对比',
+            disabled:true,
+            children: [{
+            value: 'gl',
+            label: '功率',
+          }, {
+            value: 'xl',
+            label: '效率',
+            disabled:true,
+          },
+           {
+            value: 'dxss',
+            label: '等效时数',
+          },
+           {
+            value: 'fhl',
+            label: '符合率',
+            disabled:true,
+          },
+           {
+            value: 'fdl',
+            label: '发电量',
+          },
+          ],
+          },
+          ],
+          
+      
+      
+
         selList: [],
         carryModel: {
           model: "dzdb",
@@ -437,4 +543,13 @@
     background-color: rgba(180, 180, 180, 0.1);
   }
 
+.block{
+  float: left;
+  margin-left:20px;
+}
+
+.block1{
+  margin-top:-50px;
+  margin-left:150px;
+}
 </style>
