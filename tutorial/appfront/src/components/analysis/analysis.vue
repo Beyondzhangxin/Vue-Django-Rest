@@ -503,11 +503,13 @@
   float: left;
   position:relative;
   left:20px;
+  top:15px;
 }
 
 .block1{
   float:right;
   position:relative;
   right:700px;
+  top:15px;
 }
 </style>
