@@ -17,21 +17,17 @@
                     电站状态：
                   </span>
                   <span  class="span1">
-                    <strong>正常 </strong>
-                  </span>
-                  <span class="span1"><img src="../../assets/normal.png" id="image"></span>
+                    <strong>正常</strong></span>
+                    <span class="span1"><img src="../../assets/normal.png" id="image"></span>
                   <span  class="span1">
-                    <strong>异常 </strong>
-                  </span>
-                  <span class="span1"><img src="../../assets/alarm1.png" id="image"></span>
+                    <strong>异常 </strong></span>
+                    <span class="span1"><img src="../../assets/alarm1.png" id="image"></span>
                   <span  class="span1">
-                    <strong>离线 </strong>
-                  </span>
-                    <span class="span1"> <img src="../../assets/offline2.png" id="image"></span>
+                    <strong>离线 </strong></span>
+                    <span class="span1"><img src="../../assets/offline2.png" id="image"></span>
                   <span  class="span1">
-                    <strong>停机 </strong>
-                  </span>
-                  <span class="span1"><img src="../../assets/close1.png" id="image"></span>
+                    <strong>停机 </strong></span>
+                     <span class="span1"><img src="../../assets/close1.png" id="image"></span>
                 </div>
               </el-col>
             </el-row>
@@ -437,7 +433,7 @@ export default {
 
 #image{
   height:23px;
-  margin-left:-25px;
   margin-top:-2px;
+  margin-left:-25px;
 }
 </style>

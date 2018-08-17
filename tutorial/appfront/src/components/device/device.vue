@@ -198,6 +198,7 @@ export default {
       handleCurrentChange(val) {
         //改分页
         this.list.data = 'http://localhost:8000/system/getDeviceTable?pageNum='+ val +'&pageSize=5';
+
       }
     },
     mounted: function() {
@@ -315,9 +316,8 @@ export default {
 }
 
 .box-card:hover{
-     background-color:rgba(180, 180, 180, 0.2);
+   background-color:rgba(53,92,125, 0.1);
 }
-
 
 .box-card1 {
   margin-bottom: 30px;
@@ -332,9 +332,8 @@ export default {
 }
 
 .box-card1:hover{
-    background-color:rgba(180, 180, 180, 0.2);
+    background-color:rgba(53,92,125, 0.1);
 }
-
 
 .clearfix:after{
   content: "020";
@@ -352,7 +351,7 @@ export default {
 #cirlce {
   margin-top: -8px;
   width: 100%;
-  background-color:rgba(223, 232, 235, 0.6);
+  background-color:rgba(223, 232, 235, 0.3);
 }
 
 
@@ -379,7 +378,7 @@ export default {
 
 #text3{
     font-size: 16px;
-    background-color:rgba(223, 232, 235, 0.6);
+    background-color:rgba(255, 255, 255, 0.3);
     font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
@@ -388,7 +387,7 @@ export default {
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
     /* color: #909399; */
     position: relative;
-    top: -5px;
+    top: -2px;
     left: 1px;
 }
 

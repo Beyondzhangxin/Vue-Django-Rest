@@ -236,6 +236,10 @@
     margin-top:50px;
 }
 
+#card1:hover{
+  background-color:rgba(53,92,125, 0.1);
+}
+
 .card2{
     background-color:rgba(255, 255, 255, 0.2)
 }
