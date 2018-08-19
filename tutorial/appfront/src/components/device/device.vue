@@ -181,7 +181,7 @@ export default {
         ljfd:34.43,
         zjrl:623.16,
         jrdx:4.85,
-        msg6:15,
+        msg6:19,
         msg7:0,
         bwrq:'2017-12-11',
       }
