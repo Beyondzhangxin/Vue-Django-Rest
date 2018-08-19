@@ -242,7 +242,7 @@ def getDQFDGL(request):
     return JsonResponse(response)
 
 
-# 返回设备监测页面,设备列表数据,必须有参数pageNum和pageSize，分别是第几页和每页显示多少条记录
+# 返回设备监测页面,设备列表数据
 @require_http_methods(['GET'])
 def getDeviceTable(request):
     response = {}
@@ -250,58 +250,48 @@ def getDeviceTable(request):
     cursor = db.cursor()
     tab = []
     lists = getDeviceList()
-    pageNum = request.GET.get('pageNum')
-    pageSize = request.GET.get('pageSize')
-    if pageNum and pageSize:
-        try:
-            end = int(pageNum) * int(pageSize)
-            start = (int(pageNum) - 1) * int(pageSize)
-            for x in lists:
-                sql_all = "select * from  " + x.get(
-                    "systemType") + "_day  where total_d ='" + time.strftime(
-                    '%Y-%m-%d',
-                    time.localtime()) + "'"
-                cursor.execute(sql_all)
-                rs_all = cursor.fetchone()
+    try:
+        for x in lists:
+            sql_all = "select * from  " + x.get(
+                "systemType") + "_day  where total_d ='" + time.strftime(
+                '%Y-%m-%d',
+                time.localtime()) + "'"
+            cursor.execute(sql_all)
+            rs_all = cursor.fetchone()
 
-                for i in range(0, len(x['devices'])):
-                    dic = {}
-                    (key, value), = x['devices'][i].items()
-                    sql = "select " + key + " from  data_" + x.get("systemType") + "_buffer "
-                    cursor.execute(sql)
-                    rs = cursor.fetchone()
-                    if not rs is None:
-                        dqgl = rs[0]
-                    else:
-                        dqgl = 0.00
-                    dic['dev_dqgl'] = dqgl
-                    if not rs_all is None:
-                        jrfd = rs_all[i + 4]
-                        dayHours = rs_all[2]
-                    else:
-                        jrfd = 0.00
-                        dayHours = 0
-                    dic['dev_jrfd'] = jrfd
-                    dic['dev_name'] = value
-                    dic['dev_xh'] = key
-                    dic['dev_systemType'] = x.get('systemType')
-                    dic['dev_systemName'] = x.get('systemName')
-                    dic['dev_drdx'] = dayHours
-                    tab.append(dic)
-            response['data'] = {"tab": tab[start:end], "count": len(tab)}
+            for i in range(0, len(x['devices'])):
+                dic = {}
+                (key, value), = x['devices'][i].items()
+                sql = "select " + key + " from  data_" + x.get("systemType") + "_buffer "
+                cursor.execute(sql)
+                rs = cursor.fetchone()
+                if not rs is None:
+                    dqgl = rs[0]
+                else:
+                    dqgl = 0.00
+                dic['dev_dqgl'] = dqgl
+                if not rs_all is None:
+                    jrfd = rs_all[i + 4]
+                    dayHours = rs_all[2]
+                else:
+                    jrfd = 0.00
+                    dayHours = 0
+                dic['dev_jrfd'] = jrfd
+                dic['dev_name'] = value
+                dic['dev_xh'] = key
+                dic['dev_systemType'] = x.get('systemType')
+                dic['dev_systemName'] = x.get('systemName')
+                dic['dev_drdx'] = dayHours
+                tab.append(dic)
+            response['data'] = {"tab": tab, "count": len(tab)}
             response['msg'] = 'success'
             response['error_num'] = 0
-        except Exception as e:
-            response['msg'] = str(e)
-            response['error_num'] = 1
-    else:
-        response['msg'] = "缺少参数！"
+    except Exception as e:
+        response['msg'] = str(e)
         response['error_num'] = 1
     db.close()
     return JsonResponse(response)
-
-
-# 返回首页下面的环保数据
+    # 返回首页下面的环保数据
 @require_http_methods(['GET'])
 def getHBSJ(request):
     response = {}
@@ -416,7 +406,7 @@ def getDetectionInfo(request):
     deviceList = getDeviceList()
     pageNum = request.GET.get('pageNum')
     pageSize = request.GET.get('pageSize')
-    if  pageNum is None or pageSize is None:
+    if pageNum is None or pageSize is None:
         pageSize = 5
         pageNum = 1
     end = int(pageNum) * int(pageSize)
