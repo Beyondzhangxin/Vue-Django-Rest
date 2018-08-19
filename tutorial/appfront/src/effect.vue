@@ -22,7 +22,7 @@
             <el-input  type="password" v-model="ruleForm.password" placeholder="密码"></el-input>
           </el-form-item>
           <div style="padding: 1rem 0 2rem 0;" class="clear">
-          <span class="lf" style="color:#0489cc;float:left;margin-left:20px;">帮助</span>
+          <span class="lf" @click="open" style="color:#0489cc;float:left;margin-left:20px;">帮助</span>
           <div class="rt">
             <el-checkbox v-model="checked">一周内自动登录</el-checkbox>
             <span @click="clearCookie" style="cursor: pointer;color: #f19149;font-size: 0.75rem;margin-left: 5px;">忘记密码？</span>
@@ -62,9 +62,20 @@ export default {
   },
 
   methods: {
-      //  loginForm:function(account) {
-      //     this.$router.push("/home/first");
-
+    
+   //点击帮助提示内容
+       open() {
+        this.$alert('账号admin,密码password', '光伏智能运维系统', {
+          confirmButtonText: '确定',
+          callback: action => {
+            this.$message({
+              type: 'info',
+              message: `action: ${ action }`
+            });
+          }
+        });
+      },
+      
       //点击登录调用方法
     submitForm(formName) {
         //保存的账号
@@ -72,7 +83,7 @@ export default {
         //保存的密码
         var pass=this.ruleForm.password;
         if(name==''||name==null){
-          alert("请输入正确的用户名");
+          alert("请输入正确的用户名")
           return
         }else if(pass==''||pass==null) {
           alert("请输入正确的密码");
@@ -85,27 +96,6 @@ export default {
         }
          this.$router.push('/home/first')
     },
-
-        //接口
-
-    //     var url='myserver/user/login';
-    //     this.$http.post(url,this.ruleForm,{emulateJSON:true})
-    //       .then(res=>{
-    //         if(res.body=="fail"){
-    //          alert("用户名或密码错误,请重新输入");
-    //           this.ruleForm.userName='';
-    //           this.ruleForm.password='';
-    //           return
-    //         } else{
-    //         alert（"登陆成功！")
-    //           this.$router.push("/home/first")
-    //         }
-    //   });
-    // },
-
-    // submitForm(){
-    //   this.$router.push('/home/first')
-    // },
 
 //设置cookie
   setCookie(c_name,c_pwd,exdays) {
@@ -133,6 +123,7 @@ export default {
   //清除cookie
   clearCookie:function () {
     this.setCookie("","",-1);//修改2值都为空，天数为负1天就好了
+    alert("账号密码已清除");
   }
 },
 //页面加载调用获取cookie值
