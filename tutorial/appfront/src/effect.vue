@@ -25,7 +25,7 @@
           <span class="lf" @click="open" style="color:#0489cc;float:left;margin-left:20px;">帮助</span>
           <div class="rt">
             <el-checkbox v-model="checked">一周内自动登录</el-checkbox>
-            <span @click="clearCookie" style="cursor: pointer;color: #f19149;font-size: 0.75rem;margin-left: 5px;">忘记密码？</span>
+            <span @click="clearCookie" style="cursor: pointer;color: #f19149;font-size: 0.75rem;margin-left: 5px;">取消自动登录？</span>
           </div>
           </div>
           <el-button type="primary" @click="submitForm('ruleForm')" style="width: 100%;">登陆</el-button>
@@ -123,7 +123,7 @@ export default {
   //清除cookie
   clearCookie:function () {
     this.setCookie("","",-1);//修改2值都为空，天数为负1天就好了
-    alert("账号密码已清除");
+    alert("账号密码信息已清除");
   }
 },
 //页面加载调用获取cookie值
