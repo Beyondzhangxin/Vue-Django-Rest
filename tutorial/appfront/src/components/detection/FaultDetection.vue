@@ -108,6 +108,7 @@
       },
       handleCurrentChange(val) {
         this.data = 'http://localhost:8000/system/getDetectionInfo?pageNum='+ val +'&pageSize=10';
+        this.state = 'ALL';
       }
     },
     mounted: function() {

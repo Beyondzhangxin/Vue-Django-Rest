@@ -74,7 +74,6 @@
             this.showAll();
           }
         }
-
       },
       listenChooseTree: function(val, oldval) {
         var list = []
