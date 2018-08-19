@@ -5,7 +5,7 @@
     <!-- tableData数据的映射 -->
     <!-- v-loading="loading" -->
     <el-table :data="showTable" border
-    style="width: 100%"   v-loading="loading">
+    style="width: 100%" v-loading="loading">
       <el-table-column
       v-for="{ prop, label } in tabConfigs"
       :key="prop"
@@ -36,7 +36,7 @@
 <script>
   export default {
     name: 'ComList',
-    props: ['data', 'tabConfigs', 'filterKey'],
+    props: ['data', 'tabConfigs', 'filterKey','pageNum', 'pageSize'],
     data() {
       return {
         loading: false,
@@ -52,7 +52,6 @@
     },
     watch: {
       listenChooseTree: function(val, oldval) {
-
         var list = []
         for (var i = 0; i < val.length; i++) {
           for (var j = 0; j < val[i].devices.length; j++) {
@@ -76,8 +75,14 @@
         this.showTable = list2;
       },
       // 如果 `question` 发生改变，这个函数就会运行
-      data: function (newQuestion, oldQuestion) {
-        this.showAll();
+      pageNum: function (newQuestion, oldQuestion) {
+        this.showTable = [];
+        for (var i = 0; i < this.pageSize ; i++) {
+          if (this.pageNum*this.pageSize+i+1 > this.tableData.length) {
+            break;
+          }
+          this.showTable.push(this.tableData[this.pageNum*this.pageSize+i])
+        }
       }
     },
     //mounted为vue对象的生命周期
@@ -89,18 +94,20 @@
       showAll(){
         this.loading = true
         this.tableData = [];
+        this.showTable = [];
         this.$ajax.get(this.data)
         .then(function (response) {
           this.setTableData(response.data.data.tab);
           this.tableData = response.data.data.tab;
-          this.showTable = this.tableData;
-          console.log(response.data.data.tab);
+          for (var i = 0; i < this.pageSize; i++) {
+            this.showTable.push(this.tableData[this.pageNum*this.pageSize+i])
+          }
           // for (var i = 0; i < response.data.results.length; i++) {
           //   //在这里写过aside过滤
           //   this.setTableData(response.data.results[i])
           // }
           this.loading = false
-          
+
         }.bind(this))
         .catch(function (error) {
           return 0;
