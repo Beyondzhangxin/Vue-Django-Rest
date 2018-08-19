@@ -113,20 +113,9 @@
                 </el-row>
 
             <el-card class="card0">
-            <!-- <el-card class="box-card2"> -->
-              <!--通用list-->
-              <!--请求如下 http://127.0.0.1:8000/pv/get/detection/2018/1/18/ -->
-
               <!--赋值到this.data中 -->
               <ComList v-bind="list"></ComList>
-              <!-- <ComList v-bind:data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList> -->
-              <!-- <el-pagination
-                  background
-                  layout="prev, pager, next"
-                  :total="1000"
-                  @current-change="handleCurrentChange"> -->
-              <!-- </el-pagination> -->
-            <!-- </el-card> -->
+        
              <el-pagination
                   background
                   layout="prev, pager, next"
