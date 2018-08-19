@@ -100,13 +100,13 @@
                     <el-card class="box-card1">
                     <el-row>
                     <el-col :span="1" class="col1">
-                      <el-button round id="text3" @click="type='NBQ'"><strong>逆变器</strong></el-button>
+                      <el-button round id="text3" @click="list.type='NBQ'"><strong>逆变器</strong></el-button>
                     </el-col>
                     <el-col :span="1" class="col1">
-                      <el-button  round id="text3" @click="type='HLX'"><strong>汇流箱</strong></el-button>
+                      <el-button  round id="text3" @click="list.type='HLX'"><strong>汇流箱</strong></el-button>
                     </el-col>
                     <el-col :span="1" class="col1">
-                      <el-button  round id="text3" @click="type='CJSB'"><strong>采集设备</strong></el-button>
+                      <el-button  round id="text3" @click="list.type='CJSB'"><strong>采集设备</strong></el-button>
                     </el-col>
                     </el-row>
                     </el-card>
@@ -162,6 +162,8 @@ export default {
         type: 'NBQ',
         page: 0,
         list: {
+          //简单过滤
+          type: '',
           pageNum: 0,
           pageSize: 7,
           //改数据改这里
