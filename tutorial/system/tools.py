@@ -145,8 +145,8 @@ def getTotalGeneratingCapacity_thisMonth():
     db = pymysql.connect(database_ip, user, pwd, database_name)
     # use cursor to manipulate
     cursor = db.cursor()
-    sql1 = "select total_fdl from spgs_month WHERE total_m='" + time.strftime('%Y-%m-%d', time.localtime()) + "'"
-    sql2 = "select total_fdl from pvmg_month WHERE total_m='" + time.strftime('%Y-%m-%d', time.localtime()) + "'"
+    sql1 = "select total_fdl from spgs_month WHERE total_m='" + time.strftime('%Y-%m', time.localtime()) + "'"
+    sql2 = "select total_fdl from pvmg_month WHERE total_m='" + time.strftime('%Y-%m', time.localtime()) + "'"
     cursor.execute(sql1)
     rs1 = cursor.fetchone()
     if not rs1 is None:

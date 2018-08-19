@@ -93,12 +93,17 @@ def powerStationInfoSpgs():
 
 # 获取电站某天的功率数据
 def getSpgsGL(searchDate):
-    start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
-    end = start + datetime.timedelta(days=1)
+    s =datetime.time.strftime((datetime.datetime.now()-datetime.timedelta(hours=2)).time(),'%H:%M:%S')
+    s2=searchDate+" "+s
+    start = datetime.datetime.strptime(s2,"%Y-%m-%d %H:%M:%S")
+    end = start+datetime.timedelta(hours=2)
     try:
         data = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('fdzgl', flat=True))
         datatime = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
-        return {"data": data, "time": datatime}
+        rs_time = []
+        for x in datatime:
+            rs_time.append(datetime.datetime.strftime(x, "%H:%M:%S"))
+        return {"data": data, "time": rs_time}
     except Exception as e:
         print(e)
         return {"data": [], "time": []}
@@ -106,8 +111,10 @@ def getSpgsGL(searchDate):
 
 # 获取电站某天的有效时数
 def getSpgsDXSS(searchDate):
-    start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
-    end = start + datetime.timedelta(days=1)
+    s = datetime.time.strftime((datetime.datetime.now() - datetime.timedelta(hours=2)).time(), '%H:%M:%S')
+    s2 = searchDate + " " + s
+    start = datetime.datetime.strptime(s2, "%Y-%m-%d %H:%M:%S")
+    end = start + datetime.timedelta(hours=2)
     try:
         db = pymysql.connect(database_ip, user, pwd, database_name)
         cursor = db.cursor()
@@ -119,8 +126,11 @@ def getSpgsDXSS(searchDate):
         else:
             rs = 0
         datatime = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+        rs_time = []
+        for x in datatime:
+            rs_time.append(datetime.datetime.strftime(x,"%H:%M:%S"))
         db.close()
-        return {"data": rs, "time": datatime}
+        return {"data": rs, "time": rs_time}
     except Exception as e:
         print(e)
         return {"data": [], "time": []}
@@ -128,12 +138,17 @@ def getSpgsDXSS(searchDate):
 
 # 获取电站某天当日的发电量
 def getSpgsFDL(searchDate):
-    start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
-    end = start + datetime.timedelta(days=1)
+    s = datetime.time.strftime((datetime.datetime.now() - datetime.timedelta(hours=2)).time(), '%H:%M:%S')
+    s2 = searchDate + " " + s
+    start = datetime.datetime.strptime(s2, "%Y-%m-%d %H:%M:%S")
+    end = start + datetime.timedelta(hours=2)
     try:
         data = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('drfdl', flat=True))
         datatime = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
-        return {"data": data, "time": datatime}
+        rs_time = []
+        for x in datatime:
+            rs_time.append(datetime.datetime.strftime(x, "%H:%M:%S"))
+        return {"data": data, "time": rs_time}
     except Exception as e:
         print(e)
         return {"data": [], "time": []}
@@ -141,14 +156,19 @@ def getSpgsFDL(searchDate):
 
 # 获取设备的某个字段的数据信息
 def getSpgsDeviceInfo(deviceName, param, searchDate):
-    start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
-    end = start + datetime.timedelta(days=1)
+    s = datetime.time.strftime((datetime.datetime.now() - datetime.timedelta(hours=2)).time(), '%H:%M:%S')
+    s2 = searchDate + " " + s
+    start = datetime.datetime.strptime(s2, "%Y-%m-%d %H:%M:%S")
+    end = start + datetime.timedelta(hours=2)
     if param == "GL":
         try:
             data = list(DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list(deviceName, flat=True))
             datatime = list(
                 DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
-            return {"data": data, "time": datatime}
+            rs_time = []
+            for x in datatime:
+                rs_time.append(datetime.datetime.strftime(x, "%H:%M:%S"))
+            return {"data": data, "time": rs_time}
         except Exception as e:
             print(e)
             return {"data": [], "time": []}
@@ -165,8 +185,11 @@ def getSpgsDeviceInfo(deviceName, param, searchDate):
                 rs = 0
             datatime = list(
                 DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+            rs_time = []
+            for x in datatime:
+                rs_time.append(datetime.datetime.strftime(x, "%H:%M:%S"))
             db.close()
-            return {"data": rs, "time": datatime}
+            return {"data": rs, "time": rs_time}
         except Exception as e:
             print(e)
             return {"data": [], "time": []}
@@ -196,8 +219,10 @@ def getSpgsDeviceInfo(deviceName, param, searchDate):
 
 
 def getSpgsDeviceInfoAll(deviceName, param, searchDate):
-    start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
-    end = start + datetime.timedelta(days=1)
+    s = datetime.time.strftime((datetime.datetime.now() - datetime.timedelta(hours=2)).time(), '%H:%M:%S')
+    s2 = searchDate + " " + s
+    start = datetime.datetime.strptime(s2, "%Y-%m-%d %H:%M:%S")
+    end = start + datetime.timedelta(hours=2)
     datatime = list(
         DataSpgsHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True)
     )
