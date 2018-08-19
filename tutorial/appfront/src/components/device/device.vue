@@ -100,13 +100,13 @@
                     <el-card class="box-card1">
                     <el-row>
                     <el-col :span="1" class="col1">
-                      <el-button  round id="text3" @click=""><strong>逆变器</strong></el-button>
-                    </el-col>
-                    <el-col :span="1" class="col1" @click="">
-                      <el-button  round id="text3"><strong>汇流箱</strong></el-button>
+                      <el-button round id="text3" @click="type='NBQ'"><strong>逆变器</strong></el-button>
                     </el-col>
                     <el-col :span="1" class="col1">
-                      <el-button  round id="text3" @click=""><strong>采集设备</strong></el-button>
+                      <el-button  round id="text3" @click="type='HLX'"><strong>汇流箱</strong></el-button>
+                    </el-col>
+                    <el-col :span="1" class="col1">
+                      <el-button  round id="text3" @click="type='CJSB'"><strong>采集设备</strong></el-button>
                     </el-col>
                     </el-row>
                     </el-card>
@@ -145,14 +145,21 @@ import ComList from '../el-simple-com/com-list0.vue'
 
 export default {
     name:'device',
-
     components: {
-        ComList: ComList,
-
-     },
-
+      ComList: ComList,
+    },
+    watch: {
+      type: function(val, oldval) {
+        if (val != 'NBQ') {
+          this.list.data = '';
+        }else {
+          this.list.data = 'http://localhost:8000/system/getDeviceTable?pageNum=1&pageSize=5';
+        }
+      }
+    },
     data(){
       return {
+        type: 'NBQ',
         list: {
           //改数据改这里
           data: 'http://localhost:8000/system/getDeviceTable?pageNum=1&pageSize=5',
@@ -199,7 +206,7 @@ export default {
         //改分页
         this.list.data = 'http://localhost:8000/system/getDeviceTable?pageNum='+ val +'&pageSize=5';
 
-      }
+      },
     },
     mounted: function() {
       this.$store.commit('showIt');

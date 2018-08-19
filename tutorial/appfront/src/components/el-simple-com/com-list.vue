@@ -1,7 +1,7 @@
 <template>
   <el-row class="list">
     <!-- tableData数据的映射 -->
-    <el-table :data="tableData"
+    <el-table :data="showTable"
     border
     style="width: 100%"
     v-loading="loading">
@@ -47,11 +47,41 @@
       return {
         loading: true,
         tableData: [],
+        showTable: [],
         // pageSize: 2
       }
     },
     //mounted为vue对象的生命周期
+    computed: {
+      listenChooseTree() {
+        return this.$store.state.chooseTree;
+      }
+    },
     watch: {
+      listenChooseTree: function(val, oldval) {
+
+        var list = []
+        for (var i = 0; i < val.length; i++) {
+          for (var j = 0; j < val[i].devices.length; j++) {
+            list.push({
+              'system' : val[i].system,
+              'device' : val[i].devices[j]
+            });
+          }
+        }
+          // if (this.tableData[i]) {
+          //
+          // }
+        var list2 = []
+        for (var i = 0; i < this.tableData.length; i++) {
+          for (var j = 0; j < list.length; j++) {
+            if (this.tableData[i].dev_xh == list[j].device) {
+              list2.push(this.tableData[i]);
+            }
+          }
+        }
+        this.showTable = list2;
+      },
       // 如果 `question` 发生改变，这个函数就会运行
       data: function (newQuestion, oldQuestion) {
         this.showAll();
@@ -83,6 +113,7 @@
             // }
             this.setTableData(response.data.data.tab[i])
           }
+          this.showTable = this.tableData;
           this.loading = false
         }.bind(this))
         .catch(function (error) {
