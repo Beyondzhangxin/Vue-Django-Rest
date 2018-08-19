@@ -119,7 +119,7 @@
              <el-pagination
                   background
                   layout="prev, pager, next"
-                  :total="190"
+                  :total="30"
                   @current-change="handleCurrentChange">
             </el-pagination>
             </el-card>
@@ -140,18 +140,21 @@ export default {
     watch: {
       type: function(val, oldval) {
         if (val != 'NBQ') {
-          this.list.data = '';
+          this.list.data = 'http://localhost:8000/system/getDeviceTable';
         }else {
-          this.list.data = 'http://localhost:8000/system/getDeviceTable?pageNum=1&pageSize=5';
+          this.list.data = 'http://localhost:8000/system/getDeviceTable';
         }
       }
     },
     data(){
       return {
         type: 'NBQ',
+        page: 0,
         list: {
+          pageNum: 0,
+          pageSize: 7,
           //改数据改这里
-          data: 'http://localhost:8000/system/getDeviceTable?pageNum=1&pageSize=5',
+          data: 'http://localhost:8000/system/getDeviceTable',
           //改表名改这里
           tabConfigs: [
             {prop: 'dev_name', label: '设备名称'},
@@ -193,8 +196,8 @@ export default {
       },
       handleCurrentChange(val) {
         //改分页
-        this.list.data = 'http://localhost:8000/system/getDeviceTable?pageNum='+ val +'&pageSize=5';
-
+        this.list.pageNum = val-1;
+        this.list.pageSize = 7;
       },
     },
     mounted: function() {
