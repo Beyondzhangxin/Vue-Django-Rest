@@ -94,6 +94,7 @@
           }
           this.showTable.push(this.tableData[this.pageNum*this.pageSize+i])
         }
+
       }
     },
     //mounted为vue对象的生命周期
