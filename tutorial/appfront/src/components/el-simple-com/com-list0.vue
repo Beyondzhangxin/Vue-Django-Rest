@@ -36,7 +36,7 @@
 <script>
   export default {
     name: 'ComList',
-    props: ['data', 'tabConfigs', 'filterKey','pageNum', 'pageSize'],
+    props: ['data', 'tabConfigs', 'filterKey','pageNum', 'pageSize', 'type'],
     data() {
       return {
         loading: false,
@@ -51,6 +51,17 @@
       }
     },
     watch: {
+      type: function(val, oldval) {
+        this.showTable = [];
+        if (val == 'NBQ') {
+          for (var i = 0; i < this.pageSize ; i++) {
+            if (this.pageNum*this.pageSize+i+1 > this.tableData.length) {
+              break;
+            }
+            this.showTable.push(this.tableData[this.pageNum*this.pageSize+i])
+          }
+        }
+      },
       listenChooseTree: function(val, oldval) {
         var list = []
         for (var i = 0; i < val.length; i++) {
