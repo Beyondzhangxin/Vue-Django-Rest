@@ -8,10 +8,10 @@
       <img class="image1" ref="image" src="..\..\assets\SHGF.jpg">
       <el-row>
         <el-col :span="12"><div class="grid-content1">
-          <div class="tem1">总装机容量：<strong>{{(zjrl||"~")}}</strong>kwp</div>
-          <div class="tem2">当前运行功率：<strong>{{(yxgl||"~")}}</strong>kw</div>
-          <div class="tem3">当日有效时数：<strong>{{(dayHours||"~")}}</strong>h</div>
-          <div class="tem4">当月有效时数：<strong>{{(monthHours||"~")}}</strong>h</div>
+          <div class="tem1">总装机容量：<strong>{{(zjrl||"0")}}</strong>kwp</div>
+          <div class="tem2">当前运行功率：<strong>{{(yxgl||"0")}}</strong>kw</div>
+          <div class="tem3">当日有效时数：<strong>{{(dayHours||"0")}}</strong>h</div>
+          <div class="tem4">当月有效时数：<strong>{{(monthHours||"0")}}</strong>h</div>
         </div></el-col>
         <el-col :span="12"><div class="grid-content2">
           <div class="con">电站状态：&nbsp正常&nbsp</div>
@@ -90,7 +90,7 @@ export default {
 }
 
 .tem1{
-  
+
     padding-top: 25px;
     padding-bottom: 10px;
     box-sizing: border-box;
@@ -105,7 +105,7 @@ export default {
 }
 
 .con{
-    
+
     padding-top: 13px;
     padding-bottom: 10px;
     box-sizing: border-box;
@@ -114,7 +114,7 @@ export default {
 }
 
 .mes{
-   
+
     padding-top: 13px;
     padding-bottom: 10px;
     box-sizing: border-box;

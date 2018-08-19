@@ -71,7 +71,7 @@
 
           <div class="mm">
             <el-col :span="24"><div class="grid-content"></div></el-col>
-            <elPower style="margin-top: 20px;" v-for="card in cardLists" v-bind="card"  :key="card"/>
+            <elPower style="margin-top: 20px;" v-for="card in cardLists" v-bind="card" v-show="checkLists(card)"  :key="card"/>
           </div>
 
         </el-main>
@@ -142,10 +142,10 @@ export default {
       ],
       options5: [
         {
-          value: 'ALL',
-          label: '全部'
+          value: '北京',
+          label: '北京'
         },{
-          value: 'BJ',
+          value: '青海',
           label: '青海'
         },
       ],
@@ -158,16 +158,19 @@ export default {
     this.$store.commit('showIt');
     //this.show();
   },
-
+  Update: function() {
+    this.$store.commit('filter', '系统');
+  },
   destroyed: function() {
     this.$store.commit('hideIt')
   },
 
   methods: {
     loadData(){
+      this.$store.commit('filter', '系统');
       this.$ajax.get('http://localhost:8000/system/getStationMonitorInfo')
       .then(function (response) {
-        //处理数据\
+        //处理数据
         for (var i = 0; i < this.items.length; i++) {
           if (this.items[i].index) {
             this.items[i].value = response.data.data.items[this.items[i].index]
@@ -188,13 +191,36 @@ export default {
     // },
     checkLists(card){
         //aside的过滤写在这里
+        console.log(34636364);
+
+        var system = "";
+        if (card.id == '图书馆微电网系统') {
+          system = 'PVMG';
+        }
+        if (card.id == '多功能光伏电站系统') {
+          system = 'SPGS';
+        }
+
+        if (this.$store.state.chooseTree.length != 0) {
+          console.log(1241212);
+          var flag = 0;
+          for (var i = 0; i < this.$store.state.chooseTree.length; i++) {
+            if (system&&system == this.$store.state.chooseTree[i].system) {
+              flag = 1;
+            }
+          }
+          if (flag == 0) {
+            return false;
+          }
+        }
+
 
         //有效时间的过滤
         try {
-          if (this.input1&&card.msg3 <this.input1) {
+          if (this.input1&&card.dayHours <this.input1) {
             return false;
           }
-          if (this.input2&&card.msg3 >this.input2) {
+          if (this.input2&&card.dayHours >this.input2) {
             return false;
           }
         } catch (e) {
@@ -204,7 +230,7 @@ export default {
           return true;
         }
         for (var j = 0; j < this.value10.length; j++) {
-          if ((this.value10[j]=='ALL')||(card.id == this.value10[j])) {
+          if ((this.value10[j]=='ALL')||(card.location == this.value10[j])) {
             return true;
           }
         }

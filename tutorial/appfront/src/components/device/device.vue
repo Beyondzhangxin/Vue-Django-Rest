@@ -100,13 +100,13 @@
                     <el-card class="box-card1">
                     <el-row>
                     <el-col :span="1" class="col1">
-                      <el-button  round id="text3"><strong>逆变器</strong></el-button>
+                      <el-button  round id="text3" @click=""><strong>逆变器</strong></el-button>
                     </el-col>
-                    <el-col :span="1" class="col1">
+                    <el-col :span="1" class="col1" @click="">
                       <el-button  round id="text3"><strong>汇流箱</strong></el-button>
                     </el-col>
                     <el-col :span="1" class="col1">
-                      <el-button  round id="text3"><strong>采集设备</strong></el-button>
+                      <el-button  round id="text3" @click=""><strong>采集设备</strong></el-button>
                     </el-col>
                     </el-row>
                     </el-card>
@@ -203,7 +203,11 @@ export default {
     },
     mounted: function() {
       this.$store.commit('showIt');
+      this.$store.commit('filter', '逆变器');
       this.loadData();
+    },
+    beforeUpdate: function() {
+
     },
     destroyed: function() {
       this.$store.commit('hideIt');
@@ -308,6 +312,7 @@ export default {
     background: -moz-linear-gradient(30deg, #373B44, #355C7D);
     background: linear-gradient(30deg, rgb(180,180,180,0.3),#355C7D);*/
    background-color:rgba(180, 180, 180, 0.1);
+
 }
 
 .box-card:hover{
@@ -346,8 +351,9 @@ export default {
 #cirlce {
   margin-top: -8px;
   width: 100%;
-  background-color:rgba(255, 255, 255, 0.3)
+  background-color:rgba(223, 232, 235, 0.3);
 }
+
 
 #num{
     margin-top:20px;
