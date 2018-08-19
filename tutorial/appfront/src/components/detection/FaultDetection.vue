@@ -9,7 +9,7 @@
 
                 <el-row>
                   <el-col :span="8">
-                    <el-card :body-style="{ padding: '0px' }" id="card1">
+                    <el-card :body-style="{ padding: '0px' }" onClick="clicke('停机')" id="card1">
                      <img src="../../assets/close.png" class="image">
                      <div style="padding: 14px;">
                        <span>停机设备</span>
@@ -20,7 +20,7 @@
                    </el-card>
                   </el-col>
                   <el-col :span="8">
-                    <el-card :body-style="{ padding: '0px' }" id="card1">
+                    <el-card :body-style="{ padding: '0px' }" onClick="clicke('告警')" id="card1">
                       <img src="../../assets/alarm.png" class="image">
                       <div style="padding: 14px;">
                         <span>告警设备</span>
@@ -31,7 +31,7 @@
                     </el-card>
                   </el-col>
                   <el-col :span="8">
-                    <el-card :body-style="{ padding: '0px' }" id="card1">
+                    <el-card :body-style="{ padding: '0px' }" onClick="clicke('离线')" id="card1">
                       <img src="../../assets/offline.png" class="image">
                       <div style="padding: 14px;">
                         <span>离线设备</span>
@@ -85,7 +85,8 @@
     data(){
       return {
         data: 'http://localhost:8000/system/getDetectionInfo?pageNum=1&pageSize=10',
-        page: 1
+        page: 1,
+        state: 'ALL',
         // pageSize: 2
       }
     },

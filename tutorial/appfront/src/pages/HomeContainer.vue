@@ -30,6 +30,7 @@
     data () {
       return {
         active: 'detection',
+        dotsNum: 50,
       }
     },
     methods: {
