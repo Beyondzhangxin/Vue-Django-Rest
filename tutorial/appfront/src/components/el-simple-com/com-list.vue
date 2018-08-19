@@ -34,7 +34,7 @@
 <script>
   export default {
     name: 'ComList',
-    props: ['data'],
+    props: ['data','state'],
     data() {
       this.tabConfigs = [
         {prop: 'dev_name', label: '设备名称'},
@@ -58,8 +58,25 @@
       }
     },
     watch: {
-      listenChooseTree: function(val, oldval) {
+      state: function(val, oldval) {
+        console.log(val);
+        if (val != oldval) {
+          if (val != 'ALL') {
+            this.showTable = this.tableData;
+            var list2 = []
+            for (var i = 0; i < this.showTable.length; i++) {
+              if (this.showTable[i].dev_cjqzt == this.state) {
+                list2.push(this.showTable[i]);
+              }
+            }
+            this.showTable = list2;
+          }else {
+            this.showAll();
+          }
+        }
 
+      },
+      listenChooseTree: function(val, oldval) {
         var list = []
         for (var i = 0; i < val.length; i++) {
           for (var j = 0; j < val[i].devices.length; j++) {

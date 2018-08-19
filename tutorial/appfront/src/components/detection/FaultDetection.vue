@@ -6,37 +6,36 @@
         <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
 
           <el-main class="detectMain">
-
                 <el-row>
                   <el-col :span="8">
-                    <el-card :body-style="{ padding: '0px' }" onClick="clicke('停机')" id="card1">
+                    <el-card :body-style="{ padding: '0px' }" id="card1">
                      <img src="../../assets/close.png" class="image">
                      <div style="padding: 14px;">
                        <span>停机设备</span>
                        <div class="bottom clearfix">
-                         <el-button type="text" class="button"></el-button>
+                         <el-button type="text" @click="changeState('停机')" class="button">{{ card1State }}</el-button>
                        </div>
                      </div>
                    </el-card>
                   </el-col>
                   <el-col :span="8">
-                    <el-card :body-style="{ padding: '0px' }" onClick="clicke('告警')" id="card1">
+                    <el-card :body-style="{ padding: '0px' }" id="card1">
                       <img src="../../assets/alarm.png" class="image">
                       <div style="padding: 14px;">
                         <span>告警设备</span>
                         <div class="bottom clearfix">
-                          <el-button type="text" class="button"></el-button>
+                          <el-button type="text" ref="bu2" @click="changeState('告警')" class="button">{{ card2State }}</el-button>
                         </div>
                       </div>
                     </el-card>
                   </el-col>
                   <el-col :span="8">
-                    <el-card :body-style="{ padding: '0px' }" onClick="clicke('离线')" id="card1">
+                    <el-card :body-style="{ padding: '0px' }" id="card1">
                       <img src="../../assets/offline.png" class="image">
                       <div style="padding: 14px;">
                         <span>离线设备</span>
                         <div class="bottom clearfix">
-                          <el-button type="text" class="button"></el-button>
+                          <el-button type="text" ref="bu3" @click="changeState('离线')" class="button">{{ card3State }}</el-button>
                         </div>
                       </div>
                     </el-card>
@@ -48,7 +47,7 @@
             <!--通用list-->
             <!--请求如下 http://127.0.0.1:8000/pv/get/detection/2018/1/18/ -->
             <el-card class="card2">
-              <ComList v-bind:data='data'></ComList>
+              <ComList v-bind:data='data' v-bind:state='state'></ComList>
               <!--<ComList v-bind:data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>-->
               <!-- <el-pagination
                 background
@@ -87,10 +86,26 @@
         data: 'http://localhost:8000/system/getDetectionInfo?pageNum=1&pageSize=10',
         page: 1,
         state: 'ALL',
+        clickedCard: '撤销',
+        unClickCard: '帮助过滤',
+        card1State: '帮助过滤',
+        card2State: '帮助过滤',
+        card3State: '帮助过滤',
         // pageSize: 2
       }
     },
     methods: {
+      test(val) {
+        console.log(val);
+      },
+      changeState(val) {
+        if (this.state == val) {
+          this.state = 'ALL';
+        }else {
+          this.state =  val;
+        }
+        console.log(this.state);
+      },
       handleCurrentChange(val) {
         this.data = 'http://localhost:8000/system/getDetectionInfo?pageNum='+ val +'&pageSize=10';
       }
