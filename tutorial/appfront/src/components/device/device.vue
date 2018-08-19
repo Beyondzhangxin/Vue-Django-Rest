@@ -58,7 +58,7 @@
                                     <img src="../../assets/normal.png" id="image2">
                                 </div></el-col>
                                 <el-col :span="2"><div class="grid-content">
-                                    <div id="text2">{{msg7}}</div>
+                                    <div id="text2">1</div>
                                 </div></el-col>
                                 <el-col :span="2"><div class="grid-content">
                                      <img src="../../assets/offline2.png" id="image2">
@@ -70,13 +70,13 @@
                                     <img src="../../assets/alarm1.png" id="image2">
                                 </div></el-col>
                                 <el-col :span="2"><div class="grid-content">
-                                    <div id="text2">{{msg7}}</div>
+                                    <div id="text2">4</div>
                                 </div></el-col>
                                 <el-col :span="2"><div class="grid-content">
                                     <img src="../../assets/close1.png" id="image2">
                                 </div></el-col>
                                 <el-col :span="2"><div class="grid-content">
-                                    <div id="text2">{{msg7}}</div>
+                                    <div id="text2">14</div>
                                 </div></el-col>
                                 <el-col :span="2"><div class="grid-content">
                                     <img src="../../assets/repair.png" id="image2">
