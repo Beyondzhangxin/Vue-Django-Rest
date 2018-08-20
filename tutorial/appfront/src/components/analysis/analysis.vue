@@ -111,9 +111,9 @@
         </el-col>
       </el-row>
       <div class="sel">
-        <el-button type="primary"  @click="" plain v-for="sel in selList" v-show="carryModel.model=='dzdb'">{{ sel.system }}</el-button>
-        <span v-for="sel in selList" v-show="carryModel.model=='sbdb'">
-          <el-button type="primary"  @click="" plain v-for=" dev in sel.devices">{{ dev }}</el-button>
+        <el-button type="primary"  @click="" plain v-for="sel in selList"  :key="sel1" v-show="carryModel.model=='dzdb'">{{ sel.system }}</el-button>
+        <span v-for="sel in selList" :key="sel2" v-show="carryModel.model=='sbdb'">
+          <el-button type="primary"  @click="" plain v-for=" dev in sel.devices" :key="dev">{{ dev }}</el-button>
         </span>
       </div>
 
