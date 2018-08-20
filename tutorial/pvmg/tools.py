@@ -91,8 +91,10 @@ def powerStationInfoPvmg():
 
 # 获取电站某天的功率数据
 def getPvmgGL(searchDate):
-    start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
-    end = start + datetime.timedelta(days=1)
+    s = datetime.time.strftime((datetime.datetime.now() - datetime.timedelta(hours=2)).time(), '%H:%M:%S')
+    s2 = searchDate + " " + s
+    start = datetime.datetime.strptime(s2, "%Y-%m-%d %H:%M:%S")
+    end = start + datetime.timedelta(hours=2)
     try:
         data = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('fdzgl', flat=True))
         datatime = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
@@ -104,8 +106,10 @@ def getPvmgGL(searchDate):
 
 # 获取电站某天的有效时数
 def getPvmgDXSS(searchDate):
-    start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
-    end = start + datetime.timedelta(days=1)
+    s = datetime.time.strftime((datetime.datetime.now() - datetime.timedelta(hours=2)).time(), '%H:%M:%S')
+    s2 = searchDate + " " + s
+    start = datetime.datetime.strptime(s2, "%Y-%m-%d %H:%M:%S")
+    end = start + datetime.timedelta(hours=2)
     try:
         db = pymysql.connect(database_ip, user, pwd, database_name)
         cursor = db.cursor()
@@ -126,8 +130,10 @@ def getPvmgDXSS(searchDate):
 
 # 获取电站某天当日的发电量
 def getPvmgFDL(searchDate):
-    start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
-    end = start + datetime.timedelta(days=1)
+    s = datetime.time.strftime((datetime.datetime.now() - datetime.timedelta(hours=2)).time(), '%H:%M:%S')
+    s2 = searchDate + " " + s
+    start = datetime.datetime.strptime(s2, "%Y-%m-%d %H:%M:%S")
+    end = start + datetime.timedelta(hours=2)
     try:
         data = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('jrfdl', flat=True))
         datatime = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
@@ -137,8 +143,10 @@ def getPvmgFDL(searchDate):
         return {"data": [], "time": []}
     
 def getPvmgDeviceInfo(deviceName,param, searchDate):
-    start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
-    end = start + datetime.timedelta(days=1)
+    s = datetime.time.strftime((datetime.datetime.now() - datetime.timedelta(hours=2)).time(), '%H:%M:%S')
+    s2 = searchDate + " " + s
+    start = datetime.datetime.strptime(s2, "%Y-%m-%d %H:%M:%S")
+    end = start + datetime.timedelta(hours=2)
     if param == "GL":
         try:
             data = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list(deviceName, flat=True))
@@ -190,8 +198,10 @@ def getPvmgDeviceInfo(deviceName,param, searchDate):
     else:return {"data": [], "time": []}
 
 def getPvmgDeviceInfoAll(deviceName,param, searchDate):
-    start = datetime.datetime.strptime(searchDate, '%Y-%m-%d')
-    end = start + datetime.timedelta(days=1)
+    s = datetime.time.strftime((datetime.datetime.now() - datetime.timedelta(hours=2)).time(), '%H:%M:%S')
+    s2 = searchDate + " " + s
+    start = datetime.datetime.strptime(s2, "%Y-%m-%d %H:%M:%S")
+    end = start + datetime.timedelta(hours=2)
     datatime = list(
         DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True)
     )

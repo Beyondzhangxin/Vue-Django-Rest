@@ -8,7 +8,7 @@
 
       <!-- <el-card class="card"> -->
       <div class="inf"><strong>多功能光伏电站系统,图书馆微电网系统电站统计</strong></div>
-      <hr width=100%                                     size=1                                     color=#bbbcbc
+      <hr width=100%                                      size=1                                      color=#bbbcbc
       style="FILTER: alpha(opacity=100, finishopacity=0)">
       <div class="row0">
         <el-row>
@@ -222,16 +222,11 @@
     },
 
     mounted: function () {
-      this.loadData();
       this.envProtectData();
-      // this.interval = setInterval(function(){
-      //   this.envProtectData();
-      //   this.loadData();
-      // }.bind(this), 5000);
+      this.interval = setInterval(() => {
+        this.loadData();
+      }, 1000)
     },
-    // destroyed: function() {
-    //   clearInterval(this.interval)
-    // },
 
     methods: {
       envProtectData(){
@@ -255,7 +250,6 @@
           .then(function (response) {
             //处理数据
             this.c1 = response.data.data.c1
-
           }.bind(this))
           .catch(function (error) {
             return 0;
@@ -281,9 +275,7 @@
         msg4: 5429.41,
         msg5: 988.97,
 
-        c1: {
-          id: 'c1',
-        },
+        c1: {},
         c2: {
           the: Math.round(500 + Math.random() * 500),
           act: Math.round(Math.random() * 500),
@@ -405,7 +397,7 @@
                 {
                   type: 'category',
                   boundaryGap: true,
-                  data:[]
+                  data: []
                 }
               ],
               yAxis: [
