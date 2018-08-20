@@ -2,9 +2,6 @@
 
   <el-card class="card0">
 
-    <!-- 调用canvas -->
-    <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
-
     <el-header id="header" style="height:80px;">
 
       <el-row>
@@ -49,25 +46,6 @@
       <card class="card1">
         <el-row>
 
-          <!-- <el-col :span="12" id="span1">
-            <el-col :span="4" id="span0"><strong>对比内容:</strong></el-col>
-            <el-col :span="4">
-              <el-button id="button1" @click="carryModel.compareParam='GL'"><strong>功率</strong></el-button>
-            </el-col>
-            <el-col :span="4">
-              <el-button id="button1" disabled><strong>效率</strong></el-button>
-            </el-col>
-            <el-col :span="4">
-              <el-button id="button1"  @click="carryModel.compareParam='DXSS'"><strong>等效时数</strong></el-button>
-            </el-col>
-            <el-col :span="4">
-              <el-button id="button1" disabled><strong>符合率</strong></el-button>
-            </el-col>
-            <el-col :span="4">
-              <el-button id="button1"  @click="carryModel.compareParam='FDL'"><strong>发电量</strong></el-button>
-            </el-col>
-          </el-col> -->
-
         <div class="block">
           <span id="text0">查询内容</span>
           <el-select v-model="carryModel.compareParam" clearable placeholder="请选择" >
@@ -111,9 +89,9 @@
         </el-col>
       </el-row>
       <div class="sel">
-        <el-button type="primary"  @click="" plain v-for="sel in selList" v-show="carryModel.model=='dzdb'">{{ sel.system }}</el-button>
-        <span v-for="sel in selList" v-show="carryModel.model=='sbdb'">
-          <el-button type="primary"  @click="" plain v-for=" dev in sel.devices">{{ dev }}</el-button>
+        <el-button type="primary"  @click="" plain v-for="sel in selList"  :key="sel1" v-show="carryModel.model=='dzdb'">{{ sel.system }}</el-button>
+        <span v-for="sel in selList" :key="sel2" v-show="carryModel.model=='sbdb'">
+          <el-button type="primary"  @click="" plain v-for=" dev in sel.devices" :key="dev">{{ dev }}</el-button>
         </span>
       </div>
 
@@ -134,13 +112,13 @@
 
 <script>
   import Line3 from '../echarts_elements/Line3'
-  // import myCanvas from 'vue-atom-canvas'
+
 
   export default {
     name: 'analysis',
     components: {
       Line3: Line3,
-      // myCanvas
+
     },
     methods: {
       changeColor(num) {
