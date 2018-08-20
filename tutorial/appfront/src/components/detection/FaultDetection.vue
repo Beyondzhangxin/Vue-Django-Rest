@@ -52,7 +52,7 @@
               <el-pagination
                 background
                 layout="prev, pager, next"
-                :total="190"
+                :total="20"
                 @current-change="handleCurrentChange">
               </el-pagination>
             </el-card>
