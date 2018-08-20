@@ -222,7 +222,9 @@
         this.loadData();
       }, 1000)
     },
-
+    destroyed:function () {
+      clearInterval(this.interval)
+    },
     methods: {
       envProtectData(){
         this.$ajax.get('http://localhost:8000/system/getHBSJ')
