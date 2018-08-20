@@ -41,6 +41,7 @@ export default {
 
   destroyed: function() {
     clearInterval(this.interval);
+    this.line1.clear();
   },
 
   methods: {
