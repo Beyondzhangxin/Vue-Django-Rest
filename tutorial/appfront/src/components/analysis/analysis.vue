@@ -58,8 +58,6 @@
           </el-option>
         </el-select>
         </div>
-
-
             <div class="block1">
             <span id="text1">查询日期</span>
             <!-- 日期选择器 -->
@@ -118,7 +116,6 @@
     name: 'analysis',
     components: {
       Line3: Line3,
-
     },
     methods: {
       changeColor(num) {
@@ -138,7 +135,6 @@
            url = 'http://localhost:8000/system/getStationCompareInfo';
            fromData = "stationList=" + JSON.stringify(this.carryModel.stationList) + "&compareParam=" + this.carryModel.compareParam + "&searchDate=" + this.carryModel.searchDate;
         }
-
         if (this.carryModel.model == 'sbdb') {
           url = 'http://localhost:8000/system/getDeviceCompareInfo';
           fromData = 'deviceList=' + JSON.stringify(this.carryModel.deviceList) + "&compareParam=" + this.carryModel.compareParam + "&searchDate=" + this.carryModel.searchDate;
@@ -173,7 +169,6 @@
                   yAxisIndex: 0,
                 })
               }
-
             }else {
               for (var i = 0; i < response.data.data.series.length; i++) {
                 this.l2.option.series.push({
