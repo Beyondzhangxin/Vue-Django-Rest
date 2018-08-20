@@ -1,7 +1,5 @@
 <template>
       <el-container class="c1">
-        <!-- 调用canvas -->
-        <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
 
         <el-main class="m1" style="height: 100%">
 
@@ -84,14 +82,13 @@
 import Gauge from '../echarts_elements/Gauge1'
 import Line2 from '../echarts_elements/Line2'
 import elPower from './elPower'
-// import myCanvas from 'vue-atom-canvas'
 
 
 export default {
   name : 'Power',
   components: {
     elPower:elPower,
-    // myCanvas
+ 
   },
   data () {
     return {

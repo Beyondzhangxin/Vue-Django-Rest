@@ -1,9 +1,5 @@
 <template>
   <div class="detection">
-    <!-- <el-container> -->
-
-        <!-- 调用canvas -->
-        <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
 
           <el-main class="detectMain">
                 <el-row>
@@ -65,21 +61,19 @@
 
           </el-main>
 
-    <!-- </el-container> -->
   </div>
 </template>
 
 <script>
     import ComList from '../el-simple-com/com-list.vue'
     import deHeader from './Head.vue'
-    // import myCanvas from 'vue-atom-canvas'
 
   export default {
     name: 'faultdetection',
     components: {
         ComList: ComList,
         DeHeader: deHeader,
-        //  myCanvas
+
     },
     data(){
       return {

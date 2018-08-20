@@ -4,16 +4,7 @@
     <!-- 登陆框 -->
       <div class="login">
         <div class="mes">系统登录</div>
-          <!-- <el-form inline-message :model="loginForm" :rules="loginRules" ref="loginForm">
-           
-    	      <el-input class="user" prefix-icon="el-icon-edit" v-model="account" @blur="inputBlur('user',account)" type="text" placeholder="请输入账号" ></el-input>
-              <p></p> 
-            <el-input class="password" prefix-icon="el-icon-circle-check" v-model="password" @blur="inputBlur('password',password)" type="password" placeholder="请输入密码" ></el-input>
-            <div class="submit">
-              <el-button  @click="loginForm" id="button1" >登录</el-button>
-              <el-button @click="resetForm" id="button2">重置</el-button>
-            </div>
-          </el-form> -->
+        
           <el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="demo-ruleForm loginFrom">
           <el-form-item >
             <el-input placeholder="账号"  v-model="ruleForm.userName"></el-input>
@@ -159,13 +150,6 @@ mounted(){
     background: -moz-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
     background: linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
 }
-
-/* .el-input{
-  width:100%;
-  height:36px;
-  border-radius:6px;
-   background-color:rgba(255, 255, 255, 0.5)
-} */
 
 .mes{
   font-family: Arial, Helvetica, sans-serif;

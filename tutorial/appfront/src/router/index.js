@@ -8,10 +8,9 @@ import Gauge from '@/components/echarts_elements/Gauge1'
 import Power from '@/components/power/Power'
 import Device from '@/components/device/Device'
 import Analysis from '@/components/analysis/Analysis'
-import Index from '@/pages/Index'
 import VueResource from 'vue-resource'
 import Effect from '@/Effect'
-// import Login from '@/pages/Login'
+
 
 Vue.use(VueResource)
 Vue.use(Router)
@@ -29,10 +28,6 @@ export default new Router({
     {
       path: '/',
       redirect: '/effect',
-    },
-    {
-      path:'/index',
-      component: Index,
     },
     {
       path: '/Gauge',

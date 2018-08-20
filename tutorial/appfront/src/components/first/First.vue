@@ -1,12 +1,8 @@
 <template>
   <el-container>
-    <!-- 调用canvas -->
-    <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
+    
     <el-main>
 
-      <!-- <el-card class="maincard"> -->
-
-      <!-- <el-card class="card"> -->
       <div class="inf"><strong>多功能光伏电站系统,图书馆微电网系统电站统计</strong></div>
       <hr width=100%                                     size=1                                     color=#bbbcbc
       style="FILTER: alpha(opacity=100, finishopacity=0)">
@@ -209,7 +205,6 @@
   import Gauge1 from '../echarts_elements/Gauge1'
   import Line2 from '../echarts_elements/Line2'
   import Gauge2 from '../echarts_elements/Gauge2'
-  // import myCanvas from 'vue-atom-canvas'
 
 
   export default {
@@ -218,7 +213,7 @@
       Gauge1: Gauge1,
       Gauge2: Gauge2,
       Line2: Line2,
-      // myCanvas
+
     },
 
     mounted: function () {

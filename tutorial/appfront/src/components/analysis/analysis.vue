@@ -2,9 +2,6 @@
 
   <el-card class="card0">
 
-    <!-- 调用canvas -->
-    <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
-
     <el-header id="header" style="height:80px;">
 
       <el-row>
@@ -48,25 +45,6 @@
 
       <card class="card1">
         <el-row>
-
-          <!-- <el-col :span="12" id="span1">
-            <el-col :span="4" id="span0"><strong>对比内容:</strong></el-col>
-            <el-col :span="4">
-              <el-button id="button1" @click="carryModel.compareParam='GL'"><strong>功率</strong></el-button>
-            </el-col>
-            <el-col :span="4">
-              <el-button id="button1" disabled><strong>效率</strong></el-button>
-            </el-col>
-            <el-col :span="4">
-              <el-button id="button1"  @click="carryModel.compareParam='DXSS'"><strong>等效时数</strong></el-button>
-            </el-col>
-            <el-col :span="4">
-              <el-button id="button1" disabled><strong>符合率</strong></el-button>
-            </el-col>
-            <el-col :span="4">
-              <el-button id="button1"  @click="carryModel.compareParam='FDL'"><strong>发电量</strong></el-button>
-            </el-col>
-          </el-col> -->
 
         <div class="block">
           <span id="text0">查询内容</span>
@@ -134,13 +112,13 @@
 
 <script>
   import Line3 from '../echarts_elements/Line3'
-  // import myCanvas from 'vue-atom-canvas'
+
 
   export default {
     name: 'analysis',
     components: {
       Line3: Line3,
-      // myCanvas
+
     },
     methods: {
       changeColor(num) {
