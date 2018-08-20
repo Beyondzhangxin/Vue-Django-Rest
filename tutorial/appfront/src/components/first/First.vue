@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    
+
     <el-main>
 
       <div class="inf"><strong>多功能光伏电站系统,图书馆微电网系统电站统计</strong></div>
@@ -357,7 +357,7 @@
             },
           },
           l1: {
-            id: 'line1',
+            id: 'line11',
             request: ['http://localhost:8000/system/echartsDataForInverterFDL'],
             option: {
               title: {
