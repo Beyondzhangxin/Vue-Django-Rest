@@ -98,7 +98,10 @@ def getPvmgGL(searchDate):
     try:
         data = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('fdzgl', flat=True))
         datatime = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
-        return {"data": data, "time": datatime}
+        rs_time = []
+        for x in datatime:
+            rs_time.append(datetime.datetime.strftime(x, "%H:%M:%S"))
+        return {"data": data, "time": rs_time}
     except Exception as e:
         print(e)
         return {"data": [], "time": []}
@@ -121,8 +124,11 @@ def getPvmgDXSS(searchDate):
         else:
             rs = 0
         datatime = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+        rs_time = []
+        for x in datatime:
+            rs_time.append(datetime.datetime.strftime(x, "%H:%M:%S"))
         db.close()
-        return {"data": rs, "time": datatime}
+        return {"data": rs, "time": rs_time}
     except Exception as e:
         print(e)
         return {"data": [], "time": []}
@@ -137,7 +143,10 @@ def getPvmgFDL(searchDate):
     try:
         data = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('jrfdl', flat=True))
         datatime = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
-        return {"data": data, "time": datatime}
+        rs_time = []
+        for x in datatime:
+            rs_time.append(datetime.datetime.strftime(x, "%H:%M:%S"))
+        return {"data": data, "time": rs_time}
     except Exception as e:
         print(e)
         return {"data": [], "time": []}
@@ -152,7 +161,10 @@ def getPvmgDeviceInfo(deviceName,param, searchDate):
             data = list(DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list(deviceName, flat=True))
             datatime = list(
                 DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
-            return {"data": data, "time": datatime}
+            rs_time = []
+            for x in datatime:
+                rs_time.append(datetime.datetime.strftime(x, "%H:%M:%S"))
+            return {"data": data, "time": rs_time}
         except Exception as e:
             print(e)
             return {"data": [], "time": []}
@@ -169,8 +181,11 @@ def getPvmgDeviceInfo(deviceName,param, searchDate):
                 rs = 0
             datatime = list(
                 DataPvmgHistory.objects.filter(datatime__range=(start, end)).values_list('datatime', flat=True))
+            rs_time = []
+            for x in datatime:
+                rs_time.append(datetime.datetime.strftime(x, "%H:%M:%S"))
             db.close()
-            return {"data": rs, "time": datatime}
+            return {"data": rs, "time": rs_time}
         except Exception as e:
             print(e)
             return {"data": [], "time": []}
@@ -191,7 +206,7 @@ def getPvmgDeviceInfo(deviceName,param, searchDate):
             for x in datatime:
                 rs_time.append(x[0])
             db.close()
-            return {"data": rs_list, "time": datatime}
+            return {"data": rs_list, "time": rs_time}
         except Exception as e:
             print(e)
             return {"data": [], "time": []}
