@@ -424,6 +424,7 @@ def getDetectionInfo(request):
                 info = {}
                 systemType = temp.get('systemType')
                 systemName = temp.get('systemName')
+                info['system_type']=systemType
                 info['dev_name'] = systemName + value
                 info['dev_xh'] = key
                 sql = "select " + key + "  from data_" + systemType + "_buffer "
