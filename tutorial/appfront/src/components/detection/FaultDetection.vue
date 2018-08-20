@@ -49,19 +49,19 @@
             <el-card class="card2">
               <ComList v-bind:data='data' v-bind:state='state'></ComList>
               <!--<ComList v-bind:data='http://127.0.0.1:8000/pv/get/detection/2018/1/18/'></ComList>-->
-              <!-- <el-pagination
+              <el-pagination
                 background
                 layout="prev, pager, next"
                 :total="1000"
                 @current-change="handleCurrentChange">
-              </el-pagination> -->
+              </el-pagination>
             </el-card>
-               <el-pagination
+               <!-- <el-pagination
                 background
                 layout="prev, pager, next"
                 :total="190"
                 @current-change="handleCurrentChange">
-              </el-pagination>
+              </el-pagination> -->
 
           </el-main>
 
