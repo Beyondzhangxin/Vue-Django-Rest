@@ -59,7 +59,7 @@
                <el-pagination
                 background
                 layout="prev, pager, next"
-                :total="190"
+                :total="20"
                 @current-change="handleCurrentChange">
               </el-pagination>
 
@@ -85,6 +85,8 @@
       return {
         data: 'http://localhost:8000/system/getDetectionInfo?pageNum=1&pageSize=10',
         page: 1,
+        pageSize: 10,
+        pageNum: 2,
         state: 'ALL',
         clickedCard: '撤销',
         unClickCard: '帮助过滤',
