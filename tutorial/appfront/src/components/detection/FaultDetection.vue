@@ -123,7 +123,7 @@
   /* 导入iconfont的css*/
   .card2 {
     margin-top: 30px;
-    height: 550px;
+    height: 650px;
   }
 
   .cards {
@@ -135,7 +135,6 @@
     overflow-y: hidden;
     padding-left: 30px;
     padding-right: 30px;
-    overflow-y: hidden;
     margin-top:-12px;
     /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);
