@@ -1,5 +1,5 @@
 <template>
-  <div class="aside">
+  <div class="aside scrollbar">
 
     <div class="aside1">
       <el-row>
@@ -159,13 +159,33 @@
     /* background-color:rgba(180, 180, 180, 0.2); */
     box-sizing: content-box;
     background-color:rgb(53,92,125,0.3);
+    overflow-y:hidden;
   }
 
-  /* .aside0 {
-    margin-bottom: 5px;
-    margin-top: 4px;
-    margin-left: 80px;
-  } */
+  .aside:hover{
+    overflow-y:auto;
+  }
+  
+  .scrollbar::-webkit-scrollbar {
+    width: 12px;
+  }
+
+   .scrollbar::-webkit-scrollbar-track-piece {
+    background-color: #fff;
+  } /* 滚动条的内层滑轨背景颜色 */
+
+  .scrollbar::-webkit-scrollbar-track {
+    background-color: #fff;
+  } /* 滚动条的外层滑轨背景颜色 */
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: #d4d8e2;
+  } /* 滚动条的内层滑块颜色 */
+
+  .scrollbar::-webkit-scrollbar-button {
+    background-color: #fff;
+    display: none;
+  } /* 滑轨两头的监听按钮颜色 */
 
   .aside1 {
     position: relative;
