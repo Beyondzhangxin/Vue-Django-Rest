@@ -98,7 +98,7 @@
           // if (this.tableData[i]) {
           //
           // }
-        if (list == []) {
+        if (list.length == 0) {
             return pageNumFilterList;
         }
         var list2 = []
