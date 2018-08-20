@@ -48,14 +48,14 @@
               <el-pagination
                 background
                 layout="prev, pager, next"
-                :total="190"
+                :total="20"
                 @current-change="handleCurrentChange">
               </el-pagination>
             </el-card>
                <!-- <el-pagination
                 background
                 layout="prev, pager, next"
-                :total="190"
+                :total="20"
                 @current-change="handleCurrentChange">
               </el-pagination> -->
 
@@ -79,6 +79,8 @@
       return {
         data: 'http://localhost:8000/system/getDetectionInfo?pageNum=1&pageSize=10',
         page: 1,
+        pageSize: 10,
+        pageNum: 2,
         state: 'ALL',
         clickedCard: '撤销',
         unClickCard: '帮助过滤',
@@ -121,7 +123,7 @@
   /* 导入iconfont的css*/
   .card2 {
     margin-top: 30px;
-    height: 700px;
+    height: 650px;
   }
 
   .cards {
@@ -133,7 +135,6 @@
     overflow-y: hidden;
     padding-left: 30px;
     padding-right: 30px;
-    overflow-y: hidden;
     margin-top:-12px;
     /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
     background: -o-linear-gradient(30deg, #373B44, #355C7D);

@@ -59,44 +59,10 @@
     },
     watch: {
       state: function(val, oldval) {
-        console.log(val);
-        if (val != oldval) {
-          if (val != 'ALL') {
-            this.showTable = this.tableData;
-            var list2 = []
-            for (var i = 0; i < this.showTable.length; i++) {
-              if (this.showTable[i].dev_cjqzt == this.state) {
-                list2.push(this.showTable[i]);
-              }
-            }
-            this.showTable = list2;
-          }else {
-            this.showAll();
-          }
-        }
+        this.filterAll(this.tableData);
       },
       listenChooseTree: function(val, oldval) {
-        var list = []
-        for (var i = 0; i < val.length; i++) {
-          for (var j = 0; j < val[i].devices.length; j++) {
-            list.push({
-              'system' : val[i].system,
-              'device' : val[i].devices[j]
-            });
-          }
-        }
-          // if (this.tableData[i]) {
-          //
-          // }
-        var list2 = []
-        for (var i = 0; i < this.tableData.length; i++) {
-          for (var j = 0; j < list.length; j++) {
-            if (this.tableData[i].dev_xh == list[j].device) {
-              list2.push(this.tableData[i]);
-            }
-          }
-        }
-        this.showTable = list2;
+        this.filterAll(this.tableData);
       },
       // 如果 `question` 发生改变，这个函数就会运行
       data: function (newQuestion, oldQuestion) {
@@ -108,6 +74,51 @@
       this.showAll();
     },
     methods: {
+      filterAll(tableData) {
+        var list = [];
+        list = this.chooseTreeFilter(tableData);
+        list = this.stateFilter(list);
+        this.showTable = list;
+      },
+      stateFilter(chooseTreeFilterList) {
+        var list = []
+        if (this.state == 'ALL') {
+          return chooseTreeFilterList;
+        }
+        for (var i = 0; i < chooseTreeFilterList.length; i++) {
+          if (chooseTreeFilterList[i].dev_cjqzt == this.state) {
+            list.push(chooseTreeFilterList[i]);
+          }
+        }
+        return list;
+      },
+      chooseTreeFilter(pageNumFilterList) {
+        var list = []
+        //构造{system:x, device[]}
+        for (var i = 0; i < this.$store.state.chooseTree.length; i++) {
+          for (var j = 0; j < this.$store.state.chooseTree[i].devices.length; j++) {
+            list.push({
+              'system' : this.$store.state.chooseTree[i].system,
+              'device' : this.$store.state.chooseTree[i].devices[j]
+            });
+          }
+        }
+          // if (this.tableData[i]) {
+          //
+          // }
+        if (list.length == 0) {
+            return pageNumFilterList;
+        }
+        var list2 = []
+        for (var i = 0; i < pageNumFilterList.length; i++) {
+          for (var j = 0; j < list.length; j++) {
+            if (pageNumFilterList[i].system_type == list[j].system && pageNumFilterList[i].dev_xh == list[j].device) {
+              list2.push(pageNumFilterList[i]);
+            }
+          }
+        }
+        return list2;
+      },
       //通过异步请求，ajax用来获取数据
       showAll(){
         this.loading = true
@@ -129,7 +140,7 @@
             // }
             this.setTableData(response.data.data.tab[i])
           }
-          this.showTable = this.tableData;
+          this.filterAll(this.tableData);
           this.loading = false
         }.bind(this))
         .catch(function (error) {
