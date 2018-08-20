@@ -141,7 +141,7 @@
 
   .el-row {
     margin-bottom: 0px;
-    /* padding-bottom: 295px; */
+    padding-bottom: 10px;
   }
 
 
