@@ -52,49 +52,14 @@
     },
     watch: {
       type: function(val, oldval) {
-        this.showTable = [];
-        if (val == 'NBQ') {
-          for (var i = 0; i < this.pageSize ; i++) {
-            if (this.pageNum*this.pageSize+i+1 > this.tableData.length) {
-              break;
-            }
-            this.showTable.push(this.tableData[this.pageNum*this.pageSize+i])
-          }
-        }
+        this.filterAll();
       },
       listenChooseTree: function(val, oldval) {
-        var list = []
-        for (var i = 0; i < val.length; i++) {
-          for (var j = 0; j < val[i].devices.length; j++) {
-            list.push({
-              'system' : val[i].system,
-              'device' : val[i].devices[j]
-            });
-          }
-        }
-          // if (this.tableData[i]) {
-          //
-          // }
-        var list2 = []
-        for (var i = 0; i < this.tableData.length; i++) {
-          for (var j = 0; j < list.length; j++) {
-            if (this.tableData[i].dev_systemType == list[j].system && this.tableData[i].dev_xh == list[j].device) {
-              list2.push(this.tableData[i]);
-            }
-          }
-        }
-        this.showTable = list2;
+        this.filterAll();
       },
       // 如果 `question` 发生改变，这个函数就会运行
-      pageNum: function (newQuestion, oldQuestion) {
-        this.showTable = [];
-        for (var i = 0; i < this.pageSize ; i++) {
-          if (this.pageNum*this.pageSize+i+1 > this.tableData.length) {
-            break;
-          }
-          this.showTable.push(this.tableData[this.pageNum*this.pageSize+i])
-        }
-
+      pageNum: function (newPage, oldPage) {
+        this.filterAll();
       }
     },
     //mounted为vue对象的生命周期
@@ -102,6 +67,57 @@
       this.showAll();
     },
     methods: {
+      filterAll () {
+        this.showTable = [];
+        var list = this.pageNumFilter();
+        list = this.chooseTreeFilter(list);
+        list = this.typeFilter(list);
+        this.showTable = list;
+      },
+      pageNumFilter() {
+        var list = [];
+        for (var i = 0; i < this.pageSize ; i++) {
+          if (this.pageNum*this.pageSize+i+1 > this.tableData.length) {
+            break;
+          }
+          list.push(this.tableData[this.pageNum*this.pageSize+i])
+        }
+        return list;
+      },
+      chooseTreeFilter(pageNumFilterList) {
+        var list = []
+        //构造{system:x, device[]}
+        for (var i = 0; i < this.$store.state.chooseTree.length; i++) {
+          for (var j = 0; j < this.$store.state.chooseTree[i].devices.length; j++) {
+            list.push({
+              'system' : this.$store.state.chooseTree[i].system,
+              'device' : this.$store.state.chooseTree[i].devices[j]
+            });
+          }
+        }
+          // if (this.tableData[i]) {
+          //
+          // }
+        if (list == []) {
+            return pageNumFilterList;
+        }
+        var list2 = []
+        for (var i = 0; i < pageNumFilterList.length; i++) {
+          for (var j = 0; j < list.length; j++) {
+            if (pageNumFilterList[i].dev_systemType == list[j].system && pageNumFilterList[i].dev_xh == list[j].device) {
+              list2.push(pageNumFilterList[i]);
+            }
+          }
+        }
+        return list2;
+      },
+      typeFilter(chooseTreeFilterList){
+          var list = [];
+          if (this.type == 'NBQ') {
+            list = chooseTreeFilterList
+          }
+          return list
+      },
       //通过异步请求，ajax用来获取数据
       showAll(){
         this.loading = true

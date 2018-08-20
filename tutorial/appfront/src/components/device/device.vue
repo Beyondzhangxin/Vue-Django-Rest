@@ -115,7 +115,7 @@
             <el-card class="card0">
               <!--赋值到this.data中 -->
               <ComList v-bind="list"></ComList>
-        
+
              <el-pagination
                   background
                   layout="prev, pager, next"
@@ -152,7 +152,7 @@ export default {
         page: 0,
         list: {
           //简单过滤
-          type: '',
+          type: 'NBQ',
           pageNum: 0,
           pageSize: 7,
           //改数据改这里
