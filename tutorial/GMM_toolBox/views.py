@@ -18,7 +18,7 @@ def dealException(func):
         try:
             result = func(*args, **kw)
         except Exception as e:
-          return {'exception': e}
+          return {'exception': type(e)}
         return 0
     return wrapper
 
@@ -36,7 +36,8 @@ class Distribution(APIView):
         self._J = None
         self._options = None
 
-    #为满足正常的赋值以及和matlab兼容的赋值
+    # 为满足正常的赋值以及和matlab兼容的赋值
+    # 向量或矩阵
     @property
     def Y(self):
         return self._Y
