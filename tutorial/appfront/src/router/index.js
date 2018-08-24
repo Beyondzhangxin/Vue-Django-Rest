@@ -9,6 +9,7 @@ import Power from '@/components/power/Power'
 import Device from '@/components/device/Device'
 import Analysis from '@/components/analysis/Analysis'
 import VueResource from 'vue-resource'
+import Gmm from '@/components/gmm/gmm'
 import Effect from '@/Effect'
 
 
@@ -74,5 +75,10 @@ export default new Router({
       name: 'detection',
       component: FaultDetection
     },
+    {
+      path: '/gmm',
+      name: 'gmm',
+      component: Gmm
+    }
   ]
 })
