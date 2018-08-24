@@ -8,7 +8,7 @@ tutorial/pv/migrations/__pycache__/
 tutorial/snippets/__pycache__/
 tutorial/snippets/migrations/__pycache__/
 tutorial/tutorial/__pycache__/
+venv/
 /.vscode/
 /.idea/
-/tutorial/appfront/test/
 !.gitignore

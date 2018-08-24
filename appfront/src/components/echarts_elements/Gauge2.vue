@@ -1,0 +1,37 @@
+<template>
+  <div class="css-live-wrap">
+      <hgroup class="percentage-pie">
+          <svg width="200px" height="200px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <text class="liquidFillGaugeText" text-anchor="middle" font-size="42px" transform="translate(100,120)" style="fill: #fff">{{percent}}</text>
+          <!-- Wave -->
+            <g id="wave">
+              <path id="wave-2" fill="rgba(255, 255, 255, 0.5)" d="M 0 100 C 140.6 94.24 45.08 106.32 200 100 A 95 95 0 0 1 0 100 Z">
+                <animate dur="5s" repeatCount="indefinite" attributeName="d" attributeType="XML" values="M0 100 C90 28, 92 179, 200 100 A95 95 0 0 1 0 100 Z;
+                  M0 100 C145 100, 41 100, 200 100 A95 95 0 0 1 0 100 Z;
+                  M0 100 C90 28, 92 179, 200 100 A95 95 0 0 1 0 100 Z">
+                </animate>
+              </path>
+            </g>
+          <circle cx="100" cy="100" r="80" stroke-width="10" stroke="white" fill="transparent"></circle>
+          <circle cx="100" cy="100" r="90" stroke-width="20" stroke="#d1b195" fill="none" class="percentage-pie-svg"></circle>
+        </svg>
+      </hgroup>
+  </div>
+</template>
+<script>
+export default {
+  name : 'gauge',
+  props:['percent'],
+  data () {
+    return {
+
+    }
+  },
+}
+</script>
+
+<style scoped>
+.css-live-wrap {
+    transform: scale(0.4, 0.4) translate(-75%, -75%);
+}
+</style>

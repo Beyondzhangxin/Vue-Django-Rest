@@ -24,8 +24,8 @@ urlpatterns = [
     path(r'pv/', include('pv.urls'), name='pv'),
     path(r'celery/', include('celery_message.urls')),
     path('', TemplateView.as_view(template_name="index.html")),
-    path(r'^api-auth/', include('rest_framework.urls')),
+    path(r'api-auth/', include('rest_framework.urls')),
+    path(r'GMM/', include('GMM_toolBox.urls'), name='GMM'),
     url(r'^system/', include('system.urls', namespace="system")),
     url(r'^spgs/', include('spgs.urls', namespace="spgs"))
-
 ]
