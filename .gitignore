@@ -10,5 +10,4 @@ tutorial/snippets/migrations/__pycache__/
 tutorial/tutorial/__pycache__/
 /.vscode/
 /.idea/
-/tutorial/appfront/test/
 !.gitignore
