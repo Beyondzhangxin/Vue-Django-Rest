@@ -34,8 +34,6 @@
         showAll(){
           this.$ajax.get('http://127.0.0.1:8000/api/snippets/')
           .then(function (response) {
-            console.log(response)
-            console.log(response.data)
             this.tableData = response.data
           }.bind(this))
           .catch(function (error) {

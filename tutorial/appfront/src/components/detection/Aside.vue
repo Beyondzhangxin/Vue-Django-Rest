@@ -27,8 +27,8 @@ export default {
   data: function (){
     return {
         message:'',
-        msg1:'北京光伏电站',
-        msg2:'上海光伏电站'
+        msg1:'多功能光伏电站系统',
+        msg2:'图书馆微电网系统'
     }
   },
 }
@@ -56,8 +56,8 @@ export default {
 }
 
 .el-button{
-padding-left:8px;
-height: 35px;
+  padding-left:8px;
+  height: 35px;
 }
 
 </style>

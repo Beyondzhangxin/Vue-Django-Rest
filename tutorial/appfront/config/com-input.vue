@@ -34,7 +34,6 @@ export default {
   },
   methods: {
     get(){
-      console.log(this.radio);
       if (this.radio == '1') {
         this.$ajax.get('http://127.0.0.1:8000/celery/add',{
             params:{
@@ -43,7 +42,6 @@ export default {
             }
         })
         .then(function (response) {
-          console.log(response);
           this.input2 = response.data.res;
         }.bind(this))
         .catch(function (error) {
@@ -56,7 +54,6 @@ export default {
             }
         })
         .then(function (response) {
-          console.log(response);
           this.input2 = response.data.res;
         }.bind(this))
         .catch(function (error) {
