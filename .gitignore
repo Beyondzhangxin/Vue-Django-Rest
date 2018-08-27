@@ -17,3 +17,4 @@ tutorial/appfront/node_modules/
 *.pyc
 .vscode/
 node_modules/
+/.idea/workspace.xml
