@@ -50,7 +50,7 @@
                         style="width: 100%; margin-top: 20px">
                         <el-table-column
                             prop="id"
-                            label="y"
+                            label="参数y"
                             width="180">
                         </el-table-column>
                         <el-table-column
@@ -70,6 +70,116 @@
                 </el-col>
             </el-row>
         </el-card>
+
+        <el-card class="card2">
+            <el-row :gutter="20">
+                <div class="RMSE">
+                <el-col :span="6">
+                    <div class="text">
+                        RMSE变量范围
+                    </div> 
+                </el-col>
+
+
+                <el-col :span="12">
+                    <el-table
+                        :data="tableData2"
+                        border
+                        style="width: 100%">
+                        <el-table-column
+                        prop="date"
+                        label="var1"
+                        width="180">
+                        </el-table-column>
+                        <el-table-column
+                        prop="name"
+                        label="var2"
+                        width="180">
+                        </el-table-column>
+                        <el-table-column
+                        prop="address"
+                        label="var3">
+                        </el-table-column>
+                    </el-table>
+                </el-col>
+                </div>
+            </el-row>
+
+            <el-row :gutter="20">
+                <div class="linear1">
+                <el-col :span="6">           
+                <div class="text1">
+                        计算随机变量线性函数的<br>
+                        分布式随机变量矩阵系数
+                </div>
+                </el-col>
+
+                <el-col :span="6">
+                    <el-table
+                    :data="tableData"
+                    border
+                    style="width: 100%">
+                    <el-table-column></el-table-column>
+                    <el-table-column></el-table-column>
+                    <el-table-column></el-table-column>
+                    </el-table>
+                </el-col>
+
+
+
+                <el-col :span="6">
+                <div class="text1">
+                        计算随机变量线性函数的<br>
+                        分布式随机变量常数矩阵系数
+                </div>
+                </el-col>
+
+                <el-col :span="6">
+                     <el-table
+                    :data="tableData"
+                    border
+                    style="width: 100%">
+                    <el-table-column></el-table-column>
+                    <el-table-column></el-table-column>
+                    <el-table-column></el-table-column>
+                    </el-table>
+                </el-col>
+                </div>
+            </el-row>
+
+
+            <el-row :gutter="20">
+                <div class="linear2">
+                <el-col :span="6">
+                    <div class="text1">
+                        计算输入分布的10%至100%<br>
+                        分位时随机变量的范围
+                    </div>
+
+                </el-col>
+
+                <el-col :span="6">
+                    <div class="input">
+                    <span>n_min</span>
+                    <el-input placeholder="输入最小值" v-model="input1" clearable></el-input>
+                    </div>
+                </el-col>
+
+                <el-col :span="6">
+                    <div class="input">
+                    <span>n_max</span>
+                    <el-input placeholder="输入最大值" v-model="input2" clearable></el-input>
+                    </div>
+                </el-col>
+
+
+                </div>
+            </el-row>
+        </el-card>
+
+         <div class="start">
+            <el-button type="primary" @click="openFullScreen" v-loading.fullscreen.lock="fullscreenLoading" icon="el-icon-d-caret">开始计算</el-button>
+        </div>
     </div>
 </template>
 
@@ -78,6 +188,12 @@
 export default {
     data(){
         return{
+
+        fullscreenLoading: false,
+
+        input1:'',
+        input2:'',
+
 
         options1: [{
           value: '选项1',
@@ -133,9 +249,33 @@ export default {
           amount1: '',
           amount2: '',
           amount3: '',
-        }]
+        }],
+
+     tableData2: [{
+          date: '',
+          name: '',
+          address: ''
+        }, {
+          date: '',
+          name: '',
+          address: ''
+        }],
+
+
+
       }
+    },
+
+    methods:{
+         openFullScreen() {
+        this.fullscreenLoading = true;
+        setTimeout(() => {
+          this.fullscreenLoading = false;
+        }, 2000);
+      },
     }
+
+
 }
 
 
@@ -155,5 +295,25 @@ export default {
     margin-top:40px;
 }
 
+.text{
+    margin-top:20px;
+}
 
+.card2{
+    width:60%;
+    margin-top:20px;
+}
+
+.start{
+    margin-top:15px;
+    margin-left:250px;
+}
+
+.linear1{
+    margin-top:20px;
+}
+
+.linear2{
+    margin-top:20px;
+}
 </style>
