@@ -289,15 +289,15 @@ export default {
         value3:'',
 
         options4:[{
-            value:'label1',
+            value:'NBQGL10',
             label:'NBQGL10',
         },
         {
-            value:'label2',
+            value:'FDZGL',
             label:'FDZGL',
         },
         {
-            value:'label3',
+            value:'FZ',
             label:'FZ',
         }
         ],
@@ -308,7 +308,7 @@ export default {
     
         tableData: [{
           var: 'NBQG10',
-          value: '',
+          value: '1',
         }, {
           var: 'FDZGL',
           value: '',
@@ -374,6 +374,7 @@ export default {
 
     methods: {
       chooseModel(val) {
+        console.log(this.value4)
         if(val == 'marginal') {
           this.mult = new Boolean(0);
         }
