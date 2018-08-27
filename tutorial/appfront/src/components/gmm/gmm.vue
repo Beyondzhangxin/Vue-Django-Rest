@@ -147,22 +147,31 @@
             <div class="table1">
                  <el-table
                     v-loading="loading"
-                    :data="tableData"
-                    style="width: 100%">
+                    border
+                   ref="multipleTable"
+                    :data="tableData1"
+                    tooltip-effect="dark"
+                    style="width: 100%"
+                    @selection-change="handleSelectionChange">
                     <el-table-column
-                    prop="date"
+                    type="selection"
+                    width="55">
+                    </el-table-column>
+                    <el-table-column
                     label="NBQGL10"
-                    width="180">
+                    width="120">
+                    <template slot-scope="scope">{{ scope.row.date }}</template>
                     </el-table-column>
                     <el-table-column
                     prop="name"
                     label="FDZGL"
-                    width="180">
+                    width="120">
                     </el-table-column>
                     <el-table-column
                     prop="address"
-                    label="FZ">
-                    </el-table-column>
+                    label="FZ"
+                    show-overflow-tooltip>
+                    </el-table-column>>
                  </el-table>
             </div>
 
@@ -189,7 +198,7 @@
             </div>
         </el-card>
             <div class="save">
-                <el-button type="primary" icon="el-icon-search">保存</el-button>
+                <el-button type="primary" @click="open" icon="el-icon-download">保存</el-button>
             </div>
     <!--上传文件界面 -->
     <!-- <el-card class="card2">
@@ -223,22 +232,22 @@
     <!-- <el-card class="card3">
         <div class="text">展示界面</div>
 
-
-
-
     </el-card> -->
 
+<!-- 调用canvas -->
+        <!-- <myCanvas :dotsNum="dotsNum" :isColor="true"></myCanvas> -->
     </div>
 </template>
 
 
 <script>
+// import myCanvas from '../../canvas'
 
 const cityOptions = ['类别1', '类别2', '类别3', ];
 export default {
     name:'Gmm',
     componets:{
-    
+    // myCanvas
     },
     
 
@@ -310,17 +319,26 @@ export default {
         value4:'',
 
         // 后台数据
-         tableData: [{
+         tableData1: [{
           date: '',
           name: '',
         }, {
           date: '',
           name: '',
         }, {
+          date: '',
+          name: '',
+        },
+        {
+          date: '',
+          name: '',
+        },
+        {
           date: '',
           name: '',
         }],
-        loading: true,
+        multipleSelection: [],
+        // loading: true,
 
         startTime: '',
         endTime: '',
@@ -395,22 +413,40 @@ export default {
     methods: {
 
 
-    handleCheckAllChange(val) {
-      this.checkedCities = val ? cityOptions : [];
-      this.isIndeterminate = false;
-      },
-      handleCheckedCitiesChange(value) {
-        let checkedCount = value.length;
-        this.checkAll = checkedCount === this.cities.length;
-        this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
+        open(){
+          this.$confirm('保存此配置, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '保存成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消保存'
+          });          
+        });
       },
 
-        openFullScreen() {
-            this.fullscreenLoading = true;
-            setTimeout(() => {
-            this.fullscreenLoading = false;
-            }, 2000);
-        },
+    // handleCheckAllChange(val) {
+    //   this.checkedCities = val ? cityOptions : [];
+    //   this.isIndeterminate = false;
+    //   },
+    //   handleCheckedCitiesChange(value) {
+    //     let checkedCount = value.length;
+    //     this.checkAll = checkedCount === this.cities.length;
+    //     this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
+    //   },
+
+    //     openFullScreen() {
+    //         this.fullscreenLoading = true;
+    //         setTimeout(() => {
+    //         this.fullscreenLoading = false;
+    //         }, 2000);
+    //     },
 
         uploadError(err, file, fileList) {
                 // 上传失败
@@ -459,6 +495,10 @@ export default {
     margin-right:20px;
 }
 
+.text{
+    font-size:14px;
+}
+
 .clear{
     clear:both;
 }
@@ -473,9 +513,10 @@ export default {
 }
 .fenye{
     float:left;
-    margin-left:50px;
-    margin-top:50px;
+    margin-left:150px;
+    margin-top:20px;
     margin-bottom:30px;
+
 }
 
 .input{
@@ -500,10 +541,15 @@ export default {
 .save{
     margin-top:10px;
     margin-left:300px;
+    margin-bottom:20px;
 }
 
 .table{
     margin-bottom:20px;
+}
+
+.table1{
+    margin-left:50px;
 }
 </style>
 
