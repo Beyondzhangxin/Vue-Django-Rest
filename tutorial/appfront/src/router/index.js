@@ -10,6 +10,7 @@ import Device from '@/components/device/Device'
 import Analysis from '@/components/analysis/Analysis'
 import VueResource from 'vue-resource'
 import Gmm from '@/components/gmm/gmm'
+// import Calculation from '@components/gmm/calculation'
 import Effect from '@/Effect'
 
 
@@ -79,6 +80,11 @@ export default new Router({
       path: '/gmm',
       name: 'gmm',
       component: Gmm
-    }
+    },
+    // {
+    //   path:'/calculation',
+    //   name:'calculation',
+    //   componnet: Calculation
+    // }
   ]
 })

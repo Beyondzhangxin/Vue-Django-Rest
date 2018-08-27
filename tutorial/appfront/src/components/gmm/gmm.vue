@@ -68,7 +68,7 @@
                     <div class="text">训练参数</div>
                 </el-col>
 
-                <el-col :span="3">
+                <el-col :span="4">
                     <el-input
                         placeholder="输入高斯个数"
                         v-model="input0"
@@ -133,7 +133,30 @@
                     <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
                         <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
                     </el-checkbox-group>
-            </div>      
+            </div> 
+            <!-- 后台传数据 -->
+            <div class="table1">
+                 <el-table
+                    v-loading="loading"
+                    :data="tableData"
+                    style="width: 100%">
+                    <el-table-column
+                    prop="date"
+                    label="NBQGL10"
+                    width="180">
+                    </el-table-column>
+                    <el-table-column
+                    prop="name"
+                    label="FDZGL"
+                    width="180">
+                    </el-table-column>
+                    <el-table-column
+                    prop="address"
+                    label="FZ">
+                    </el-table-column>
+                 </el-table>
+            </div>
+
         </div>
         <div class="clear"></div>
 
@@ -148,19 +171,17 @@
                 </el-pagination>
             </div>
         
-            <div>
+            <div class="input">
             <el-input
                 placeholder="输入period"
                 v-model="input1"
                 clearable>
             </el-input>
             </div>
-
-            <div>
-            <el-button type="primary" icon="el-icon-search">保存</el-button>
-            </div>
         </el-card>
-
+            <div class="save">
+                <el-button type="primary" icon="el-icon-search">保存</el-button>
+            </div>
     <!--上传文件界面 -->
     <!-- <el-card class="card2">
     <el-upload style="margin: 10px 0 10px 30px;"
@@ -203,13 +224,12 @@
 
 
 <script>
-// import download from '../download/download';
 
 const cityOptions = ['类别1', '类别2', '类别3', ];
 export default {
     name:'Gmm',
     componets:{
-        // download
+    
     },
     
 
@@ -218,9 +238,7 @@ export default {
 
             input0:"",
             input1:"",
-            // input1:"",
-            // input2:"",
-            // input3:"",
+         
 
         options1:[{
             value:'label1',
@@ -279,6 +297,19 @@ export default {
         ],
         value4:'',
 
+        // 后台数据
+         tableData: [{
+          date: '',
+          name: '',
+        }, {
+          date: '',
+          name: '',
+        }, {
+          date: '',
+          name: '',
+        }],
+        loading: true,
+
         startTime: '',
         endTime: '',
     
@@ -298,35 +329,6 @@ export default {
             checkedCities: ['上海', '北京'],
             cities: cityOptions,
             isIndeterminate: true,
-        
-    
-    
-
-        // options1:[{
-        //     value:'label1',
-        //     label:'EM算法',
-        // },
-        // {
-        //     value:'label2',
-        //     label:'MAP算法',
-        // }
-        // ],
-        // value:'',
-
-        //  options2:[{
-        //     value:'label1',
-        //     label:'边际分布',
-        // },
-        // {
-        //     value:'label2',
-        //     label:'联合分布',
-        // },
-        // {
-        //     value:'label3',
-        //     label:'条件分布',
-        // }
-        // ],
-        // value:'',
 
         fullscreenLoading: false,
             checkList: [],
@@ -365,9 +367,6 @@ export default {
         this.checkAll = checkedCount === this.cities.length;
         this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
       },
-    //     onSubmit() {
-    //     console.log('submit!');
-    //   },
 
         openFullScreen() {
             this.fullscreenLoading = true;
@@ -400,11 +399,6 @@ export default {
                 this.$refs.upload.clearFiles();
         },
 
-        //  download(url) {
-        //     window.open(url);
-        //     loacation.href=url;
-        // }
-
         
     }
   
@@ -417,6 +411,11 @@ export default {
 
 
 <style scoped>
+.text0{
+   padding-top:12px;
+   font-weight:bold;
+}
+
 .text1{
     float:left;
     margin-top:50px;
@@ -439,6 +438,35 @@ export default {
     float:left;
     margin-left:50px;
     margin-top:50px;
+    margin-bottom:30px;
+}
+
+.input{
+    width:16%;
+    margin-left:80px;
+}
+
+.card0{
+    width:60%;
+    margin-bottom:20px;
+}
+
+.card2{
+    width:60%;
+    margin-bottom:20px;
+}
+
+.card3{
+    width:60%;
+}
+
+.save{
+    margin-top:10px;
+    margin-left:300px;
+}
+
+.table{
+    margin-bottom:20px;
 }
 </style>
 
