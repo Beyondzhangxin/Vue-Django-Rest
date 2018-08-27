@@ -7,10 +7,10 @@
         
           <el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="demo-ruleForm loginFrom">
           <el-form-item >
-            <el-input placeholder="账号"  v-model="ruleForm.userName"></el-input>
+            <el-input placeholder="账号" prefix-icon="el-icon-edit" v-model="ruleForm.userName"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-input  type="password" v-model="ruleForm.password" placeholder="密码"></el-input>
+            <el-input  type="password"  prefix-icon="el-icon-circle-check-outline" v-model="ruleForm.password" placeholder="密码"></el-input>
           </el-form-item>
           <div style="padding: 1rem 0 2rem 0;" class="clear">
           <span class="lf" @click="open" style="color:#0489cc;float:left;margin-left:20px;">帮助</span>
