@@ -23,7 +23,10 @@
                 </el-col>
 
                  <el-col :span="5">
-                     <el-select v-model="value2"  clearable placeholder="选择概率模型">
+                     <el-select v-model="value2"  
+                     @change="chooseModel(value2)"
+                     clearable 
+                     placeholder="选择概率模型">
                         <el-option
                             v-for="item in options2"
                             :key="item.value"
@@ -95,19 +98,32 @@
                             :label="item.label"
                             :value="item.value">
                         </el-option>
-                    </el-select>   
+                  </el-select>   
                 </el-col>
-        
-                 <el-col :span="5">
-                     <el-select v-model="value4" multiple clearable placeholder="选择变量">
-                        <el-option
-                            v-for="item in options4"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                        </el-option>
+                <div>
+                  <el-col :span="5" v-show="value2!='marginal'">
+                    <el-select v-model="value4" multiple clearable placeholder="选择变量">
+                      <el-option
+                        v-for="item in options4"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                      </el-option>
                     </el-select>
-                </el-col>
+                  </el-col>
+                </div>
+                <div>
+                    <el-col :span="5" v-show="value2=='marginal'">
+                      <el-select v-model="value5" clearable placeholder="选择变量">
+                        <el-option
+                        v-for="item in options4"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                        </el-option>
+                      </el-select>
+                    </el-col>
+                </div>
             </el-row>
         </el-card>
 
@@ -116,7 +132,6 @@
                 <div class="text1">选择输入</div>
                 <div class="table">
                 <el-table
-                   
                     :data="tableData"
                     border
                     style="width:500px">
@@ -168,7 +183,7 @@
             </div>
             -->
             <div>
-            <el-button type="primary" icon="el-icon-search" @click="save">保存</el-button>
+            <el-button type="primary" icon="el-icon-search" @click="saveModel">保存</el-button>
             </div>
         </el-card>
 
@@ -222,10 +237,9 @@ export default {
     componets:{
         // download
     },
-    
-
     data(){
         return{
+        mult: new Boolean(1),
         fromData: '',
         //建模功能需要的功能
         timeRange:[],
@@ -234,7 +248,6 @@ export default {
             // input1:"",
             // input2:"",
             // input3:"",
-
         options1:[{
             value:'label1',
             label:'天井光伏发电系统',
@@ -250,7 +263,7 @@ export default {
         ],
         value1:'',
 
-         options2:[{
+        options2:[{
             value:'marginal',
             label:'marginal',
         },
@@ -289,7 +302,7 @@ export default {
         }
         ],
         value4:'',
-
+        value5:'',
         startTime: '',
         endTime: '',
     
@@ -352,7 +365,6 @@ export default {
             resource: '',
             desc: ''
         },
-
          api: {
           downloadUrl: `${this.urlBase}/adunit/download`
         },
@@ -361,6 +373,14 @@ export default {
     },
 
     methods: {
+      chooseModel(val) {
+        if(val == 'marginal') {
+          this.mult = new Boolean(0);
+        }
+        if(val != 'marginal') {
+          this.mult = new Boolean(1);
+        }
+      },
       sendNoticeMessage(val) {
         if(val == 'MAP') {
           const h = this.$createElement;
@@ -369,14 +389,13 @@ export default {
             message: h('i', { style: 'color: teal'}, '前提：对要刻画的随机变量有了深入的认识 方案：输入超参训练集，自动归纳超参数')
           });
         }
-         console.log(123134)
       },
       saveModel() {
-        this.$prompt('请输入保存模型名称', '提示', {
+        this.$prompt('请输入保存模型名称（四字以上）', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           //支持汉字和英文
-          inputPattern: /^[\u4E00-\u9FA5A-Za-z0-9]+$/,
+          inputPattern: /^[\u4E00-\u9FA5A-Za-z0-9]{4,}$/,
           inputErrorMessage: '模型名称不正确'
         }).then(({ value }) => {
             this.$message({
