@@ -107,13 +107,42 @@
 
             <el-row :gutter="20">
                 <div class="linear1">
-                <el-col :span="12">           
-                
-
+                <el-col :span="6">           
+                <div class="text1">
+                        计算随机变量线性函数的<br>
+                        分布式随机变量矩阵系数
+                </div>
                 </el-col>
 
-                <el-col :span="12">
+                <el-col :span="6">
+                    <el-table
+                    :data="tableData"
+                    border
+                    style="width: 100%">
+                    <el-table-column></el-table-column>
+                    <el-table-column></el-table-column>
+                    <el-table-column></el-table-column>
+                    </el-table>
+                </el-col>
 
+
+
+                <el-col :span="6">
+                <div class="text1">
+                        计算随机变量线性函数的<br>
+                        分布式随机变量常数矩阵系数
+                </div>
+                </el-col>
+
+                <el-col :span="6">
+                     <el-table
+                    :data="tableData"
+                    border
+                    style="width: 100%">
+                    <el-table-column></el-table-column>
+                    <el-table-column></el-table-column>
+                    <el-table-column></el-table-column>
+                    </el-table>
                 </el-col>
                 </div>
             </el-row>
@@ -278,5 +307,13 @@ export default {
 .start{
     margin-top:15px;
     margin-left:250px;
+}
+
+.linear1{
+    margin-top:20px;
+}
+
+.linear2{
+    margin-top:20px;
 }
 </style>
