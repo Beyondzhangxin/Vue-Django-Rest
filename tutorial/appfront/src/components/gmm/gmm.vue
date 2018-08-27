@@ -3,8 +3,7 @@
     <div class="Gmm">
 
         <!-- 配置参数 -->
-            <div class="text0">GMM参数配置</div>  
-
+            <div class="text0">GMM参数配置</div>
         <!-- 分割线 -->
         <hr width=100%   size=1   color=#bbbcbc   style="FILTER: alpha(opacity=100,finishopacity=0)">
 
@@ -34,7 +33,17 @@
                         </el-option>
                     </el-select>
                 </el-col>
+                <div class="block">
+                <el-date-picker
+                v-model="timeRange"
+                type="datetimerange"
+                range-separator="至"
+                start-placeholder="开始日期"
+                end-placeholder="结束日期">
+                </el-date-picker>
+                </div>
 
+            <!--
              <el-col :span="5">
                 <el-time-select
                         placeholder="起始时间"
@@ -58,7 +67,7 @@
                         minTime: startTime
                         }">
                 </el-time-select>
-             </el-col>
+             </el-col> -->
             </el-row>
         </el-card>
 
@@ -215,9 +224,10 @@ export default {
 
     data(){
         return{
-
-            input0:"",
-            input1:"",
+        //建模功能需要的功能
+        timeRange:[],
+        input0:"",
+        input1:"",
             // input1:"",
             // input2:"",
             // input3:"",
@@ -298,10 +308,6 @@ export default {
             checkedCities: ['上海', '北京'],
             cities: cityOptions,
             isIndeterminate: true,
-        
-    
-    
-
         // options1:[{
         //     value:'label1',
         //     label:'EM算法',
@@ -356,9 +362,9 @@ export default {
     methods: {
 
 
-        handleCheckAllChange(val) {
-        this.checkedCities = val ? cityOptions : [];
-        this.isIndeterminate = false;
+    handleCheckAllChange(val) {
+      this.checkedCities = val ? cityOptions : [];
+      this.isIndeterminate = false;
       },
       handleCheckedCitiesChange(value) {
         let checkedCount = value.length;
