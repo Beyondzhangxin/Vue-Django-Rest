@@ -12,3 +12,7 @@ venv/
 /.vscode/
 /.idea/
 !.gitignore
+tutorial/appfront/node_modules/
+
+.vscode/
+node_modules/

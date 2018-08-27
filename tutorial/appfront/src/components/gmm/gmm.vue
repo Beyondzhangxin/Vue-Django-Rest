@@ -85,7 +85,7 @@
                  </el-col>
 
                 <el-col :span="5">
-                   <el-select v-model="value3" 
+                   <el-select v-model="value3"
                    clearable
                    @change="sendNoticeMessage(value3)"
                    placeholder="选择算法">
@@ -388,7 +388,7 @@ export default {
           this.$message({
             type: 'info',
             message: '取消输入'
-          });       
+          });
         });
       },
 
@@ -397,11 +397,11 @@ export default {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         });
         if(value2 == 'conditional'){
-          this.fromData 
+          this.fromData
         }else{
           this.fromData
         }
-        
+
         instance.post(url, fromData)
           .then(function (response) {
             //处理数据
