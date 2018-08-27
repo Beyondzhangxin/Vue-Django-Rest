@@ -1,4 +1,6 @@
+import datetime
 
+from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import matlab.engine
@@ -6,9 +8,11 @@ import matlab
 import json
 import functools
 import matlab.engine
+
 # Create your views here.
 
 # 错误wapper
+from .models import GmmConfig
 
 
 def dealException(func):
@@ -18,8 +22,9 @@ def dealException(func):
         try:
             result = func(*args, **kw)
         except Exception as e:
-          return {'exception': type(e)}
+            return {'exception': type(e)}
         return 0
+
     return wrapper
 
 
@@ -29,8 +34,36 @@ def matlabEngineEnv():
     return engine
 
 
-class Distribution(APIView):
+# 返回当前所有的distribution配置
+def getAllDistributionConfigs(request):
+    response = {}
+    configList = []
+    try:
+        configs = GmmConfig.objects.all()
+        if not configs is None:
+            for x in configs:
+                configList.append({"id": x.id, "name": x.name})
+        response['data'] = configList
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    return JsonResponse(response)
 
+
+# def getSamples(request):
+#     systemType = request.POST.get("systemType")
+#     varableList = list(eval(request.POST.get("varableList")))
+#     startTime = request.POST.get("startTime")
+#     endTime = request.POST.get("endTime")
+#     start = datetime.datetime.strptime(startTime, "%Y-%m-%d %H:%M:%S")
+#     end = datetime.datetime.strptime(endTime, "%Y-%m-%d %H:%M:%S")
+#
+#     fields = ''
+
+
+class Distribution(APIView):
     def __init__(self):
         self._Y = None
         self._J = None
@@ -45,11 +78,10 @@ class Distribution(APIView):
     @Y.setter
     def Y(self, value):
         self._Y = value
-    
+
     @property
     def J(self):
         return self._J
-
 
     @J.setter
     def J(self, value):
@@ -114,7 +146,8 @@ class Joint(Distribution):
         array = matlab.double([y])
         j = matlab.int8([j])
         return engine.GMM_Distribution(array, j, 'EM', option)
-    
+
+
 # GMM_Distribution函数
 # 输入多维训练集 Y，matrix
 # 输入GMM阶数 J，int
@@ -152,6 +185,7 @@ class EM(Distribution):
         j = matlab.int8([j])
         return engine.GMM_Distribution(array, j, 'EM')
 
+
 # GMM_Distribution函数
 # 输入多维训练集 Y，matrix
 # 输入GMM阶数 J，int
@@ -161,7 +195,7 @@ class EM(Distribution):
 class MAP(Distribution):
     def model(self, data):
         engine = matlabEngineEnv()
-        pass 
+        pass
 
 
 class Calculation(APIView):
@@ -171,6 +205,7 @@ class Calculation(APIView):
     def post(self, request, format=None):
         self.model(request.data)
         return Response(123)
+
 
 # 计算给定点PDF值
 # GMM_calculation函数
@@ -183,6 +218,7 @@ class PDF(Calculation):
     def model(self, data):
         pass
 
+
 # 计算给定的CDF值
 # GMM_calculation函数
 # 输入GMM分布 distribution
@@ -193,6 +229,7 @@ class PDF(Calculation):
 class CDF(Calculation):
     def model(self, data):
         pass
+
 
 # 计算分位数
 # GMM_calculation函数
@@ -205,7 +242,8 @@ class Quantile(Calculation):
     def model(self, data):
         pass
 
-# 计算分布间KLD值 
+
+# 计算分布间KLD值
 # 计算分布间RMSE
 
 # GMM_calculation函数
@@ -221,6 +259,7 @@ class KL(Calculation):
 class RMSE(Calculation):
     def model(self, data):
         pass
+
 
 # 计算线性变换分布
 # GMM_calculation函数

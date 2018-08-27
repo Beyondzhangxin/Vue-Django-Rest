@@ -13,6 +13,10 @@ venv/
 /.idea/
 !.gitignore
 tutorial/appfront/node_modules/
-
+*/__pycache__/
+*.pyc
 .vscode/
 node_modules/
+/.idea/workspace.xml
+/node_modules/.npminstall.done
+/.vscode/settings.json

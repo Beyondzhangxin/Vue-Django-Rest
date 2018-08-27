@@ -26,6 +26,7 @@ from pvmg.tools import getPvmgGL, getPvmgDXSS, getPvmgFDL
 from spgs.tools import getSpgsGL, getSpgsDXSS, getSpgsFDL
 
 from pvmg.tools import getPvmgDeviceInfo
+from pvmg.tools import getPvmgDeviceInfo
 from spgs.tools import getSpgsDeviceInfo
 
 from spgs.tools import getSpgsDeviceInfoAll
@@ -179,7 +180,7 @@ def powerStationsNum(request):
 # 返回电站监测信息
 @require_http_methods(['GET'])
 def getStationMonitorInfo(request):
-    cur=datetime.datetime.now()
+    cur = datetime.datetime.now()
     response = {}
     try:
         dzzs = getSationNum()
@@ -197,7 +198,7 @@ def getStationMonitorInfo(request):
         response['msg'] = str(e)
         response['error_num'] = 1
     end = datetime.datetime.now()
-    print(end-cur)
+    print(end - cur)
     return JsonResponse(response)
 
 
@@ -295,6 +296,8 @@ def getDeviceTable(request):
     db.close()
     return JsonResponse(response)
     # 返回首页下面的环保数据
+
+
 @require_http_methods(['GET'])
 def getHBSJ(request):
     response = {}
@@ -427,7 +430,7 @@ def getDetectionInfo(request):
                 info = {}
                 systemType = temp.get('systemType')
                 systemName = temp.get('systemName')
-                info['system_type']=systemType
+                info['system_type'] = systemType
                 info['dev_name'] = systemName + value
                 info['dev_xh'] = key
                 sql = "select " + key + "  from data_" + systemType + "_buffer "
@@ -460,6 +463,41 @@ def getDetectionInfo(request):
         response['msg'] = str(e)
         response['error_num'] = 1
     return JsonResponse(response)
+
+
+# 返回所有系统的列表，包括系统型号和系统名称
+def getAllSystems(request):
+    systemlist = []
+    response = {}
+    try:
+        systems = SystemType.objects.all()
+        for x in systems:
+            systemlist.append({"systemType": x.systemtype, "systemName": x.systemname})
+        response['data'] = systemlist
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    return JsonResponse(response)
+
+# 根据输入参数系统型号systemType查询该系统所有的字段变量列表。
+def getAllParamsBySystemType(request):
+    systemType = request.GET.get("systemType")
+    response = {}
+    try:
+        params = SystemParam.objects.filter(systemtype=systemType)
+        if not params is None:
+            response['data']=list(params)
+        else:
+            response['data']=[]
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    return JsonResponse(response)
+
 
 
 @require_http_methods(['POST'])
