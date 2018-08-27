@@ -85,7 +85,10 @@
                  </el-col>
 
                 <el-col :span="5">
-                   <el-select v-model="value3" clearable placeholder="选择算法">
+                   <el-select v-model="value3" 
+                   clearable
+                   @change="sendNoticeMessage(value3)"
+                   placeholder="选择算法">
                         <el-option
                             v-for="item in options3"
                             :key="item.value"
@@ -358,7 +361,17 @@ export default {
     },
 
     methods: {
-      save() {
+      sendNoticeMessage(val) {
+        if(val == 'MAP') {
+          const h = this.$createElement;
+          this.$notify({
+            title: '使用MAP函数的提示',
+            message: h('i', { style: 'color: teal'}, '前提：对要刻画的随机变量有了深入的认识 方案：输入超参训练集，自动归纳超参数')
+          });
+        }
+         console.log(123134)
+      },
+      saveModel() {
         this.$prompt('请输入保存模型名称', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
