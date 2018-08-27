@@ -47,6 +47,7 @@
                     <el-table
                         :data="tableData1"
                         border
+
                         style="width: 100%; margin-top: 20px">
                         <el-table-column
                             prop="id"
@@ -178,7 +179,20 @@
         </el-card>
 
          <div class="start">
-            <el-button type="primary" @click="openFullScreen" v-loading.fullscreen.lock="fullscreenLoading" icon="el-icon-d-caret">开始计算</el-button>
+            <el-button type="primary" @click="dialogVisible=true" icon="el-icon-d-caret">开始计算</el-button>
+            <el-dialog
+            title="提示"
+            :visible.sync="dialogVisible"
+            width="40%"
+            :before-close="handleClose">
+            <div class="window">
+            <span>This is a demo</span>
+            </div>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible = false">取 消</el-button>
+                <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+            </span>
+            </el-dialog>
         </div>
     </div>
 </template>
@@ -189,56 +203,56 @@ export default {
     data(){
         return{
 
-        fullscreenLoading: false,
+       dialogVisible: false,
 
         input1:'',
         input2:'',
 
 
         options1: [{
-          value: '选项1',
+          value: '',
           label: '配置A'
         }, {
-          value: '选项2',
+          value: '',
           label: '配置B'
         }, {
-          value: '选项3',
+          value: '',
           label: '配置C'
         }],
         value: '',
 
         options2: [{
-          value: '选项1',
+          value: '',
           label: 'PDF'
         }, {
-          value: '选项2',
+          value: '',
           label: 'CDF'
         }, {
-          value: '选项3',
+          value: '',
           label: 'qiantile'
         },
         {
-          value: '选项4',
+          value: '',
           label: 'KL'
         },
         {
-          value: '选项5',
+          value: '',
           label: 'RMSE' 
         },
         {
-          value:'选项6',
+          value:'',
           label:'linear'
         }],
         value1: '',
 
          options3: [{
-          value: '选项1',
+          value: '',
           label: '配置A'
         }, {
-          value: '选项2',
+          value: '',
           label: '配置B'
         }, {
-          value: '选项3',
+          value: '',
           label: '配置C'
         }],
         value2: '',
@@ -267,11 +281,12 @@ export default {
     },
 
     methods:{
-         openFullScreen() {
-        this.fullscreenLoading = true;
-        setTimeout(() => {
-          this.fullscreenLoading = false;
-        }, 2000);
+         handleClose(done) {
+        this.$confirm('确认关闭？')
+          .then(_ => {
+            done();
+          })
+          .catch(_ => {});
       },
     }
 
