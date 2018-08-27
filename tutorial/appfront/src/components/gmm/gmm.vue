@@ -1,7 +1,6 @@
 <template>
 
     <div class="Gmm">
-
         <!-- 配置参数 -->
             <div class="text0">GMM参数配置</div>
         <!-- 分割线 -->
@@ -24,7 +23,7 @@
                 </el-col>
 
                  <el-col :span="5">
-                     <el-select v-model="value2"  clearable placeholder="选择输出">
+                     <el-select v-model="value2"  clearable placeholder="选择概率模型">
                         <el-option
                             v-for="item in options2"
                             :key="item.value"
@@ -77,7 +76,7 @@
                     <div class="text">训练参数</div>
                 </el-col>
 
-                <el-col :span="4">
+                <el-col :span="3">
                     <el-input
                         placeholder="输入高斯个数"
                         v-model="input0"
@@ -86,7 +85,10 @@
                  </el-col>
 
                 <el-col :span="5">
-                   <el-select v-model="value3" clearable placeholder="选择算法">
+                   <el-select v-model="value3"
+                   clearable
+                   @change="sendNoticeMessage(value3)"
+                   placeholder="选择算法">
                         <el-option
                             v-for="item in options3"
                             :key="item.value"
@@ -110,7 +112,7 @@
         </el-card>
 
         <el-card class="card3">
-            <div class="top">
+            <div class="top" v-show="value2=='conditional'">
                 <div class="text1">选择输入</div>
                 <div class="table">
                 <el-table
@@ -132,7 +134,7 @@
                 </div>
             </div>
             <div class="clear"></div>
-
+        <!--
         <div class="mid">
             <div class="text2">Y_hyper计算超参数训练集</div>
             <div class="model">
@@ -142,39 +144,7 @@
                     <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
                         <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
                     </el-checkbox-group>
-            </div> 
-            <!-- 后台传数据 -->
-            <div class="table1">
-                 <el-table
-                    v-loading="loading"
-                    border
-                   ref="multipleTable"
-                    :data="tableData1"
-                    tooltip-effect="dark"
-                    style="width: 100%"
-                    @selection-change="handleSelectionChange">
-                    <el-table-column
-                    type="selection"
-                    width="55">
-                    </el-table-column>
-                    <el-table-column
-                    label="NBQGL10"
-                    width="120">
-                    <template slot-scope="scope">{{ scope.row.date }}</template>
-                    </el-table-column>
-                    <el-table-column
-                    prop="name"
-                    label="FDZGL"
-                    width="120">
-                    </el-table-column>
-                    <el-table-column
-                    prop="address"
-                    label="FZ"
-                    show-overflow-tooltip>
-                    </el-table-column>>
-                 </el-table>
-            </div>
-
+            </div>      
         </div>
         <div class="clear"></div>
 
@@ -189,17 +159,19 @@
                 </el-pagination>
             </div>
         
-            <div class="input">
+            <div>
             <el-input
                 placeholder="输入period"
                 v-model="input1"
                 clearable>
             </el-input>
             </div>
-        </el-card>
-            <div class="save">
-                <el-button type="primary" @click="open" icon="el-icon-download">保存</el-button>
+            -->
+            <div>
+            <el-button type="primary" icon="el-icon-search" @click="save">保存</el-button>
             </div>
+        </el-card>
+
     <!--上传文件界面 -->
     <!-- <el-card class="card2">
     <el-upload style="margin: 10px 0 10px 30px;"
@@ -232,27 +204,29 @@
     <!-- <el-card class="card3">
         <div class="text">展示界面</div>
 
+
+
+
     </el-card> -->
 
-<!-- 调用canvas -->
-        <!-- <myCanvas :dotsNum="dotsNum" :isColor="true"></myCanvas> -->
     </div>
 </template>
 
 
 <script>
-// import myCanvas from '../../canvas'
+// import download from '../download/download';
 
 const cityOptions = ['类别1', '类别2', '类别3', ];
 export default {
     name:'Gmm',
     componets:{
-    // myCanvas
+        // download
     },
     
 
     data(){
         return{
+        fromData: '',
         //建模功能需要的功能
         timeRange:[],
         input0:"",
@@ -276,31 +250,29 @@ export default {
         ],
         value1:'',
 
-
          options2:[{
-            value:'label1',
+            value:'marginal',
             label:'marginal',
         },
         {
-            value:'label2',
+            value:'joint',
             label:'joint',
         },
         {
-            value:'label3',
+            value:'conditional',
             label:'conditional',
         }
         ],
         value2:'',
 
-          options3:[{
-            value:'label1',
-            label:'EM',
+        options3:[{
+          value:'EM',
+          label:'EM',
         },
         {
-            value:'label2',
-            label:'MAP',
-        },
-        ],
+          value:'MAP',
+          label:'MAP',
+        }],
         value3:'',
 
         options4:[{
@@ -317,28 +289,6 @@ export default {
         }
         ],
         value4:'',
-
-        // 后台数据
-         tableData1: [{
-          date: '',
-          name: '',
-        }, {
-          date: '',
-          name: '',
-        }, {
-          date: '',
-          name: '',
-        },
-        {
-          date: '',
-          name: '',
-        },
-        {
-          date: '',
-          name: '',
-        }],
-        multipleSelection: [],
-        // loading: true,
 
         startTime: '',
         endTime: '',
@@ -411,42 +361,74 @@ export default {
     },
 
     methods: {
-
-
-        open(){
-          this.$confirm('保存此配置, 是否继续?', '提示', {
+      sendNoticeMessage(val) {
+        if(val == 'MAP') {
+          const h = this.$createElement;
+          this.$notify({
+            title: '使用MAP函数的提示',
+            message: h('i', { style: 'color: teal'}, '前提：对要刻画的随机变量有了深入的认识 方案：输入超参训练集，自动归纳超参数')
+          });
+        }
+         console.log(123134)
+      },
+      saveModel() {
+        this.$prompt('请输入保存模型名称', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          this.$message({
+          //支持汉字和英文
+          inputPattern: /^[\u4E00-\u9FA5A-Za-z0-9]+$/,
+          inputErrorMessage: '模型名称不正确'
+        }).then(({ value }) => {
+            this.$message({
             type: 'success',
-            message: '保存成功!'
+            message: '模型名称是: ' + value
           });
+          //发送POST请求
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消保存'
-          });          
+            message: '取消输入'
+          });
         });
       },
 
-    // handleCheckAllChange(val) {
-    //   this.checkedCities = val ? cityOptions : [];
-    //   this.isIndeterminate = false;
-    //   },
-    //   handleCheckedCitiesChange(value) {
-    //     let checkedCount = value.length;
-    //     this.checkAll = checkedCount === this.cities.length;
-    //     this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
-    //   },
+      postDSTConfig() {
+        var instance = this.$ajax.create({
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        });
+        if(value2 == 'conditional'){
+          this.fromData
+        }else{
+          this.fromData
+        }
 
-    //     openFullScreen() {
-    //         this.fullscreenLoading = true;
-    //         setTimeout(() => {
-    //         this.fullscreenLoading = false;
-    //         }, 2000);
-    //     },
+        instance.post(url, fromData)
+          .then(function (response) {
+            //处理数据
+          }.bind(this))
+          .catch(function (error) {
+            return 0;
+          });
+      },
+      handleCheckAllChange(val) {
+       this.checkedCities = val ? cityOptions : [];
+       this.isIndeterminate = false;
+      },
+      handleCheckedCitiesChange(value) {
+        let checkedCount = value.length;
+        this.checkAll = checkedCount === this.cities.length;
+        this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
+      },
+        //     onSubmit() {
+        //     console.log('submit!');
+        //   },
+
+        openFullScreen() {
+            this.fullscreenLoading = true;
+            setTimeout(() => {
+            this.fullscreenLoading = false;
+            }, 2000);
+        },
 
         uploadError(err, file, fileList) {
                 // 上传失败
@@ -472,9 +454,11 @@ export default {
                 this.$refs.upload.clearFiles();
         },
 
-        
-    }
-  
+        //  download(url) {
+        //     window.open(url);
+        //     loacation.href=url;
+        // }
+        }
     }
     
     
@@ -484,19 +468,10 @@ export default {
 
 
 <style scoped>
-.text0{
-   padding-top:12px;
-   font-weight:bold;
-}
-
 .text1{
     float:left;
     margin-top:50px;
     margin-right:20px;
-}
-
-.text{
-    font-size:14px;
 }
 
 .clear{
@@ -513,43 +488,8 @@ export default {
 }
 .fenye{
     float:left;
-    margin-left:150px;
-    margin-top:20px;
-    margin-bottom:30px;
-
-}
-
-.input{
-    width:16%;
-    margin-left:80px;
-}
-
-.card0{
-    width:60%;
-    margin-bottom:20px;
-}
-
-.card2{
-    width:60%;
-    margin-bottom:20px;
-}
-
-.card3{
-    width:60%;
-}
-
-.save{
-    margin-top:10px;
-    margin-left:300px;
-    margin-bottom:20px;
-}
-
-.table{
-    margin-bottom:20px;
-}
-
-.table1{
     margin-left:50px;
+    margin-top:50px;
 }
 </style>
 

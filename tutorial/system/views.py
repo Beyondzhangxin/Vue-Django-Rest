@@ -179,6 +179,7 @@ def powerStationsNum(request):
 # 返回电站监测信息
 @require_http_methods(['GET'])
 def getStationMonitorInfo(request):
+    cur=datetime.datetime.now()
     response = {}
     try:
         dzzs = getSationNum()
@@ -195,6 +196,8 @@ def getStationMonitorInfo(request):
     except Exception as e:
         response['msg'] = str(e)
         response['error_num'] = 1
+    end = datetime.datetime.now()
+    print(end-cur)
     return JsonResponse(response)
 
 
