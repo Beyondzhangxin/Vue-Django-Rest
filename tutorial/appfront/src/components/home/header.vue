@@ -28,6 +28,7 @@
         <template slot="title">故障告警</template>
           <el-menu-item index="3-0">故障监测</el-menu-item>
           <el-menu-item index="3-1">报警分析</el-menu-item>
+          <el-menu-item index="3-2">GMM工具箱</el-menu-item>
       </el-submenu>
       <el-menu-item index="4">系统设置</el-menu-item>
     </el-menu>
@@ -46,7 +47,7 @@
           {router: ["/home/first"]},
           {router: ["/home/power", "/home/device"]},
           {router: ["/home/analysis"]},
-          {router: ["/home/detection"]},
+          {router: ["/home/detection","","/gmm"]},
           {router: ["/home/first"]},
         ],
       };

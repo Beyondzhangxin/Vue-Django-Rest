@@ -391,6 +391,7 @@ export default {
           });
         }
       },
+
       saveModel() {
         this.$prompt('请输入保存模型名称（四字以上）', '提示', {
           confirmButtonText: '确定',
@@ -404,6 +405,8 @@ export default {
             message: '模型名称是: ' + value
           });
           //发送POST请求
+            this.$router.push('/calculation')
+
         }).catch(() => {
           this.$message({
             type: 'info',
@@ -443,36 +446,35 @@ export default {
         //     console.log('submit!');
         //   },
 
-        openFullScreen() {
-            this.fullscreenLoading = true;
-            setTimeout(() => {
-            this.fullscreenLoading = false;
-            }, 2000);
-        },
+        // openFullScreen() {
+        //     this.fullscreenLoading = true;
+        //     setTimeout(() => {
+        //     this.fullscreenLoading = false;
+        //     }, 2000);
+        // },
 
-        uploadError(err, file, fileList) {
-                // 上传失败
-                this.$message.error(err);
-                this.reset();
-        },
-        uploadSuccess(response, file, fileList) {
-                // 上传成功
-                console.log(response);
-                console.log(file);
-                console.log(fileList);
-                this.reset();
-        },
-        submitUpload() {
-                this.$set(this.queryParams, "params", this.checkList.toString());
-                this.$refs.upload.submit();
-        },
-        reset() {
-                // 重置
-                // 清空多选框
-                this.checkList = [];
-                // 清空上传列表
-                this.$refs.upload.clearFiles();
-        },
+        // uploadError(err, file, fileList) {
+                
+        //         this.$message.error(err);
+        //         this.reset();
+        // },
+        // uploadSuccess(response, file, fileList) {
+                
+        //         console.log(response);
+        //         console.log(file);
+        //         console.log(fileList);
+        //         this.reset();
+        // },
+        // submitUpload() {
+        //         this.$set(this.queryParams, "params", this.checkList.toString());
+        //         this.$refs.upload.submit();
+        // },
+        // reset() {
+               
+        //         this.checkList = [];
+                
+        //         this.$refs.upload.clearFiles();
+        // },
 
         //  download(url) {
         //     window.open(url);
