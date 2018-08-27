@@ -12,3 +12,6 @@ venv/
 /.vscode/
 /.idea/
 !.gitignore
+tutorial/appfront/node_modules/
+*/__pycache__/
+*.pyc

@@ -33,6 +33,8 @@ urlpatterns = [
     url(r'compute/calculation/KL/$', views.KL.as_view()),
     url(r'compute/calculation/RMSE/$', views.RMSE.as_view()),
     url(r'compute/calculation/linear/$', views.Linear.as_view()),
+    url(r'getAllDistributionConfigs', views.getAllDistributionConfigs),
+
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
