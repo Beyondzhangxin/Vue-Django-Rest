@@ -468,6 +468,11 @@ export default {
 
 
 <style scoped>
+.text0{
+    font-weight: bold;
+    padding-top:10px;
+}
+
 .text1{
     float:left;
     margin-top:50px;
@@ -490,6 +495,14 @@ export default {
     float:left;
     margin-left:50px;
     margin-top:50px;
+}
+.card0{
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.card3{
+    margin-top:10px;
 }
 </style>
 
