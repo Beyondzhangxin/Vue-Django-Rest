@@ -6,7 +6,7 @@
         <hr width=100%   size=1   color=#bbbcbc   style="FILTER: alpha(opacity=100,finishopacity=0)">
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="ruleForm">
             <el-card class="card0">    
-                <el-form-item label="训练目标" prop="system">
+                <el-form-item label="训练目标" style=font-weight:bold prop="system">
                     <el-select v-model="ruleForm.system" clearable placeholder="选择训练系统">
                         <el-option
                             v-for="item in options1"
@@ -32,7 +32,7 @@
                     </el-col>-->
 
                     
-                    <el-form-item label="概率模型" prop="options">
+                    <el-form-item label="概率模型" style=font-weight:bold prop="options">
                         <el-select v-model="ruleForm.options" clearable placeholder="选择概率模型">
                                 <el-option
                                     v-for="item in options2"
@@ -55,7 +55,7 @@
                             </el-option>
                         </el-select>-->
                     
-                        <el-form-item label="时间选择" required>
+                        <el-form-item label="时间选择" style=font-weight:bold required>
                             <el-col :span="24">
                                 <el-date-picker
                                     v-model="ruleForm.timeRange"
@@ -98,7 +98,7 @@
 
             <el-card class="card2">
                 <el-row :gutter="20">
-                    <el-form-item label="训练参数" prop="j">
+                    <el-form-item label="训练参数" style=font-weight:bold prop="j">
                             <el-col :span="6">
                                 <el-input
                                     placeholder="输入高斯个数"
@@ -119,7 +119,7 @@
                         </el-input>
                     </el-col>-->
 
-                    <el-form-item label="建模算法" prop="method">
+                    <el-form-item label="建模算法" style=font-weight:bold prop="method">
                             <el-col :span="6">
                                 <el-select v-model="ruleForm.method"
                                 clearable
@@ -149,7 +149,7 @@
                     </el-select>   
                     </el-col>-->
                     
-                    <el-form-item label="变量选择" prop="varables1" v-show="ruleForm.options!='marginal'">
+                    <el-form-item label="变量选择" style=font-weight:bold prop="varables1" v-show="ruleForm.options!='marginal'">
                         <el-col :span="5">
                             <el-select v-model="ruleForm.varables1" multiple clearable placeholder="选择变量">
                                 <el-option
@@ -447,10 +447,10 @@ export default {
         //     resource: '',
         //     desc: ''
         // },
-         api: {
-          downloadUrl: `${this.urlBase}/adunit/download`
-        },
-        params: {}
+    //      api: {
+    //       downloadUrl: `${this.urlBase}/adunit/download`
+    //     },
+    //     params: {}
       }
     },
 
@@ -489,7 +489,9 @@ export default {
           //发送POST请求
           // this.$router.push('/calculation')
           this.postDSTConfig('http://127.0.0.1:8000/GMM/model/distribution/')
-        }).catch(() => {
+          
+        }
+        ).catch(() => {
           this.$message({
             type: 'info',
             message: '取消输入'
