@@ -572,6 +572,13 @@ export default {
 
 
 <style scoped>
+.Gmm{
+    background: -webkit-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
+    background: -o-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
+    background: -moz-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
+    background: linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
+    height:100%;
+}
 .text0{
     font-weight: bold;
     padding-top:10px;
@@ -603,10 +610,29 @@ export default {
 .card0{
     margin-top:10px;
     margin-bottom:10px;
+    background-color:rgba(255, 255, 255, 0.2);
+}
+
+.card0:hover{
+    background-color:rgba(53,92,125, 0.1);
 }
 
 .card3{
     margin-top:10px;
+    margin-bottom:10px;
+    background-color:rgba(255, 255, 255, 0.2);
+}
+
+.card2{
+    background-color:rgba(255, 255, 255, 0.2);
+}
+
+.card2:hover{
+    background-color:rgba(53,92,125, 0.1);
+}
+
+.card3:hover{
+    background-color:rgba(53,92,125, 0.1);
 }
 </style>
 
