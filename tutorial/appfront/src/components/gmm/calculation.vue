@@ -90,16 +90,17 @@
                         <el-table-column
                         prop="date"
                         label="var1"
-                        width="180">
+                        >
                         </el-table-column>
                         <el-table-column
                         prop="name"
                         label="var2"
-                        width="180">
+                        >
                         </el-table-column>
                         <el-table-column
                         prop="address"
-                        label="var3">
+                        label="var3"
+                        >
                         </el-table-column>
                     </el-table>
                 </el-col>
@@ -108,7 +109,7 @@
 
             <el-row :gutter="20">
                 <div class="linear1">
-                <el-col :span="6">           
+                <el-col :span="5">           
                 <div class="text1">
                         计算随机变量线性函数的<br>
                         分布式随机变量矩阵系数
@@ -128,7 +129,7 @@
 
 
 
-                <el-col :span="6">
+                <el-col :span="5">
                 <div class="text1">
                         计算随机变量线性函数的<br>
                         分布式随机变量常数矩阵系数
@@ -149,17 +150,17 @@
             </el-row>
 
 
-            <el-row :gutter="20">
+            <el-row :gutter="50">
                 <div class="linear2">
                 <el-col :span="6">
-                    <div class="text1">
+                    <div class="text2">
                         计算输入分布的10%至100%<br>
                         分位时随机变量的范围
                     </div>
 
                 </el-col>
 
-                <el-col :span="6">
+                <el-col :span="4">
                     <div class="input">
                     <span>n_min</span>
                     <el-input placeholder="输入最小值" v-model="input1" clearable></el-input>
@@ -167,7 +168,7 @@
                 </el-col>
 
                 <el-col :span="6">
-                    <div class="input">
+                    <div class="input0">
                     <span>n_max</span>
                     <el-input placeholder="输入最大值" v-model="input2" clearable></el-input>
                     </div>
@@ -298,7 +299,7 @@ export default {
 
 <style scoped>
 .card1{
-    width:60%;
+
     margin-top:10px;
 }
 
@@ -315,13 +316,13 @@ export default {
 }
 
 .card2{
-    width:60%;
+
     margin-top:20px;
 }
 
 .start{
     margin-top:15px;
-    margin-left:250px;
+    /* margin-left:250px; */
 }
 
 .linear1{
@@ -330,5 +331,23 @@ export default {
 
 .linear2{
     margin-top:20px;
+}
+
+.input0{
+    margin-left:150px;
+}
+
+.text{
+    margin-left:-80px;
+    margin-top:30px;
+}
+
+.text1{
+    margin-top:25px;
+}
+
+.text2{
+    margin-left:-35px;
+    margin-top:15px;
 }
 </style>

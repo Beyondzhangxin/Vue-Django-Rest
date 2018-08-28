@@ -100,6 +100,7 @@
                         </el-option>
                   </el-select>   
                 </el-col>
+                
                 <div>
                   <el-col :span="5" v-show="value2!='marginal'">
                     <el-select v-model="value4" multiple clearable placeholder="选择变量">

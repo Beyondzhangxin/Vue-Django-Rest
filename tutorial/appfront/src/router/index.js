@@ -13,7 +13,6 @@ import Gmm from '@/components/gmm/gmm'
 import Calculation from '@/components/gmm/calculation'
 import Effect from '@/Effect'
 
-
 Vue.use(VueResource)
 Vue.use(Router)
 
