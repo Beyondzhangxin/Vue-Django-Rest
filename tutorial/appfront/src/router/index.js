@@ -11,7 +11,11 @@ import Analysis from '@/components/analysis/Analysis'
 import VueResource from 'vue-resource'
 import Gmm from '@/components/gmm/gmm'
 import Calculation from '@/components/gmm/calculation'
+import Demo from '@/components/gmm/demo01'
 import Effect from '@/Effect'
+
+
+
 
 Vue.use(VueResource)
 Vue.use(Router)
@@ -89,5 +93,10 @@ export default new Router({
       name: 'calculatiopn',
       component: Calculation
     },
+    {
+      path: '/demo',
+      name: 'demo',
+      component: Demo
+    }
   ]
 })
