@@ -3,6 +3,9 @@ import datetime
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import generics
+from  .models import GmmConfig
+from  .serializer import GmmConfigSerializer
 import matlab.engine
 import matlab
 import json
@@ -69,7 +72,11 @@ def getSamples(gmmConfig):
     except Exception as e:
         return []
 
-class Distribution(APIView):
+
+class Distribution(generics.ListCreateAPIView):
+    queryset = GmmConfig.objects.all()
+    serializer_class = GmmConfigSerializer
+
     def __init__(self):
         self._Y = None
         self._J = None

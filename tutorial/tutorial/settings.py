@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'ctyd.apps.CtydConfig',
     'spgs.apps.SpgsConfig',
     'pvmg.apps.PvmgConfig',
+    'GMM_toolBox.apps.GmmToolboxConfig',
     'system.apps.SystemConfig'
 ]
 
@@ -99,8 +100,8 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '',
         # 'HOST': '192.168.102.101',
-        # 'HOST': '192.168.1.16',
-        'HOST': 'localhost',
+        'HOST': '192.168.1.16',
+        # 'HOST': 'localhost',
         'PORT': '3306'
     }
 }

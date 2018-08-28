@@ -178,7 +178,7 @@ def getSpgsDeviceInfo(deviceName, param, searchDate):
             cursor = db.cursor()
             sql = "select dayHours from spgs_day WHERE total_d  = '" + searchDate + "'"
             cursor.execute(sql)
-            rs = cursor.fetchone()0.0.
+            rs = cursor.fetchone()
             if not rs is None:
                 rs = round(float(rs[0]), 2)
             else:
