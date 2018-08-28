@@ -1,5 +1,10 @@
 <template>
     <div class="calculation">
+
+        <div class="text0">GMM计算</div>
+        <!-- 分割线 -->
+        <hr width=100%   size=1   color=#bbbcbc   style="FILTER: alpha(opacity=100,finishopacity=0)">
+
         <el-card class="card1">
             <el-row :gutter="20">
                 <el-col :span="4">
@@ -298,9 +303,26 @@ export default {
 </script>
 
 <style scoped>
-.card1{
+.calculation{
+    background: -webkit-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
+    background: -o-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
+    background: -moz-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
+    background: linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
+    height:100%;
+}
 
+.text0{
+    font-weight: bold;
+    padding-top:10px;
+}
+
+.card1{
+    background-color:rgba(255, 255, 255, 0.2);
     margin-top:10px;
+}
+
+.card1:hover{
+    background-color:rgba(53,92,125, 0.1);
 }
 
 .table1{
@@ -316,8 +338,12 @@ export default {
 }
 
 .card2{
-
+    background-color:rgba(255, 255, 255, 0.2);
     margin-top:20px;
+}
+
+.card2:hover{
+    background-color:rgba(53,92,125, 0.1);
 }
 
 .start{
