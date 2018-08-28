@@ -2,8 +2,15 @@
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
         <el-row :gutter="20">
             <el-col :span="12">
-                <el-form-item label="活动名称" prop="name">
-                    <el-input v-model="ruleForm.name"></el-input>
+                <el-form-item label="训练目标" prop="system">
+                    <el-select v-model="ruleForm.system" clearable placeholder="选择训练系统">
+                        <el-option
+                            v-for="item in ruleForm.systemList"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                        </el-option>
+                    </el-select>
                 </el-form-item>
             </el-col>
             <el-col :span="12">
@@ -59,19 +66,28 @@
         data() {
             return {
                 ruleForm: {
-                name: '',
-                region: '',
-                date1: '',
-                date2: '',
-                delivery: false,
-                type: [],
-                resource: '',
-                desc: ''
+                    systemList: [{
+                        value:'图书馆微电网系统',
+                        label:'图书馆微电网系统',
+                    },
+                    {
+                        value:'多功能光伏电站系统',
+                        label:'多功能光伏电站系统',
+                    }],
+                    system: '',
+                    region: '',
+                    date1: '',
+                    date2: '',
+                    delivery: false,
+                    type: [],
+                    resource: '',
+                    desc: ''
                 },
                 rules: {
-                name: [
-                    { required: true, message: '请输入活动名称', trigger: 'blur' },
-                    { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+                system: [
+                    // { required: true, message: '请输入活动名称', trigger: 'blur' },
+                    // { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+                     { required: true, message: '请选择活动区域', trigger: 'change' }
                 ],
                 region: [
                     { required: true, message: '请选择活动区域', trigger: 'change' }
