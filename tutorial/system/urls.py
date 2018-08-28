@@ -26,6 +26,6 @@ urlpatterns = [
     url(r'getDeviceCompareInfo',views.getDeviceCompareInfo),#获取设备对比数据
     url(r'getDetectionInfo',views.getDetectionInfo),#获取故障检测数据
     url(r'getAllSystems',views.getAllSystems),#获取所有系统的列表
-    url(r'getAllParamsBySystemType'.views.getAllParamsBySystemType),#获取某个系统对应的所有变量列表
+    url(r'getAllParamsBySystemType',views.getAllParamsBySystemType),#获取某个系统对应的所有变量列表
 
 ]
