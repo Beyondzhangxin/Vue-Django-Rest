@@ -55,15 +55,29 @@
                             </el-option>
                         </el-select>-->
                     
-                        <el-form-item label="时间选择" style=font-weight:bold required>
-                            <el-col :span="24">
-                                <el-date-picker
-                                    v-model="ruleForm.timeRange"
-                                    type="datetimerange"
-                                    range-separator="至"
-                                    start-placeholder="开始日期"
-                                    end-placeholder="结束日期">
-                                </el-date-picker>
+                        <el-form-item label="时间选择" required>
+                            <el-col :span="11">
+                                <el-form-item prop="start_time">
+                                    <el-date-picker
+                                        v-model="ruleForm.start_time"
+                                        type="datetime"
+                                        placeholder="选择日期时间"
+                                        default-time="12:00:00">
+                                    </el-date-picker>
+                                </el-form-item>
+                            </el-col>
+                            <el-col :span="2">
+                               至
+                            </el-col>
+                            <el-col :span="11">
+                                <el-form-item prop="end_time">
+                                    <el-date-picker
+                                        v-model="ruleForm.end_time"
+                                        type="datetime"
+                                        placeholder="选择日期时间"
+                                        default-time="12:00:00">
+                                    </el-date-picker>
+                                </el-form-item>
                             </el-col>
                         </el-form-item>
                     
@@ -103,6 +117,7 @@
                                 <el-input
                                     placeholder="输入高斯个数"
                                     v-model.number="ruleForm.j"
+                                    auto-complete="off"
                                     clearable>
                                 </el-input>
                             </el-col>
@@ -149,27 +164,14 @@
                     </el-select>   
                     </el-col>-->
                     
-                    <el-form-item label="变量选择" style=font-weight:bold prop="varables1" v-show="ruleForm.options!='marginal'">
-                        <el-col :span="6">
-                            <el-select v-model="ruleForm.varables1" multiple clearable placeholder="选择变量">
+                    <el-form-item label="变量选择" prop="varables">
+                        <el-col :span="5">
+                            <el-select v-model="ruleForm.varables" multiple clearable placeholder="选择变量">
                                 <el-option
                                     v-for="item in options4"
                                     :key="item.value"
                                     :label="item.label"
                                     :value="item.value">
-                                </el-option>
-                            </el-select>
-                        </el-col>
-                    </el-form-item>
-
-                    <el-form-item label="变量选择" prop="varables2" v-show="ruleForm.options=='marginal'">
-                        <el-col :span="6">
-                            <el-select v-model="ruleForm.varables2" clearable placeholder="选择变量">
-                                <el-option
-                                v-for="item in options4"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value">
                                 </el-option>
                             </el-select>
                         </el-col>
@@ -232,9 +234,10 @@
                 </el-input>
                 </div>
                 -->
-                <div>
-                <el-button type="primary" icon="el-icon-search" @click="saveModel">保存</el-button>
-                </div>
+                <el-form-item>
+                    <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+                    <el-button @click="resetForm('ruleForm')">重置</el-button>
+                </el-form-item>
             </el-card>
         </el-form>
 
@@ -252,16 +255,34 @@ export default {
         
     },
     data(){
+        //处理错误
+        var checkVarables = (rule, value, callback) => {
+            if (value.length == 0) {
+                    callback(new Error('请输入变量'));
+                    console.log(123414)
+            }
+            if (value === '') {
+                callback(new Error('请输入变量'));
+            } else {
+                if (this.ruleForm.varables !== '') {
+                    if(this.ruleForm.options == 'marginal') {
+                        if(value.length > 1){
+                            callback(new Error('在marginal模型下只能有一个变量'));
+                        }
+                    }
+                }
+                callback();
+            }
+        };
         return{
             ruleForm: {
                 system: "",
                 options: "",
                 start_time: "",
                 end_time: "",
-                j: null,
+                j: "",
                 method: "",
-                varables1: "",
-                varables2: "",
+                varables: [],
                 y: null,
                 period: null,
                 y_hyper: null
@@ -275,18 +296,21 @@ export default {
                 options: [
                     { required: true, message: '请选择建立的概率模型', trigger: 'change' }
                 ],
+                start_time: [
+                    { type: 'date', required: true, message: '请选择初始时间', trigger: 'change' }
+                ],
+                end_time: [
+                    { type: 'date', required: true, message: '请选择结束时间', trigger: 'change' }
+                ],
                 j: [
-                    { required: true, message: '高斯个数不能为空'},
-                    { type: 'number', message: '高斯个数必须为数字值'}
+                    { required: true, message: '高斯个数不能为空', trigger: 'blur'},
+                    { type: 'number', message: '高斯个数必须为数字值', trigger: 'blur'}
                 ],
                 method: [
                     { required: true, message: '请选择算法', trigger: 'change' }
                 ],
-                varables1: [
-                    { type: 'array', required: true, message: '请至少选择一个变量', trigger: 'change' }
-                ],
-                varables2: [
-                    { required: true, message: '请选择一个变量', trigger: 'change' }
+                varables: [
+                    { type: 'array', required: true, validator: checkVarables, trigger: 'change' }
                 ],
             },
 
@@ -296,9 +320,6 @@ export default {
         timeRange:[],
         input0:"",
         input1:"",
-            // input1:"",
-            // input2:"",
-            // input3:"",
         options1:[{
             value:'图书馆微电网系统',
             label:'图书馆微电网系统',
@@ -368,15 +389,28 @@ export default {
     },
 
     methods: {
-      chooseModel(val) {
-        console.log(this.value4)
-        if(val == 'marginal') {
-          this.mult = new Boolean(0);
-        }
-        if(val != 'marginal') {
-          this.mult = new Boolean(1);
-        }
-      },
+        submitForm(formName) {
+            this.$refs[formName].validate((valid) => {
+                if (valid) {
+                    this.saveModel();
+                } else {
+                    console.log('没有传输成功!!');
+                    return false;
+                }
+            });
+        },
+        resetForm(formName) {
+            this.$refs[formName].resetFields();
+        },
+        chooseModel(val) {
+            console.log(this.value4)
+            if(val == 'marginal') {
+                this.mult = new Boolean(0);
+            }
+            if(val != 'marginal') {
+                this.mult = new Boolean(1);
+            }
+        },
       sendNoticeMessage(val) {
         if(val == 'MAP') {
           const h = this.$createElement;
@@ -416,15 +450,15 @@ export default {
         var instance = this.$ajax.create({
           headers: {'Content-Type': 'application/json'}
         });
-        if(value2 == 'conditional'){
-          this.fromData
-        }else{
-
+        var v1 = "";
+        for(var i=0; i < this.ruleForm.varables.length; i++) {
+            v1 += this.ruleForm.varables[i] + " "
         }
-
-        instance.post(url, this.fromData)
+        this.ruleForm.varables = v1;
+        instance.post(url, this.ruleForm)
           .then(function (response) {
             //处理数据
+            console.log(response)
           }.bind(this))
           .catch(function (error) {
             return 0;
