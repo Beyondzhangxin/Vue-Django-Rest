@@ -536,15 +536,15 @@ export default {
         var instance = this.$ajax.create({
           headers: {'Content-Type': 'application/json'}
         });
-        if(value2 == 'conditional'){
-          this.fromData
-        }else{
-
+        var v1 = "";
+        for(var i=0; i < this.ruleForm.varables.length; i++) {
+            v1 += this.ruleForm.varables[i] + " "
         }
-
-        instance.post(url, this.fromData)
+        this.ruleForm.varables = v1;
+        instance.post(url, this.ruleForm)
           .then(function (response) {
             //处理数据
+            console.log(response)
           }.bind(this))
           .catch(function (error) {
             return 0;
