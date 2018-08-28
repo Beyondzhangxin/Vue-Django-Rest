@@ -422,10 +422,10 @@ export default {
         }],
 
 
-        checkAll: false,
-            checkedCities: ['上海', '北京'],
-            cities: cityOptions,
-            isIndeterminate: true,
+        // checkAll: false,
+        //     checkedCities: ['上海', '北京'],
+        //     cities: cityOptions,
+        //     isIndeterminate: true,
         // options1:[{
         //     value:'label1',
         //     label:'EM算法',
@@ -452,23 +452,23 @@ export default {
         // ],
         // value:'',
 
-        fullscreenLoading: false,
-            checkList: [],
-            uploadURL: "",
-            queryParams: {},
+        // fullscreenLoading: false,
+        //     checkList: [],
+        //     uploadURL: "",
+        //     queryParams: {},
 
-        created:function(){},
+        // created:function(){},
 
-        form: {
-            name: '',
-            region: '',
-            date1: '',
-            date2: '',
-            delivery: false,
-            type: [],
-            resource: '',
-            desc: ''
-        },
+        // form: {
+        //     name: '',
+        //     region: '',
+        //     date1: '',
+        //     date2: '',
+        //     delivery: false,
+        //     type: [],
+        //     resource: '',
+        //     desc: ''
+        // },
          api: {
           downloadUrl: `${this.urlBase}/adunit/download`
         },
@@ -614,6 +614,7 @@ export default {
     background: linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
     height:100%;
 }
+
 .text0{
     font-weight: bold;
     padding-top:10px;

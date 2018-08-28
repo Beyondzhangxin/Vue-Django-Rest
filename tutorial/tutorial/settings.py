@@ -73,7 +73,7 @@ ROOT_URLCONF = 'tutorial.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['appfront/dist'],
+        'DIRS': [os.path.join(BASE_DIR, "appfront/dist")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
