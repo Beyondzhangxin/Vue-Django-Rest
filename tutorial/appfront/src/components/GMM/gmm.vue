@@ -99,7 +99,7 @@
             <el-card class="card2">
                 <el-row :gutter="20">
                     <el-form-item label="训练参数" style=font-weight:bold prop="j">
-                            <el-col :span="6">
+                            <el-col :span="4" style="margin-left:80px;">
                                 <el-input
                                     placeholder="输入高斯个数"
                                     v-model.number="ruleForm.j"
@@ -150,7 +150,7 @@
                     </el-col>-->
                     
                     <el-form-item label="变量选择" style=font-weight:bold prop="varables1" v-show="ruleForm.options!='marginal'">
-                        <el-col :span="5">
+                        <el-col :span="6">
                             <el-select v-model="ruleForm.varables1" multiple clearable placeholder="选择变量">
                                 <el-option
                                     v-for="item in options4"
@@ -161,8 +161,9 @@
                             </el-select>
                         </el-col>
                     </el-form-item>
+
                     <el-form-item label="变量选择" prop="varables2" v-show="ruleForm.options=='marginal'">
-                        <el-col :span="5">
+                        <el-col :span="6">
                             <el-select v-model="ruleForm.varables2" clearable placeholder="选择变量">
                                 <el-option
                                 v-for="item in options4"
@@ -236,55 +237,19 @@
                 </div>
             </el-card>
         </el-form>
-    <!--上传文件界面 -->
-    <!-- <el-card class="card2">
-    <el-upload style="margin: 10px 0 10px 30px;"
-              ref="upload"
-              accept=".xls,xlsx,.doc,.txt"
-              :action="uploadURL"
-              :on-error="uploadError"
-              :on-success="uploadSuccess"
-              :auto-upload="false"
-              name="uploadedFile"
-              :data="queryParams">
-                <el-button type="primary" icon="el-icon-circle-plus-outline" slot="trigger">
-                    导入文件
-                </el-button>
-            </el-upload>
-
-            <div class="buttons" style="margin: 10px 0 0 25px;">
-                <el-button type="success" @click="submitUpload">提交</el-button>
-                <el-button type="danger" @click="reset">重置</el-button>
-            </div>
-    </el-card> -->
-
-    <!-- 下载按钮 -->
-    <!-- <div class="button">
-        <el-button v-on:click="$refs.download.downLoad()" type="primary" >下载</el-button>
-        <download :pageParams="params" :downloadUrl="api.downloadUrl" ref="download"></download>
-    </div> -->
-
-    <!-- 展示界面 -->
-    <!-- <el-card class="card3">
-        <div class="text">展示界面</div>
-
-
-
-
-    </el-card> -->
 
     </div>
 </template>
 
 
 <script>
-// import download from '../download/download';
+
 
 const cityOptions = ['类别1', '类别2', '类别3', ];
 export default {
     name:'Gmm',
     componets:{
-        // download
+        
     },
     data(){
         return{
@@ -399,58 +364,6 @@ export default {
           value: '',
         }],
 
-
-        // checkAll: false,
-        //     checkedCities: ['上海', '北京'],
-        //     cities: cityOptions,
-        //     isIndeterminate: true,
-        // options1:[{
-        //     value:'label1',
-        //     label:'EM算法',
-        // },
-        // {
-        //     value:'label2',
-        //     label:'MAP算法',
-        // }
-        // ],
-        // value:'',
-
-        //  options2:[{
-        //     value:'label1',
-        //     label:'边际分布',
-        // },
-        // {
-        //     value:'label2',
-        //     label:'联合分布',
-        // },
-        // {
-        //     value:'label3',
-        //     label:'条件分布',
-        // }
-        // ],
-        // value:'',
-
-        // fullscreenLoading: false,
-        //     checkList: [],
-        //     uploadURL: "",
-        //     queryParams: {},
-
-        // created:function(){},
-
-        // form: {
-        //     name: '',
-        //     region: '',
-        //     date1: '',
-        //     date2: '',
-        //     delivery: false,
-        //     type: [],
-        //     resource: '',
-        //     desc: ''
-        // },
-    //      api: {
-    //       downloadUrl: `${this.urlBase}/adunit/download`
-    //     },
-    //     params: {}
       }
     },
 
@@ -526,44 +439,7 @@ export default {
         this.checkAll = checkedCount === this.cities.length;
         this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
       },
-        //     onSubmit() {
-        //     console.log('submit!');
-        //   },
-
-        // openFullScreen() {
-        //     this.fullscreenLoading = true;
-        //     setTimeout(() => {
-        //     this.fullscreenLoading = false;
-        //     }, 2000);
-        // },
-
-        // uploadError(err, file, fileList) {
-                
-        //         this.$message.error(err);
-        //         this.reset();
-        // },
-        // uploadSuccess(response, file, fileList) {
-                
-        //         console.log(response);
-        //         console.log(file);
-        //         console.log(fileList);
-        //         this.reset();
-        // },
-        // submitUpload() {
-        //         this.$set(this.queryParams, "params", this.checkList.toString());
-        //         this.$refs.upload.submit();
-        // },
-        // reset() {
-               
-        //         this.checkList = [];
-                
-        //         this.$refs.upload.clearFiles();
-        // },
-
-        //  download(url) {
-        //     window.open(url);
-        //     loacation.href=url;
-        // }
+      
         }
     }
     
@@ -605,6 +481,7 @@ export default {
     float: left;
     margin-left:60px;
 }
+
 .fenye{
     float:left;
     margin-left:50px;
