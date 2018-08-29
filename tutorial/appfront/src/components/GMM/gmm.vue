@@ -55,7 +55,7 @@
                             </el-option>
                         </el-select>-->
                     
-                        <el-form-item label="时间选择" required>
+                        <el-form-item label="时间选择"  style=font-weight:bold required>
                             <el-col :span="11">
                                 <el-form-item prop="start_time">
                                     <el-date-picker
@@ -112,7 +112,7 @@
 
             <el-card class="card2">
                 <el-row :gutter="20">
-                    <el-form-item label="训练参数" prop="j">
+                    <el-form-item label="训练参数" style=font-weight:bold prop="j">
                                 <el-input
                                     placeholder="输入高斯个数"
                                     v-model.number="ruleForm.j"
@@ -132,7 +132,7 @@
                         </el-input>
                     </el-col>-->
 
-                    <el-form-item label="建模算法" prop="method">
+                    <el-form-item label="建模算法" style=font-weight:bold prop="method">
                                 <el-select v-model="ruleForm.method"
                                 clearable
                                 @change="sendNoticeMessage(ruleForm.method)"
@@ -162,7 +162,7 @@
 
 
 
-                    <el-form-item label="变量选择" prop="varables">
+                    <el-form-item label="变量选择" style=font-weight:bold prop="varables">
                             <el-select v-model="ruleForm.varables" @change="updateVarible(ruleForm.varables)" multiple clearable placeholder="选择变量">
                                 <el-option
                                     v-for="item in options4"
@@ -214,7 +214,7 @@
                     </el-pagination>
                 </div>-->
                 <div class="text" v-show="ruleForm.method == 'MAP'">此处为MAP方法必填的选项</div>
-                <el-form-item label="选择输入" prop="y_hyper" v-show="ruleForm.method == 'MAP'">
+                <el-form-item label="选择输入" prop="y_hyper"  v-show="ruleForm.method == 'MAP'">
                     
                         <el-select v-model="ruleForm.y_hyper.system" clearable placeholder="系统">
                             <el-option
@@ -242,7 +242,7 @@
                         </el-date-picker> 
                     
                 </el-form-item>
-                <el-form-item label="选输入" prop="period"  v-show="ruleForm.method == 'MAP'">
+                <el-form-item label="选择输入" prop="period"  v-show="ruleForm.method == 'MAP'">
                     <el-input
                         placeholder="输入period"
                         v-model.number="ruleForm.period"
@@ -571,12 +571,16 @@ export default {
     background: -o-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
     background: -moz-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
     background: linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
-    height:100%;
+    height:140%;
+    margin-left:-12px;
+    margin-top:-12px;
 }
 
 .text0{
     font-weight: bold;
-    padding-top:10px;
+    padding-top:15px;
+    margin-left:80px;
+    font-size:18px;
 }
 
 .text1{
