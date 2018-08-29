@@ -6,7 +6,7 @@
         <hr width=100%   size=1   color=#bbbcbc   style="FILTER: alpha(opacity=100,finishopacity=0)">
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="ruleForm">
             <el-card class="card0">    
-                <el-form-item label="训练目标" prop="system">
+                <el-form-item label="训练目标" style=font-weight:bold prop="system">
                     <el-select v-model="ruleForm.system" clearable placeholder="选择训练系统">
                         <el-option
                             v-for="item in options1"
@@ -32,7 +32,7 @@
                     </el-col>-->
 
                     
-                    <el-form-item label="概率模型" prop="options">
+                    <el-form-item label="概率模型" style=font-weight:bold prop="options">
                         <el-select v-model="ruleForm.options" clearable placeholder="选择概率模型">
                                 <el-option
                                     v-for="item in options2"
@@ -56,14 +56,28 @@
                         </el-select>-->
                     
                         <el-form-item label="时间选择" required>
-                            <el-col :span="24">
-                                <el-date-picker
-                                    v-model="ruleForm.timeRange"
-                                    type="datetimerange"
-                                    range-separator="至"
-                                    start-placeholder="开始日期"
-                                    end-placeholder="结束日期">
-                                </el-date-picker>
+                            <el-col :span="11">
+                                <el-form-item prop="start_time">
+                                    <el-date-picker
+                                        v-model="ruleForm.start_time"
+                                        type="datetime"
+                                        placeholder="选择日期时间"
+                                        default-time="12:00:00">
+                                    </el-date-picker>
+                                </el-form-item>
+                            </el-col>
+                            <el-col :span="2">
+                               至
+                            </el-col>
+                            <el-col :span="11">
+                                <el-form-item prop="end_time">
+                                    <el-date-picker
+                                        v-model="ruleForm.end_time"
+                                        type="datetime"
+                                        placeholder="选择日期时间"
+                                        default-time="12:00:00">
+                                    </el-date-picker>
+                                </el-form-item>
                             </el-col>
                         </el-form-item>
                     
@@ -98,11 +112,12 @@
 
             <el-card class="card2">
                 <el-row :gutter="20">
-                    <el-form-item label="训练参数" prop="j">
-                            <el-col :span="6">
+                    <el-form-item label="训练参数" style=font-weight:bold prop="j">
+                            <el-col :span="4" style="margin-left:80px;">
                                 <el-input
                                     placeholder="输入高斯个数"
                                     v-model.number="ruleForm.j"
+                                    auto-complete="off"
                                     clearable>
                                 </el-input>
                             </el-col>
@@ -119,7 +134,7 @@
                         </el-input>
                     </el-col>-->
 
-                    <el-form-item label="建模算法" prop="method">
+                    <el-form-item label="建模算法" style=font-weight:bold prop="method">
                             <el-col :span="6">
                                 <el-select v-model="ruleForm.method"
                                 clearable
@@ -149,26 +164,14 @@
                     </el-select>   
                     </el-col>-->
                     
-                    <el-form-item label="变量选择" prop="varables1" v-show="ruleForm.options!='marginal'">
+                    <el-form-item label="变量选择" prop="varables">
                         <el-col :span="5">
-                            <el-select v-model="ruleForm.varables1" multiple clearable placeholder="选择变量">
+                            <el-select v-model="ruleForm.varables" multiple clearable placeholder="选择变量">
                                 <el-option
                                     v-for="item in options4"
                                     :key="item.value"
                                     :label="item.label"
                                     :value="item.value">
-                                </el-option>
-                            </el-select>
-                        </el-col>
-                    </el-form-item>
-                    <el-form-item label="变量选择" prop="varables2" v-show="ruleForm.options=='marginal'">
-                        <el-col :span="5">
-                            <el-select v-model="ruleForm.varables2" clearable placeholder="选择变量">
-                                <el-option
-                                v-for="item in options4"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value">
                                 </el-option>
                             </el-select>
                         </el-col>
@@ -231,72 +234,55 @@
                 </el-input>
                 </div>
                 -->
-                <div>
-                <el-button type="primary" icon="el-icon-search" @click="saveModel">保存</el-button>
-                </div>
+                <el-form-item>
+                    <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+                    <el-button @click="resetForm('ruleForm')">重置</el-button>
+                </el-form-item>
             </el-card>
         </el-form>
-    <!--上传文件界面 -->
-    <!-- <el-card class="card2">
-    <el-upload style="margin: 10px 0 10px 30px;"
-              ref="upload"
-              accept=".xls,xlsx,.doc,.txt"
-              :action="uploadURL"
-              :on-error="uploadError"
-              :on-success="uploadSuccess"
-              :auto-upload="false"
-              name="uploadedFile"
-              :data="queryParams">
-                <el-button type="primary" icon="el-icon-circle-plus-outline" slot="trigger">
-                    导入文件
-                </el-button>
-            </el-upload>
-
-            <div class="buttons" style="margin: 10px 0 0 25px;">
-                <el-button type="success" @click="submitUpload">提交</el-button>
-                <el-button type="danger" @click="reset">重置</el-button>
-            </div>
-    </el-card> -->
-
-    <!-- 下载按钮 -->
-    <!-- <div class="button">
-        <el-button v-on:click="$refs.download.downLoad()" type="primary" >下载</el-button>
-        <download :pageParams="params" :downloadUrl="api.downloadUrl" ref="download"></download>
-    </div> -->
-
-    <!-- 展示界面 -->
-    <!-- <el-card class="card3">
-        <div class="text">展示界面</div>
-
-
-
-
-    </el-card> -->
 
     </div>
 </template>
 
 
 <script>
-// import download from '../download/download';
+
 
 const cityOptions = ['类别1', '类别2', '类别3', ];
 export default {
     name:'Gmm',
     componets:{
-        // download
+        
     },
     data(){
+        //处理错误
+        var checkVarables = (rule, value, callback) => {
+            if (value.length == 0) {
+                    callback(new Error('请输入变量'));
+                    console.log(123414)
+            }
+            if (value === '') {
+                callback(new Error('请输入变量'));
+            } else {
+                if (this.ruleForm.varables !== '') {
+                    if(this.ruleForm.options == 'marginal') {
+                        if(value.length > 1){
+                            callback(new Error('在marginal模型下只能有一个变量'));
+                        }
+                    }
+                }
+                callback();
+            }
+        };
         return{
             ruleForm: {
                 system: "",
                 options: "",
                 start_time: "",
                 end_time: "",
-                j: null,
+                j: "",
                 method: "",
-                varables1: "",
-                varables2: "",
+                varables: [],
                 y: null,
                 period: null,
                 y_hyper: null
@@ -310,18 +296,21 @@ export default {
                 options: [
                     { required: true, message: '请选择建立的概率模型', trigger: 'change' }
                 ],
+                start_time: [
+                    { type: 'date', required: true, message: '请选择初始时间', trigger: 'change' }
+                ],
+                end_time: [
+                    { type: 'date', required: true, message: '请选择结束时间', trigger: 'change' }
+                ],
                 j: [
-                    { required: true, message: '高斯个数不能为空'},
-                    { type: 'number', message: '高斯个数必须为数字值'}
+                    { required: true, message: '高斯个数不能为空', trigger: 'blur'},
+                    { type: 'number', message: '高斯个数必须为数字值', trigger: 'blur'}
                 ],
                 method: [
                     { required: true, message: '请选择算法', trigger: 'change' }
                 ],
-                varables1: [
-                    { type: 'array', required: true, message: '请至少选择一个变量', trigger: 'change' }
-                ],
-                varables2: [
-                    { required: true, message: '请选择一个变量', trigger: 'change' }
+                varables: [
+                    { type: 'array', required: true, validator: checkVarables, trigger: 'change' }
                 ],
             },
 
@@ -331,9 +320,6 @@ export default {
         timeRange:[],
         input0:"",
         input1:"",
-            // input1:"",
-            // input2:"",
-            // input3:"",
         options1:[{
             value:'图书馆微电网系统',
             label:'图书馆微电网系统',
@@ -399,71 +385,32 @@ export default {
           value: '',
         }],
 
-
-        // checkAll: false,
-        //     checkedCities: ['上海', '北京'],
-        //     cities: cityOptions,
-        //     isIndeterminate: true,
-        // options1:[{
-        //     value:'label1',
-        //     label:'EM算法',
-        // },
-        // {
-        //     value:'label2',
-        //     label:'MAP算法',
-        // }
-        // ],
-        // value:'',
-
-        //  options2:[{
-        //     value:'label1',
-        //     label:'边际分布',
-        // },
-        // {
-        //     value:'label2',
-        //     label:'联合分布',
-        // },
-        // {
-        //     value:'label3',
-        //     label:'条件分布',
-        // }
-        // ],
-        // value:'',
-
-        // fullscreenLoading: false,
-        //     checkList: [],
-        //     uploadURL: "",
-        //     queryParams: {},
-
-        // created:function(){},
-
-        // form: {
-        //     name: '',
-        //     region: '',
-        //     date1: '',
-        //     date2: '',
-        //     delivery: false,
-        //     type: [],
-        //     resource: '',
-        //     desc: ''
-        // },
-         api: {
-          downloadUrl: `${this.urlBase}/adunit/download`
-        },
-        params: {}
       }
     },
 
     methods: {
-      chooseModel(val) {
-        console.log(this.value4)
-        if(val == 'marginal') {
-          this.mult = new Boolean(0);
-        }
-        if(val != 'marginal') {
-          this.mult = new Boolean(1);
-        }
-      },
+        submitForm(formName) {
+            this.$refs[formName].validate((valid) => {
+                if (valid) {
+                    this.saveModel();
+                } else {
+                    console.log('没有传输成功!!');
+                    return false;
+                }
+            });
+        },
+        resetForm(formName) {
+            this.$refs[formName].resetFields();
+        },
+        chooseModel(val) {
+            console.log(this.value4)
+            if(val == 'marginal') {
+                this.mult = new Boolean(0);
+            }
+            if(val != 'marginal') {
+                this.mult = new Boolean(1);
+            }
+        },
       sendNoticeMessage(val) {
         if(val == 'MAP') {
           const h = this.$createElement;
@@ -489,7 +436,9 @@ export default {
           //发送POST请求
           // this.$router.push('/calculation')
           this.postDSTConfig('http://127.0.0.1:8000/GMM/model/distribution/')
-        }).catch(() => {
+          
+        }
+        ).catch(() => {
           this.$message({
             type: 'info',
             message: '取消输入'
@@ -501,15 +450,15 @@ export default {
         var instance = this.$ajax.create({
           headers: {'Content-Type': 'application/json'}
         });
-        if(value2 == 'conditional'){
-          this.fromData
-        }else{
-
+        var v1 = "";
+        for(var i=0; i < this.ruleForm.varables.length; i++) {
+            v1 += this.ruleForm.varables[i] + " "
         }
-
-        instance.post(url, this.fromData)
+        this.ruleForm.varables = v1;
+        instance.post(url, this.ruleForm)
           .then(function (response) {
             //处理数据
+            console.log(response)
           }.bind(this))
           .catch(function (error) {
             return 0;
@@ -524,44 +473,7 @@ export default {
         this.checkAll = checkedCount === this.cities.length;
         this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
       },
-        //     onSubmit() {
-        //     console.log('submit!');
-        //   },
-
-        // openFullScreen() {
-        //     this.fullscreenLoading = true;
-        //     setTimeout(() => {
-        //     this.fullscreenLoading = false;
-        //     }, 2000);
-        // },
-
-        // uploadError(err, file, fileList) {
-                
-        //         this.$message.error(err);
-        //         this.reset();
-        // },
-        // uploadSuccess(response, file, fileList) {
-                
-        //         console.log(response);
-        //         console.log(file);
-        //         console.log(fileList);
-        //         this.reset();
-        // },
-        // submitUpload() {
-        //         this.$set(this.queryParams, "params", this.checkList.toString());
-        //         this.$refs.upload.submit();
-        // },
-        // reset() {
-               
-        //         this.checkList = [];
-                
-        //         this.$refs.upload.clearFiles();
-        // },
-
-        //  download(url) {
-        //     window.open(url);
-        //     loacation.href=url;
-        // }
+      
         }
     }
     
@@ -603,6 +515,7 @@ export default {
     float: left;
     margin-left:60px;
 }
+
 .fenye{
     float:left;
     margin-left:50px;

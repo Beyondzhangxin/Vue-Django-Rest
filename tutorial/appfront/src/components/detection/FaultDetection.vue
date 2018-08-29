@@ -73,7 +73,6 @@
     components: {
         ComList: ComList,
         DeHeader: deHeader,
-
     },
     data(){
       return {
@@ -114,8 +113,6 @@
     destroyed: function() {
       this.$store.commit('hideIt')
     },
-
-
   }
 </script>
 
