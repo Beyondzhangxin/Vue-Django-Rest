@@ -3,6 +3,9 @@ import datetime
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import generics
+from  .models import GmmConfig
+from  .serializer import GmmConfigSerializer
 import matlab.engine
 import matlab
 import json
@@ -69,52 +72,56 @@ def getSamples(gmmConfig):
     except Exception as e:
         return []
 
-class Distribution(APIView):
-    def __init__(self):
-        self._Y = None
-        self._J = None
-        self._options = None
 
-    # 为满足正常的赋值以及和matlab兼容的赋值
-    # 向量或矩阵
-    @property
-    def Y(self):
-        return self._Y
+class Distribution(generics.ListCreateAPIView):
+    queryset = GmmConfig.objects.all()
+    serializer_class = GmmConfigSerializer
 
-    @Y.setter
-    def Y(self, value):
-        self._Y = value
-
-    @property
-    def J(self):
-        return self._J
-
-    @J.setter
-    def J(self, value):
-        self._J = value
-
-    @property
-    def method(self):
-        return self._method
-
-    @method.setter
-    def method(self, value):
-        self._Y = value
-
-    @property
-    def options(self):
-        return self._options
-
-    @options.setter
-    def options(self, value):
-        self._options = value
-
-    def model(self, data):
-        pass
-
-    def post(self, request, format=None):
-        jsonFormatData = self.model(request.data)
-        return Response(jsonFormatData)
+    # def __init__(self):
+    #     self._Y = None
+    #     self._J = None
+    #     self._options = None
+    #
+    # # 为满足正常的赋值以及和matlab兼容的赋值
+    # # 向量或矩阵
+    # @property
+    # def Y(self):
+    #     return self._Y
+    #
+    # @Y.setter
+    # def Y(self, value):
+    #     self._Y = value
+    #
+    # @property
+    # def J(self):
+    #     return self._J
+    #
+    # @J.setter
+    # def J(self, value):
+    #     self._J = value
+    #
+    # @property
+    # def method(self):
+    #     return self._method
+    #
+    # @method.setter
+    # def method(self, value):
+    #     self._Y = value
+    #
+    # @property
+    # def options(self):
+    #     return self._options
+    #
+    # @options.setter
+    # def options(self, value):
+    #     self._options = value
+    #
+    # def model(self, data):
+    #     pass
+    #
+    # def post(self, request, format=None):
+    #     jsonFormatData = self.model(request.data)
+    #     return Response(jsonFormatData)
 
 
 # GMM_Distribution函数

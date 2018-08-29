@@ -1,192 +1,241 @@
 <template>
-
     <div class="Gmm">
         <!-- 配置参数 -->
             <div class="text0">GMM参数配置</div>
         <!-- 分割线 -->
         <hr width=100%   size=1   color=#bbbcbc   style="FILTER: alpha(opacity=100,finishopacity=0)">
-
-        <el-card class="card0">
-            <el-row :gutter="20">
-                <el-col :span="3">
-                    <div class="text">训练目标</div>
-                </el-col>
-                <el-col :span="5">
-                     <el-select v-model="value1" clearable placeholder="选择训练系统">
+        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="ruleForm">
+            <el-card class="card0">    
+                <el-form-item label="训练目标" prop="system">
+                    <el-select v-model="ruleForm.system" clearable placeholder="选择训练系统">
                         <el-option
                             v-for="item in options1"
                             :key="item.value"
                             :label="item.label"
                             :value="item.value">
                         </el-option>
-                    </el-select>
+                    </el-select>            
+                </el-form-item>
+                    
+                    <!--<el-col :span="3">
+                        <div class="text">训练目标</div>
+                    </el-col>
+                    <el-col :span="5">
+                        <el-select v-model="value1" clearable placeholder="选择训练系统">
+                            <el-option
+                                v-for="item in options1"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-col>-->
+
+                    
+                    <el-form-item label="概率模型" prop="options">
+                        <el-select v-model="ruleForm.options" clearable placeholder="选择概率模型">
+                                <el-option
+                                    v-for="item in options2"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                            
+                        </el-form-item>
+                        <!--<el-select v-model="value2"  
+                        @change="chooseModel(value2)"
+                        clearable 
+                        placeholder="选择概率模型">
+                            <el-option
+                                v-for="item in options2"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                            </el-option>
+                        </el-select>-->
+                    
+                        <el-form-item label="时间选择" required>
+                            <el-col :span="24">
+                                <el-date-picker
+                                    v-model="ruleForm.timeRange"
+                                    type="datetimerange"
+                                    range-separator="至"
+                                    start-placeholder="开始日期"
+                                    end-placeholder="结束日期">
+                                </el-date-picker>
+                            </el-col>
+                        </el-form-item>
+                    
+
+                <!--
+                <el-col :span="5">
+                    <el-time-select
+                            placeholder="起始时间"
+                            v-model="startTime"
+                            :picker-options="{
+                            start: '08:30',
+                            step: '00:15',
+                            end: '18:30'
+                            }">
+                    </el-time-select>
                 </el-col>
-
-                 <el-col :span="5">
-                     <el-select v-model="value2"  
-                     @change="chooseModel(value2)"
-                     clearable 
-                     placeholder="选择概率模型">
-                        <el-option
-                            v-for="item in options2"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                        </el-option>
-                    </el-select>
-                </el-col>
-                <div class="block">
-                <el-date-picker
-                v-model="timeRange"
-                type="datetimerange"
-                range-separator="至"
-                start-placeholder="开始日期"
-                end-placeholder="结束日期">
-                </el-date-picker>
-                </div>
-
-            <!--
-             <el-col :span="5">
-                <el-time-select
-                        placeholder="起始时间"
-                        v-model="startTime"
-                        :picker-options="{
-                        start: '08:30',
-                        step: '00:15',
-                        end: '18:30'
-                        }">
-                </el-time-select>
-             </el-col>
-
-            <el-col :span="5">
-                <el-time-select
-                        placeholder="结束时间"
-                        v-model="endTime"
-                        :picker-options="{
-                        start: '08:30',
-                        step: '00:15',
-                        end: '18:30',
-                        minTime: startTime
-                        }">
-                </el-time-select>
-             </el-col> -->
-            </el-row>
-        </el-card>
-
-        <el-card class="card2">
-            <el-row :gutter="20">
-                <el-col :span="3">
-                    <div class="text">训练参数</div>
-                </el-col>
-
-                <el-col :span="3">
-                    <el-input
-                        placeholder="输入高斯个数"
-                        v-model="input0"
-                        clearable>
-                    </el-input>
-                 </el-col>
 
                 <el-col :span="5">
-                   <el-select v-model="value3"
-                   clearable
-                   @change="sendNoticeMessage(value3)"
-                   placeholder="选择算法">
-                        <el-option
-                            v-for="item in options3"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                        </el-option>
-                  </el-select>   
-                </el-col>
-                <div>
-                  <el-col :span="5" v-show="value2!='marginal'">
-                    <el-select v-model="value4" multiple clearable placeholder="选择变量">
-                      <el-option
-                        v-for="item in options4"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
-                      </el-option>
-                    </el-select>
-                  </el-col>
-                </div>
-                <div>
-                    <el-col :span="5" v-show="value2=='marginal'">
-                      <el-select v-model="value5" clearable placeholder="选择变量">
-                        <el-option
-                        v-for="item in options4"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
-                        </el-option>
-                      </el-select>
-                    </el-col>
-                </div>
-            </el-row>
-        </el-card>
+                    <el-time-select
+                            placeholder="结束时间"
+                            v-model="endTime"
+                            :picker-options="{
+                            start: '08:30',
+                            step: '00:15',
+                            end: '18:30',
+                            minTime: startTime
+                            }">
+                    </el-time-select>
+                </el-col> -->
+                </el-row>
+            </el-card>
 
-        <el-card class="card3">
-            <div class="top" v-show="value2=='conditional'">
-                <div class="text1">选择输入</div>
-                <div class="table">
-                <el-table
-                    :data="tableData"
-                    border
-                    style="width:500px">
-                    <el-table-column
-                    prop="var"
-                    label="变量"
-                    width="250px">
-                    </el-table-column>
-                    <el-table-column
-                    prop="value"
-                    label="条件分布给定值"
-                    width="250px">
-                    </el-table-column>
-                </el-table>
+            <el-card class="card2">
+                <el-row :gutter="20">
+                    <el-form-item label="训练参数" prop="j">
+                            <el-col :span="6">
+                                <el-input
+                                    placeholder="输入高斯个数"
+                                    v-model.number="ruleForm.j"
+                                    clearable>
+                                </el-input>
+                            </el-col>
+                    </el-form-item>
+                    <!--<el-col :span="3">
+                        <div class="text">训练参数</div>
+                    </el-col>
+
+                    <el-col :span="3">
+                        <el-input
+                            placeholder="输入高斯个数"
+                            v-model="input0"
+                            clearable>
+                        </el-input>
+                    </el-col>-->
+
+                    <el-form-item label="建模算法" prop="method">
+                            <el-col :span="6">
+                                <el-select v-model="ruleForm.method"
+                                clearable
+                                @change="sendNoticeMessage(ruleForm.method)"
+                                placeholder="选择算法">
+                                    <el-option
+                                        v-for="item in options3"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                    </el-option>
+                                </el-select>
+                            </el-col>
+                    </el-form-item>
+                    
+                    <!--<el-col :span="5">
+                    <el-select v-model="value3"
+                    clearable
+                    @change="sendNoticeMessage(value3)"
+                    placeholder="选择算法">
+                            <el-option
+                                v-for="item in options3"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                            </el-option>
+                    </el-select>   
+                    </el-col>-->
+                    
+                    <el-form-item label="变量选择" prop="varables1" v-show="ruleForm.options!='marginal'">
+                        <el-col :span="5">
+                            <el-select v-model="ruleForm.varables1" multiple clearable placeholder="选择变量">
+                                <el-option
+                                    v-for="item in options4"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-col>
+                    </el-form-item>
+                    <el-form-item label="变量选择" prop="varables2" v-show="ruleForm.options=='marginal'">
+                        <el-col :span="5">
+                            <el-select v-model="ruleForm.varables2" clearable placeholder="选择变量">
+                                <el-option
+                                v-for="item in options4"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-col>
+                    </el-form-item>
+                </el-row>
+            </el-card>
+
+            <el-card class="card3">
+                <div class="top" v-show="value2=='conditional'">
+                    <div class="text1">选择输入</div>
+                    <div class="table">
+                    <el-table
+                        :data="tableData"
+                        border
+                        style="width:500px">
+                        <el-table-column
+                        prop="var"
+                        label="变量"
+                        width="250px">
+                        </el-table-column>
+                        <el-table-column
+                        prop="value"
+                        label="条件分布给定值"
+                        width="250px">
+                        </el-table-column>
+                    </el-table>
+                    </div>
                 </div>
+                <div class="clear"></div>
+            <!--
+            <div class="mid">
+                <div class="text2">Y_hyper计算超参数训练集</div>
+                <div class="model">
+                    <span>筛选条件：</span>
+                    <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全部</el-checkbox>
+                        <div style="margin: 15px 0;"></div>
+                        <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
+                            <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
+                        </el-checkbox-group>
+                </div>      
             </div>
             <div class="clear"></div>
-        <!--
-        <div class="mid">
-            <div class="text2">Y_hyper计算超参数训练集</div>
-            <div class="model">
-                <span>筛选条件：</span>
-                 <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全部</el-checkbox>
-                    <div style="margin: 15px 0;"></div>
-                    <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
-                        <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
-                    </el-checkbox-group>
-            </div>      
-        </div>
-        <div class="clear"></div>
 
-     
-            <div class="fenye">
-                <span class="text">共7页，73条记录</span>
-                <el-pagination
-                    small
-                    background
-                    layout="prev, pager, next"
-                    :total="70">
-                </el-pagination>
-            </div>
         
-            <div>
-            <el-input
-                placeholder="输入period"
-                v-model="input1"
-                clearable>
-            </el-input>
-            </div>
-            -->
-            <div>
-            <el-button type="primary" icon="el-icon-search" @click="saveModel">保存</el-button>
-            </div>
-        </el-card>
-
+                <div class="fenye">
+                    <span class="text">共7页，73条记录</span>
+                    <el-pagination
+                        small
+                        background
+                        layout="prev, pager, next"
+                        :total="70">
+                    </el-pagination>
+                </div>
+            
+                <div>
+                <el-input
+                    placeholder="输入period"
+                    v-model="input1"
+                    clearable>
+                </el-input>
+                </div>
+                -->
+                <div>
+                <el-button type="primary" icon="el-icon-search" @click="saveModel">保存</el-button>
+                </div>
+            </el-card>
+        </el-form>
     <!--上传文件界面 -->
     <!-- <el-card class="card2">
     <el-upload style="margin: 10px 0 10px 30px;"
@@ -239,8 +288,45 @@ export default {
     },
     data(){
         return{
+            ruleForm: {
+                system: "",
+                options: "",
+                start_time: "",
+                end_time: "",
+                j: null,
+                method: "",
+                varables1: "",
+                varables2: "",
+                y: null,
+                period: null,
+                y_hyper: null
+            },
+            rules: {
+                system: [
+                    // { required: true, message: '请输入活动名称', trigger: 'blur' },
+                    // { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+                     { required: true, message: '请选择活动区域', trigger: 'change' }
+                ],
+                options: [
+                    { required: true, message: '请选择建立的概率模型', trigger: 'change' }
+                ],
+                j: [
+                    { required: true, message: '高斯个数不能为空'},
+                    { type: 'number', message: '高斯个数必须为数字值'}
+                ],
+                method: [
+                    { required: true, message: '请选择算法', trigger: 'change' }
+                ],
+                varables1: [
+                    { type: 'array', required: true, message: '请至少选择一个变量', trigger: 'change' }
+                ],
+                varables2: [
+                    { required: true, message: '请选择一个变量', trigger: 'change' }
+                ],
+            },
+
         mult: new Boolean(1),
-        fromData: '',
+        
         //建模功能需要的功能
         timeRange:[],
         input0:"",
@@ -249,15 +335,11 @@ export default {
             // input2:"",
             // input3:"",
         options1:[{
-            value:'label1',
-            label:'天井光伏发电系统',
-        },
-        {
-            value:'label2',
+            value:'图书馆微电网系统',
             label:'图书馆微电网系统',
         },
         {
-            value:'label3',
+            value:'多功能光伏电站系统',
             label:'多功能光伏电站系统',
         }
         ],
@@ -318,10 +400,10 @@ export default {
         }],
 
 
-        checkAll: false,
-            checkedCities: ['上海', '北京'],
-            cities: cityOptions,
-            isIndeterminate: true,
+        // checkAll: false,
+        //     checkedCities: ['上海', '北京'],
+        //     cities: cityOptions,
+        //     isIndeterminate: true,
         // options1:[{
         //     value:'label1',
         //     label:'EM算法',
@@ -348,23 +430,23 @@ export default {
         // ],
         // value:'',
 
-        fullscreenLoading: false,
-            checkList: [],
-            uploadURL: "",
-            queryParams: {},
+        // fullscreenLoading: false,
+        //     checkList: [],
+        //     uploadURL: "",
+        //     queryParams: {},
 
-        created:function(){},
+        // created:function(){},
 
-        form: {
-            name: '',
-            region: '',
-            date1: '',
-            date2: '',
-            delivery: false,
-            type: [],
-            resource: '',
-            desc: ''
-        },
+        // form: {
+        //     name: '',
+        //     region: '',
+        //     date1: '',
+        //     date2: '',
+        //     delivery: false,
+        //     type: [],
+        //     resource: '',
+        //     desc: ''
+        // },
          api: {
           downloadUrl: `${this.urlBase}/adunit/download`
         },
@@ -405,8 +487,8 @@ export default {
             message: '模型名称是: ' + value
           });
           //发送POST请求
-            this.$router.push('/calculation')
-
+          // this.$router.push('/calculation')
+          this.postDSTConfig('http://127.0.0.1:8000/GMM/model/distribution/')
         }).catch(() => {
           this.$message({
             type: 'info',
@@ -415,17 +497,17 @@ export default {
         });
       },
 
-      postDSTConfig() {
+      postDSTConfig(url) {
         var instance = this.$ajax.create({
-          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+          headers: {'Content-Type': 'application/json'}
         });
         if(value2 == 'conditional'){
           this.fromData
         }else{
-          this.fromData
+
         }
 
-        instance.post(url, fromData)
+        instance.post(url, this.fromData)
           .then(function (response) {
             //处理数据
           }.bind(this))
@@ -490,6 +572,14 @@ export default {
 
 
 <style scoped>
+.Gmm{
+    background: -webkit-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
+    background: -o-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
+    background: -moz-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
+    background: linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
+    height:100%;
+}
+
 .text0{
     font-weight: bold;
     padding-top:10px;
@@ -521,10 +611,29 @@ export default {
 .card0{
     margin-top:10px;
     margin-bottom:10px;
+    background-color:rgba(255, 255, 255, 0.2);
+}
+
+.card0:hover{
+    background-color:rgba(53,92,125, 0.1);
 }
 
 .card3{
     margin-top:10px;
+    margin-bottom:10px;
+    background-color:rgba(255, 255, 255, 0.2);
+}
+
+.card2{
+    background-color:rgba(255, 255, 255, 0.2);
+}
+
+.card2:hover{
+    background-color:rgba(53,92,125, 0.1);
+}
+
+.card3:hover{
+    background-color:rgba(53,92,125, 0.1);
 }
 </style>
 
