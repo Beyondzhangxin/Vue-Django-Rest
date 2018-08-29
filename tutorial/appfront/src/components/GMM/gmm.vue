@@ -112,8 +112,9 @@
 
             <el-card class="card2">
                 <el-row :gutter="20">
-                    <el-form-item label="训练参数" style=font-weight:bold prop="j">
+                    <el-form-item label="训练参数" style="font-weight:bold" prop="j">
                                 <el-input
+                                    class="xlcs"
                                     placeholder="输入高斯个数"
                                     v-model.number="ruleForm.j"
                                     auto-complete="off"
@@ -177,10 +178,11 @@
             </el-card>
             <el-card class="card3" v-show="ruleForm.options == 'conditional'">
                 <el-form-item label="选择输入" prop="y">
-                    <el-table :data="ruleForm.y" border>
+                    <el-table :data="ruleForm.y" border class="tjfb">
                         <el-table-column
                             prop="var"
                             label="变量"
+                            header-align="center"
                             width="250px">
                     </el-table-column>
                     <el-table-column property="value" label="条件分布给定值" width="">
@@ -244,6 +246,7 @@
                 </el-form-item>
                 <el-form-item label="选择输入" prop="period"  v-show="ruleForm.method == 'MAP'">
                     <el-input
+                        class="period"
                         placeholder="输入period"
                         v-model.number="ruleForm.period"
                         auto-complete="off"
@@ -634,6 +637,21 @@ export default {
 .card3:hover{
     background-color:rgba(53,92,125, 0.1);
 }
+
+.xlcs{
+    width:12.3%;
+}
+
+.period{
+    width:12.5%
+}
+
+.tjfb{
+    width:40%;
+    margin-left: auto;
+    margin-right:auto;
+}
+
 </style>
 
 
