@@ -112,12 +112,7 @@
 
             <el-card class="card2">
                 <el-row :gutter="20">
-<<<<<<< HEAD
                     <el-form-item label="训练参数" prop="j">
-=======
-                    <el-form-item label="训练参数" style=font-weight:bold prop="j">
-                            <el-col :span="4" style="margin-left:80px;">
->>>>>>> origin/clear2
                                 <el-input
                                     placeholder="输入高斯个数"
                                     v-model.number="ruleForm.j"
@@ -137,12 +132,7 @@
                         </el-input>
                     </el-col>-->
 
-<<<<<<< HEAD
                     <el-form-item label="建模算法" prop="method">
-=======
-                    <el-form-item label="建模算法" style=font-weight:bold prop="method">
-                            <el-col :span="6">
->>>>>>> origin/clear2
                                 <el-select v-model="ruleForm.method"
                                 clearable
                                 @change="sendNoticeMessage(ruleForm.method)"
@@ -169,15 +159,11 @@
                             </el-option>
                     </el-select>   
                     </el-col>-->
-                    
+
+
+
                     <el-form-item label="变量选择" prop="varables">
-<<<<<<< HEAD
-                        
                             <el-select v-model="ruleForm.varables" @change="updateVarible(ruleForm.varables)" multiple clearable placeholder="选择变量">
-=======
-                        <el-col :span="6">
-                            <el-select v-model="ruleForm.varables" multiple clearable placeholder="选择变量">
->>>>>>> origin/clear2
                                 <el-option
                                     v-for="item in options4"
                                     :key="item.value"
@@ -516,7 +502,6 @@ export default {
             }
         },
 
-<<<<<<< HEAD
         saveModel() {
             this.$prompt('请输入保存模型名称（四字以上）', '提示', {
             confirmButtonText: '确定',
@@ -539,31 +524,6 @@ export default {
                     message: '取消输入'
                 });
             });
-=======
-      saveModel() {
-        this.$prompt('请输入保存模型名称（四字以上）', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          //支持汉字和英文
-          inputPattern: /^[\u4E00-\u9FA5A-Za-z0-9]{4,}$/,
-          inputErrorMessage: '模型名称不正确'
-        }).then(({ value }) => {
-            this.$message({
-            type: 'success',
-            message: '模型名称是: ' + value
-          });
-          //发送POST请求
-          // this.$router.push('/calculation')
-          this.postDSTConfig('http://127.0.0.1:8000/GMM/model/distribution/')
-          
-        }
-        ).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '取消输入'
-          });
-        });
->>>>>>> origin/clear2
       },
 
       postDSTConfig(url) {
