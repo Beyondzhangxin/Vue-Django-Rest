@@ -165,7 +165,7 @@
                     </el-col>-->
                     
                     <el-form-item label="变量选择" prop="varables">
-                        <el-col :span="5">
+                        <el-col :span="6">
                             <el-select v-model="ruleForm.varables" multiple clearable placeholder="选择变量">
                                 <el-option
                                     v-for="item in options4"
@@ -478,7 +478,6 @@ export default {
     }
     
     
-
 
 </script>
 

@@ -9,7 +9,7 @@
             <el-row :gutter="20">
                 <el-col :span="4">
                 <div class="select">
-                <el-select v-model="value" clearable placeholder="选择模型配置">
+                <el-select v-model="value1" clearable placeholder="选择模型配置">
                     <el-option
                     v-for="item in options1"
                     :key="item.value"
@@ -22,7 +22,7 @@
 
                 <el-col :span="4">
                     <div class="select">
-                    <el-select v-model="value1" clearable placeholder="选择输出结果">
+                    <el-select v-model="value2" clearable placeholder="选择输出结果">
                     <el-option
                     v-for="item in options2"
                     :key="item.value"
@@ -35,7 +35,7 @@
 
                  <el-col :span="4">
                      <div class="select">
-                    <el-select  disabled v-model="value2" clearable placeholder="KL或RMSE对比模型配置">
+                    <el-select  v-model="value3" clearable placeholder="KL或RMSE对比模型配置">
                     <el-option
                     v-for="item in options3"
                     :key="item.value"
@@ -51,25 +51,37 @@
                      <div class="table1">
                     <el-table
                         :data="tableData1"
+                        class="tb-edit"
+                        highlight-current-row @row-click="handleCurrentChange"
                         border
-
                         style="width: 100%; margin-top: 20px">
                         <el-table-column
                             prop="id"
                             label="参数y"
-                            width="180">
+                            header-align="center">
                         </el-table-column>
                         <el-table-column
-                            prop="var"
-                            label="var1">
+                            prop="amount1"     
+                            label="var1"
+                            header-align="center">
+                        <template scope="scope">
+                            <el-input size="small" v-mode="scope.row.amount1" placeholder="请输入内容"  clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
+                        </template>
                         </el-table-column>
                         <el-table-column
-                            prop="amount1"
-                            label="var2">
+                          
+                            label="var2"
+                            header-align="center">
+                        <template scope="scope">
+                            <el-input size="small" v-mode="scope.row.date" placeholder="请输入内容" clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
+                        </template>
                         </el-table-column>
-                        <el-table-column
-                            prop="amount2"
-                            label="var3">
+                        <el-table-column          
+                            label="var3"
+                            header-align="center">
+                         <template scope="scope">
+                            <el-input size="small" v-mode="scope.row.date" placeholder="请输入内容" clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
+                        </template>
                         </el-table-column>
                     </el-table>
                     </div>
@@ -86,26 +98,34 @@
                     </div> 
                 </el-col>
 
-
                 <el-col :span="12">
                     <el-table
                         :data="tableData2"
                         border
                         style="width: 100%">
                         <el-table-column
-                        prop="date"
+                        prop="var1"
                         label="var1"
-                        >
+                        header-align="center">
+                        <template scope="scope">
+                            <el-input size="small" v-mode="scope.row.date" clearable placeholder="请输入内容"  clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
+                        </template>
                         </el-table-column>
                         <el-table-column
-                        prop="name"
+                        prop="var2"
                         label="var2"
-                        >
+                        header-align="center">
+                        <template scope="scope">
+                            <el-input size="small" v-mode="scope.row.date" clearable placeholder="请输入内容" @change="handleEdit(scope.$index,scope.row)"></el-input>
+                        </template>
                         </el-table-column>
                         <el-table-column
-                        prop="address"
+                        prop="var3"
                         label="var3"
-                        >
+                        header-align="center">
+                        <template scope="scope">
+                            <el-input size="small" v-mode="scope.row.date" clearable placeholder="请输入内容" @change="handleEdit(scope.$index,scope.row)"></el-input>
+                        </template>
                         </el-table-column>
                     </el-table>
                 </el-col>
@@ -122,14 +142,37 @@
                 </el-col>
 
                 <el-col :span="6">
-                    <el-table
-                    :data="tableData"
-                    border
-                    style="width: 100%">
-                    <el-table-column></el-table-column>
-                    <el-table-column></el-table-column>
-                    <el-table-column></el-table-column>
+                   <el-table
+                        :data="tableData3"
+                        border
+                        style="width: 100%">
+                        <el-table-column
+                        prop="var1"
+                        label="var1"
+                        header-align="center">
+                        <template scope="scope">
+                            <el-input size="small" v-mode="scope.row.date" clearable placeholder="请输入内容"  clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
+                        </template>
+                        </el-table-column>
+                        <el-table-column
+                        prop="var2"
+                        label="var2"
+                        header-align="center">
+                        <template scope="scope">
+                            <el-input size="small" v-mode="scope.row.date" clearable placeholder="请输入内容" @change="handleEdit(scope.$index,scope.row)"></el-input>
+                        </template>
+                        </el-table-column>
+                        <el-table-column
+                        prop="var3"
+                        label="var3"
+                        header-align="center">
+                        <template scope="scope">
+                            <el-input size="small" v-mode="scope.row.date" clearable placeholder="请输入内容" @change="handleEdit(scope.$index,scope.row)"></el-input>
+                        </template>
+                        </el-table-column>
                     </el-table>
+
+                
                 </el-col>
 
 
@@ -142,13 +185,20 @@
                 </el-col>
 
                 <el-col :span="6">
-                     <el-table
-                    :data="tableData"
-                    border
-                    style="width: 100%">
-                    <el-table-column></el-table-column>
-                    <el-table-column></el-table-column>
-                    <el-table-column></el-table-column>
+                   <el-table
+                        :data="tableData4"
+                        border
+                        class="tb-edit"
+                        highlight-current-row @row-click="handleCurrentChange"
+                        style="width: 100%">
+                        <el-table-column
+                        prop="var1"
+                        label="var1"
+                        header-align="center">
+                        <template scope="scope">
+                            <el-input size="small" v-mode="scope.row.date" clearable placeholder="请输入内容"  clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
+                        </template>
+                        </el-table-column>
                     </el-table>
                 </el-col>
                 </div>
@@ -211,90 +261,122 @@ export default {
 
        dialogVisible: false,
 
+
         input1:'',
         input2:'',
 
+ 
+
 
         options1: [{
-          value: '',
+          value: 'A',
           label: '配置A'
         }, {
-          value: '',
+          value: 'B',
           label: '配置B'
         }, {
-          value: '',
+          value: 'C',
           label: '配置C'
-        }],
-        value: '',
-
-        options2: [{
-          value: '',
-          label: 'PDF'
-        }, {
-          value: '',
-          label: 'CDF'
-        }, {
-          value: '',
-          label: 'qiantile'
-        },
-        {
-          value: '',
-          label: 'KL'
-        },
-        {
-          value: '',
-          label: 'RMSE' 
-        },
-        {
-          value:'',
-          label:'linear'
         }],
         value1: '',
 
-         options3: [{
-          value: '',
-          label: '配置A'
+        options2: [{
+          value: 'PDF',
+          label: 'PDF'
         }, {
-          value: '',
-          label: '配置B'
+          value: 'CDF',
+          label: 'CDF'
         }, {
-          value: '',
-          label: '配置C'
+          value: 'qiantile',
+          label: 'qiantile'
+        },
+        {
+          value: 'KL',
+          label: 'KL'
+        },
+        {
+          value: 'RMSE',
+          label: 'RMSE' 
+        },
+        {
+          value:'linear',
+          label:'linear'
         }],
         value2: '',
+
+         options3: [{
+          value: 'A',
+          label: '配置A'
+        }, {
+          value: 'B',
+          label: '配置B'
+        }, {
+          value: 'C',
+          label: '配置C'
+        }],
+        value3: '',
         
     tableData1: [{
           id: 'value',
-          var: '',
-          amount1: '',
-          amount2: '',
-          amount3: '',
+          amount1: '1',
+          amount2: '1',
+          amount3: '1',
         }],
 
      tableData2: [{
-          date: '',
-          name: '',
-          address: ''
+          var1: '1',
+          var2: '1',
+          var3: '1'
         }, {
-          date: '',
-          name: '',
-          address: ''
+          var1: '1',
+          var2: '1',
+          var3: '1'
+        }],
+    
+    tableData3: [{
+          var1: '1',
+          var2: '1',
+          var3: '1'
+        }, {
+          var1: '1',
+          var2: '1',
+          var3: '1'
+        },
+        {
+          var1: '1',
+          var2: '1',
+          var3: '1'
         }],
 
+    tableData4:[{
+          var1:'1',
+    }],
 
 
       }
     },
 
     methods:{
-         handleClose(done) {
+
+        handleClose(done) {
         this.$confirm('确认关闭？')
           .then(_ => {
             done();
           })
           .catch(_ => {});
       },
-    }
+
+        handleCurrentChange(row, event, column) {
+                console.log(row, event, column, event.currentTarget)
+            },
+            handleEdit(index, row) {
+                console.log(index, row);
+            },
+            // handleDelete(index, row) {
+            //     console.log(index, row);
+            // },
+         
+        }
 
 
 }
@@ -376,4 +458,15 @@ export default {
     margin-left:-35px;
     margin-top:15px;
 }
+
+.tb-edit .el-input {
+    display: none
+}
+.tb-edit  .current-row .el-input {
+    display: block
+}
+.tb-edit  .current-row .el-input+span {
+    display: none
+}
+
 </style>

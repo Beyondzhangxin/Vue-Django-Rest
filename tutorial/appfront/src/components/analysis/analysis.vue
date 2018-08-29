@@ -92,9 +92,9 @@
           <el-button type="primary"  @click="" plain v-for=" dev in sel.devices" :key="dev">{{ dev }}</el-button>
         </span>
       </div>
-
     </el-main>
 
+    <!--分割线  -->
     <hr width=100%   size=1   color=#bbbcbc   style="FILTER: alpha(opacity=100,finishopacity=0)">
 
     <!-- main3 -->
