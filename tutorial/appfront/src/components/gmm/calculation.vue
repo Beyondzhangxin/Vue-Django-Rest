@@ -22,7 +22,7 @@
 
                 <el-col :span="4">
                     <div class="select">
-                    <el-select v-model="value2" clearable placeholder="选择输出结果">
+                    <el-select v-model="value2" clearable @click="showCont" placeholder="选择输出结果">
                     <el-option
                     v-for="item in options2"
                     :key="item.value"
@@ -47,12 +47,10 @@
                 </el-col>
 
                
-                <el-col :span="10">
+                <el-col :span="8">
                      <div class="table1">
                     <el-table
                         :data="tableData1"
-                        class="tb-edit"
-                        highlight-current-row @row-click="handleCurrentChange"
                         border
                         style="width: 100%; margin-top: 20px">
                         <el-table-column
@@ -98,7 +96,7 @@
                     </div> 
                 </el-col>
 
-                <el-col :span="12">
+                <el-col :span="6">
                     <el-table
                         :data="tableData2"
                         border
@@ -134,7 +132,7 @@
 
             <el-row :gutter="20">
                 <div class="linear1">
-                <el-col :span="5">           
+                <el-col :span="6">           
                 <div class="text1">
                         计算随机变量线性函数的<br>
                         分布式随机变量矩阵系数
@@ -178,7 +176,7 @@
 
 
                 <el-col :span="5">
-                <div class="text1">
+                <div class="text1-1">
                         计算随机变量线性函数的<br>
                         分布式随机变量常数矩阵系数
                 </div>
@@ -188,8 +186,6 @@
                    <el-table
                         :data="tableData4"
                         border
-                        class="tb-edit"
-                        highlight-current-row @row-click="handleCurrentChange"
                         style="width: 100%">
                         <el-table-column
                         prop="var1"
@@ -265,7 +261,8 @@ export default {
         input1:'',
         input2:'',
 
- 
+        // 控制显示
+        show:false,
 
 
         options1: [{
@@ -350,6 +347,10 @@ export default {
 
     tableData4:[{
           var1:'1',
+    },{
+          var1:'1',
+    },{
+          var1:'1',
     }],
 
 
@@ -358,6 +359,12 @@ export default {
 
     methods:{
 
+        // 显示
+        showCont(){
+            this.show=!this.show;
+        },
+
+        // 关闭按钮
         handleClose(done) {
         this.$confirm('确认关闭？')
           .then(_ => {
@@ -366,10 +373,12 @@ export default {
           .catch(_ => {});
       },
 
+
+        // 表格内输入
         handleCurrentChange(row, event, column) {
                 console.log(row, event, column, event.currentTarget)
             },
-            handleEdit(index, row) {
+        handleEdit(index, row) {
                 console.log(index, row);
             },
             // handleDelete(index, row) {
@@ -441,6 +450,10 @@ export default {
     margin-top:20px;
 }
 
+.input{
+    margin-left:-10px;
+}
+
 .input0{
     margin-left:150px;
 }
@@ -451,9 +464,14 @@ export default {
 }
 
 .text1{
-    margin-top:25px;
+    margin-top:50px;
+    margin-left:-70px;
 }
 
+.text1-1{
+    margin-top:50px;
+    margin-left:-70px;
+}
 .text2{
     margin-left:-35px;
     margin-top:15px;
