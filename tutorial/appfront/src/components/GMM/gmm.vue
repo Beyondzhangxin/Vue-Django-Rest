@@ -31,18 +31,18 @@
                         </el-select>
                     </el-col>-->
 
-                    
+
                     <el-form-item label="概率模型" style=font-weight:bold prop="options">
                         <el-select v-model="ruleForm.options" clearable placeholder="选择概率模型">
-                                <el-option
-                                    v-for="item in options2"
-                                    :key="item.value"
-                                    :label="item.label"
-                                    :value="item.value">
-                                </el-option>
-                            </el-select>
-                            
-                        </el-form-item>
+                            <el-option
+                                v-for="item in options2"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                            </el-option>
+                        </el-select>
+
+                    </el-form-item>
                         <!--<el-select v-model="value2"  
                         @change="chooseModel(value2)"
                         clearable 
@@ -159,7 +159,7 @@
                             </el-option>
                     </el-select>   
                     </el-col>-->
-
+                    
 
 
                     <el-form-item label="变量选择" prop="varables">
