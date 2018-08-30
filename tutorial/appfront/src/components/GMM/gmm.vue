@@ -526,12 +526,7 @@ export default {
         var instance = this.$ajax.create({
           headers: {'Content-Type': 'application/json'}
         });
-        var v1 = "";
-        for(var i=0; i < this.ruleForm.varables.length; i++) {
-            v1 += this.ruleForm.varables[i] + " "
-        }
-        this.ruleForm.varables = v1;
-
+        this.ruleForm.varables = JSON.stringify(this.ruleForm.varables)
         this.ruleForm.y = JSON.stringify(this.ruleForm.y)
         this.ruleForm.y_hyper = JSON.stringify(this.ruleForm.y_hyper)
         instance.post(url, this.ruleForm)
