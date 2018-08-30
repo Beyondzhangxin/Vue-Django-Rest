@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
+from django.shortcuts import render
 from  .models import GmmConfig
 from  .serializer import GmmConfigSerializer
 import matlab.engine
@@ -29,7 +30,6 @@ def dealException(func):
         except Exception as e:
             return {'exception': type(e)}
         return 0
-
     return wrapper
 
 
@@ -63,13 +63,17 @@ def getSamples(gmmConfig):
         "SPGS": DataSpgsHistory,
         "PVMG": DataPvmgHistory,
     }
-    start = datetime.datetime.strptime(gmmConfig.start_time, "%Y-%m-%dT%H:%M:%S.%ZZ")
-    end = datetime.datetime.strptime(gmmConfig.end_time, "%Y-%m-%dT%H:%M:%S.%ZZ")
+    start = datetime.datetime.strptime(gmmConfig['start_time'], "%Y-%m-%d %H:%M:%S")
+    end = datetime.datetime.strptime(gmmConfig['end_time'], "%Y-%m-%d %H:%M:%S")
     response = {}
     try:
-        samples = switch[gmmConfig.system].objects.filter(datatime_range=(start, end)).values_list(json.loads(gmmConfig.varables), flat=True)
+        samples = switch[gmmConfig['system']]
+        samples = samples.objects.filter(datatime__range=(start, end))
+        gmmConfig['varables'] = gmmConfig['varables'].lower()
+        samples = samples.values_list(*tuple(json.loads(gmmConfig['varables'])), flat=True)
         return samples
     except Exception as e:
+        print(e)
         return []
 
 
@@ -123,11 +127,69 @@ class Distribution(generics.ListCreateAPIView):
     #     return Response(jsonFormatData)
 
 
+class DistributionList(generics.ListAPIView):
+    serializer_class = GmmConfigSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    def get_queryset(self):
+        queryset = GmmConfig.objects
+        name = self.request.query_params.get('name', None)
+        if name is not None:
+            queryset = queryset.get(name=name)
+        return queryset
+    """
+        List a queryset.
+    """
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=False)
+            return self.get_paginated_response(serializer.data)
+        serializer = self.get_serializer(queryset, many=False)
+        print(serializer.data)
+        return Response(serializer.data)
+
+    # def list(self, request, *args, **kwargs):
+    #     queryset = self.get_queryset()
+    #     print(queryset)
+    #
+    #     # print(Response(serializer.data).content)
+    #     return Response(json.loads(queryset))
+    # def get(self, request, format=None):
+    #         # print(request.data)
+    #         print(dict(request.query_params))
+    #         # print(request.parsers)
+    #         print(getSamples(dict(request.query_params)))
+    #         return Response(123)
+
+# 根据name得到config过滤的矩阵
+
+
+class GetMatrix(DistributionList):
+    """
+            List a queryset.
+    """
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=False)
+            return self.get_paginated_response(serializer.data)
+        serializer = self.get_serializer(queryset, many=False)
+        print(serializer.data)
+        print(getSamples(serializer.data))
+        return Response(serializer.data)
+
+
 # GMM_Distribution函数
 # 输入单维训练集Y，vector(向量)
 # 输入GMM阶数J，int
 # 输入option = 'marginal'
 # 输入算法选项 method，str
+
 
 class Marginal(Distribution):
     def model(self, data):

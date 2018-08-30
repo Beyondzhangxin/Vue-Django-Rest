@@ -18,3 +18,6 @@ class GmmConfig(models.Model):
     class Meta:
         managed = False
         db_table = 'GMM_config'
+
+    def __str__(self):
+        return self.name
