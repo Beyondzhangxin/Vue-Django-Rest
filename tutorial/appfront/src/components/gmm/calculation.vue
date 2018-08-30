@@ -395,10 +395,10 @@ export default {
 
 <style scoped>
 .calculation{
-    background: -webkit-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
+    /* background: -webkit-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
     background: -o-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
     background: -moz-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
-    background: linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
+    background: linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5)); */
     height:120%;
     margin-left:-12px;
     margin-top:-12px;

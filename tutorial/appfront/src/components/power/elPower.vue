@@ -77,12 +77,12 @@ export default {
     margin-bottom: 20px;
     width: 49%;
     float: left;
-    background: -webkit-linear-gradient(30deg, rgb(180,180,180,0.2),#355C7D);
-    background: -o-linear-gradient(30deg, rgb(180,180,180,0.2),#355C7D);
-    background: -moz-linear-gradient(30deg, rgb(180,180,180,0.2),#355C7D);
-    background: linear-gradient(30deg, rgb(180,180,180,0.2),#355C7D);
+     background-color:rgba(180, 180, 180, 0.1);
   }
 
+.box-card:hover{
+   background-color:rgba(53,92,125, 0.1);
+}
 .image1{
   height:300px;
   width:50%;

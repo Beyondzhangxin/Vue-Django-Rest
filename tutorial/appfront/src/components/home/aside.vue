@@ -154,11 +154,8 @@
     width: 100%;
     padding-right:-10px;
     overflow-x: hidden;
-    /* overflow-y: hidden; */
-    /* background-color: #fff; */
-    /* background-color:rgba(180, 180, 180, 0.2); */
     box-sizing: content-box;
-    background-color:rgb(53,92,125,0.3);
+    /* background-color:rgb(53,92,125,0.3); */
     overflow-y:hidden;
   }
 

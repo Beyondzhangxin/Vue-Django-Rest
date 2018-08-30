@@ -508,7 +508,11 @@
     background: -webkit-linear-gradient(30deg, rgb(55, 59, 68, 0.2), #355C7D);
     background: -o-linear-gradient(30deg, rgb(55, 59, 68, 0.2), #355C7D);
     background: -moz-linear-gradient(30deg, rgb(55, 59, 68, 0.2), #355C7D);
-    background: linear-gradient(30deg, rgb(55, 59, 68, 0.2), #355C7D);
+    background-color:rgba(180, 180, 180, 0.1);
+  }
+
+  .card3:hover{
+    background-color:rgba(53,92,125, 0.1);
   }
 
   .card1m span {
@@ -555,9 +559,11 @@
     background: -webkit-linear-gradient(30deg, rgb(55, 59, 68, 0.3), #355C7D);
     background: -o-linear-gradient(30deg, rgb(55, 59, 68, 0.3), #355C7D);
     background: -moz-linear-gradient(30deg, rgb(55, 59, 68, 0.3), #355C7D);
-    background: linear-gradient(30deg, rgb(55, 59, 68, 0.3), #355C7D);
+    background-color:rgba(180, 180, 180, 0.1);
   }
-
+.card1:hover{
+    background-color:rgba(53,92,125, 0.1);
+}
   .card2 {
     width: 120px;
     height: 120px;
@@ -565,7 +571,7 @@
     top: 100px;
     left: 120px;
     z-index: 1;
-    background-color: rgba(190, 30, 30, 0.4)
+    background-color: rgba(0,31,58,0.6);
   }
 
   /* .mainBody {
@@ -627,10 +633,10 @@
   .el-container {
     height: 100%;
     overflow-y: hidden;
-    background: -webkit-linear-gradient(30deg, rgb(180, 180, 180, 0.1), #355C7D);
+    /* background: -webkit-linear-gradient(30deg, rgb(180, 180, 180, 0.1), #355C7D);
     background: -o-linear-gradient(30deg, rgb(180, 180, 180, 0.1), #355C7D);
     background: -moz-linear-gradient(30deg, rgb(180, 180, 180, 0.1), #355C7D);
-    background: linear-gradient(30deg, rgb(180, 180, 180, 0.1), #355C7D);
+    background: linear-gradient(30deg, rgb(180, 180, 180, 0.1), #355C7D); */
     margin-left: -12px;
     margin-top: -12px;
   }
@@ -692,10 +698,13 @@
     background: -webkit-linear-gradient(30deg, rgb(55, 59, 68, 0.2), #355C7D);
     background: -o-linear-gradient(30deg, rgb(55, 59, 68, 0.2), #355C7D);
     background: -moz-linear-gradient(30deg, rgb(55, 59, 68, 0.2), #355C7D);
-    background: linear-gradient(30deg, rgb(55, 59, 68, 0.2), #355C7D);
+    background-color:rgba(180, 180, 180, 0.1);
 
   }
 
+  .box-card1:hover{
+    background-color:rgba(53,92,125, 0.1);
+  }
   .box {
     margin-right: 20px;
     margin-left: 30px;
@@ -722,4 +731,7 @@
     background-color: rgba(255, 255, 255, 0.3)
   }
 
+  .elcard0:hover{
+    background-color:rgba(53,92,125, 0.1);
+  }
 </style>
