@@ -624,10 +624,6 @@
     color: gray;
   }
 
-  .First {
-    height: 100%;
-  }
-
   .el-container {
     height: 100%;
     overflow-y: hidden;

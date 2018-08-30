@@ -62,7 +62,7 @@
                             prop="amount1"     
                             label="var1"
                             header-align="center">
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <el-input size="small" v-mode="scope.row.amount1" placeholder="请输入内容"  clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
                         </template>
                         </el-table-column>
@@ -70,14 +70,14 @@
                           
                             label="var2"
                             header-align="center">
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <el-input size="small" v-mode="scope.row.date" placeholder="请输入内容" clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
                         </template>
                         </el-table-column>
                         <el-table-column          
                             label="var3"
                             header-align="center">
-                         <template scope="scope">
+                         <template slot-scope="scope">
                             <el-input size="small" v-mode="scope.row.date" placeholder="请输入内容" clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
                         </template>
                         </el-table-column>
@@ -105,7 +105,7 @@
                         prop="var1"
                         label="var1"
                         header-align="center">
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <el-input size="small" v-mode="scope.row.date" clearable placeholder="请输入内容"  clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
                         </template>
                         </el-table-column>
@@ -113,7 +113,7 @@
                         prop="var2"
                         label="var2"
                         header-align="center">
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <el-input size="small" v-mode="scope.row.date" clearable placeholder="请输入内容" @change="handleEdit(scope.$index,scope.row)"></el-input>
                         </template>
                         </el-table-column>
@@ -121,7 +121,7 @@
                         prop="var3"
                         label="var3"
                         header-align="center">
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <el-input size="small" v-mode="scope.row.date" clearable placeholder="请输入内容" @change="handleEdit(scope.$index,scope.row)"></el-input>
                         </template>
                         </el-table-column>
@@ -148,7 +148,7 @@
                         prop="var1"
                         label="var1"
                         header-align="center">
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <el-input size="small" v-mode="scope.row.date" clearable placeholder="请输入内容"  clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
                         </template>
                         </el-table-column>
@@ -156,7 +156,7 @@
                         prop="var2"
                         label="var2"
                         header-align="center">
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <el-input size="small" v-mode="scope.row.date" clearable placeholder="请输入内容" @change="handleEdit(scope.$index,scope.row)"></el-input>
                         </template>
                         </el-table-column>
@@ -164,7 +164,7 @@
                         prop="var3"
                         label="var3"
                         header-align="center">
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <el-input size="small" v-mode="scope.row.date" clearable placeholder="请输入内容" @change="handleEdit(scope.$index,scope.row)"></el-input>
                         </template>
                         </el-table-column>
@@ -191,7 +191,7 @@
                         prop="var1"
                         label="var1"
                         header-align="center">
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <el-input size="small" v-mode="scope.row.date" clearable placeholder="请输入内容"  clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
                         </template>
                         </el-table-column>
