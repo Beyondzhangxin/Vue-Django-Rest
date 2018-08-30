@@ -164,7 +164,7 @@
 
 
 
-                    <el-form-item label="变量选择" prop="varables">
+                    <el-form-item label="变量选择" style=font-weight:bold prop="varables">
                             <el-select v-model="ruleForm.varables" @change="updateVarible(ruleForm.varables)" multiple clearable placeholder="选择变量">
                                 <el-option
                                     v-for="item in options4"
@@ -177,7 +177,7 @@
                 </el-row>
             </el-card>
             <el-card class="card3" v-show="ruleForm.options == 'conditional'">
-                <el-form-item label="选择输入" prop="y">
+                <el-form-item label="选择输入" style=font-weight:bold prop="y">
                     <el-table :data="ruleForm.y" border class="tjfb">
                         <el-table-column
                             prop="var"
@@ -220,7 +220,7 @@
                     </el-pagination>
                 </div>-->
                 <div class="text" v-show="ruleForm.method == 'MAP'">此处为MAP方法必填的选项</div>
-                <el-form-item label="选择输入" prop="y_hyper"  v-show="ruleForm.method == 'MAP'">
+                <el-form-item label="选择输入" prop="y_hyper" style=font-weight:bold v-show="ruleForm.method == 'MAP'">
                         <el-select v-model="ruleForm.y_hyper.system" clearable placeholder="系统">
                             <el-option
                                 v-for="item in options1"
@@ -241,7 +241,7 @@
                         </el-date-picker>
 
                 </el-form-item>
-                <el-form-item label="选择输入" prop="period"  v-show="ruleForm.method == 'MAP'">
+                <el-form-item label="选择输入" prop="period" style=font-weight:bold v-show="ruleForm.method == 'MAP'">
                     <el-input
                         class="period"
                         placeholder="输入period"
@@ -567,7 +567,7 @@ export default {
     background: -o-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
     background: -moz-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
     background: linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5)); */
-    height:140%;
+    height:100%;
     margin-left:-12px;
     margin-top:-12px;
 }

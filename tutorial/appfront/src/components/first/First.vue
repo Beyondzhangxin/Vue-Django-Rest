@@ -4,8 +4,10 @@
     <el-main>
 
       <div class="inf"><strong>多功能光伏电站系统,图书馆微电网系统电站统计</strong></div>
-      <hr width=100%                                      size=1                                      color=#bbbcbc
-      style="FILTER: alpha(opacity=100, finishopacity=0)">
+      <div class="loginout">
+          <span @click="loginout">注销登录</span>
+      </div>
+      <hr width=100%  size=1 color=#bbbcbc style="FILTER: alpha(opacity=100, finishopacity=0)">
       <div class="row0">
         <el-row>
           <el-col :span="8">
@@ -217,6 +219,7 @@
     },
 
     mounted: function () {
+
       this.envProtectData();
       this.interval = setInterval(() => {
         this.loadData();
@@ -225,7 +228,17 @@
     destroyed:function () {
       clearInterval(this.interval)
     },
+
     methods: {
+
+      // loginout
+     loginout () {
+                this.$store.dispatch('loginout').then(() => {
+                    this.$router.replace('/login')
+                })
+     },
+
+
       envProtectData(){
         this.$ajax.get('http://localhost:8000/system/getHBSJ')
           .then(function (response) {
@@ -733,5 +746,11 @@
 
   .elcard0:hover{
     background-color:rgba(53,92,125, 0.1);
+  }
+
+  .loginout{
+    float:right;
+    margin-top:-15px;
+    margin-right:15px;
   }
 </style>

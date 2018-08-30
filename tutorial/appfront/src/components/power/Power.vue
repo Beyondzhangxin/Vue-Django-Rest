@@ -290,21 +290,21 @@ export default {
     height: 1200px;
   }
 
-  .el-container {
+  /* .el-container {
     height: 100%;
     width:100%
-  }
+  } */
 
 
-  .Power {
+  /* .Power {
     height: 100%;
     width: 1500px;
     box-shadow: 1px 1px 10px 5px #c0c0c0;
-    /* margin: 60px; */
-  }
+    margin: 60px;
+  } */
 
   .el-main {
-    height: 80%;
+    height: 100%;
     background:white
   }
 
@@ -315,7 +315,7 @@ export default {
 
   .mm {
     margin-top: 14px;
-    height: 00px;
+    /* height: 00px; */
   }
 
   #main1 {
@@ -334,7 +334,7 @@ export default {
   }
 
   #li {
-    float: left;
+    /* float:left; */
     display: inline-block;
   }
 
@@ -422,6 +422,7 @@ export default {
     background: -o-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
     background: -moz-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D); */
     background: rgb(255,255,255,0.1);
+    
 }
 
 #image{
