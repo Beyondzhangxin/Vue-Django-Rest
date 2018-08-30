@@ -5,7 +5,7 @@
         <!-- 分割线 -->
         <hr width=100%   size=1   color=#bbbcbc   style="FILTER: alpha(opacity=100,finishopacity=0)">
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="ruleForm">
-            <el-card class="card0">    
+            <el-card class="card0">
                 <el-form-item label="训练目标" style=font-weight:bold prop="system">
                     <el-select v-model="ruleForm.system" clearable placeholder="选择训练系统">
                         <el-option
@@ -14,9 +14,8 @@
                             :label="item.label"
                             :value="item.value">
                         </el-option>
-                    </el-select>            
+                    </el-select>
                 </el-form-item>
-                    
                     <!--<el-col :span="3">
                         <div class="text">训练目标</div>
                     </el-col>
@@ -43,9 +42,9 @@
                         </el-select>
 
                     </el-form-item>
-                        <!--<el-select v-model="value2"  
+                        <!--<el-select v-model="value2"
                         @change="chooseModel(value2)"
-                        clearable 
+                        clearable
                         placeholder="选择概率模型">
                             <el-option
                                 v-for="item in options2"
@@ -54,13 +53,14 @@
                                 :value="item.value">
                             </el-option>
                         </el-select>-->
-                    
-                        <el-form-item label="时间选择" required>
+
+                        <el-form-item label="时间选择"  style=font-weight:bold required>
                             <el-col :span="11">
                                 <el-form-item prop="start_time">
                                     <el-date-picker
                                         v-model="ruleForm.start_time"
                                         type="datetime"
+                                        value-format="yyyy-MM-dd HH:mm:ss"
                                         placeholder="选择日期时间"
                                         default-time="12:00:00">
                                     </el-date-picker>
@@ -74,13 +74,14 @@
                                     <el-date-picker
                                         v-model="ruleForm.end_time"
                                         type="datetime"
+                                        value-format="yyyy-MM-dd HH:mm:ss"
                                         placeholder="选择日期时间"
                                         default-time="12:00:00">
                                     </el-date-picker>
                                 </el-form-item>
                             </el-col>
                         </el-form-item>
-                    
+
 
                 <!--
                 <el-col :span="5">
@@ -112,8 +113,9 @@
 
             <el-card class="card2">
                 <el-row :gutter="20">
-                    <el-form-item label="训练参数" prop="j">
+                    <el-form-item label="训练参数" style="font-weight:bold" prop="j">
                                 <el-input
+                                    class="xlcs"
                                     placeholder="输入高斯个数"
                                     v-model.number="ruleForm.j"
                                     auto-complete="off"
@@ -132,7 +134,7 @@
                         </el-input>
                     </el-col>-->
 
-                    <el-form-item label="建模算法" prop="method">
+                    <el-form-item label="建模算法" style=font-weight:bold prop="method">
                                 <el-select v-model="ruleForm.method"
                                 clearable
                                 @change="sendNoticeMessage(ruleForm.method)"
@@ -145,7 +147,7 @@
                                     </el-option>
                                 </el-select>
                     </el-form-item>
-                    
+
                     <!--<el-col :span="5">
                     <el-select v-model="value3"
                     clearable
@@ -157,9 +159,9 @@
                                 :label="item.label"
                                 :value="item.value">
                             </el-option>
-                    </el-select>   
+                    </el-select>
                     </el-col>-->
-                    
+
 
 
                     <el-form-item label="变量选择" prop="varables">
@@ -171,19 +173,23 @@
                                     :value="item.value">
                                 </el-option>
                             </el-select>
-                        
                     </el-form-item>
                 </el-row>
             </el-card>
             <el-card class="card3" v-show="ruleForm.options == 'conditional'">
                 <el-form-item label="选择输入" prop="y">
-                    <el-table :data="ruleForm.y" border>
+                    <el-table :data="ruleForm.y" border class="tjfb">
                         <el-table-column
                             prop="var"
                             label="变量"
+                            header-align="center"
                             width="250px">
                     </el-table-column>
-                    <el-table-column property="value" label="条件分布给定值" width="">
+                    <el-table-column
+                      property="value"
+                      label="条件分布给定值"
+                      border
+                      width="250px">
                         <template slot-scope="scope">
                             <el-input v-model="scope.row.value" placeholder="请输入内容"></el-input>
                         </template>
@@ -191,7 +197,7 @@
                     </el-table>
                 </el-form-item>
             </el-card>
-        
+
             <el-card class="card3">
                 <!--<div class="mid">
                 <div class="text2">Y_hyper计算超参数训练集</div>
@@ -202,7 +208,7 @@
                             <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
                                 <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
                             </el-checkbox-group>
-                        </div>      
+                        </div>
                 </div>-->
                 <!--<div class="fenye">
                     <span class="text">共7页，73条记录</span>
@@ -214,8 +220,7 @@
                     </el-pagination>
                 </div>-->
                 <div class="text" v-show="ruleForm.method == 'MAP'">此处为MAP方法必填的选项</div>
-                <el-form-item label="选择输入" prop="y_hyper" v-show="ruleForm.method == 'MAP'">
-                    
+                <el-form-item label="选择输入" prop="y_hyper"  v-show="ruleForm.method == 'MAP'">
                         <el-select v-model="ruleForm.y_hyper.system" clearable placeholder="系统">
                             <el-option
                                 v-for="item in options1"
@@ -224,26 +229,21 @@
                                 :value="item.value">
                             </el-option>
                         </el-select>
-                    
-                   
                         <el-date-picker
                             v-model="ruleForm.y_hyper.start_time"
                             type="datetime"
-                            placeholder="选择开始时间"
-                            default-time="12:00:00">
-                        </el-date-picker>    
-                    
-                    
+                            placeholder="选择开始时间">
+                        </el-date-picker>
                         <el-date-picker
                             v-model="ruleForm.y_hyper.end_time"
                             type="datetime"
-                            placeholder="选择结束时间"
-                            default-time="12:00:00">
-                        </el-date-picker> 
-                    
+                            placeholder="选择结束时间">
+                        </el-date-picker>
+
                 </el-form-item>
-                <el-form-item label="选输入" prop="period"  v-show="ruleForm.method == 'MAP'">
+                <el-form-item label="选择输入" prop="period"  v-show="ruleForm.method == 'MAP'">
                     <el-input
+                        class="period"
                         placeholder="输入period"
                         v-model.number="ruleForm.period"
                         auto-complete="off"
@@ -268,7 +268,7 @@ const cityOptions = ['类别1', '类别2', '类别3', ];
 export default {
     name:'Gmm',
     componets:{
-        
+
     },
     data(){
         //处理错误
@@ -308,7 +308,6 @@ export default {
         var checkVarables = (rule, value, callback) => {
             if (value.length == 0) {
                     callback(new Error('请输入变量'));
-                    console.log(123414)
             }
             if (value === '') {
                 callback(new Error('请输入变量'));
@@ -328,12 +327,9 @@ export default {
                 callback()
             }
 
-            if (value == null) {
-                callback(new Error('请描述一下数据特征'))
-            }
-
             Object.keys(value).forEach(function(key){
                 if(value[key] === "") {
+                    console.log(value[key]);
                     callback(new Error('特征未描述完整'))
                 }
             });
@@ -366,10 +362,10 @@ export default {
                     { required: true, message: '请选择建立的概率模型', trigger: 'change' }
                 ],
                 start_time: [
-                    { type: 'date', required: true, message: '请选择初始时间', trigger: 'change' }
+                    { type: 'string', required: true, message: '请选择初始时间', trigger: 'change' }
                 ],
                 end_time: [
-                    { type: 'date', required: true, message: '请选择结束时间', trigger: 'change' }
+                    { type: 'string', required: true, message: '请选择结束时间', trigger: 'change' }
                 ],
                 j: [
                     { required: true, message: '高斯个数不能为空', trigger: 'blur'},
@@ -393,7 +389,7 @@ export default {
             },
 
         mult: new Boolean(1),
-        
+
         //建模功能需要的功能
         timeRange:[],
         input0:"",
@@ -451,7 +447,7 @@ export default {
         value5:'',
         startTime: '',
         endTime: '',
-    
+
         tableData: [],
 
       }
@@ -477,11 +473,11 @@ export default {
                 }
             });
         },
-        
+
         resetForm(formName) {
             this.$refs[formName].resetFields();
         },
-        
+
         chooseModel(val) {
             console.log(this.value4)
             if(val == 'marginal') {
@@ -491,7 +487,7 @@ export default {
                 this.mult = new Boolean(1);
             }
         },
-        
+
         sendNoticeMessage(val) {
             if(val == 'MAP') {
                 const h = this.$createElement;
@@ -535,7 +531,7 @@ export default {
             v1 += this.ruleForm.varables[i] + " "
         }
         this.ruleForm.varables = v1;
-        
+
         this.ruleForm.y = JSON.stringify(this.ruleForm.y)
         this.ruleForm.y_hyper = JSON.stringify(this.ruleForm.y_hyper)
         instance.post(url, this.ruleForm)
@@ -556,11 +552,11 @@ export default {
         this.checkAll = checkedCount === this.cities.length;
         this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
       },
-      
+
         }
     }
-    
-    
+
+
 
 </script>
 
@@ -571,12 +567,16 @@ export default {
     background: -o-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
     background: -moz-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
     background: linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
-    height:100%;
+    height:140%;
+    margin-left:-12px;
+    margin-top:-12px;
 }
 
 .text0{
     font-weight: bold;
-    padding-top:10px;
+    padding-top:15px;
+    margin-left:80px;
+    font-size:18px;
 }
 
 .text1{
@@ -630,6 +630,19 @@ export default {
 .card3:hover{
     background-color:rgba(53,92,125, 0.1);
 }
+
+.xlcs{
+    width:12.3%;
+}
+
+.period{
+    width:12.5%
+}
+
+.tjfb{
+    width:40%;
+    margin-left: auto;
+    margin-right:auto;
+}
+
 </style>
-
-

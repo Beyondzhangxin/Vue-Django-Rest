@@ -21,6 +21,7 @@ from . import views
 
 urlpatterns = [
     url(r'model/distribution/$', views.Distribution.as_view()), #跟据请求不同转发到不同的功能
+    url(r'model/distribution/get$', views.Distribution.as_view()),
     url(r'model/distribution/marginal/$', views.Marginal.as_view()),
     url(r'model/distribution/joint/$', views.Joint.as_view()),
     url(r'model/distribution/conditional/$', views.Conditional.as_view()),
