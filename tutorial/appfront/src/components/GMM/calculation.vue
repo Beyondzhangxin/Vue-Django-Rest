@@ -45,8 +45,6 @@
                     </el-select>
                      </div>
                 </el-col>
-
-               
                 <el-col :span="8">
                      <div class="table1">
                     <el-table

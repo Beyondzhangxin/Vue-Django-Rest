@@ -66,11 +66,16 @@ export default new Router({
           path:'analysis',
           component: Analysis,
         },
-        // {
-        //   path: '/gmm',
-        //   name: 'gmm',
-        //   component: Gmm
-        // },
+        {
+          path: '/gmm',
+          name: 'gmm',
+          component: Gmm
+        },
+        {
+          path: '/calculation',
+          name: 'calculatiopn',
+          component: Calculation
+        },
       ]
     },
     {
@@ -83,16 +88,16 @@ export default new Router({
       name: 'detection',
       component: FaultDetection
     },
-    {
-      path: '/gmm',
-      name: 'gmm',
-      component: Gmm
-    },
-    {
-      path: '/calculation',
-      name: 'calculatiopn',
-      component: Calculation
-    },
+    // {
+    //   path: '/gmm',
+    //   name: 'gmm',
+    //   component: Gmm
+    // },
+    // {
+    //   path: '/calculation',
+    //   name: 'calculatiopn',
+    //   component: Calculation
+    // },
     {
       path: '/demo',
       name: 'demo',
