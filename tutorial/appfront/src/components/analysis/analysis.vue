@@ -87,9 +87,9 @@
         </el-col>
       </el-row>
       <div class="sel">
-        <el-button type="primary"  @click="" plain v-for="sel in selList"  :key="sel1" v-show="carryModel.model=='dzdb'">{{ sel.system }}</el-button>
+        <el-button type="info"  @click="" plain v-for="sel in selList"  :key="sel1" v-show="carryModel.model=='dzdb'">{{ sel.system }}</el-button>
         <span v-for="sel in selList" :key="sel2" v-show="carryModel.model=='sbdb'">
-          <el-button type="primary"  @click="" plain v-for=" dev in sel.devices" :key="dev">{{ dev }}</el-button>
+          <el-button type="info"  @click="" plain v-for=" dev in sel.devices" :key="dev">{{ dev }}</el-button>
         </span>
       </div>
     </el-main>
@@ -120,11 +120,11 @@
     methods: {
       changeColor(num) {
         if(num == 1) {
-          this.$refs.button1.type = "primary";
+          this.$refs.button1.type = "";
           this.$refs.button2.type = "";
         }
         if(num == 2) {
-          this.$refs.button2.type = "primary"
+          this.$refs.button2.type = ""
           this.$refs.button1.type = "";
         }
       },
@@ -364,18 +364,20 @@
   }
 
   #header {
-    background: white;
+    /* background: white; */
     padding-top: 10px;
-    background-color: rgba(180, 180, 180, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
   }
 
   #button {
-    background-color: rgba(255, 255, 255, 0.1)
+    background-color: rgba(255, 255, 255, 0.1);
+    color:#000000;
+
 
   }
 
   #text {
-    color: whitesmoke;
+    /* color: whitesmoke; */
   }
 
   #button1 {
@@ -391,6 +393,7 @@
     margin-bottom: 10px;
     padding-right: 10px;
     padding-left: 10px;
+    
   }
 
   #text {
@@ -432,7 +435,7 @@
   }
 
   #main2 {
-    background-color: rgba(180, 180, 180, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
   }
 
   #main3 {
@@ -441,7 +444,7 @@
   }
 
 #text0{
-  color: aliceblue;
+  /* color: aliceblue; */
   padding-right: 20px;
 }
 
@@ -449,14 +452,14 @@
   #text1 {
     padding-right: 20px;
     /* margin-bottom: 10px; */
-    color: aliceblue;
+    /* color: aliceblue; */
   }
 
   .text2 {
     float: left;
     margin-top: 20px;
     margin-left: 20px;
-    color: aliceblue;
+    /* color: aliceblue; */
   }
 
   .sel {
@@ -469,10 +472,10 @@
 
 .card0{
     margin-top:-13px;
-    background: -webkit-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+    /* background: -webkit-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
     background: -o-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
-    background: -moz-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
-    background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+    background: -moz-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D); */
+    background: rgb(255,255,255,0.1);
     margin-left:-13px;
 }
 

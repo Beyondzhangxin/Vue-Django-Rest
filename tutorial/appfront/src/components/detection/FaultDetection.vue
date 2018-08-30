@@ -83,9 +83,9 @@
         state: 'ALL',
         clickedCard: '撤销',
         unClickCard: '帮助过滤',
-        card1State: '帮助过滤',
-        card2State: '帮助过滤',
-        card3State: '帮助过滤',
+        card1State: '筛选停机设备',
+        card2State: '筛选告警设备',
+        card3State: '筛选离线设备',
         // pageSize: 2
       }
     },
@@ -254,10 +254,10 @@
 }
 
 .detection{
-    background: -webkit-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+    /* background: -webkit-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
     background: -o-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
     background: -moz-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
-    background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+    background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D); */
     height:100%;
     margin-left:-12px;
 }

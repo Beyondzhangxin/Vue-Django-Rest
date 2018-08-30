@@ -394,38 +394,34 @@ export default {
 
 }
 
-/* .row{
-  padding: 10px;
-  height: 70px;
-  padding-top: 20px;
-} */
 
 .card1{
-     /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D); */
-    background-color:rgba(180, 180, 180, 0.1);
+   
     margin-top:20px;
     margin-right:30px;
     margin-left:10px;
+    background-color:rgba(180, 180, 180, 0.1);
 }
 
-.card2{
-     /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D); */
+.card1:hover{
+  background-color:rgba(53,92,125, 0.1);
+}
+
+.card2{   
     background-color:rgba(180, 180, 180, 0.1);
     margin-right:30px;
     margin-left:10px;
 }
 
+.card2:hover{
+    background-color:rgba(53,92,125, 0.1);
+}
+
 .el-main{
-   background: -webkit-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+   /* background: -webkit-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
     background: -o-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
-    background: -moz-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
-    background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
+    background: -moz-linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D); */
+    background: rgb(255,255,255,0.1);
 }
 
 #image{
