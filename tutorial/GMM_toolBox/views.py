@@ -66,12 +66,14 @@ def getSamples(gmmConfig):
     }
     start = datetime.datetime.strptime(gmmConfig['start_time'], "%Y-%m-%d %H:%M:%S")
     end = datetime.datetime.strptime(gmmConfig['end_time'], "%Y-%m-%d %H:%M:%S")
-    response = {}
     try:
         samples = switch[gmmConfig['system']]
         samples = samples.objects.filter(datatime__range=(start, end))
+        print(gmmConfig['varables'])
         gmmConfig['varables'] = gmmConfig['varables'].lower()
-        samples = samples.values_list(*tuple(json.loads(gmmConfig['varables'])), flat=True)
+        print(gmmConfig['varables'])
+        samples = samples.values_list(*tuple(json.loads(gmmConfig['varables'])))
+        print(samples)
         return samples
     except Exception as e:
         print(e)
@@ -122,27 +124,25 @@ class DistributionList(generics.ListAPIView):
     #         print(getSamples(dict(request.query_params)))
     #         return Response(123)
 
-# 根据name得到config过滤的矩阵
 
+# 根据name得到config过滤的矩阵
 # GMM_Distribution函数
 # 输入单维训练集Y，vector(向量)
 # 输入GMM阶数J，int
 # 输入option = 'marginal'
 # 输入算法选项 method，str
-
-
 class Marginal:
     def model(self, data):
         engine = matlabEngineEnv()
-        y = np.array(data.get('vector')).T
+        y = data.get('vector')
         j = data.get('j')
         option = 'marginal'
         # 纵向量
         # 将数据封装成matlab格式
-        array = matlab.double(list(y))
-        print(array)
+        row_vec = np.array(y)
+        col_vec = np.array([row_vec]).T
+        array = matlab.double(col_vec.tolist())
         J = matlab.int8([j])
-        # array = matlab.double([[(random.random()) * 100000 // 1 / 10000] for x in range(1000)])
         return engine.GMM_Distribution(array, J, 'EM', 'marginal')
 
 # GMM_Distribution函数
@@ -155,11 +155,13 @@ class Marginal:
 class Joint:
     def model(self, data):
         engine = matlabEngineEnv()
-        y = np.array(data.get('matrix')).T
-        j = data.get('J')
-        method = data.get('method')
+        y = data.get('matrix')
+        j = data.get('j')
         option = 'joint'
-        array = matlab.double(list(y))
+        # row_vec = np.array(y)
+        # col_vec = np.array([row_vec]).T
+        print(y)
+        array = matlab.double(y)
         j = matlab.int8([j])
         return engine.GMM_Distribution(array, j, 'EM', option)
 
@@ -176,7 +178,7 @@ class Conditional:
         engine = matlabEngineEnv()
         y1 = data.get('matrix')
         y2 = data.get('vector')
-        j = data.get('J')
+        j = data.get('j')
         method = data.get('method')
         option = 'conditional'
         array = matlab.double([y1])
@@ -197,18 +199,19 @@ class GetMatrix(DistributionList, Marginal, Joint, Conditional):
             return self.get_paginated_response(serializer.data)
         serializer = self.get_serializer(queryset, many=False)
         data = serializer.data
+        print(data)
         # 可代替方案
         # 建立模型
         if data['options'] == 'marginal':
             config = self.formatData(data, getSamples(data))
-            Marginal.model(self, config)
+            model = Marginal.model(self, config)
 
         # 计算功能
         if data['options'] == 'joint':
-            data = self.formatData(serializer.data, getSamples(serializer.data))
-            Joint.model(data)
+            data = self.formatData(serializer.data, getSamples(data))
+            Joint.model(self, data)
         if data['options'] == 'conditional':
-            data = self.formatData(serializer.data, getSamples(serializer.data))
+            data = self.formatData(serializer.data, getSamples(data))
             Conditional.model(data)
 
         # 根据具体方法建模
@@ -217,14 +220,27 @@ class GetMatrix(DistributionList, Marginal, Joint, Conditional):
     def formatData(self, data={}, y=[]):
         if data['options'] == 'marginal':
             print(y)
-            data['vector'] = [x for x in y]
+            data['vector'] = [int(*x) for x in y]
         if data['options'] == 'joint':
-            data['matrix'] = [x for x in y]
+
+            data['matrix'] = [list(int(z) for z in x) for x in y]
+            print(data['matrix'])
         if data['options'] == 'conditional':
             data['vector'] = [x for x in y]
         return data
 
-
+    def GMM_plot(self, distribution, options, x, varargin = None):
+        engine = matlabEngineEnv()
+        if options == 'singlePDF':
+            engine.GMM_plot(distribution, options, )
+        if options == 'multiPDF':
+            engine.GMM_plot()
+        if options == 'testPDF':
+            engine.GMM_plot
+        if options == 'singleCDF':
+            engine.GMM_plot
+        if options == 'multiCDF':
+            engine.GMM_plot
 # GMM_Distribution函数
 # 输入多维训练集 Y，matrix
 # 输入GMM阶数 J，int
