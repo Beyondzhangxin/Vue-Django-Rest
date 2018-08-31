@@ -395,11 +395,11 @@ export default {
         input0:"",
         input1:"",
         options1:[{
-            value:'图书馆微电网系统',
+            value:'SPGS',
             label:'图书馆微电网系统',
         },
         {
-            value:'多功能光伏电站系统',
+            value:'PVMG',
             label:'多功能光伏电站系统',
         }
         ],

@@ -1,5 +1,6 @@
 import datetime
 
+import random
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -132,7 +133,9 @@ class DistributionList(generics.ListAPIView):
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
-
+    """
+        通过名称得到config.
+    """
     def get_queryset(self):
         queryset = GmmConfig.objects
         name = self.request.query_params.get('name', None)
@@ -149,7 +152,6 @@ class DistributionList(generics.ListAPIView):
             serializer = self.get_serializer(page, many=False)
             return self.get_paginated_response(serializer.data)
         serializer = self.get_serializer(queryset, many=False)
-        print(serializer.data)
         return Response(serializer.data)
 
     # def list(self, request, *args, **kwargs):
@@ -167,8 +169,34 @@ class DistributionList(generics.ListAPIView):
 
 # 根据name得到config过滤的矩阵
 
+# GMM_Distribution函数
+# 输入单维训练集Y，vector(向量)
+# 输入GMM阶数J，int
+# 输入option = 'marginal'
+# 输入算法选项 method，str
 
-class GetMatrix(DistributionList):
+
+class Marginal():
+
+    def model(self, data):
+        import matlab.engine
+        import matlab
+        engine = matlab.engine.start_matlab()
+        y = data.get('vector')
+        j = data.get('j')
+        option = 'marginal'
+        # 纵向量
+        # 将数据封装成matlab格式
+
+        array = matlab.double(y)
+        array.reshape((len(y), 1))
+        J = matlab.int8([5])
+        array = matlab.double([[(random.random()) * 100000 // 1 / 10000] for x in range(1000)])
+        num = matlab.int8([5])
+        return engine.GMM_Distribution(array, num, 'EM', 'marginal')
+
+
+class GetMatrix(DistributionList, Marginal):
     """
             List a queryset.
     """
@@ -179,36 +207,20 @@ class GetMatrix(DistributionList):
             serializer = self.get_serializer(page, many=False)
             return self.get_paginated_response(serializer.data)
         serializer = self.get_serializer(queryset, many=False)
-        print(serializer.data)
-        print(getSamples(serializer.data))
+        data = self.formatData(serializer.data, getSamples(serializer.data))
+        print(data)
+        print(self.model(data))
         return Response(serializer.data)
 
-
-# GMM_Distribution函数
-# 输入单维训练集Y，vector(向量)
-# 输入GMM阶数J，int
-# 输入option = 'marginal'
-# 输入算法选项 method，str
-
-
-class Marginal(Distribution):
-    def model(self, data):
-        engine = matlabEngineEnv()
-        y = data.get('vector')
-        j = data.get('J')
-        option = 'marginal'
-        # 纵向量
-        # 将数据封装成matlab格式
-        array = matlab.double([y])
-        J = matlab.int8([j])
-        return engine.GMM_Distribution(array, J, 'EM', option)
-
-
+    def formatData(self, data={}, y=[]):
+        data['vector'] = [int(x) for x in y]
+        return data
 # GMM_Distribution函数
 # 输入多维训练集Y，matrix(矩阵)
 # 输入GMM阶数J，int
 # 输入option = 'marginal'
 # 输入算法选项 method，str
+
 
 class Joint(Distribution):
     def model(self, data):

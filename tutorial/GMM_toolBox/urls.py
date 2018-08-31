@@ -22,11 +22,11 @@ from . import views
 urlpatterns = [
     url(r'model/distribution/$', views.Distribution.as_view()), #跟据请求不同转发到不同的功能
     url(r'model/distribution/get$', views.GetMatrix.as_view()),
-    url(r'model/distribution/marginal/$', views.Marginal.as_view()),
-    url(r'model/distribution/joint/$', views.Joint.as_view()),
-    url(r'model/distribution/conditional/$', views.Conditional.as_view()),
-    url(r'model/distribution/EM/$', views.EM.as_view()),
-    url(r'model/distribution/MAP/$', views.MAP.as_view()),
+    # url(r'model/distribution/marginal/$', views.Marginal.as_view()),
+    # url(r'model/distribution/joint/$', views.Joint.as_view()),
+    # url(r'model/distribution/conditional/$', views.Conditional.as_view()),
+    # url(r'model/distribution/EM/$', views.EM.as_view()),
+    # url(r'model/distribution/MAP/$', views.MAP.as_view()),
     url(r'compute/calculation/$', views.Calculation.as_view()), #跟据请求不同转发到不同的功能
     url(r'compute/calculation/PDF/$', views.PDF.as_view()),
     url(r'compute/calculation/CDF/$', views.CDF.as_view()),
