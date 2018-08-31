@@ -5,7 +5,7 @@
         <!-- 分割线 -->
         <hr width=100%   size=1   color=#bbbcbc   style="FILTER: alpha(opacity=100,finishopacity=0)">
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="ruleForm">
-            <el-card class="card0">
+            <el-card class="card1">
                 <el-form-item label="训练目标" style=font-weight:bold prop="system">
                     <el-select v-model="ruleForm.system" clearable placeholder="选择训练系统">
                         <el-option
@@ -599,14 +599,14 @@ export default {
     margin-left:50px;
     margin-top:50px;
 } */
-.card0{
+.card1{
     margin-top:10px;
     margin-bottom:20px;
     background-color:rgba(255, 255, 255, 0.1);
     /* box-shadow: 10px 5px 20px #888888; */
 }
 
-.card0:hover{
+.card1:hover{
     background-color:rgba(53,92,125, 0.1);
 }
 
