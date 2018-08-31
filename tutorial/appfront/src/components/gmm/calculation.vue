@@ -7,7 +7,7 @@
 
         <el-card class="card1">
             <el-row :gutter="20">
-                <el-col :span="4">
+                <el-col :span="5">
                 <div class="select">
                 <el-select v-model="value1" clearable placeholder="选择模型配置">
                     <el-option
@@ -20,7 +20,7 @@
                 </div>
                 </el-col>
 
-                <el-col :span="4">
+                <el-col :span="5">
                     <div class="select">
                     <el-select v-model="value2" clearable @click="showCont" placeholder="选择输出结果">
                     <el-option
@@ -33,7 +33,7 @@
                     </div>
                 </el-col>
 
-                 <el-col :span="4">
+                 <el-col :span="5">
                      <div class="select">
                     <el-select  v-model="value3" clearable placeholder="KL或RMSE对比模型配置">
                     <el-option
@@ -45,7 +45,7 @@
                     </el-select>
                      </div>
                 </el-col>
-                <el-col :span="8">
+                <!-- <el-col :span="8">
                      <div class="table1">
                     <el-table
                         :data="tableData1"
@@ -81,7 +81,7 @@
                         </el-table-column>
                     </el-table>
                     </div>
-                </el-col>
+                </el-col> -->
             </el-row>
         </el-card>
 
@@ -124,6 +124,48 @@
                         </template>
                         </el-table-column>
                     </el-table>
+                </el-col>
+
+                <!-- 占位 -->
+                <el-col :span="4">
+                    <div style="visibility:hidden">123</div>
+                </el-col>
+
+                 <el-col :span="8">
+                     <div class="table1">
+                    <el-table
+                        :data="tableData1"
+                        border
+                        style="width: 100%; margin-top: 20px">
+                        <el-table-column
+                            prop="id"
+                            label="参数y"
+                            header-align="center">
+                        </el-table-column>
+                        <el-table-column
+                            prop="amount1"     
+                            label="var1"
+                            header-align="center">
+                        <template slot-scope="scope">
+                            <el-input size="small" v-mode="scope.row.amount1" placeholder="请输入内容"  clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
+                        </template>
+                        </el-table-column>
+                        <el-table-column                 
+                            label="var2"
+                            header-align="center">
+                        <template slot-scope="scope">
+                            <el-input size="small" v-mode="scope.row.date" placeholder="请输入内容" clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
+                        </template>
+                        </el-table-column>
+                        <el-table-column          
+                            label="var3"
+                            header-align="center">
+                         <template slot-scope="scope">
+                            <el-input size="small" v-mode="scope.row.date" placeholder="请输入内容" clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
+                        </template>
+                        </el-table-column>
+                    </el-table>
+                    </div>
                 </el-col>
                 </div>
             </el-row>
@@ -393,10 +435,7 @@ export default {
 
 <style scoped>
 .calculation{
-    /* background: -webkit-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
-    background: -o-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
-    background: -moz-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
-    background: linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5)); */
+    background-color:rgba(255, 255, 255, 0.1);
     height:120%;
     margin-left:-12px;
     margin-top:-12px;
@@ -405,12 +444,15 @@ export default {
 .text0{
     font-weight: bold;
     padding-top:15px;
-    font-size:18px;
+    font-size:20px;
+    font-family:"Microsoft YaHei"
+    
 }
 
 .card1{
     background-color:rgba(255, 255, 255, 0.2);
     margin-top:10px;
+    box-shadow: 10px 5px 20px #888888;
 }
 
 .card1:hover{
@@ -422,16 +464,19 @@ export default {
 }
 
 .select{
-    margin-top:40px;
+    margin-top:30px;
+    padding-bottom:30px;
 }
 
-.text{
+/* .text{
     margin-top:20px;
-}
+    font-weight:bold;
+} */
 
 .card2{
     background-color:rgba(255, 255, 255, 0.2);
     margin-top:20px;
+    box-shadow: 10px 5px 20px #888888;
 }
 
 .card2:hover{
@@ -453,29 +498,35 @@ export default {
 
 .input{
     margin-left:-10px;
+    margin-bottom:5px;
 }
 
 .input0{
     margin-left:150px;
+    margin-bottom:5px;
 }
 
 .text{
     margin-left:-80px;
-    margin-top:30px;
+    margin-top:60px;
+    font-weight:bold;
 }
 
 .text1{
     margin-top:50px;
     margin-left:-70px;
+    font-weight:bold;
 }
 
 .text1-1{
     margin-top:50px;
     margin-left:-70px;
+    font-weight:bold;
 }
 .text2{
     margin-left:-35px;
     margin-top:15px;
+    font-weight:bold;
 }
 
 .tb-edit .el-input {

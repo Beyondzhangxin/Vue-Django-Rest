@@ -1,8 +1,8 @@
 <template>
   <el-card class="box-card" >
-    <div slot="header" class="clearfix">
+    <div slot="header">
       <span>{{ id }}</span>
-      <el-button style="float: right; padding: 3px 0" type="text"></el-button>
+      <!-- <el-button style="float: right; padding: 3px 0" type="text"></el-button> -->
     </div>
     <div class="text item">
       <img class="image1" ref="image" src="..\..\assets\SHGF.jpg">
@@ -63,21 +63,22 @@ export default {
     margin-bottom: 18px;
   }
 
-  .clearfix:before,
+  /* .clearfix:before,
   .clearfix:after {
     display: table;
     content: "";
   }
   .clearfix:after {
     clear: both
-  }
+  } */
 
   .box-card {
-    height: 600px;
-    margin-bottom: 20px;
+    height: 100%;
+    /* margin-bottom: 20px; */
     width: 49%;
     float: left;
-     background-color:rgba(180, 180, 180, 0.1);
+    background-color:rgba(180, 180, 180, 0.1);
+    /* margin-left:10px; */
   }
 
 .box-card:hover{
