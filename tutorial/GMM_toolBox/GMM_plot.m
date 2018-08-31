@@ -54,6 +54,8 @@ switch options
         else
             GMM = gmdistribution(distribution.mu,distribution.sigma,distribution.w');
             plot(x,pdf(GMM,x));
+            saveas(gcf,'result.png')
+
         end
         
     case 'multiPDF'
@@ -70,6 +72,7 @@ switch options
             X = [x(:) y(:)];
             Z = pdf(GMM,X);
             surf(x,y,reshape(Z,N,N));
+            saveas(gcf,'result.png')
         end
         
     case 'testPDF'
@@ -85,6 +88,7 @@ switch options
             hold on
             GMM = gmdistribution(distribution.mu,distribution.sigma,distribution.w');
             plot(x,pdf(GMM,x));
+            saveas(gcf,'result.png')
         end
         
     case 'singleCDF'
@@ -96,6 +100,7 @@ switch options
         else
             GMM = gmdistribution(distribution.mu,distribution.sigma,distribution.w');
             plot(x,cdf(GMM,x));
+            saveas(gcf,'result.png')
         end
         
     case 'multiCDF'
@@ -112,6 +117,7 @@ switch options
             X = [x(:) y(:)];
             Z = cdf(GMM,X);
             surf(x,y,reshape(Z,N,N));
+            saveas(gcf,'result.png')
         end
         
 end
