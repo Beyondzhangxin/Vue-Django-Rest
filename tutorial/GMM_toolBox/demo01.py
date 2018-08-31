@@ -1,13 +1,20 @@
-def getSamples(gmmConfig):
-    switch = {
-        "SPGS": DataSpgsHistory,
-        "PVMG": DataPvmgHistory,
-    }
-    start = datetime.datetime.strptime(gmmConfig.start_time, "%Y-%m-%dT%H:%M:%S.%ZZ")
-    end = datetime.datetime.strptime(gmmConfig.end_time, "%Y-%m-%dT%H:%M:%S.%ZZ")
-    response = {}
-    try:
-        samples = switch[gmmConfig.system].objects.filter(datatime_range=(start,end)).values_list(json.loads(gmmConfig.varables), flat=True)
-        return samples
-    except Exception as e:
-        return []
+import matlab.engine
+import matlab
+import numpy as np
+import random
+
+
+engine = matlab.engine.start_matlab()
+array = matlab.double([[(random.random() - np.random.randn()) * 100000 // 1 / 10000] for x in range(1000)])
+# array = matlab.double([[0,0,0,0,0,0,0,0]])
+print(len(array))
+print(array)
+num = matlab.int8([5])
+distribution = engine.GMM_Distribution(array, num, 'EM', 'marginal')
+print(distribution)
+
+x = matlab.double([[x*10//1/10] for x in np.arange(0, 31, 0.1)])
+print(x)
+print(len(x))
+y = 1
+engine.GMM_plot(distribution, 'singleCDF', x, y)
