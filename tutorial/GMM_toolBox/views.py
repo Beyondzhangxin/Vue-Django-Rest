@@ -139,9 +139,10 @@ class Marginal:
         option = 'marginal'
         # 纵向量
         # 将数据封装成matlab格式
-        row_vec = np.array(y)
-        col_vec = np.array([row_vec]).T
-        array = matlab.double(col_vec.tolist())
+        # row_vec = np.array(y)
+        # col_vec = np.array([row_vec]).T
+        # array = matlab.double(col_vec.tolist())
+        array = matlab.double(y)
         J = matlab.int8([j])
         return engine.GMM_Distribution(array, J, 'EM', 'marginal')
 
@@ -205,7 +206,8 @@ class GetMatrix(DistributionList, Marginal, Joint, Conditional):
         if data['options'] == 'marginal':
             config = self.formatData(data, getSamples(data))
             model = Marginal.model(self, config)
-
+            print(model)
+            self.GMM_plot(distribution=model, options='singlePDF')
         # 计算功能
         if data['options'] == 'joint':
             data = self.formatData(serializer.data, getSamples(data))
@@ -220,27 +222,32 @@ class GetMatrix(DistributionList, Marginal, Joint, Conditional):
     def formatData(self, data={}, y=[]):
         if data['options'] == 'marginal':
             print(y)
-            data['vector'] = [int(*x) for x in y]
+            data['vector'] = [list(int(z) for z in x) for x in y]
         if data['options'] == 'joint':
-
             data['matrix'] = [list(int(z) for z in x) for x in y]
             print(data['matrix'])
         if data['options'] == 'conditional':
             data['vector'] = [x for x in y]
         return data
 
-    def GMM_plot(self, distribution, options, x, varargin = None):
+    def GMM_plot(self, distribution, options, x=None, y=None, Y_test=None, Y_tenum_intervalst=None):
         engine = matlabEngineEnv()
+        x = matlab.double([[x] for x in np.arange(-4, 12, 0.1)])
+        if y is not None:
+            y = [[y] for y in np.arange(-10, 22, 0.2)]
         if options == 'singlePDF':
-            engine.GMM_plot(distribution, options, )
+            print([[x*10//1/10] for x in np.arange(-10, 30, 0.1)])
+            x = matlab.double([[x] for x in np.arange(-10, 30, 0.1)])
+            print(len(x))
+            engine.GMM_plot(distribution, options, x)
         if options == 'multiPDF':
-            engine.GMM_plot()
+            engine.GMM_plot(distribution, options, x, y)
         if options == 'testPDF':
-            engine.GMM_plot
+            engine.GMM_plot(distribution, options, x, Y_test, Y_tenum_intervalst)
         if options == 'singleCDF':
-            engine.GMM_plot
+            engine.GMM_plot(distribution, options, x)
         if options == 'multiCDF':
-            engine.GMM_plot
+            engine.GMM_plot(distribution, options, x, y)
 # GMM_Distribution函数
 # 输入多维训练集 Y，matrix
 # 输入GMM阶数 J，int
