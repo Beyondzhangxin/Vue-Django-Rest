@@ -571,7 +571,8 @@ export default {
     font-weight: bold;
     padding-top:15px;
     margin-left:80px;
-    font-size:18px;
+    font-size:20px;
+    font-family:"Microsoft YaHei"
 }
 
 .text1{
@@ -593,15 +594,16 @@ export default {
     margin-left:60px;
 }
 
-.fenye{
+/* .fenye{
     float:left;
     margin-left:50px;
     margin-top:50px;
-}
+} */
 .card0{
     margin-top:10px;
-    margin-bottom:10px;
+    margin-bottom:20px;
     background-color:rgba(255, 255, 255, 0.1);
+    /* box-shadow: 10px 5px 20px #888888; */
 }
 
 .card0:hover{
@@ -609,13 +611,15 @@ export default {
 }
 
 .card3{
-    margin-top:10px;
+    margin-top:20px;
     margin-bottom:10px;
     background-color:rgba(255, 255, 255, 0.2);
+    /* box-shadow: 10px 5px 20px #888888; */
 }
 
 .card2{
     background-color:rgba(255, 255, 255, 0.2);
+    /* box-shadow: 10px 5px 20px #888888; */
 }
 
 .card2:hover{
