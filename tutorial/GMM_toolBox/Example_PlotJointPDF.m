@@ -13,4 +13,4 @@ y = [-10:0.2:22]';
 distribution = GMM_Distribution(Y,5,'EM','joint');  % 选用EM算法,阶数选择为5
 
 %% 绘制
-GMM_plot(distribution,'multiPDF',x,y); 
+GMM_plot(distribution,'testPDF',x,y); 
