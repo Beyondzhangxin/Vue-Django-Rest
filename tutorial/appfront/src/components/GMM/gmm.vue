@@ -7,7 +7,7 @@
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="ruleForm">
       <el-card class="card0">
         <el-form-item label="训练目标" style=font-weight:bold prop="system">
-          <el-select v-model="ruleForm.system" clearable placeholder="选择训练系统">
+          <el-select v-on:change="indexSelect()" v-model="ruleForm.system" clearable placeholder="选择训练系统">
             <el-option
               v-for="item in options1"
               :key="item.value"
@@ -16,20 +16,6 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <!--<el-col :span="3">
-            <div class="text">训练目标</div>
-        </el-col>
-        <el-col :span="5">
-            <el-select v-model="value1" clearable placeholder="选择训练系统">
-                <el-option
-                    v-for="item in options1"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value">
-                </el-option>
-            </el-select>
-        </el-col>-->
-
 
         <el-form-item label="概率模型" style=font-weight:bold prop="options">
           <el-select v-model="ruleForm.options" clearable placeholder="选择概率模型">
@@ -42,18 +28,6 @@
           </el-select>
 
         </el-form-item>
-        <!--<el-select v-model="value2"
-        @change="chooseModel(value2)"
-        clearable
-        placeholder="选择概率模型">
-            <el-option
-                v-for="item in options2"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value">
-            </el-option>
-        </el-select>-->
-
         <el-form-item label="时间选择" style=font-weight:bold required>
           <el-col :span="11">
             <el-form-item prop="start_time">
@@ -81,34 +55,6 @@
             </el-form-item>
           </el-col>
         </el-form-item>
-
-
-        <!--
-        <el-col :span="5">
-            <el-time-select
-                    placeholder="起始时间"
-                    v-model="startTime"
-                    :picker-options="{
-                    start: '08:30',
-                    step: '00:15',
-                    end: '18:30'
-                    }">
-            </el-time-select>
-        </el-col>
-
-        <el-col :span="5">
-            <el-time-select
-                    placeholder="结束时间"
-                    v-model="endTime"
-                    :picker-options="{
-                    start: '08:30',
-                    step: '00:15',
-                    end: '18:30',
-                    minTime: startTime
-                    }">
-            </el-time-select>
-        </el-col> -->
-        </el-row>
       </el-card>
 
       <el-card class="card2">
@@ -122,17 +68,6 @@
               clearable>
             </el-input>
           </el-form-item>
-          <!--<el-col :span="3">
-              <div class="text">训练参数</div>
-          </el-col>
-
-          <el-col :span="3">
-              <el-input
-                  placeholder="输入高斯个数"
-                  v-model="input0"
-                  clearable>
-              </el-input>
-          </el-col>-->
 
           <el-form-item label="建模算法" style=font-weight:bold prop="method">
             <el-select v-model="ruleForm.method"
@@ -148,29 +83,14 @@
             </el-select>
           </el-form-item>
 
-          <!--<el-col :span="5">
-          <el-select v-model="value3"
-          clearable
-          @change="sendNoticeMessage(value3)"
-          placeholder="选择算法">
-                  <el-option
-                      v-for="item in options3"
-                      :key="item.value"
-                      :label="item.label"
-                      :value="item.value">
-                  </el-option>
-          </el-select>
-          </el-col>-->
-
-
           <el-form-item label="变量选择" style=font-weight:bold prop="varables">
-            <el-select v-model="ruleForm.varables" @change="updateVarible(ruleForm.varables)" multiple clearable
+            <el-select v-model="ruleForm.varables" multiple
                        placeholder="选择变量">
               <el-option
                 v-for="item in options4"
                 :key="item.pk"
-                :label="item.paramname"
-                :value="item.systemtype">
+                :label="item.fields.paramname"
+                :value="item.fields.systemtype">
               </el-option>
             </el-select>
           </el-form-item>
@@ -199,26 +119,6 @@
       </el-card>
 
       <el-card class="card3">
-        <!--<div class="mid">
-        <div class="text2">Y_hyper计算超参数训练集</div>
-        <div class="model">
-            <span>筛选条件：</span>
-            <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全部</el-checkbox>
-                <div style="margin: 15px 0;"></div>
-                    <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
-                        <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
-                    </el-checkbox-group>
-                </div>
-        </div>-->
-        <!--<div class="fenye">
-            <span class="text">共7页，73条记录</span>
-            <el-pagination
-                small
-                background
-                layout="prev, pager, next"
-                :total="70">
-            </el-pagination>
-        </div>-->
         <div class="text" v-show="ruleForm.method == 'MAP'">此处为MAP方法必填的选项</div>
         <el-form-item label="选择输入" prop="y_hyper" style=font-weight:bold v-show="ruleForm.method == 'MAP'">
           <el-select v-model="ruleForm.y_hyper.system" clearable placeholder="系统">
@@ -264,6 +164,7 @@
 <script>
 
   import API from '../../api/api_tasks';
+
   const cityOptions = ['类别1', '类别2', '类别3',];
   export default {
     name: 'Gmm',
@@ -286,21 +187,6 @@
         if (value.length == 0) {
           callback(new Error('请选择变量'));
         }
-        // if (value.length == 0) {
-        //         callback(new Error('请输入变量'));
-        // }
-        // if (value === '') {
-        //     callback(new Error('请输入变量'));
-        // } else {
-        //     if (this.ruleForm.varables !== '') {
-        //         if(this.ruleForm.options == 'marginal') {
-        //             if(value.length > 1){
-        //                 callback(new Error('在marginal模型下只能有一个变量'));
-        //             }
-        //         }
-        //     }
-        //     callback();
-        // }
         callback();
       };
       var checkVarables = (rule, value, callback) => {
@@ -352,8 +238,6 @@
         },
         rules: {
           system: [
-            // { required: true, message: '请输入活动名称', trigger: 'blur' },
-            // { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
             {required: true, message: '请选择活动区域', trigger: 'change'}
           ],
           options: [
@@ -428,132 +312,128 @@
           }],
         value3: '',
 
-        // options4:[{
-        //     value:'NBQGL10',
-        //     label:'NBQGL10',
-        // },
-        // {
-        //     value:'FDZGL',
-        //     label:'FDZGL',
-        // },
-        // {
-        //     value:'FZ',
-        //     label:'FZ',
-        // }
-        // ],
+        options4: [],
         value4: '',
         value5: '',
         startTime: '',
         endTime: '',
-
+        B: 'test',
         tableData: [],
 
       }
     },
-    computed: {
-      options4: function () {
+    methods: {
+      indexSelect: function () {
         var systemType = this.ruleForm.system;
         API.getSystemVariables({"systemType": systemType}).then(data => {
-          return data;
+          this.options4 = JSON.parse(data.data);
+          console.log(this.options4);
         });
       }
     },
-    methods: {
-      updateVarible(val) {
-        this.ruleForm.y = []
-        for (var i = 0; i < val.length; i++) {
-          this.ruleForm.y.push({
-            var: val[i],
-            value: '0',
-          })
-        }
-      },
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            this.saveModel();
-          } else {
-            console.log('没有传输成功!!');
-            return false;
-          }
-        });
-      },
-
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
-      },
-
-      chooseModel(val) {
-        console.log(this.value4)
-        if (val == 'marginal') {
-          this.mult = new Boolean(0);
-        }
-        if (val != 'marginal') {
-          this.mult = new Boolean(1);
-        }
-      },
-
-      sendNoticeMessage(val) {
-        if (val == 'MAP') {
-          const h = this.$createElement;
-          this.$notify({
-            title: '使用MAP函数的提示',
-            message: h('i', {style: 'color: teal'}, '前提：对要刻画的随机变量有了深入的认识 方案：输入超参训练集，自动归纳超参数')
-          });
-        }
-      },
-
-      saveModel() {
-        this.$prompt('请输入保存模型名称（四字以上）', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          //支持汉字和英文
-          inputPattern: /^[\u4E00-\u9FA5A-Za-z0-9]{4,}$/,
-          inputErrorMessage: '模型名称不正确'
-        }).then(({value}) => {
-          this.ruleForm.name = value
-          this.$message({
-            type: 'success',
-            message: '模型名称是: ' + value
-          });
-          //发送POST请求
-          this.$router.push('/calculation')
-          this.postDSTConfig('http://127.0.0.1:8000/GMM/model/distribution/')
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '取消输入'
-          });
-        });
-      },
-
-      postDSTConfig(url) {
-        var instance = this.$ajax.create({
-          headers: {'Content-Type': 'application/json'}
-        });
-        this.ruleForm.varables = JSON.stringify(this.ruleForm.varables)
-        this.ruleForm.y = JSON.stringify(this.ruleForm.y)
-        this.ruleForm.y_hyper = JSON.stringify(this.ruleForm.y_hyper)
-        instance.post(url, this.ruleForm)
-          .then(function (response) {
-            //处理数据
-            console.log(response)
-          }.bind(this))
-          .catch(function (error) {
-            return 0;
-          });
-      },
-      handleCheckAllChange(val) {
-        this.checkedCities = val ? cityOptions : [];
-        this.isIndeterminate = false;
-      },
-      handleCheckedCitiesChange(value) {
-        let checkedCount = value.length;
-        this.checkAll = checkedCount === this.cities.length;
-        this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
-      },
-
+    updateVarible(val) {
+      this.ruleForm.y = []
+      for (var i = 0; i < val.length; i++) {
+        this.ruleForm.y.push({
+          var: val[i],
+          value: '0',
+        })
+      }
     }
+    ,
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.saveModel();
+        } else {
+          console.log('没有传输成功!!');
+          return false;
+        }
+      });
+    }
+    ,
+
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+    }
+    ,
+
+    chooseModel(val) {
+      console.log(this.value4)
+      if (val == 'marginal') {
+        this.mult = new Boolean(0);
+      }
+      if (val != 'marginal') {
+        this.mult = new Boolean(1);
+      }
+    }
+    ,
+
+    sendNoticeMessage(val) {
+      if (val == 'MAP') {
+        const h = this.$createElement;
+        this.$notify({
+          title: '使用MAP函数的提示',
+          message: h('i', {style: 'color: teal'}, '前提：对要刻画的随机变量有了深入的认识 方案：输入超参训练集，自动归纳超参数')
+        });
+      }
+    }
+    ,
+
+    saveModel() {
+      this.$prompt('请输入保存模型名称（四字以上）', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        //支持汉字和英文
+        inputPattern: /^[\u4E00-\u9FA5A-Za-z0-9]{4,}$/,
+        inputErrorMessage: '模型名称不正确'
+      }).then(({value}) => {
+        this.ruleForm.name = value
+        this.$message({
+          type: 'success',
+          message: '模型名称是: ' + value
+        });
+        //发送POST请求
+        this.$router.push('/calculation')
+        this.postDSTConfig('http://127.0.0.1:8000/GMM/model/distribution/')
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '取消输入'
+        });
+      });
+    }
+    ,
+
+    postDSTConfig(url) {
+      var instance = this.$ajax.create({
+        headers: {'Content-Type': 'application/json'}
+      });
+      this.ruleForm.varables = JSON.stringify(this.ruleForm.varables)
+      this.ruleForm.y = JSON.stringify(this.ruleForm.y)
+      this.ruleForm.y_hyper = JSON.stringify(this.ruleForm.y_hyper)
+      instance.post(url, this.ruleForm)
+        .then(function (response) {
+          //处理数据
+          console.log(response)
+        }.bind(this))
+        .catch(function (error) {
+          return 0;
+        });
+    }
+    ,
+    handleCheckAllChange(val) {
+      this.checkedCities = val ? cityOptions : [];
+      this.isIndeterminate = false;
+    }
+    ,
+    handleCheckedCitiesChange(value) {
+      let checkedCount = value.length;
+      this.checkAll = checkedCount === this.cities.length;
+      this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
+    }
+    ,
+
   }
 
 
@@ -562,10 +442,6 @@
 
 <style scoped>
   .Gmm {
-    /* background: -webkit-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
-    background: -o-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
-    background: -moz-linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5));
-    background: linear-gradient(30deg, rgb(0,65,106,0.7),rgba(53,92,125,0.5)); */
     height: 100%;
     margin-left: -12px;
     margin-top: -12px;
