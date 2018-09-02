@@ -16,5 +16,6 @@ print(distribution)
 x = matlab.double([[x*10//1/10] for x in np.arange(0, 31, 0.1)])
 print(x)
 print(len(x))
-y = 1
-engine.GMM_plot(distribution, 'singleCDF', x, y)
+
+engine.GMM_plot(distribution, 'singlePDF', x, nargout=0)
+engine.GMM_plot(distribution, 'singlePDF', x, nargout=0)
