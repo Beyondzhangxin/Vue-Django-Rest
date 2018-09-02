@@ -13,7 +13,19 @@ export default {
       }
     }
     return API.GET('/system/powerStations', params, config);
+  },
+
+  getSystemVariables: params => {
+    let config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
+      },
+    };
+    API.GET('/system/getAllParamsBySystemType', params, config).then(data=>{
+      return data;
+    });
   }
+
 }
 
 

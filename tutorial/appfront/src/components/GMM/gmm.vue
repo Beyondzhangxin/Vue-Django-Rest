@@ -5,7 +5,7 @@
         <!-- 分割线 -->
         <hr width=100%   size=1   color=#bbbcbc   style="FILTER: alpha(opacity=100,finishopacity=0)">
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="ruleForm">
-            <el-card class="card1">
+            <el-card class="card0">
                 <el-form-item label="训练目标" style=font-weight:bold prop="system">
                     <el-select v-model="ruleForm.system" clearable placeholder="选择训练系统">
                         <el-option
@@ -263,6 +263,7 @@
 
 <script>
 
+  import API from '../../api/api_tasks';
 
 const cityOptions = ['类别1', '类别2', '类别3', ];
 export default {
@@ -403,7 +404,7 @@ export default {
             label:'多功能光伏电站系统',
         }
         ],
-        value1:'',
+                  value1:'',
 
         options2:[{
             value:'marginal',
@@ -452,7 +453,16 @@ export default {
 
       }
     },
-
+    // computed: {
+    //   options4: function () {
+    //     systemType = this.ruleForm.system;
+    //     API.getSystemVariables({"systemType": systemType}).then(data=>{
+    //       return data;
+    //       console.log(data);
+    //
+    //     });
+    //   }
+    // },
     methods: {
         updateVarible(val) {
             this.ruleForm.y = []
