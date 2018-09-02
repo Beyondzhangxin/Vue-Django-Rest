@@ -19,14 +19,14 @@
             <span @click="clearCookie" style="cursor: pointer;color: #f19149;font-size: 0.75rem;margin-left: 5px;">取消自动登录？</span>
           </div>
           </div>
-          <el-button type="primary" @click="submitForm('ruleForm')" style="width: 100%;">登陆</el-button>
+          <el-button type="primary" @click="submitForm('ruleForm')" style="width: 100%;">登录</el-button>
           </el-form>
 
         </div>
 
     <!-- 调用canvas -->
         <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
- 
+        <div class="info">Powered by 清华四川能源互联网研究院</div>
 	</div>
 </template>
 
@@ -160,7 +160,7 @@ mounted(){
         position: absolute;
         top: 50%;
         left: 50%;
-        margin-top: -140px;
+        margin-top: -180px;
         margin-left: -175px;
         width: 350px;
         min-height: 300px;
@@ -188,5 +188,13 @@ mounted(){
   font-weight: bold;
 }
 
+.info{
+  position:absolute;
+  left:50%;
+  bottom:0;
+  margin-left:-120px;
+  margin-bottom:10px;
+  font-size:13px;
+}
 
 </style>
