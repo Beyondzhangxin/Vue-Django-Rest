@@ -21,10 +21,8 @@ export default {
         "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
       },
     };
-    API.GET('/system/getAllParamsBySystemType', params, config).then(data=>{
-      return data;
-    });
-  }
+   return API.GET('/system/getAllParamsBySystemType', params, config);
+  },
 
 }
 
