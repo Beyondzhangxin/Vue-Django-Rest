@@ -45,13 +45,13 @@
           </el-col>
           <el-col :span="11">
             <el-form-item prop="end_time">
-              <el-date-picker
+              <el-date-picke
                 v-model="ruleForm.end_time"
                 type="datetime"
                 value-format="yyyy-MM-dd HH:mm:ss"
                 placeholder="选择日期时间"
                 default-time="12:00:00">
-              </el-date-picker>
+              </el-date-picke>
             </el-form-item>
           </el-col>
         </el-form-item>
