@@ -404,7 +404,7 @@ export default {
             label:'多功能光伏电站系统',
         }
         ],
-        value1:'',
+                  value1:'',
 
         options2:[{
             value:'marginal',
