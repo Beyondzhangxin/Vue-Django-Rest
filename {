@@ -1,0 +1,555 @@
+[33mcommit 334de4a12bde4414d732d7617ca7e5ec67c6eb63[m
+Merge: b4438f7 7a79da6
+Author: Alanwell <2256618748@qq.com>
+Date:   Sun Sep 2 20:15:04 2018 +0800
+
+    合并冲突
+
+[33mcommit b4438f7ba1c781445794870a360243d14ae4318d[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Sun Sep 2 20:13:28 2018 +0800
+
+    添加底部powered by
+
+[33mcommit 7a79da60474db992065531cdce2f577e1a9f4970[m
+Author: Jason <573329319@qq.com>
+Date:   Sun Sep 2 17:17:33 2018 +0800
+
+    修改gmm.vue
+
+[33mcommit 6139e69989892d4b5a0491d31bb991fd53c8402c[m
+Author: Jason <573329319@qq.com>
+Date:   Sun Sep 2 17:16:29 2018 +0800
+
+    修改gmm.vue
+
+[33mcommit 9e7253f1ff7b32ad41937e536876175edb8e1c9f[m
+Merge: 4430dc5 73268b8
+Author: Jason <573329319@qq.com>
+Date:   Sun Sep 2 17:15:08 2018 +0800
+
+    修改gmm.vue
+
+[33mcommit 4430dc53750b72d756354ca8d008819f230e0cad[m
+Author: Jason <573329319@qq.com>
+Date:   Sun Sep 2 16:58:46 2018 +0800
+
+    修改gmm.vue
+
+[33mcommit 5b11e00591017f42c359906d218b9078a32c1f69[m
+Author: Jason <573329319@qq.com>
+Date:   Sun Sep 2 16:54:07 2018 +0800
+
+    修改gmm.vue
+
+[33mcommit 73268b8a0763756233df9180a0b865dc87794442[m
+Merge: 7e91704 a8c031a
+Author: Alanwell <2256618748@qq.com>
+Date:   Fri Aug 31 18:11:58 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear2
+
+[33mcommit 7e9170478cdf3c18664cf12000962592bad44e62[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Fri Aug 31 18:11:51 2018 +0800
+
+    部分页面样式调整
+
+[33mcommit a8c031a2626b8f0e308ad514b7a2676ab44732d5[m
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Fri Aug 31 18:06:06 2018 +0800
+
+    18.05
+
+[33mcommit acf7d427df18e7a6468fb653a3c80890f98f397a[m
+Merge: a58b542 467fb74
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Fri Aug 31 16:29:57 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear3
+
+[33mcommit a58b5429b801c1d22336a61f167945226894c9bd[m
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Fri Aug 31 16:29:40 2018 +0800
+
+    16.28 解决数据转化问题
+
+[33mcommit 467fb74ab9d8e8d98b809a99feb52770f0e9108d[m
+Merge: 09350d3 8f71040
+Author: Alanwell <2256618748@qq.com>
+Date:   Fri Aug 31 16:00:04 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear2
+
+[33mcommit 09350d3fbe13ce34af682d0d284798bff02b73eb[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Fri Aug 31 15:59:59 2018 +0800
+
+    effect页面解决清空cookie的bug
+
+[33mcommit 8f710404b38b4d558f151ece591636b8895adad2[m
+Merge: 3c63aac 9f87b1a
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Fri Aug 31 11:47:04 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear3
+
+[33mcommit 3c63aacd89109218e108fd1684bd767c9ee89fe9[m
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Fri Aug 31 11:46:47 2018 +0800
+
+    待完善画图功能
+
+[33mcommit 9f87b1a1236b95fead6db28309d1e88613499e5a[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Fri Aug 31 11:12:03 2018 +0800
+
+    caculation页面样式修改
+
+[33mcommit 00688f9a6e5db3eb6eb997beadb327e5c93e006e[m
+Merge: 61c3d23 d5eb262
+Author: Jason <573329319@qq.com>
+Date:   Fri Aug 31 11:09:23 2018 +0800
+
+    'update'
+
+[33mcommit 61c3d23412b146a209d50bf1eca838c44eae27c9[m
+Author: Jason <573329319@qq.com>
+Date:   Fri Aug 31 10:52:35 2018 +0800
+
+    update
+
+[33mcommit cee83b93b752df275f0a9083f2f342dfc28d924b[m
+Author: Jason <573329319@qq.com>
+Date:   Fri Aug 31 10:46:32 2018 +0800
+
+    GMM_PLOT加入保存绘制图片功能，result.png
+
+[33mcommit d5eb262114c0da63cdbb34a576de353d2556cb49[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Fri Aug 31 10:02:54 2018 +0800
+
+    调整caulation颜色
+
+[33mcommit ed0d1d59aaefb7810e1d39d19442d0fdc19fb6d2[m
+Merge: 5643fd4 18207f9
+Author: Alanwell <2256618748@qq.com>
+Date:   Fri Aug 31 09:15:26 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear2
+
+[33mcommit 18207f92eb7c2b33e6cf3de88c981669533d92ca[m
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Fri Aug 31 08:59:11 2018 +0800
+
+    9. change
+
+[33mcommit 5643fd4afbf23827b36877d21dcbba3ae440368c[m
+Merge: 42ddd9c 225fe35
+Author: Alanwell <2256618748@qq.com>
+Date:   Thu Aug 30 19:03:23 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear2
+
+[33mcommit 42ddd9c86aaab7825a6d39b0608f69a2db0c4d85[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Thu Aug 30 19:03:18 2018 +0800
+
+    登录页修改
+
+[33mcommit 225fe357a7d98e7cdfd6c1966cb1e405926610d9[m
+Merge: 580cbed 62e4d95
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Thu Aug 30 17:25:26 2018 +0800
+
+    Merge remote-tracking branch 'origin/clear2' into clear3
+
+[33mcommit 580cbed471d1e672011d75e1402088659b14fc7d[m
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Thu Aug 30 17:25:11 2018 +0800
+
+    17.23 change
+
+[33mcommit 0e6bc80559c4e74dfb450d5d146c61066f19d819[m
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Thu Aug 30 17:24:07 2018 +0800
+
+    17.23 change
+
+[33mcommit 62e4d95956b6a265aba472ed239d6dd071fd8bac[m
+Merge: 4e71756 787a090
+Author: Alanwell <2256618748@qq.com>
+Date:   Thu Aug 30 12:01:08 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear2
+
+[33mcommit 4e71756ae70151294cfdd1df311bcf71fee1247c[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Thu Aug 30 12:00:59 2018 +0800
+
+    修改全部前端页面样式
+
+[33mcommit 787a090db4f9a0777f349ae1fb8f65391b2e67b7[m
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Thu Aug 30 09:39:33 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear3
+    
+    # Conflicts:
+    #	tutorial/appfront/src/components/GMM/gmm.vue
+
+[33mcommit 974197dfd0dbf1bc8235e0f00c0496bd937c9c01[m
+Merge: a97ad21 231fe25
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Thu Aug 30 09:37:58 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear3
+    
+    # Conflicts:
+    #	tutorial/appfront/src/components/GMM/gmm.vue
+
+[33mcommit 18c9f1db8ae21e4e4931a05cd73259fa3405e8a4[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Thu Aug 30 09:21:37 2018 +0800
+
+    修复警告.
+
+[33mcommit a97ad211950e483de2daada681f6c9463d980e81[m
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Thu Aug 30 09:01:12 2018 +0800
+
+    merge
+
+[33mcommit 231fe25dbb661d8f766c9fc4c332ece9419d2afb[m
+Author: 王宏韬 <wanghongtaoaaa@qq.com>
+Date:   Thu Aug 30 01:02:34 2018 +0800
+
+    date update
+
+[33mcommit 97747f2ce2cbfbcc506ba50bc38cfdd17c9e0a4a[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Wed Aug 29 18:25:35 2018 +0800
+
+    css调整边框大小
+
+[33mcommit 588ac6ca2999627e33e40137b94083c783ff03f5[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Wed Aug 29 18:00:06 2018 +0800
+
+    改写路由，修复bug，增添样式
+
+[33mcommit 07556f2eba0af930c78fac25b163448442191535[m
+Merge: 2fe0936 d9adfa4
+Author: Alanwell <2256618748@qq.com>
+Date:   Wed Aug 29 16:09:48 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear2
+
+[33mcommit 2fe0936bc5fa0e7808f51a09aa0333ec05bc2728[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Wed Aug 29 16:09:43 2018 +0800
+
+    样式对齐
+
+[33mcommit d9adfa461c72a16a39e379d377f90840b90d7c4f[m
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Wed Aug 29 16:01:00 2018 +0800
+
+    merge
+
+[33mcommit ca95b186ec192ab845832725bb10982190b6f441[m
+Merge: 24e90c2 ccd9648
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Wed Aug 29 15:54:20 2018 +0800
+
+    inio
+
+[33mcommit 24e90c28ea73d41961812f407747eb7ce8ed7c1e[m
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Wed Aug 29 15:43:18 2018 +0800
+
+    15:42 已成功将表单入库 201
+
+[33mcommit ccd9648dfe3296f241fb9cdf4ab0beb6d13b3968[m
+Merge: a10ceba 9f795c5
+Author: Alanwell <2256618748@qq.com>
+Date:   Wed Aug 29 12:17:04 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear2
+
+[33mcommit a10ceba9f3bcd9c3b4a02aa61b60e299e3442386[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Wed Aug 29 12:16:59 2018 +0800
+
+    表格添加可编辑功能
+
+[33mcommit 9f795c527ba7f07b8d1a8ec3bdf308465d8b64c2[m
+Merge: 1c1a7c1 87c6578
+Author: Jason <573329319@qq.com>
+Date:   Wed Aug 29 09:26:32 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear2
+
+[33mcommit 1c1a7c1c55e6df3c5ba36a5e6215cbcf745a3bc1[m
+Merge: d81dfee 3b11220
+Author: Jason <573329319@qq.com>
+Date:   Wed Aug 29 09:25:22 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear2
+    
+    # Conflicts:
+    #	tutorial/system/urls.py
+
+[33mcommit 87c6578ad180b633a103a7044ab8dac55e2221c7[m
+Merge: b3850e9 85e72ba
+Author: Alanwell <2256618748@qq.com>
+Date:   Tue Aug 28 18:38:53 2018 +0800
+
+    合并冲突
+
+[33mcommit b3850e9aee8effcbaac49b9a2ca172f76fe7047a[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Tue Aug 28 18:36:25 2018 +0800
+
+    修改样式对齐
+
+[33mcommit 85e72bad25ff54c27622f585c61040303adee26d[m
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Tue Aug 28 17:53:33 2018 +0800
+
+    17.53 可以config入库成功
+
+[33mcommit ab06c53df11d54ded5af3a829e7517b8a05fc9f3[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Tue Aug 28 17:43:53 2018 +0800
+
+    gmm页面字体加粗
+
+[33mcommit 99faddba898a06b0943b2502ca8caa2136ea3be6[m
+Merge: 8d7423e 44d93c0
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Tue Aug 28 17:24:40 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear3
+
+[33mcommit 8d7423e11d18f603d851ea1f8164f419a7af9745[m
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Tue Aug 28 17:24:24 2018 +0800
+
+    17.19表单修改
+
+[33mcommit 98940f46c5232b4e4ffde0f76e108802623dda97[m
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Tue Aug 28 17:21:59 2018 +0800
+
+    17.19表单修改
+
+[33mcommit 44d93c097b860ea8e08cda490d8314dfe15d8c64[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Tue Aug 28 17:02:24 2018 +0800
+
+    setting.py修改templates
+
+[33mcommit d81dfeeae2cbe37e2943caf22b5b5a1034da1bf3[m
+Author: Jason <573329319@qq.com>
+Date:   Tue Aug 28 16:20:29 2018 +0800
+
+    修改setting url
+
+[33mcommit 3b11220f6762c86feb0cfb5856db3f7198cddf2a[m
+Merge: a150bea ab4200a
+Author: Alanwell <2256618748@qq.com>
+Date:   Tue Aug 28 15:51:04 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear2
+
+[33mcommit a150bea3ed9bf1fbf2dc2ac47c3fcfadabd18105[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Tue Aug 28 15:50:59 2018 +0800
+
+    注释多余代码
+
+[33mcommit ab4200a74267501d7bb6e22b64fdc2c7ff313ba2[m
+Merge: aa939f9 615fd08
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Tue Aug 28 15:18:50 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear3
+
+[33mcommit aa939f9df365ac920154b0b45489096255c8df79[m
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Tue Aug 28 15:18:43 2018 +0800
+
+    15.18 表单修改
+
+[33mcommit 615fd08265b16edb1df84c08372ceaf125ccfa81[m
+Merge: a21b30d d82ad72
+Author: Alanwell <2256618748@qq.com>
+Date:   Tue Aug 28 13:46:28 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear2
+
+[33mcommit a21b30dc5802029b9b50427782f1b5b4f3299f92[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Tue Aug 28 13:46:22 2018 +0800
+
+    样式调整
+
+[33mcommit d82ad7220099f0b5dcf39ea420e3bbda687a3e8c[m
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Tue Aug 28 11:34:15 2018 +0800
+
+    11.32 修改完成建模功能的cnfig储存和读取所有config
+
+[33mcommit 022cdee9e27ea8fa959ed2452012784630bcfa09[m
+Merge: 515ca9a 3f7a3d7
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Tue Aug 28 10:14:57 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear3
+
+[33mcommit 515ca9a4403a2772344c2f236ff4c936c95a1b4f[m
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Tue Aug 28 10:14:50 2018 +0800
+
+    10.14 序列化以及get post view
+
+[33mcommit 3f7a3d76c6a90d57ab19fa77dc7a1faf8ab85e3c[m
+Merge: adb4707 bae384a
+Author: Alanwell <2256618748@qq.com>
+Date:   Mon Aug 27 18:46:41 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear2
+
+[33mcommit adb47076dc082fe51890b4da6c443946f90b6bea[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Mon Aug 27 18:46:34 2018 +0800
+
+    calculation CSS调整
+
+[33mcommit bae384a5e1a7b7d7d82d1b0efae7d9592791b702[m
+Merge: 56bf11b 1b47d64
+Author: Jason <573329319@qq.com>
+Date:   Mon Aug 27 18:17:53 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear2
+
+[33mcommit 56bf11b60b6b0b127c2d43ab7098bdff9c2065e5[m
+Author: Jason <573329319@qq.com>
+Date:   Mon Aug 27 18:16:44 2018 +0800
+
+    添加根据分布配置返回样本列表的接口
+
+[33mcommit 1b47d64fbac5b96f3b858992ad6749d82fc7c511[m
+Merge: 4b06a83 c287e99
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Mon Aug 27 17:59:05 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear3
+
+[33mcommit 4b06a8327be35a183f9f4577d4be963bd6b565b1[m
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Mon Aug 27 17:58:45 2018 +0800
+
+    6.00
+
+[33mcommit c287e991f41319f9d7c08a552c89dbd8a86da587[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Mon Aug 27 17:55:53 2018 +0800
+
+    导航栏添加GMM工具箱
+
+[33mcommit f76cfaf5fa0176da70c167b7ee949364c05a49c7[m
+Merge: 2173609 440b5cd
+Author: Alanwell <2256618748@qq.com>
+Date:   Mon Aug 27 17:35:38 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear2
+
+[33mcommit 217360969455ded06376e0e3f373fd4ccf9cc53c[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Mon Aug 27 17:35:21 2018 +0800
+
+    calculation页面添加弹出窗口
+
+[33mcommit 440b5cda7534313baf6db05f73e471c8ac51fbd7[m
+Author: Jason <573329319@qq.com>
+Date:   Mon Aug 27 17:33:57 2018 +0800
+
+    delete .vscode
+
+[33mcommit 83e4526ccf65ec9347a1e7fb28f84b1913d2be3f[m
+Author: Jason <573329319@qq.com>
+Date:   Mon Aug 27 17:26:25 2018 +0800
+
+    delete node_modules
+
+[33mcommit c939774f0debf718275f133a6b3e8ee0230ba061[m
+Merge: 642a053 1310544
+Author: Jason <573329319@qq.com>
+Date:   Mon Aug 27 17:23:03 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear2
+
+[33mcommit 642a053be3fc043686fe1e999a90d84ff6925142[m
+Author: Jason <573329319@qq.com>
+Date:   Mon Aug 27 17:21:33 2018 +0800
+
+    delete workspace.xml
+
+[33mcommit 131054406a793a73ba21afb3071c629a86949f65[m
+Merge: 1b3be8a 5a9e384
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Mon Aug 27 17:16:19 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear3
+
+[33mcommit 1b3be8abad110d0ef779ac3c7124a7bce57eb587[m
+Author: wanghongtaoaaa <1132544920@qq.com>
+Date:   Mon Aug 27 17:15:06 2018 +0800
+
+    17.04
+
+[33mcommit 5a9e38464f9a04b26490435f04cd2e3e75cd5090[m
+Merge: a84755e 04e5369
+Author: Jason <573329319@qq.com>
+Date:   Mon Aug 27 17:12:31 2018 +0800
+
+    修改gitignore文件和删除workspace文件
+
+[33mcommit a84755e373f194331593b9638ad47390adf5d824[m
+Author: Jason <573329319@qq.com>
+Date:   Mon Aug 27 17:06:10 2018 +0800
+
+    jason 修改
+
+[33mcommit 04e5369c91bb759d337dba90b565a883ec5191e6[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Mon Aug 27 16:36:58 2018 +0800
+
+    effect页面微幅调整
+
+[33mcommit 4d578568ca5c98050a0f71b8a454e32a4db4f1fc[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Mon Aug 27 15:32:06 2018 +0800
+
+    gmm增加边距
+
+[33mcommit ee8c09f1a6d05ac68f41a76cce621741a38e96a8[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Mon Aug 27 14:56:59 2018 +0800
+
+    calculation部分修改
+
+[33mcommit 32fe24df4256265edb97c289f36acc894cb48442[m
+Merge: 1ba296f 410887c
+Author: Alanwell <2256618748@qq.com>
+Date:   Mon Aug 27 14:36:25 2018 +0800
+
+    Merge branch 'clear2' of https://code.aliyun.com/SIOM/Vue-Django-Rest into clear2
+
+[33mcommit 1ba296f255ae9c4abad399a08255d47453302156[m
+Author: Alanwell <2256618748@qq.com>
+Date:   Mon Aug 27 14:34:15 2018 +0800
+
+    calculation页面

@@ -5,28 +5,28 @@
       <div class="login">
         <div class="mes">系统登录</div>
         
-          <el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="demo-ruleForm loginFrom">
-          <el-form-item >
-            <el-input placeholder="账号" prefix-icon="el-icon-edit" v-model="ruleForm.userName"></el-input>
+          <el-form :model="ruleForm" :rules="rules" ref="ruleForm"  status-icon class="demo-ruleForm loginFrom" id="myform">
+          <el-form-item prop="userName">
+            <el-input placeholder="账号" prefix-icon="el-icon-edit" v-model="ruleForm.userName" id="input"></el-input>
           </el-form-item>
-          <el-form-item>
-            <el-input  type="password"  prefix-icon="el-icon-circle-check-outline" v-model="ruleForm.password" placeholder="密码"></el-input>
+          <el-form-item prop="password">
+            <el-input  type="password"  prefix-icon="el-icon-circle-check-outline" v-model="ruleForm.password" placeholder="密码" id="input"></el-input>
           </el-form-item>
           <div style="padding: 1rem 0 2rem 0;" class="clear">
           <span class="lf" @click="open" style="color:#0489cc;float:left;margin-left:20px;">帮助</span>
           <div class="rt">
-            <el-checkbox v-model="checked">一周内自动登录</el-checkbox>
+            <el-checkbox v-model="checked" style="margin-left:20px;">自动登录</el-checkbox>
             <span @click="clearCookie" style="cursor: pointer;color: #f19149;font-size: 0.75rem;margin-left: 5px;">取消自动登录？</span>
           </div>
           </div>
-          <el-button type="primary" @click="submitForm('ruleForm')" style="width: 100%;">登陆</el-button>
+          <el-button type="primary" @click="submitForm('ruleForm')" style="width: 100%;">登录</el-button>
           </el-form>
 
         </div>
 
     <!-- 调用canvas -->
         <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
- 
+        <div class="info">Powered by 清华四川能源互联网研究院</div>
 	</div>
 </template>
 
@@ -44,9 +44,20 @@ export default {
     return {
       dotsNum: 60, 
 
+      // 表单验证
+      rules:{
+        userName:[{
+          required:true,message:'用户名不能为空',trigger:'blur'
+        }],
+        password:[{
+          required:true,message:'密码不能为空',trigger:'blur'
+        }]
+      },
+
+
       ruleForm: {
-       userName: '', //用户名
-       password: ''  //密码
+       userName: '', 
+       password: ''  
      }, 
     }
 
@@ -54,7 +65,7 @@ export default {
 
   methods: {
     
-   //点击帮助提示内容
+   //点击帮助显示提示内容
        open() {
         this.$alert('账号admin,密码password', '光伏智能运维系统', {
           confirmButtonText: '确定',
@@ -68,30 +79,40 @@ export default {
       },
       
       //点击登录调用方法
-    submitForm(formName) {
-        //保存的账号
-        var name=this.ruleForm.userName;
-        //保存的密码
+    submitForm(formName) {     
+      
+          this.$refs.ruleForm.validate((valid)  => {
+          if(valid){
+            if(this.ruleForm.userName==='admin'&&this.ruleForm.password==='password')
+              this.$notify({
+                type:'success',
+                message:'欢迎你 '+this.ruleForm.userName+'!',
+                duration:3000,            
+              })
+              this.$router.push('/home/first')
+          } else{
+              this.$message({
+                type:'error',
+                message:'用户名或密码错误',
+                showClose:true
+              })
+          }
+        });
+    
+
+        var name=this.ruleForm.userName;   
         var pass=this.ruleForm.password;
-        if(name==''||name==null){
-          alert("请输入正确的用户名")
-          return
-        }else if(pass==''||pass==null) {
-          alert("请输入正确的密码");
-          return
-        }
-        //判断复选框是否被勾选 勾选则调用配置cookie方法
+         //判断复选框是否被勾选 勾选则调用配置cookie方法
         if(this.checked=true){
             //传入账号名，密码，和保存天数3个参数
-          this.setCookie(name,pass,7);
+          this.setCookie(name,pass,1);
         }
-         this.$router.push('/home/first')
     },
 
-//设置cookie
+  //设置cookie
   setCookie(c_name,c_pwd,exdays) {
     var exdate=new Date();//获取时间
-    exdate.setTime(exdate.getTime() + 24*60*60*1000*exdays);//保存的天数
+    exdate.setTime(exdate.getTime() + 5*60*1000*exdays);//保存的时间
     //字符串拼接cookie
     window.document.cookie="userName"+ "=" +c_name+";path=/;expires="+exdate.toGMTString();
     window.document.cookie="userPwd"+"="+c_pwd+";path=/;expires="+exdate.toGMTString();
@@ -111,12 +132,20 @@ export default {
       }
     }
   },
+
   //清除cookie
   clearCookie:function () {
+      $(':input', '#myform')
+      .not(':button, :submit, :reset, :hidden,:radio') // 去除不需要重置的input类型
+      .val('')
+      .removeAttr('checked')
+      .removeAttr('selected');
     this.setCookie("","",-1);//修改2值都为空，天数为负1天就好了
     alert("账号密码信息已清除");
+     window.location.reload();
   }
 },
+
 //页面加载调用获取cookie值
 mounted(){
         this.getCookie()
@@ -131,7 +160,7 @@ mounted(){
         position: absolute;
         top: 50%;
         left: 50%;
-        margin-top: -140px;
+        margin-top: -180px;
         margin-left: -175px;
         width: 350px;
         min-height: 300px;
@@ -155,18 +184,17 @@ mounted(){
   font-family: Arial, Helvetica, sans-serif;
   font-size: 24px;
   margin-bottom:20px;
+  margin-top:-20px;
   font-weight: bold;
 }
 
-#button1{
-  margin-top:30px;
-  float:left;
-  margin-left:30px;
+.info{
+  position:absolute;
+  left:50%;
+  bottom:0;
+  margin-left:-120px;
+  margin-bottom:10px;
+  font-size:13px;
 }
 
-#button2{
-  margin-top:30px;
-  float:right;
-  margin-right:30px;
-}
 </style>
