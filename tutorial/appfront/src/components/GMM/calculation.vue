@@ -191,21 +191,18 @@
                     <el-input placeholder="输入最小值" v-model="formData.n_min" clearable></el-input>
                     </div>
                 </el-col>
-
                 <el-col :span="6">
                     <div class="input0">
                     <span>n_max</span>
                     <el-input placeholder="输入最大值" v-model="formData.n_max" clearable></el-input>
                     </div>
                 </el-col>
-
-
                 </div>
             </el-row>
         </el-card>
 
          <div class="start">
-            <el-button type="primary" @click="dialogVisible=true" icon="el-icon-d-caret">开始计算</el-button>
+            <el-button type="primary" @click="postData();dialogVisible=true" icon="el-icon-d-caret">开始计算</el-button>
             <el-dialog
             title="提示"
             :visible.sync="dialogVisible"
@@ -338,6 +335,30 @@ export default {
 
 
     methods:{
+        postData(url) {
+            var instance = this.$ajax.create({
+                headers: {'Content-Type': 'application/json'}
+            });
+            this.formData.y = this.tableData1[0].list
+            if (this.chooseConfig.option == "linear"){
+                var list = []
+                for(var i = 0; i < this.tableData3.length;i++) {
+                    list.push([this.tableData3[i].var1, this.tableData3[i].var2])
+                }
+                this.formData.A = list
+                var list1 = []
+                for(var i = 0; i < this.tableData4; i++) {
+                    list1.push(this.tableData4.var1)
+                }
+                this.formData.b = list1
+            }
+            instance.post(url, this.formData).then(function (response) {
+                //处理数据
+                console.log(response)
+            }.bind(this)).catch(function (error) {
+                return 0;
+            });
+        },
         updateOption() {
             this.d = JSON.parse(this.chooseConfig.y).length
             console.log(this.chooseConfig)
@@ -345,7 +366,6 @@ export default {
                     this.tableData1[0].list = []
                     for(var j=0; j < JSON.parse(this.chooseConfig.y).length; j++) {
                         this.tableData1[0].list.push({val: 0})
-
                     }
             }
             if(this.formData.option == 'linear') {
@@ -357,7 +377,10 @@ export default {
             }
         },
         change() {
+            console.log(this.tableData1)
+            console.log(this.tableData2)
             console.log(this.tableData3)
+            console.log(this.tableData4)
         },
         updateConfig() {
             for(var i=0; i < this.configInfoList.length; i++) {

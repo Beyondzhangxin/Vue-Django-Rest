@@ -18,4 +18,4 @@ print(x)
 print(len(x))
 
 engine.GMM_plot(distribution, 'singlePDF', x, nargout=0)
-engine.GMM_plot(distribution, 'singlePDF', x, nargout=0)
+# engine.GMM_plot(distribution, 'singlePDF', x, nargout=0)

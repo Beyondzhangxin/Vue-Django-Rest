@@ -37,6 +37,7 @@ urlpatterns = [
     url(r'getAllDistributionConfigs', views.getAllDistributionConfigs),
     url(r'jason',views.jason),
     url(r'calculation',views.calculate),
+    url(r'^image$', views.my_image, name="image"),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
