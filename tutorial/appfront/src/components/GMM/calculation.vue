@@ -209,7 +209,7 @@
             width="40%"
             :before-close="handleClose">
             <div class="window">
-                <img class="image" src="http://localhost:8000/GMM/image"></img>
+                <img class="image" src="http://localhost:8000/GMM/image?name="+{{ pictureName }}></img>
             </div>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="dialogVisible = false">取 消</el-button>
@@ -225,6 +225,7 @@
 export default {
     data(){
       return{
+        pictureName: "",
         d: 0,
         configInfoList: [],
         chooseConfig: {},
@@ -336,7 +337,6 @@ export default {
 
     methods:{
         postData(url) {
-            this.dialogVisible=true
             var instance = this.$ajax.create({
                 headers: {'Content-Type': 'application/json'}
             });
@@ -359,7 +359,9 @@ export default {
             instance.post(url, this.formData).then(function (response) {
                 if(true) {
                     this.$ajax.get('http://localhost:8000/GMM/image').then(function (response) {
-                        
+                        console.log(response)
+                        this.pictureName = response.data.pictureName
+                        this.dialogVisible=true
                     }.bind(this)).catch(function (error) {
                     
                     });
