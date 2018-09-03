@@ -304,7 +304,7 @@ def calculate(request):
         response['data'] = {'cdf': cdf, 'pictureName': 'result_singCDF'}
     if option == 'quantile':
         pass
-
+    return JsonResponse(response)
 
 @require_http_methods(['GET'])
 def my_image(request):
