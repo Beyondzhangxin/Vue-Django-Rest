@@ -338,7 +338,7 @@ export default {
         postData(url) {
             this.dialogVisible=true
             var instance = this.$ajax.create({
-                headers: {'Content-Type': 'application/json'}
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             });
             this.formData.y = this.tableData1[0].list
 

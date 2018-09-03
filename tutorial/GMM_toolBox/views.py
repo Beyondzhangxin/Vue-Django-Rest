@@ -276,31 +276,32 @@ class GetMatrix(APIView):
 @require_http_methods(['POST'])
 def calculate(request):
     engine = matlabEngineEnv()
-    config_id = request.POST.get('id1')
-    gmm_config = GmmConfig.objects.get(id=config_id)
+    data=json.loads(request.body)
+    config_id = data.get('id1')
+    gmm_config = GmmConfig.objects.get(pk=config_id)
     distribution1 = getDistribution(gmm_config)
-    option = request.POST.get('option')
-    A = request.POST.get('A')
-    b = request.POST.get('b')
-    id2 = request.POST.get('id2')
-    n_max = request.POST.get('n_max')
-    n_min = request.POST.get('n_min')
-    x = request.POST.get('x')
-    y = request.POST.get('y')
+    option = data.get('option')
+    A = data.get('A')
+    b = data.get('b')
+    id2 = data.get('id2')
+    n_max = data.get('n_max')
+    n_min = data.get('n_min')
+    x = data.get('x')
+    y = data.get('y')
     y_list = []
     if len(y) > 0:
         for x in y:
-            y_list.append(int(x.get('val')))
+            y_list.append(float(x.get('val')))
     response = {}
     if option == 'pdf':
         pdf = engine.GMM_calculation(distribution1, 'pdf', matlab.double(y_list))
         x1 = matlab.double([[x * 10 // 1 / 10] for x in np.arange(0, 50, 0.1)])
-        engine.GMM_plot(distribution1, 'singlePDF', x1)
+        engine.GMM_plot(distribution1, 'singlePDF', x1,nargout=0)
         response['data'] = {'pdf': pdf, 'pictureName': 'result_singlePDF'}
     if option == 'cdf':
         cdf = engine.GMM_calculation(distribution1, 'cdf', matlab.double(y_list))
         x1 = matlab.double([[x * 10 // 1 / 10] for x in np.arange(0, 50, 0.1)])
-        engine.GMM_plot(distribution1, 'result_singCDF', x1)
+        engine.GMM_plot(distribution1, 'result_singCDF', x1,nargout=0)
         response['data'] = {'cdf': cdf, 'pictureName': 'result_singCDF'}
     if option == 'quantile':
         pass

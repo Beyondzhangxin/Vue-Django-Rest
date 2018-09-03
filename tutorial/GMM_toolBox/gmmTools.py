@@ -15,22 +15,25 @@ def getSamples(gmmConfig):
         "SPGS": DataSpgsHistory,
         "PVMG": DataPvmgHistory,
     }
-    start = datetime.datetime.strptime(gmmConfig['start_time'], "%Y-%m-%d %H:%M:%S")
-    end = datetime.datetime.strptime(gmmConfig['end_time'], "%Y-%m-%d %H:%M:%S")
+    start = datetime.datetime.strptime(gmmConfig.start_time, "%Y-%m-%d %H:%M:%S")
+    end = datetime.datetime.strptime(gmmConfig.end_time, "%Y-%m-%d %H:%M:%S")
     yHyper_start = json.loads(gmmConfig.y_hyper).get('start_time')
     yHyper_end = json.loads(gmmConfig.y_hyper).get('end_time')
     yHyper_system = json.loads(gmmConfig.y_hyper).get('system')
     data={}
     try:
-        system = switch[gmmConfig['system']]
+        system = switch[gmmConfig.system]
         samples = system.objects.filter(datatime__range=(start, end))
-        gmmConfig['varables'] = gmmConfig['varables'].lower()
-        training_samples = samples.values_list(*tuple(json.loads(gmmConfig['varables'])))
+        gmmConfig.varables = gmmConfig.varables.lower()
+        training_samples = samples.values_list(*tuple(json.loads(gmmConfig.varables)))
         data['training_samples']=training_samples
-        system = switch[yHyper_system]
-        samples = system.objects.filter(datatime__range=(yHyper_start, yHyper_end))
-        yHper_samples = samples.values_list(*tuple(json.loads(gmmConfig['varables'])))
-        data['yHper_samples']=yHper_samples
+        if not yHyper_system=='':
+            system = switch[yHyper_system]
+            samples = system.objects.filter(datatime__range=(yHyper_start, yHyper_end))
+            yHper_samples = samples.values_list(*tuple(json.loads(gmmConfig.varables)))
+            data['yHper_samples']=yHper_samples
+        else:
+            data['yHper_samples']=[]
         return data
     except Exception as e:
         print(e)
@@ -43,10 +46,10 @@ def getDistribution(gmmConfig):
     engine = matlab.engine.start_matlab()
     data = getSamples(gmmConfig)
     Y = matlab.double(list(data['training_samples']))
-    J = gmmConfig.j
+    J = matlab.int8([gmmConfig.j])
     method = gmmConfig.method
     options = gmmConfig.options
-    y_temp = json.loas(gmmConfig.y)
+    y_temp = json.loads(gmmConfig.y)
     y_list=[]
     if len(y_temp)>0:
         for x in y_temp:
