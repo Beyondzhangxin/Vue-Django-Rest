@@ -202,7 +202,7 @@
         </el-card>
 
          <div class="start">
-            <el-button type="primary" @click="postData()" icon="el-icon-d-caret">开始计算</el-button>
+            <el-button type="primary" @click="postData("http://localhost:8000/GMM/calculation")" icon="el-icon-d-caret">开始计算</el-button>
             <el-dialog
             title="提示"
             :visible.sync="dialogVisible"
