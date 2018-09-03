@@ -202,46 +202,8 @@
       clear: both
   }
 
-  /* .bottom {
-    margin-top: 13px;
-    line-height: 12px;
-  } */
-
-
-/* .rowm{
-  height: 400px;
-  margin: auto;
-} */
-
-/* .rowmb{
-  height: 450px;
-  width: 1580px;
-  background: #fff;
-  float: left;
-  overflow: hidden;
-  margin-top: 20px;
-  box-shadow: 0px 0px 10px 3px #9eabad;
-} */
-
-/* .card2 .el-pagination {
-  margin-left: 35%;
-
-} */
-
-/* #card0{
-
-       background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, rgb(180,180,180,0.1),#355C7D);
-} */
-
 #card1{
-    /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, #373B44,#355C7D); */
-    background-color:rgba(255, 255, 255, 0.2);
+    background-color:rgba(255,255,255,0.9);
     margin-top:50px;
 }
 

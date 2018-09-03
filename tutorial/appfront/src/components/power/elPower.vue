@@ -77,7 +77,7 @@ export default {
     margin-bottom: 20px;
     width: 49%;
     float: left;
-     background-color:rgba(180, 180, 180, 0.1);
+     background-color:rgba(255,255,255,0.9);
   }
 
 .box-card:hover{
