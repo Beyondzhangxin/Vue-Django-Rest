@@ -45,13 +45,13 @@
           </el-col>
           <el-col :span="11">
             <el-form-item prop="end_time">
-              <el-date-picke
+              <el-date-picker
                 v-model="ruleForm.end_time"
                 type="datetime"
                 value-format="yyyy-MM-dd HH:mm:ss"
                 placeholder="选择日期时间"
                 default-time="12:00:00">
-              </el-date-picke>
+              </el-date-picker>
             </el-form-item>
           </el-col>
         </el-form-item>
@@ -483,7 +483,7 @@
   .card1 {
     margin-top: 10px;
     margin-bottom: 20px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color:rgba(255,255,255,0.9);
     /* box-shadow: 10px 5px 20px #888888; */
   }
 
@@ -494,12 +494,12 @@
   .card3 {
     margin-top: 20px;
     margin-bottom: 10px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color:rgba(255,255,255,0.9);
     /* box-shadow: 10px 5px 20px #888888; */
   }
 
   .card2 {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color:rgba(255,255,255,0.9);
     /* box-shadow: 10px 5px 20px #888888; */
   }
 
