@@ -1,0 +1,26 @@
+本函数输入如下
+%    a) (必须输入) distribution:  GMM模型，
+%       1) distribution.w: 联合分布或边际分布权重系数，1-by-J vector
+%       2) distribution.mu: 联合分布或边际分布均值，J-by-d matrix
+%       3) distribution.sigma: 联合分布或边际分布协方差，d-by-d-by-J martix
+%    b) (必须输入) options: 输出选择,char
+%       1）'pdf': 计算在给定点的概率密度函数值
+%       2）'cdf': 计算在给定点的积累概率函数值
+%       3) 'quantile': 计算输入分布的10%-100%分位数
+%       4）'KL':  计算任意两个分布之间的KL散度
+%       5）'RMSE':  计算任意两个分布之间的RMSE散度
+%       6）'linear':  计算随机变量的线性函数的分布
+%    c) (选择输入) y: 计算pdf或cdf时的给定点,1-by-d vector
+%       e.g.: pdf = GMM_calculation(distribution,'pdf',y)
+%       e.g.: cdf = GMM_calculation(distribution,'cdf',y)
+%    d) (选择输入) distribution_other: 计算KL或RMSE时给定的另一个GMM模型
+%       1) distribution_other.w: 联合分布或边际分布权重系数，1-by-J vector
+%       2) distribution_other.mu: 联合分布或边际分布均值，J-by-d matrix
+%       3) distribution_other.sigma: 联合分布或边际分布协方差，d-by-d-by-J martix
+%       e.g.: KL = GMM_calculation(distribution,'KL',distribution_other)
+%    e) (选择输入) x: 计算RMSE时变量的范围,N-by-d matrix
+%       e.g.: RMSE = GMM_calculation(distribution,'RMSE',distribution_other,x)
+%    f) (选择输入) A: 计算随机变量线性函数的分布时随机变量的系数矩阵, d-by-d matrix
+%    g) (选择输入) b: 计算随机变量线性函数的分布时随机变量的常数矩阵, d-by-1 matrix
+%       e.g.: distribution_AXplusb = GMM_calculation(distribution,'linear',A,b)
+%    h) (选择输入) n_min,n_max: 计算输入分布的10%-100%分位数时随机变量的范围，float

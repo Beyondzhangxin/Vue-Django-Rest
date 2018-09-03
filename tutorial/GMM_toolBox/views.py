@@ -2,6 +2,7 @@ import datetime
 
 import random
 from django.http import JsonResponse
+from django.views.decorators.http import require_http_methods
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
@@ -190,7 +191,7 @@ class Conditional:
 
 
 class GetMatrix(APIView):
-
+    # dao操作得到config数据
     def get_queryset(self, name):
         queryset = GmmConfig.objects
         if name is not None:
@@ -198,12 +199,14 @@ class GetMatrix(APIView):
             print(queryset)
         return queryset
 
+    # 变形成列向量和矩阵
     def formatData(self, data={}, y=[]):
         if data['options'] == 'marginal':
             data['vector'] = [[int(z) for z in x] for x in y]
         if data['options'] == 'joint':
             print([[int(z) for z in x] for x in y])
             data['matrix'] = [[int(z) for z in x] for x in y]
+        # conditional 未测试
         if data['options'] == 'conditional':
             data['matrix'] = [list(int(z) for z in x) for x in y]
             list = []
@@ -212,6 +215,7 @@ class GetMatrix(APIView):
             data['y'] = list
         return data
 
+    # 建模和画图
     def modelData(self, data):
         if data['options'] == 'marginal':
             config = self.formatData(data, getSamples(data))
@@ -255,26 +259,49 @@ class GetMatrix(APIView):
                 b = matlab.double(request.data.b)
                 self.result = engine.GMM_calculation(distributionlist[0], 'linear', a, b)
 
+    # POST请求要走的流程
     def post(self, request, format=None):
         try:
             # 得到config数据
+            # 必须POST reuest.data中要有config name1 name2
             serializer = GmmConfigSerializer()
             if request.data['name1'] and request.data['name2']:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             cofNameList = [request.data['name1'], request.data['name2']]
+            # 根据名称得到config配置
             configList = [self.get_queryset(name) for name in cofNameList]
-            # 通过函数得到数据
-            dataList = [getSamples(self.config) for config in configList]
+            # 根据config配置得到数据
+            dataList = [getSamples(config) for config in configList]
+            # 将数据加载到config配置中 （要重新做）
+            formatDateList = [self.formatDateList(self, data) for data in dataList]
             # 通过数据得到distribution
             distributionlist = [self.modelData(x) for x in dataList]
-            #
             # 通过distribution得到Configuration
             self.calculate(request, distributionlist)
         except Exception as e:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             print(e)
-        # 返回函数
+        # 返回函数生成的图像和distributionlist和calculate的计算结果》》
         return Response(1231231312)
+
+
+@require_http_methods(['POST'])
+def calculate(request):
+    pass
+
+
+@require_http_methods(['GET'])
+def jason(request):
+    a = [1,2,3]
+    eng = matlabEngineEnv()
+    eng.Example_PlotmultiCDF(nargout=0)
+    print("success")
+
+
+
+
+
+
 
    # # def __init__(self):
     #     self.result = None
