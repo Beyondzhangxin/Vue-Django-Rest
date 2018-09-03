@@ -529,6 +529,7 @@ export default {
         this.ruleForm.varables = JSON.stringify(this.ruleForm.varables)
         this.ruleForm.y = JSON.stringify(this.ruleForm.y)
         this.ruleForm.y_hyper = JSON.stringify(this.ruleForm.y_hyper)
+        console.log(this.ruleForm)
         instance.post(url, this.ruleForm)
           .then(function (response) {
             //处理数据

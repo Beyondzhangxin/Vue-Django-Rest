@@ -187,8 +187,8 @@ class Conditional:
 
 
 class GetMatrix(APIView, DistributionList):
-    def formatData(self, data={}, y=[]):
 
+    def formatData(self, data={}, y=[]):
         if data['options'] == 'marginal':
             data['vector'] = [[int(z) for z in x] for x in y]
         if data['options'] == 'joint':
@@ -202,6 +202,49 @@ class GetMatrix(APIView, DistributionList):
             data['y'] = list
         return data
 
+    def modelData(self, data):
+        if data['options'] == 'marginal':
+            config = self.formatData(data, getSamples(data))
+            model = Marginal.model(self, config)
+            # 建模后绘制图形
+            self.GMM_plot(distribution=model, options='singlePDF')
+        if data['options'] == 'joint':
+            data = self.formatData(data, getSamples(data))
+            model = Joint.model(self, data)
+            # 建模后绘制图形
+            self.GMM_plot(distribution=model, options='multiPDF')
+        if data['options'] == 'conditional':
+            data = self.formatData(data, getSamples(data))
+            model = Conditional.model(data)
+
+    """
+        计算
+    """
+    def calculate(self, request, distributionlist=None):
+        op = request.data.options
+        engine = matlabEngineEnv()
+        if op == 'PDF':
+            if distributionlist and len(distributionlist) == 2:
+                self.result = engine.GMM_calculation(distributionlist[0], 'pdf', distributionlist[1])
+        if op == 'CDF':
+            if distributionlist and len(distributionlist) == 2:
+                self.result = engine.GMM_calculation(distributionlist[0], 'cdf', distributionlist[1])
+        if op == 'quantile':
+            if distributionlist and len(distributionlist) == 2:
+                self.result = engine.GMM_calculation(distributionlist[0], 'quantile', distributionlist[1])
+        if op == 'KL':
+            if distributionlist and len(distributionlist) == 2:
+                self.result = engine.GMM_calculation(distributionlist[0], 'KL', distributionlist[1])
+        if op == 'RMSE':
+            if request.data.x:
+                x = matlab.double(request.data.x)
+            self.result = engine.GMM_calculation(distributionlist[0], 'RMSE', distributionlist[1], x)
+        if op == 'linear':
+            if request.data.A and request.data.b:
+                a = matlab.double(request.data.A)
+                b = matlab.double(request.data.b)
+                self.result = engine.GMM_calculation(distributionlist[0], 'linear', a, b)
+
     def post(self, request, format=None):
         # 得到config数据
         serializer = GmmConfigSerializer()
@@ -212,11 +255,12 @@ class GetMatrix(APIView, DistributionList):
         # 通过函数得到数据
         dataList = [getSamples(self.config) for config in configList]
         # 通过数据得到distribution
-
+        distributionlist = [self.modelData(x) for x in dataList]
+        # 建立模型
         # 通过distribution得到Configuration
+        self.calculate(request, distributionlist)
         #返回函数
-        Distribution
-        pass
+        return Response()
 
    # # def __init__(self):
     #     self.result = None
