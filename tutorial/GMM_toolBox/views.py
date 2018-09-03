@@ -7,8 +7,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
 from django.shortcuts import render
-from  .models import GmmConfig
-from  .serializer import GmmConfigSerializer
+
+from .gmmTools import getDistribution
+from .models import GmmConfig
+from .serializer import GmmConfigSerializer
 import matlab.engine
 import matlab
 import json
@@ -16,6 +18,7 @@ import functools
 import matlab.engine
 from rest_framework import status
 # Create your views here.
+import numpy as np
 
 # 错误wapper
 from .models import GmmConfig
@@ -30,6 +33,7 @@ def dealException(func):
         except Exception as e:
             return {'exception': type(e)}
         return 0
+
     return wrapper
 
 
@@ -70,17 +74,21 @@ class DistributionList(generics.ListAPIView):
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
+
     """
         通过名称得到config.
     """
+
     def get_queryset(self, name):
         queryset = GmmConfig.objects
         if name is not None:
             queryset = queryset.get(name=name)
         return queryset
+
     """
         List a queryset.
     """
+
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
         page = self.paginate_queryset(queryset)
@@ -126,6 +134,7 @@ class Marginal:
         print(array)
         return engine.GMM_Distribution(array, J, 'EM', 'marginal')
 
+
 # GMM_Distribution函数
 # 输入多维训练集Y，matrix(矩阵)
 # 输入GMM阶数J，int
@@ -144,6 +153,7 @@ class Joint:
         array = matlab.double(y)
         j = matlab.int8([j])
         return engine.GMM_Distribution(array, j, 'EM', option)
+
 
 # GMM_Distribution函数
 # 输入多维训练集 Y，matrix
@@ -211,6 +221,7 @@ class GetMatrix(APIView):
     """
         计算
     """
+
     def calculate(self, request, distributionlist=None):
         op = request.data.options
         engine = matlabEngineEnv()
@@ -265,127 +276,154 @@ class GetMatrix(APIView):
 
 @require_http_methods(['POST'])
 def calculate(request):
-    pass
+    engine = matlabEngineEnv()
+    config_id = request.POST.get('id1')
+    gmm_config = GmmConfig.objects.get(id=config_id)
+    distribution1 = getDistribution(gmm_config)
+    option = request.POST.get('option')
+    A = request.POST.get('A')
+    b = request.POST.get('b')
+    id2 = request.POST.get('id2')
+    n_max = request.POST.get('n_max')
+    n_min = request.POST.get('n_min')
+    x = request.POST.get('x')
+    y = request.POST.get('y')
+    y_list = []
+    if len(y) > 0:
+        for x in y:
+            y_list.append(int(x.get('val')))
+    response = {}
+    if option == 'pdf':
+        pdf = engine.GMM_calculation(distribution1, 'pdf', matlab.double(y_list))
+        x1 = matlab.double([[x * 10 // 1 / 10] for x in np.arange(0, 50, 0.1)])
+        engine.GMM_plot(distribution1, 'singlePDF', x1)
+        response['data'] = {'pdf': pdf, 'pictureName': 'result_singlePDF'}
+    if option == 'cdf':
+        cdf = engine.GMM_calculation(distribution1, 'cdf', matlab.double(y_list))
+        x1 = matlab.double([[x * 10 // 1 / 10] for x in np.arange(0, 50, 0.1)])
+        engine.GMM_plot(distribution1, 'result_singCDF', x1)
+        response['data'] = {'cdf': cdf, 'pictureName': 'result_singCDF'}
+    if option == 'quantile':
+        pass
+    return JsonResponse(response)
 
+@require_http_methods(['GET'])
 def my_image(request):
-    image_data = open("D:/gmm/result.png","rb").read()
+    name = request.GET.get('name')
+    image_data = open("D:/gmm/" + name + ".png", "rb").read()
     return HttpResponse(image_data, content_type="image/png")
+
+
 @require_http_methods(['GET'])
 def jason(request):
-    a = [1,2,3]
+    a = [1, 2, 3]
     eng = matlabEngineEnv()
     eng.Example_PlotmultiCDF(nargout=0)
     print("success")
 
-
-
-
-
-
-
-   # # def __init__(self):
-    #     self.result = None
-    # """
-    #     计算
-    # """
-    # def calculate(self, request, distributionlist=None):
-    #     op = request.data.options
-    #     engine = matlabEngineEnv()
-    #     if op == 'PDF':
-    #         if distributionlist and len(distributionlist) == 2:
-    #             self.result = engine.GMM_calculation(distributionlist[0], 'pdf', distributionlist[1])
-    #     if op == 'CDF':
-    #         if distributionlist and len(distributionlist) == 2:
-    #             self.result = engine.GMM_calculation(distributionlist[0], 'cdf', distributionlist[1])
-    #     if op == 'quantile':
-    #         if distributionlist and len(distributionlist) == 2:
-    #             self.result = engine.GMM_calculation(distributionlist[0], 'quantile', distributionlist[1])
-    #     if op == 'KL':
-    #         if distributionlist and len(distributionlist) == 2:
-    #             self.result = engine.GMM_calculation(distributionlist[0], 'KL', distributionlist[1])
-    #     if op == 'RMSE':
-    #         if request.data.x:
-    #             x = matlab.double(request.data.x)
-    #         self.result = engine.GMM_calculation(distributionlist[0], 'RMSE', distributionlist[1], x)
-    #     if op == 'linear':
-    #         if request.data.A and request.data.b:
-    #             a = matlab.double(request.data.A)
-    #             b = matlab.double(request.data.b)
-    #             self.result = engine.GMM_calculation(distributionlist[0], 'linear', a, b)
-    #
-    #
-    # """
-    #         List a queryset.
-    # """
-    # def list(self, request, *args, **kwargs):
-    #     # 得到name
-    #     name = request.query_params.get('name', None)
-    #     distributionlist = []
-    #     print(name)
-    #     queryset = self.filter_queryset(self.get_queryset(name))
-    #     page = self.paginate_queryset(queryset)
-    #     if page is not None:
-    #         serializer = self.get_serializer(page, many=False)
-    #         return self.get_paginated_response(serializer.data)
-    #     serializer = self.get_serializer(queryset, many=False)
-    #     data = serializer.data
-    #     print(123412412)
-    #     print(data)
-    #     # 可代替方案
-    #
-    #     # 建立模型
-    #     if data['options'] == 'marginal':
-    #         config = self.formatData(data, getSamples(data))
-    #         model = Marginal.model(self, config)
-    #         distributionlist.push(model)
-    #         # 建模后绘制图形
-    #         self.GMM_plot(distribution=model, options='singlePDF')
-    #     if data['options'] == 'joint':
-    #         data = self.formatData(serializer.data, getSamples(data))
-    #         model = Joint.model(self, data)
-    #         distributionlist.push(model)
-    #         # 建模后绘制图形
-    #         self.GMM_plot(distribution=model, options='multiPDF')
-    #     if data['options'] == 'conditional':
-    #         data = self.formatData(serializer.data, getSamples(data))
-    #         Conditional.model(data)
-    #         distributionlist.push(model)
-    #     # 根据具体方法建模
-    #     return Response(serializer.data)
-    #
-    # def formatData(self, data={}, y=[]):
-    #
-    #     if data['options'] == 'marginal':
-    #         data['vector'] = [[int(z) for z in x] for x in y]
-    #     if data['options'] == 'joint':
-    #         print([[int(z) for z in x] for x in y])
-    #         data['matrix'] = [[int(z) for z in x] for x in y]
-    #     if data['options'] == 'conditional':
-    #         data['matrix'] = [list(int(z) for z in x) for x in y]
-    #         list = []
-    #         for var in json.loads(data['y']):
-    #             list.push(var)
-    #         data['y'] = list
-    #     return data
-    #
-    # # 描绘功能
-    # def GMM_plot(self, distribution, options, x=None, y=None, Y_test=None, Y_tenum_intervalst=None):
-    #     engine = matlabEngineEnv()
-    #     x = matlab.double([[x] for x in np.arange(-4, 12, 0.1)])
-    #     if y is None:
-    #         y = matlab.double([[y] for y in np.arange(-10, 22, 0.2)])
-    #     if options == 'singlePDF':
-    #         engine.GMM_plot(distribution, options, x,  nargout=0)
-    #     if options == 'multiPDF':
-    #         engine.GMM_plot(distribution, options, x, y,  nargout=0)
-    #     if options == 'testPDF':
-    #         engine.GMM_plot(distribution, options, x, Y_test, Y_tenum_intervalst,  nargout=0)
-    #     if options == 'singleCDF':
-    #         engine.GMM_plot(distribution, options, x,  nargout=0)
-    #     if options == 'multiCDF':
-    #         engine.GMM_plot(distribution, options, x, y,  nargout=0)
-    #
-    #
+# # def __init__(self):
+#     self.result = None
+# """
+#     计算
+# """
+# def calculate(self, request, distributionlist=None):
+#     op = request.data.options
+#     engine = matlabEngineEnv()
+#     if op == 'PDF':
+#         if distributionlist and len(distributionlist) == 2:
+#             self.result = engine.GMM_calculation(distributionlist[0], 'pdf', distributionlist[1])
+#     if op == 'CDF':
+#         if distributionlist and len(distributionlist) == 2:
+#             self.result = engine.GMM_calculation(distributionlist[0], 'cdf', distributionlist[1])
+#     if op == 'quantile':
+#         if distributionlist and len(distributionlist) == 2:
+#             self.result = engine.GMM_calculation(distributionlist[0], 'quantile', distributionlist[1])
+#     if op == 'KL':
+#         if distributionlist and len(distributionlist) == 2:
+#             self.result = engine.GMM_calculation(distributionlist[0], 'KL', distributionlist[1])
+#     if op == 'RMSE':
+#         if request.data.x:
+#             x = matlab.double(request.data.x)
+#         self.result = engine.GMM_calculation(distributionlist[0], 'RMSE', distributionlist[1], x)
+#     if op == 'linear':
+#         if request.data.A and request.data.b:
+#             a = matlab.double(request.data.A)
+#             b = matlab.double(request.data.b)
+#             self.result = engine.GMM_calculation(distributionlist[0], 'linear', a, b)
+#
+#
+# """
+#         List a queryset.
+# """
+# def list(self, request, *args, **kwargs):
+#     # 得到name
+#     name = request.query_params.get('name', None)
+#     distributionlist = []
+#     print(name)
+#     queryset = self.filter_queryset(self.get_queryset(name))
+#     page = self.paginate_queryset(queryset)
+#     if page is not None:
+#         serializer = self.get_serializer(page, many=False)
+#         return self.get_paginated_response(serializer.data)
+#     serializer = self.get_serializer(queryset, many=False)
+#     data = serializer.data
+#     print(123412412)
+#     print(data)
+#     # 可代替方案
+#
+#     # 建立模型
+#     if data['options'] == 'marginal':
+#         config = self.formatData(data, getSamples(data))
+#         model = Marginal.model(self, config)
+#         distributionlist.push(model)
+#         # 建模后绘制图形
+#         self.GMM_plot(distribution=model, options='singlePDF')
+#     if data['options'] == 'joint':
+#         data = self.formatData(serializer.data, getSamples(data))
+#         model = Joint.model(self, data)
+#         distributionlist.push(model)
+#         # 建模后绘制图形
+#         self.GMM_plot(distribution=model, options='multiPDF')
+#     if data['options'] == 'conditional':
+#         data = self.formatData(serializer.data, getSamples(data))
+#         Conditional.model(data)
+#         distributionlist.push(model)
+#     # 根据具体方法建模
+#     return Response(serializer.data)
+#
+# def formatData(self, data={}, y=[]):
+#
+#     if data['options'] == 'marginal':
+#         data['vector'] = [[int(z) for z in x] for x in y]
+#     if data['options'] == 'joint':
+#         print([[int(z) for z in x] for x in y])
+#         data['matrix'] = [[int(z) for z in x] for x in y]
+#     if data['options'] == 'conditional':
+#         data['matrix'] = [list(int(z) for z in x) for x in y]
+#         list = []
+#         for var in json.loads(data['y']):
+#             list.push(var)
+#         data['y'] = list
+#     return data
+#
+# # 描绘功能
+# def GMM_plot(self, distribution, options, x=None, y=None, Y_test=None, Y_tenum_intervalst=None):
+#     engine = matlabEngineEnv()
+#     x = matlab.double([[x] for x in np.arange(-4, 12, 0.1)])
+#     if y is None:
+#         y = matlab.double([[y] for y in np.arange(-10, 22, 0.2)])
+#     if options == 'singlePDF':
+#         engine.GMM_plot(distribution, options, x,  nargout=0)
+#     if options == 'multiPDF':
+#         engine.GMM_plot(distribution, options, x, y,  nargout=0)
+#     if options == 'testPDF':
+#         engine.GMM_plot(distribution, options, x, Y_test, Y_tenum_intervalst,  nargout=0)
+#     if options == 'singleCDF':
+#         engine.GMM_plot(distribution, options, x,  nargout=0)
+#     if options == 'multiCDF':
+#         engine.GMM_plot(distribution, options, x, y,  nargout=0)
+#
+#
 
 
 # GMM_Distribution函数
