@@ -259,6 +259,7 @@ class GetMatrix(APIView):
             # 根据名称得到config配置
             configList = [self.get_queryset(name) for name in cofNameList]
             # 根据config配置得到数据
+            return Response(123134)
             dataList = [getSamples(config) for config in configList]
             # 将数据加载到config配置中 （要重新做）
             formatDateList = [self.formatDateList(self, data) for data in dataList]
