@@ -5,7 +5,7 @@
     <!-- 分割线 -->
     <hr width=100% size=1 color=#bbbcbc style="FILTER: alpha(opacity=100,finishopacity=0)">
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="ruleForm">
-      <el-card class="card0">
+      <el-card class="card1">
         <el-form-item label="训练目标" style=font-weight:bold prop="system">
           <el-select v-on:change="indexSelect()" v-model="ruleForm.system" clearable placeholder="选择训练系统">
             <el-option
@@ -273,9 +273,7 @@
         mult: new Boolean(1),
 
         //建模功能需要的功能
-        timeRange: [],
-        input0: "",
-        input1: "",
+        // timeRange: [],
         options1: [{
           value: 'SPGS',
           label: '图书馆微电网系统',
@@ -313,15 +311,17 @@
         value3: '',
 
         options4: [],
-        value4: '',
-        value5: '',
-        startTime: '',
-        endTime: '',
+        // value4: '',
+        // value5: '',
+        start_Time: '',
+        end_Time: '',
         B: 'test',
         tableData: [],
 
       }
     },
+
+
     methods: {
       indexSelect: function () {
         var systemType = this.ruleForm.system;
@@ -330,7 +330,7 @@
           console.log(this.options4);
         });
       },
-    
+
     updateVarible(val) {
       this.ruleForm.y = []
       for (var i = 0; i < val.length; i++) {
@@ -431,8 +431,7 @@
       let checkedCount = value.length;
       this.checkAll = checkedCount === this.cities.length;
       this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
-    }
-    ,
+    },
     }
   }
 
