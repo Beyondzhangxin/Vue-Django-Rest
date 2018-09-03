@@ -62,5 +62,5 @@ for n = 1 : Num
 end
 
 distribution.w = weight;
-distribution.mu = mean;
+distribution.mu = mean';
 distribution.sigma = cov;

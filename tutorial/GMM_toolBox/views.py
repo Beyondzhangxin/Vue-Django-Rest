@@ -2,6 +2,7 @@ import datetime
 
 import random
 from django.http import JsonResponse
+from django.views.decorators.http import require_http_methods
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
@@ -282,6 +283,25 @@ class GetMatrix(APIView):
             print(e)
         # 返回函数生成的图像和distributionlist和calculate的计算结果》》
         return Response(1231231312)
+
+
+@require_http_methods(['POST'])
+def calculate(request):
+    pass
+
+
+@require_http_methods(['GET'])
+def jason(request):
+    a = [1,2,3]
+    eng = matlabEngineEnv()
+    eng.Example_PlotmultiCDF(nargout=0)
+    print("success")
+
+
+
+
+
+
 
    # # def __init__(self):
     #     self.result = None

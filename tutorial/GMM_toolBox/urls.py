@@ -35,7 +35,8 @@ urlpatterns = [
     # url(r'compute/calculation/RMSE/$', views.RMSE.as_view()),
     # url(r'compute/calculation/linear/$', views.Linear.as_view()),
     url(r'getAllDistributionConfigs', views.getAllDistributionConfigs),
-
+    url(r'jason',views.jason),
+    url(r'calculation',views.calculate),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
