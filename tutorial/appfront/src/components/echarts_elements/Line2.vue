@@ -73,10 +73,13 @@
       },
       drawLine () {
         // 基于准备好的dom，初始化echarts实例
-        var line1 = echarts.init(document.getElementById(this.id))
+        var line1 = echarts.init(document.getElementById(this.id));
         //初始化变量
         // 绘制图表
-        line1.showLoading();
+        line1.showLoading({
+         color:'rgba(53, 92, 125)'
+        });
+
         this.interval = setInterval( () =>{
           this.loadData(line1);
           line1.setOption(this.changeOption);
