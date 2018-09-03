@@ -13,7 +13,7 @@ num = matlab.int8([5])
 distribution = engine.GMM_Distribution(array, num, 'EM', 'marginal')
 print(distribution)
 
-x = matlab.double([[x*10//1/10] for x in np.arange(0, 31, 0.1)])
+x = matlab.double([[x*10//1/10] for x in np.arange(0, 50, 0.1)])
 print(x)
 print(len(x))
 

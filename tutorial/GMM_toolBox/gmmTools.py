@@ -59,10 +59,12 @@ def getDistribution(gmmConfig):
         if method=='EM':
             return engine.GMM_Distribution(Y,J,'EM',options,y)
         else:
-            return engine.GMM_Distribution(Y,J,'EM',options,y,y_hyper,period)
+            return engine.GMM_Distribution(Y,J,'MAP',options,y,y_hyper,period)
     else:
         if method=='EM':
             return engine.GMM_Distribution(Y,J,'EM',options)
         else:
-            return engine.GMM_Distribution(Y,J,'EM',options,y_hyper,period)
-
+            return engine.GMM_Distribution(Y,J,'MAP',options,y_hyper,period)
+# 转置矩阵
+def trans(m):
+    return zip(*d)
