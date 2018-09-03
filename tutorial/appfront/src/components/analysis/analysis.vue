@@ -23,7 +23,7 @@
         </el-col>
         <el-col :span="3">
           <div class="grid-content">
-            <el-button id="button" disabled>
+            <el-button id="button0" disabled>
               <img src="../../assets/equipment.png" id="image">
               <span id="text"><strong>自身对比</strong></span>
             </el-button>
@@ -360,7 +360,7 @@
      background: -o-linear-gradient(30deg, #373B44, #355C7D);
      background: -moz-linear-gradient(30deg, #373B44, #355C7D);
      background: linear-gradient(30deg, rgb(55,59,68,0.4),#355C7D); */
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255);
   }
 
   #header {
@@ -378,6 +378,10 @@
 
   #text {
     /* color: whitesmoke; */
+  }
+
+  #button0{
+    background-color: rgba(255, 255, 255, 0.1)
   }
 
   #button1 {

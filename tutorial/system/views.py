@@ -488,7 +488,7 @@ def getAllParamsBySystemType(request):
     try:
         params = SystemParam.objects.filter(systemtype=systemType)
         if not params is None:
-            response['data']=list(params)
+            response['data']=serializers.serialize('json',params)
         else:
             response['data']=[]
         response['msg'] = 'success'
