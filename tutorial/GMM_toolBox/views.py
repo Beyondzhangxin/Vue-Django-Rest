@@ -83,6 +83,9 @@ class Distribution(generics.ListCreateAPIView):
     queryset = GmmConfig.objects.all()
     serializer_class = GmmConfigSerializer
 
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
 
 class DistributionList(generics.ListAPIView):
     serializer_class = GmmConfigSerializer
@@ -186,7 +189,14 @@ class Conditional:
         return engine.GMM_Distribution(array, j, 'EM', option, vector)
 
 
-class GetMatrix(APIView, DistributionList):
+class GetMatrix(APIView):
+
+    def get_queryset(self, name):
+        queryset = GmmConfig.objects
+        if name is not None:
+            queryset = queryset.get(name=name)
+            print(queryset)
+        return queryset
 
     def formatData(self, data={}, y=[]):
         if data['options'] == 'marginal':
@@ -246,21 +256,25 @@ class GetMatrix(APIView, DistributionList):
                 self.result = engine.GMM_calculation(distributionlist[0], 'linear', a, b)
 
     def post(self, request, format=None):
-        # 得到config数据
-        serializer = GmmConfigSerializer()
-        if request.data.name1 and request.data.name2:
+        try:
+            # 得到config数据
+            serializer = GmmConfigSerializer()
+            if request.data['name1'] and request.data['name2']:
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            cofNameList = [request.data['name1'], request.data['name2']]
+            configList = [self.get_queryset(name) for name in cofNameList]
+            # 通过函数得到数据
+            dataList = [getSamples(self.config) for config in configList]
+            # 通过数据得到distribution
+            distributionlist = [self.modelData(x) for x in dataList]
+            #
+            # 通过distribution得到Configuration
+            self.calculate(request, distributionlist)
+        except Exception as e:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        cofNameList = [request.data.name1, request.data.name2]
-        configList = [self.get_queryset(name) for name in cofNameList]
-        # 通过函数得到数据
-        dataList = [getSamples(self.config) for config in configList]
-        # 通过数据得到distribution
-        distributionlist = [self.modelData(x) for x in dataList]
-        # 建立模型
-        # 通过distribution得到Configuration
-        self.calculate(request, distributionlist)
-        #返回函数
-        return Response()
+            print(e)
+        # 返回函数
+        return Response(1231231312)
 
    # # def __init__(self):
     #     self.result = None
