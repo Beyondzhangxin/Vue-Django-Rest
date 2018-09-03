@@ -202,14 +202,14 @@
         </el-card>
 
          <div class="start">
-            <el-button type="primary" @click="postData();dialogVisible=true" icon="el-icon-d-caret">开始计算</el-button>
+            <el-button type="primary" @click="postData()" icon="el-icon-d-caret">开始计算</el-button>
             <el-dialog
             title="提示"
             :visible.sync="dialogVisible"
             width="40%"
             :before-close="handleClose">
             <div class="window">
-            <span>This is a demo</span>
+                <img class="image" src="http://localhost:8000/GMM/image"></img>
             </div>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="dialogVisible = false">取 消</el-button>
@@ -336,25 +336,35 @@ export default {
 
     methods:{
         postData(url) {
+            this.dialogVisible=true
             var instance = this.$ajax.create({
                 headers: {'Content-Type': 'application/json'}
             });
             this.formData.y = this.tableData1[0].list
-            if (this.chooseConfig.option == "linear"){
+
+            if (this.formData.option == "linear"){
                 var list = []
                 for(var i = 0; i < this.tableData3.length;i++) {
                     list.push([this.tableData3[i].var1, this.tableData3[i].var2])
                 }
                 this.formData.A = list
                 var list1 = []
-                for(var i = 0; i < this.tableData4; i++) {
-                    list1.push(this.tableData4.var1)
+                for(var i = 0; i < this.tableData4.length; i++) {
+                    list1.push(this.tableData4[i].var1)
                 }
                 this.formData.b = list1
+                
             }
+            
             instance.post(url, this.formData).then(function (response) {
-                //处理数据
-                console.log(response)
+                if(true) {
+                    this.$ajax.get('http://localhost:8000/GMM/image').then(function (response) {
+                        
+                    }.bind(this)).catch(function (error) {
+                    
+                    });
+                }
+                //处理数据   
             }.bind(this)).catch(function (error) {
                 return 0;
             });
@@ -410,7 +420,6 @@ export default {
                         label: response.data[i].name
                     })
                 }
-                console.log(this.configList)
             }.bind(this)).catch(function (error) {
                 return 0;
             });
@@ -451,6 +460,11 @@ export default {
 </script>
 
 <style scoped>
+.image {
+    width: 100%;
+    height: 100%;
+}
+
 .calculation{
     height:120%;
     margin-left:-12px;
