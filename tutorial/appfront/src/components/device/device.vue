@@ -308,11 +308,7 @@ export default {
     margin-top: 40px;
     margin-left: 20px;
     margin-right: 20px;
-     /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, rgb(180,180,180,0.3),#355C7D);*/
-   background-color:rgba(180, 180, 180, 0.1);
+   background-color:rgba(255,255,255,0.9);
 
 }
 
@@ -325,11 +321,7 @@ export default {
   margin-top:-20px;
    margin-left: 20px;
     margin-right: 20px;
-   /* background: -webkit-linear-gradient(30deg, #373B44,#355C7D);
-    background: -o-linear-gradient(30deg, #373B44, #355C7D);
-    background: -moz-linear-gradient(30deg, #373B44, #355C7D);
-    background: linear-gradient(30deg, rgb(180,180,180,0.5),#355C7D); */
-    background-color:rgba(180, 180, 180, 0.1);
+    background-color:rgba(255,255,255,0.9);
 }
 
 .box-card1:hover{
@@ -409,10 +401,6 @@ export default {
 }
 
 .device{
-    /* background: -webkit-linear-gradient(30deg, rgb(180,180,180,0.2),#355C7D);
-    background: -o-linear-gradient(30deg, rgb(180,180,180,0.2),#355C7D);
-    background: -moz-linear-gradient(30deg, rgb(180,180,180,0.2),#355C7D);
-    background: linear-gradient(30deg, rgb(180,180,180,0.2),#355C7D); */
     margin-top:-12px;
     width:100%;
     height: 100%;

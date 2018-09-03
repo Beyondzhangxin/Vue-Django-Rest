@@ -400,7 +400,7 @@ export default {
     margin-top:20px;
     margin-right:30px;
     margin-left:10px;
-    background-color:rgba(180, 180, 180, 0.1);
+    background-color:rgba(255,255,255,0.9);
 }
 
 .card1:hover{
@@ -408,7 +408,7 @@ export default {
 }
 
 .card2{   
-    background-color:rgba(180, 180, 180, 0.1);
+    background-color:rgba(255,255,255,0.9);
     margin-right:30px;
     margin-left:10px;
 }

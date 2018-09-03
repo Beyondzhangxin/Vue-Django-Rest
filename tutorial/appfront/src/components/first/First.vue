@@ -504,11 +504,8 @@
     margin: 30px;
     width: 700px;
     margin-bottom: 20px;
-    /* background-color:rgba(255, 255, 255, 0.3) */
-    background: -webkit-linear-gradient(30deg, rgb(55, 59, 68, 0.2), #355C7D);
-    background: -o-linear-gradient(30deg, rgb(55, 59, 68, 0.2), #355C7D);
-    background: -moz-linear-gradient(30deg, rgb(55, 59, 68, 0.2), #355C7D);
-    background-color:rgba(180, 180, 180, 0.1);
+   background-color:rgba(255,255,255,0.9);
+    /* background-color:rgba(180, 180, 180); */
   }
 
   .card3:hover{
@@ -555,11 +552,8 @@
     margin-left: -15px;
     width: 500px;
     height: 300px;
-    /* background-color:rgba(255, 255, 255, 0.2) */
-    background: -webkit-linear-gradient(30deg, rgb(55, 59, 68, 0.3), #355C7D);
-    background: -o-linear-gradient(30deg, rgb(55, 59, 68, 0.3), #355C7D);
-    background: -moz-linear-gradient(30deg, rgb(55, 59, 68, 0.3), #355C7D);
-    background-color:rgba(180, 180, 180, 0.1);
+   background-color:rgba(255,255,255,0.9);
+    /* background-color:rgba(180, 180, 180, 0.1); */
   }
 .card1:hover{
     background-color:rgba(53,92,125, 0.1);
@@ -622,7 +616,6 @@
     width: 200px;
     height: 30px;
     background-color: #e5e5e5;
-
     border-radius: 5px;
     text-align: center;
     line-height: 30px;
@@ -633,10 +626,6 @@
   .el-container {
     height: 100%;
     overflow-y: hidden;
-    /* background: -webkit-linear-gradient(30deg, rgb(180, 180, 180, 0.1), #355C7D);
-    background: -o-linear-gradient(30deg, rgb(180, 180, 180, 0.1), #355C7D);
-    background: -moz-linear-gradient(30deg, rgb(180, 180, 180, 0.1), #355C7D);
-    background: linear-gradient(30deg, rgb(180, 180, 180, 0.1), #355C7D); */
     margin-left: -12px;
     margin-top: -12px;
   }
@@ -694,12 +683,7 @@
   }
 
   .box-card1 {
-
-    background: -webkit-linear-gradient(30deg, rgb(55, 59, 68, 0.2), #355C7D);
-    background: -o-linear-gradient(30deg, rgb(55, 59, 68, 0.2), #355C7D);
-    background: -moz-linear-gradient(30deg, rgb(55, 59, 68, 0.2), #355C7D);
-    background-color:rgba(180, 180, 180, 0.1);
-
+    background-color:rgba(255,255,255,0.9);
   }
 
   .box-card1:hover{
