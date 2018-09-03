@@ -329,8 +329,8 @@
           this.options4 = JSON.parse(data.data);
           console.log(this.options4);
         });
-      }
-    },
+      },
+    
     updateVarible(val) {
       this.ruleForm.y = []
       for (var i = 0; i < val.length; i++) {
@@ -433,7 +433,7 @@
       this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
     }
     ,
-
+    }
   }
 
 

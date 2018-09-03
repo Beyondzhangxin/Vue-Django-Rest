@@ -5,7 +5,7 @@ from .models import GmmConfig
 class GmmConfigSerializer(serializers.ModelSerializer):
     class Meta:
         model = GmmConfig
-        fields = ('name', 'system', 'varables', 'start_time', 'end_time',
+        fields = ('id', 'name', 'system', 'varables', 'start_time', 'end_time',
                   'j', 'method', 'options', 'y', 'period', 'y_hyper')
 
 #

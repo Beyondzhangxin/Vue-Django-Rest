@@ -272,7 +272,7 @@ class GetMatrix(APIView):
             # 根据config配置得到数据
             dataList = [getSamples(config) for config in configList]
             # 将数据加载到config配置中 （要重新做）
-            formatDateList = [formatDateList(self, data) for data in dataList]
+            formatDateList = [self.formatDateList(self, data) for data in dataList]
             # 通过数据得到distribution
             distributionlist = [self.modelData(x) for x in dataList]
             # 通过distribution得到Configuration

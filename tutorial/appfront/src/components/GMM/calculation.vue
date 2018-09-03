@@ -9,9 +9,9 @@
             <el-row :gutter="20">
                 <el-col :span="4">
                 <div class="select">
-                <el-select v-model="value1" clearable placeholder="选择模型配置">
+                <el-select v-model="formData.id1" clearable @change="updateConfig()" placeholder="选择模型配置">
                     <el-option
-                    v-for="item in options1"
+                    v-for="item in configList"
                     :key="item.value"
                     :label="item.label"
                     :value="item.value">
@@ -22,7 +22,7 @@
 
                 <el-col :span="4">
                     <div class="select">
-                    <el-select v-model="value2" clearable @click="showCont" placeholder="选择输出结果">
+                    <el-select v-model="formData.option" clearable @change="updateOption()" placeholder="选择计算函数值">
                     <el-option
                     v-for="item in options2"
                     :key="item.value"
@@ -33,50 +33,36 @@
                     </div>
                 </el-col>
 
-                 <el-col :span="4">
-                     <div class="select">
-                    <el-select  v-model="value3" clearable placeholder="KL或RMSE对比模型配置">
+                <el-col :span="4" v-if="formData.option == 'KL'||formData.option == 'RMSE'">
+                    <div class="select">
+                    <el-select v-model="formData.id2" clearable placeholder="KL或RMSE对比模型配置">
                     <el-option
-                    v-for="item in options3"
+                    v-for="item in configList"
                     :key="item.value"
                     :label="item.label"
                     :value="item.value">
                     </el-option>
                     </el-select>
-                     </div>
+                    </div>
                 </el-col>
-                <el-col :span="8">
+                <el-col :span="8" v-if="formData.option == 'pdf'||formData.option == 'cdf'">
                      <div class="table1">
                     <el-table
                         :data="tableData1"
                         border
                         style="width: 100%; margin-top: 20px">
                         <el-table-column
-                            prop="id"
+                            prop="id" 
+                            value="val"
                             label="参数y"
                             header-align="center">
                         </el-table-column>
                         <el-table-column
-                            prop="amount1"     
-                            label="var1"
+                            v-for="col in tableData1[0].list"   
+                            label="value"
                             header-align="center">
                         <template scope="scope">
-                            <el-input size="small" v-mode="scope.row.amount1" placeholder="请输入内容"  clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
-                        </template>
-                        </el-table-column>
-                        <el-table-column
-                          
-                            label="var2"
-                            header-align="center">
-                        <template scope="scope">
-                            <el-input size="small" v-mode="scope.row.date" placeholder="请输入内容" clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
-                        </template>
-                        </el-table-column>
-                        <el-table-column          
-                            label="var3"
-                            header-align="center">
-                         <template scope="scope">
-                            <el-input size="small" v-mode="scope.row.date" placeholder="请输入内容" clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
+                            <el-input size="small" v-model="col.val" placeholder="请输入内容"  clearable @change="change"></el-input>
                         </template>
                         </el-table-column>
                     </el-table>
@@ -86,7 +72,7 @@
         </el-card>
 
         <el-card class="card2">
-            <el-row :gutter="20">
+            <!--<el-row :gutter="20" v-if="formData.option == 'RMSE'">
                 <div class="RMSE">
                 <el-col :span="6">
                     <div class="text">
@@ -126,10 +112,10 @@
                     </el-table>
                 </el-col>
                 </div>
-            </el-row>
+            </el-row>-->
 
             <el-row :gutter="20">
-                <div class="linear1">
+                <div class="linear1" v-if="formData.option == 'linear'">
                 <el-col :span="6">           
                 <div class="text1">
                         计算随机变量线性函数的<br>
@@ -138,35 +124,21 @@
                 </el-col>
 
                 <el-col :span="6">
-                   <el-table
+                   <!--<el-table
                         :data="tableData3"
                         border
                         style="width: 100%">
                         <el-table-column
-                        prop="var1"
+                        v-for="col in tableData3"
+                        prop=""
                         label="var1"
                         header-align="center">
                         <template scope="scope">
-                            <el-input size="small" v-mode="scope.row.date" clearable placeholder="请输入内容"  clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
+                            <el-input size="small" v-model="scope.row.date" clearable placeholder="请输入内容"  clearable @change="change"></el-input>
                         </template>
                         </el-table-column>
-                        <el-table-column
-                        prop="var2"
-                        label="var2"
-                        header-align="center">
-                        <template scope="scope">
-                            <el-input size="small" v-mode="scope.row.date" clearable placeholder="请输入内容" @change="handleEdit(scope.$index,scope.row)"></el-input>
-                        </template>
-                        </el-table-column>
-                        <el-table-column
-                        prop="var3"
-                        label="var3"
-                        header-align="center">
-                        <template scope="scope">
-                            <el-input size="small" v-mode="scope.row.date" clearable placeholder="请输入内容" @change="handleEdit(scope.$index,scope.row)"></el-input>
-                        </template>
-                        </el-table-column>
-                    </el-table>
+                    </el-table>-->
+                    
 
                 
                 </el-col>
@@ -190,7 +162,7 @@
                         label="var1"
                         header-align="center">
                         <template scope="scope">
-                            <el-input size="small" v-mode="scope.row.date" clearable placeholder="请输入内容"  clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
+                            <el-input size="small" v-model="scope.row.date" clearable placeholder="请输入内容"  clearable @change="handleEdit(scope.$index,scope.row)"></el-input>
                         </template>
                         </el-table-column>
                     </el-table>
@@ -251,9 +223,25 @@
 <script>
 export default {
     data(){
-        return{
+      return{
+        d: 0,
+        configInfoList: [],
+        chooseConfig: {},
+        configList: [],
+        formData: {
+            id1: "",
+            id2: "",
+            option: "",
+            y: "",
+            x: "",
+            A: "",
+            b: "",
+            n_min: "",
+            n_max: "",
+        },
 
-       dialogVisible: false,
+
+        dialogVisible: false,
 
 
         input1:'',
@@ -264,22 +252,22 @@ export default {
 
 
         options1: [{
-          value: 'A',
-          label: '配置A'
+            value: 'A',
+            label: '配置A'
         }, {
-          value: 'B',
-          label: '配置B'
+            value: 'B',
+            label: '配置B'
         }, {
-          value: 'C',
-          label: '配置C'
-        }],
-        value1: '',
+            value: 'C',
+            label: '配置C'
+       }],
+       value1: '',
 
         options2: [{
-          value: 'PDF',
+          value: 'pdf',
           label: 'PDF'
         }, {
-          value: 'CDF',
+          value: 'cdf',
           label: 'CDF'
         }, {
           value: 'qiantile',
@@ -312,11 +300,9 @@ export default {
         value3: '',
         
     tableData1: [{
-          id: 'value',
-          amount1: '1',
-          amount2: '1',
-          amount3: '1',
-        }],
+        id: 'val',
+        list: [],
+    }],
 
      tableData2: [{
           var1: '1',
@@ -355,7 +341,69 @@ export default {
       }
     },
 
+    mounted: function() {
+      this.getConfig()
+    },
+
+
     methods:{
+        updateOption() {
+            this.d = JSON.parse(this.chooseConfig.y).length
+            console.log(this.chooseConfig)
+            if(this.formData.option == 'pdf'||this.formData.option == 'cdf') {
+                    this.tableData1[0].list = []
+                    for(var j=0; j < JSON.parse(this.chooseConfig.y).length; j++) {
+                        this.tableData1[0].list.push({val: 0})
+                        
+                    }
+            }
+            if(this.formData.option == 'linear') {
+                this.tableData3 = []
+                for(var i = 0; i < this.d; i++) {
+                    var list = []
+                    for(var j = 0; j < this.d; j++) {
+                        list.push({val: 0})
+                    }
+                    this.tableData3.push({list})
+                }
+                console.log(this.tableData3)
+            }
+        },
+        change() {
+            console.log(this.tableData1)
+        },
+        updateConfig() {
+            for(var i=0; i < this.configInfoList.length; i++) {
+                if(this.configInfoList[i].id == this.formData.id1) {
+                    this.chooseConfig = this.configInfoList[i] 
+                    // if (this.chooseConfig.option == 'pdf'||this.chooseConfig.option == 'cdf') {
+                    //     this.tableData1 = []
+                    //     for(var j=0; j < JSON.parse(this.chooseConfig.y); j++) {
+                    //         this.tableData1.push({value: 0})
+                    //         console.log(this.tableData1)
+                    //     }
+                    // }
+                }
+            }
+        },
+        getConfig() {
+            this.$ajax.get("http://127.0.0.1:8000/GMM/model/distribution/").then(function (response) {
+                this.configInfoList = response.data
+                console.log(response)
+                //加载数据到配置中
+                //初始化configList
+                this.configList = []
+                for(var i=0; i < response.data.length; i++){
+                    this.configList.push({
+                        value: response.data[i].id,
+                        label: response.data[i].name
+                    })
+                }
+                console.log(this.configList)
+            }.bind(this)).catch(function (error) {
+                return 0;
+            });
+        },
 
         // 显示
         showCont(){
@@ -365,11 +413,11 @@ export default {
         // 关闭按钮
         handleClose(done) {
         this.$confirm('确认关闭？')
-          .then(_ => {
-            done();
-          })
-          .catch(_ => {});
-      },
+            .then(_ => {
+                done();
+            })
+            .catch(_ => {});
+        },
 
 
         // 表格内输入
