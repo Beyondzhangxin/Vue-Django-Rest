@@ -45,13 +45,13 @@
           </el-col>
           <el-col :span="11">
             <el-form-item prop="end_time">
-              <el-date-picker
+              <el-date-picke
                 v-model="ruleForm.end_time"
                 type="datetime"
                 value-format="yyyy-MM-dd HH:mm:ss"
                 placeholder="选择日期时间"
                 default-time="12:00:00">
-              </el-date-picker>
+              </el-date-picke>
             </el-form-item>
           </el-col>
         </el-form-item>
@@ -323,6 +323,7 @@
 
 
     methods: {
+      // 调用后台数据
       indexSelect: function () {
         var systemType = this.ruleForm.system;
         API.getSystemVariables({"systemType": systemType}).then(data => {
@@ -330,7 +331,7 @@
           console.log(this.options4);
         });
       },
-  
+
     updateVarible(val) {
       this.ruleForm.y = []
       for (var i = 0; i < val.length; i++) {
@@ -341,6 +342,7 @@
       }
     }
     ,
+    // 提交
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
@@ -352,12 +354,12 @@
       });
     }
     ,
-
+    // 重置
     resetForm(formName) {
       this.$refs[formName].resetFields();
     }
     ,
-
+    // 选择算法
     chooseModel(val) {
       console.log(this.value4)
       if (val == 'marginal') {
@@ -368,7 +370,7 @@
       }
     }
     ,
-
+    // MAP提示
     sendNoticeMessage(val) {
       if (val == 'MAP') {
         const h = this.$createElement;
@@ -379,7 +381,7 @@
       }
     }
     ,
-
+    // 判断配置输入
     saveModel() {
       this.$prompt('请输入保存模型名称（四字以上）', '提示', {
         confirmButtonText: '确定',
