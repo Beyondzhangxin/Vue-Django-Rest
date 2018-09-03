@@ -84,13 +84,13 @@
           </el-form-item>
 
           <el-form-item label="变量选择" style=font-weight:bold prop="varables">
-            <el-select v-model="ruleForm.varables" multiple
+            <el-select v-model="ruleForm.varables" multiple multiple-limit="2"
                        placeholder="选择变量">
               <el-option
                 v-for="item in options4"
                 :key="item.pk"
                 :label="item.fields.paramname"
-                :value="item.fields.systemtype">
+                :value="item.fields.paramcode">
               </el-option>
             </el-select>
           </el-form-item>
@@ -227,7 +227,7 @@
           end_time: "",
           j: "",
           method: "",
-          varables: [],
+          varables: "",
           y: [],
           period: null,
           y_hyper: {

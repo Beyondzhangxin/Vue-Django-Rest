@@ -15,13 +15,9 @@ import json
 import functools
 import matlab.engine
 from rest_framework import status
-from django.http import Http404
-import numpy as np
 # Create your views here.
 
 # 错误wapper
-from pvmg.models import DataPvmgHistory
-from spgs.models import DataSpgsHistory
 from .models import GmmConfig
 
 
@@ -61,23 +57,6 @@ def getAllDistributionConfigs(request):
     return JsonResponse(response)
 
 
-# 根据distribution配置返回训练样本列表,参数为GmmConfig
-def getSamples(gmmConfig):
-    switch = {
-        "SPGS": DataSpgsHistory,
-        "PVMG": DataPvmgHistory,
-    }
-    start = datetime.datetime.strptime(gmmConfig['start_time'], "%Y-%m-%d %H:%M:%S")
-    end = datetime.datetime.strptime(gmmConfig['end_time'], "%Y-%m-%d %H:%M:%S")
-    try:
-        samples = switch[gmmConfig['system']]
-        samples = samples.objects.filter(datatime__range=(start, end))
-        gmmConfig['varables'] = gmmConfig['varables'].lower()
-        samples = samples.values_list(*tuple(json.loads(gmmConfig['varables'])))
-        return samples
-    except Exception as e:
-        print(e)
-        return []
 
 
 class Distribution(generics.ListCreateAPIView):
