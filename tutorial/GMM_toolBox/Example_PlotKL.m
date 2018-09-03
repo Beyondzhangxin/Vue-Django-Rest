@@ -22,6 +22,7 @@ distribution6 = GMM_Distribution(Y6,5,'EM','marginal');  % 选用EM算法,阶数选择为
 distribution7 = GMM_Distribution(Y7,5,'EM','marginal');  % 选用EM算法,阶数选择为5
 
 %% 计算KLD和RMSE
+x = [0:0.1:100]';
 KL(1) = GMM_calculation(distribution1,'KL',distribution2);
 KL(2) = GMM_calculation(distribution1,'KL',distribution3);
 KL(3) = GMM_calculation(distribution1,'KL',distribution4);
