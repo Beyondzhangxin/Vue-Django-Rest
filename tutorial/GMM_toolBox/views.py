@@ -301,25 +301,25 @@ def calculate(request):
         response['data'] = {'pdf': pdf, 'pictureName': 'result_singlePDF'}
     if option == 'cdf':
         cdf = engine.GMM_calculation(distribution1, 'cdf', matlab.double(y_list))
-        engine.GMM_plot(distribution1, 'result_singCDF', x1,nargout=0)
+        engine.GMM_plot(distribution1, 'singCDF', x1,nargout=0)
         response['data'] = {'cdf': cdf, 'pictureName': 'result_singCDF'}
     if option == 'quantile':
         quantile = engine.GMM_calculation(distribution1,'quantile',matlab.double(n_min),matlab.double(n_max))
-        engine.GMM_plot(distribution1, 'result_singCDF', x1, nargout=0)
+        engine.GMM_plot(distribution1, 'singCDF', x1, nargout=0)
         response['data'] = {'quantile': quantile, 'pictureName': 'result_singCDF'}
     if  option=='KL':
         gmm_config2=GmmConfig.objects.get(pk=id2)
         distribution2=getDistribution(gmm_config2)
         KL = engine.GMM_calculation(distribution1, 'KL', distribution2)
-        engine.GMM_plot(distribution1, 'result1_singPDF', x1, nargout=0)
-        engine.GMM_plot(distribution2, 'result2_singPDF', x1, nargout=0)
+        engine.GMM_plot(distribution1, 'singPDF', x1, nargout=0)
+        engine.GMM_plot(distribution2, 'singPDF', x1, nargout=0)
         response['data'] = {'KL': KL, 'pictureName': ['result1_singPDF','result2_singPDF']}
     if option =='RMSE':
         gmm_config2 = GmmConfig.objects.get(pk=id2)
         distribution2 = getDistribution(gmm_config2)
         RMSE=engine.GMM_calculation(distribution1,'RMSE',distribution2,x)
-        engine.GMM_plot(distribution1, 'result1_singPDF', x1, nargout=0)
-        engine.GMM_plot(distribution2, 'result2_singPDF', x1, nargout=0)
+        engine.GMM_plot(distribution1, 'singPDF', x1, nargout=0)
+        engine.GMM_plot(distribution2, 'singPDF', x1, nargout=0)
         response['data'] = {'RMSE': RMSE, 'pictureName': ['result1_singPDF', 'result2_singPDF']}
     if option=='linear':
         pass
