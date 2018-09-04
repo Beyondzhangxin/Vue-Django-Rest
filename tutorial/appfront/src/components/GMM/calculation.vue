@@ -210,7 +210,8 @@
             :before-close="handleClose">
             <div class="window">
                 <span>{{this.result }}</span>
-                <img class="image" :src="pictureName" v-if="dialogVisible"></img>
+                <img class="image" :src="'http://localhost:8000/GMM/image?name='+pictureName1" v-if="pictureName1 != none"></img>
+                <img class="image" :src="'http://localhost:8000/GMM/image?name='+pictureName2" v-if="pictureName2 != none"></img>
             </div>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="dialogVisible = false">取 消</el-button>
@@ -227,7 +228,8 @@ export default {
     data(){
       return{
         result: 0,
-        pictureName: "",
+        pictureName1: "",
+        pictureName2: "",
         d: 0,
         configInfoList: [],
         chooseConfig: {},
@@ -361,8 +363,13 @@ export default {
             instance.post(url, this.formData).then(function (response) {
 
                 console.log(response)
-                this.pictureName = "http://localhost:8000/GMM/image?name=" + response.data.data.pictureName
-                console.log(this.pictureName)
+                if (response.data.data.pictureName && response.data.data.pictureName.length == 2) {
+                  this.pictureName1 = response.data.data.pictureName[0]
+                  this.pictureName2 = response.data.data.pictureName[1]
+                }
+
+                // this.pictureName = "http://localhost:8000/GMM/image?name=" + response.data.data.pictureName
+                // console.log(this.pictureName)
                 this.result = response.data.data.pdf
                 this.dialogVisible=true
 
