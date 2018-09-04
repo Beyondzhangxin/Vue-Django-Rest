@@ -76,7 +76,7 @@
     },
     data(){
       return {
-        data: 'http://localhost:8000/system/getDetectionInfo?pageNum=1&pageSize=10',
+        data: 'http://'+location.hostname+':8000/system/getDetectionInfo?pageNum=1&pageSize=10',
         page: 1,
         pageSize: 10,
         pageNum: 2,
@@ -102,7 +102,7 @@
         console.log(this.state);
       },
       handleCurrentChange(val) {
-        this.data = 'http://localhost:8000/system/getDetectionInfo?pageNum='+ val +'&pageSize=10';
+        this.data = 'http://'+location.hostname+':8000/system/getDetectionInfo?pageNum='+ val +'&pageSize=10';
         this.state = 'ALL';
       }
     },

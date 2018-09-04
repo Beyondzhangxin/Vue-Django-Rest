@@ -165,7 +165,7 @@ export default {
   methods: {
     loadData(){
       this.$store.commit('filter', '系统');
-      this.$ajax.get('http://localhost:8000/system/getStationMonitorInfo')
+      this.$ajax.get('http://'+location.hostname+':8000/system/getStationMonitorInfo')
       .then(function (response) {
         //处理数据
         for (var i = 0; i < this.items.length; i++) {

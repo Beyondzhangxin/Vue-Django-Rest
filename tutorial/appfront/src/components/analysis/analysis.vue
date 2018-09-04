@@ -132,11 +132,11 @@
         var url = ""
         var fromData = ""
         if (this.carryModel.model == 'dzdb') {
-           url = 'http://localhost:8000/system/getStationCompareInfo';
+           url = 'http://'+location.hostname+':8000/system/getStationCompareInfo';
            fromData = "stationList=" + JSON.stringify(this.carryModel.stationList) + "&compareParam=" + this.carryModel.compareParam + "&searchDate=" + this.carryModel.searchDate;
         }
         if (this.carryModel.model == 'sbdb') {
-          url = 'http://localhost:8000/system/getDeviceCompareInfo';
+          url = 'http://'+location.hostname+':8000/system/getDeviceCompareInfo';
           fromData = 'deviceList=' + JSON.stringify(this.carryModel.deviceList) + "&compareParam=" + this.carryModel.compareParam + "&searchDate=" + this.carryModel.searchDate;
         }
 

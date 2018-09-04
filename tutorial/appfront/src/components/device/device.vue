@@ -140,9 +140,9 @@ export default {
     watch: {
       type: function(val, oldval) {
         if (val != 'NBQ') {
-          this.list.data = 'http://localhost:8000/system/getDeviceTable';
+          this.list.data = 'http://'+location.hostname+':8000/system/getDeviceTable';
         }else {
-          this.list.data = 'http://localhost:8000/system/getDeviceTable';
+          this.list.data = 'http://'+location.hostname+':8000/system/getDeviceTable';
         }
       }
     },
@@ -156,7 +156,7 @@ export default {
           pageNum: 0,
           pageSize: 7,
           //改数据改这里
-          data: 'http://localhost:8000/system/getDeviceTable',
+          data: 'http://'+location.hostname+':8000/system/getDeviceTable',
           //改表名改这里
           tabConfigs: [
             {prop: 'dev_name', label: '设备名称'},
@@ -182,7 +182,7 @@ export default {
     },
     methods: {
       loadData(){
-        this.$ajax.get('http://localhost:8000/system/getDeviceMonitor?systemType=PVMG&deviceName=NBQGL1')
+        this.$ajax.get('http://'+location.hostname+':8000/system/getDeviceMonitor?systemType=PVMG&deviceName=NBQGL1')
         .then(function (response) {
           //处理数据
           this.bwrq = response.data.data.bwrq

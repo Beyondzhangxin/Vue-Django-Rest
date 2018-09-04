@@ -227,7 +227,7 @@
     },
     methods: {
       envProtectData(){
-        this.$ajax.get('http://localhost:8000/system/getHBSJ')
+        this.$ajax.get('http://'+location.hostname+':8000/system/getHBSJ')
           .then(function (response) {
             //处理数据
             var hb_data = response.data.data;
@@ -243,7 +243,7 @@
           });
       },
       loadData(){
-        this.$ajax.get('http://localhost:8000/system/getDQFDGL')
+        this.$ajax.get('http://'+location.hostname+':8000/system/getDQFDGL')
           .then(function (response) {
             //处理数据
             this.c1 = response.data.data.c1
@@ -360,7 +360,7 @@
           },
           l1: {
             id: 'line11',
-            request: ['http://localhost:8000/system/echartsDataForInverterFDL'],
+            request: ['http://'+location.hostname+':8000/system/echartsDataForInverterFDL'],
             option: {
               title: {
                 text: '当日发电量',
@@ -417,7 +417,7 @@
           },
           l2: {
             id: 'line2',
-            request: ['http://localhost:8000/system/echartsDataForInverterFDGL', 'http://localhost:8000/system/echartsDataForFZD'],
+            request: ['http://'+location.hostname+':8000/system/echartsDataForInverterFDGL', 'http://'+location.hostname+':8000/system/echartsDataForFZD'],
             option: {
               title: {
                 text: '当日发电功率',
