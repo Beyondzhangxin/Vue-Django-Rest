@@ -209,7 +209,8 @@
             width="40%"
             :before-close="handleClose">
             <div class="window">
-                <img class="image" src="http://localhost:8000/GMM/image"></img>
+                <span>{{this.result }}</span>
+                <img class="image" :src="pictureName" v-if="dialogVisible"></img>
             </div>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="dialogVisible = false">取 消</el-button>
@@ -225,6 +226,8 @@
 export default {
     data(){
       return{
+        result: 0,
+        pictureName: "",
         d: 0,
         configInfoList: [],
         chooseConfig: {},
@@ -336,7 +339,6 @@ export default {
 
     methods:{
         postData(url) {
-            this.dialogVisible=true
             var instance = this.$ajax.create({
                 headers: {'Content-Type': 'application/json'}
             });
@@ -357,13 +359,20 @@ export default {
             }
             
             instance.post(url, this.formData).then(function (response) {
-                if(true) {
-                    this.$ajax.get('http://localhost:8000/GMM/image').then(function (response) {
+
+                console.log(response)
+                this.pictureName = "http://localhost:8000/GMM/image?name=" + response.data.data.pictureName
+                console.log(this.pictureName)
+                this.result = response.data.data.pdf
+                this.dialogVisible=true
+
+                // if(true) {
+                //     this.$ajax.get('http://localhost:8000/GMM/image').then(function (response) {
                         
-                    }.bind(this)).catch(function (error) {
+                //     }.bind(this)).catch(function (error) {
                     
-                    });
-                }
+                //     });
+                // }
                 //处理数据   
             }.bind(this)).catch(function (error) {
                 return 0;
