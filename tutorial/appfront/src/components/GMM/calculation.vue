@@ -401,7 +401,7 @@ export default {
             console.log(this.chooseConfig)
             if(this.formData.option == 'pdf'||this.formData.option == 'cdf') {
                     this.tableData1[0].list = []
-                    for(var j=0; j < JSON.parse(this.chooseConfig.y).length; j++) {
+                    for(var j=0; j < JSON.parse(this.chooseConfig.varables).length; j++) {
                         this.tableData1[0].list.push({val: 0})
                     }
             }
