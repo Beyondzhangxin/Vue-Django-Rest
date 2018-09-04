@@ -25,7 +25,7 @@
         </div>
 
     <!-- 调用canvas -->
-        <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas>
+        <!-- <myCanvas :dotsNum="dotsNum" :isColor="false"></myCanvas> -->
         <div class="info">Powered by 清华四川能源互联网研究院</div>
 	</div>
 </template>
