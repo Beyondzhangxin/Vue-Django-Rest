@@ -209,6 +209,8 @@
             width="40%"
             :before-close="handleClose">
             <div class="window">
+                <span v-show="this.formData.option == 'pdf'">给定点的概率密度函数值</span>
+                <span v-show="this.formData.option == 'cdf'">给定点的积累概率函数值</span>
                 <span>{{this.formData.option+":"+this.result}}</span>
                 <img class="image" :src="'http://localhost:8000/GMM/image?name='+pictureName1" v-if="pictureName1"></img>
                 <img class="image" :src="'http://localhost:8000/GMM/image?name='+pictureName2" v-if="pictureName2"></img>
