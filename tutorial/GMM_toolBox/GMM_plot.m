@@ -100,7 +100,7 @@ switch options
         else
             GMM = gmdistribution(distribution.mu,distribution.sigma,distribution.w');
             plot(x,cdf(GMM,x));
-            saveas(gcf,'/gmm/result_singCDF.png')
+            saveas(gcf,'/gmm/result_singleCDF.png')
         end
         
     case 'multiCDF'
@@ -117,7 +117,7 @@ switch options
             X = [x(:) y(:)];
             Z = cdf(GMM,X);
             surf(x,y,reshape(Z,N,N));
-            saveas(gcf,'/gmm/result_singleCDF.png')
+            saveas(gcf,'/gmm/result_multiCDF.png')
         end
         
 end
