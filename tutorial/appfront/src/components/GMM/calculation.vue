@@ -202,7 +202,7 @@
         </el-card>
 
          <div class="start">
-            <el-button type="primary" @click="postData('http://localhost:8000/GMM/calculation')" icon="el-icon-d-caret">开始计算</el-button>
+            <el-button type="primary" @click="postData('http://localhost:8000/GMM/calculation')" icon="el-icon-d-caret" v-loading.fullscreen.lock="fullscreenLoading">开始计算</el-button>
             <el-dialog
             title="提示"
             :visible.sync="dialogVisible"
@@ -226,6 +226,9 @@
 export default {
     data(){
       return{
+
+          fullscreenLoading:false,
+        
         result: 0,
         pictureName: "",
         d: 0,
@@ -339,6 +342,13 @@ export default {
 
     methods:{
         postData(url) {
+
+            // loading 5秒
+             this.fullscreenLoading = true;
+                setTimeout(() => {
+                this.fullscreenLoading = false;
+            }, 5000);
+
             var instance = this.$ajax.create({
                 headers: {'Content-Type': 'application/json'}
             });
