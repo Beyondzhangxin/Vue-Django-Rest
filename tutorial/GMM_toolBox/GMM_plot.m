@@ -41,7 +41,7 @@
        
 
 %% º¯Êý
-function GMM_plot(distribution,options,x,varargin)
+function GMM_plot(distribution,options,x,pictureName,varargin)
 
 switch options
     
@@ -54,7 +54,7 @@ switch options
         else
             GMM = gmdistribution(distribution.mu,distribution.sigma,distribution.w');
             plot(x,pdf(GMM,x));
-            saveas(gcf,'/gmm/result_singlePDF.png')
+            saveas(gcf,pictureName)
 
         end
         
@@ -72,7 +72,7 @@ switch options
             X = [x(:) y(:)];
             Z = pdf(GMM,X);
             surf(x,y,reshape(Z,N,N));
-            saveas(gcf,'/gmm/result_multiPDF.png')
+            saveas(gcf,pictureName,'png')
         end
         
     case 'testPDF'
@@ -88,7 +88,7 @@ switch options
             hold on
             GMM = gmdistribution(distribution.mu,distribution.sigma,distribution.w');
             plot(x,pdf(GMM,x));
-            saveas(gcf,'/gmm/result_testPDF.png')
+            saveas(gcf,pictureName,'png')
         end
         
     case 'singleCDF'
@@ -100,7 +100,7 @@ switch options
         else
             GMM = gmdistribution(distribution.mu,distribution.sigma,distribution.w');
             plot(x,cdf(GMM,x));
-            saveas(gcf,'/gmm/result_singleCDF.png')
+            saveas(gcf,pictureName,'png')
         end
         
     case 'multiCDF'
@@ -117,7 +117,7 @@ switch options
             X = [x(:) y(:)];
             Z = cdf(GMM,X);
             surf(x,y,reshape(Z,N,N));
-            saveas(gcf,'/gmm/result_multiCDF.png')
+            saveas(gcf,pictureName,'png')
         end
         
 end
