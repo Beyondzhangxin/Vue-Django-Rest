@@ -132,7 +132,7 @@
               <!--v-for = "item in "-->
               <!--&gt;-->
 
-              </el-table_column>
+              <!--</el-table_column>-->
               <el-table-column
                 prop="var1"
                 label="var1"
