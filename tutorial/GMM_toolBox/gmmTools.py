@@ -18,7 +18,11 @@ def getSamples(gmmConfig):
     start = datetime.datetime.strptime(gmmConfig.start_time, "%Y-%m-%d %H:%M:%S")
     end = datetime.datetime.strptime(gmmConfig.end_time, "%Y-%m-%d %H:%M:%S")
     yHyper_start = json.loads(gmmConfig.y_hyper).get('start_time')
+    if not yHyper_start=='':
+        yHyper_start=datetime.datetime.strptime(yHyper_start, "%Y-%m-%dT%H:%M:%S.%fZ")
     yHyper_end = json.loads(gmmConfig.y_hyper).get('end_time')
+    if not yHyper_end=='':
+        yHyper_end = datetime.datetime.strptime(yHyper_end,"%Y-%m-%dT%H:%M:%S.%fZ")
     yHyper_system = json.loads(gmmConfig.y_hyper).get('system')
     data={}
     try:
@@ -46,7 +50,7 @@ def getDistribution(gmmConfig):
     engine = matlab.engine.start_matlab()
     data = getSamples(gmmConfig)
     Y = matlab.double(list(data['training_samples']))
-    J = matlab.int8([gmmConfig.j])
+    J = matlab.double([gmmConfig.j])
     method = gmmConfig.method
     options = gmmConfig.options
     y_temp = json.loads(gmmConfig.y)
@@ -57,7 +61,8 @@ def getDistribution(gmmConfig):
     y= matlab.double(y_list)
     y_hyper = matlab.double(list(data['yHper_samples']))
     period = gmmConfig.period
-
+    len_y = len(y_hyper)
+    y_hyper =y_hyper[0:int(len_y/50)*50]
     if len(y_list)>0:
         if method=='EM':
             return engine.GMM_Distribution(Y,J,'EM',options,y)
