@@ -29,7 +29,7 @@
 
         </el-form-item>
         <el-form-item label="时间选择" style=font-weight:bold required>
-          <el-col :span="11">
+          <!-- <el-col :span="11">
             <el-form-item prop="start_time">
               <el-date-picker
                 v-model="ruleForm.start_time"
@@ -53,7 +53,17 @@
                 default-time="12:00:00">
               </el-date-picker>
             </el-form-item>
-          </el-col>
+          </el-col> -->
+          <el-date-picker
+            v-model="value0"
+            type="datetimerange"
+            :picker-options="pickerOptions1"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            
+          >
+        </el-date-picker>
         </el-form-item>
       </el-card>
 
@@ -269,6 +279,36 @@
             {validator: checkY_hyper, required: true}
           ],
         },
+
+        pickerOptions1: {
+          shortcuts: [{
+            text: '最近一周',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit('pick', [start, end]);
+            }
+          }, {
+            text: '最近一个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+              picker.$emit('pick', [start, end]);
+            }
+          }, {
+            text: '最近三个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+              picker.$emit('pick', [start, end]);
+            }
+          }]
+        },
+        value0: [new Date(2017, 3, 27, 1, 0), new Date(2017, 3, 27, 23, 0)],
+     
 
         mult: new Boolean(1),
 
