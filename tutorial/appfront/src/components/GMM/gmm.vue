@@ -437,7 +437,9 @@
         });
         //发送POST请求
         this.$router.push('/calculation')
-        this.postDSTConfig('http://127.0.0.1:8000/GMM/model/distribution/')
+        var host = location.hostname;
+        var url = 'http://'+host+':8000/GMM/model/distribution/'
+        this.postDSTConfig(url)
       }).catch(() => {
         this.$message({
           type: 'info',

@@ -288,8 +288,8 @@ def calculate(request):
     A = data.get('A')
     b = data.get('b')
     id2 = data.get('id2')
-    n_max = float(data.get('n_max'))
-    n_min = float(data.get('n_min'))
+    n_max = float(0 if data.get('n_max')=='' else  data.get('n_min'))
+    n_min = float(0 if data.get('n_min')=='' else  data.get('n_min'))
     x = matlab.double([[x * 10 // 1 / 10] for x in np.arange(0, 30, 0.1)])
     y = data.get('y')
     y_list = []
