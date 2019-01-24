@@ -8,6 +8,9 @@ import matlab.engine
 import matlab
 from pvmg.models import DataPvmgHistory
 from spgs.models import DataSpgsHistory
+import numpy as np
+
+from .GMM_Distribution import GMM_distribution
 
 
 def getSamples(gmmConfig):
@@ -47,10 +50,10 @@ def getSamples(gmmConfig):
 # 通过distribution配置获得distribution对象
 
 def getDistribution(gmmConfig):
-    engine = matlab.engine.start_matlab()
+    # engine = matlab.engine.start_matlab()
     data = getSamples(gmmConfig)
-    Y = matlab.double(list(data['training_samples']))
-    J = matlab.double([gmmConfig.j])
+    Y = np.array(data['training_samples']).T[0]
+    J =  gmmConfig.j
     method = gmmConfig.method
     options = gmmConfig.options
     y_temp = json.loads(gmmConfig.y)
@@ -58,21 +61,21 @@ def getDistribution(gmmConfig):
     if len(y_temp)>0:
         for x in y_temp:
             y_list.append(int(x.get('value')))
-    y= matlab.double(y_list)
-    y_hyper = matlab.double(list(data['yHper_samples']))
+    y= np.array(y_list)
+    y_hyper = np.array(list(data['yHper_samples']))
     period = gmmConfig.period
     len_y = len(y_hyper)
     y_hyper =y_hyper[0:int(len_y/50)*50]
     if len(y_list)>0:
         if method=='EM':
-            return engine.GMM_Distribution(Y,J,'EM',options,y)
+            return GMM_distribution(Y,J,'EM',options,y)
         else:
-            return engine.GMM_Distribution(Y,J,'MAP',options,y,y_hyper,period)
+            return GMM_distribution(Y,J,'MAP',options,y,y_hyper,period)
     else:
         if method=='EM':
-            return engine.GMM_Distribution(Y,J,'EM',options)
+            return GMM_distribution(Y,J,'EM',options)
         else:
-            return engine.GMM_Distribution(Y,J,'MAP',options,y_hyper,period)
+            return GMM_distribution(Y,J,'MAP',options,y_hyper,period)
 # 转置矩阵
 def trans(m):
     return zip(*d)

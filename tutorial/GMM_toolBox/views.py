@@ -278,7 +278,7 @@ class GetMatrix(APIView):
 
 @require_http_methods(['POST'])
 def calculate(request):
-    engine = matlabEngineEnv()
+    # engine = matlabEngineEnv()
     data = json.loads(request.body)
     config_id = data.get('id1')
     gmm_config = GmmConfig.objects.get(pk=config_id)
@@ -300,94 +300,94 @@ def calculate(request):
             y_list.append(float(x.get('val')))
     response = {}
     if option == 'pdf':
-        pdf = engine.GMM_calculation(distribution1, 'pdf', matlab.double(y_list))
+        # pdf = engine.GMM_calculation(distribution1, 'pdf', matlab.double(y_list))
         if options == "joint":
             timestamp = time.time()
             picName = "/gmm/" + str(timestamp) + '.png'
-            engine.GMM_plot(distribution1, 'multiPDF', x1, picName, y1, nargout=0)
-            response['data'] = {'result': pdf, 'pictureName': [str(timestamp)]}
+            # engine.GMM_plot(distribution1, 'multiPDF', x1, picName, y1, nargout=0)
+            # response['data'] = {'result': pdf, 'pictureName': [str(timestamp)]}
         else:
             timestamp = time.time()
             picName = "/gmm/" + str(timestamp) + '.png'
-            engine.GMM_plot(distribution1, 'singlePDF', x1, picName, nargout=0)
-            response['data'] = {'result': pdf, 'pictureName': [str(timestamp)]}
+            # engine.GMM_plot(distribution1, 'singlePDF', x1, picName, nargout=0)
+            # response['data'] = {'result': pdf, 'pictureName': [str(timestamp)]}
     if option == 'cdf':
-        cdf = engine.GMM_calculation(distribution1, 'cdf', matlab.double(y_list))
+        # cdf = engine.GMM_calculation(distribution1, 'cdf', matlab.double(y_list))
         if options == 'joint':
             timestamp = time.time()
             picName = "/gmm/" + str(timestamp) + '.png'
-            engine.GMM_plot(distribution1, 'multiCDF', x1, picName, y1, nargout=0)
-            response['data'] = {'result': cdf, 'pictureName': [str(timestamp)]}
+            # engine.GMM_plot(distribution1, 'multiCDF', x1, picName, y1, nargout=0)
+            # response['data'] = {'result': cdf, 'pictureName': [str(timestamp)]}
         else:
             timestamp = time.time()
             picName = "/gmm/" + str(timestamp) + '.png'
-            engine.GMM_plot(distribution1, 'singleCDF', x1, picName, nargout=0)
-            response['data'] = {'result': cdf, 'pictureName': [str(timestamp)]}
+            # engine.GMM_plot(distribution1, 'singleCDF', x1, picName, nargout=0)
+            # response['data'] = {'result': cdf, 'pictureName': [str(timestamp)]}
     if option == 'quantile':
         timestamp1 = time.time()
         picName = "/gmm/" + str(timestamp1) + '.png'
-        quantile = engine.GMM_calculation(distribution1, 'quantile', matlab.double([n_min]), matlab.double([n_max]))
-        engine.GMM_plot(distribution1, 'singlePDF', x1, picName, nargout=0)
-        response['data'] = {'result': quantile[-1][0], 'pictureName': [str(timestamp1)]}
+        # quantile = engine.GMM_calculation(distribution1, 'quantile', matlab.double([n_min]), matlab.double([n_max]))
+        # engine.GMM_plot(distribution1, 'singlePDF', x1, picName, nargout=0)
+        # response['data'] = {'result': quantile[-1][0], 'pictureName': [str(timestamp1)]}
     if option == 'KL':
         if options == 'joint':
             gmm_config2 = GmmConfig.objects.get(pk=id2)
             distribution2 = getDistribution(gmm_config2)
-            KL = engine.GMM_calculation(distribution1, 'KL', distribution2)
+            # KL = engine.GMM_calculation(distribution1, 'KL', distribution2)
             timestamp1 = time.time()
             picName = "/gmm/" + str(timestamp1) + '.png'
-            engine.GMM_plot(distribution1, 'multiPDF', x1, picName, y1, nargout=0)
+            # engine.GMM_plot(distribution1, 'multiPDF', x1, picName, y1, nargout=0)
             timestamp2 = time.time()
             picName = "/gmm/" + str(timestamp2) + '.png'
-            engine.GMM_plot(distribution2, 'multiPDF', x1, picName, y1, nargout=0)
-            response['data'] = {'result': KL, 'pictureName': [str(timestamp1), str(timestamp2)]}
+            # engine.GMM_plot(distribution2, 'multiPDF', x1, picName, y1, nargout=0)
+            # response['data'] = {'result': KL, 'pictureName': [str(timestamp1), str(timestamp2)]}
         else:
             gmm_config2 = GmmConfig.objects.get(pk=id2)
             distribution2 = getDistribution(gmm_config2)
-            KL = engine.GMM_calculation(distribution1, 'KL', distribution2)
+            # KL = engine.GMM_calculation(distribution1, 'KL', distribution2)
             timestamp1 = time.time()
             picName = "/gmm/" + str(timestamp1) + '.png'
-            engine.GMM_plot(distribution1, 'singlePDF', x1, picName, nargout=0)
+            # engine.GMM_plot(distribution1, 'singlePDF', x1, picName, nargout=0)
             timestamp2 = time.time()
             picName = "/gmm/" + str(timestamp2) + '.png'
-            engine.GMM_plot(distribution2, 'singlePDF', x1, picName, nargout=0)
-            response['data'] = {'result': KL, 'pictureName': [str(timestamp1), str(timestamp2)]}
+            # engine.GMM_plot(distribution2, 'singlePDF', x1, picName, nargout=0)
+            # response['data'] = {'result': KL, 'pictureName': [str(timestamp1), str(timestamp2)]}
     if option == 'RMSE':
         if options == 'joint':
             gmm_config2 = GmmConfig.objects.get(pk=id2)
             distribution2 = getDistribution(gmm_config2)
-            RMSE = engine.GMM_calculation(distribution1, 'RMSE', distribution2, x)
+            # RMSE = engine.GMM_calculation(distribution1, 'RMSE', distribution2, x)
             timestamp1 = time.time()
             picName = "/gmm/" + str(timestamp1) + '.png'
-            engine.GMM_plot(distribution1, 'multiPDF', x1, picName, y1, nargout=0)
+            # engine.GMM_plot(distribution1, 'multiPDF', x1, picName, y1, nargout=0)
             timestamp2 = time.time()
             picName = "/gmm/" + str(timestamp2) + '.png'
-            engine.GMM_plot(distribution2, 'multiPDF', x1, picName, y1, nargout=0)
-            response['data'] = {'result': RMSE, 'pictureName': [str(timestamp1), str(timestamp2)]}
+            # engine.GMM_plot(distribution2, 'multiPDF', x1, picName, y1, nargout=0)
+            # response['data'] = {'result': RMSE, 'pictureName': [str(timestamp1), str(timestamp2)]}
         else:
             gmm_config2 = GmmConfig.objects.get(pk=id2)
             distribution2 = getDistribution(gmm_config2)
-            RMSE = engine.GMM_calculation(distribution1, 'RMSE', distribution2, x)
+            # RMSE = engine.GMM_calculation(distribution1, 'RMSE', distribution2, x)
             timestamp1 = time.time()
             picName = "/gmm/" + str(timestamp1) + '.png'
-            engine.GMM_plot(distribution1, 'singlePDF', x1, picName, nargout=0)
+            # engine.GMM_plot(distribution1, 'singlePDF', x1, picName, nargout=0)
             timestamp2 = time.time()
             picName = "/gmm/" + str(timestamp2) + '.png'
-            engine.GMM_plot(distribution2, 'singlePDF', x1, picName, nargout=0)
-            response['data'] = {'result': RMSE, 'pictureName': [str(timestamp1), str(timestamp2)]}
+            # engine.GMM_plot(distribution2, 'singlePDF', x1, picName, nargout=0)
+            # response['data'] = {'result': RMSE, 'pictureName': [str(timestamp1), str(timestamp2)]}
     if option == 'linear':
         if options == 'joint':
-            linear = engine.GMM_calculation(distribution1, 'linear', matlab.double(A), matlab.double(b))
+            # linear = engine.GMM_calculation(distribution1, 'linear', matlab.double(A), matlab.double(b))
             timestamp1 = time.time()
             picName = "/gmm/" + str(timestamp1) + '.png'
-            engine.GMM_plot(linear, 'multiPDF', x1, picName, y1, nargout=0)
-            response['data'] = {'result': RMSE, 'pictureName': [str(timestamp1)]}
+            # engine.GMM_plot(linear, 'multiPDF', x1, picName, y1, nargout=0)
+            # response['data'] = {'result': RMSE, 'pictureName': [str(timestamp1)]}
         else:
-            linear = engine.GMM_calculation(distribution1, 'linear', matlab.double(A), matlab.double(b))
+            # linear = engine.GMM_calculation(distribution1, 'linear', matlab.double(A), matlab.double(b))
             timestamp1 = time.time()
             picName = "/gmm/" + str(timestamp1) + '.png'
-            engine.GMM_plot(linear, 'singlePDF', x1, picName, nargout=0)
-            response['data'] = {'result': RMSE, 'pictureName': [str(timestamp1)]}
+            # engine.GMM_plot(linear, 'singlePDF', x1, picName, nargout=0)
+            # response['data'] = {'result': RMSE, 'pictureName': [str(timestamp1)]}
     return JsonResponse(response)
 
 
