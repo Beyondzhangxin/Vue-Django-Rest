@@ -128,11 +128,6 @@
               :data="tableData3"
               border
               style="width: 100%">
-              <!--<el-table_column-->
-              <!--v-for = "item in "-->
-              <!--&gt;-->
-
-              <!--</el-table_column>-->
               <el-table-column
                 prop="var1"
                 label="var1"
@@ -144,7 +139,7 @@
               </el-table-column>
               <el-table-column
                 prop="var2"
-                label="var2"
+                label="var21"
                 header-align="center">
                 <template scope="scope">
                   <el-input size="small" v-model="scope.row.var2" clearable placeholder="请输入内容" clearable
@@ -209,7 +204,7 @@
     </el-card>
 
     <div class="start">
-      <el-button type="primary" @click="postData('http://localhost:8000/GMM/calculation')" icon="el-icon-d-caret"
+      <el-button type="primary" @click="postData(url+'calculation')" icon="el-icon-d-caret"
                  v-loading.fullscreen.lock="fullscreenLoading">开始计算
       </el-button>
       <el-dialog
@@ -219,8 +214,8 @@
         :before-close="handleClose">
         <div class="window">
           <span>{{this.formData.option+":"+this.result}}</span>
-          <img class="image" :src="'http://localhost:8000/GMM/image?name='+pictureName1" v-if="pictureName1"></img>
-          <img class="image" :src="'http://localhost:8000/GMM/image?name='+pictureName2" v-if="pictureName2"></img>
+          <img class="image" :src="url+'image?name='+pictureName1" v-if="pictureName1"></img>
+          <img class="image" :src="url+'image?name='+pictureName2" v-if="pictureName2"></img>
         </div>
         <span slot="footer" class="dialog-footer">
                 <el-button @click="dialogVisible = false">取 消</el-button>
@@ -236,6 +231,7 @@
   export default {
     data() {
       return {
+        url:"",
         fullscreenLoading: false,
         result: 0,
         pictureName1: "",
@@ -345,7 +341,10 @@
     },
 
     mounted: function () {
-      this.getConfig()
+      this.getConfig();
+      var host = location.hostname;
+      var url = 'http://' + host + ':8000/GMM/';
+      this.url =url
     },
 
 
@@ -444,7 +443,7 @@
         }
       },
       getConfig() {
-        this.$ajax.get("http://127.0.0.1:8000/GMM/model/distribution/").then(function (response) {
+        this.$ajax.get("http://"+location.hostname+":8000/GMM/model/distribution/").then(function (response) {
           this.configInfoList = response.data
           console.log(response)
           //加载数据到配置中
@@ -459,6 +458,8 @@
         }.bind(this)).catch(function (error) {
           return 0;
         });
+
+
       },
 
       // 显示

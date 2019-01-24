@@ -15,8 +15,6 @@ import Demo from '@/components/gmm/demo01'
 import Effect from '@/Effect'
 
 
-
-
 Vue.use(VueResource)
 Vue.use(Router)
 
