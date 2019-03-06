@@ -212,10 +212,8 @@
         :visible.sync="dialogVisible"
         width="40%"
         :before-close="handleClose">
-        <div class="window">
-          <span>{{this.formData.option+":"+this.result}}</span>
-          <img class="image" :src="url+'image?name='+pictureName1" v-if="pictureName1"></img>
-          <img class="image" :src="url+'image?name='+pictureName2" v-if="pictureName2"></img>
+        <div class="window" style="align-content: center">
+          <div id="echart" style="width: 600px;height: 400px;"></div>
         </div>
         <span slot="footer" class="dialog-footer">
                 <el-button @click="dialogVisible = false">取 消</el-button>
@@ -228,33 +226,47 @@
 
 
 <script>
+  let echarts = require('echarts/lib/echarts')
+
+  var echart_basic_option = {
+    xAxis: {
+      type: 'category',
+    },
+    yAxis: {
+      type: 'value',
+    },
+    series: [
+      {
+        type: 'line',
+        smooth: true,
+      }],
+  };
+
   export default {
     data() {
       return {
-        url:"",
+        url: '',
         fullscreenLoading: false,
         result: 0,
-        pictureName1: "",
-        pictureName2: "",
+        pictureName1: '',
+        pictureName2: '',
         d: 0,
         configInfoList: [],
         chooseConfig: {},
         configList: [],
         formData: {
-          id1: "",
-          id2: "",
-          option: "",
-          y: "",
-          x: "",
-          A: "",
-          b: "",
-          n_min: "",
-          n_max: "",
+          id1: '',
+          id2: '',
+          option: '',
+          y: '',
+          x: '',
+          A: '',
+          b: '',
+          n_min: '',
+          n_max: '',
         },
 
-
         dialogVisible: false,
-
 
         input1: '',
         input2: '',
@@ -262,176 +274,173 @@
         // 控制显示
         show: false,
 
-
-        options1: [{
-          value: 'A',
-          label: '配置A'
-        }, {
-          value: 'B',
-          label: '配置B'
-        }, {
-          value: 'C',
-          label: '配置C'
-        }],
+        options1: [
+          {
+            value: 'A',
+            label: '配置A',
+          }, {
+            value: 'B',
+            label: '配置B',
+          }, {
+            value: 'C',
+            label: '配置C',
+          }],
         value1: '',
 
-        options2: [{
-          value: 'pdf',
-          label: 'PDF'
-        }, {
-          value: 'cdf',
-          label: 'CDF'
-        }, {
-          value: 'quantile',
-          label: 'quantile'
-        },
+        options2: [
+          {
+            value: 'pdf',
+            label: 'PDF',
+          }, {
+            value: 'cdf',
+            label: 'CDF',
+          }, {
+            value: 'quantile',
+            label: 'quantile',
+          },
           {
             value: 'KL',
-            label: 'KL'
+            label: 'KL',
           },
           {
             value: 'RMSE',
-            label: 'RMSE'
+            label: 'RMSE',
           },
           {
             value: 'linear',
-            label: 'linear'
+            label: 'linear',
           }],
         value2: '',
 
-        options3: [{
-          value: 'A',
-          label: '配置A'
-        }, {
-          value: 'B',
-          label: '配置B'
-        }, {
-          value: 'C',
-          label: '配置C'
-        }],
+        options3: [
+          {
+            value: 'A',
+            label: '配置A',
+          }, {
+            value: 'B',
+            label: '配置B',
+          }, {
+            value: 'C',
+            label: '配置C',
+          }],
         value3: '',
 
-        tableData1: [{
-          id: 'val',
-          list: [],
-        }],
+        tableData1: [
+          {
+            id: 'val',
+            list: [],
+          }],
 
-        tableData2: [{
-          var1: '1',
-          var2: '1',
-          var3: '1'
-        }, {
-          var1: '1',
-          var2: '1',
-          var3: '1'
-        }],
+        tableData2: [
+          {
+            var1: '1',
+            var2: '1',
+            var3: '1',
+          }, {
+            var1: '1',
+            var2: '1',
+            var3: '1',
+          }],
 
         tableData3: [],
 
-        tableData4: [{
-          var1: '0',
-        }, {
-          var1: '0',
-        }, {
-          var1: '0',
-        }],
+        tableData4: [
+          {
+            var1: '0',
+          }, {
+            var1: '0',
+          }, {
+            var1: '0',
+          }],
 
-
-      }
+      };
     },
 
-    mounted: function () {
+    mounted: function() {
       this.getConfig();
       var host = location.hostname;
       var url = 'http://' + host + ':8000/GMM/';
-      this.url =url
-    },
+      this.url = url;
 
+    },
 
     methods: {
       postData(url) {
 
         // loading 5秒
+        console.log('123123123');
         this.fullscreenLoading = true;
         setTimeout(() => {
           this.fullscreenLoading = false;
         }, 5000);
 
         var instance = this.$ajax.create({
-          headers: {'Content-Type': 'application/json'}
+          headers: {'Content-Type': 'application/json'},
         });
-        this.formData.y = this.tableData1[0].list
+        this.formData.y = this.tableData1[0].list;
 
-        if (this.formData.option == "linear") {
-          var list = []
+        if (this.formData.option == 'linear') {
+          var list = [];
           for (var i = 0; i < this.tableData3.length; i++) {
-            list.push([this.tableData3[i].var1, this.tableData3[i].var2])
+            list.push([this.tableData3[i].var1, this.tableData3[i].var2]);
           }
-          this.formData.A = list
-          var list1 = []
+          this.formData.A = list;
+          var list1 = [];
           for (var i = 0; i < this.tableData4.length; i++) {
-            list1.push(this.tableData4[i].var1)
+            list1.push(this.tableData4[i].var1);
           }
-          this.formData.b = list1
+          this.formData.b = list1;
 
         }
+        this.dialogVisible = true;
+        instance.post(url, this.formData).then(function(response) {
 
-        instance.post(url, this.formData).then(function (response) {
-
-          console.log(response)
-          if (response.data.data.pictureName) {
-            this.pictureName1 = response.data.data.pictureName[0]
-            if (response.data.data.pictureName.length == 2) {
-              this.pictureName2 = response.data.data.pictureName[1]
-            }
-          }
-
+          console.log(response);
 
           // this.pictureName = "http://localhost:8000/GMM/image?name=" + response.data.data.pictureName
           // console.log(this.pictureName)
-          this.result = response.data.data.result
-          this.dialogVisible = true
+          this.result = response.data.data;
+          let chart=echarts.getInstanceByDom(document.getElementById('echart'))
+          if(!chart){
+            chart=echarts.init(document.getElementById('echart'));
+          }
+          echart_basic_option.xAxis.data=this.result.x_scope;
+          echart_basic_option.series[0].data=this.result.y_scope;
+          chart.setOption(echart_basic_option);
 
-          // if(true) {
-          //     this.$ajax.get('http://localhost:8000/GMM/image').then(function (response) {
-
-          //     }.bind(this)).catch(function (error) {
-
-          //     });
-          // }
-          //处理数据
-        }.bind(this)).catch(function (error) {
-          return 0;
+        }.bind(this)).catch(function(error) {
+          let chart=echarts.getInstanceByDom(document.getElementById('echart'));
+          if(chart) chart.clear();
         });
       },
       updateOption() {
-        this.d = JSON.parse(this.chooseConfig.y).length
-        console.log(this.chooseConfig)
+        this.d = JSON.parse(this.chooseConfig.y).length;
+        console.log(this.chooseConfig);
         if (this.formData.option == 'pdf' || this.formData.option == 'cdf') {
-          this.tableData1[0].list = []
+          this.tableData1[0].list = [];
           for (var j = 0; j < JSON.parse(this.chooseConfig.varables).length; j++) {
-            this.tableData1[0].list.push({val: 0})
+            this.tableData1[0].list.push({val: 0});
           }
         }
         if (this.formData.option == 'linear') {
-          this.tableData3 = []
+          this.tableData3 = [];
           for (var i = 0; i < this.d; i++) {
-            this.tableData3.push({var1: "", var2: ""})
+            this.tableData3.push({var1: '', var2: ''});
           }
-          console.log(this.tableData3)
+          console.log(this.tableData3);
         }
       },
       change() {
-        console.log(this.tableData1)
-        console.log(this.tableData2)
-        console.log(this.tableData3)
-        console.log(this.tableData4)
+        console.log(this.tableData1);
+        console.log(this.tableData2);
+        console.log(this.tableData3);
+        console.log(this.tableData4);
       },
       updateConfig() {
         for (var i = 0; i < this.configInfoList.length; i++) {
           if (this.configInfoList[i].id == this.formData.id1) {
-            this.chooseConfig = this.configInfoList[i]
-            this.updateOption()
+            this.chooseConfig = this.configInfoList[i];
+            this.updateOption();
             // if (this.chooseConfig.option == 'pdf'||this.chooseConfig.option == 'cdf') {
             //     this.tableData1 = []
             //     for(var j=0; j < JSON.parse(this.chooseConfig.y); j++) {
@@ -443,22 +452,21 @@
         }
       },
       getConfig() {
-        this.$ajax.get("http://"+location.hostname+":8000/GMM/model/distribution/").then(function (response) {
-          this.configInfoList = response.data
-          console.log(response)
+        this.$ajax.get('http://' + location.hostname + ':8000/GMM/model/distribution/').then(function(response) {
+          this.configInfoList = response.data;
+          console.log(response);
           //加载数据到配置中
           //初始化configList
-          this.configList = []
+          this.configList = [];
           for (var i = 0; i < response.data.length; i++) {
             this.configList.push({
               value: response.data[i].id,
-              label: response.data[i].name
-            })
+              label: response.data[i].name,
+            });
           }
-        }.bind(this)).catch(function (error) {
+        }.bind(this)).catch(function(error) {
           return 0;
         });
-
 
       },
 
@@ -469,18 +477,15 @@
 
       // 关闭按钮
       handleClose(done) {
-        this.$confirm('确认关闭？')
-          .then(_ => {
-            done();
-          })
-          .catch(_ => {
-          });
+        this.$confirm('确认关闭？').then(_ => {
+          done();
+        }).catch(_ => {
+        });
       },
-
 
       // 表格内输入
       handleCurrentChange(row, event, column) {
-        console.log(row, event, column, event.currentTarget)
+        console.log(row, event, column, event.currentTarget);
       },
       handleEdit(index, row) {
         console.log(index, row);
@@ -489,10 +494,9 @@
       //     console.log(index, row);
       // },
 
-    }
+    },
 
-
-  }
+  };
 
 
 </script>

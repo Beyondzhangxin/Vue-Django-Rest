@@ -58,6 +58,7 @@
             v-model="value0"
             type="datetimerange"
             :picker-options="pickerOptions1"
+            value-format="yyyy-MM-dd HH:mm:ss"
             range-separator="至"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
@@ -233,8 +234,8 @@
         ruleForm: {
           system: "",
           options: "",
-          start_time: "",
-          end_time: "",
+          start_time:'',
+          end_time: '',
           j: "",
           method: "",
           varables: "",
@@ -384,6 +385,7 @@
     ,
     // 提交
     submitForm(formName) {
+      console.log('sdsdd');
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.saveModel();
@@ -436,10 +438,10 @@
           message: '模型名称是: ' + value
         });
         //发送POST请求
-        this.$router.push('/calculation')
         var host = location.hostname;
-        var url = 'http://'+host+':8000/GMM/model/distribution/'
-        this.postDSTConfig(url)
+        var url = 'http://'+host+':8000/GMM/model/distribution/';
+        this.postDSTConfig(url);
+
       }).catch(() => {
         this.$message({
           type: 'info',
@@ -453,12 +455,15 @@
       var instance = this.$ajax.create({
         headers: {'Content-Type': 'application/json'}
       });
-      this.ruleForm.varables = JSON.stringify(this.ruleForm.varables)
+      this.ruleForm.start_time=this.value0[0].Format("yyyy-MM-dd hh:mm:ss");
+      this.ruleForm.end_time=this.value0[1].Format("yyyy-MM-dd hh:mm:ss");
+      this.ruleForm.varables = JSON.stringify(this.ruleForm.varables);
       this.ruleForm.y = JSON.stringify(this.ruleForm.y)
-      this.ruleForm.y_hyper = JSON.stringify(this.ruleForm.y_hyper)
+      this.ruleForm.y_hyper = JSON.stringify(this.ruleForm.y_hyper);
       instance.post(url, this.ruleForm)
         .then(function (response) {
           //处理数据
+         this.$router.push('/calculation');
           console.log(response)
         }.bind(this))
         .catch(function (error) {

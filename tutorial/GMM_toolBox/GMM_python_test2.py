@@ -1,7 +1,14 @@
 # coding=utf-8
 # data from 2018-3-30
+import scipy.io as scio
+import numpy as np
+import datetime
+import matplotlib.pyplot as plt
+from tutorial.GMM_toolBox import functional
+import copy
 
-from .GMM_Distribution import GMM_distribution
+from tutorial.GMM_toolBox.GMM_Distribution import GMM_distribution
+from tutorial.GMM_toolBox.GMM_python_test import pv_devices_30, get_devices
 
 
 def calculate_matrices(pv_devices):

@@ -2,7 +2,6 @@ import math
 from numpy.random import multivariate_normal
 import operator
 import numpy as np
-import scipy.integrate
 import matplotlib.pyplot as plt
 from sklearn.mixture import GaussianMixture
 
@@ -48,10 +47,10 @@ def func_MenteCaro_sampling(gmm: GaussianMixture,
     samples = np.array(samples)
     return samples
 
-def plot_pdf(gmm, inf, sup):
+def plot_gmm(gmm, inf, sup):
     # 画出gmm模型的pdf曲线
     # 目前是只能画出1-D gmm
-    x = np.linspace(inf, sup, 100)
+    x = np.linspace(inf, sup, 1000)
     fig = plt.figure()
     if isinstance(gmm, list):
         pdf_array = list()
@@ -66,33 +65,5 @@ def plot_pdf(gmm, inf, sup):
         plt.plot(x, pdf)
     plt.xlabel('x')
     plt.ylabel('pdf')
-    plt.show()
-    return fig
-
-def plot_cdf(gmm, inf, sup):
-    # 画出gmm模型的cdf曲线
-    # 目前是只能画出1-D gmm
-    x = np.linspace(inf, sup, 100)
-    fig = plt.figure()
-    if isinstance(gmm, list):
-        cdfs = list()
-        for gmm_ in gmm:
-            cdf = list()
-            for x_ in x:
-                y_ = scipy.integrate.quad(lambda m: np.exp(gmm_.score_samples(m)), -np.inf, x_)
-                cdf.append(y_[0])
-            cdf = np.array(cdf)
-            cdfs.append(cdf)
-        for cdf in cdfs:
-            plt.plot(x, cdf)
-    else:
-        cdf = list()
-        for x_ in x:
-            y_ = scipy.integrate.quad(lambda m: np.exp(gmm.score_samples(m))[0], -np.inf, x_)
-            cdf.append(y_[0])
-        cdf = np.array(cdf)
-        plt.plot(x, cdf)
-    plt.xlabel('x')
-    plt.ylabel('cdf')
     plt.show()
     return fig

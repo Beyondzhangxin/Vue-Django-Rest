@@ -53,6 +53,8 @@ def getDistribution(gmmConfig):
     # engine = matlab.engine.start_matlab()
     data = getSamples(gmmConfig)
     Y = np.array(data['training_samples']).T[0]
+    max=np.max(Y)
+    min=np.min(Y)
     J =  gmmConfig.j
     method = gmmConfig.method
     options = gmmConfig.options
@@ -68,14 +70,24 @@ def getDistribution(gmmConfig):
     y_hyper =y_hyper[0:int(len_y/50)*50]
     if len(y_list)>0:
         if method=='EM':
-            return GMM_distribution(Y,J,'EM',options,y)
+            return {'gmm':GMM_distribution(Y,J,'EM',options,y),'max':max,'min':min}
         else:
-            return GMM_distribution(Y,J,'MAP',options,y,y_hyper,period)
+            return {'gmm':GMM_distribution(Y,J,'MAP',options,y,y_hyper,period),'max':max,'min':min}
     else:
         if method=='EM':
-            return GMM_distribution(Y,J,'EM',options)
+            return {'gmm':GMM_distribution(Y,J,'EM',options),'max':max,'min':min}
         else:
-            return GMM_distribution(Y,J,'MAP',options,y_hyper,period)
+            return {'gmm':GMM_distribution(Y,J,'MAP',options,y_hyper,period),'max':max,'min':min}
+
+def getDistribution_echart(distribution):
+    pass
+
+
+
+
 # 转置矩阵
 def trans(m):
     return zip(*d)
+
+# 根据输入X输出GMM分布数据Y
+

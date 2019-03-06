@@ -82,7 +82,7 @@ def calculate_matrices(pv_devices):
     for pv_device in pv_devices:
         GMMs_30.append(GMM_distribution(
             pv_device['power'], 3, 'EM', 'marginal')['GMM'])
-
+    plt.plot(x,pdf(GMMs_30[0],x))
     KL_matrix_30 = np.zeros((len(GMMs_30), len(GMMs_30)), dtype=np.float64)
     # 计算KL距离矩阵的上三角部分
     for i in range(len(GMMs_30)):
@@ -108,7 +108,8 @@ def plot_matrix(matrix, mode):
         plt.title('KL divergence between different PVs')
     else:
         plt.title('Correlations of KL divergence')
-    plt.show()
+    # plt.show()
+    plt.savefig('../gmm_img/squares_plot.png', bbox_inches='tight')
 
 KL_30 = calculate_matrices(pv_devices_30)
 plot_matrix(KL_30, 'KL')

@@ -1,4 +1,5 @@
 import datetime
+import math
 
 import random
 import time
@@ -282,7 +283,10 @@ def calculate(request):
     data = json.loads(request.body)
     config_id = data.get('id1')
     gmm_config = GmmConfig.objects.get(pk=config_id)
-    distribution1 = getDistribution(gmm_config)
+    gmm_object = getDistribution(gmm_config)
+    distribution1=gmm_object.get('gmm')['GMM']
+    x_min=gmm_object.get('min')
+    x_max=gmm_object.get('max')
     options = gmm_config.options  # gmm分布输出选择，maginal，joint和conditional
     option = data.get('option')
     A = data.get('A')
@@ -290,11 +294,9 @@ def calculate(request):
     id2 = data.get('id2')
     n_max = float(0 if data.get('n_max')=='' else  data.get('n_min'))
     n_min = float(0 if data.get('n_min')=='' else  data.get('n_min'))
-    x = matlab.double([[x * 10 // 1 / 10] for x in np.arange(0, 30, 0.1)])
     y = data.get('y')
     y_list = []
-    x1 = matlab.double([[x * 10 // 1 / 10] for x in np.arange(-4, 12, 0.1)])
-    y1 = matlab.double([[x * 10 // 1 / 10] for x in np.arange(-8, 24, 0.2)])
+    x_scope=np.linspace(0,15,1000)
     if len(y) > 0:
         for x in y:
             y_list.append(float(x.get('val')))
@@ -307,8 +309,11 @@ def calculate(request):
             # engine.GMM_plot(distribution1, 'multiPDF', x1, picName, y1, nargout=0)
             # response['data'] = {'result': pdf, 'pictureName': [str(timestamp)]}
         else:
-            timestamp = time.time()
-            picName = "/gmm/" + str(timestamp) + '.png'
+            log_pdf = distribution1.score_samples(x_scope[:, np.newaxis])
+            pdf_array=np.exp(log_pdf)
+            response['data'] = {'x_scope': x_scope.tolist(), 'y_scope': pdf_array.tolist()}
+            # timestamp = time.time()
+            # picName = "/gmm/" + str(timestamp) + '.png'
             # engine.GMM_plot(distribution1, 'singlePDF', x1, picName, nargout=0)
             # response['data'] = {'result': pdf, 'pictureName': [str(timestamp)]}
     if option == 'cdf':
