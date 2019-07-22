@@ -1,0 +1,63 @@
+{
+  "TimeStamp": "201905160230",
+  "GmmobjList": [
+    {
+      "id": "0000000000000001",
+      "desc": "1区光伏逆变器1",
+      "power": 0,
+      "voltage": 0,
+      "electricity": 0,
+      "gmm_obligate1": null,
+      "gmm_obligate2": null,
+      "gmm_obligate3": null,
+      "gmm_obligate4": null,
+      "gmm_obligate5": null,
+      "gmm_obligate6": null,
+      "gmm_obligate7": null,
+      "gmm_obligate8": null,
+      "gmm_obligate9": null,
+      "gmm_obligate10": null
+    },
+    {
+      "id": "0000000000000002",
+      "desc": "1区光伏逆变器2",
+      "power": 0,
+      "voltage": null,
+      "electricity": null,
+      "gmm_obligate1": null,
+      "gmm_obligate2": null,
+      "gmm_obligate3": null,
+      "gmm_obligate4": null,
+      "gmm_obligate5": null,
+      "gmm_obligate6": null,
+      "gmm_obligate7": null,
+      "gmm_obligate8": null,
+      "gmm_obligate9": null,
+      "gmm_obligate10": null
+    }
+  ],
+  "ENVObj": {
+    "daily_accumulate_amplitude": "",
+    "accumulate_amplitude": "",
+    "env_temperature": "",
+    "cell_temperature": "",
+    "wind_speed": "",
+    "wind_direction": "",
+    "GHI": "",
+    "DNI": "",
+    "longitude": 28.8,
+    "latitude": 36.4,
+    "direction_angle": 38,
+    "pitch_angle": 37,
+    "env_obligate1": null,
+    "env_obligate2": null,
+    "env_obligate3": null,
+    "env_obligate4": null,
+    "env_obligate5": null,
+    "env_obligate6": null,
+    "env_obligate7": null,
+    "env_obligate8": null,
+    "env_obligate9": null,
+    "env_obligate10": null
+  }
+}

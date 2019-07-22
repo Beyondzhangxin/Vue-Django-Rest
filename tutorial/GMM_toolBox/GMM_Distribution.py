@@ -1,9 +1,11 @@
 from sklearn.mixture import GaussianMixture
-from scipy.stats import multivariate_normal
 import numpy as np
 
+import fit_MAP, fit_EM
+# from tutorial.GMM_toolBox import fit_EM, fit_MAP
 
-def GMM_distribution(data, n_components, method, options, y=None):
+
+def GMM_distribution(data, n_components, method, options, y=None, Y_hyper=None, period=None):
     """
     功能：本函数包含概率分布构建功能
         a) 构建任意随机变量的边际分布-EM/MAP
@@ -17,62 +19,28 @@ def GMM_distribution(data, n_components, method, options, y=None):
                     'joint'表示输出联合分布，
                     'conditional'表示输出条件分布
     :param y: (选择输入) 条件分布的给定值, 1-by-d vector, 每一元素为对应变量的给定值，目标变量处的给定值设为0
-    :return:
+    :param Y_hyper: (选择输入)  MAP算法下用于计算超参数的训练集，N-by-d matrix，N为训练集样本数量，d为训练集维度/变量个数
+    :param period: (选择输入) MAP算法下用于计算超参数的段数划分，int，即将Y_hyper以period为长度，分成若干小训练集，从而形成多组GMM参数，进而计算超参数
+    :return: GMM 单个对象或者 a list of GMM，取决于数据的维度
     """
     # if data.shape[0] == 1:
     #     raise Exception('Sample count cannot be 1.')
-    if method != 'EM':
-        raise Exception('The input method is unavailable.')
-    if options == 'marginal':
-        return _fit_marginal(data, n_components)
-    elif options == 'joint':
-        return _fit_joint(data, n_components)
-    elif options == 'conditional':
-        return _fit_conditional(data, n_components, y)
-
-def _fit_marginal(data, n_components):
-    is_matrix = (len(data.shape) == 2)
-    if is_matrix:
-        gmm = list()
-        for idx in range(data.shape[1]):
-            gmm.append(GaussianMixture(n_components=n_components, tol=1e-8, max_iter=1000, n_init=10))
-            gmm[idx].fit(data[:, idx][:, np.newaxis])
+    if method == 'EM':
+        if options == 'marginal':
+            return fit_EM._fit_marginal(data, n_components)
+        elif options == 'joint':
+            return fit_EM._fit_joint(data, n_components)
+        elif options == 'conditional':
+            return fit_EM._fit_conditional(data, n_components, y)
+    elif method == 'MAP':
+        if Y_hyper is None or period is None:
+            raise Exception('错误: 缺乏MAP算法必须参数! 请同时设置Y_hyper和period!')
+        if options == 'marginal':
+            return fit_MAP._fit_marginal(data, n_components, Y_hyper, period)
+        elif options == 'joint':
+            return fit_MAP._fit_joint(data, n_components, Y_hyper, period)
+        elif options == 'conditional':
+            return fit_MAP._fit_conditional(data, n_components, y, Y_hyper, period)
     else:
-        gmm = GaussianMixture(n_components=n_components, tol=1e-8, max_iter=1000, n_init=10)
-        gmm.fit(data[:, np.newaxis])
-    return {'GMM':gmm, 'Corr':None}
+        raise Exception("错误: 您输入的方法名称有误，请重新输入！")
 
-def _fit_joint(data, n_components):
-    is_matrix = (len(data.shape) == 2)
-    if not is_matrix:
-        raise Exception('Data to train joint distribution must have at least 2 dimensions.')
-    corr = np.corrcoef(data.transpose())
-    gmm = GaussianMixture(n_components=n_components, tol=1e-8, max_iter=1000, n_init=10)
-    gmm.fit(data)
-    return {'GMM': gmm, 'Corr': corr}
-
-def _fit_conditional(data, n_components, y):
-    is_matrix = (len(data.shape) == 2)
-    if not is_matrix \
-            or not isinstance(y, np.ndarray) \
-            or len(y.shape) != 1 \
-            or y.shape[0] != data.shape[1]:
-        raise Exception('Input data is illegal')
-    corr = np.corrcoef(data.transpose())
-    data_shift = data.copy()
-
-    # 如果给定值按照要求输入后，则平移Y和y，形成第一列为目标分布的格局
-    idx_0 = np.where(y==0)[0]
-    y[[0, idx_0]] = y[[idx_0, 0]]
-    y = y[1:]
-    data_shift[:, [0, idx_0]] = data_shift[:, [idx_0, 0]]
-
-    # 按照平移后的Y形成联合分布
-    gmm_joint = GaussianMixture(n_components=n_components, tol=1e-8, max_iter=1000, n_init=10)
-    gmm_joint.fit(data_shift)
-
-    # 按照平移后的y形成条件分布
-
-    # 首先获得 gmm_joint 的 mu 和 sigma
-    # TODO
-    return None

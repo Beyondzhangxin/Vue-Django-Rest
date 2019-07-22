@@ -1,7 +1,7 @@
 
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
-from . import views
+
 
 # 接口功能描述
 # 1. 概率分布建模功能
@@ -17,26 +17,15 @@ from . import views
 #   2.4 计算分布间KLD值 
 #   2.5 计算分布间RMSE
 #   2.6 计算线性变换分布
-
+from . import views
 
 urlpatterns = [
     url(r'model/distribution/$', views.Distribution.as_view()), #跟据请求不同转发到不同的功能
-    url(r'model/distribution/get$', views.GetMatrix.as_view()),
-    # url(r'model/distribution/marginal/$', views.Marginal.as_view()),
-    # url(r'model/distribution/joint/$', views.Joint.as_view()),
-    # url(r'model/distribution/conditional/$', views.Conditional.as_view()),
-    # url(r'model/distribution/EM/$', views.EM.as_view()),
-    # url(r'model/distribution/MAP/$', views.MAP.as_view()),
-    # url(r'compute/calculation/$', views.Calculation.as_view()), #跟据请求不同转发到不同的功能
-    # url(r'compute/calculation/PDF/$', views.PDF.as_view()),
-    # url(r'compute/calculation/CDF/$', views.CDF.as_view()),
-    # url(r'compute/calculation/quantile/$', views.Quantile.as_view()),
-    # url(r'compute/calculation/KL/$', views.KL.as_view()),
-    # url(r'compute/calculation/RMSE/$', views.RMSE.as_view()),
-    # url(r'compute/calculation/linear/$', views.Linear.as_view()),
     url(r'getAllDistributionConfigs', views.getAllDistributionConfigs),
-    url(r'jason',views.jason),
     url(r'calculation',views.calculate),
+    url(r'del',views.delModel),
+    url(r'testGMM',views.test_gmm),
+    url(r'gmm_qinghai',views.gmm_qinghai),
     url(r'^image$', views.my_image, name="image"),
 ]
 

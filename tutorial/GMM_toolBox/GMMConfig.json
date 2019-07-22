@@ -1,0 +1,72 @@
+{
+  "GMMObjs": [
+    {
+      "GMMObj": {
+        "id": "0000000000000001",
+        "desc": "1区光伏逆变器1",
+        "guid": "{646baf41-d7b7-43e1-9afc-66b5e795e70a}",
+        "SubObjs": [
+          {
+            "guid": "{7a077069-4776-423b-ad17-6ee8189d8f0f}",
+            "desc": "阵列输入功率",
+            "value": "10",
+            "note": "power"
+          },
+          {
+            "guid": "{6c7f6258-4918-4d6b-8462-344b4e9c5222}",
+            "desc": "阵列电流",
+            "value": "20",
+            "note": "electricity"
+          },
+          {
+            "guid": "{421dc10d-de69-4425-b386-ca428e1034a5}",
+            "desc": "阵列电压",
+            "value": "200",
+            "note": "voltage"
+          }
+        ]
+      }
+    },
+    {
+      "GMMObj": {
+        "id": "0000000000000002",
+        "desc": "1区光伏逆变器2",
+        "guid": "{9f608deb-7989-459a-8f77-a714e464bb06}",
+        "SubObjs": [
+          {
+            "guid": "{9005f4b7-9e17-459f-bffd-2890c38745d3}",
+            "desc": "阵列输入功率",
+            "value": "10",
+            "note": "power"
+          },
+          {
+            "guid": "{38e43ae6-ceca-47da-80e7-788a99b73da3}",
+            "desc": "阵列电流",
+            "value": "20",
+            "note": "electricity"
+          },
+          {
+            "guid": "{f2f33da1-f736-4bae-a21b-bc8171fe474a}",
+            "desc": "阵列电压",
+            "value": "200",
+            "note": "voltage"
+          }
+        ]
+      }
+    }
+  ],
+  "EnvObj": {
+    "daily_accumulate_amplitude": "",
+    "accumulate_amplitude": "",
+    "env_temperature": "",
+    "cell_temperature": "",
+    "wind_speed": "",
+    "wind_direction": "",
+    "GHI": "",
+    "DNI": "",
+    "longitude": "28.8",
+    "latitude": "36.4",
+    "direction_angle": "38",
+    "pitch_angle": "37"
+  }
+}
